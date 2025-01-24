@@ -43,5 +43,17 @@ This repository contains all the resources you’ll need throughout the workshop
 [C6 SPRING 2025](https://github.com/CODE-CRUNCH-CLUB/C2-CrunchTime-The-Code/tree/main/SPRING-2025)
 ---
 
+# Course Content - Spring 2025
 
+---
+
+# Week - 0 
+
+## Topics: - **Unit:** Week 0 - Overview of C2
+- **Week Dates:** January 6, 2025 - January 10, 2025
+- **Link to Slides:** [Week 0 - C2 _ Cyber Crunch.pptx](https://github.com/CODE-CRUNCH-CLUB/C2-CrunchTime-The-Code/blob/main/SPRING-2025/RESOURCES/Week%200%20-%20C2%20Crunch%20Code%20-%20Python%20Fundamentals.pptx.pdf)
+
+### **Commands: Terminal**
+```python
+   hellow world
    

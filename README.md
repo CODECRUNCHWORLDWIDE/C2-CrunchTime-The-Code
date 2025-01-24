@@ -12,7 +12,7 @@ This repository contains all the resources you’ll need throughout the workshop
 - **Presentations**: Slide decks for each week’s topic.  
 - **Scripts**: Code snippets and scripts used in demonstrations.  
 - **Worksheets**: Printable and digital activities, like ciphers and troubleshooting tasks.
-[C6 SPRING 2025](https://github.com/CODE-CRUNCH-CLUB/C2-CrunchTime-The-Code/tree/main/SPRING-2025)
+[C2 SPRING 2025](https://github.com/CODE-CRUNCH-CLUB/C2-CrunchTime-The-Code/tree/main/SPRING-2025)
 
 ---
 Let’s keep crunching code and learning together! 🚀  

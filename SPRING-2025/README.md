@@ -11,7 +11,7 @@ It will not be displayed in the rendered README.
 - **Week Dates:** January 6, 2025 - January 10, 2025
 - **Link to Slides:** [Unit # - C# Topic.pptx](https://gooogle.com)
 
-### **Block of code**
+### **Python Code**
 ```python
    hellow world
 ```
@@ -72,9 +72,9 @@ This repository contains all the resources you’ll need throughout the workshop
 
 ## Topics: **Unit 0:** Overview of C2
 - **Week Dates:** January 6, 2025 - January 10, 2025
-- **Link to Slides:** [Unit 0 - C2 Crunch Code - Python Fundamentals.pptx.pdf](https://google.com)
+- **Link to Slides:** [Unit 0 - C2 Crunch Code - Python Fundamentals.pptx.pdf](https://github.com/CODE-CRUNCH-CLUB/C2-CrunchTime-The-Code/blob/main/SPRING-2025/RESOURCES/Unit%200%20-%20C2%20Crunch%20Code%20-%20Python%20Fundamentals.pptx.pdf)
 
-### **Commands: Terminal**
+### **Python Code**
 ```python
    hellow world
 ```
@@ -85,9 +85,9 @@ This repository contains all the resources you’ll need throughout the workshop
 
 ## Topics: **Unit 0:** Overview of C2
 - **Week Dates:** January 13, 2025 - January 17, 2025
-- **Link to Slides:** [Unit 1 - C2 _ Crunch The Code - Python Fundamentals.pptx.pdf](https://google.com)
+- **Link to Slides:** [Unit 1 - C2 _ Crunch The Code - Python Fundamentals.pptx.pdf](https://github.com/CODE-CRUNCH-CLUB/C2-CrunchTime-The-Code/blob/main/SPRING-2025/RESOURCES/Unit%201%20-%20C2%20_%20Crunch%20The%20Code%20-%20Python%20Fundamentals.pptx.pdf)
 
-### **Commands: Terminal**
+### **Python Code**
 ```python
    hellow world
 ```
@@ -100,7 +100,7 @@ This repository contains all the resources you’ll need throughout the workshop
 - **Week Dates:** January 20, 2025 - January 24, 2025
 - **Link to Slides:** [Unit 2 - C2 _ Crunch The Code - Sets & Dictionaries.pptx.pdf](https://google.com)
 
-### **Commands: Terminal**
+### **Python Code**
 ```python
    hellow world
 ```

@@ -1,3 +1,24 @@
+<!--
+This is a comment in Markdown.
+It will not be displayed in the rendered README.
+
+
+
+---
+# Week - # 
+
+## Topics: **Unit #:** Topic Sample
+- **Week Dates:** January 6, 2025 - January 10, 2025
+- **Link to Slides:** [Unit # - C# Topic.pptx](https://gooogle.com)
+
+### **Block of code**
+```python
+   hellow world
+```
+
+
+-->
+
 # C2: Crunch the Code
 
 Welcome to the **C2: Crunch the Code** workshop! This repository is your go-to resource for all materials, activities, and updates throughout the workshop. Whether you're a beginner or have some experience, this workshop is designed to help you develop a strong foundation in coding and cybersecurity concepts with practical hands-on skills.
@@ -47,13 +68,40 @@ This repository contains all the resources you’ll need throughout the workshop
 
 ---
 
-# Week - 0 
+# Unit - 0 
 
-## Topics: - **Unit:** Week 0 - Overview of C2
+## Topics: **Unit 0:** Overview of C2
 - **Week Dates:** January 6, 2025 - January 10, 2025
-- **Link to Slides:** [Week 0 - C2 _ Cyber Crunch.pptx](https://github.com/CODE-CRUNCH-CLUB/C2-CrunchTime-The-Code/blob/main/SPRING-2025/RESOURCES/Week%200%20-%20C2%20Crunch%20Code%20-%20Python%20Fundamentals.pptx.pdf)
+- **Link to Slides:** [Unit 0 - C2 Crunch Code - Python Fundamentals.pptx.pdf](https://google.com)
 
 ### **Commands: Terminal**
 ```python
    hellow world
-   
+```
+
+---
+
+# Unit- 1 
+
+## Topics: **Unit 0:** Overview of C2
+- **Week Dates:** January 13, 2025 - January 17, 2025
+- **Link to Slides:** [Unit 1 - C2 _ Crunch The Code - Python Fundamentals.pptx.pdf](https://google.com)
+
+### **Commands: Terminal**
+```python
+   hellow world
+```
+
+---
+
+# Unit- 2 
+
+## Topics: **Unit 0:** Overview of C2
+- **Week Dates:** January 20, 2025 - January 24, 2025
+- **Link to Slides:** [Unit 2 - C2 _ Crunch The Code - Sets & Dictionaries.pptx.pdf](https://google.com)
+
+### **Commands: Terminal**
+```python
+   hellow world
+```
+

@@ -5,7 +5,6 @@ Welcome to the **C2: Crunch the Code** workshop! This repository is your go-to r
 ## 🔗 Quick Access  
 - Repository Link: [C2 CrunchTime The Code](https://github.com/CODE-CRUNCH-CLUB/C2-CrunchTime-The-Code/tree/main)
 
----
 
 ## 📂 **Resources**  
 This repository contains all the resources you’ll need throughout the workshop:  

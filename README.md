@@ -8,7 +8,7 @@ Here you can find:
 Feel free to review the slides and work on the coding problems.
 
 ## 🔗 Quick Access  
-- Repository Link: [C1 Code Crunch Convos](https://github.com/CODE-CRUNCH-CLUB/C1-Code-Crunch-Convos/tree/main/C1-SPRING-2025)  
+- Repository Link: [C2 CrunchTime The Code](https://github.com/CODE-CRUNCH-CLUB/C2-CrunchTime-The-Code/tree/main)
 
 ---
 

@@ -2,8 +2,6 @@
 
 Welcome to the **C2: Crunch the Code** workshop! This repository is your go-to resource for all materials, activities, and updates throughout the workshop. Whether you're a beginner or have some experience, this workshop is designed to help you develop a strong foundation in coding and technical interview prep concepts with practical hands-on skills.
 
----
-
 ## 🔗 Quick Access  
 - Repository Link: [C2 CrunchTime The Code](https://github.com/CODE-CRUNCH-CLUB/C2-CrunchTime-The-Code/tree/main)
 

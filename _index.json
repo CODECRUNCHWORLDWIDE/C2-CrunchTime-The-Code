@@ -1,0 +1,729 @@
+{
+  "repo": "C2-CrunchTime-The-Code",
+  "files": [
+    {
+      "path": "CODE_OF_CONDUCT.md",
+      "title": "Contributor Covenant Code of Conduct"
+    },
+    {
+      "path": "CONTRIBUTING.md",
+      "title": "Contributing to CrunchTime \u2014 The Code"
+    },
+    {
+      "path": "README.md",
+      "title": "C2 \u00b7 CrunchTime \u2014 The Code"
+    },
+    {
+      "path": "assets/branding/BRAND.md",
+      "title": "C2 \u00b7 CrunchTime \u2014 The Code \u2014 Brand Guide"
+    },
+    {
+      "path": "curriculum/README.md",
+      "title": "C2 \u00b7 CrunchTime \u2014 The Code \u2014 Curriculum"
+    },
+    {
+      "path": "curriculum/SYLLABUS.md",
+      "title": "C2 \u00b7 CrunchTime \u2014 The Code \u2014 Full Syllabus"
+    },
+    {
+      "path": "curriculum/study-plans/intensive-15-week.md",
+      "title": "C2 \u2014 15-Week Intensive Study Plan"
+    },
+    {
+      "path": "curriculum/study-plans/mastery-1-year.md",
+      "title": "C2 \u2014 1-Year Mastery Pathway"
+    },
+    {
+      "path": "curriculum/week-01-the-umpire-method-and-thinking-aloud/README.md",
+      "title": "Week 1 \u2014 The UMPIRE Method & Thinking Aloud"
+    },
+    {
+      "path": "curriculum/week-01-the-umpire-method-and-thinking-aloud/challenges/README.md",
+      "title": "Week 1 \u2014 Challenges"
+    },
+    {
+      "path": "curriculum/week-01-the-umpire-method-and-thinking-aloud/challenges/challenge-01-three-sum.md",
+      "title": "Challenge 1 \u2014 3-Sum"
+    },
+    {
+      "path": "curriculum/week-01-the-umpire-method-and-thinking-aloud/challenges/challenge-02-trapping-rain-water.md",
+      "title": "Challenge 2 \u2014 Trapping Rain Water"
+    },
+    {
+      "path": "curriculum/week-01-the-umpire-method-and-thinking-aloud/exercises/README.md",
+      "title": "Week 1 \u2014 Exercises (UMPIRE Drills)"
+    },
+    {
+      "path": "curriculum/week-01-the-umpire-method-and-thinking-aloud/exercises/drill-01-reverse-string.md",
+      "title": "Drill 1 \u2014 Reverse a String In Place"
+    },
+    {
+      "path": "curriculum/week-01-the-umpire-method-and-thinking-aloud/exercises/drill-02-valid-palindrome.md",
+      "title": "Drill 2 \u2014 Valid Palindrome"
+    },
+    {
+      "path": "curriculum/week-01-the-umpire-method-and-thinking-aloud/exercises/drill-03-two-sum-sorted.md",
+      "title": "Drill 3 \u2014 Two Sum II (Sorted Array)"
+    },
+    {
+      "path": "curriculum/week-01-the-umpire-method-and-thinking-aloud/exercises/drill-04-remove-duplicates.md",
+      "title": "Drill 4 \u2014 Remove Duplicates from Sorted Array"
+    },
+    {
+      "path": "curriculum/week-01-the-umpire-method-and-thinking-aloud/exercises/drill-05-container-with-most-water.md",
+      "title": "Drill 5 \u2014 Container With Most Water"
+    },
+    {
+      "path": "curriculum/week-01-the-umpire-method-and-thinking-aloud/exercises/umpire_template.md",
+      "title": "Problem N: <title>"
+    },
+    {
+      "path": "curriculum/week-01-the-umpire-method-and-thinking-aloud/homework.md",
+      "title": "Week 1 \u2014 Homework"
+    },
+    {
+      "path": "curriculum/week-01-the-umpire-method-and-thinking-aloud/lecture-notes/01-what-interviewers-actually-score.md",
+      "title": "Lecture 1 \u2014 What Interviewers Actually Score"
+    },
+    {
+      "path": "curriculum/week-01-the-umpire-method-and-thinking-aloud/lecture-notes/02-the-umpire-method.md",
+      "title": "Lecture 2 \u2014 The UMPIRE Method"
+    },
+    {
+      "path": "curriculum/week-01-the-umpire-method-and-thinking-aloud/lecture-notes/03-arrays-and-two-pointers.md",
+      "title": "Lecture 3 \u2014 Arrays and Two Pointers"
+    },
+    {
+      "path": "curriculum/week-01-the-umpire-method-and-thinking-aloud/mini-project/README.md",
+      "title": "Mini-Project \u2014 Set Up Your Interview-Prep Portfolio Repo"
+    },
+    {
+      "path": "curriculum/week-01-the-umpire-method-and-thinking-aloud/quiz.md",
+      "title": "Week 1 \u2014 Pattern-Recognition Quiz"
+    },
+    {
+      "path": "curriculum/week-01-the-umpire-method-and-thinking-aloud/resources.md",
+      "title": "Week 1 \u2014 Resources"
+    },
+    {
+      "path": "curriculum/week-02-complexity-and-hash-maps/README.md",
+      "title": "Week 2 \u2014 Complexity & Hash Maps"
+    },
+    {
+      "path": "curriculum/week-02-complexity-and-hash-maps/challenges/README.md",
+      "title": "Week 2 \u2014 Challenges"
+    },
+    {
+      "path": "curriculum/week-02-complexity-and-hash-maps/challenges/challenge-01-subarray-sum-equals-k.md",
+      "title": "Challenge 1 \u2014 Subarray Sum Equals K"
+    },
+    {
+      "path": "curriculum/week-02-complexity-and-hash-maps/challenges/challenge-02-lru-cache.md",
+      "title": "Challenge 2 \u2014 LRU Cache"
+    },
+    {
+      "path": "curriculum/week-02-complexity-and-hash-maps/exercises/README.md",
+      "title": "Week 2 \u2014 Exercises (UMPIRE Drills)"
+    },
+    {
+      "path": "curriculum/week-02-complexity-and-hash-maps/exercises/drill-01-two-sum-unsorted.md",
+      "title": "Drill 1 \u2014 Two Sum (Unsorted)"
+    },
+    {
+      "path": "curriculum/week-02-complexity-and-hash-maps/exercises/drill-02-contains-duplicate.md",
+      "title": "Drill 2 \u2014 Contains Duplicate"
+    },
+    {
+      "path": "curriculum/week-02-complexity-and-hash-maps/exercises/drill-03-group-anagrams.md",
+      "title": "Drill 3 \u2014 Group Anagrams"
+    },
+    {
+      "path": "curriculum/week-02-complexity-and-hash-maps/exercises/drill-04-valid-sudoku-rows.md",
+      "title": "Drill 4 \u2014 Valid Sudoku (Rows / Cols / Boxes)"
+    },
+    {
+      "path": "curriculum/week-02-complexity-and-hash-maps/exercises/drill-05-longest-consecutive-sequence.md",
+      "title": "Drill 5 \u2014 Longest Consecutive Sequence"
+    },
+    {
+      "path": "curriculum/week-02-complexity-and-hash-maps/homework.md",
+      "title": "Week 2 \u2014 Homework"
+    },
+    {
+      "path": "curriculum/week-02-complexity-and-hash-maps/lecture-notes/01-mental-models-for-big-O.md",
+      "title": "Lecture 1 \u2014 Mental Models for Big-O"
+    },
+    {
+      "path": "curriculum/week-02-complexity-and-hash-maps/lecture-notes/02-the-hash-map-pattern.md",
+      "title": "Lecture 2 \u2014 The Hash Map Pattern"
+    },
+    {
+      "path": "curriculum/week-02-complexity-and-hash-maps/lecture-notes/03-stating-complexity-out-loud.md",
+      "title": "Lecture 3 \u2014 Stating Complexity Out Loud"
+    },
+    {
+      "path": "curriculum/week-02-complexity-and-hash-maps/mini-project/README.md",
+      "title": "Mini-Project \u2014 Re-do Week 1's Five Drills With Full Complexity Sections"
+    },
+    {
+      "path": "curriculum/week-02-complexity-and-hash-maps/quiz.md",
+      "title": "Week 2 \u2014 Complexity Quiz"
+    },
+    {
+      "path": "curriculum/week-02-complexity-and-hash-maps/resources.md",
+      "title": "Week 2 \u2014 Resources"
+    },
+    {
+      "path": "curriculum/week-03-sliding-window/README.md",
+      "title": "Week 3 \u2014 Sliding Window"
+    },
+    {
+      "path": "curriculum/week-03-sliding-window/challenges/README.md",
+      "title": "Week 3 \u2014 Challenges"
+    },
+    {
+      "path": "curriculum/week-03-sliding-window/challenges/challenge-01-min-window-substring.md",
+      "title": "Challenge 1 \u2014 Minimum Window Substring"
+    },
+    {
+      "path": "curriculum/week-03-sliding-window/exercises/README.md",
+      "title": "Week 3 \u2014 Exercises (UMPIRE Drills)"
+    },
+    {
+      "path": "curriculum/week-03-sliding-window/exercises/drill-01-fixed-window-average.md",
+      "title": "Drill 1 \u2014 Average of Every K-Length Subarray"
+    },
+    {
+      "path": "curriculum/week-03-sliding-window/exercises/drill-02-longest-substring-no-repeat.md",
+      "title": "Drill 2 \u2014 Longest Substring Without Repeating Characters"
+    },
+    {
+      "path": "curriculum/week-03-sliding-window/exercises/drill-03-permutation-in-string.md",
+      "title": "Drill 3 \u2014 Permutation in String"
+    },
+    {
+      "path": "curriculum/week-03-sliding-window/exercises/drill-04-min-size-subarray-sum.md",
+      "title": "Drill 4 \u2014 Minimum Size Subarray Sum"
+    },
+    {
+      "path": "curriculum/week-03-sliding-window/exercises/drill-05-fruit-into-baskets.md",
+      "title": "Drill 5 \u2014 Fruit Into Baskets"
+    },
+    {
+      "path": "curriculum/week-03-sliding-window/homework.md",
+      "title": "Week 3 \u2014 Homework"
+    },
+    {
+      "path": "curriculum/week-03-sliding-window/lecture-notes/01-the-sliding-window-pattern.md",
+      "title": "Lecture 1 \u2014 The Sliding Window Pattern"
+    },
+    {
+      "path": "curriculum/week-03-sliding-window/lecture-notes/02-the-shrinking-and-growing-mechanics.md",
+      "title": "Lecture 2 \u2014 The Shrinking and Growing Mechanics"
+    },
+    {
+      "path": "curriculum/week-03-sliding-window/mini-project/README.md",
+      "title": "Mini-Project \u2014 Six Sliding-Window Write-Ups with 30-Second Pattern-Recognition Memos"
+    },
+    {
+      "path": "curriculum/week-03-sliding-window/quiz.md",
+      "title": "Week 3 \u2014 Pattern-Recognition Quiz"
+    },
+    {
+      "path": "curriculum/week-03-sliding-window/resources.md",
+      "title": "Week 3 \u2014 Resources"
+    },
+    {
+      "path": "curriculum/week-04-fast-slow-pointers-and-mock-1/README.md",
+      "title": "Week 4 \u2014 Fast/Slow Pointers + Mock Interview #1"
+    },
+    {
+      "path": "curriculum/week-04-fast-slow-pointers-and-mock-1/challenges/README.md",
+      "title": "Week 4 \u2014 Challenges"
+    },
+    {
+      "path": "curriculum/week-04-fast-slow-pointers-and-mock-1/challenges/challenge-01-reorder-linked-list.md",
+      "title": "Challenge 1 \u2014 Reorder Linked List (LeetCode 143)"
+    },
+    {
+      "path": "curriculum/week-04-fast-slow-pointers-and-mock-1/exercises/README.md",
+      "title": "Week 4 \u2014 Exercises"
+    },
+    {
+      "path": "curriculum/week-04-fast-slow-pointers-and-mock-1/exercises/drill-01-linked-list-cycle.md",
+      "title": "Drill 1 \u2014 Linked List Cycle"
+    },
+    {
+      "path": "curriculum/week-04-fast-slow-pointers-and-mock-1/exercises/drill-02-cycle-start.md",
+      "title": "Drill 2 \u2014 Cycle Start (LeetCode 142, \"Linked List Cycle II\")"
+    },
+    {
+      "path": "curriculum/week-04-fast-slow-pointers-and-mock-1/exercises/drill-03-middle-of-list.md",
+      "title": "Drill 3 \u2014 Middle of the Linked List (LeetCode 876)"
+    },
+    {
+      "path": "curriculum/week-04-fast-slow-pointers-and-mock-1/exercises/drill-04-happy-number.md",
+      "title": "Drill 4 \u2014 Happy Number (LeetCode 202)"
+    },
+    {
+      "path": "curriculum/week-04-fast-slow-pointers-and-mock-1/homework.md",
+      "title": "Week 4 \u2014 Homework"
+    },
+    {
+      "path": "curriculum/week-04-fast-slow-pointers-and-mock-1/lecture-notes/01-floyds-tortoise-and-hare.md",
+      "title": "Lecture 1 \u2014 Floyd's Tortoise and Hare"
+    },
+    {
+      "path": "curriculum/week-04-fast-slow-pointers-and-mock-1/lecture-notes/02-the-mock-interview-protocol.md",
+      "title": "Lecture 2 \u2014 The Mock Interview Protocol"
+    },
+    {
+      "path": "curriculum/week-04-fast-slow-pointers-and-mock-1/mini-project/README.md",
+      "title": "Mini-Project \u2014 Mock Interview #1"
+    },
+    {
+      "path": "curriculum/week-04-fast-slow-pointers-and-mock-1/quiz.md",
+      "title": "Week 4 \u2014 Pattern-Recognition Quiz"
+    },
+    {
+      "path": "curriculum/week-04-fast-slow-pointers-and-mock-1/resources.md",
+      "title": "Week 4 \u2014 Resources"
+    },
+    {
+      "path": "curriculum/week-05-binary-search/README.md",
+      "title": "Week 5 \u2014 Binary Search Beyond Sorted Arrays"
+    },
+    {
+      "path": "curriculum/week-05-binary-search/challenges/README.md",
+      "title": "Week 5 \u2014 Challenges"
+    },
+    {
+      "path": "curriculum/week-05-binary-search/challenges/challenge-01-median-of-two-sorted-arrays.md",
+      "title": "Challenge 1 \u2014 Median of Two Sorted Arrays (LeetCode 4)"
+    },
+    {
+      "path": "curriculum/week-05-binary-search/exercises/README.md",
+      "title": "Week 5 \u2014 Exercises"
+    },
+    {
+      "path": "curriculum/week-05-binary-search/exercises/drill-01-classic-binary-search.md",
+      "title": "Drill 1 \u2014 Classic Binary Search"
+    },
+    {
+      "path": "curriculum/week-05-binary-search/exercises/drill-02-find-first-and-last.md",
+      "title": "Drill 2 \u2014 Find First and Last Position"
+    },
+    {
+      "path": "curriculum/week-05-binary-search/exercises/drill-03-search-in-rotated.md",
+      "title": "Drill 3 \u2014 Search in Rotated Sorted Array"
+    },
+    {
+      "path": "curriculum/week-05-binary-search/exercises/drill-04-kth-element-in-sorted-matrix.md",
+      "title": "Drill 4 \u2014 Kth Smallest Element in a Sorted Matrix"
+    },
+    {
+      "path": "curriculum/week-05-binary-search/exercises/drill-05-koko-bananas.md",
+      "title": "Drill 5 \u2014 Koko Eats Bananas"
+    },
+    {
+      "path": "curriculum/week-05-binary-search/homework.md",
+      "title": "Week 5 \u2014 Homework"
+    },
+    {
+      "path": "curriculum/week-05-binary-search/lecture-notes/01-the-binary-search-template.md",
+      "title": "Lecture 1 \u2014 The Binary-Search Template"
+    },
+    {
+      "path": "curriculum/week-05-binary-search/lecture-notes/02-binary-search-on-the-answer.md",
+      "title": "Lecture 2 \u2014 Binary Search on the Answer"
+    },
+    {
+      "path": "curriculum/week-05-binary-search/mini-project/README.md",
+      "title": "Mini-Project \u2014 Five Binary-Search Write-Ups (Including Two \"Search on Answer\" Variants)"
+    },
+    {
+      "path": "curriculum/week-05-binary-search/quiz.md",
+      "title": "Week 5 \u2014 Pattern-Recognition Quiz"
+    },
+    {
+      "path": "curriculum/week-05-binary-search/resources.md",
+      "title": "Week 5 \u2014 Resources"
+    },
+    {
+      "path": "curriculum/week-06-bfs/README.md",
+      "title": "Week 6 \u2014 Breadth-First Search"
+    },
+    {
+      "path": "curriculum/week-06-bfs/challenges/README.md",
+      "title": "Week 6 \u2014 Challenges"
+    },
+    {
+      "path": "curriculum/week-06-bfs/challenges/challenge-01-minimum-knight-moves.md",
+      "title": "Challenge 1 \u2014 Minimum Knight Moves (LeetCode 1197)"
+    },
+    {
+      "path": "curriculum/week-06-bfs/exercises/README.md",
+      "title": "Week 6 \u2014 Exercises"
+    },
+    {
+      "path": "curriculum/week-06-bfs/exercises/drill-01-level-order.md",
+      "title": "Drill 1 \u2014 Binary Tree Level Order Traversal"
+    },
+    {
+      "path": "curriculum/week-06-bfs/exercises/drill-02-shortest-path-grid.md",
+      "title": "Drill 2 \u2014 Shortest Path in a Binary Matrix"
+    },
+    {
+      "path": "curriculum/week-06-bfs/exercises/drill-03-rotting-oranges.md",
+      "title": "Drill 3 \u2014 Rotting Oranges"
+    },
+    {
+      "path": "curriculum/week-06-bfs/exercises/drill-04-word-ladder.md",
+      "title": "Drill 4 \u2014 Word Ladder"
+    },
+    {
+      "path": "curriculum/week-06-bfs/exercises/drill-05-binary-tree-right-side-view.md",
+      "title": "Drill 5 \u2014 Binary Tree Right Side View"
+    },
+    {
+      "path": "curriculum/week-06-bfs/homework.md",
+      "title": "Week 6 \u2014 Homework"
+    },
+    {
+      "path": "curriculum/week-06-bfs/lecture-notes/01-the-bfs-template.md",
+      "title": "Lecture 1 \u2014 The BFS Template"
+    },
+    {
+      "path": "curriculum/week-06-bfs/lecture-notes/02-grid-bfs-and-graph-bfs.md",
+      "title": "Lecture 2 \u2014 Grid BFS and Graph BFS"
+    },
+    {
+      "path": "curriculum/week-06-bfs/mini-project/README.md",
+      "title": "Mini-Project \u2014 Grid BFS + Node BFS, Fully UMPIRE-Narrated"
+    },
+    {
+      "path": "curriculum/week-06-bfs/quiz.md",
+      "title": "Week 6 \u2014 Pattern-Recognition Quiz"
+    },
+    {
+      "path": "curriculum/week-06-bfs/resources.md",
+      "title": "Week 6 \u2014 Resources"
+    },
+    {
+      "path": "curriculum/week-07-dfs-and-topological-sort/README.md",
+      "title": "Week 7 \u2014 Depth-First Search and Topological Sort"
+    },
+    {
+      "path": "curriculum/week-07-dfs-and-topological-sort/challenges/README.md",
+      "title": "Week 7 \u2014 Challenges"
+    },
+    {
+      "path": "curriculum/week-07-dfs-and-topological-sort/challenges/challenge-01-critical-connections.md",
+      "title": "Challenge 1 \u2014 Critical Connections in a Network (LeetCode 1192)"
+    },
+    {
+      "path": "curriculum/week-07-dfs-and-topological-sort/challenges/challenge-02-alien-dictionary.md",
+      "title": "Challenge 2 (optional) \u2014 Alien Dictionary (LeetCode 269)"
+    },
+    {
+      "path": "curriculum/week-07-dfs-and-topological-sort/exercises/README.md",
+      "title": "Week 7 \u2014 Exercises"
+    },
+    {
+      "path": "curriculum/week-07-dfs-and-topological-sort/exercises/SOLUTIONS.md",
+      "title": "Week 7 \u2014 Worked Solutions"
+    },
+    {
+      "path": "curriculum/week-07-dfs-and-topological-sort/homework.md",
+      "title": "Week 7 \u2014 Homework"
+    },
+    {
+      "path": "curriculum/week-07-dfs-and-topological-sort/lecture-notes/01-recursive-dfs.md",
+      "title": "Lecture 1 \u2014 Recursive DFS"
+    },
+    {
+      "path": "curriculum/week-07-dfs-and-topological-sort/lecture-notes/02-iterative-dfs.md",
+      "title": "Lecture 2 \u2014 Iterative DFS"
+    },
+    {
+      "path": "curriculum/week-07-dfs-and-topological-sort/lecture-notes/03-topological-sort.md",
+      "title": "Lecture 3 \u2014 Topological Sort and Cycle Detection"
+    },
+    {
+      "path": "curriculum/week-07-dfs-and-topological-sort/mini-project/README.md",
+      "title": "Mini-Project \u2014 DFS + Topological Sort, Fully UMPIRE-Narrated"
+    },
+    {
+      "path": "curriculum/week-07-dfs-and-topological-sort/quiz.md",
+      "title": "Week 7 \u2014 Pattern-Recognition Quiz"
+    },
+    {
+      "path": "curriculum/week-07-dfs-and-topological-sort/resources.md",
+      "title": "Week 7 \u2014 Resources"
+    },
+    {
+      "path": "curriculum/week-08-heaps-and-priority-queues/README.md",
+      "title": "Week 8 \u2014 Heaps and Priority Queues"
+    },
+    {
+      "path": "curriculum/week-08-heaps-and-priority-queues/challenges/README.md",
+      "title": "Week 8 \u2014 Challenges"
+    },
+    {
+      "path": "curriculum/week-08-heaps-and-priority-queues/challenges/challenge-01-merge-k-sorted-lists.md",
+      "title": "Challenge 1 \u2014 Merge k Sorted Lists (LeetCode 23)"
+    },
+    {
+      "path": "curriculum/week-08-heaps-and-priority-queues/challenges/challenge-02-task-scheduler.md",
+      "title": "Challenge 2 \u2014 Task Scheduler (LeetCode 621)"
+    },
+    {
+      "path": "curriculum/week-08-heaps-and-priority-queues/exercises/README.md",
+      "title": "Week 8 \u2014 Exercises"
+    },
+    {
+      "path": "curriculum/week-08-heaps-and-priority-queues/exercises/SOLUTIONS.md",
+      "title": "Week 8 \u2014 Worked Solutions"
+    },
+    {
+      "path": "curriculum/week-08-heaps-and-priority-queues/homework.md",
+      "title": "Week 8 \u2014 Homework"
+    },
+    {
+      "path": "curriculum/week-08-heaps-and-priority-queues/lecture-notes/01-heapq-and-top-k.md",
+      "title": "Lecture 1 \u2014 `heapq` and the Top-k Template"
+    },
+    {
+      "path": "curriculum/week-08-heaps-and-priority-queues/lecture-notes/02-heap-of-tuples-and-k-closest.md",
+      "title": "Lecture 2 \u2014 Heap of Tuples and k-Closest"
+    },
+    {
+      "path": "curriculum/week-08-heaps-and-priority-queues/lecture-notes/03-two-heap-and-k-way-merge.md",
+      "title": "Lecture 3 \u2014 Two-Heap, k-Way Merge, and Lazy Deletion"
+    },
+    {
+      "path": "curriculum/week-08-heaps-and-priority-queues/mini-project/README.md",
+      "title": "Mini-Project \u2014 Top-k + Two-Heap, Fully UMPIRE-Narrated"
+    },
+    {
+      "path": "curriculum/week-08-heaps-and-priority-queues/quiz.md",
+      "title": "Week 8 \u2014 Pattern-Recognition Quiz"
+    },
+    {
+      "path": "curriculum/week-08-heaps-and-priority-queues/resources.md",
+      "title": "Week 8 \u2014 Resources"
+    },
+    {
+      "path": "curriculum/week-09-tries-and-advanced-strings/README.md",
+      "title": "Week 9 \u2014 Tries and Advanced Strings"
+    },
+    {
+      "path": "curriculum/week-09-tries-and-advanced-strings/challenges/README.md",
+      "title": "Week 9 \u2014 Challenges"
+    },
+    {
+      "path": "curriculum/week-09-tries-and-advanced-strings/challenges/challenge-01-word-search-ii.md",
+      "title": "Challenge 1 \u2014 Word Search II (LeetCode 212)"
+    },
+    {
+      "path": "curriculum/week-09-tries-and-advanced-strings/challenges/challenge-02-replace-words.md",
+      "title": "Challenge 2 \u2014 Replace Words (LeetCode 648)"
+    },
+    {
+      "path": "curriculum/week-09-tries-and-advanced-strings/exercises/README.md",
+      "title": "Week 9 \u2014 Exercises"
+    },
+    {
+      "path": "curriculum/week-09-tries-and-advanced-strings/exercises/SOLUTIONS.md",
+      "title": "Week 9 \u2014 Worked Solutions"
+    },
+    {
+      "path": "curriculum/week-09-tries-and-advanced-strings/homework.md",
+      "title": "Week 9 \u2014 Homework"
+    },
+    {
+      "path": "curriculum/week-09-tries-and-advanced-strings/lecture-notes/01-trie-basics-and-autocomplete.md",
+      "title": "Lecture 1 \u2014 Trie Basics and Autocomplete"
+    },
+    {
+      "path": "curriculum/week-09-tries-and-advanced-strings/lecture-notes/02-word-break-and-aho-corasick.md",
+      "title": "Lecture 2 \u2014 Word Break, Longest Common Prefix, and Aho-Corasick (read only)"
+    },
+    {
+      "path": "curriculum/week-09-tries-and-advanced-strings/lecture-notes/03-kmp-and-z-algorithm.md",
+      "title": "Lecture 3 \u2014 KMP and the Z-Algorithm"
+    },
+    {
+      "path": "curriculum/week-09-tries-and-advanced-strings/mini-project/README.md",
+      "title": "Mini-Project \u2014 Trie + KMP, Fully UMPIRE-Narrated"
+    },
+    {
+      "path": "curriculum/week-09-tries-and-advanced-strings/quiz.md",
+      "title": "Week 9 \u2014 Pattern-Recognition Quiz"
+    },
+    {
+      "path": "curriculum/week-09-tries-and-advanced-strings/resources.md",
+      "title": "Week 9 \u2014 Resources"
+    },
+    {
+      "path": "curriculum/week-10-weighted-graphs-and-union-find/README.md",
+      "title": "Week 10 \u2014 Weighted Graphs and Union-Find"
+    },
+    {
+      "path": "curriculum/week-10-weighted-graphs-and-union-find/challenges/README.md",
+      "title": "Week 10 \u2014 Challenges"
+    },
+    {
+      "path": "curriculum/week-10-weighted-graphs-and-union-find/challenges/challenge-01-cheapest-flights-k-stops.md",
+      "title": "Challenge 1 \u2014 Cheapest Flights Within K Stops (Deep Dive, LeetCode 787)"
+    },
+    {
+      "path": "curriculum/week-10-weighted-graphs-and-union-find/challenges/challenge-02-smallest-string-with-swaps.md",
+      "title": "Challenge 2 \u2014 Smallest String With Swaps (LeetCode 1202, Optional)"
+    },
+    {
+      "path": "curriculum/week-10-weighted-graphs-and-union-find/exercises/README.md",
+      "title": "Week 10 \u2014 Exercises"
+    },
+    {
+      "path": "curriculum/week-10-weighted-graphs-and-union-find/exercises/SOLUTIONS.md",
+      "title": "Week 10 \u2014 Worked Solutions"
+    },
+    {
+      "path": "curriculum/week-10-weighted-graphs-and-union-find/homework.md",
+      "title": "Week 10 \u2014 Homework"
+    },
+    {
+      "path": "curriculum/week-10-weighted-graphs-and-union-find/lecture-notes/01-dijkstra-and-the-shortest-path-picker.md",
+      "title": "Lecture 1 \u2014 Dijkstra and the Shortest-Path Picker"
+    },
+    {
+      "path": "curriculum/week-10-weighted-graphs-and-union-find/lecture-notes/02-bellman-ford-floyd-warshall-and-mst.md",
+      "title": "Lecture 2 \u2014 Bellman-Ford, Floyd-Warshall, and Minimum Spanning Trees"
+    },
+    {
+      "path": "curriculum/week-10-weighted-graphs-and-union-find/lecture-notes/03-union-find-and-the-dsu-triggers.md",
+      "title": "Lecture 3 \u2014 Union-Find and the DSU Triggers"
+    },
+    {
+      "path": "curriculum/week-10-weighted-graphs-and-union-find/mini-project/README.md",
+      "title": "Mini-Project \u2014 Dijkstra + DSU, Fully UMPIRE-Narrated"
+    },
+    {
+      "path": "curriculum/week-10-weighted-graphs-and-union-find/quiz.md",
+      "title": "Week 10 \u2014 Pattern-Recognition Quiz"
+    },
+    {
+      "path": "curriculum/week-10-weighted-graphs-and-union-find/resources.md",
+      "title": "Week 10 \u2014 Resources"
+    },
+    {
+      "path": "curriculum/week-11-dynamic-programming-i/README.md",
+      "title": "Week 11 \u2014 Dynamic Programming I"
+    },
+    {
+      "path": "curriculum/week-11-dynamic-programming-i/challenges/README.md",
+      "title": "Week 11 \u2014 Challenges"
+    },
+    {
+      "path": "curriculum/week-11-dynamic-programming-i/challenges/challenge-01-edit-distance.md",
+      "title": "Challenge 1 \u2014 Edit Distance (Deep Dive, LeetCode 72)"
+    },
+    {
+      "path": "curriculum/week-11-dynamic-programming-i/challenges/challenge-02-longest-palindromic-subsequence.md",
+      "title": "Challenge 2 \u2014 Longest Palindromic Subsequence (LeetCode 516)"
+    },
+    {
+      "path": "curriculum/week-11-dynamic-programming-i/exercises/README.md",
+      "title": "Week 11 \u2014 Exercises"
+    },
+    {
+      "path": "curriculum/week-11-dynamic-programming-i/exercises/SOLUTIONS.md",
+      "title": "Week 11 \u2014 Worked Solutions"
+    },
+    {
+      "path": "curriculum/week-11-dynamic-programming-i/homework.md",
+      "title": "Week 11 \u2014 Homework"
+    },
+    {
+      "path": "curriculum/week-11-dynamic-programming-i/lecture-notes/01-the-dp-pipeline-and-1d-states.md",
+      "title": "Lecture 1 \u2014 The DP Pipeline and 1D States"
+    },
+    {
+      "path": "curriculum/week-11-dynamic-programming-i/lecture-notes/02-2d-dp-and-the-grid-and-string-shapes.md",
+      "title": "Lecture 2 \u2014 2D DP and the Grid and String-Pair Shapes"
+    },
+    {
+      "path": "curriculum/week-11-dynamic-programming-i/lecture-notes/03-state-space-reduction-and-recognition.md",
+      "title": "Lecture 3 \u2014 State-Space Reduction and Recognition"
+    },
+    {
+      "path": "curriculum/week-11-dynamic-programming-i/mini-project/README.md",
+      "title": "Mini-Project \u2014 1D DP + 2D DP, Fully UMPIRE-Narrated"
+    },
+    {
+      "path": "curriculum/week-11-dynamic-programming-i/quiz.md",
+      "title": "Week 11 \u2014 Pattern-Recognition Quiz"
+    },
+    {
+      "path": "curriculum/week-11-dynamic-programming-i/resources.md",
+      "title": "Week 11 \u2014 Resources"
+    },
+    {
+      "path": "curriculum/week-12-backtracking-and-combinatorics/README.md",
+      "title": "Week 12 \u2014 Backtracking and Combinatorics"
+    },
+    {
+      "path": "curriculum/week-12-backtracking-and-combinatorics/challenges/README.md",
+      "title": "Week 12 \u2014 Challenges"
+    },
+    {
+      "path": "curriculum/week-12-backtracking-and-combinatorics/challenges/challenge-01-word-search.md",
+      "title": "Challenge 1 \u2014 Word Search (LC 79)"
+    },
+    {
+      "path": "curriculum/week-12-backtracking-and-combinatorics/challenges/challenge-02-n-queens.md",
+      "title": "Challenge 2 \u2014 N-Queens (LC 51)"
+    },
+    {
+      "path": "curriculum/week-12-backtracking-and-combinatorics/exercises/README.md",
+      "title": "Week 12 \u2014 Exercises"
+    },
+    {
+      "path": "curriculum/week-12-backtracking-and-combinatorics/exercises/SOLUTIONS.md",
+      "title": "Week 12 \u2014 Worked Solutions"
+    },
+    {
+      "path": "curriculum/week-12-backtracking-and-combinatorics/homework.md",
+      "title": "Week 12 \u2014 Homework"
+    },
+    {
+      "path": "curriculum/week-12-backtracking-and-combinatorics/lecture-notes/01-the-backtracking-template-and-the-three-warmups.md",
+      "title": "Lecture 1 \u2014 The Backtracking Template and the Three Warm-ups"
+    },
+    {
+      "path": "curriculum/week-12-backtracking-and-combinatorics/lecture-notes/02-pruning-and-deduplication-and-string-partitioning.md",
+      "title": "Lecture 2 \u2014 Pruning, Deduplication, and String Partitioning"
+    },
+    {
+      "path": "curriculum/week-12-backtracking-and-combinatorics/lecture-notes/03-grid-backtracking-and-constraint-satisfaction.md",
+      "title": "Lecture 3 \u2014 Grid Backtracking and Constraint Satisfaction"
+    },
+    {
+      "path": "curriculum/week-12-backtracking-and-combinatorics/mini-project/README.md",
+      "title": "Week 12 \u2014 Mini-Project: Palindrome Partitioning + Sudoku Solver"
+    },
+    {
+      "path": "curriculum/week-12-backtracking-and-combinatorics/quiz.md",
+      "title": "Week 12 \u2014 Pattern-Recognition Quiz"
+    },
+    {
+      "path": "curriculum/week-12-backtracking-and-combinatorics/resources.md",
+      "title": "Week 12 \u2014 Resources"
+    },
+    {
+      "path": "past-sessions/SPRING-2025/README.md",
+      "title": "Week - #"
+    }
+  ]
+}

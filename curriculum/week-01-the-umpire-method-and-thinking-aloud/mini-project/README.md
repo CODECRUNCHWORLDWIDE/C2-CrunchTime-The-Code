@@ -116,7 +116,7 @@ my own progress, and (b) future learners can fork my approach.
 
 ## Methodology
 
-This work follows [C2 · CrunchTime — The Code](https://github.com/CODE-CRUNCH-CLUB/C2-CrunchTime-The-Code),
+This work follows [C2 · CrunchTime — The Code](https://github.com/CODECRUNCHWORLDWIDE/C2-CrunchTime-The-Code),
 a free open-source interview-prep curriculum built around the UMPIRE Method
 (Understand · Match · Plan · Implement · Review · Evaluate).
 

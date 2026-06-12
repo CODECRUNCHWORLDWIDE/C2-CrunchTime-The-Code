@@ -181,7 +181,7 @@ GPL-3.0. See [LICENSE](LICENSE). Fork freely, teach, remix. PR improvements back
 
 ---
 
-*C2 is part of the Code Crunch open-source curriculum.* [Master catalog ↗](../MASTER-CURRICULUM.md) · [Branding ↗](branding/BRAND.md)
+*C2 is part of the Code Crunch open-source curriculum.* [Master catalog ↗](../MASTER-CURRICULUM.md) · [Branding ↗](assets/branding/BRAND.md)
 
 
 ---

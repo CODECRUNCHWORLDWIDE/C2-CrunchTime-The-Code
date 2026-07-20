@@ -2,7 +2,7 @@
 
 **15 weeks intensive (~540 hrs) OR 52 weeks mastery (~520 hrs) · Powered by the UMPIRE Method**
 
-The same material runs in two formats. Pick your pace; the content does not change. The intensive packs the program into 15 full-time weeks for people with a hiring cycle ahead of them. The mastery pathway spreads the same content over a year for working engineers and students who need depth over speed.
+The same material runs in two formats. Pick your pace; the content does not change. The intensive packs the program into 15 full-time weeks for people with a hiring cycle ahead of them. The mastery pathway spreads the same content over a year for working engineers and learners who need depth over speed.
 
 ---
 
@@ -229,7 +229,7 @@ For system design:
 ## Adapting the syllabus
 
 - **University semester (15 weeks × 9 hrs/wk):** Use the intensive structure but drop one mini-project and one challenge per week. Keep mocks.
-- **High-school CS club (1 hr/week class + homework):** Use the mastery pathway, but plan for 18 months instead of 12. Two students should pair-mock-interview each session.
+- **High-school CS club (1 hr/week class + homework):** Use the mastery pathway, but plan for 18 months instead of 12. Two learners should pair-mock-interview each session.
 - **Part of a bootcamp:** C2 pairs naturally with C1's Weeks 6–15. Run them concurrently; bootcamp ends with a portfolio that includes C2's interview-prep repo.
 
 ---

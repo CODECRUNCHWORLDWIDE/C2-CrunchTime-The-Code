@@ -6,7 +6,7 @@ This is the **full-time** pathway. It assumes you have ~36 hours a week availabl
 
 - You are between jobs and interviewing within 4–5 months.
 - You are a bootcamp graduate prepping for the first interview cycle.
-- You are a senior student preparing for new-grad recruiting.
+- You are a senior learner preparing for new-grad recruiting.
 - You have time-bounded leave and a defined interview cycle ahead.
 
 It is **not** appropriate if you are working full-time. For that, use [the 1-year mastery pathway](mastery-1-year.md). 36 hours a week on top of a job is a guaranteed burnout.

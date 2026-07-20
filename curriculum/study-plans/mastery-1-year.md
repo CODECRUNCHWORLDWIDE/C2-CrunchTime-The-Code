@@ -17,7 +17,7 @@ Two reasons.
 Use this pathway if any of:
 
 - You are working full-time and want to be interview-ready ~12 months from now.
-- You are a college student carrying a full course load.
+- You are a college learner carrying a full course load.
 - You finished the intensive once and want to keep skills sharp for a year.
 - You are deliberately picking a year because depth > speed for you.
 
@@ -134,7 +134,7 @@ The mastery pathway works much better with peers. Suggested structure:
 - **Quarterly mock-interview swap.** You interview them. They interview you. Real feedback.
 - **Capstone showcase** at end of year: present your portfolios to each other (or to a small community session).
 
-If you can't find a peer, the [Code Crunch Discord community](https://github.com/CODECRUNCHWORLDWIDE) (link from the org) has a `#c2-mastery` channel.
+If you can't find a peer, the [Code Crunch Discord community](https://github.com/CODE-CRUNCH-CLUB) (link from the org) has a `#c2-mastery` channel.
 
 ---
 

@@ -296,7 +296,7 @@ This is the shape worked end-to-end in the Week 3 Challenge.
 
 ## 8. The bug census — what goes wrong in shrink loops
 
-Across hundreds of student solutions, these are the bugs that appear most often. Memorize them; they're the ones to scan for in Review.
+Across hundreds of learner solutions, these are the bugs that appear most often. Memorize them; they're the ones to scan for in Review.
 
 - **Forgetting to update the answer in shape B.** Shape A records the answer *after* the shrink loop. Shape B records *inside* the shrink loop. Mixing them up means you either miss valid windows or count invalid ones.
 - **Missing the inner-loop guard.** `while invariant_broken(state):` without an upper bound on `left` will run past the end of the array if the invariant can never be restored. Pair the condition with `and left <= right` for safety on weird inputs.
@@ -368,7 +368,7 @@ def update_remove(counts, x):
         del counts[x]              # critical for "distinct count" invariants
 ```
 
-The `del` step is what most students forget. Without it, `len(counts)` includes keys with count 0, and the at-most-K invariant becomes wrong.
+The `del` step is what most learners forget. Without it, `len(counts)` includes keys with count 0, and the at-most-K invariant becomes wrong.
 
 ### Set (distinctness)
 

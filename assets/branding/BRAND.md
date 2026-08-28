@@ -168,7 +168,7 @@ For the course page (`course-c2-crunchtime.html`):
 - **Then:** what you ship (portfolio outcomes).
 - **Finally:** start CTAs + links to GitHub + master catalog.
 
-No marketing testimonials. No "students hired at" logo wall (gauche; unverifiable). The portfolio is the proof.
+No marketing testimonials. No "learners hired at" logo wall (gauche; unverifiable). The portfolio is the proof.
 
 ---
 

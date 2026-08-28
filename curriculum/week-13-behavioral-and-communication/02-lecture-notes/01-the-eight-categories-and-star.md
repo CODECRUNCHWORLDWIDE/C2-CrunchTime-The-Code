@@ -109,13 +109,13 @@ But many real contributions are not naturally numeric, and inventing a fake metr
 
 ## 6. Mining thin experience for STAR material
 
-The most common objection in this week: "I don't have stories — I'm a student / career-changer / I've only had one internship." This is almost always false, and the belief that it is true is itself the problem. You do not lack stories; you lack the habit of seeing your experiences *as* stories. Here is how to mine.
+The most common objection in this week: "I don't have stories — I'm a learner / career-changer / I've only had one internship." This is almost always false, and the belief that it is true is itself the problem. You do not lack stories; you lack the habit of seeing your experiences *as* stories. Here is how to mine.
 
 **Start from your résumé.** Every bullet on your résumé is a candidate STAR story. "Built a REST API for the inventory service" → what was hard about it? what decision did you make? what was unclear? what went wrong and how did you fix it? Each bullet, interrogated, yields one or more of the eight categories. Go line by line; you will find more material than you expected.
 
 **Course projects count.** A semester-long capstone, a group project where a teammate went dark, a database course where you had to make a schema decision with incomplete requirements — these are legitimate Conflict, Teamwork, and Ambiguity stories. The interviewer does not require the story to come from paid industry work; they require it to be *real* and to show the competency. A well-told capstone conflict beats a vague industry conflict.
 
-**Open source, hackathons, clubs, research, side projects.** A hackathon where you cut scope at 2 a.m. is a Pressure story. A PR review where you pushed back on a maintainer's suggestion is a Conflict story. Leading a student club's tooling migration is a Leadership story. Research where the problem was undefined for the first month is an Ambiguity story. All count.
+**Open source, hackathons, clubs, research, side projects.** A hackathon where you cut scope at 2 a.m. is a Pressure story. A PR review where you pushed back on a maintainer's suggestion is a Conflict story. Leading a learner club's tooling migration is a Leadership story. Research where the problem was undefined for the first month is an Ambiguity story. All count.
 
 **The interrogation questions.** For any experience, ask: *What was the hardest decision I made here? What did I disagree with someone about? What went wrong, and what did I do? What was unclear at the start? What did I do that wouldn't have happened without me? What did I learn that changed how I work?* Each question maps to a category, and each yields raw material for a STAR story.
 

@@ -31,7 +31,7 @@ It is **not** "grind 500 problems and hope." It is a structured program with two
 | **Duration** | 15 weeks | 52 weeks (1 year) |
 | **Time / week** | ~36 hours (full-time) | ~10 hours (working professional) |
 | **Total time** | ~540 hours | ~520 hours |
-| **Target audience** | Bootcamp grads, career switchers, students between jobs, people with an interview cycle starting in 4 months | Working engineers preparing for next year's hiring season, students balancing classes, anyone who wants depth over speed |
+| **Target audience** | Bootcamp grads, career switchers, learners between jobs, people with an interview cycle starting in 4 months | Working engineers preparing for next year's hiring season, learners balancing classes, anyone who wants depth over speed |
 | **Outcome** | Interview-ready at FAANG / strong startups | Interview-ready *plus* genuine algorithmic intuition you keep for years |
 | **Start with** | [`curriculum/study-plans/intensive-15-week.md`](curriculum/study-plans/intensive-15-week.md) | [`curriculum/study-plans/mastery-1-year.md`](curriculum/study-plans/mastery-1-year.md) |
 

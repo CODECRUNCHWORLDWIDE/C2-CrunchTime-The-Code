@@ -30,7 +30,7 @@ If the prompt names a *negative* (conflict, failure, mistake, pressure), the com
 - **LeetCode — behavioral / "Tell me about" discussion threads** (free): the discuss section has crowd-sourced lists of the most-asked behavioral prompts at major companies. Use them as a question bank to test your story-bank coverage, not as scripts to memorize.
 - **Glassdoor — interview question reports** (free with account): filter to a target company and role; the behavioral questions reported there are real and current. Cross-check your coverage matrix against the ten most-reported prompts for your target.
 - **Pramp / interviewing.io free mock rounds** (free tiers): both offer peer or volunteer behavioral mocks. A live mock is worth more than any written drill; book one for Friday or the weekend.
-- **Your university career center** (free for students and often alumni): mock-interview services, résumé reviews, and behavioral-prep workshops. Underused and high-value.
+- **Your university career center** (free for learners and often alumni): mock-interview services, résumé reviews, and behavioral-prep workshops. Underused and high-value.
 - **The "Amazon Leadership Principles" public page** — even if you are not interviewing at Amazon, the sixteen principles are the most explicit published list of behavioral competencies anywhere, and mapping your stories to them is the single best coverage exercise available for free.
 
 ## The eight categories — quick reference

@@ -35,7 +35,7 @@ Nearly every behavioral round opens with "tell me about yourself" or a close var
 
 The structure is **present → past → future**, in about ninety seconds.
 
-- **Present (≈25 seconds):** what you do now, in one or two sentences. "I'm a final-year CS student focused on backend systems; most recently I interned on a payments team where I owned the reconciliation pipeline."
+- **Present (≈25 seconds):** what you do now, in one or two sentences. "I'm a final-year CS learner focused on backend systems; most recently I interned on a payments team where I owned the reconciliation pipeline."
 - **Past (≈35 seconds):** the path that got you here — the two or three experiences that built the skills relevant to *this* role. Select for relevance, not chronology. Not your whole history; the highlights that matter to the job you are interviewing for.
 - **Future (≈30 seconds):** why *this* role is the logical next step. "I want to go deeper on distributed systems, and this team's work on the transaction ledger is exactly the kind of problem I want to spend the next few years on." This is where you show you researched the role.
 

@@ -156,12 +156,12 @@ XOR is the bit operator that does the most interview work, and it is entirely ch
 
 Put 1, 3, and 4 together and you get the central lemma: **fold a multiset by XOR, and every value that appears an even number of times cancels to zero; only the odd-occurrence values survive.** Order is irrelevant (commutativity); grouping is irrelevant (associativity); pairs vanish (self-cancellation). This is the "XOR fold," and it solves an entire sub-family of problems in `O(n)` time and `O(1)` space.
 
-> **The 30-second Match memo for an XOR-fold problem (say this out loud):**
+> **The 30-second Research-constraints memo for an XOR-fold problem (say this out loud):**
 > *"Every element appears twice except one, and the interview tell is `O(1)` extra space — so this is an XOR fold. I reduce the array by `^`: pairs cancel because `a ^ a == 0`, and the lone element survives because `a ^ 0 == a`. Order does not matter — XOR is commutative and associative. Time `O(n)`, space `O(1)`. The hash-map alternative is `O(n)` space, which the interviewer is steering me away from with the constant-space hint."*
 
 ---
 
-## 7. Worked UMPIRE — Single Number (LC 136)
+## 7. Worked FRAME — Single Number (LC 136)
 
 Let us run the full method on the canonical XOR-fold problem.
 
@@ -173,22 +173,24 @@ Given a non-empty array of integers `nums`, every element appears **twice** exce
 
 **Examples:** `nums = [2, 2, 1]` → `1`. `nums = [4, 1, 2, 1, 2]` → `4`. `nums = [1]` → `1`.
 
-### Understand
+### Frame
 
-We have a multiset in which every value is paired except one. We must return the unpaired value. The two binding constraints are the ones that pin the algorithm: **linear time** and **constant space**. The constant-space constraint rules out the obvious hash-map / `Counter` answer (that is `O(n)` space). Hand-walk: `[4, 1, 2, 1, 2]` — the 1s pair, the 2s pair, the 4 is alone → answer `4`.
+We have a multiset in which every value is paired except one. We must return the unpaired value. Hand-walk: `[4, 1, 2, 1, 2]` — the 1s pair, the 2s pair, the 4 is alone → answer `4`.
 
-### Match
+### Research constraints
 
-XOR fold. The 30-second memo from §6: every element appears twice except one, constant space is the tell, so reduce by `^`; pairs cancel via `a ^ a == 0`, the survivor remains via `a ^ 0 == a`, order is irrelevant by commutativity and associativity. Reject the hash-map answer (`O(n)` space) and the sort-then-scan answer (`O(n log n)` time, and it mutates the input).
+The two binding constraints are the ones that pin the algorithm: **linear time** and **constant space**. The constant-space constraint rules out the obvious hash-map / `Counter` answer (that is `O(n)` space).
 
-### Plan
+So the shape is an XOR fold. The 30-second memo from §6: every element appears twice except one, constant space is the tell, so reduce by `^`; pairs cancel via `a ^ a == 0`, the survivor remains via `a ^ 0 == a`, order is irrelevant by commutativity and associativity. Reject the hash-map answer (`O(n)` space) and the sort-then-scan answer (`O(n log n)` time, and it mutates the input).
+
+### Assess options
 
 1. Initialize an accumulator `result = 0` (the identity element for XOR).
 2. Walk `nums`, XOR-folding each value into `result`.
 3. After the fold, every paired value has cancelled to 0; `result` holds the unpaired value.
 4. Return `result`.
 
-### Implement
+### Make the solution
 
 ```python
 from functools import reduce
@@ -215,7 +217,7 @@ def single_number_functional(nums: List[int]) -> int:
 
 The loop form is what you write on the whiteboard; the `reduce(xor, nums, 0)` one-liner is worth naming as "the same fold, expressed functionally" — it signals fluency without obscuring the logic.
 
-### Review
+### Examine (verify)
 
 Trace `[4, 1, 2, 1, 2]`:
 
@@ -230,7 +232,7 @@ result = 0
 
 Edge cases: `[1]` → `0 ^ 1 == 1` ✓ (the single element fold). Negative inputs work without special handling — XOR operates on the bit pattern, and the identities hold regardless of sign.
 
-### Evaluate
+### Examine (cost)
 
 - **Time:** `O(n)` — one pass, one XOR per element.
 - **Space:** `O(1)` — a single accumulator, no auxiliary structure. This is the constraint the problem demanded; the hash-map answer fails it.

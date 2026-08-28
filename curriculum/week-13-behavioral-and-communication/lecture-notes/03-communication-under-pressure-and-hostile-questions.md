@@ -7,9 +7,9 @@ Lectures 1 and 2 gave you the map and the method — eight categories, five sign
 
 ---
 
-## 1. Thinking aloud — the UMPIRE habit, applied
+## 1. Thinking aloud — the FRAME habit, applied
 
-You already trained this. In Phase 1 you learned to narrate a coding solve — to say the Understand step out loud, to talk through the Plan before you wrote code, so the interviewer could follow your reasoning and grade your thinking, not just your output. The behavioral round needs the same habit for the same reason.
+You already trained this. In Phase 1 you learned to narrate a coding solve — to say the Frame step out loud, to talk through Assess options before you wrote code, so the interviewer could follow your reasoning and grade your thinking, not just your output. The behavioral round needs the same habit for the same reason.
 
 **Narrate the structure.** When a question lands and you have selected your story, signal the structure before you dive in:
 
@@ -41,7 +41,7 @@ That answer surfaces self-awareness and growth *because* of the hostile-sounding
 
 ## 3. Handling ambiguous questions
 
-Some questions are deliberately vague — "tell me about a challenging project," "describe a time things got hard." A vague question is the behavioral version of an under-specified coding prompt, and you handle it with the same **Understand-step discipline**: clarify the scope, or state your assumption, then answer.
+Some questions are deliberately vague — "tell me about a challenging project," "describe a time things got hard." A vague question is the behavioral version of an under-specified coding prompt, and you handle it with the same **Frame-step discipline**: clarify the scope, or state your assumption, then answer.
 
 Two valid moves:
 
@@ -49,7 +49,7 @@ Two valid moves:
 
 **Assume, explicitly:** *"I'll take 'challenging' to mean the hardest coordination problem I've owned, since that's where I learned the most."* Use this when clarifying would feel like stalling. State the assumption out loud — that is the senior move — then deliver.
 
-Do **not** answer a vague question by free-associating. A candidate who hears "tell me about a challenge" and launches into an unstructured ramble has skipped the Understand step. Name the scope, then STAR.
+Do **not** answer a vague question by free-associating. A candidate who hears "tell me about a challenge" and launches into an unstructured ramble has skipped the Frame step. Name the scope, then STAR.
 
 ---
 
@@ -167,7 +167,7 @@ If any of those is not yet reflexive, re-read the relevant section and say the m
 
 Three takeaways from Lecture 3:
 
-1. **Think aloud and narrate structure.** Silence is a prompt, not a verdict. The UMPIRE narration habit transfers directly.
+1. **Think aloud and narrate structure.** Silence is a prompt, not a verdict. The FRAME narration habit transfers directly.
 2. **Reframe the round as non-adversarial.** Hostile-sounding follow-ups are depth probes; answer them as collaboration. Each hard question — weakness, why-leaving, illegal, curveball — has a specific move.
 3. **Recover and follow up.** A clean reset beats pushing through a weak answer; a same-day, specific follow-up email is the cheapest signal in the loop.
 

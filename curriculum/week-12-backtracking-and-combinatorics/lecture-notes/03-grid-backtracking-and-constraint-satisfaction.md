@@ -15,7 +15,7 @@ The lecture closes with the week's recognition flowchart, which is the artifact 
 
 > *Given an `m x n` grid of characters `board` and a string `word`, return `True` iff `word` exists in the grid. The word can be constructed from letters of sequentially adjacent cells, where adjacent cells are horizontally or vertically neighboring. The same letter cell may not be used more than once.*
 
-**Match.** Feasibility on a 2D grid. State: `(row, col, word_index)`. At each cell, if the character matches `word[word_index]`, mark the cell visited and recurse into the four neighbors with `word_index + 1`. Return `True` on the first success; the recursion unwinds without exploring further.
+**Research constraints.** Feasibility on a 2D grid. State: `(row, col, word_index)`. At each cell, if the character matches `word[word_index]`, mark the cell visited and recurse into the four neighbors with `word_index + 1`. Return `True` on the first success; the recursion unwinds without exploring further.
 
 **State semantics.** `(row, col)` is the current cell; `word_index` is the position in `word` that this cell must match. The `visited` set tracks cells already on the path (the "same letter cell may not be used more than once" constraint). The recursion starts from every cell of the grid as a candidate starting point.
 
@@ -131,7 +131,7 @@ The `tmp` variable captures the original character; restoring it on unchoose. Th
 
 > *The N-Queens puzzle is the problem of placing N chess queens on an N x N chessboard such that no two queens attack each other. Return all distinct solutions to the N-Queens puzzle.*
 
-**Match.** Constraint satisfaction. State: `(row, cols, diag1, diag2, path)`. Place one queen per row; for each candidate column, check the three pruning sets in `O(1)`. The "one queen per row" discipline makes the row constraint implicit — by structure, no two queens share a row.
+**Research constraints.** Constraint satisfaction. State: `(row, cols, diag1, diag2, path)`. Place one queen per row; for each candidate column, check the three pruning sets in `O(1)`. The "one queen per row" discipline makes the row constraint implicit — by structure, no two queens share a row.
 
 **State semantics.** `row` is the current row to fill (the recursion advances `row` by 1 per call). `cols` is the set of columns already occupied. `diag1` and `diag2` are the sets of diagonals already occupied: `diag1` indexed by `row - col` (constant on a `\` diagonal), `diag2` indexed by `row + col` (constant on a `/` diagonal). `path` is the list of column indices, one per row.
 
@@ -231,7 +231,7 @@ Two solutions for N=4. The full N=8 case has 92 solutions; the canonical N=8 puz
 
 > *Write a program to solve a sudoku puzzle by filling the empty cells. A sudoku solution must satisfy: each of the digits 1-9 must occur exactly once in each row, each column, and each of the nine 3x3 sub-boxes of the grid. The '.' character indicates empty cells. You may assume there will be only one unique solution.*
 
-**Match.** Constraint satisfaction. State: the board itself (mutated in place). At each call, find the next empty cell; try digits 1–9; for each digit, check the three constraints (row, column, box); if valid, place the digit and recurse; if the recursion returns True, propagate True; otherwise undo and try the next digit. Return True on first complete board; the recursion unwinds.
+**Research constraints.** Constraint satisfaction. State: the board itself (mutated in place). At each call, find the next empty cell; try digits 1–9; for each digit, check the three constraints (row, column, box); if valid, place the digit and recurse; if the recursion returns True, propagate True; otherwise undo and try the next digit. Return True on first complete board; the recursion unwinds.
 
 **State semantics.** The board (9x9 grid of digits or '.') is the state. The recursion is feasibility — the first complete board is the answer, returned via `True` propagation.
 
@@ -424,7 +424,7 @@ The senior signal: when "max," "min," "longest," "shortest" is in the prompt, tr
 
 **The triage.** Read the prompt's verb. "Return all" / "list every" / "find one valid" -> backtracking. "Count" / "find the number of" -> DP (counting). "Find the max" / "find the min" / "find the longest" -> DP (optimization) or greedy. "Does there exist" -> DP (boolean) or backtracking with early-return.
 
-The triage is the Match step. Get it right; the rest of the problem follows.
+The triage is the Research constraints step. Get it right; the rest of the problem follows.
 
 ---
 

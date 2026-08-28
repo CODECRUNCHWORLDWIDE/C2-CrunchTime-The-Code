@@ -451,6 +451,6 @@ That cadence is the senior-grade defense. The implementation is the second part.
 
 ## What's next
 
-The three lectures are complete. The week's algorithms — Dijkstra, Bellman-Ford, Floyd-Warshall, Kruskal, Prim, Union-Find — are installed. The rest of the week is exercises (Network Delay Time, Cheapest Flights, Number of Provinces), the challenge (Cheapest Flights K Stops), the homework (six problems across the family), and the mini-project (one Dijkstra write-up, one DSU write-up, fully UMPIRE-narrated).
+The three lectures are complete. The week's algorithms — Dijkstra, Bellman-Ford, Floyd-Warshall, Kruskal, Prim, Union-Find — are installed. The rest of the week is exercises (Network Delay Time, Cheapest Flights, Number of Provinces), the challenge (Cheapest Flights K Stops), the homework (six problems across the family), and the mini-project (one Dijkstra write-up, one DSU write-up, fully FRAME-narrated).
 
-Push hard on the *recognition* exercises — the quiz especially. The implementation patterns are short and quickly memorized; the Match-step recognition is what discriminates Phase 2 from Phase 3.
+Push hard on the *recognition* exercises — the quiz especially. The implementation patterns are short and quickly memorized; the Research-constraints recognition is what discriminates Phase 2 from Phase 3.

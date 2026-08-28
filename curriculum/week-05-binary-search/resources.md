@@ -39,7 +39,7 @@ Binary search is famous for being *almost* trivial and *actually* hard to write 
 ## Videos on the pattern (free, no signup)
 
 - **NeetCode — "Binary Search" walkthrough** (YouTube — free): search "neetcode binary search"; the 10-minute walkthrough is enough.
-- **NeetCode — "Koko Eating Bananas"** (YouTube — free): the canonical parametric problem; if you have not seen the pattern in video form, watch this before Drill 5.
+- **Any "binary search on the answer" walkthrough** (YouTube — free): search that exact phrase. If you have never seen the parametric idiom explained in video form, watch one before Exercise 5. Watch for the *shape* — reframe, interval, predicate, return — not for the specific problem the presenter picked; our drills use different contracts and you will get more from the video if you are listening for the cadence.
 - **MIT 6.006 — Lecture on binary search trees** (free OCW): tangential but the discussion of "decision-tree depth" is the same idea as binary search depth.
 
 ## On parametric search specifically
@@ -49,7 +49,7 @@ Binary search on the answer is the highest-yield interview technique of the week
 - **Codeforces — "EDU: Binary Search" course, Step 2 ("Searching for the answer")**: <https://codeforces.com/edu/course/2/lesson/6/2> — free; covers the parametric idiom with multiple worked examples. Read sections 1–3.
 - **GeeksforGeeks — "Binary Search on Answer" articles**: search this exact phrase; multiple short articles. The vocabulary is consistent; pick one and skim.
 
-The vocabulary item to install: **monotone predicate**. A function `feasible: int → bool` is monotone if `feasible(k) = True ⇒ feasible(k+1) = True` (or the mirror). Parametric search works *iff* the predicate is monotone. Recognizing monotonicity is the Match-step skill.
+The vocabulary item to install: **monotone predicate**. A function `feasible: int → bool` is monotone if `feasible(k) = True ⇒ feasible(k+1) = True` (or the mirror). Parametric search works *iff* the predicate is monotone. Recognizing monotonicity is the Research-constraints skill.
 
 ## Glossary cheat sheet
 
@@ -64,13 +64,13 @@ Keep this tab open. Builds on Weeks 1–4.
 | **Half-open interval** | `[lo, hi)` — right endpoint excluded; pairs with `while lo < hi` |
 | **Lower bound** | The leftmost index where `arr[i] >= target` (or the predicate flips True) |
 | **Upper bound** | The leftmost index where `arr[i] > target` (the position *after* the last matching element) |
-| **Rotated sorted array** | A sorted array whose elements have been cyclically shifted, e.g., `[4,5,6,7,0,1,2]` |
+| **Rotated sorted array** | A sorted array whose elements have been cyclically shifted — what a ring-buffer dump looks like once the writer has wrapped, e.g. `[58, 61, 64, 70, 12, 19, 33, 47]` |
 | **Pivot** | The index where the rotation begins; the smallest element in a rotated sorted array |
 | **Monotone predicate** | A boolean function `f(k)` such that `f(k) = True ⇒ f(k+1) = True` (or the mirror) |
 | **Parametric search** | Binary search applied to the *answer space* of an optimization problem, using a monotone predicate as comparator |
 | **Search on the answer** | The interview-prep name for parametric search |
 | **`feasible(k)`** | The convention name for the monotone predicate in a parametric search |
-| **`count_le(v)`** | A predicate counting how many elements `≤ v`; used in the kth-element-in-matrix family |
+| **`count_at_most(v)`** | A predicate counting how many candidate values are `≤ v`; the comparator for every rank query solved by bisecting a value range |
 | **Integer overflow safety** | Writing `mid = lo + (hi - lo) // 2` instead of `(lo + hi) // 2` — irrelevant in Python, mandatory in C/Java/Rust |
 
 ## What you will be glad you read

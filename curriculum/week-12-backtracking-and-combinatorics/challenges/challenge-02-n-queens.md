@@ -1,16 +1,33 @@
-# Challenge 2 — N-Queens (LC 51)
+# Challenge 2 — N-Queens
 
-> *The N-Queens puzzle is the problem of placing N chess queens on an N x N chessboard such that no two queens attack each other. Given an integer `n`, return all distinct solutions to the N-Queens puzzle. You may return the answer in any order. Each solution contains a distinct board configuration of the N-Queens placement, where 'Q' and '.' both indicate a queen and an empty space, respectively.*
+> **Pattern:** Backtracking — constraint satisfaction on a grid
+> **Difficulty:** Hard
+> **Target solve time:** 45 minutes with full FRAME narration
 
-**Constraints (LeetCode).**
+## Problem statement
 
-- `1 <= n <= 9`.
+A queen attacks along its own row, its own column, and both diagonals through it. Place `n` queens on an `n × n` board so that no queen attacks another, and return **every** arrangement that works. Order of the arrangements does not matter.
 
-**The deliverable.** A full UMPIRE write-up published to `umpire-writeups/c2-week-12/challenge-02/`, with the code committed under `challenges/c2-week-12/n-queens.py`. Stretch — not required for the week.
+Encode one arrangement as a list of `n` strings, one string per row, each `n` characters long. `'Q'` is a queen; `'.'` is an empty square.
+
+**Constraints.**
+
+- `1 <= n <= 12`. At `n = 12` there are 14,200 arrangements — the pruning developed below still returns in well under a second, which is the point of the upper bound.
+
+**Examples.**
+
+- `n = 1` → `[["Q"]]` — the degenerate board.
+- `n = 2` → `[]` — two queens on a 2×2 board always share a row, column, or diagonal.
+- `n = 3` → `[]` — the smallest non-trivial board with no arrangement.
+- `n = 4` → two arrangements: `[[".Q..", "...Q", "Q...", "..Q."], ["..Q.", "Q...", "...Q", ".Q.."]]`
+
+**Practice elsewhere.** The same task is posed as [LeetCode 51 · N-Queens](https://leetcode.com/problems/n-queens/) if you want a judge to run it against. The statement, constraints, and examples above are written for this course; the two differ, so read ours.
+
+**The deliverable.** A full FRAME write-up published to `frame-writeups/c2-week-12/challenge-02/`, with the code committed under `challenges/c2-week-12/n-queens.py`. Stretch — not required for the week.
 
 ---
 
-## Understand
+## Frame
 
 The N-Queens puzzle has been studied since 1848. Two queens attack each other if they share a row, a column, or a diagonal. For N=8, there are 92 distinct solutions (12 fundamental solutions up to rotation and reflection).
 
@@ -30,7 +47,7 @@ The brute-force enumeration places N queens on N² cells: `C(N², N)` configurat
 
 ---
 
-## Match
+## Research constraints
 
 The 30-second pattern-recognition memo:
 
@@ -42,7 +59,7 @@ The 30-second pattern-recognition memo:
 
 ---
 
-## Plan
+## Assess options
 
 1. Initialize `result = []`, `path = []` (where `path[r]` is the column chosen for row `r`), `cols = set()`, `diag1 = set()` (indexed by `row - col`), `diag2 = set()` (indexed by `row + col`).
 2. Define a helper `render(path) -> List[str]` that converts a list of column indices to the LC 51 board format (a list of `n` strings of length `n`, each string having a `Q` at the column index and `.` elsewhere).
@@ -60,7 +77,7 @@ The four state mutations on choose must be mirrored by four unchoose steps in re
 
 ---
 
-## Implement
+## Make the solution
 
 ```python
 from __future__ import annotations
@@ -105,7 +122,7 @@ Twenty-eight lines. The four state mutations on choose; four unchoose steps in r
 
 ---
 
-## Review
+## Examine · verify
 
 Trace N=4 step by step:
 
@@ -164,7 +181,7 @@ Two solutions for N=4, as expected. The pruning sets eliminate the bulk of the s
 
 ---
 
-## Evaluate
+## Examine · cost
 
 - **Time:** Worst case `O(N!)` — `N!` ways to assign N queens to N columns with the row constraint implicit. The pruning sets eliminate most of these; for N=8 the actual recursion is approximately 2,000 nodes versus the naive `N! = 40,320`.
 - **Space:** `O(N)` for the recursion stack, `O(N)` for the `path`, `O(N)` each for the three sets — total `O(N)`.
@@ -184,10 +201,10 @@ Two solutions for N=4, as expected. The pruning sets eliminate the bulk of the s
 
 | Dimension | Weight | What "yes" looks like |
 |-----------|-------:|----------------------|
-| Match (Pattern Recognition) | 25% | 30-second memo at the top; "constraint satisfaction with three pruning sets"; the diagonal indexing (`row - col`, `row + col`) defended |
-| Plan | 15% | Numbered steps; the four state mutations on choose mirrored by four unchoose |
-| Implement (Correctness) | 25% | N=4 returns 2 solutions; N=8 returns 92; N=1 returns 1; render is correct |
-| Implement (Style) | 10% | Type hints; docstring; PEP 8 |
-| Evaluate (Defense) | 25% | `O(N!)` worst case with pruning-set speedup; bitmask form mentioned; LC 52 connection noted |
+| Research constraints (pattern recognition) | 25% | 30-second memo at the top; "constraint satisfaction with three pruning sets"; the diagonal indexing (`row - col`, `row + col`) defended |
+| Assess options | 15% | Numbered steps; the four state mutations on choose mirrored by four unchoose |
+| Make the solution (correctness) | 25% | N=4 returns 2 solutions; N=8 returns 92; N=1 returns 1; render is correct |
+| Make the solution (style) | 10% | Type hints; docstring; PEP 8 |
+| Examine (defense) | 25% | `O(N!)` worst case with pruning-set speedup; bitmask form mentioned; LC 52 connection noted |
 
 The diagonal indexing is the most-missed detail. Most candidates can articulate "one queen per row" and "track columns"; the move that separates senior signal is naming `row - col` and `row + col` as the two diagonal coordinates and defending why each is constant on its diagonal.

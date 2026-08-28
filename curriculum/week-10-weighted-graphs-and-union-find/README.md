@@ -10,7 +10,7 @@
 
 Welcome to Week 10 of **C2 · CrunchTime — The Code** — the sixth week of Phase 2. Last week installed the prefix-tree family. This week installs the **weighted-graph family** plus the **disjoint-set union** (also called Union-Find or DSU) data structure. After this week the unweighted-BFS reach from W6 has a weighted sibling for every shape of shortest-path question, and the components-counting reflex from W7 has a near-`O(1)` data-structure backing it for the merge-heavy variants.
 
-Weighted graphs are the highest-leverage Phase-2 topic for FAANG-tier onsites. A typical onsite loop will include one shortest-path or MST problem; the recognition step — *Dijkstra, Bellman-Ford, Floyd-Warshall, or MST?* — is what discriminates senior from junior signal. The implementations themselves are short (heap-Dijkstra is fewer than 25 lines), but choosing the wrong algorithm is unrecoverable; the interviewer is grading the Match step harder than the Implement step this week.
+Weighted graphs are the highest-leverage Phase-2 topic for FAANG-tier onsites. A typical onsite loop will include one shortest-path or MST problem; the recognition step — *Dijkstra, Bellman-Ford, Floyd-Warshall, or MST?* — is what discriminates senior from junior signal. The implementations themselves are short (heap-Dijkstra is fewer than 25 lines), but choosing the wrong algorithm is unrecoverable; the interviewer is grading the Research constraints step harder than the Make the solution step this week.
 
 Union-Find sits next to the graph algorithms because it is the *other* tool you reach for when the problem says "connect," "merge," "equivalence class," "number of components after a sequence of unions." The naive components-via-BFS approach from W6 is `O(V + E)` per query; DSU with path compression and union by rank is **amortized near-`O(1)` per operation** (technically `O(alpha(n))` where `alpha` is the inverse Ackermann function — for any realistic `n`, this is below 5). On problems with many union queries (account merge, redundant connection, smallest-string-with-swaps), DSU is the asymptotic win.
 
@@ -26,7 +26,7 @@ By Sunday of Week 10 you will:
 - **Recognize** the DSU triggers: "number of connected components after a sequence of operations," "is this graph a tree" (`V - 1` edges and one component), "redundant connection" (LC 684), "accounts merge" (LC 721), "smallest string with swaps" (LC 1202), "number of islands II" (LC 305 — streaming variant).
 - Have solved **three weighted-graph / DSU exercises** — Network Delay Time (Dijkstra), Cheapest Flights Within K Stops (Bellman-Ford or modified Dijkstra), and a DSU drill (Number of Provinces).
 - Have shipped **one challenge** (Cheapest Flights — the constrained-Dijkstra) plus an optional stretch (Smallest String With Swaps — the DSU + sort composition).
-- Have shipped the quiz, the homework, and the **mini-project**: one Dijkstra write-up (Network Delay Time) and one DSU write-up (Redundant Connection), fully UMPIRE-narrated.
+- Have shipped the quiz, the homework, and the **mini-project**: one Dijkstra write-up (Network Delay Time) and one DSU write-up (Redundant Connection), fully FRAME-narrated.
 
 ---
 
@@ -34,7 +34,7 @@ By Sunday of Week 10 you will:
 
 By the end of this week, you will be able to:
 
-- **Match** a shortest-path problem in 30 seconds. The signal hierarchy: are weights present (otherwise BFS from W6); are weights non-negative (otherwise Bellman-Ford); is this single-source or all-pairs (Floyd-Warshall for all-pairs with small `V`); is there a hop-count constraint (Bellman-Ford or modified Dijkstra with state `(node, hops)`).
+- **Match a shortest-path problem to its algorithm** in 30 seconds. The signal hierarchy: are weights present (otherwise BFS from W6); are weights non-negative (otherwise Bellman-Ford); is this single-source or all-pairs (Floyd-Warshall for all-pairs with small `V`); is there a hop-count constraint (Bellman-Ford or modified Dijkstra with state `(node, hops)`).
 - **Implement Dijkstra** with `heapq` as a `(distance, node)` priority queue, lazy-delete stale entries with the `if d > dist[node]: continue` guard, and defend `O((V + E) log V)` time, `O(V)` space.
 - **Defend why Dijkstra fails on negative weights** with the canonical 3-vertex counter-example: `A -1-> B`, `A -2-> C`, `B -(-5)-> C`. The heap pops `(1, B)` first, settles `dist[B] = 1`, then pops `(2, C)`, settles `dist[C] = 2`. But the true distance is `1 + (-5) = -4`. The bug is that the greedy "settle once" invariant breaks when a settled node can be improved by a later, negative-weighted relaxation.
 - **Implement Bellman-Ford** in `V - 1` outer passes over the edge list. Defend the bound: any shortest path has at most `V - 1` edges; one outer pass suffices for any single hop; `V - 1` passes propagate the optimum across the longest acyclic path. The `V`-th pass is the negative-cycle detector.
@@ -48,10 +48,10 @@ By the end of this week, you will be able to:
 
 ## Prerequisites
 
-- **Weeks 1-9 complete.** You have shipped UMPIRE write-ups for the BFS pair (W6) and the heap pair (W8). You can write a `heapq`-based priority queue in under five minutes without looking at the docs.
+- **Weeks 1-9 complete.** You have shipped FRAME write-ups for the BFS pair (W6) and the heap pair (W8). You can write a `heapq`-based priority queue in under five minutes without looking at the docs.
 - **Comfortable with the W6 BFS template.** Weighted Dijkstra is "BFS but the queue is a heap and edges have weights." If the BFS template still feels uncertain, re-walk W6 §3 before starting this week.
 - **Comfortable with the W8 `heapq` idioms.** Specifically the `heappush((distance, node))` tuple pattern and the "lazy delete" idiom (push duplicates; ignore stale ones on pop). Both are reused verbatim in Dijkstra and Prim.
-- **Comfortable with adjacency-list representation.** `graph: Dict[int, List[Tuple[int, int]]]` — `graph[u] = [(v, w), ...]` is the canonical form. Variants: `graph[u] = [(v, w), ...]` for directed; `graph[u] = [(v, w), ...]` plus a symmetric `graph[v].append((u, w))` for undirected. Mixing these up is the most common Match-step bug.
+- **Comfortable with adjacency-list representation.** `graph: Dict[int, List[Tuple[int, int]]]` — `graph[u] = [(v, w), ...]` is the canonical form. Variants: `graph[u] = [(v, w), ...]` for directed; `graph[u] = [(v, w), ...]` plus a symmetric `graph[v].append((u, w))` for undirected. Mixing these up is the most common Research-constraints bug.
 - **Comfortable with the difference between expected and worst-case complexity.** `heapq` operations are `O(log n)` worst-case. Hash-map operations are `O(1)` expected. DSU operations are `O(alpha(n))` *amortized* — a single operation may be `O(log n)` worst-case, but a sequence of `n` operations averages out to near-`O(1)` per operation.
 
 ---
@@ -106,19 +106,19 @@ By the end of this week, you will be able to:
 | [exercises/exercise-01-network-delay-time.py](./exercises/exercise-01-network-delay-time.py) | LC 743 — the canonical Dijkstra warm-up |
 | [exercises/exercise-02-cheapest-flights-bellman-ford.py](./exercises/exercise-02-cheapest-flights-bellman-ford.py) | LC 787 — Bellman-Ford with a hop constraint |
 | [exercises/exercise-03-number-of-provinces.py](./exercises/exercise-03-number-of-provinces.py) | LC 547 — the canonical DSU warm-up |
-| [exercises/SOLUTIONS.md](./exercises/SOLUTIONS.md) | Worked solutions with UMPIRE narration; consult after attempting each exercise |
+| [exercises/SOLUTIONS.md](./exercises/SOLUTIONS.md) | Worked solutions with FRAME narration; consult after attempting each exercise |
 | [challenges/README.md](./challenges/README.md) | Index of weekly challenges |
 | [challenges/challenge-01-cheapest-flights-k-stops.md](./challenges/challenge-01-cheapest-flights-k-stops.md) | LC 787 deep-dive — Bellman-Ford vs. Dijkstra-with-state |
 | [challenges/challenge-02-smallest-string-with-swaps.md](./challenges/challenge-02-smallest-string-with-swaps.md) | LC 1202 — DSU + sort composition |
 | [quiz.md](./quiz.md) | 10 pattern-recognition questions |
-| [homework.md](./homework.md) | Six practice problems (~5 hrs) — three Dijkstra-flavored, three DSU-flavored |
-| [mini-project/README.md](./mini-project/README.md) | **One Dijkstra write-up + one DSU write-up, fully UMPIRE-narrated** — the week's deliverable |
+| [homework.md](./homework/README.md) | Six practice problems (~5 hrs) — three Dijkstra-flavored, three DSU-flavored |
+| [mini-project/README.md](./mini-project/README.md) | **One Dijkstra write-up + one DSU write-up, fully FRAME-narrated** — the week's deliverable |
 
 ---
 
 ## Stretch goals
 
-- **Read the LeetCode "Shortest Path" tag** and skim 20 titles. For each, predict in 5 seconds: Dijkstra? Bellman-Ford? Floyd-Warshall? BFS-on-unweighted? Stretches the Match-step muscle most directly.
+- **Read the LeetCode "Shortest Path" tag** and skim 20 titles. For each, predict in 5 seconds: Dijkstra? Bellman-Ford? Floyd-Warshall? BFS-on-unweighted? Stretches the Research-constraints muscle most directly.
 - **Re-derive heap-Dijkstra from scratch** without re-reading Lecture 1. If you cannot, you do not yet own the template. Re-read and re-derive until you can.
 - **Read the Wikipedia "Disjoint-set data structure" article** end-to-end (about 25 minutes). The "Path compression" and "Union by rank" sections explain the `alpha(n)` analysis at a level appropriate for a senior interview answer. Tarjan's 1975 paper is cited; you do not need to read it.
 - **Implement Prim MST with a heap** from scratch. Most learners ship Kruskal because DSU is the cleaner illustration; Prim is the better fit when the graph is dense (`E` close to `V^2`) and the heap variant amortizes well.
@@ -130,11 +130,11 @@ By the end of this week, you will be able to:
 
 A learner who has shipped Week 10 has, in their portfolio repo:
 
-- Three UMPIRE write-ups for the exercises, with recordings >= 10 minutes.
-- One UMPIRE write-up for the Cheapest Flights K Stops challenge.
+- Three FRAME write-ups for the exercises, with recordings >= 10 minutes.
+- One FRAME write-up for the Cheapest Flights K Stops challenge.
 - The quiz answered (score recorded).
 - The homework problems committed.
-- **Two mini-project write-ups** (one Dijkstra, one DSU), each with a 30-second pattern-recognition memo at the top, under `umpire-writeups/c2-week-10/mini-project/`.
+- **Two mini-project write-ups** (one Dijkstra, one DSU), each with a 30-second pattern-recognition memo at the top, under `frame-writeups/c2-week-10/mini-project/`.
 - A push log showing daily commits Mon-Sun.
 
 If all of that is present and pushed, Phase 2's sixth week is closed. You are ready for Week 11 — dynamic programming foundations.
@@ -143,7 +143,7 @@ If all of that is present and pushed, Phase 2's sixth week is closed. You are re
 
 ## A note on the Phase 2 ramp
 
-Week 10 is the *graph-week* sandwiched between W9 (strings) and W11 (dynamic programming). The shortest-path picker is the highest-leverage Match-step skill for the rest of Phase 2 — almost every Phase-3 onsite asks at least one weighted-graph or DSU question, and the *recognition* of which algorithm to reach for is the senior signal. Implementation fluency on heap-Dijkstra and DSU-with-path-compression is the second-most-important outcome; Bellman-Ford and Floyd-Warshall and Prim are *recognition-grade* this week (know them by name, know when to reach for them, implement them if pressed but do not optimize for speed).
+Week 10 is the *graph-week* sandwiched between W9 (strings) and W11 (dynamic programming). The shortest-path picker is the highest-leverage Research-constraints skill for the rest of Phase 2 — almost every Phase-3 onsite asks at least one weighted-graph or DSU question, and the *recognition* of which algorithm to reach for is the senior signal. Implementation fluency on heap-Dijkstra and DSU-with-path-compression is the second-most-important outcome; Bellman-Ford and Floyd-Warshall and Prim are *recognition-grade* this week (know them by name, know when to reach for them, implement them if pressed but do not optimize for speed).
 
 If you find yourself ahead by Friday, the right stretch is **not** another exercise — it is reading the disjoint-set Wikipedia article end-to-end, or skimming a competitive-programming explanation of Johnson's algorithm. The Phase-2 retrospective at the end of Week 12 will be much easier if W10 leaves you with a sense of *which* graph algorithm to mention in interviews, not just *that* there is one.
 

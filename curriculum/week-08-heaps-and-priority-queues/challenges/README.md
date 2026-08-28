@@ -13,13 +13,13 @@ Each challenge document contains:
 
 - The problem spec with examples and edge cases.
 - A "Why this is the canonical X" framing paragraph.
-- A Match-step memo for the template you would write.
+- A Research constraints memo for the template you would write.
 - Acceptance criteria — what counts as "done."
 - Hints (collapsible) and a worked solution sketch (also collapsible — read after attempting).
 
 The challenges differ from the exercises in two ways:
 
 1. **No starter file.** You design the function signature and the data shape yourself, defending each choice in the write-up.
-2. **Longer target solve time.** 60 minutes vs 20-30. The Match step is harder; the Plan step has multiple valid paths; the Implement step has more code.
+2. **Longer target solve time.** 60 minutes vs 20-30. The Research constraints step is harder; the Assess options step has multiple valid paths; the Make the solution step has more code.
 
 If a challenge takes more than 90 minutes, stop and read the hints. If it still takes more than 120 minutes, read the solution sketch and re-attempt cold the next day. The point is the rep, not the suffer.

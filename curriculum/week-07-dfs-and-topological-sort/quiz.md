@@ -1,30 +1,53 @@
 # Week 7 — Pattern-Recognition Quiz
 
-Ten short prompts. **Do not solve them.** For each, decide whether it is DFS / topological sort / something else — and if DFS, name the sub-shape (recursive / iterative / three-color / post-order) and any invariant required (visited / parent pointer / color array / in-degree). One-line justification per answer. Lectures closed. Time yourself — 45 seconds per question is the target.
+Ten short prompts. **Do not solve them.** For each one, decide whether it is
+depth-first search, topological sort, or something else — and if it is
+depth-first, say which shape (recursive, explicit stack, three colours,
+post-order) and which invariant it needs (a visited set, a parent pointer, the
+grey set, waiting counts). One line of justification per answer. Lectures
+closed. Time yourself: 45 seconds a question is the target.
 
 Answer key at the bottom.
 
 ---
 
-**Q1.** "Given an `n × n` symmetric matrix where `M[i][j] == 1` means cities `i` and `j` are connected, return the number of connected components (provinces)."
+**Q1.** "A radio org has a square link table where row `i`, column `j` holds `1`
+when masts `i` and `j` hear each other directly. Report every cluster of masts
+that can reach each other through any chain of links, as `(smallest mast in the
+cluster, how many masts it holds)`."
 
-**Q2.** "Given a directed graph as an adjacency list, return `True` if it contains a cycle, else `False`."
+**Q2.** "A cannery's batch plan says which stages feed which other stages.
+Report one circle of stages that each wait on the next, or say there is none."
 
-**Q3.** "Given `numCourses` and a list of `[a, b]` prerequisites (`b` before `a`), return any valid order in which the courses can be taken, or `[]` if no valid order exists."
+**Q3.** "A dry dock has a list of refit jobs and a list of pairs saying which
+job has to finish before which other job starts. Give one legal running order,
+and separately the jobs that can never start."
 
-**Q4.** "Given the root of a binary tree, return its level-order traversal — a list of lists where the `i`-th inner list contains the values at depth `i`."
+**Q4.** "A warehouse alarm spreads from one rack to every rack it touches, one
+round per second. Report which racks are alerted after each round, as a list of
+lists."
 
-**Q5.** "Given a 2-D grid where `1` is land and `0` is water, return the area of the largest island (a maximal 4-connected region of `1`s)."
+**Q5.** "A flood map is a grid of wet and dry squares. Report the area of the
+largest single pool — a group of wet squares joined edge to edge."
 
-**Q6.** "Given a list of strings sorted lexicographically in an unknown alien language's alphabet, return the order of the letters in that alphabet."
+**Q6.** "Several rail yards each filed a sighting: the wagons they saw, listed
+front to back. No yard saw the whole train. Reconstruct the front-to-back order
+of every wagon, and say whether the sightings force it or merely allow it."
 
-**Q7.** "Given an undirected graph and a `source` and `destination`, return the *shortest* number of edges in a path from source to destination."
+**Q7.** "A pipe network joins pumping stations. Given two stations, report the
+smallest number of pipes a technician has to walk along to get from one to the
+other."
 
-**Q8.** "Given an undirected graph, return all 'bridge' edges — edges whose removal disconnects the graph."
+**Q8.** "A pipe network joins pumping stations. Report every pipe whose failure
+would cut some station off from a station it can currently reach."
 
-**Q9.** "Given a binary search tree, return `True` if it is a valid BST (every left subtree's values are less than the node, every right subtree's values are greater), else `False`."
+**Q9.** "A library's shelf index is a binary tree of integer shelf codes. The
+rule is that every code below and to the left of a node is smaller than it, and
+every code below and to the right is larger. Report the first code that breaks
+the rule."
 
-**Q10.** "Given an array of integers, return all unique permutations of its elements."
+**Q10.** "Given a list of volunteers, report every possible seating arrangement
+of them around a table."
 
 ---
 
@@ -33,25 +56,83 @@ Answer key at the bottom.
 <details>
 <summary>Click after attempting all ten</summary>
 
-1. **DFS for connectivity, recursive.** Adjacency-matrix DFS; the answer counts the number of fresh DFS starts. Visited is a `set[int]`. The matrix is symmetric → undirected graph → no cycle-detection invariant needed (we are only counting components). `O(n²)` time, `O(n)` space. Exercise 1 exactly.
+1. **Depth-first search for connectivity, recursive.** One fresh walk per
+   cluster, and because the outer loop climbs, the mast that starts a walk is
+   automatically the cluster's smallest. Invariant: a `set[int]` of masts
+   already reached. The table is symmetric, so the graph is undirected and no
+   loop-detection machinery is needed — you are counting groups, not hunting
+   circles. Cost `O(n²)`, because you cannot beat reading a table that has `n²`
+   cells in it. This is
+   [Exercise 1](./exercises/exercise-01-repeater-clusters.md).
 
-2. **DFS with the three-color invariant.** Directed cycle detection. White (`0`) / gray (`1`) / black (`2`); a directed edge to a gray node is a back-edge → cycle. The parent-pointer technique does *not* apply to directed graphs. `O(V + E)` time. Lecture 3 §2.
+2. **Depth-first search with the three colours.** Directed loop detection.
+   White is untouched, grey is on the path under your feet, black is finished.
+   An arrow into a grey stage is a loop; an arrow into a black stage is
+   ordinary and proves nothing. The undirected "is it my parent?" trick does
+   not transfer to a directed graph. Cost `O(V + E)` — one look at every stage
+   and one at every arrow.
+   [Exercise 3](./exercises/exercise-03-batch-loop-audit.md), and
+   [Lecture 3 §2](./lecture-notes/03-topological-sort.md).
 
-3. **Topological sort — Kahn's algorithm.** In-degree array; queue of zero-in-degree courses; cycle detection by exhaustion (`len(order) != numCourses`). Edge `b → a` for `[a, b]`. `O(V + E)` time. Exercise 3 exactly.
+3. **Topological sort, Kahn's algorithm.** Waiting counts, a set of ready jobs,
+   and the leftovers when the ready set runs dry are exactly the jobs inside a
+   circle plus everything downstream of one. You never look for the circle; you
+   notice you ran out of work. Cost `O(V + E)`.
+   [Exercise 4](./exercises/exercise-04-refit-order.md).
 
-4. **NOT DFS — BFS with level tracking.** "Level-order" is the BFS signature; the outer `for _ in range(len(queue))` loop consumes one level per outer iteration. Returning DFS pre-order would visit siblings far apart, not by level. The Week-6 idiom; recognizing it as *not* a Week-7 problem is the negative-space discriminator.
+4. **Not depth-first — breadth-first, with the rounds tracked.** "One round per
+   second, report each round" is the breadth-first signature: consume the whole
+   queue as it stands, then let what it freed become the next round. A
+   depth-first walk goes down one long arm to its end before touching the second
+   rack, so it can tell you *which* racks are reached but never *when*. Week 6's
+   idiom, and recognising it as **not** a Week 7 problem is the point of the
+   question.
 
-5. **DFS for connectivity, with a "weight" return.** Grid-DFS over 4-connected `1`-cells; each DFS call returns the size of its component; track the max across all DFS starts. The trick is post-order aggregation: each call returns `1 + sum(child_sizes)`. `O(R × C)`. LC 695.
+5. **Depth-first search for connectivity, answering on the way back up.** Each
+   walk returns the size of the pool it just flooded — `1 +` the sizes its
+   neighbours returned — and you keep the largest. The visited marks are what
+   stop the walk counting a square twice. Cost `O(rows × columns)`. Same shape
+   as Q1, with a number carried out of the walk instead of a count kept outside
+   it.
 
-6. **Topological sort on a derived edge set.** Alien Dictionary — Challenge 2. The Match move: extract pairwise edges from adjacent words (first differing character → edge), then Kahn's. The recognition step is the senior signal; the algorithm itself is the same Kahn template from Exercise 3.
+6. **Topological sort on an edge set you have to derive first.** The recognition
+   is the hard half: each sighting's *neighbouring* pairs are the constraints,
+   and everything else follows from them. Then it is Kahn — and "forces it or
+   merely allows it" is answered by how many wagons are ready at each step, one
+   at a time meaning forced.
+   [Challenge 2](./challenges/challenge-02-consist-reconstruction.md).
 
-7. **NOT DFS — BFS.** "Shortest number of edges" on an unweighted graph is the canonical BFS signal (Week 6 Lecture 1). DFS would find *a* path but not the shortest. This is a negative-space question — the trap is that the problem reads like DFS until you notice "shortest."
+7. **Not depth-first — breadth-first.** "Smallest number of pipes" on a graph
+   where every pipe costs the same is the canonical breadth-first signal
+   (Week 6). A depth-first walk finds *a* route and has no idea whether it is
+   short. This is a trap question: it reads exactly like Q8 until you notice
+   the word "smallest".
 
-8. **DFS with Tarjan's low-link.** Critical Connections — Challenge 1. `disc[u]` (discovery time) and `low[u]` (smallest discovery time reachable from `u`'s subtree via at most one back-edge). Edge `(u, v)` is a bridge iff `low[v] > disc[u]`. `O(V + E)` time. The naive `O(E × (V + E))` "remove each edge, check connectivity" is too slow.
+8. **Depth-first search carrying discovery times and low-links.** Chokepoint —
+   bridge — detection. Each station records when it was first reached, and the
+   lowest such number anything below it can climb back to; a pipe is a
+   chokepoint when nothing below it can get back above it. Cost `O(V + E)`. The
+   obvious answer — remove each pipe in turn and re-walk the network — is
+   `O(E × (V + E))` and does not finish at real sizes.
+   [Challenge 1](./challenges/challenge-01-chokepoint-mains.md).
 
-9. **DFS on a tree, in-order or with bounds.** Two approaches: in-order traversal (the values must come out sorted) or recursive DFS with `(lo, hi)` bounds passed in (every node's value must satisfy `lo < val < hi`; recursion narrows the bounds). Both `O(N)`. The bounds approach is cleaner; the in-order approach catches more edge cases (duplicates, ints overflow). LC 98.
+9. **Depth-first search on a tree, carrying bounds down.** Every node inherits a
+   low and a high limit from its ancestors; go left and the high limit becomes
+   this node's code, go right and the low limit does. Checking only against the
+   parent passes trees that are wrong three levels down, which is the whole
+   point of the problem. A left-to-right walk of the codes also works — they
+   have to come out increasing — but needs care about what it carries between
+   nodes. Cost `O(N)` time, `O(H)` space for the height of the tree.
+   [Homework Problem 4](./homework/problem-04-shelf-index-audit.md).
 
-10. **NOT pure DFS — backtracking.** Generating all permutations requires the "undo" step (mark an element used, recurse, unmark). Backtracking is DFS-shaped but with an explicit unwinding step that pure DFS does not have. Covered next week (Week 8). The trap is that backtracking looks identical to recursive DFS until you notice the "generate all configurations" framing.
+10. **Not plain depth-first — backtracking.** Generating every arrangement needs
+    an undo step: mark a volunteer as seated, go deeper, then unmark on the way
+    back out. That undo is exactly what a visited set is *not* — a visited set is
+    permanent, and it is permanent because a graph walk wants each node once,
+    where an arrangement search wants each volunteer once *per branch*.
+    Backtracking is Week 12. The trap is that it looks identical to recursive
+    depth-first search until you notice it is asked to produce every
+    configuration rather than to visit every node.
 
 </details>
 
@@ -61,13 +142,15 @@ Answer key at the bottom.
 
 | Score | Meaning |
 |------:|---------|
-| 9-10 | DFS / topo recognition is interview-ready, including the negative-space rejections. Move on. |
-| 7-8 | Good — re-read [Lecture 1 §8](./lecture-notes/01-recursive-dfs.md) and [Lecture 3 §8](./lecture-notes/03-topological-sort.md) for the sub-shape questions you missed. Most learners miss Q4 or Q7 first time; that is normal. |
-| 5-6 | Redo Exercises 2 and 3 with stricter Match sections. The iterative-DFS and topological-sort recognition needs more reps before Mock #2. |
-| <5 | The pattern recognition is not yet automatic. Re-read all three lectures, re-do all three exercises with the visited-set invariant stated aloud, then retake the quiz. |
+| 9-10 | Your recognition is interview-ready, negative space included. Move on. |
+| 7-8 | Good. Re-read [Lecture 1 §8](./lecture-notes/01-recursive-dfs.md) and [Lecture 3 §8](./lecture-notes/03-topological-sort.md) for the shapes you missed. Most people miss Q4 or Q7 the first time; that is normal. |
+| 5-6 | Redo [Exercise 3](./exercises/exercise-03-batch-loop-audit.md) and [Exercise 4](./exercises/exercise-04-refit-order.md), saying the invariant out loud each time. Loop detection and topological sort are the two most heavily graded Phase 2 patterns. |
+| <5 | The recognition is not automatic yet. Re-read all three lectures, redo all five exercises with the invariant stated aloud, then retake this. |
 
-This quiz is about **fluency**, not difficulty. The discriminating questions are Q4 and Q7 — both "looks like DFS but is BFS" questions. Recognizing the negative space is the senior-level skill being measured.
+This quiz measures **fluency**, not difficulty. The questions that separate
+people are Q4, Q7 and Q10 — the three that look like this week's material and
+are not. Q7 is the sharpest: it is Q8's opening sentence with one word changed,
+and one word is genuinely all it takes to move a problem from depth-first to
+breadth-first.
 
-The negative-space questions (Q4, Q7, Q10) are the discriminators. Q7 in particular is a trap: "shortest path" on an unweighted graph is BFS, not DFS — and getting this wrong on a graph problem in Mock #2 is a meaningful score loss. Q10 is also a trap: permutation generation is backtracking, which is DFS-shaped but not pure DFS.
-
-When done, the [homework](./homework.md) is next.
+When you are done, the [homework](./homework/README.md) is next.

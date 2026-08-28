@@ -1,7 +1,7 @@
 # Lecture 2 — Bitmasks, Subset Enumeration, and Bit DP
 
 > **Duration:** ~2 hours.
-> **Outcome:** You can represent a subset of `n` items as an `n`-bit integer, enumerate every subset by counting `0 .. 2**n - 1` (Subsets, LC 78), iterate the submasks of a mask, recognize when a problem is bitmask DP (state = subset) at the interview level, and apply the Counting Bits recurrence `dp[i] = dp[i >> 1] + (i & 1)` (LC 338) with a full worked UMPIRE.
+> **Outcome:** You can represent a subset of `n` items as an `n`-bit integer, enumerate every subset by counting `0 .. 2**n - 1` (Subsets, LC 78), iterate the submasks of a mask, recognize when a problem is bitmask DP (state = subset) at the interview level, and apply the Counting Bits recurrence `dp[i] = dp[i >> 1] + (i & 1)` (LC 338) with a full worked FRAME.
 
 Lecture 1 used bits as *values* — folding, isolating, counting. This lecture uses bits as a *set*: each bit is a membership flag for one of `n` items. That single reframing — "an `n`-bit integer is a subset of `{0, …, n-1}`" — unlocks subset enumeration, submask iteration, and the recognition-grade view of bitmask DP. We close with Counting Bits, the cleanest bit-DP recurrence in the canon.
 
@@ -75,7 +75,7 @@ mask 7 = 111 -> [1, 2, 3]
 
 Eight subsets, as expected. The bitmask form is the iterative sibling of the Week 12 backtracking form; both are correct, and naming both — "backtracking is the general template; the bitmask is the slick `O(n · 2**n)` form when `n` is small (`n ≤ 20` or so, because `2**20` is a million)" — is the senior signal. The `n ≤ 20` ceiling is the recognition cue that bitmask enumeration is *on the table* at all.
 
-> **The 30-second Match memo for a bitmask-enumeration problem:**
+> **The 30-second Research-constraints memo for a bitmask-enumeration problem:**
 > *"`n` is small — at most about 20 — and the problem asks me to consider every subset / assignment / combination of `n` items. So I represent each subset as an `n`-bit integer and loop `mask` over `range(1 << n)`. Bit `i` of `mask` means item `i` is included. Time `O(n · 2**n)`, space for the output. The recursion / backtracking form is equivalent; the bitmask form is the tight iterative one when `n` is small."*
 
 ---
@@ -120,7 +120,7 @@ Here is the honest interview register, and you should internalize it precisely: 
 
 ---
 
-## 5. Worked UMPIRE — Counting Bits (LC 338)
+## 5. Worked FRAME — Counting Bits (LC 338)
 
 Counting Bits is the cleanest bit-DP recurrence in the interview canon, and it is Exercise 2. Full method.
 
@@ -134,15 +134,17 @@ Given an integer `n`, return an array `ans` of length `n + 1` such that for each
 
 **Follow-up:** can you do it in a single pass, in `O(n)` time, without using a built-in popcount per element?
 
-### Understand
+### Frame
 
-For each integer from `0` to `n`, count its set bits and store the count at that index. The naive answer calls a popcount per element: `[i.bit_count() for i in range(n + 1)]`, which is `O(n log n)` (each popcount is `O(log i)`). The follow-up asks for `O(n)` total — which means each `ans[i]` must be `O(1)` given the answers we have already computed. That phrasing — "build each answer from a smaller one in `O(1)`" — is the DP tell.
+For each integer from `0` to `n`, count its set bits and store the count at that index.
 
 Hand-walk: `n = 5` → `[0, 1, 1, 2, 1, 2]`. Notice `ans[4] = ans[2] = 1` (4 is 2 shifted left), and `ans[5] = ans[2] + 1 = 2` (5 is 2 shifted left, plus a low bit).
 
-### Match
+### Research constraints
 
-Bit DP. The recurrence `dp[i] = dp[i >> 1] + (i & 1)`: right-shifting `i` by one drops the lowest bit, leaving `i // 2`, whose popcount we already computed at the smaller index `i >> 1`; then `i & 1` adds back the bit we just dropped (1 if `i` was odd, 0 if even). So `popcount(i) == popcount(i // 2) + (i mod 2)`. State is the integer `i`; the subproblem is the strictly smaller `i >> 1`; the transition is `O(1)`.
+The naive answer calls a popcount per element: `[i.bit_count() for i in range(n + 1)]`, which is `O(n log n)` (each popcount is `O(log i)`). The follow-up asks for `O(n)` total — which means each `ans[i]` must be `O(1)` given the answers we have already computed. That phrasing — "build each answer from a smaller one in `O(1)`" — is the DP tell.
+
+So the shape is bit DP. The recurrence `dp[i] = dp[i >> 1] + (i & 1)`: right-shifting `i` by one drops the lowest bit, leaving `i // 2`, whose popcount we already computed at the smaller index `i >> 1`; then `i & 1` adds back the bit we just dropped (1 if `i` was odd, 0 if even). So `popcount(i) == popcount(i // 2) + (i mod 2)`. State is the integer `i`; the subproblem is the strictly smaller `i >> 1`; the transition is `O(1)`.
 
 ```mermaid
 flowchart LR
@@ -151,16 +153,16 @@ flowchart LR
 ```
 *The Counting Bits recurrence builds each answer from one smaller already-computed subproblem.*
 
-> **The 30-second Match memo (bit DP):**
+> **The 30-second Research-constraints memo (bit DP):**
 > *"This is bit DP — I build `dp[i]` from a strictly smaller, already-computed subproblem in `O(1)`. The recurrence is `dp[i] = dp[i >> 1] + (i & 1)`: right-shift drops the low bit (so `i >> 1` is `i // 2`, whose count I have), and `i & 1` adds the dropped bit back. One forward pass, `O(n)` time, `O(n)` output. The naive per-element popcount is `O(n log n); this is the `O(n)` answer the follow-up wants."*
 
-### Plan
+### Assess options
 
 1. Allocate `dp = [0] * (n + 1)`; `dp[0] = 0` is correct by initialization (zero has zero set bits).
 2. For `i` from `1` to `n`: `dp[i] = dp[i >> 1] + (i & 1)`. The dependency `i >> 1 < i` is always satisfied, so the value is ready when needed.
 3. Return `dp`.
 
-### Implement
+### Make the solution
 
 ```python
 from typing import List
@@ -181,7 +183,7 @@ def count_bits(n: int) -> List[int]:
 
 There is a second valid recurrence worth naming: `dp[i] = dp[i & (i - 1)] + 1`, which uses Lecture 1's "clear the lowest set bit" idiom — `i & (i - 1)` is `i` with one set bit removed, so its count is one less. Both are `O(n)`; the `i >> 1` form is the one most people reach for first.
 
-### Review
+### Examine (verify)
 
 Trace `n = 5`:
 
@@ -196,7 +198,7 @@ i=5: dp[2] + (5&1) = 1 + 1 = 2   -> [0,1,1,2,1,2]   ✓
 
 Edge case `n = 0`: the loop does not run; `dp = [0]` ✓.
 
-### Evaluate
+### Examine (cost)
 
 - **Time:** `O(n)` — one pass, `O(1)` per index. The dependency `dp[i >> 1]` is always a previously-filled cell.
 - **Space:** `O(n)` for the output array, which is required (the problem returns `n + 1` values). No auxiliary state beyond the output.

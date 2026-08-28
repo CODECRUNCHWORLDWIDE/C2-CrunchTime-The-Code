@@ -42,7 +42,7 @@ Explanation: the maximum is 5 ^ 25 == 28.
 - `1 <= len(nums) <= 2 * 10**5`
 - `0 <= nums[i] <= 2**31 - 1`
 
-The intended solution is the binary trie (`O(n · 32)`) over the `O(n**2)` brute force. The full UMPIRE walkthrough is in [SOLUTIONS.md, Solution 3](../exercises/SOLUTIONS.md) — do **not** read it before the mock if you are using this as your problem. If you have already done Exercise 3, this is not unseen; pick a different Medium (e.g., LC 137 Single Number II, LC 260 Single Number III, LC 201 Bitwise AND of Numbers Range, or any unseen Medium from the trie tag).
+The intended solution is the binary trie (`O(n · 32)`) over the `O(n**2)` brute force. The full FRAME walkthrough is in [SOLUTIONS.md, Solution 3](../exercises/SOLUTIONS.md) — do **not** read it before the mock if you are using this as your problem. If you have already done Exercise 3, this is not unseen; pick a different Medium (e.g., LC 137 Single Number II, LC 260 Single Number III, LC 201 Bitwise AND of Numbers Range, or any unseen Medium from the trie tag).
 
 ---
 
@@ -50,15 +50,15 @@ The intended solution is the binary trie (`O(n · 32)`) over the `O(n**2)` brute
 
 | Phase | Wall-clock | What's happening |
 |------:|:----------:|------------------|
-| 0:00 – 0:03 | 3 min | **U.** Read aloud. Restate. One or two clarifying questions. Walk an example. |
-| 0:03 – 0:05 | 2 min | **M.** Name the pattern. The 30-second memo. |
-| 0:05 – 0:10 | 5 min | **P.** Sketch the approach, data structures, complexity target. |
-| 0:10 – 0:25 | 15 min | **I.** Write the code. Narrate each line. Narrate the pauses. |
-| 0:25 – 0:35 | 10 min | **R.** Trace at least two examples. Find at least one bug. |
-| 0:35 – 0:43 | 8 min | **E.** Time and space. Trade-offs. One variant. |
+| 0:00 – 0:03 | 3 min | **F.** Read aloud. Restate. One or two clarifying questions. Walk an example. |
+| 0:03 – 0:05 | 2 min | **R.** Name the limits and the pattern. The 30-second memo. |
+| 0:05 – 0:10 | 5 min | **A.** Sketch the approach, data structures, complexity target. |
+| 0:10 – 0:25 | 15 min | **M.** Write the code. Narrate each line. Narrate the pauses. |
+| 0:25 – 0:35 | 10 min | **E · verify.** Trace at least two examples. Find at least one bug. |
+| 0:35 – 0:43 | 8 min | **E · cost.** Time and space. Trade-offs. One variant. |
 | 0:43 – 0:45 | 2 min | Wrap-up. Summarize. Thank the interviewer. |
 
-Guidelines, not rules — but the structure is the discipline. Bank saved Match time in Review.
+Guidelines, not rules — but the structure is the discipline. Bank saved Research constraints time in Examine (verify).
 
 ---
 
@@ -71,7 +71,7 @@ Saturday (two passes):
 1. **Pass 1 — 1.5×, whole recording, timestamp doc.** 10–15 timestamps of *patterns*, not every filler word. Save as `mocks/mock-03/timestamps.md`.
 2. **Pass 2 — 1.0×, flagged segments only.** For each, write *what happened* + *what to do differently*.
 
-Then the self-feedback write-up at `umpire-writeups/c2-week-14/mock-03-self-feedback.md`.
+Then the self-feedback write-up at `frame-writeups/c2-week-14/mock-03-self-feedback.md`.
 
 ---
 
@@ -92,7 +92,7 @@ Then the self-feedback write-up at `umpire-writeups/c2-week-14/mock-03-self-feed
 ## What the recording shows
 [5–8 observations, each with a wall-clock timestamp from pass 2.]
 
-## The Match memo — graded
+## The Research-constraints memo — graded
 [Under 30 seconds? Named the sub-shape, the bound, one rejected alternative?]
 
 ## The thinking-aloud — graded
@@ -101,7 +101,7 @@ Then the self-feedback write-up at `umpire-writeups/c2-week-14/mock-03-self-feed
 ## The recovery moves — graded
 [When the first approach hit a wall, did I narrate the recovery audibly?]
 
-## The Evaluate section — graded
+## The Examine (cost) section — graded
 [Did I state time + space + a trade-off + one variant, unprompted?]
 
 ## Trajectory across Mock #1 → #2 → #3
@@ -126,14 +126,14 @@ Total possible: 100; passing: 70.
 | Dimension | Points | What "full credit" looks like |
 |-----------|-------:|-------------------------------|
 | Conditions held | 15 | Video on, hard 45-min clock honored, no peeking — verifiable from the recording |
-| Match memo delivered | 20 | Under 30 seconds; sub-shape named; complexity stated; one alternative rejected |
+| Research-constraints memo delivered | 20 | Under 30 seconds; sub-shape named; complexity stated; one alternative rejected |
 | Thinking-aloud | 15 | No silent stretch over 20 seconds; pauses narrated |
 | Recovery audible | 10 | At least one course-correction narrated out loud (if one occurred) |
-| Evaluate unprompted | 15 | Time + space + trade-off + one variant, stated without being asked |
+| Examine (cost) unprompted | 15 | Time + space + trade-off + one variant, stated without being asked |
 | Two-pass review done | 10 | Pass 1 timestamps + pass 2 prescriptions both present |
 | Trajectory section | 15 | Honest comparison across all three mocks; prior behavior changes assessed |
 
-A passing mock is one you ran under the real conditions and *watched honestly* — not one where you solved the problem. A solved problem with a skipped Evaluate and no trajectory section fails; an unfinished problem with a clean Match memo, an audible recovery, and an honest trajectory passes.
+A passing mock is one you ran under the real conditions and *watched honestly* — not one where you solved the problem. A solved problem with a skipped Examine (cost) and no trajectory section fails; an unfinished problem with a clean Research-constraints memo, an audible recovery, and an honest trajectory passes.
 
 ---
 
@@ -145,7 +145,7 @@ Pick exactly **one** change for Mock #4. Specific. Testable. "I will state the c
 
 ## Acceptance
 
-Challenge 1 is complete when, under `mocks/mock-03/` and `umpire-writeups/c2-week-14/`:
+Challenge 1 is complete when, under `mocks/mock-03/` and `frame-writeups/c2-week-14/`:
 
 - The recording link is committed (the video file is too big to commit; commit the link).
 - The immediate notes, pass-1 timestamps, and self-feedback write-up are all present.

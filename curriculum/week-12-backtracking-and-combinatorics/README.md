@@ -6,7 +6,7 @@
 └───┘  └───┘  └───┘  └───┘  └───┘  └───┘
 ```
 
-> *Week 11 installed the dynamic-programming pipeline — the disciplined route from a brute-force recursion through `functools.lru_cache` to a bottom-up tabulation. Week 12 installs the **other** disciplined recursion: **backtracking**, the choose-explore-unchoose template that enumerates every solution to a combinatorial decision problem. Subsets, permutations, combinations, combination sum, palindrome partitioning, word search, N-Queens, sudoku solver. The Match-step skill: what tells you "this is a backtracking problem" — the prompt asks for **all** solutions, not the count or the optimum; the search tree has clear branching; constraints prune entire subtrees. State + pruning + visited-set patterns. The mechanical template: `choose -> recurse -> unchoose`. By Sunday you can read a problem and say, in 30 seconds, "this enumerates subsets / permutations / partitions, the decision at each level is `<X>`, the prune is `<Y>`, the unchoose step is `<Z>`," and you can ship the recursion with the path-array mutation discipline that does not produce duplicate or aliased outputs.*
+> *Week 11 installed the dynamic-programming pipeline — the disciplined route from a brute-force recursion through `functools.lru_cache` to a bottom-up tabulation. Week 12 installs the **other** disciplined recursion: **backtracking**, the choose-explore-unchoose template that enumerates every solution to a combinatorial decision problem. Subsets, permutations, combinations, combination sum, palindrome partitioning, word search, N-Queens, sudoku solver. The Research-constraints skill: what tells you "this is a backtracking problem" — the prompt asks for **all** solutions, not the count or the optimum; the search tree has clear branching; constraints prune entire subtrees. State + pruning + visited-set patterns. The mechanical template: `choose -> recurse -> unchoose`. By Sunday you can read a problem and say, in 30 seconds, "this enumerates subsets / permutations / partitions, the decision at each level is `<X>`, the prune is `<Y>`, the unchoose step is `<Z>`," and you can ship the recursion with the path-array mutation discipline that does not produce duplicate or aliased outputs.*
 
 Welcome to Week 12 of **C2 · CrunchTime — The Code** — the eighth week of Phase 2 and the second of the two enumerated-search weeks. Last week installed dynamic programming — the disciplined recursion that **caches** intermediate answers and rolls them into a table. This week installs **backtracking** — the disciplined recursion that **does not** cache, because the problem demands enumeration of **all** solutions, not just the optimum. The two recursions are siblings: same call structure, opposite output discipline. A senior candidate can name which sibling applies in 30 seconds and write the right one in 15 minutes.
 
@@ -26,7 +26,7 @@ By Sunday of Week 12 you will:
 - **Implement N-Queens** as a backtracking on a chessboard with three pruning sets (column, two diagonals). The state representation (one row per recursive level) is the senior-grade move; placing one queen per row makes the row constraint implicit.
 - **Implement the sudoku solver** as a backtracking that picks the next empty cell and tries digits 1–9 with three constraint checks (row, column, 3x3 box). The cell-iteration order plus the box-coordinate computation are the discriminators.
 - Have solved **three backtracking exercises** — subsets (the canonical warm-up), permutations (the canonical second), combination sum (the canonical prune-and-skip).
-- Have shipped **one challenge** (word search with full UMPIRE narration) plus an optional stretch (N-Queens with all three pruning sets defended).
+- Have shipped **one challenge** (word search with full FRAME narration) plus an optional stretch (N-Queens with all three pruning sets defended).
 - Have shipped the quiz, the homework, and the **mini-project**: one combinatorial enumeration (palindrome partitioning) plus one constraint-satisfaction (sudoku solver), each with the choose-explore-unchoose template narrated end to end.
 
 ---
@@ -35,7 +35,7 @@ By Sunday of Week 12 you will:
 
 By the end of this week, you will be able to:
 
-- **Match a backtracking problem in 30 seconds.** The signal hierarchy: does the prompt ask for **all** solutions or to enumerate a configuration space (not the count, not the optimum); is the decision space at each level discrete and finite; can constraints prune internal subtrees; is the path part of the output? The four answers fully classify backtracking versus DP versus brute-force-with-pruning.
+- **Match a backtracking problem to its shape in 30 seconds.** The signal hierarchy: does the prompt ask for **all** solutions or to enumerate a configuration space (not the count, not the optimum); is the decision space at each level discrete and finite; can constraints prune internal subtrees; is the path part of the output? The four answers fully classify backtracking versus DP versus brute-force-with-pruning.
 - **Implement the three-line template** as a reflex. Line 1: `choose` — append to the path or mark a cell visited. Line 2: `recurse` — call the function with the mutated state. Line 3: `unchoose` — pop the path or unmark the cell. The invariant: the state on entry equals the state on exit.
 - **Defend the deep-copy discipline at leaves.** Appending `path[:]` (or `list(path)` or `tuple(path)`) to the results list copies the path *now*, before subsequent recursive calls mutate it. Forgetting the copy produces a results list where every entry aliases the same list and ends up empty after the final unchoose. The single most common backtracking bug.
 - **Implement subsets** as a backtracking. State: `(start_index, path)`. Recurrence: at each `i` from `start` to `n - 1`, choose `nums[i]`, recurse with `start = i + 1`, unchoose. Record the path at every node (not just leaves) because every node is a valid subset.
@@ -52,7 +52,7 @@ By the end of this week, you will be able to:
 
 ## Prerequisites
 
-- **Weeks 1–11 complete.** You have shipped UMPIRE write-ups for the heap pair (W8), the trie pair (W9), the graph pair (W10), and the DP pair (W11). You can write a recursion from memory and you can name the difference between memoization and tabulation.
+- **Weeks 1–11 complete.** You have shipped FRAME write-ups for the heap pair (W8), the trie pair (W9), the graph pair (W10), and the DP pair (W11). You can write a recursion from memory and you can name the difference between memoization and tabulation.
 - **Comfortable with recursion and the call stack.** Specifically, the discipline that a function's **local variables** are restored on return — but **mutable arguments** are not. The choose-explore-unchoose template depends on understanding that `path.append(x)` mutates the caller's list, not a local copy, and so an `unchoose` step (`path.pop()`) is required to restore the invariant.
 - **Comfortable with list slicing and copying.** `path[:]` is a shallow copy; `list(path)` is a shallow copy; `copy.deepcopy(path)` is unnecessary for a list of ints or strings. The leaf-copy step `result.append(path[:])` is the one-line idiom; forgetting the `[:]` is the canonical bug.
 - **Comfortable with set operations.** `visited.add(cell)`, `visited.remove(cell)`, `if cell in visited`. The N-Queens pruning sets, the word search visited set, and the permutations used set are all the same primitive.
@@ -110,19 +110,19 @@ By the end of this week, you will be able to:
 | [exercises/exercise-01-subsets.py](./exercises/exercise-01-subsets.py) | LC 78 — the canonical backtracking warm-up |
 | [exercises/exercise-02-permutations.py](./exercises/exercise-02-permutations.py) | LC 46 — the canonical permutation backtracking |
 | [exercises/exercise-03-combination-sum.py](./exercises/exercise-03-combination-sum.py) | LC 39 — backtracking with sum-based pruning |
-| [exercises/SOLUTIONS.md](./exercises/SOLUTIONS.md) | Worked solutions with UMPIRE narration; consult after attempting each exercise |
+| [exercises/SOLUTIONS.md](./exercises/SOLUTIONS.md) | Worked solutions with FRAME narration; consult after attempting each exercise |
 | [challenges/README.md](./challenges/README.md) | Index of weekly challenges |
 | [challenges/challenge-01-word-search.md](./challenges/challenge-01-word-search.md) | LC 79 deep-dive — 2D-grid backtracking with the visited-set discipline |
 | [challenges/challenge-02-n-queens.md](./challenges/challenge-02-n-queens.md) | LC 51 — N-Queens with three pruning sets |
 | [quiz.md](./quiz.md) | 10 pattern-recognition questions |
-| [homework.md](./homework.md) | Six practice problems (~5 hrs) — three combinatorial, three constraint-satisfaction |
+| [homework.md](./homework/README.md) | Six practice problems (~5 hrs) — three combinatorial, three constraint-satisfaction |
 | [mini-project/README.md](./mini-project/README.md) | **Palindrome partitioning + sudoku solver** — the week's deliverable |
 
 ---
 
 ## Stretch goals
 
-- **Read the LeetCode "Backtracking" tag** and skim 30 titles. For each, predict in 5 seconds: enumeration of all solutions, one valid configuration, or count-only (which would be DP)? Stretches the Match-step muscle harder than any exercise this week.
+- **Read the LeetCode "Backtracking" tag** and skim 30 titles. For each, predict in 5 seconds: enumeration of all solutions, one valid configuration, or count-only (which would be DP)? Stretches the Research-constraints muscle harder than any exercise this week.
 - **Re-derive the three-line template** without re-reading Lecture 1. State the template aloud; if you cannot, you do not yet own it. Re-read and re-derive until you can.
 - **Read the Wikipedia "Backtracking" article** end-to-end (about 15 minutes). The "Description of the method" section is the canonical written defense of the choose-explore-unchoose template; the "Examples" section walks N-Queens and the eight queens puzzle.
 - **Implement N-Queens with bitmask pruning sets** instead of Python sets. Three integers (one per direction: column, diag1, diag2) replace the three sets; the bit at position `c` indicates "column `c` is used" or "diag with offset `c` is used." Faster in practice; the bit-twiddling is a Phase-3 stretch.
@@ -135,11 +135,11 @@ By the end of this week, you will be able to:
 
 A learner who has shipped Week 12 has, in their portfolio repo:
 
-- Three UMPIRE write-ups for the exercises, with recordings >= 10 minutes.
-- One UMPIRE write-up for the Word Search challenge.
+- Three FRAME write-ups for the exercises, with recordings >= 10 minutes.
+- One FRAME write-up for the Word Search challenge.
 - The quiz answered (score recorded).
 - The homework problems committed.
-- **Two mini-project write-ups** (palindrome partitioning + sudoku solver), each with a 30-second pattern-recognition memo at the top, under `umpire-writeups/c2-week-12/mini-project/`.
+- **Two mini-project write-ups** (palindrome partitioning + sudoku solver), each with a 30-second pattern-recognition memo at the top, under `frame-writeups/c2-week-12/mini-project/`.
 - A push log showing daily commits Mon–Sun.
 
 If all of that is present and pushed, Phase 2's eighth week is closed. You are ready for Week 13 — behavioral interviews and communication under pressure (the bit-manipulation and tries patterns return in Week 14's Mock #3).
@@ -148,7 +148,7 @@ If all of that is present and pushed, Phase 2's eighth week is closed. You are r
 
 ## A note on the Phase 2 ramp
 
-Week 12 is the *enumeration-week* — the second of the two recursion-heavy weeks. The three-line template is the highest-leverage Match-step skill for any combinatorial enumeration problem in Phase 3; almost every onsite asks at least one "enumerate all X" or "find one valid Y" prompt, and the recognition of "this is backtracking, not DP" is the senior signal. Implementation fluency on the three warm-ups (subsets, permutations, combinations) and the prune-and-skip variant (combination sum) is the second-most-important outcome; N-Queens and sudoku are recognition-grade this week (know the state design, know the pruning sets, implement under pressure but do not optimize for speed).
+Week 12 is the *enumeration-week* — the second of the two recursion-heavy weeks. The three-line template is the highest-leverage Research-constraints skill for any combinatorial enumeration problem in Phase 3; almost every onsite asks at least one "enumerate all X" or "find one valid Y" prompt, and the recognition of "this is backtracking, not DP" is the senior signal. Implementation fluency on the three warm-ups (subsets, permutations, combinations) and the prune-and-skip variant (combination sum) is the second-most-important outcome; N-Queens and sudoku are recognition-grade this week (know the state design, know the pruning sets, implement under pressure but do not optimize for speed).
 
 If you find yourself ahead by Friday, the right stretch is **not** another exercise — it is re-implementing subsets three different ways (recursive with choose-explore-unchoose, recursive without explicit unchoose by passing `path + [nums[i]]`, iterative with bit enumeration over `2**n`) and comparing the code clarity and the produced output ordering. The three forms produce the same set of subsets in different orders; understanding why is the kind of meta-pattern that distinguishes senior candidates.
 

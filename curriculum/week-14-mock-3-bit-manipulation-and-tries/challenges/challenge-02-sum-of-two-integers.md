@@ -1,6 +1,6 @@
 # Challenge 2 — Sum of Two Integers (LeetCode 371)
 
-> **Difficulty:** Medium. **Target solve time:** 50 minutes including the UMPIRE write-up.
+> **Difficulty:** Medium. **Target solve time:** 50 minutes including the FRAME write-up.
 
 Add two integers without using `+` or `-`. This is the bit problem that most cleanly separates strong candidates, because the *correct* answer in Python requires confronting a subtlety almost no other bit problem surfaces: **Python integers are unbounded, so they never overflow** — which means you have to *simulate* a fixed-width register with a mask. Surfacing and handling that detail is a genuine senior signal.
 
@@ -82,17 +82,17 @@ Read aloud; should hit 25–30 seconds.
 
 ---
 
-## UMPIRE outline
+## FRAME outline
 
-- **Understand:** add two ints without `+`/`-`; range `[-1000, 1000]` so negatives are in scope (that is what forces the masking). Hand-walk `5 + 3 = 8` and `-2 + 3 = 1`.
-- **Match:** bit-arithmetic. The memo above. Reject "just use `sum()`" (it uses `+` under the hood) and "convert to string and add digit-wise" (uses `+` for the digit math and is far messier).
-- **Plan:**
+- **Frame:** add two ints without `+`/`-`. Hand-walk `5 + 3 = 8` and `-2 + 3 = 1`.
+- **Research constraints:** range `[-1000, 1000]`, so negatives are in scope — that is what forces the masking. The shape is bit-arithmetic. The memo above. Reject "just use `sum()`" (it uses `+` under the hood) and "convert to string and add digit-wise" (uses `+` for the digit math and is far messier).
+- **Assess options:**
   1. Define `MASK = 0xFFFFFFFF` and `INT_MAX = 0x7FFFFFFF`.
   2. While `b & MASK` is nonzero: compute `carry = (a & b) << 1`; set `a = (a ^ b) & MASK`; set `b = carry & MASK`.
   3. After the loop, mask `a`; if `a <= INT_MAX` it is non-negative, return it; else convert to signed with `~(a ^ MASK)` (or `a - 0x100000000`).
-- **Implement:** see below.
-- **Review:** trace `-2 + 3 = 1` (the case that loops forever without the mask) and `2 + 3 = 5`.
-- **Evaluate:** `O(1)` time (at most ~32 carry-propagation steps), `O(1)` space.
+- **Make the solution:** see below.
+- **Examine (verify):** trace `-2 + 3 = 1` (the case that loops forever without the mask) and `2 + 3 = 5`.
+- **Examine (cost):** `O(1)` time (at most ~32 carry-propagation steps), `O(1)` space.
 
 ---
 

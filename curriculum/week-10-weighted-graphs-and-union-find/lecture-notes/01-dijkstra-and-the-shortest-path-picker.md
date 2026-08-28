@@ -3,7 +3,7 @@
 > **Duration:** ~2 hours.
 > **Outcome:** You can write a heap-Dijkstra from memory in under ten minutes, defend the `O((V + E) log V)` bound with a `heapq` reference, articulate why the algorithm fails on negative weights with a three-vertex counter-example, and walk the shortest-path picker flowchart from the constraint signals — weighted, non-negative, single-source, hop-constrained — to the correct algorithm without rehearsal.
 
-Last week installed the trie — the prefix-tree data structure whose invariant is *each edge is a single character*. This lecture installs **Dijkstra's algorithm** — the single-source shortest-paths algorithm whose invariant is *settle each vertex once, in non-decreasing order of distance*. The implementation is short — fewer than twenty-five lines with `heapq` — but the *Match-step recognition* (knowing when Dijkstra applies versus Bellman-Ford versus Floyd-Warshall versus BFS) is the work this week.
+Last week installed the trie — the prefix-tree data structure whose invariant is *each edge is a single character*. This lecture installs **Dijkstra's algorithm** — the single-source shortest-paths algorithm whose invariant is *settle each vertex once, in non-decreasing order of distance*. The implementation is short — fewer than twenty-five lines with `heapq` — but the *Research-constraints recognition* (knowing when Dijkstra applies versus Bellman-Ford versus Floyd-Warshall versus BFS) is the work this week.
 
 By the end of this lecture you should be able to read a problem and, within 30 seconds, say one of four things out loud: "Dijkstra — non-negative weights, single source"; "Bellman-Ford — has negative weights or needs negative-cycle detection (covered in Lecture 2)"; "Floyd-Warshall — all-pairs, `V` is small (covered in Lecture 2)"; "BFS — unweighted (Week 6, not this week)." The fifth thing — "this is *not* a shortest-path problem, here is why" — is just as important and is graded in the quiz.
 
@@ -23,7 +23,7 @@ Three corollaries follow:
 2. **Shortest paths to all vertices form a tree** rooted at `s`. This is the **shortest-path tree** (SPT). It is *not* in general a minimum spanning tree (Lecture 2 §4).
 3. **The order in which Dijkstra "settles" vertices is non-decreasing in `dist`.** The first vertex settled is `s` itself (with `dist = 0`); the second is the closest neighbor; the third is the second-closest reachable vertex; and so on. This monotonic property is the engine of the algorithm.
 
-The hard part this week is **not** the algorithm — `heapq` does the heavy lifting and the relaxation loop is short. The hard part is the *Match-step recognition*: half of all weighted-graph problems do not say "shortest path" anywhere in the prompt. They say "minimum cost," "fastest route," "lowest-latency network delay," "smallest total fare." Owning the recognition is the work.
+The hard part this week is **not** the algorithm — `heapq` does the heavy lifting and the relaxation loop is short. The hard part is the *Research-constraints recognition*: half of all weighted-graph problems do not say "shortest path" anywhere in the prompt. They say "minimum cost," "fastest route," "lowest-latency network delay," "smallest total fare." Owning the recognition is the work.
 
 ---
 

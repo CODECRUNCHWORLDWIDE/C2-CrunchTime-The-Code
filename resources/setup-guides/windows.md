@@ -88,4 +88,4 @@ Then follow the [Linux setup guide](linux.md) inside your WSL terminal. Many pro
 
 ## What's next
 
-You're ready. Head to [Week 1 — Python Foundations](../../curriculum/week-01-python-foundations/).
+You're ready. Head to [Week 0 — Python & Data-Structures Warm-Up](../../curriculum/week-00-python-data-structures-warmup/).

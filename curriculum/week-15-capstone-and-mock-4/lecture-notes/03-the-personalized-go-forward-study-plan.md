@@ -13,7 +13,7 @@ You cannot make a plan until you know what to drill. The diagnosis pulls from tw
 
 ### Source 1 — the write-up history
 
-Across the fourteen patterns, count how many quality write-ups you have per pattern, and — more importantly — note the *quality* and *struggle* of each. The pattern with the fewest write-ups, or the write-ups that took longest, or the ones where the Match section was thinnest, is a weak pattern. Build a table:
+Across the fourteen patterns, count how many quality write-ups you have per pattern, and — more importantly — note the *quality* and *struggle* of each. The pattern with the fewest write-ups, or the write-ups that took longest, or the ones where the Research constraints section was thinnest, is a weak pattern. Build a table:
 
 | Pattern | # quality write-ups | Felt fluent? | Notes |
 |---------|--------------------:|:------------:|-------|
@@ -131,13 +131,13 @@ To run a funnel that size without burning out, set a sustainable weekly cadence 
 | Pattern drilling (from §2) | ~10 problems/week | Keeps the patterns warm for the screens the funnel produces |
 | One mock | every 1–2 weeks | Keeps the loop skills warm; a real screen is the best mock |
 
-The key discipline: **apply continuously, do not batch-and-wait.** The instinct is to apply to ten companies and then stop to wait for responses. Do not — by the time the rejections come back, the funnel is empty and you have to rebuild momentum from zero. Keep the 8–12/week cadence steady so there is always something in every stage of the funnel. The recruiter-prep pack (Drill 3) gives you the target list and the outreach templates that make this cadence sustainable.
+The key discipline: **apply continuously, do not batch-and-wait.** The instinct is to apply to ten companies and then stop to wait for responses. Do not — by the time the rejections come back, the funnel is empty and you have to rebuild momentum from zero. Keep the 8–12/week cadence steady so there is always something in every stage of the funnel. The recruiter-prep pack (Exercise 3) gives you the target list and the outreach templates that make this cadence sustainable.
 
 ---
 
 ## 4. The pre-onsite four-week last-mile plan
 
-When a real onsite is scheduled — usually 1–4 weeks out — the general plan compresses into a focused last-mile sprint. This is the `study-plan/pre-onsite-4-weeks.md` artifact (built in Drill 4). The template:
+When a real onsite is scheduled — usually 1–4 weeks out — the general plan compresses into a focused last-mile sprint. This is the `study-plan/pre-onsite-4-weeks.md` artifact (built in Exercise 4). The template:
 
 | Week before onsite | Focus | Daily shape |
 |---------------------|-------|-------------|
@@ -184,7 +184,7 @@ The personalized go-forward study plan — the homework, and the course's explic
 1. The **weakness self-diagnosis** (§1) — the ranked list of 2–3 weak patterns + 1 weak behavior.
 2. The **spaced-repetition schedule** (§2) — the three tiers and the weekly rhythm.
 3. The **application cadence + funnel math** (§3) — the 8–12/week cadence and the funnel you expect.
-4. The **pre-onsite four-week plan** (§4) — the last-mile template (also Drill 4).
+4. The **pre-onsite four-week plan** (§4) — the last-mile template (also Exercise 4).
 5. The **maintenance plan** (§5) — three problems a week, one mock a month.
 6. A **final reflection** on the C2 journey.
 
@@ -214,4 +214,4 @@ If you can answer all six, you can build your personalized plan. It is the homew
 - **levels.fyi**: <https://www.levels.fyi/> — compensation context for the target-company list, so the funnel is aimed at roles worth the effort.
 - **"Staff Engineer" by Will Larson**: <https://staffeng.com/> — for the longer arc beyond the first offer; the maintenance mindset scales to a whole career.
 
-Next: build it. Go to [homework.md](../homework.md) — the personalized go-forward study plan, the course's final deliverable.
+Next: build it. Go to [homework.md](../homework/README.md) — the personalized go-forward study plan, the course's final deliverable.

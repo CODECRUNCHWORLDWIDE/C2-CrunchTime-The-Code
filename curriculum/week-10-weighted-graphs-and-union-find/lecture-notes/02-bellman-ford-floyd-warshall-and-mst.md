@@ -161,7 +161,7 @@ def cheapest_within_k_stops_dijkstra(
 
 The state `(node, hops_used)` is the key — without it, the heap would settle a vertex at its overall-shortest distance, ignoring the hop budget. This is the canonical "Dijkstra with state" pattern; you will use it again in Phase 3.
 
-Which variant is preferred depends on the graph shape. Bellman-Ford is simpler to defend and runs in `O(K * E)`; Dijkstra-with-state can be faster when the target is reachable in few hops but is harder to write correctly under pressure. For interview purposes, write the Bellman-Ford form first and mention the Dijkstra variant in Evaluate.
+Which variant is preferred depends on the graph shape. Bellman-Ford is simpler to defend and runs in `O(K * E)`; Dijkstra-with-state can be faster when the target is reachable in few hops but is harder to write correctly under pressure. For interview purposes, write the Bellman-Ford form first and mention the Dijkstra variant in Examine · cost.
 
 ---
 
@@ -212,7 +212,7 @@ Eight lines of algorithm; the rest is type annotation. Three observations:
 
 3. **The `O(V^3)` runtime is tight.** For `V = 400`, that is `6.4 * 10^7` operations — about half a second in Python. For `V = 1000`, it is `10^9` — too slow in Python but fine in C++. The constraint "all-pairs shortest paths with `V <= 400`" is the recognition cue for Floyd-Warshall.
 
-The right Match-step framing for Floyd-Warshall:
+The right Research-constraints framing for Floyd-Warshall:
 
 > "*All-pairs shortest paths with `V` bounded under 400 or so. Floyd-Warshall: three nested loops with `k` outermost; `O(V^3)` time and `O(V^2)` space. For sparse graphs with `V > 400`, Johnson's algorithm — Bellman-Ford to reweight, then Dijkstra `V` times — beats Floyd-Warshall. For interview purposes I would write Floyd-Warshall unless the constraints are unusual.*"
 
@@ -368,7 +368,7 @@ Two observations:
 
 ## 7. The MST disguises — recognition cues
 
-The high-leverage Match-step skill for MST problems is recognizing the disguise. Some surface forms:
+The high-leverage Research-constraints skill for MST problems is recognizing the disguise. Some surface forms:
 
 - **"Minimum cost to connect all points"** (LC 1584) — MST on a complete graph where edge weights are Manhattan distances.
 - **"Optimize water distribution in a village"** (LC 1168) — MST on a graph with a virtual source vertex; well-construction costs become source-to-house edges.

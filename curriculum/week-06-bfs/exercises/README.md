@@ -1,16 +1,16 @@
 # Week 6 — Exercises
 
-Five drills. Each is UMPIRE-narrated, recorded, and graded by [`timed_runner.py`](timed_runner.py).
+Five drills. Each is FRAME-narrated, recorded, and graded by [`timed_runner.py`](timed_runner.py).
 
 | # | Drill | Pattern | Difficulty | Target solve time |
 |---|-------|---------|------------|------------------:|
-| 1 | [Level order traversal](drill-01-level-order.md) | Node-BFS on a tree, level-tracking idiom | Easy | 15 min |
-| 2 | [Shortest path in a binary matrix](drill-02-shortest-path-grid.md) | Grid-BFS, 8-directional, per-node distance | Medium | 25 min |
-| 3 | [Rotting oranges](drill-03-rotting-oranges.md) | Multi-source grid-BFS | Medium | 25 min |
-| 4 | [Word ladder](drill-04-word-ladder.md) | Node-BFS on an implicit graph + wildcard bucket index | Medium/Hard | 35 min |
-| 5 | [Binary tree right side view](drill-05-binary-tree-right-side-view.md) | Node-BFS on a tree, level-tracking with last-node emit | Medium | 20 min |
+| 1 | [Level order traversal](exercise-01-level-order.md) | Node-BFS on a tree, level-tracking idiom | Easy | 15 min |
+| 2 | [Shortest path in a binary matrix](exercise-02-shortest-path-grid.md) | Grid-BFS, 8-directional, per-node distance | Medium | 25 min |
+| 3 | [Rotting oranges](exercise-03-rotting-oranges.md) | Multi-source grid-BFS | Medium | 25 min |
+| 4 | [Word ladder](exercise-04-word-ladder.md) | Node-BFS on an implicit graph + wildcard bucket index | Medium/Hard | 35 min |
+| 5 | [Binary tree right side view](exercise-05-binary-tree-right-side-view.md) | Node-BFS on a tree, level-tracking with last-node emit | Medium | 20 min |
 
-Do them in order. Drills 1 and 5 cement level tracking on trees. Drills 2 and 3 install grid-BFS with the single-source vs multi-source distinction. Drill 4 is the node-BFS-on-strings problem that anchors the rest of the week — it is the prep for the Word Ladder homework variants and the bidirectional-BFS discussion.
+Do them in order. Drills 1 and 5 cement level tracking on trees. Drills 2 and 3 install grid-BFS with the single-source vs multi-source distinction. Exercise 4 is the node-BFS-on-strings problem that anchors the rest of the week — it is the prep for the Word Ladder homework variants and the bidirectional-BFS discussion.
 
 After all five drills pass `timed_runner.py`, move on to [the challenge](../challenges/challenge-01-minimum-knight-moves.md) — Minimum Knight Moves, the canonical "BFS on an infinite implicit graph" problem.
 

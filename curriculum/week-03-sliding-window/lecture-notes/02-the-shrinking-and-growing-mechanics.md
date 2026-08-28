@@ -70,17 +70,17 @@ for right in range(n):
 
 The invariant is something like:
 
-- "At most K distinct values."
-- "All characters are unique."
-- "Sum ≤ target."
+- "At most `k` distinct values in the window."
+- "No value appears twice in the window."
+- "No value appears more than `m` times in the window."
+- "The running total stays at or below a cap."
 
-You expand `right`, possibly breaking the invariant. You shrink `left` until the invariant holds again. *Then* you record the answer — the answer is the *current window length*, which by construction is the longest valid window ending at this `right`.
+You expand `right`, possibly breaking the invariant. You shrink `left` until it holds again. *Then* you record the answer — the current window length, which by construction is the longest valid window ending at this `right`.
 
-Canonical problems:
+Problems in this week with this shape:
 
-- **Longest substring without repeating characters** (Drill 2)
-- **Longest substring with at most K distinct characters** (the homework's stretch)
-- **Fruit into baskets** (Drill 5 — at most 2 distinct)
+- **[The Longest Clean Run](../exercises/exercise-02-longest-clean-run.md)** (Exercise 2 — distinctness, returning a span)
+- **[The Cold-Chain Load](../exercises/exercise-05-cold-chain-load.md)** (Exercise 5 — at most `k` distinct, `k` a parameter)
 
 ### Shape B: shrink while the property *still holds* (the "shortest" shape)
 
@@ -96,16 +96,15 @@ for right in range(n):
 
 The property is something like:
 
-- "Sum ≥ target."
-- "Window contains all characters of `t`."
+- "The running total has reached the quota."
+- "The window contains every item on the bill of materials."
 
-You expand `right` until the property holds. Then you shrink `left` *while the property still holds*, recording the answer at each step (because shrinking might produce a smaller valid window). When the property breaks, you stop shrinking and let `right` resume.
+You expand `right` until the property holds. Then you shrink `left` *while the property still holds*, recording the answer at each step, because shrinking may produce a smaller valid window. When the property breaks, you stop shrinking and let `right` resume.
 
-Canonical problems:
+Problems in this week with this shape:
 
-- **Minimum size subarray sum** (Drill 4)
-- **Minimum window substring** (Challenge)
-- **Shortest subarray with at least K occurrences of X**
+- **[The Shortest Catchment](../exercises/exercise-04-shortest-catchment.md)** (Exercise 4 — a running total against a quota)
+- **[The Shortest Kit Span](../challenges/challenge-01-shortest-kit-span.md)** (Challenge 1 — multiset containment)
 
 The sign flip — shrink *while broken* vs. *while holding* — is the discriminator between longest and shortest. Get this wrong and the algorithm silently produces the right code for the wrong problem.
 
@@ -123,14 +122,16 @@ for right in range(n):
     answer += right - left + 1
 ```
 
-This works because, once the invariant holds at `right`, every window `[i..right]` for `i in [left..right]` is also valid (by monotonicity of the invariant). So we count `right - left + 1` valid windows at this step.
+This works because, once the invariant holds at `right`, every window `[i..right]` for `i in [left..right]` is also valid — by **monotonicity of the invariant under shrinking**. Dropping elements from the left can only reduce the distinct count, or reduce the running total, or reduce the multiplicity of any value. So we count `right - left + 1` valid windows at this step and move on.
 
-Canonical problems:
+That monotonicity is a precondition, not a decoration. If the property were "*at least* `k` distinct values," shrinking could break it, the runs ending at `right` would not form a contiguous suffix of valid starts, and the `right - left + 1` shortcut would be wrong.
 
-- **Count subarrays with at most K distinct integers**
-- **Count subarrays with product less than K** (positive numbers only)
+Problems in this week with this shape:
 
-For *exactly K*, use the trick from Lecture 1: **exactly K = atMostK − atMost(K − 1)**.
+- **[The Tasting Flight Count](../mini-project/README.md)** (mini-project Problem 5 — count runs with at most `k` distinct styles)
+- **[The Courier's Zone Count](../homework/README.md)** (homework Problem 2 — count runs with *exactly* `k` distinct zones)
+
+For *exactly K*, use the trick from Lecture 1: **exactly K = at_most(K) − at_most(K − 1)**. Write `at_most` once, call it twice.
 
 ---
 
@@ -152,7 +153,7 @@ for right in range(n):
     answer = combine(answer, current_window_value(left, right, state))
 ```
 
-The interview-quality version states each step out loud during Plan. "Add `nums[right]` to the window. Then shrink while the invariant is broken. Then record the window length."
+The interview-quality version states each step out loud during Assess options. "Add `nums[right]` to the window. Then shrink while the invariant is broken. Then record the window length."
 
 When the answer is recorded **inside** the shrink loop (shape B, "shortest"), the four pieces re-order:
 
@@ -181,133 +182,150 @@ flowchart TD
 
 ---
 
-## 5. Worked example A: longest substring with at most K distinct characters
+## 5. Worked example A: the longest single-firing glaze run
 
-A classic. Pre-Drill 5 warm-up.
+A shape-A warm-up for Exercise 5.
 
-**Problem.** Given a string `s` and an integer `k`, return the length of the longest substring that contains at most `k` distinct characters.
+**Problem.** A pottery studio logs the glaze applied to each piece as it is loaded into a kiln, in loading order. A single firing can carry at most `k` distinct glazes without cross-contamination. Given the log and `k`, return the length of the longest contiguous run of pieces that can go into one firing.
 
-**UMPIRE compressed:**
+**FRAME compressed:**
 
-- **U:** Restate. Confirm `k ≥ 0`, return 0 if `s` empty or `k == 0`. Walk an example: `s = "eceba"`, `k = 2` → `3` (`"ece"`).
-- **M:** Variable-size sliding window, shape A (longest). Auxiliary state: a frequency table; the invariant is `len(table) ≤ k`.
-- **P:** Outer `for right`. Add `s[right]` to the table. While `len(table) > k`, decrement count of `s[left]`, delete the key if its count hits 0, advance `left`. Record `best = max(best, right - left + 1)`.
-- **I:**
+- **F:** Restate. Contiguous run; the limit is on *distinct* glazes, not on piece count. Confirm `k >= 0`, and return 0 when the log is empty or `k == 0`. Walk an example: `glazes = ["ash", "ash", "iron", "ash", "cobalt", "iron"]` with `k = 2` gives `4` — the first four pieces, using only ash and iron.
+- **R:** Variable-size sliding window, shape A. Auxiliary state: a frequency table over glaze names. The invariant is `len(table) <= k`.
+- **A:** Outer loop on `right`. Add `glazes[right]` to the table. While `len(table) > k`: decrement the count of `glazes[left]`, delete the key if the count reaches 0, advance `left`. Then record `best = max(best, right - left + 1)`.
+- **M:**
 
 ```python
-def longest_at_most_k_distinct(s: str, k: int) -> int:
-    if k == 0 or not s:
+def longest_single_firing(glazes: list[str], k: int) -> int:
+    if k == 0 or not glazes:
         return 0
-    counts = {}
+    counts: dict[str, int] = {}
     left = 0
     best = 0
-    for right, ch in enumerate(s):
-        counts[ch] = counts.get(ch, 0) + 1
+    for right, glaze in enumerate(glazes):
+        counts[glaze] = counts.get(glaze, 0) + 1
         while len(counts) > k:
-            counts[s[left]] -= 1
-            if counts[s[left]] == 0:
-                del counts[s[left]]
+            counts[glazes[left]] -= 1
+            if counts[glazes[left]] == 0:
+                del counts[glazes[left]]
             left += 1
         best = max(best, right - left + 1)
     return best
 ```
 
-- **R:** Trace `s = "eceba"`, `k = 2`:
-  - r=0 ('e'): counts={e:1}, |counts|=1 ≤ 2, best=1.
-  - r=1 ('c'): counts={e:1, c:1}, |counts|=2 ≤ 2, best=2.
-  - r=2 ('e'): counts={e:2, c:1}, best=3.
-  - r=3 ('b'): counts={e:2, c:1, b:1}, |counts|=3 > 2; shrink. left=0, e:2→1. left=1, c:1→0, del 'c'. counts={e:1, b:1}. left=2. best=3.
-  - r=4 ('a'): counts={e:1, b:1, a:1}, |counts|=3 > 2; shrink. left=2, e:1→0, del 'e'. counts={b:1, a:1}. left=3. best=3.
-  - Return 3. ✓
-- **E:** **O(n) time** — amortized, each index moves at most n times. **O(k) space** — the counts dict holds at most k+1 entries (transiently, before shrink restores the invariant). Tradeoff: brute force "for each pair (l, r), build a set of chars in s[l..r] and check size" is O(n³). Sliding window collapses it. No improvement obvious.
+- **E (verify):** Trace `glazes = ["ash", "ash", "iron", "ash", "cobalt", "iron"]`, `k = 2`:
+  - `r=0` ash: `{ash: 1}`, one distinct, window 0–0, `best = 1`.
+  - `r=1` ash: `{ash: 2}`, one distinct, window 0–1, `best = 2`.
+  - `r=2` iron: `{ash: 2, iron: 1}`, two distinct, window 0–2, `best = 3`.
+  - `r=3` ash: `{ash: 3, iron: 1}`, two distinct, window 0–3, `best = 4`.
+  - `r=4` cobalt: three distinct — shrink. Drop `glazes[0]` ash → count 2, still three, `left = 1`. Drop `glazes[1]` ash → count 1, still three, `left = 2`. Drop `glazes[2]` iron → count 0, **delete the key**, now two distinct, `left = 3`. Window 3–4, length 2. `best` stays 4.
+  - `r=5` iron: `{ash: 1, cobalt: 1, iron: 1}` — three distinct, shrink. Drop `glazes[3]` ash → count 0, delete, now two distinct, `left = 4`. Window 4–5, length 2. `best` stays 4.
+  - Return 4. ✓
+- **E (cost):** **`O(n)` time** — amortized; each index moves forward at most `n` times across the whole run. **`O(k)` space** — the table holds at most `k + 1` entries, transiently, before the shrink restores the invariant. Tradeoff: the brute force that builds a fresh set for every start/end pair is `O(n³)`, and the smarter version that extends one set per start is `O(n²)`. The window reuses the shrink work. No improvement available.
 
-This is the template for an entire family of problems. Internalize the shape; you'll re-use it on Drill 5 (Fruit Into Baskets is exactly this template with `k=2`) and on the homework's "exactly K distinct" stretch.
+This is the template for an entire family of problems. Internalize the shape — Exercise 5 is this template with a `(start, count)` contract and a tie-break bolted on, and the homework's "exactly K distinct" problem calls it twice.
 
 ---
 
-## 6. Worked example B: minimum size subarray sum (shape B)
+## 6. Worked example B: the fewest shifts to hit a build target
 
-**Problem.** Given an array of positive integers `nums` and a target integer `target`, return the **minimal length** of a contiguous subarray whose sum is `>= target`. If no such subarray exists, return 0.
+A shape-B warm-up for Exercise 4, in a different factory.
 
-**Why "positive integers" matters:** with negatives, the running sum is not monotonic in `right` (it can dip and recover). The sliding-window invariant — "shrinking from the left always *decreases* the sum" — relies on every element being non-negative. With negatives, you need prefix-sum + hash map (Week 2's Challenge 1 shape), not sliding window.
+**Problem.** A workshop logs how many finished units came off the bench in each shift, in shift order. A shift may produce nothing, but it can never produce a negative number of units. Given the log and a build target, return the **fewest consecutive shifts** whose combined output reaches the target. If the workshop never reaches the target over any run of shifts, return `0`.
 
-**UMPIRE compressed:**
+**Why non-negativity matters:** the running total must be **monotone under shrinking** — dropping the leftmost shift can only lower the total, never raise it. That is what lets you stop shrinking the moment the total falls below the target and be certain no shorter qualifying run was skipped. If a shift could report a negative figure (a scrapped batch, say), shrinking from the left could *raise* the total, the guarantee dies, and sliding window is the wrong pattern — you would reach for prefix sums plus a hash map instead, the Week 2 Challenge shape.
 
-- **U:** Positive integers only. Return *minimum length*. If no subarray reaches the target, return 0. Walk: `nums = [2,3,1,2,4,3]`, `target = 7` → `2` (`[4,3]`).
-- **M:** Variable-size sliding window, shape B (shortest). Auxiliary state: a running sum; the property is `running >= target`.
-- **P:** Outer `for right`. Add `nums[right]` to running. While `running >= target`, record `best = min(best, right - left + 1)`, subtract `nums[left]` from running, advance `left`. After the outer loop, return `0` if `best` is still infinity, else `best`.
-- **I:**
+**FRAME compressed:**
+
+- **F:** Output figures are non-negative and may be zero. Return a *count of shifts*, not the output total and not a position. No qualifying run returns `0`. Walk: `output = [5, 1, 9, 2, 3, 4]`, `target = 12` → `3`. No single shift reaches 12 (the best is 9) and no pair does either (the best pair is `9 + 2 = 11`), so three is the floor; `5 + 1 + 9 = 15` reaches it.
+- **R:** Variable-size sliding window, shape B (shortest). Auxiliary state: a single running total. The property maintained during the shrink is `running >= target`.
+- **A:** Outer `for right`. Add `output[right]` to `running`. While `running >= target`: record `best = min(best, right - left + 1)`, subtract `output[left]`, advance `left`. After the outer loop, return `0` if `best` is still infinite, else `best`.
+- **M:**
 
 ```python
-def min_size_subarray_sum(target: int, nums: list[int]) -> int:
+def fewest_shifts_to_target(output: list[int], target: int) -> int:
     left = 0
     running = 0
     best = float("inf")
-    for right, x in enumerate(nums):
-        running += x
+    for right, units in enumerate(output):
+        running += units
         while running >= target:
             best = min(best, right - left + 1)
-            running -= nums[left]
+            running -= output[left]
             left += 1
     return 0 if best == float("inf") else best
 ```
 
-- **R:** Trace `nums = [2,3,1,2,4,3]`, `target = 7`:
-  - r=0 (2): running=2, no shrink.
-  - r=1 (3): running=5, no shrink.
-  - r=2 (1): running=6, no shrink.
-  - r=3 (2): running=8 ≥ 7. Shrink: best=4 (window length 4: [2,3,1,2]); running-=2, running=6, left=1. running=6 < 7, exit shrink.
-  - r=4 (4): running=10 ≥ 7. Shrink: best=4→min(4,4)=4; running-=3, running=7, left=2. Still 7 ≥ 7; best=min(4,3)=3; running-=1, running=6, left=3. Exit shrink.
-  - r=5 (3): running=9 ≥ 7. Shrink: best=min(3,3)=3; running-=2, running=7, left=4. Still 7 ≥ 7; best=min(3,2)=2; running-=4, running=3, left=5. Exit shrink.
-  - Return 2. ✓
-- **E:** **O(n) time** (amortized; both indices move at most n times). **O(1) space** (one running sum, two pointers). Tradeoffs: brute force is O(n²); prefix-sum + binary search is O(n log n)/O(n); sliding window with the positivity guarantee is O(n)/O(1) — strictly best.
+- **E (verify):** Trace `output = [5, 1, 9, 2, 3, 4]`, `target = 12`:
+  - `r=0` (5): `running = 5`. Below target, no shrink.
+  - `r=1` (1): `running = 6`. Below target.
+  - `r=2` (9): `running = 15` ≥ 12. Shrink: record length `2 - 0 + 1 = 3`, so `best = 3`; subtract `output[0] = 5` → `running = 10`, `left = 1`. Below target, exit.
+  - `r=3` (2): `running = 12` ≥ 12. Shrink: record length `3 - 1 + 1 = 3`, `best` stays 3; subtract `output[1] = 1` → `running = 11`, `left = 2`. Below target, exit.
+  - `r=4` (3): `running = 14` ≥ 12. Shrink: record length `4 - 2 + 1 = 3`, `best` stays 3; subtract `output[2] = 9` → `running = 5`, `left = 3`. Below target, exit.
+  - `r=5` (4): `running = 9`. Below target.
+  - Return 3. ✓
+- **E (cost):** **`O(n)` time** — amortized; both indices move forward at most `n` times each across the whole run. **`O(1)` space** — one running total and two indices. Tradeoffs: checking every start/end pair is `O(n²)` time and `O(1)` space; prefix sums plus a binary search per start is `O(n log n)` time and `O(n)` space and, unlike the window, tolerates negative figures; the sliding window is `O(n)` time and `O(1)` space and is strictly best *given non-negativity*.
 
-This is the template you'll use on Drill 4 directly, and again on the Minimum Window Substring challenge with a richer invariant.
+Exercise 4 is this template with a harder contract — it wants `(start, days)`, it breaks ties on the largest total, and it returns `None` rather than `0` when the quota is unreachable. Challenge 1 is the same shape again with a much richer invariant.
 
 ---
 
-## 7. The frequency-invariant variant: matching a target Counter
+## 7. The frequency-invariant variant: covering a target multiset
 
-The hardest sliding-window family uses an invariant like "**the window contains all characters of `t` with at least the required counts**." This is the shape of Drill 3 (permutation in string) and Challenge 1 (minimum window substring).
+The hardest sliding-window family uses an invariant like "**the window contains every item the order requires, with at least the required multiplicity**." Two problems this week live here: [Exercise 3 — The Rota Window](../exercises/exercise-03-rota-window.md), where the window is *fixed*-size and the invariant is table **equality**, and [Challenge 1 — The Shortest Kit Span](../challenges/challenge-01-shortest-kit-span.md), where the window is *variable*-size, shape B, and the invariant is table **containment**.
 
-The trick: don't compare full Counters on every iteration — that's `O(alphabet)` per step. Instead, maintain a single integer `need` (or `formed`) that tracks **how many required characters are currently satisfied**.
+The naive move is to compare the window's whole frequency table against the target's on every step. That costs one probe per distinct required item — `O(catalogue)` per step — and, worse, it re-derives "is it covered?" from scratch every time instead of maintaining it.
+
+The fix: maintain a single integer, `matched`, holding **how many distinct required items are currently satisfied in the window**. Let `distinct_wanted` be the number of distinct items the order needs. Then `matched == distinct_wanted` exactly when the window covers the order.
+
+Here is the mechanism on its own, stripped down to return only a length, so the state updates are visible without the bookkeeping:
 
 ```python
 from collections import Counter
 
-def min_window_substring(s: str, t: str) -> str:
-    if not s or not t:
-        return ""
-    need = Counter(t)
-    required = len(need)         # number of distinct chars needed
-    formed = 0                   # number of distinct chars currently satisfied
-    window_counts = {}
+def shortest_covering_length(supply: list[str], demand: list[str]) -> int:
+    """Length of the shortest contiguous stretch of supply that contains every
+    item in demand, counting duplicates. 0 if no stretch does."""
+    if not demand:
+        return 0
+    wanted = Counter(demand)
+    distinct_wanted = len(wanted)
+
+    on_hand: dict[str, int] = {}
+    matched = 0
     left = 0
-    best = (float("inf"), 0, 0)  # (length, left, right)
-    for right, ch in enumerate(s):
-        window_counts[ch] = window_counts.get(ch, 0) + 1
-        if ch in need and window_counts[ch] == need[ch]:
-            formed += 1
-        while formed == required:
-            if right - left + 1 < best[0]:
-                best = (right - left + 1, left, right)
-            lch = s[left]
-            window_counts[lch] -= 1
-            if lch in need and window_counts[lch] < need[lch]:
-                formed -= 1
+    best = float("inf")
+
+    for right, item in enumerate(supply):
+        on_hand[item] = on_hand.get(item, 0) + 1
+        if item in wanted and on_hand[item] == wanted[item]:
+            matched += 1
+
+        while matched == distinct_wanted:
+            best = min(best, right - left + 1)
+            dropped = supply[left]
+            on_hand[dropped] -= 1
+            if dropped in wanted and on_hand[dropped] < wanted[dropped]:
+                matched -= 1
             left += 1
-    return "" if best[0] == float("inf") else s[best[1]:best[2] + 1]
+
+    return 0 if best == float("inf") else best
 ```
 
-The invariant: `formed` equals `required` exactly when every required character is in the window with at least the required count. Each character's contribution to `formed` flips *at most twice* across the whole algorithm (once when count hits target, once when it dips below). So the total work is `O(n)` amortized, with `O(|alphabet| + |t|)` space.
+Two comparison operators carry the entire trick, and they are the two lines to stare at:
 
-This is the shape worked end-to-end in the Week 3 Challenge.
+- Increment `matched` only when an item's window count becomes **exactly equal** to its requirement — `==`, never `>=`. A third bolt when the order wants one must not increment again.
+- Decrement `matched` only when the count becomes **strictly less** than the requirement — `<`, never `<=`. Dropping from three bolts to two when the order wants one must not decrement.
+
+Each required item's contribution to `matched` flips at most twice across the whole algorithm — once when its count first reaches the requirement, once when it later dips below. So `matched` costs `O(len(demand))` in total updates and every step of the loop is `O(1)`. The whole thing is `O(n + m)` amortized time, and `O(m + c)` space where `c` is the catalogue size.
+
+**What this snippet is not.** It returns a bare length. Challenge 1 asks for `(start, length)`, defines a tie-break toward the larger start, distinguishes "empty order" from "impossible order," and expects you to justify the catalogue bound out loud. The mechanism above is the engine; the contract is the work. Read the challenge before you reach for this.
 
 ---
 
 ## 8. The bug census — what goes wrong in shrink loops
 
-Across hundreds of learner solutions, these are the bugs that appear most often. Memorize them; they're the ones to scan for in Review.
+Across hundreds of learner solutions, these are the bugs that appear most often. Memorize them; they're the ones to scan for in Examine (verify).
 
 - **Forgetting to update the answer in shape B.** Shape A records the answer *after* the shrink loop. Shape B records *inside* the shrink loop. Mixing them up means you either miss valid windows or count invalid ones.
 - **Missing the inner-loop guard.** `while invariant_broken(state):` without an upper bound on `left` will run past the end of the array if the invariant can never be restored. Pair the condition with `and left <= right` for safety on weird inputs.
@@ -315,7 +333,7 @@ Across hundreds of learner solutions, these are the bugs that appear most often.
 - **Order of operations in shape B.** Record-then-remove, not remove-then-record. If you remove first, the window you measured is no longer the one you're recording.
 - **Recomputing the window value from scratch.** `len(set(s[left:right+1]))` looks innocent but is `O(n)` per call, which makes the whole algorithm `O(n²)`. Maintain the state incrementally.
 - **Counter-as-state with negative counts.** `Counter` subtraction can leave keys with value 0 in the dict. `del` them when their count hits 0; otherwise `len(counts)` lies about distinct count.
-- **Mixing up "at most" and "exactly."** "Exactly K distinct" is a different problem from "at most K distinct." The naive sliding-window approach to "exactly K" is wrong. Use the atMostK − atMost(K − 1) trick.
+- **Mixing up "at most" and "exactly."** "Exactly K distinct" is a different problem from "at most K distinct," and no single window computes it directly. Use the `at_most(K) − at_most(K − 1)` trick.
 - **Forgetting the empty-input / k=0 case.** Most templates default to "return 0" on empty input or `k=0`. State it explicitly at the top of the function or in the loop precondition.
 
 ---
@@ -342,7 +360,7 @@ Read the problem. Then, before writing code, run through this flow out loud:
 4. What's the auxiliary state?
    - Sum/count? ─→ single integer.
    - Distinctness? ─→ set or Counter.
-   - Frequency match against a target? ─→ Counter + a need/formed integer.
+   - Frequency match against a target? ─→ Counter + a matched-count integer.
    - Max/min over the window? ─→ monotonic deque (Week 9 territory).
 
 5. What's the invariant, in one sentence?
@@ -363,7 +381,7 @@ flowchart TD
 
 *Steps 1 through 3 of the decision flow: recognize the pattern, pick fixed or variable, then pick the shrink shape.*
 
-By Sunday, this flow should be reflexive. Drill 1 is fixed-size — easy warm-up. Drills 2 and 5 are shape A. Drill 4 is shape B. Drill 3 is fixed-size with frequency invariant. Challenge 1 is the hardest combination (shape B + frequency invariant + need counter).
+By Sunday, this flow should be reflexive. Exercise 1 is fixed-size — easy warm-up. Drills 2 and 5 are shape A. Exercise 4 is shape B. Exercise 3 is fixed-size with a frequency invariant. Challenge 1 is the hardest combination: shape B, frequency invariant, matched count. Shape C appears nowhere in the drills on purpose — you meet it first in the [mini-project's Problem 5](../mini-project/README.md) and again in the [homework's exactly-K problem](../homework/README.md).
 
 ---
 
@@ -407,27 +425,27 @@ def update_remove(seen, x):
 
 For sets, you usually pair this with a "while x in seen: shrink" inner loop. The set has no duplicates by definition, so removal is unconditional once `left` reaches the duplicate.
 
-### Frequency match against a target (the `need`/`formed` trick)
+### Frequency match against a target (the matched-count trick)
 
 ```python
 # Setup
-need = Counter(t)
-required = len(need)
-formed = 0
-window_counts = {}
+wanted = Counter(demand)
+distinct_wanted = len(wanted)
+matched = 0
+on_hand: dict[str, int] = {}
 
 # On add:
-window_counts[ch] = window_counts.get(ch, 0) + 1
-if ch in need and window_counts[ch] == need[ch]:
-    formed += 1
+on_hand[item] = on_hand.get(item, 0) + 1
+if item in wanted and on_hand[item] == wanted[item]:
+    matched += 1
 
 # On remove:
-window_counts[lch] -= 1
-if lch in need and window_counts[lch] < need[lch]:
-    formed -= 1
+on_hand[dropped] -= 1
+if dropped in wanted and on_hand[dropped] < wanted[dropped]:
+    matched -= 1
 ```
 
-The invariant: `formed == required` iff every required character is satisfied. This is the precise tool for Challenge 1.
+The invariant: `matched == distinct_wanted` if and only if every required item is satisfied at its full multiplicity. Note the two operators — `==` on the add, `<` on the remove. Loosen either one and the count drifts. This is the precise tool for Challenge 1.
 
 ---
 
@@ -440,17 +458,17 @@ Without notes, answer:
 3. **Why is sliding window O(n) and not O(n²) despite the nested for/while?** (Amortized argument: each index advances at most n times in total across the whole algorithm.)
 4. **What's the canonical bug in shape A's shrink loop?** (Forgetting to remove the element at `left` before advancing, leaving stale state.)
 5. **Why does the sliding-window approach to "subarray sum at least K" require positive numbers?** (Shrinking from the left must monotonically decrease the sum; negatives break that monotonicity.)
-6. **Trace the longest-at-most-2-distinct sliding window on `'aabbccc'`.** (Best window: `'bbccc'` length 5 or `'aabb'` length 4 or `'ccc'`... walk through it; the answer is 5.)
-7. **What's the auxiliary state for Challenge 1 (minimum window substring)?** (A `Counter` of target frequencies, a `dict` of window frequencies, and the `need/formed` pair of integers.)
+6. **Trace the at-most-2-distinct window over the glaze log `["ash", "iron", "iron", "ash", "cobalt", "iron", "iron"]`.** (Longest valid run is indices 0–3, `ash iron iron ash`, length 4. Adding `cobalt` at index 4 forces the shrink; the run 4–6 that follows is only length 3. Answer: 4.)
+7. **What's the auxiliary state for Challenge 1, The Shortest Kit Span?** (A `Counter` of the bill's frequencies, a `dict` of the window's frequencies, and two integers: how many distinct part codes the bill needs, and how many are currently matched.)
 
-If you can answer all seven, proceed to the [exercises](../exercises/README.md). If you can't, re-read sections 3–7 before starting Drill 1.
+If you can answer all seven, proceed to the [exercises](../exercises/README.md). If you can't, re-read sections 3–7 before starting Exercise 1.
 
 ---
 
 ## Further reading
 
 - **CP-Algorithms — Two Pointers Technique** (the article conflates two-pointer and sliding window in places — read critically): <https://cp-algorithms.com/two_pointers/two_pointers.html>
-- **NeetCode's sliding-window playlist** — walks the canonical 10 problems in this lecture's vocabulary.
-- **LeetCode editorial for Problem 76 (Minimum Window Substring)** — the official write-up is excellent and pairs well with Challenge 1.
+- **NeetCode's sliding-window playlist** (YouTube, free) — walks a canonical set of problems in vocabulary close to this lecture's.
+- **Practice elsewhere.** The covering-multiset shape from §7 also appears as [LeetCode 76 · Minimum Window Substring](https://leetcode.com/problems/minimum-window-substring/) if you want a judge to run against, though the contract there differs from Challenge 1's. Solve the challenge first, from the pattern — reading someone else's write-up before you have derived it yourself is how a pattern fails to stick.
 
 Next: the [exercises](../exercises/README.md). Five drills, in order. Recorder running.

@@ -51,7 +51,7 @@ Keep this tab open this week. Builds on Weeks 1–2.
 | **Amortized O(n)** | Total iteration count is O(n) even with a nested `while`, because each index advances at most n times |
 | **Frequency table** | `Counter` or `defaultdict(int)` mapping value → count inside the window |
 | **At most K** | "Window length ≤ K" or "at most K distinct values" — both produce valid sliding-window shapes |
-| **Exactly K** | A trickier reformulation: `exactly K = atMostK - atMostKMinus1`. Often the right move. |
+| **Exactly K** | A reformulation, not a window: `exactly K = at_most(K) - at_most(K - 1)`. Write the helper once, call it twice. |
 | **Monotonic deque** | A deque kept in monotonic order to query window max/min in O(1) — Week 9 |
 | **Two-pointer (recap)** | Two indices that may converge, swap roles, or partition. *Different from sliding window.* |
 | **Contiguous** | Adjacent in the original array / string; no skipping |

@@ -63,11 +63,11 @@ Answer key at the bottom.
 |------:|---------|
 | 9-10 | Weighted-graph / DSU recognition is interview-ready, including the negative-space rejections (Q8). Move on. |
 | 7-8 | Good — re-read [Lecture 1 §5](./lecture-notes/01-dijkstra-and-the-shortest-path-picker.md) and [Lecture 3 §4](./lecture-notes/03-union-find-and-the-dsu-triggers.md) for the sub-shape questions you missed. Most learners miss Q8 (BFS rejection) or Q9 (DSU on a virtual graph) first time; that is normal. |
-| 5-6 | Redo Exercises 2 and 3 with stricter Match sections. The Bellman-Ford and DSU recognition needs more reps before Mock #2. |
+| 5-6 | Redo Exercises 2 and 3 with stricter Research constraints sections. The Bellman-Ford and DSU recognition needs more reps before Mock #2. |
 | <5 | The pattern recognition is not yet automatic. Re-read all three lectures, re-do all three exercises with the algorithm choice stated aloud, then retake the quiz. |
 
 This quiz is about **fluency**, not difficulty. The discriminating questions are Q8 (negative-space — BFS not Dijkstra), Q9 (DSU on a virtual graph), and Q10 (streaming DSU). Q8 is the most-missed; senior candidates over-apply Dijkstra to any graph problem.
 
 Q1 (Dijkstra) and Q5 (Bellman-Ford with hop bound) are the cleanest direct-template questions. Q3 and Q4 test recognition of the "small `V` -> Floyd-Warshall" and "connect all -> MST" reflexes.
 
-When done, the [homework](./homework.md) is next.
+When done, the [homework](./homework/README.md) is next.

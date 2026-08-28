@@ -45,15 +45,15 @@ The clock starts when the prompt is read. Recommended allocation — the same sh
 
 | Phase | Wall-clock | What's happening |
 |------:|:----------:|------------------|
-| 0:00 – 0:03 | 3 min | **U.** Read aloud. Restate. Ask one or two clarifying questions. Walk one example. |
-| 0:03 – 0:05 | 2 min | **M.** Name the pattern. Deliver the 30-second pattern-recognition memo. |
-| 0:05 – 0:10 | 5 min | **P.** Sketch the approach. Data structures, loop shape, complexity target. |
-| 0:10 – 0:25 | 15 min | **I.** Write the code. Narrate each line. Narrate the pauses. |
-| 0:25 – 0:35 | 10 min | **R.** Trace on at least two examples. Find at least one bug. |
-| 0:35 – 0:43 | 8 min | **E.** Time and space. Trade-offs. One variant. |
+| 0:00 – 0:03 | 3 min | **F.** Read aloud. Restate. Ask one or two clarifying questions. Walk one example. |
+| 0:03 – 0:05 | 2 min | **R.** Name the limits and the pattern. Deliver the 30-second pattern-recognition memo. |
+| 0:05 – 0:10 | 5 min | **A.** Sketch the approach. Data structures, loop shape, complexity target. |
+| 0:10 – 0:25 | 15 min | **M.** Write the code. Narrate each line. Narrate the pauses. |
+| 0:25 – 0:35 | 10 min | **E · verify.** Trace on at least two examples. Find at least one bug. |
+| 0:35 – 0:43 | 8 min | **E · cost.** Time and space. Trade-offs. One variant. |
 | 0:43 – 0:45 | 2 min | Wrap-up. Summarize. Thank the interviewer. |
 
-These are guidelines, not rules. If a bit problem's Match is instant (you recognize the XOR fold in 10 seconds), bank the saved time in Review. The structure is the discipline; the literal minutes flex.
+These are guidelines, not rules. If a bit problem's Research constraints step is instant (you recognize the XOR fold in 10 seconds), bank the saved time in Examine (verify). The structure is the discipline; the literal minutes flex.
 
 ---
 
@@ -61,7 +61,7 @@ These are guidelines, not rules. If a bit problem's Match is instant (you recogn
 
 The three speech tells we have built since Week 4, now with a bit-manipulation flavor:
 
-### Tell 1 — the Match memo, clean in 30 seconds
+### Tell 1 — the Research-constraints memo, clean in 30 seconds
 
 > *"Every element appears twice except one, and the constraint says constant extra space — so this is an XOR fold. I reduce the array by `^`: pairs cancel because `a ^ a == 0`, the lone element survives because `a ^ 0 == a`, and order doesn't matter because XOR is commutative and associative. Time `O(n)`, space `O(1)`. The hash-map answer is `O(n)` space, which the constant-space hint is steering me away from."*
 
@@ -81,14 +81,14 @@ The recovery is a *strength* signal, not a weakness. Interviewers grade it posit
 
 The protocol is the one you have run twice already; the discipline is what matters now.
 
-**Immediately after the clock stops (5 minutes):** open a file, set a 5-minute timer, free-write what is fresh. What surprised you? What felt automatic? What felt clumsy? Did you deliver the Match memo cleanly? Did you fall silent? Save as `mocks/mock-03/immediate-notes.md`. Do not grade yet — raw observations only.
+**Immediately after the clock stops (5 minutes):** open a file, set a 5-minute timer, free-write what is fresh. What surprised you? What felt automatic? What felt clumsy? Did you deliver the Research-constraints memo cleanly? Did you fall silent? Save as `mocks/mock-03/immediate-notes.md`. Do not grade yet — raw observations only.
 
 **Saturday — two passes:**
 
 - **Pass 1 — 1.5×, the whole recording, timestamp doc open.** Watch all 45 minutes at 1.5× (30 wall-clock minutes). Drop one line per noticeable *pattern* (not every "um"). 10–15 timestamps. Example:
 
 ```
-04:30  Match memo ran 70 seconds — added an unrequested comparison. Too long.
+04:30  R memo ran 70 seconds — added an unrequested comparison. Too long.
 11:00  Built the binary trie MSB-first first try. Good.
 19:00  Found the off-by-one in the greedy walk but fixed it silently.
 28:00  Skipped stating the O(n·32) bound out loud.
@@ -102,7 +102,7 @@ The protocol is the one you have run twice already; the discipline is what matte
 
 ## 6. The self-feedback write-up and the trajectory across three mocks
 
-The deliverable goes at `umpire-writeups/c2-week-14/mock-03-self-feedback.md`. Same six-section structure as Mock #1 (problem header; what I felt; what the recording shows; the Match memo graded; thinking-aloud graded; recovery graded; Evaluate graded; ONE behavior change; what I'm *not* going to change). Mock #3 adds one section that Mocks #1 and #2 did not have:
+The deliverable goes at `frame-writeups/c2-week-14/mock-03-self-feedback.md`. Same six-section structure as Mock #1 (problem header; what I felt; what the recording shows; the Research-constraints memo graded; thinking-aloud graded; recovery graded; Examine (cost) graded; ONE behavior change; what I'm *not* going to change). Mock #3 adds one section that Mocks #1 and #2 did not have:
 
 > ## Trajectory across Mock #1 → #2 → #3
 >
@@ -117,10 +117,10 @@ Pick **one** change. Specific. Testable. "I will state the complexity bound out 
 ## 7. The six anti-patterns (scan for these in pass 1)
 
 1. **Silent coding** — 30+ seconds of typing with no commentary.
-2. **Skipping Match** — Implement starts within 2 minutes of Understand; no pattern named.
-3. **Implementing without planning** — the code is rewritten more than once before any successful run.
-4. **Not tracing in Review** — Review is under 2 minutes; no example walked end-to-end.
-5. **Skipping Evaluate** — you finish and never state time / space / trade-off.
+2. **Skipping Research constraints** — Make the solution starts within 2 minutes of Frame; no pattern named.
+3. **Coding without assessing options** — the code is rewritten more than once before any successful run.
+4. **Not tracing in Examine (verify)** — that step is under 2 minutes; no example walked end-to-end.
+5. **Skipping Examine (cost)** — you finish and never state time / space / trade-off.
 6. **Defending broken code** — you realize at minute 30 the approach is wrong and keep going anyway.
 
 If pass 1 shows three or more, your Mock #4 (Week 15) plan writes itself: pick the worst one, make it your one behavior change.
@@ -243,7 +243,7 @@ Without notes, answer:
 1. **What three constraints make Mock #3 "near-real"?** (Video on; hard 45-minute clock; no peeking at anything.)
 2. **What is the two-pass watching protocol?** (Pass 1: full recording at 1.5× with timestamps. Pass 2: only flagged segments at 1.0× with prescriptions.)
 3. **What section does the Mock #3 self-feedback add that Mocks #1 and #2 did not?** (The trajectory across Mock #1 → #2 → #3 — did you make the prior behavior changes?)
-4. **Name three of the six anti-patterns.** (Silent coding; skipping Match; implementing without planning; not tracing in Review; skipping Evaluate; defending broken code.)
+4. **Name three of the six anti-patterns.** (Silent coding; skipping Research constraints; coding without assessing options; not tracing in Examine (verify); skipping Examine (cost); defending broken code.)
 5. **Why is a binary trie inserted MSB-first?** (The high bits dominate the XOR magnitude; the greedy walk must commit high bits before low ones to maximize the result.)
 6. **What is the greedy rule when walking the binary trie for Maximum XOR?** (At each bit, prefer the child for the *opposite* bit — it contributes a 1 to that position of the XOR — falling back to the same-bit child if the opposite is absent.)
 

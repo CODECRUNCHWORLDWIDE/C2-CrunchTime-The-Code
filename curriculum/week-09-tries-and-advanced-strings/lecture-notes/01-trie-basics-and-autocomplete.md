@@ -52,7 +52,7 @@ flowchart TD
 ```
 *The shared c-a prefix branches into car, cart, and cat while d leads to dog.*
 
-The hard part this week is **not** the algorithm — `insert` and `search` are short loops over the characters. The hard part is the *Match-step recognition*: half of all trie problems do not say "trie" anywhere in the prompt. They say "given a dictionary," "find all words from a list on a grid," "longest word that begins with `pre`," "replace each word by its shortest root in this dictionary." Owning the recognition is the work.
+The hard part this week is **not** the algorithm — `insert` and `search` are short loops over the characters. The hard part is the *Research-constraints recognition*: half of all trie problems do not say "trie" anywhere in the prompt. They say "given a dictionary," "find all words from a list on a grid," "longest word that begins with `pre`," "replace each word by its shortest root in this dictionary." Owning the recognition is the work.
 
 ---
 
@@ -300,13 +300,13 @@ Trade-off versus the hash set:
 - **Hash set:** `O(L)` expected for exact-match; cannot answer prefix queries; `O(N)` space; constant-factor smaller than the trie because no per-node overhead.
 - **Trie:** `O(L)` worst-case for exact-match; `O(P)` for `starts_with`; `O(P + Q)` for autocomplete; `O(N)` space with prefix sharing.
 
-If you need prefix queries, the trie is the only structure that answers them in sub-linear time. If you only need exact-match and `L` is small, the hash set wins on simplicity and constant factors. State the choice out loud during the Match step.
+If you need prefix queries, the trie is the only structure that answers them in sub-linear time. If you only need exact-match and `L` is small, the hash set wins on simplicity and constant factors. State the choice out loud during the Research constraints step.
 
 ---
 
 ## 7. The four common bugs
 
-After hundreds of UMPIRE write-ups, the same four bugs show up.
+After hundreds of FRAME write-ups, the same four bugs show up.
 
 ### Bug 1 — Forgetting the `END` sentinel
 
@@ -357,11 +357,11 @@ The LCP walk (covered in Lecture 2 §1) terminates when a node has more than one
 
 LC 208 — Implement Trie (Prefix Tree). The canonical entry-level trie problem.
 
-**Match.** A trie problem because the operations are exactly `insert / search / starts_with`. No other data structure offers `starts_with` in `O(P)`.
+**Research constraints.** A trie problem because the operations are exactly `insert / search / starts_with`. No other data structure offers `starts_with` in `O(P)`.
 
-**Plan.** Use the dict-of-dict form. Three methods, each a four-to-six-line walk. Initialize `self.root: Dict[str, Any] = {}` in `__init__`.
+**Assess options.** Use the dict-of-dict form. Three methods, each a four-to-six-line walk. Initialize `self.root: Dict[str, Any] = {}` in `__init__`.
 
-**Implement.**
+**Make the solution.**
 
 ```python
 from typing import Any, Dict
@@ -399,9 +399,9 @@ class Trie:
 
 (LeetCode uses `startsWith` rather than `starts_with` — match the harness. In your portfolio, prefer the PEP 8 form.)
 
-**Review.** Test on `["apple", "app"]`. After both inserts, `search("apple") == True`, `search("app") == True`, `search("ap") == False`, `startsWith("ap") == True`. Each matches the spec.
+**Examine · verify.** Test on `["apple", "app"]`. After both inserts, `search("apple") == True`, `search("app") == True`, `search("ap") == False`, `startsWith("ap") == True`. Each matches the spec.
 
-**Evaluate.** Time: `O(L)` per operation, where `L` is the input length. Space: `O(N)` where `N` is the total length of inserted words — with prefix sharing, strictly less. Trade against `set[str] + length-indexed-set` for `startsWith` — that approach is `O(n L)` to scan the candidate words; the trie is `O(P)`. The trie wins.
+**Examine · cost.** Time: `O(L)` per operation, where `L` is the input length. Space: `O(N)` where `N` is the total length of inserted words — with prefix sharing, strictly less. Trade against `set[str] + length-indexed-set` for `startsWith` — that approach is `O(n L)` to scan the candidate words; the trie is `O(P)`. The trie wins.
 
 ---
 
@@ -425,7 +425,7 @@ A clean way to articulate the negative space:
 
 After this lecture, your weekly path is:
 
-1. **Exercise 1 — Implement Trie (LC 208).** The dict-of-dict template; the canonical warm-up. Aim for 20 minutes including UMPIRE.
+1. **Exercise 1 — Implement Trie (LC 208).** The dict-of-dict template; the canonical warm-up. Aim for 20 minutes including FRAME.
 2. **Read the resources entries on the dict-of-dict and class forms.** Memorize both shapes; you will pick one in Mock #2 based on the prompt.
 3. **Skim five LeetCode Trie-tag problem titles.** For each, predict in 5 seconds: `insert/search/starts_with`? autocomplete? word-break? dictionary-on-grid? Drill the recognition.
 4. **Move to Lecture 2** for word-break and longest-common-prefix.

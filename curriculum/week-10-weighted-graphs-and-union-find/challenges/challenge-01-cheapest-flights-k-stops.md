@@ -1,8 +1,8 @@
 # Challenge 1 — Cheapest Flights Within K Stops (Deep Dive, LeetCode 787)
 
-> **Difficulty:** Medium-Hard (with the deep-dive treatment). **Target solve time:** 75 minutes including UMPIRE write-up and the algorithm-choice defense.
+> **Difficulty:** Medium-Hard (with the deep-dive treatment). **Target solve time:** 75 minutes including FRAME write-up and the algorithm-choice defense.
 
-This is the deep-dive version of Exercise 2. The work this week is to **implement both** the Bellman-Ford form and the modified-Dijkstra-with-state form, and to defend the trade between them in the Evaluate section. Most Phase-2 onsite problems on weighted graphs ask exactly this kind of trade — "which algorithm did you pick and why" is the senior signal.
+This is the deep-dive version of Exercise 2. The work this week is to **implement both** the Bellman-Ford form and the modified-Dijkstra-with-state form, and to defend the trade between them in the Examine section. Most Phase-2 onsite problems on weighted graphs ask exactly this kind of trade — "which algorithm did you pick and why" is the senior signal.
 
 ---
 
@@ -139,9 +139,9 @@ The state augmentation — `(node, hops_used)` — is the discriminator from van
 
 ---
 
-## UMPIRE write-up template
+## FRAME write-up template
 
-### Understand
+### Frame
 
 Restate the problem in your own words. Walk LC 787 example 1 by hand for *both* algorithms (Bellman-Ford trace from Solution 2; Dijkstra-with-state trace below). Address the off-by-one between stops and edges.
 
@@ -162,27 +162,27 @@ pop (700, 3, 2); node == dst = 3, return 700.
 
 Note that `(200, 2, 2)` is discarded because `hops = 2` exceeds the `K = 1` budget. The state guard is `if hops > k: continue` *after* the target check — popping the target with `hops > k` is fine (we already passed through `dst` with a valid hop count).
 
-### Match
+### Research constraints
 
 Open with the 30-second memo. State both algorithms. Defend the choice — for LC 787, both are fast and both fit in the constraints; the *defense* of why you picked one over the other is the work.
 
-### Plan
+### Assess options
 
 Two numbered plans, one per algorithm. State the data structure first; the loop structure second; the termination condition third.
 
-### Implement
+### Make the solution
 
-Implement *one* of the two as your primary submission. Mention the other in Evaluate.
+Implement *one* of the two as your primary submission. Mention the other in Examine · cost.
 
-### Review
+### Examine · verify
 
 Trace both algorithms on example 1 (above) and example 3 (`k = 0`, so only direct flights count). The `k = 0` case is the most discriminating edge case — it forces the algorithm to reject all multi-edge paths.
 
-### Evaluate
+### Examine · cost
 
 - **Bellman-Ford:** `O(K * E)` time, `O(V)` space. Always runs `K + 1` passes; cannot early-terminate without losing the hop guarantee.
 - **Dijkstra-with-state:** Hard to bound tightly. Worst case is `O(V * K * log(V * K))` for the heap with `V * K` distinct states. Best case is `O(K log K)` if the target is the first vertex reached. For LC 787's constraints, runs faster than Bellman-Ford on most inputs.
-- **Trade:** Bellman-Ford is safer to write under pressure (fewer subtle bugs); Dijkstra-with-state is faster on real inputs but has the state-marking trap (Bug 2 above). For an onsite, write Bellman-Ford; mention Dijkstra-with-state in Evaluate.
+- **Trade:** Bellman-Ford is safer to write under pressure (fewer subtle bugs); Dijkstra-with-state is faster on real inputs but has the state-marking trap (Bug 2 above). For an onsite, write Bellman-Ford; mention Dijkstra-with-state in Examine · cost.
 
 ---
 
@@ -194,17 +194,17 @@ A third correct algorithm exists: **BFS with `(node, hops_used)` state**, where 
 
 ## Rubric
 
-The five dimensions; total possible 100; passing 70.
+The 30-second memo plus the five FRAME sections, with Examine split into verify and cost; total possible 100; passing 70.
 
 | Dimension | Points | What "full credit" looks like |
 |-----------|-------:|----------------------|
 | 30-second memo at the top | 10 | All five lines present; both algorithms named; snapshot mentioned |
-| Understand | 10 | Both examples walked; off-by-one between stops and edges addressed |
-| Match | 20 | Both algorithms named; trade defended in 2-3 sentences |
-| Plan | 10 | Two numbered plans; one per algorithm; data structures stated |
-| Implement | 25 | Primary implementation passes all LC 787 cases; type hints; PEP 8 |
-| Review | 10 | One positive trace + the `k = 0` edge case; both walked |
-| Evaluate | 15 | Both complexity bounds derived; the snapshot vs state-marking bugs named |
+| Frame | 10 | Both examples walked; off-by-one between stops and edges addressed |
+| Research constraints | 20 | Both algorithms named; trade defended in 2-3 sentences |
+| Assess options | 10 | Two numbered plans; one per algorithm; data structures stated |
+| Make the solution | 25 | Primary implementation passes all LC 787 cases; type hints; PEP 8 |
+| Examine · verify | 10 | One positive trace + the `k = 0` edge case; both walked |
+| Examine · cost | 15 | Both complexity bounds derived; the snapshot vs state-marking bugs named |
 
 ---
 
@@ -213,8 +213,8 @@ The five dimensions; total possible 100; passing 70.
 The challenge is complete when:
 
 - The implementation passes all LC 787 sample cases (including the `k = 0` edge case).
-- A UMPIRE write-up is committed under `umpire-writeups/c2-week-10/challenge-01-cheapest-flights/`.
-- The Match section names *both* algorithms and defends the choice.
+- A FRAME write-up is committed under `frame-writeups/c2-week-10/challenge-01-cheapest-flights/`.
+- The Research constraints section names *both* algorithms and defends the choice.
 - A recording of at least 10 minutes is uploaded.
 
 The senior signal is the **algorithm-choice defense** — most candidates implement one and stop. Mentioning both, walking the trade, and recommending one for an interview setting is the senior move.

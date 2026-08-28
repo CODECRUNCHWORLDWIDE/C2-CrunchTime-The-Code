@@ -5,7 +5,7 @@
 
 Lecture 1 covered the canonical BFS template. This lecture covers the **two sub-shapes** the algorithm appears in — **grid-BFS** and **node-BFS** — and the two high-leverage variants every interview-ready candidate should know: **multi-source BFS** and **bidirectional BFS**.
 
-The shift in framing: in Lecture 1, BFS was an abstract graph algorithm. Here, we map it onto the two concrete surface forms that account for ~90% of BFS interview problems. Every drill this week is one or the other (Drill 1 is node-BFS on a tree; Drill 2 is grid-BFS; Drill 3 is multi-source grid-BFS; Drill 4 is node-BFS with bidirectional as the stretch; Drill 5 is node-BFS on a tree with level tracking).
+The shift in framing: in Lecture 1, BFS was an abstract graph algorithm. Here, we map it onto the two concrete surface forms that account for ~90% of BFS interview problems. Every drill this week is one or the other (Exercise 1 is node-BFS on a tree; Exercise 2 is grid-BFS; Exercise 3 is multi-source grid-BFS; Exercise 4 is node-BFS with bidirectional as the stretch; Exercise 5 is node-BFS on a tree with level tracking).
 
 By the end of this lecture you should be able to read a graph problem and, within 30 seconds, say one of two things out loud: **"grid-BFS"** (and immediately name the directions and the in-bounds check) or **"node-BFS"** (and immediately name the `neighbors(node)` function). Then add one of the two variants: **"multi-source — seed with all starting cells"** or **"bidirectional — expand the smaller frontier"**.
 
@@ -42,7 +42,7 @@ Five lines. The pattern of *(direction offset, in-bounds check, walkability chec
 | Walkable defined by `1` (land) / `0` (water) | `grid[nr][nc] == 1` (e.g., "number of islands") |
 | Walkable depends on adjacent cell value | replace the literal with the predicate |
 
-The interview-tell move on a grid-BFS problem is **stating the direction set and the walkability predicate out loud in Plan**. Two short lines. Most candidates skip them and end up with a 4-direction loop on an 8-direction problem.
+The interview-tell move on a grid-BFS problem is **stating the direction set and the walkability predicate out loud in Assess options**. Two short lines. Most candidates skip them and end up with a 4-direction loop on an 8-direction problem.
 
 ### The visited set on a grid
 
@@ -88,7 +88,7 @@ def neighbors_fn(word, bucket):
                 yield w
 ```
 
-The wildcard bucket precomputes all "one letter different" relationships in `O(N × L²)` where `N` is the dictionary size and `L` is the word length. After that, neighbor lookup is `O(L × bucket_size)`. Without the index, each neighbor call would be `O(N × L)` and the total BFS would be `O(N² × L)` — usually too slow. The bucket is the standard optimization; we walk through it in Drill 4.
+The wildcard bucket precomputes all "one letter different" relationships in `O(N × L²)` where `N` is the dictionary size and `L` is the word length. After that, neighbor lookup is `O(L × bucket_size)`. Without the index, each neighbor call would be `O(N × L)` and the total BFS would be `O(N² × L)` — usually too slow. The bucket is the standard optimization; we walk through it in Exercise 4.
 
 ### The visited set on a node graph
 
@@ -107,7 +107,7 @@ BFS finds shortest paths if and only if **both** of the following hold:
 
 If precondition 1 fails, use Dijkstra (non-negative weights) or Bellman-Ford (possibly negative). If precondition 2 fails and you have no termination condition, you cannot run BFS — the queue would never empty.
 
-The discriminating Match-step move: **state the unit-edge assumption out loud**. *"Every move costs 1 — every move is one cell, one letter change, one lock rotation. BFS finds shortest paths under unit-cost edges; that is why it applies here."*
+The discriminating Research constraints move: **state the unit-edge assumption out loud**. *"Every move costs 1 — every move is one cell, one letter change, one lock rotation. BFS finds shortest paths under unit-cost edges; that is why it applies here."*
 
 ---
 
@@ -142,7 +142,7 @@ The proof is the same level-monotonicity argument from Lecture 1 §3. The invari
 
 ### Canonical use cases
 
-- **Rotting oranges (LC 994).** Every rotten orange is a source; the answer is "after how many minutes is no fresh orange left?" Multi-source BFS over the rotten cells; the answer is the max distance reached. This is Drill 3.
+- **Rotting oranges (LC 994).** Every rotten orange is a source; the answer is "after how many minutes is no fresh orange left?" Multi-source BFS over the rotten cells; the answer is the max distance reached. This is Exercise 3.
 - **0-1 matrix (LC 542).** Every cell containing 0 is a source; the answer is "distance to the nearest 0 for every cell." Multi-source BFS over all 0-cells; the answer is the `dist` dictionary.
 - **As far from land as possible (LC 1162).** Every land cell is a source; the answer is "what is the maximum-distance water cell?" Multi-source BFS over the land cells; the answer is `max(dist.values())`.
 - **Walls and gates (LC 286).** Every gate is a source; fill in the distances to the nearest gate for every empty cell.
@@ -167,7 +167,7 @@ One character (the `s`) is the entire difference.
 
 ## 5. Worked example: rotting oranges (LC 994)
 
-This is **the** canonical multi-source BFS problem and Drill 3 of this week. Memorize the structure.
+This is **the** canonical multi-source BFS problem and Exercise 3 of this week. Memorize the structure.
 
 ### Problem
 
@@ -333,7 +333,7 @@ In real interviews, the grid vs node distinction is almost always obvious from t
 
 The cleanest mental model: **grid-BFS is the special case of node-BFS where the node ID is an `(r, c)` tuple and the neighbor function is a direction-offset loop.** Everything else is node-BFS.
 
-For interview purposes, the distinction is mostly cosmetic — the visited set and queue are the same. What varies is the neighbor function and (sometimes) the seed shape. Both are part of Plan; both should be stated out loud in 30-second Match.
+For interview purposes, the distinction is mostly cosmetic — the visited set and queue are the same. What varies is the neighbor function and (sometimes) the seed shape. Both are part of Assess options; both should be stated out loud in your 30-second Research constraints memo.
 
 ---
 
@@ -407,23 +407,23 @@ for dx, dy in DIRS:
 
 ### Pitfall 6 — treating diagonals as unit cost when they should be √2
 
-For algorithmic BFS we treat all moves as unit cost. This is *correct* for "minimum number of moves" but *incorrect* for "minimum Euclidean distance traveled." If the problem asks for Euclidean distance, BFS gives the wrong answer; you need Dijkstra with non-unit costs. The Match step should explicitly state which is being measured.
+For algorithmic BFS we treat all moves as unit cost. This is *correct* for "minimum number of moves" but *incorrect* for "minimum Euclidean distance traveled." If the problem asks for Euclidean distance, BFS gives the wrong answer; you need Dijkstra with non-unit costs. The Research constraints step should explicitly state which is being measured.
 
 ---
 
 ## 10. Worked example end-to-end: word ladder (LC 127)
 
-We will work this in full UMPIRE, abbreviated.
+We will work this in full FRAME, abbreviated.
 
-**[U — 2 minutes]**
+**[F — 2 minutes]**
 
 > "I am given `beginWord`, `endWord`, and a list `wordList`. Find the length of the shortest transformation sequence from `beginWord` to `endWord` where each step changes exactly one letter and every intermediate word is in `wordList`. Return 0 if no such sequence exists. Confirm: `endWord` must be in `wordList`. Confirm: the transformation length counts `beginWord` and `endWord`. Walk an example: `begin='hit'`, `end='cog'`, `wordList=['hot','dot','dog','lot','log','cog']`. Path: `hit → hot → dot → dog → cog`. Length 5."
 
-**[M — 30 seconds]**
+**[R — 30 seconds]**
 
 > "Node-BFS on an implicit graph. The 30-second memo: *Words are nodes; an edge connects two words that differ by exactly one letter. The graph is implicit — we generate neighbors via a wildcard-bucket index. BFS finds the shortest transformation length because every edge has unit cost. Why not DFS: DFS would find a path but not necessarily the shortest. Why not weighted-graph algorithms: edges are unit-cost. The high-end optimization is bidirectional BFS — expand from both `beginWord` and `endWord` and meet in the middle.*"
 
-**[P — 2 minutes]**
+**[A — 2 minutes]**
 
 > "Three things.
 > 1. **Build the wildcard-bucket index.** For each word, for each position `i`, create the pattern `word[:i] + '*' + word[i+1:]`. Map each pattern to the words that match it. This precomputes all 'one letter different' adjacencies in `O(N × L²)`.
@@ -431,7 +431,7 @@ We will work this in full UMPIRE, abbreviated.
 > 3. **Termination.** When `endWord` is dequeued, return `level`. After loop, return 0.
 > Edge case: `endWord` not in `wordList` — return 0 immediately."
 
-**[I — 3 minutes]**
+**[M — 3 minutes]**
 
 ```python
 from collections import deque, defaultdict
@@ -464,7 +464,7 @@ def ladder_length(beginWord: str, endWord: str, wordList: list[str]) -> int:
     return 0
 ```
 
-**[R — 1 minute]**
+**[E · verify — 1 minute]**
 
 > "Trace on `begin='hit'`, `end='cog'`, `list=['hot','dot','dog','lot','log','cog']`.
 > Bucket index: `'*it':['hit']`, `'h*t':['hit','hot']`, `'hi*':['hit']`, `'*ot':['hot','dot','lot']`, `'h*t':[...]`, `'ho*':['hot']`, etc. After building, every 'one letter different' pair is grouped under one bucket pattern.
@@ -474,7 +474,7 @@ def ladder_length(beginWord: str, endWord: str, wordList: list[str]) -> int:
 > Level 4: dequeue 'dog'. Neighbors: 'cog' (via '*og'). Enqueue. Dequeue 'log'. Neighbor 'cog' already in visited from this level — skip (actually, we added cog at this iteration). Visited: {..., 'cog'}.
 > Level 5: dequeue 'cog' (and 'log' was dequeued at level 4 in the inner loop). 'cog' == endWord; return level = 5. ✓"
 
-**[E — 1 minute]**
+**[E · cost — 1 minute]**
 
 > "**Time `O(N × L²)`** where `N` is dictionary size and `L` is word length. Building the bucket index is `O(N × L²)` (each word generates `L` patterns of length `L`). BFS visits each word at most once and examines `L` patterns per word, each with up to `O(N)` matches — but amortized across the BFS each edge is examined at most twice, giving `O(N × L²)` total. **Space `O(N × L²)`** for the bucket index. Tradeoff: brute-force neighbor enumeration is `O(N × L)` per word, giving total `O(N² × L)` — strictly worse for large `N`. Bidirectional BFS would cut the expected time roughly by `sqrt(branching factor)` — worth mentioning as a stretch."
 
@@ -488,7 +488,7 @@ Sub-shape recognition signals:
 2. **Input is a list of edges, an adjacency dict, or "words / states with a transformation rule."** → Node-BFS.
 3. **Input is a tree (with `left` / `right` or `children`).** → Node-BFS (level-order family — Drills 1, 5).
 4. **Prompt mentions "multiple starts" / "spread from all" / plural sources.** → Multi-source. Seed accordingly.
-5. **Both source and target are known and the graph is large.** → Consider bidirectional BFS in your Match step.
+5. **Both source and target are known and the graph is large.** → Consider bidirectional BFS in your Research constraints step.
 
 The 30-second decision flow:
 
@@ -572,4 +572,4 @@ The drill: Drills 1-5 cover both sub-shapes, plus level tracking and multi-sourc
 - **GeeksforGeeks — "Bidirectional Search"**: a single-page explainer with code; the complexity-halving argument is laid out cleanly.
 - **LeetCode 200, 994, 1091, 127, 286, 542, 752, 1162** — the eight problems that anchor grid-BFS, node-BFS, multi-source, and bidirectional families. Drills and homework cover four of them; the others are stretch.
 
-Next: the [drills](../exercises/README.md). Drill 3 (Rotting Oranges) is the canonical multi-source problem of the week — do not skip it. Drill 4 (Word Ladder) is the canonical node-BFS problem. Then the [challenge](../challenges/challenge-01-minimum-knight-moves.md) — Minimum Knight Moves on an infinite board, the hardest BFS application in the standard repertoire.
+Next: the [drills](../exercises/README.md). Exercise 3 (Rotting Oranges) is the canonical multi-source problem of the week — do not skip it. Exercise 4 (Word Ladder) is the canonical node-BFS problem. Then the [challenge](../challenges/challenge-01-minimum-knight-moves.md) — Minimum Knight Moves on an infinite board, the hardest BFS application in the standard repertoire.

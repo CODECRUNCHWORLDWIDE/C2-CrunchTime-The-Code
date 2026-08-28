@@ -10,7 +10,7 @@
 
 Welcome to Week 8 of **C2 · CrunchTime — The Code** — the fourth week of Phase 2. Last week installed DFS and topological sort. This week installs the **priority queue** abstraction and its concrete implementation in CPython: the **`heapq` module**, a binary min-heap stored as a flat list, with `heappush` and `heappop` in `O(log n)`.
 
-Heaps have a reputation for being *easy to misuse*. The algorithm itself is short — `heapq.heappush(h, x)` is a one-liner — but the *recognition* is subtler than DFS or BFS: half of all heap problems are not phrased as "use a priority queue." They are phrased as "top-k," "k closest," "median of a stream," "merge sorted lists," "schedule the next task." The Match-step work this week is learning to convert each of those phrasings into the same answer: *heap, size k, push then pop, or push then peek*.
+Heaps have a reputation for being *easy to misuse*. The algorithm itself is short — `heapq.heappush(h, x)` is a one-liner — but the *recognition* is subtler than DFS or BFS: half of all heap problems are not phrased as "use a priority queue." They are phrased as "top-k," "k closest," "median of a stream," "merge sorted lists," "schedule the next task." The Research constraints work this week is learning to convert each of those phrasings into the same answer: *heap, size k, push then pop, or push then peek*.
 
 By Sunday of Week 8 you will:
 
@@ -21,9 +21,9 @@ By Sunday of Week 8 you will:
 - **Implement the two-heap pattern** for the running median: a max-heap of the lower half, a min-heap of the upper half, balanced so that their sizes differ by at most one.
 - **Implement k-way merge** of sorted streams using a heap of size k that holds one element per stream.
 - **Implement lazy deletion** — the canonical trick for "remove an arbitrary element from a heap" without paying `O(n)` to search. Mark the slot stale; skip stale entries on pop.
-- Have solved **three heap exercises** — Kth Largest Element in an Array, K Closest Points to Origin, Find Median from Data Stream — each with a UMPIRE write-up.
+- Have solved **three heap exercises** — Kth Largest Element in an Array, K Closest Points to Origin, Find Median from Data Stream — each with a FRAME write-up.
 - Have shipped **one challenge** (Merge k Sorted Lists — the canonical k-way merge) plus an optional stretch (Task Scheduler — heap-with-cooldown).
-- Have shipped the quiz, the homework, and the **mini-project**: one top-k write-up and one two-heap write-up, fully UMPIRE-narrated.
+- Have shipped the quiz, the homework, and the **mini-project**: one top-k write-up and one two-heap write-up, fully FRAME-narrated.
 
 ---
 
@@ -31,7 +31,7 @@ By Sunday of Week 8 you will:
 
 By the end of this week, you will be able to:
 
-- **Match** a heap problem in 30 seconds by recognizing the canonical signals: "top k," "k largest," "k smallest," "k closest," "median of a stream," "merge k sorted," "running statistics on a stream," "schedule the next task," "minimum element among n active sources."
+- **Name the pattern** for a heap problem in 30 seconds from the canonical signals: "top k," "k largest," "k smallest," "k closest," "median of a stream," "merge k sorted," "running statistics on a stream," "schedule the next task," "minimum element among n active sources."
 - **Distinguish a heap from sorting** in one sentence: a heap maintains a *partial order* with `O(log n)` insert / extract-min; sorting establishes a *total order* in `O(n log n)`. If you only need the top k of n elements and `k << n`, the heap is `O(n log k)` — strictly cheaper than `O(n log n)`.
 - **Implement** the canonical `heapq` operations without notes — `heappush`, `heappop`, `heapify`, `heappushpop`, `heapreplace`, `nlargest`, `nsmallest`.
 - **Apply the heap-of-tuples idiom** correctly, including the tiebreaker slot. State the rule out loud: *"Heap items are compared lexicographically by tuple order; if priorities tie, Python compares the next element; if that element is not comparable, you get a `TypeError`. The fix is to insert a unique counter or `id(obj)` as the tiebreaker."*
@@ -45,7 +45,7 @@ By the end of this week, you will be able to:
 
 ## Prerequisites
 
-- **Weeks 1-7 complete.** You have shipped two DFS write-ups; you can deliver UMPIRE without notes on a graph-traversal problem.
+- **Weeks 1-7 complete.** You have shipped two DFS write-ups; you can deliver FRAME without notes on a graph-traversal problem.
 - **Comfortable with Python tuple comparison.** `(1, "a") < (1, "b")` returns `True` because tuples compare lexicographically. The heap-of-tuples idiom rests entirely on this rule.
 - **Comfortable with `list` mutation semantics.** `heapq` operates *in place* on a Python list. Passing the same list to `heappush` and reading it afterward mutates the caller's list — this is intentional but trips up beginners.
 - **Comfortable with `O(log n)` arguments.** A heap is a complete binary tree of height `log₂ n`; every `heappush` and `heappop` walks one root-to-leaf or leaf-to-root path. The `log n` factor is the tree height.
@@ -100,19 +100,19 @@ By the end of this week, you will be able to:
 | [exercises/exercise-01-kth-largest.py](./exercises/exercise-01-kth-largest.py) | Top-k via a size-k min-heap — the canonical warm-up |
 | [exercises/exercise-02-k-closest-points.py](./exercises/exercise-02-k-closest-points.py) | k-closest points via a size-k max-heap (negated min-heap) of tuples |
 | [exercises/exercise-03-median-from-stream.py](./exercises/exercise-03-median-from-stream.py) | Two-heap running median; rebalance discipline |
-| [exercises/SOLUTIONS.md](./exercises/SOLUTIONS.md) | Worked solutions with UMPIRE narration; consult after attempting each exercise |
+| [exercises/SOLUTIONS.md](./exercises/SOLUTIONS.md) | Worked solutions with FRAME narration; consult after attempting each exercise |
 | [challenges/README.md](./challenges/README.md) | Index of weekly challenges |
 | [challenges/challenge-01-merge-k-sorted-lists.md](./challenges/challenge-01-merge-k-sorted-lists.md) | The canonical k-way merge; `O(N log k)` time |
 | [challenges/challenge-02-task-scheduler.md](./challenges/challenge-02-task-scheduler.md) | Heap with cooldown queue — the canonical scheduler pattern |
 | [quiz.md](./quiz.md) | 10 pattern-recognition questions |
-| [homework.md](./homework.md) | Five practice problems (~5 hrs) — one top-k, one k-closest, one stream, one merge, one scheduler |
-| [mini-project/README.md](./mini-project/README.md) | **One top-k write-up + one two-heap write-up, fully UMPIRE-narrated** — the week's deliverable |
+| [homework.md](./homework/README.md) | Five practice problems (~5 hrs) — one top-k, one k-closest, one stream, one merge, one scheduler |
+| [mini-project/README.md](./mini-project/README.md) | **One top-k write-up + one two-heap write-up, fully FRAME-narrated** — the week's deliverable |
 
 ---
 
 ## Stretch goals
 
-- **Read the LeetCode "Heap (Priority Queue)" tag** and skim 20 titles. For each, predict in 5 seconds: top-k? closest-k? median? merge? scheduler? Stretches the Match-step muscle.
+- **Read the LeetCode "Heap (Priority Queue)" tag** and skim 20 titles. For each, predict in 5 seconds: top-k? closest-k? median? merge? scheduler? Stretches the Research constraints muscle.
 - **Re-derive the canonical top-k template from scratch** without re-reading Lecture 1. If you cannot, you do not yet own the template. Re-read and re-derive until you can.
 - **Read the first 100 lines of CPython's `Lib/heapq.py`** — the sift-up and sift-down implementations are short enough to internalize, and the module docstring contains the cleanest free explanation of the heap invariant.
 - **Find one production-engineering heap story.** Examples: the Linux kernel's `CFS` scheduler uses a red-black tree but the same priority-queue abstraction; Dijkstra's algorithm uses a min-heap as its frontier; load-shedding in web servers prioritizes inflight requests by deadline. The "where does a heap live in real systems?" question lifts you out of the LeetCode frame.
@@ -123,11 +123,11 @@ By the end of this week, you will be able to:
 
 A learner who has shipped Week 8 has, in their portfolio repo:
 
-- Three UMPIRE write-ups for the exercises, with recordings >= 10 minutes.
-- One UMPIRE write-up for the Merge k Sorted Lists challenge.
+- Three FRAME write-ups for the exercises, with recordings >= 10 minutes.
+- One FRAME write-up for the Merge k Sorted Lists challenge.
 - The quiz answered (score recorded).
 - The homework problems committed.
-- **Two mini-project write-ups** (one top-k, one two-heap), each with a 30-second pattern-recognition memo at the top, under `umpire-writeups/c2-week-08/mini-project/`.
+- **Two mini-project write-ups** (one top-k, one two-heap), each with a 30-second pattern-recognition memo at the top, under `frame-writeups/c2-week-08/mini-project/`.
 - A push log showing daily commits Mon-Sun.
 
 If all of that is present and pushed, Phase 2's fourth week is closed. You are ready for Week 9 — Mock #2.
@@ -136,7 +136,7 @@ If all of that is present and pushed, Phase 2's fourth week is closed. You are r
 
 ## A note on the Phase 2 ramp
 
-Week 8 is the *data-structure* week sandwiched between two algorithm weeks (DFS in W7, Mock #2 in W9). The heap is a small, sharp tool — six operations, one invariant — but the *Match-step recognition* is what separates strong candidates from weak ones. Half of all heap problems do not say "heap" anywhere in the prompt; they say "top k" or "closest" or "median." Owning the recognition is the work this week.
+Week 8 is the *data-structure* week sandwiched between two algorithm weeks (DFS in W7, Mock #2 in W9). The heap is a small, sharp tool — six operations, one invariant — but the *Research constraints recognition* is what separates strong candidates from weak ones. Half of all heap problems do not say "heap" anywhere in the prompt; they say "top k" or "closest" or "median." Owning the recognition is the work this week.
 
 If you find yourself ahead by Friday, the right stretch is **not** another exercise — it is a second-pass parametric mini-project problem from Week 7 (the DFS portfolio benefits from polish before Mock #2). The Phase-2 retrospective at the end of Week 9 will be much easier if the W6, W7, and W8 mini-projects are all polished by Sunday Week 8.
 

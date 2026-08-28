@@ -39,7 +39,7 @@ The 2-D grid is the most common BFS surface in interviews. Two short reads, both
 
 ## On the difference between BFS and DFS
 
-DFS is next week. The recognition skill — "BFS or DFS?" — is the highest-yield Match-step question for any graph problem. The general rule:
+DFS is next week. The recognition skill — "BFS or DFS?" — is the highest-yield Research constraints question for any graph problem. The general rule:
 
 | Question | BFS or DFS? |
 |----------|-------------|
@@ -57,7 +57,7 @@ Memorize the first row and the last two rows; the rest you can derive in intervi
 ## Videos on the pattern (free, no signup)
 
 - **NeetCode — "BFS Algorithm"** (YouTube — free): search "neetcode bfs"; the 10-minute walkthrough is enough.
-- **NeetCode — "Rotting Oranges"** (YouTube — free): the canonical multi-source BFS problem; if you have not seen the pattern in video form, watch this before Drill 3.
+- **NeetCode — "Rotting Oranges"** (YouTube — free): the canonical multi-source BFS problem; if you have not seen the pattern in video form, watch this before Exercise 3.
 - **MIT 6.006 — Lecture on BFS** (free OCW): the rigorous version; the proof that BFS finds shortest paths on unweighted graphs is laid out cleanly.
 
 ## On bidirectional BFS

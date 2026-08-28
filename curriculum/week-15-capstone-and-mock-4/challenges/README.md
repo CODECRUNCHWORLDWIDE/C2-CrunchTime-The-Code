@@ -27,6 +27,6 @@ Mock #4 is the highest-signal artifact you produce this week, and the close of t
 
 1. **It is the full-conditions dress rehearsal.** The next loop after Mock #4 is a real one, for a job. Mock #4 is where you discover any failure mode under full conditions — stranger interviewer, dressed as if real, no notes, hard stop, the full coding + design + behavioral loop — at low stakes, before it costs you a real offer.
 2. **The four-mock trajectory is what a senior reads.** Mock #1 → #2 → #3 → #4 is a complete record of whether you can self-correct over time — the single most predictive trait of someone who will grow on the job. The closing trajectory section is where you prove it, and where the one weakness you carry forward seeds your personalized study plan.
-3. **The design round is now part of the loop.** A junior onsite includes system design. Challenge 2 (and Drill 2) make sure the design round is not the round that sinks an otherwise-strong loop.
+3. **The design round is now part of the loop.** A junior onsite includes system design. Challenge 2 (and Exercise 2) make sure the design round is not the round that sinks an otherwise-strong loop.
 
 If anything must slip this week, slip the second system-design write-up or the badges polish — **do not slip Mock #4.** The mock and the published capstone are the two things this week exists to produce.

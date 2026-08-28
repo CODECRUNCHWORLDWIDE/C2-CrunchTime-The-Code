@@ -1,8 +1,8 @@
 # Challenge 1 — Edit Distance (Deep Dive, LeetCode 72)
 
-> **Difficulty:** Medium-Hard (with the deep-dive treatment). **Target solve time:** 75 minutes including UMPIRE write-up and the rolling-array reduction.
+> **Difficulty:** Medium-Hard (with the deep-dive treatment). **Target solve time:** 75 minutes including FRAME write-up and the rolling-array reduction.
 
-This is the deep-dive version of the canonical 2D string-pair DP. The work this week is to **implement both** the standard `O(mn)`-space tabulation and the `O(min(m, n))`-space rolling-row reduction, and to defend the trade between them in the Evaluate section. Most Phase-2 onsite problems on DP ask exactly this kind of trade — "can you reduce the space?" is the senior signal.
+This is the deep-dive version of the canonical 2D string-pair DP. The work this week is to **implement both** the standard `O(mn)`-space tabulation and the `O(min(m, n))`-space rolling-row reduction, and to defend the trade between them in the Examine section. Most Phase-2 onsite problems on DP ask exactly this kind of trade — "can you reduce the space?" is the senior signal.
 
 ---
 
@@ -151,30 +151,30 @@ The discriminating factor for interviews: **if the interviewer asks "can you red
 
 ---
 
-## UMPIRE write-up structure
+## FRAME write-up structure
 
-Your write-up should hit every section. The Evaluate section is the discriminating part.
+Your write-up should hit every section. The Examine section is the discriminating part.
 
-### Understand
+### Frame
 
 Restate the problem. Confirm "edit distance" semantics: insert, delete, replace, each cost 1. The Levenshtein distance.
 
-### Match
+### Research constraints
 
 The 30-second memo. Name the pattern, the recurrence, the base cases, the complexity.
 
-### Plan
+### Assess options
 
 1. Build the `(m + 1) x (n + 1)` DP table.
 2. Initialize the base cases: `dp[i][0] = i`, `dp[0][j] = j`.
 3. Fill the table row by row via the two-case recurrence.
 4. Return `dp[m][n]`.
 
-### Implement
+### Make the solution
 
 Algorithm A. Then Algorithm B as the optimization. Both must be correct on the LC 72 examples.
 
-### Review
+### Examine · verify
 
 Trace `word1 = "horse", word2 = "ros"`:
 
@@ -192,11 +192,11 @@ Answer: dp[5][3] = 3.
 
 The three operations: replace `h` with `r` (horse -> rorse), delete `r` (rorse -> rose), delete `e` (rose -> ros). Three edits, matching `dp[5][3] = 3`.
 
-### Evaluate
+### Examine · cost
 
 - **Time:** `O(mn)` for both. For `m, n = 500`, this is `2.5e5` operations — well within any LC time limit.
 - **Space:** `O(mn)` for A, `O(min(m, n))` for B.
-- **Trade vs. LCS:** the table shape is identical; only the recurrence differs (max over two for LCS; min over three plus 1 for edit distance). Recognizing this similarity is the senior-grade Match move.
+- **Trade vs. LCS:** the table shape is identical; only the recurrence differs (max over two for LCS; min over three plus 1 for edit distance). Recognizing this similarity is the senior-grade Research constraints move.
 - **Trade vs. greedy:** greedy left-to-right matching is *wrong*. Counter-example: `word1 = "ab", word2 = "ba"`. Greedy would replace both characters (cost 2); the optimum is delete + insert (cost 2) or replace + replace (cost 2) — both options actually cost the same here, but for `word1 = "abc", word2 = "cab"`, greedy replaces three (cost 3) while the optimum is shift-by-one with a single replace plus an insert (cost 2). DP is required.
 - **Trade vs. Hamming distance:** Hamming distance counts only substitutions and requires equal-length strings. Edit distance allows insertions and deletions and works on different-length strings.
 
@@ -208,8 +208,8 @@ This challenge is shipped when:
 
 - A `min_distance.py` implementation (Algorithm A) passes all LC 72 sample cases.
 - A `min_distance_rolling.py` implementation (Algorithm B) passes the same cases with `O(min(m, n))` space.
-- A UMPIRE write-up under `umpire-writeups/c2-week-11/challenge-01-edit-distance/` is committed with the 30-second memo at the top and a recording >= 12 minutes.
-- The Evaluate section explicitly states the trade between Algorithm A and Algorithm B and gives one concrete scenario for each (backtracking the operations -> A; large inputs with memory constraint -> B).
+- A FRAME write-up under `frame-writeups/c2-week-11/challenge-01-edit-distance/` is committed with the 30-second memo at the top and a recording >= 12 minutes.
+- The Examine · cost section explicitly states the trade between Algorithm A and Algorithm B and gives one concrete scenario for each (backtracking the operations -> A; large inputs with memory constraint -> B).
 
 ---
 

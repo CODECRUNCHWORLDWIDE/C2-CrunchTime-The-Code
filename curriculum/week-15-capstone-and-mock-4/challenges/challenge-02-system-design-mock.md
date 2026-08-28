@@ -2,14 +2,14 @@
 
 > **Format:** A 45-minute timed system-design mock round. **Difficulty:** Junior-level design — scoping, estimation, a clear high-level design, and trade-offs, not distributed-systems mastery. **Time:** 45 min for the round + ~30 min write-up and self-grade.
 
-A junior onsite loop includes a system-design round, and it is the round most early-career candidates have practiced least. Drill 2 produced the URL-shortener write-up as a *studied* artifact; this challenge runs a design round as a *timed mock* on a fresh prompt — the rep that matters, because the real round is timed and unseen. You can run this standalone or fold it into Challenge 1's loop as the design round.
+A junior onsite loop includes a system-design round, and it is the round most early-career candidates have practiced least. Exercise 2 produced the URL-shortener write-up as a *studied* artifact; this challenge runs a design round as a *timed mock* on a fresh prompt — the rep that matters, because the real round is timed and unseen. You can run this standalone or fold it into Challenge 1's loop as the design round.
 
 ---
 
 ## The conditions
 
 - **45-minute hard clock**, video on, narrate throughout (a design round is graded almost entirely on how you reason out loud).
-- **Pick one prompt you have NOT written up.** If you did the URL shortener in Drill 2, pick a different one here.
+- **Pick one prompt you have NOT written up.** If you did the URL shortener in Exercise 2, pick a different one here.
 - **A whiteboard surface** — Excalidraw (<https://excalidraw.com/>), a tablet, or paper. Drawing the high-level design is expected.
 
 ---
@@ -83,7 +83,7 @@ The heaviest weight is on **the key decision defended** — that is the senior t
 
 ## What to commit
 
-- `system-design/<prompt>.md` — the written version of your design (the URL shortener from Drill 2 plus this second one gives the repo two design write-ups).
+- `system-design/<prompt>.md` — the written version of your design (the URL shortener from Exercise 2 plus this second one gives the repo two design write-ups).
 - A recording link (in `mocks/` or alongside the design) of you talking through the 45 minutes.
 - A self-grade against the rubric, with the one thing to improve for the next design round.
 
@@ -98,4 +98,4 @@ Challenge 2 is complete when:
 - The key decision is made explicitly with the rejected option's reason stated.
 - A self-grade against the rubric is recorded.
 
-That is the last challenge. Move to the [quiz](../quiz.md) — the final readiness self-assessment — then the [homework](../homework.md): the personalized go-forward study plan.
+That is the last challenge. Move to the [quiz](../quiz.md) — the final readiness self-assessment — then the [homework](../homework/README.md): the personalized go-forward study plan.

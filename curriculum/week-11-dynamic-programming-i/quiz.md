@@ -63,11 +63,11 @@ Answer key at the bottom.
 |------:|---------|
 | 9-10 | DP recognition is interview-ready, including the negative-space rejections (Q8) and the subsequence-vs-substring discrimination (Q3 and Q10). Move on. |
 | 7-8 | Good — re-read [Lecture 1 §6-7](./lecture-notes/01-the-dp-pipeline-and-1d-states.md) and [Lecture 2 §5](./lecture-notes/02-2d-dp-and-the-grid-and-string-shapes.md) for the sub-shape questions you missed. Most learners miss Q8 (greedy not DP) or Q3 (substring vs. subsequence) first time; that is normal. |
-| 5-6 | Redo Exercises 2 and 3 with stricter Match sections. The 2D string-pair DP and the segmentation DP need more reps before Mock #2. |
+| 5-6 | Redo Exercises 2 and 3 with stricter Research constraints sections. The 2D string-pair DP and the segmentation DP need more reps before Mock #2. |
 | <5 | The pattern recognition is not yet automatic. Re-read all three lectures, re-do all three exercises with the recurrence stated aloud, then retake the quiz. |
 
 This quiz is about **fluency**, not difficulty. The discriminating questions are Q8 (negative-space — not DP at all, just a single-pass scan), Q3 (substring not subsequence), and Q10 (substring palindromic, different from LPS). Q8 is the most-missed; senior candidates over-apply DP to any optimization problem.
 
 Q1 (climbing stairs three-way) and Q5 (decode ways) are the cleanest direct-template questions. Q4 (minimum path sum) and Q9 (edit distance) test recognition of the 2D grid and 2D string-pair shapes.
 
-When done, the [homework](./homework.md) is next.
+When done, the [homework](./homework/README.md) is next.

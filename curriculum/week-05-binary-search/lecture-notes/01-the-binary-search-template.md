@@ -65,6 +65,8 @@ Five observations:
    The `+ 1` and `- 1` are not optional. They are the reason the loop terminates — every iteration shrinks the interval by at least one element.
 5. **Post-loop: `return -1`.** If the loop exits via the `lo <= hi` guard, the target is not in the array.
 
+One house rule before you copy that last line into a drill. The template above returns `-1` because that is the shape every textbook prints, and you should be able to read it. **This course's contracts return `None`.** An in-band sentinel like `-1` or `0` only works when the sentinel cannot also be a legitimate answer, and in half of this week's problems it can be — index `0` is a real position, and a negative value is a real reading. Learn the template with `-1`; write your solutions with `None`; be ready to say which you would use and why.
+
 ### Time and space
 
 - **Time: O(log n).** Each iteration halves the search space; the loop body is `O(1)`.
@@ -287,47 +289,47 @@ The round-up `mid` is the price you pay for `lo = mid` (keeping mid as a candida
 
 ---
 
-## 8. Find first and last of a value — both at once
+## 8. The whole run of a repeated value — two searches, one contract
 
-Given a sorted array with possible duplicates, return `[first_index, last_index]` of `target`, or `[-1, -1]` if absent.
+Given a non-decreasing sequence with duplicates, return the **half-open slice bounds** of the run of entries equal to a value. That is, return `(start, end)` such that `data[start:end]` is exactly that run.
+
+The trick is to call **lower bound twice**: once for the value itself, which gives `start`, and once for the value *plus one*, which gives `end`. Nothing else is needed.
 
 ```python
-def find_first_and_last(arr: list[int], target: int) -> list[int]:
-    """Return [first, last] indices of target in arr, or [-1, -1] if absent."""
-    if not arr:
-        return [-1, -1]
-    # find first
-    lo, hi = 0, len(arr)
-    while lo < hi:
-        mid = lo + (hi - lo) // 2
-        if arr[mid] < target:
-            lo = mid + 1
-        else:
-            hi = mid
-    first = lo
-    if first == len(arr) or arr[first] != target:
-        return [-1, -1]
-    # find last
-    lo, hi = 0, len(arr)
-    while lo < hi:
-        mid = lo + (hi - lo) // 2
-        if arr[mid] <= target:
-            lo = mid + 1
-        else:
-            hi = mid
-    last = lo - 1
-    return [first, last]
+def value_run(data: list[int], value: int) -> tuple[int, int]:
+    """Return (start, end) with data[start:end] exactly the entries equal to value.
+    data is non-decreasing. On a miss, both searches land on the same insertion
+    point and the slice comes out empty. O(log n) time, O(1) space."""
+
+    def lower_bound(cutoff: int) -> int:
+        lo, hi = 0, len(data)          # half-open [lo, hi)
+        while lo < hi:
+            mid = lo + (hi - lo) // 2
+            if data[mid] < cutoff:
+                lo = mid + 1
+            else:
+                hi = mid
+        return lo
+
+    return lower_bound(value), lower_bound(value + 1)
 ```
 
-The trick is to use **two lower-bound searches**: one for `arr[i] >= target` (gives `first`), one for `arr[i] > target` (gives one past `last`). The half-open convention pairs cleanly with both.
+Look at what is *absent*. There is no "is it present?" check, no sentinel, and no branch for the empty sequence. If the value is missing, both searches converge on the same insertion point, the slice is empty, and the caller can still write `data[start:end]` without special-casing anything. If the sequence itself is empty, both searches return `0` and the answer is `(0, 0)`. The contract does the work the branches would have done.
 
-This is Drill 2.
+Two properties fall out, and both are worth saying out loud:
+
+- `end - start` is the count of matching entries, for free.
+- The return value is always a **valid slice** into `data` — never a value the caller must interpret.
+
+Compare that with the shape you will see on most judges, which returns inclusive endpoints and a sentinel pair like `[-1, -1]` on a miss. That version is correct too, but it pushes work onto every caller: `-1` silently means "the last element" to a slice, and the count becomes `last - first + 1` with an off-by-one waiting in it. Choosing the half-open contract is a design decision, and being able to defend a design decision is what separates a candidate from a code generator.
+
+This is [Exercise 2](../exercises/exercise-02-scan-window.md), where the sequence is a scan log and the value is a minute of the week.
 
 ---
 
 ## 9. Rotated sorted array — the "which half is sorted?" trick
 
-A rotated sorted array is a sorted array that has been cyclically shifted, e.g., `[4, 5, 6, 7, 0, 1, 2]`. It contains exactly one "pivot" where the order breaks.
+A rotated sorted array is a sorted array that has been cyclically shifted. The physical dump of a ring buffer is the everyday example: ids ascend as they are written, the writer wraps to slot 0 when the buffer fills, and what you read back is `[58, 61, 64, 70, 12, 19, 33, 47]` — the ascending sequence `12, 19, 33, 47, 58, 61, 64, 70` starting from the middle. A rotated array contains exactly one "pivot" where the order breaks.
 
 At any step of binary search on a rotated array, **at least one of the two halves `[lo, mid]` and `[mid, hi]` is fully sorted** (un-rotated). Identify which half is sorted, then check whether the target lies in that half. If yes, recurse into the sorted half; if no, recurse into the other half.
 
@@ -372,21 +374,38 @@ Twelve lines. The decision is `arr[lo] <= arr[mid]` — if the left endpoint is 
 
 The `<=` (not `<`) handles the edge case where `lo == mid` (single-element interval on the left). The standard mistake is using strict `<` and breaking when the left half has length 1.
 
-This is Drill 3. The pattern transfers to "find minimum in a rotated array" and "search in a rotated array with duplicates" (homework).
+This single-pass search returns the **physical** index. That is one of the two routes through [Exercise 3](../exercises/exercise-03-ring-buffer-probe.md), which asks for something else — the row's *age* — and therefore needs the wrap point as well. Exercise 3 grades whether you can name both routes and say which contract makes each one the better choice. The wrap-point search on its own is Mini-Project Problem 2; the duplicate-tolerant version, where this discriminator stops working, is [Homework Problem 4](../homework/README.md).
 
-### Worked trace on `arr = [4, 5, 6, 7, 0, 1, 2]`, target = 0
+### Worked trace on the buffer dump `arr = [58, 61, 64, 70, 12, 19, 33, 47]`, target = 19
 
 ```
-step 0:  lo=0, hi=6, mid=3, arr[3]=7, != 0
-         arr[0]=4 <= arr[3]=7, so [0, 3] is sorted
-         is 0 in [4, 7)? No → lo = 4
-step 1:  lo=4, hi=6, mid=5, arr[5]=1, != 0
-         arr[4]=0 <= arr[5]=1, so [4, 5] is sorted
-         is 0 in [0, 1)? Yes → hi = 4
-step 2:  lo=4, hi=4, mid=4, arr[4]=0, == 0 → return 4
+step 0:  lo=0, hi=7, mid=3, arr[3]=70, != 19
+         arr[0]=58 <= arr[3]=70, so [0, 3] is sorted
+         is 19 in [58, 70)? No → lo = 4
+step 1:  lo=4, hi=7, mid=5, arr[5]=19, == 19 → return 5
 ```
 
-Three iterations. The shape is identical to classic binary search; the only added complexity is the "which half is sorted?" branch.
+Two iterations. Now the miss, `target = 50` — an id inside the buffer's range that the writer happened to skip:
+
+```
+step 0:  lo=0, hi=7, mid=3, arr[3]=70, != 50
+         arr[0]=58 <= arr[3]=70, so [0, 3] is sorted
+         is 50 in [58, 70)? No → lo = 4
+step 1:  lo=4, hi=7, mid=5, arr[5]=19, != 50
+         arr[4]=12 <= arr[5]=19, so [4, 5] is sorted
+         is 50 in [12, 19)? No → lo = 6
+step 2:  lo=6, hi=7, mid=6, arr[6]=33, != 50
+         arr[6]=33 <= arr[6]=33, so [6, 6] is sorted
+         is 50 in [33, 33)? No → lo = 7
+step 3:  lo=7, hi=7, mid=7, arr[7]=47, != 50
+         arr[7]=47 <= arr[7]=47, so [7, 7] is sorted
+         is 50 in [47, 47)? No → lo = 8
+         lo > hi, loop exits → not found
+```
+
+Note step 2 and step 3: the "sorted half" is a single element, and the range test `arr[lo] <= target < arr[mid]` is empty and therefore false. That is exactly the case the `<=` in the discriminator protects. With a strict `<` the branch flips and the search walks off in the wrong direction.
+
+The shape is identical to classic binary search; the only added complexity is the "which half is sorted?" branch.
 
 ---
 
@@ -400,61 +419,70 @@ Equally important: knowing when to *reject* the pattern.
 - **Hash-map territory.** "Is this key present?" with no order requirement is `O(1)` with a hash. Binary search is `O(log n)`. Hash wins unless you also need order-related queries (range, predecessor, successor).
 - **Linked structures.** Binary search needs random access. A linked list has no `O(1)` `mid` access; you would walk the list linearly to find the middle, which destroys the asymptotic win.
 
-Recognizing the *negative space* of the pattern matters as much as the positive recognition. Quiz Q4, Q8, and Q10 are negative-space questions.
+Recognizing the *negative space* of the pattern matters as much as the positive recognition. [Quiz](../quiz.md) questions Q3, Q5, and Q8 are the negative-space questions.
 
 ---
 
-## 11. Worked example end-to-end: classic binary search
+## 11. Worked example end-to-end: the ladder seat
 
-We will work this in full UMPIRE, abbreviated. Drill 1 is this exact problem.
+We will work this in full FRAME, abbreviated. This is [Exercise 1](../exercises/exercise-01-ladder-seat.md), and it is the classic template with one deliberate twist: the sequence runs **descending**.
 
-**[U — 1 minute]**
+**[F — 1 minute]**
 
-> "I am given a sorted array of integers and a target. Return the index of the target if present, or `-1` if absent. The array is sorted ascending. Confirm: no duplicates required for this problem (we will handle duplicates in Drill 2). Confirm: I cannot modify the array. Walk an example: `arr = [1, 3, 7, 10, 13, 17, 21]`, target = 13. Answer: index 4."
+> "I am given the org's chess ladder as a list of ratings and one rating to look up. Return the seat index holding that rating, or `None` if nobody has it. Confirm three things. The list is sorted **strictly descending** — strongest first — so no two players share a rating. Seat indices are positions in the list as given; I must not reorder it. A match may not exist, and the absent value is `None`, because seat `0` is a real seat and a negative rating is a real rating, so no in-band sentinel is safe. Walk an example: `ratings = [2410, 2205, 2199, 1870, 1602, 1044]`, looking for `1870`. Answer: seat 3."
 
-**[M — 20 seconds]**
+**[R — 20 seconds]**
 
-> "Classic binary search — variant 1, 'find any.' The 30-second memo: *Linear sorted array, single target, log-n required by the structure. Auxiliary state: three integer pointers. Why not linear scan: works, but `O(n)` instead of `O(log n)` — interviewers reject the suboptimal answer when the structure permits the optimization. Why not hash map: hash maps don't preserve order; on a sorted array, binary search is the canonical fit.*"
+> "Classic binary search — variant 1, 'find any.' The 30-second memo: *Sorted sequence plus a single exact-match query is the canonical signal. Closed interval `[lo, hi]` with `lo <= hi`. Auxiliary state: three integers. Because the order is descending, the branch that moves `lo` is `ratings[mid] > rating`, not `<` — I am re-deriving that, not recalling it. Why not a linear scan: two million ratings per page view against twenty-one comparisons. Why not a dict from rating to seat: `O(1)` per lookup but `O(n)` to build and `O(n)` to hold, and the ladder is rebuilt after every match, so the build cost dominates a single query.*"
 
-**[P — 1 minute]**
+**[A — 1 minute]**
 
-> "Closed-interval convention. Initialize `lo = 0`, `hi = len(arr) - 1`. Loop while `lo <= hi`. Compute `mid = lo + (hi - lo) // 2` (overflow-safe habit). If `arr[mid] == target`, return mid. If `arr[mid] < target`, search right: `lo = mid + 1`. If `arr[mid] > target`, search left: `hi = mid - 1`. If the loop exits, return `-1`."
+> "Closed-interval convention. Initialize `lo = 0`, `hi = len(ratings) - 1`. Loop while `lo <= hi`. Compute `mid = lo + (hi - lo) // 2` — overflow-safe habit. If `ratings[mid] == rating`, return `mid`. If `ratings[mid] > rating`, the target is weaker and therefore *further down* the ladder: `lo = mid + 1`. Otherwise `hi = mid - 1`. If the loop exits, return `None`."
 
-**[I — 2 minutes]**
+**[M — 2 minutes]**
 
 ```python
-def binary_search(arr: list[int], target: int) -> int:
-    lo, hi = 0, len(arr) - 1
+def find_ladder_seat(ratings: list[int], rating: int) -> int | None:
+    """Return the seat index i with ratings[i] == rating, or None.
+    ratings is sorted strictly DESCENDING. O(log n) time, O(1) space."""
+    lo, hi = 0, len(ratings) - 1      # closed [lo, hi]
     while lo <= hi:
         mid = lo + (hi - lo) // 2
-        if arr[mid] == target:
+        if ratings[mid] == rating:
             return mid
-        elif arr[mid] < target:
+        elif ratings[mid] > rating:   # descending: bigger midpoint means go right
             lo = mid + 1
         else:
             hi = mid - 1
-    return -1
+    return None
 ```
 
-**[R — 1 minute]**
+Speak the boundary defense while your hands are moving: *"Closed interval `[lo, hi]` with `lo <= hi`. Both shrink rules exclude `mid` — `mid + 1` and `mid - 1` — so the interval strictly shrinks every iteration and the loop terminates."*
 
-> "Trace on `[1, 3, 7, 10, 13, 17, 21]`, target = 13.
-> Step 0: lo=0, hi=6, mid=3, arr[3]=10, 10 < 13, lo=4.
-> Step 1: lo=4, hi=6, mid=5, arr[5]=17, 17 > 13, hi=4.
-> Step 2: lo=4, hi=4, mid=4, arr[4]=13, found, return 4. ✓
-> Trace on target = 4. lo=0, hi=6, mid=3, arr[3]=10, 10 > 4, hi=2. lo=0, hi=2, mid=1, arr[1]=3, 3 < 4, lo=2. lo=2, hi=2, mid=2, arr[2]=7, 7 > 4, hi=1. lo=2, hi=1, loop exits, return -1. ✓"
+**[E · verify — 1 minute]**
 
-**[E — 1 minute]**
+> "Trace on `[2410, 2205, 2199, 1870, 1602, 1044]`, rating = 1870.
+> Step 0: `lo=0, hi=5, mid=2`, `ratings[2]=2199 > 1870`, so go right: `lo=3`.
+> Step 1: `lo=3, hi=5, mid=4`, `ratings[4]=1602 < 1870`, so go left: `hi=3`.
+> Step 2: `lo=3, hi=3, mid=3`, `ratings[3]=1870`, match, return 3. ✓
+> Now the miss, rating = 2200 — a value sitting between two real ratings.
+> `lo=0, hi=5, mid=2`, `2199 < 2200`, go left: `hi=1`.
+> `lo=0, hi=1, mid=0`, `2410 > 2200`, go right: `lo=1`.
+> `lo=1, hi=1, mid=1`, `2205 > 2200`, go right: `lo=2`.
+> `lo=2 > hi=1`, loop exits, return `None`. ✓
+> And the empty ladder: `hi = -1`, the guard `0 <= -1` is false immediately, the loop never touches the list, return `None`. ✓"
 
-> "**Time O(log n)** — each iteration halves the search interval; the loop runs `⌈log₂ n⌉` times in the worst case. **Space O(1)** — three integer pointers. Tradeoff: linear scan is `O(n)`/`O(1)`; binary search trades the same space for `O(log n)` time, *if* the array is sorted. If not, sorting first is `O(n log n)`, which dominates. Improvement: none asymptotically; could micro-optimize by avoiding the `==` branch (return after the loop with `arr[lo]` check) but the savings are negligible. Best case `O(1)` (target at the first midpoint); worst case `O(log n)`; average `O(log n)`."
+**[E · cost — 1 minute]**
 
-That is UMPIRE on classic binary search, end-to-end, in about 6 minutes. The drill is to do this every time, even when the algorithm feels trivial.
+> "**Time `O(log n)`** — each iteration halves a closed interval of size `n`, so at most `⌈log₂ n⌉` iterations, and the body is `O(1)`. **Space `O(1)`** — three integers, no recursion. Best case `O(1)` when the rating sits at the first midpoint; worst and average `O(log n)`. Tradeoff: a linear scan is `O(n)` time and `O(1)` space — same space, worse time, and the ladder is already ordered so we pay nothing to use the order. A hash map is `O(1)` per query but `O(n)` to build and `O(n)` to hold; it wins only when the same ladder is queried many times between rebuilds. Improvement: none asymptotically — `Ω(log n)` is the comparison-model floor for this query."
+
+That is FRAME on classic binary search, end-to-end, in about six minutes. The drill is to do this every time, even when the algorithm feels trivial — and *especially* when a small twist like the descending order tempts you to type the template from muscle memory instead of deriving it.
 
 ---
 
 ## 12. Two common bug patterns
 
-After watching candidates write binary search in mocks, two bugs come up repeatedly. Build them into your Review checklist.
+After watching candidates write binary search in mocks, two bugs come up repeatedly. Build them into your Examine (verify) checklist.
 
 ### Bug 1 — `mid = mid` infinite loop (variant 3)
 
@@ -565,6 +593,6 @@ That is the cadence interviewers want. Memorize the shape, plug in the names. Th
 
 - **Wikipedia — Binary search algorithm**: <https://en.wikipedia.org/wiki/Binary_search_algorithm> — the formal treatment. Read the Variations section.
 - **Joshua Bloch — "Nearly all binary searches are broken"**: <https://research.google/blog/extra-extra-read-all-about-it-nearly-all-binary-searches-and-mergesorts-are-broken/> — five minutes; permanent takeaway.
-- **LeetCode 33, 34, 35, 704, 81** — the five problems that cover the classic family. Drills 1, 2, 3 use three of them; the others are in the homework.
+- **A judge to run against.** If you want a scoreboard once the drills are done, the [binary-search tag on LeetCode](https://leetcode.com/tag/binary-search/) holds hundreds of instances of the classic family. The contracts there differ from ours — most return `-1`, guarantee a solution exists, or skip the empty case entirely — so do the drills first, then use the tag for volume.
 
 Next: [Lecture 2 — Binary Search on the Answer](./02-binary-search-on-the-answer.md).

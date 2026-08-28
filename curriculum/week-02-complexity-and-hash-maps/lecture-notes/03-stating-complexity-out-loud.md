@@ -1,11 +1,11 @@
 # Lecture 3 — Stating Complexity Out Loud
 
 > **Duration:** ~1 hour.
-> **Outcome:** You can produce a structured *Evaluate* section — time, space, tradeoff, defense — for any problem you've solved this course. Out loud. In under two minutes. Without notes.
+> **Outcome:** You can produce a structured *Examine (cost)* section — time, space, tradeoff, defense — for any problem you've solved this course. Out loud. In under two minutes. Without notes.
 
 Lecture 1 gave you the *vocabulary* of complexity. Lecture 2 gave you the *pattern* that most often produces O(n) from a naive O(n²). This lecture is where we drill the *speaking discipline* that makes both visible to an interviewer.
 
-The UMPIRE *Evaluate* step is the most under-practiced step in the method. Last week we drew its outline. This week we make it muscle memory.
+The cost half of the FRAME *Examine* step is the most under-practiced part of the method. Last week we drew its outline. This week we make it muscle memory.
 
 ---
 
@@ -13,15 +13,15 @@ The UMPIRE *Evaluate* step is the most under-practiced step in the method. Last 
 
 Last week we said: *most candidates fail interviews because they couldn't explain themselves.* That's still true. By Week 2 you may have started to slip — the drills feel familiar, you know the patterns, you start typing before you fully narrate.
 
-**Don't.** The Evaluate step is where many borderline candidates win or lose. It's also the step that *demonstrates engineering judgment* — the rubric dimension that separates "junior who passes" from "junior worth hiring."
+**Don't.** The Examine (cost) step is where many borderline candidates win or lose. It's also the step that *demonstrates engineering judgment* — the rubric dimension that separates "junior who passes" from "junior worth hiring."
 
 This lecture is short on purpose. The work is in the practice; the lecture just gives you the script.
 
 ---
 
-## 2. The standard Evaluate sentence
+## 2. The standard Examine (cost) sentence
 
-Every Evaluate section you produce this course follows the same five-part structure. Memorize it:
+Every Examine (cost) section you produce this course follows the same five-part structure. Memorize it:
 
 ```
 1. Time complexity      — "O(_) time because _."
@@ -38,21 +38,21 @@ flowchart TD
   C --> D["Tradeoffs"]
   D --> E["Improvement if any"]
 ```
-*The five-piece Evaluate sentence, spoken in order, every time.*
+*The five-piece Examine (cost) sentence, spoken in order, every time.*
 
 That's it. Five sentences. Two to four minutes when spoken. Every interview, every problem, every time.
 
-Here is the canonical example for two-sum unsorted with a hash map:
+Here is the canonical example, spoken for this week's [Exercise 1 — The Refund Pair](../exercises/exercise-01-refund-pair.md), solved with a hash map:
 
 > "**Time complexity.** Each iteration does one O(1) average hash-map lookup and one O(1) average insert. We iterate n times. **O(n) time.**
 >
-> **Space complexity.** The hash map holds at most n entries — one per element of the input. **O(n) auxiliary space.**
+> **Space complexity.** The hash map holds at most n entries — one per charge in the history. **O(n) auxiliary space.**
 >
 > **Worst case.** Worst-case hash-map operations are O(n) if every key collides, but Python uses a randomized hash seed; for normal inputs we treat hash ops as O(1) average. So total is O(n) expected; O(n²) adversarial but practically unreachable.
 >
-> **Tradeoffs.** If the array were sorted, two-pointer would solve this in O(n) time and O(1) space — strictly better on memory. Since this input is *unsorted* and we need to preserve the original indices for the return, sorting first would scramble them. The hash map is the right choice here.
+> **Tradeoffs.** If the charge history were sorted, converging two-pointer would solve this in O(n) time and O(1) space — strictly better on memory. It is *unsorted*, and the contract asks for positions in the original history, so sorting first would scramble the very thing I have to return. The hash map is the right choice here.
 >
-> **Improvement.** No improvement obvious — we're already at O(n), the lower bound for any algorithm that must read the entire input."
+> **Improvement.** No improvement obvious — we're already at O(n), the lower bound for any algorithm that must read every charge."
 
 That sentence — fluent, structured, specific — is what wins the *engineering judgment* dimension on the rubric.
 
@@ -132,7 +132,7 @@ The "no improvement, we're at the lower bound" sentence is gold — it tells the
 
 ## 4. The two-pointer-versus-hash-map debate (when to defend which)
 
-The most common Evaluate-step debate this week — and a frequent interview probe — is: *"Why hash map instead of two pointers? Or vice versa?"*
+The most common Examine (cost) debate this week — and a frequent interview probe — is: *"Why hash map instead of two pointers? Or vice versa?"*
 
 The answer depends on **two questions:**
 
@@ -168,17 +168,17 @@ That's a real engineering answer. Memorize the shape; it works on most variants 
 
 ---
 
-## 5. Practicing the Evaluate sentence
+## 5. Practicing the Examine (cost) sentence
 
-The drill: take one of your Week 1 solutions. Open a recorder. Look at the code. **Speak the Evaluate section** — all five pieces — in two minutes, without re-reading the problem.
+The drill: take one of your Week 1 solutions. Open a recorder. Look at the code. **Speak the Examine (cost) section** — all five pieces — in two minutes, without re-reading the problem.
 
 Do this for **all five Week 1 drills**, as part of this week's mini-project. By the fifth one you will have the rhythm.
 
-Specifically, this week your mini-project is to **re-do the Evaluate section** of every Week 1 write-up to follow the five-piece structure. The result: a portfolio that demonstrates Week-2-level discipline retroactively across Week 1's work.
+Specifically, this week your mini-project is to **re-do the Examine (cost) section** of every Week 1 write-up to follow the five-piece structure. The result: a portfolio that demonstrates Week-2-level discipline retroactively across Week 1's work.
 
 ---
 
-## 6. Three common Evaluate-section anti-patterns
+## 6. Three common Examine (cost) anti-patterns
 
 ### Anti-pattern 1: "It's O(n)."
 
@@ -227,21 +227,21 @@ You don't need to *solve* the harder problem in the interview — you need to *g
 
 You should be able to do all of these without notes.
 
-1. **Recite the five-piece Evaluate structure.** (Time; space; best/average/worst if relevant; tradeoffs; improvement.)
-2. **State the time complexity of two-sum unsorted** in the *standard sentence form.* ("Each iteration is O(1) average on the hash map; n iterations → O(n) time.")
+1. **Recite the five-piece Examine (cost) structure.** (Time; space; best/average/worst if relevant; tradeoffs; improvement.)
+2. **State the time complexity of the Refund Pair drill** in the *standard sentence form.* ("Each iteration is O(1) average on the hash map; n iterations → O(n) time.")
 3. **Defend hash map over sort-then-two-pointer** on unsorted input where indices matter. (Sorting scrambles indices; we need them; hash map preserves them in O(n).)
 4. **What's the standard phrasing for "O(n) is optimal for this problem"?** ("No improvement obvious; we're at the lower bound for any algorithm that must read the entire input.")
 5. **Reframe the hedge-y answer "I think it's O(n log n)?"** into a confident reasoning chain. (e.g., "Let me reason: outer loop n times, inner sort log n — that's n log n; confident.")
 6. **What two questions do you ask to decide hash-map versus two-pointer?** (Is the input sorted? Do indices matter?)
 
-If you can answer all six without hesitation, your Evaluate discipline is Week-2-ready.
+If you can answer all six without hesitation, your Examine (cost) discipline is Week-2-ready.
 
 ---
 
 ## 9. Up next
 
-The five [exercises](../exercises/README.md) for this week — five hash-map drills, in order, each with a full Evaluate-section requirement.
+The five [exercises](../exercises/README.md) for this week — five hash-map drills, in order, each with a full Examine (cost) section requirement.
 
-After exercises: the [quiz](../quiz.md) (10 complexity questions), the [homework](../homework.md), the two [challenges](../challenges/README.md), and the [mini-project](../mini-project/README.md) — re-doing Week 1's Evaluate sections.
+After exercises: the [quiz](../quiz.md) (10 complexity questions), the [homework](../homework/README.md), the two [challenges](../challenges/README.md), and the [mini-project](../mini-project/README.md) — re-doing Week 1's Examine (cost) sections.
 
 Then Week 3.

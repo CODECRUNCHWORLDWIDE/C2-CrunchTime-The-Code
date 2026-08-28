@@ -20,7 +20,7 @@ By Sunday of Week 6 you will:
 - **Distinguish** when to track distance level-by-level (an outer `for _ in range(len(queue))` loop) and when to store `(node, dist)` on the queue. Both work; only one defends cleanly per problem family.
 - Have solved **five BFS drills** spanning both sub-shapes — level-order traversal, shortest path in a grid, rotting oranges (multi-source), word ladder (node-BFS on a string graph), and binary tree right-side view (per-level visibility).
 - Have shipped one challenge (Minimum Knight Moves on an infinite board — the canonical "BFS on an implicit graph"), the quiz, and the homework.
-- Have shipped the mini-project: **one grid-BFS write-up and one node-BFS write-up, fully UMPIRE-narrated**, with the two sub-shapes laid side-by-side for portfolio review.
+- Have shipped the mini-project: **one grid-BFS write-up and one node-BFS write-up, fully FRAME-narrated**, with the two sub-shapes laid side-by-side for portfolio review.
 
 ---
 
@@ -28,7 +28,7 @@ By Sunday of Week 6 you will:
 
 By the end of this week, you will be able to:
 
-- **Match** a BFS problem in 30 seconds by recognizing the canonical signals: "shortest path," "minimum number of moves," "level order," "spread / infection / fire," "unweighted graph," "fewest steps to reach …".
+- **Name the pattern** for a BFS problem in 30 seconds from the canonical signals: "shortest path," "minimum number of moves," "level order," "spread / infection / fire," "unweighted graph," "fewest steps to reach …".
 - **Distinguish** grid-BFS from node-BFS in one sentence. Grid-BFS: the graph is implicit; neighbors come from 4- or 8-direction offsets on `(r, c)` cells. Node-BFS: the graph is explicit (adjacency list) or implicit-on-strings (word ladder), neighbors come from a `neighbors(node)` function.
 - **Implement** the canonical BFS template — `deque` queue, `visited` set, level counter — without notes, in under 90 seconds.
 - **Defend** the visited-set as an invariant: every node enters the queue at most once; the queue size is bounded by `O(V)`; the total work is `O(V + E)`.
@@ -41,8 +41,8 @@ By the end of this week, you will be able to:
 
 ## Prerequisites
 
-- **Weeks 1-5 complete.** You have shipped five binary-search write-ups; you can deliver UMPIRE without notes on a parametric problem.
-- **Comfortable with `collections.deque`.** BFS uses `deque` because `popleft()` is `O(1)` and `pop()` on a `list` is `O(n)`. If you have never used `deque`, run `python -c "from collections import deque; help(deque)"` once before Drill 1.
+- **Weeks 1-5 complete.** You have shipped five binary-search write-ups; you can deliver FRAME without notes on a parametric problem.
+- **Comfortable with `collections.deque`.** BFS uses `deque` because `popleft()` is `O(1)` and `pop()` on a `list` is `O(n)`. If you have never used `deque`, run `python -c "from collections import deque; help(deque)"` once before Exercise 1.
 - **Comfortable with hash sets.** The visited set is a `set[Hashable]` — node identities must be hashable. Tuples are hashable; lists are not. Plan accordingly when grid cells are coordinates.
 - **A working pytest setup.** Drills are graded by [`timed_runner.py`](exercises/timed_runner.py).
 
@@ -67,7 +67,7 @@ By the end of this week, you will be able to:
 | Day | Focus | Lectures | Exercises | Challenges | Quiz/Read | Homework | Mini-Project | Self-Study | Daily Total |
 |-----|-------|---------:|----------:|-----------:|----------:|---------:|-------------:|-----------:|------------:|
 | Monday | Template + level tracking; drills 1-2 | 2h | 2h | 0h | 0.5h | 1h | 0h | 0.5h | 6h |
-| Tuesday | Multi-source + grid sub-shape; drill 3 | 2h | 2h | 0h | 0.5h | 1h | 0h | 0.5h | 6h |
+| Tuesday | Multi-source + grid sub-shape; exercise 3 | 2h | 2h | 0h | 0.5h | 1h | 0h | 0.5h | 6h |
 | Wednesday | Node-BFS + bidirectional; drills 4-5 | 2h | 2h | 0h | 0.5h | 1h | 0h | 0.5h | 6h |
 | Thursday | Mini-project drafting; challenge ramp | 0h | 1h | 1h | 0.5h | 1h | 1.5h | 1h | 6h |
 | Friday | Challenge (Minimum Knight Moves) | 0h | 0h | 2h | 0.5h | 1h | 1.5h | 1h | 6h |
@@ -90,23 +90,23 @@ By the end of this week, you will be able to:
 | [lecture-notes/01-the-bfs-template.md](./lecture-notes/01-the-bfs-template.md) | The canonical queue + visited-set template, level tracking, the four bug patterns |
 | [lecture-notes/02-grid-bfs-and-graph-bfs.md](./lecture-notes/02-grid-bfs-and-graph-bfs.md) | The two sub-shapes; multi-source BFS; bidirectional BFS |
 | [exercises/README.md](./exercises/README.md) | Index of the five BFS drills |
-| [exercises/drill-01-level-order.md](./exercises/drill-01-level-order.md) | Binary tree level-order traversal — the cleanest "by level" exercise |
-| [exercises/drill-02-shortest-path-grid.md](./exercises/drill-02-shortest-path-grid.md) | Shortest path in a binary matrix — grid-BFS with obstacles |
-| [exercises/drill-03-rotting-oranges.md](./exercises/drill-03-rotting-oranges.md) | Multi-source BFS — the canonical "spread" problem |
-| [exercises/drill-04-word-ladder.md](./exercises/drill-04-word-ladder.md) | Node-BFS on a string graph with a wildcard-bucket neighbor index |
-| [exercises/drill-05-binary-tree-right-side-view.md](./exercises/drill-05-binary-tree-right-side-view.md) | Level tracking — emit the last node at each depth |
+| [exercises/exercise-01-level-order.md](./exercises/exercise-01-level-order.md) | Binary tree level-order traversal — the cleanest "by level" exercise |
+| [exercises/exercise-02-shortest-path-grid.md](./exercises/exercise-02-shortest-path-grid.md) | Shortest path in a binary matrix — grid-BFS with obstacles |
+| [exercises/exercise-03-rotting-oranges.md](./exercises/exercise-03-rotting-oranges.md) | Multi-source BFS — the canonical "spread" problem |
+| [exercises/exercise-04-word-ladder.md](./exercises/exercise-04-word-ladder.md) | Node-BFS on a string graph with a wildcard-bucket neighbor index |
+| [exercises/exercise-05-binary-tree-right-side-view.md](./exercises/exercise-05-binary-tree-right-side-view.md) | Level tracking — emit the last node at each depth |
 | [exercises/timed_runner.py](./exercises/timed_runner.py) | Pytest harness for the five drills |
 | [challenges/README.md](./challenges/README.md) | Index of weekly challenges |
 | [challenges/challenge-01-minimum-knight-moves.md](./challenges/challenge-01-minimum-knight-moves.md) | BFS on an infinite implicit graph — the canonical hard BFS problem |
 | [quiz.md](./quiz.md) | 10 pattern-recognition questions |
-| [homework.md](./homework.md) | Six practice problems (~5 hrs) — two grid, two node, one bidirectional, plus the behavioral and design warm-ups |
-| [mini-project/README.md](./mini-project/README.md) | **One grid-BFS write-up + one node-BFS write-up, fully UMPIRE-narrated** — the week's deliverable |
+| [homework.md](./homework/README.md) | Six practice problems (~5 hrs) — two grid, two node, one bidirectional, plus the behavioral and design warm-ups |
+| [mini-project/README.md](./mini-project/README.md) | **One grid-BFS write-up + one node-BFS write-up, fully FRAME-narrated** — the week's deliverable |
 
 ---
 
 ## Stretch goals
 
-- **Read the LeetCode "Breadth-First Search" tag** and skim 20 titles. For each, predict in 5 seconds: grid? node? multi-source? bidirectional? Stretches the Match-step muscle.
+- **Read the LeetCode "Breadth-First Search" tag** and skim 20 titles. For each, predict in 5 seconds: grid? node? multi-source? bidirectional? Stretches the Research constraints muscle.
 - **Re-derive the canonical template from scratch** without re-reading Lecture 1. If you cannot, you do not yet own the template. Re-read and re-derive until you can.
 - **Find one production-engineering BFS story.** Examples: web crawler frontier, social-graph "people you may know," package-manager dependency level ordering. The "where does BFS live in real systems?" question lifts you out of the LeetCode frame.
 - **Read about 0-1 BFS** (deque-based; `appendleft` for zero-cost edges, `append` for one-cost). It is the natural next step between BFS and Dijkstra. Out of scope for the drills but worth knowing the name.
@@ -117,11 +117,11 @@ By the end of this week, you will be able to:
 
 A learner who has shipped Week 6 has, in their portfolio repo:
 
-- Five UMPIRE write-ups for the drills, all with recordings >= 10 minutes.
-- One UMPIRE write-up for the Minimum Knight Moves challenge.
+- Five FRAME write-ups for the drills, all with recordings >= 10 minutes.
+- One FRAME write-up for the Minimum Knight Moves challenge.
 - The quiz answered (score recorded).
 - The homework problems committed.
-- **Two mini-project write-ups** (one grid, one node), each with a 30-second pattern-recognition memo at the top, under `umpire-writeups/c2-week-06/mini-project/`.
+- **Two mini-project write-ups** (one grid, one node), each with a 30-second pattern-recognition memo at the top, under `frame-writeups/c2-week-06/mini-project/`.
 - A push log showing daily commits Mon-Sun.
 
 If all of that is present and pushed, Phase 2's second week is closed. You are ready for Week 7 — DFS.
@@ -132,13 +132,13 @@ If all of that is present and pushed, Phase 2's second week is closed. You are r
 
 Week 6 is, content-wise, lighter than Week 5 — BFS has fewer template variants than binary search and fewer subtle off-by-one bugs. The compensation is on the *recognition* side: BFS problems disguise themselves more aggressively. A "minimum number of moves" knight problem reads like math; a "rotting oranges" prompt reads like a story; a "word ladder" prompt reads like a puzzle. All three compile to the same algorithm. The work this week is to install that translation reflex so you read any of those prompts and write the queue + visited block without thinking.
 
-If you find yourself ahead by Friday, the right stretch is **not** another drill — it is to write a second-pass parametric mini-project problem from Week 5 (we did warn you Phase 2 grades Match harder than candidates expect). The Phase 2 retrospective at the end of Week 9 will be much easier if the Week 5 mini-project is *also* polished by Sunday Week 6.
+If you find yourself ahead by Friday, the right stretch is **not** another drill — it is to write a second-pass parametric mini-project problem from Week 5 (we did warn you Phase 2 grades Research constraints harder than candidates expect). The Phase 2 retrospective at the end of Week 9 will be much easier if the Week 5 mini-project is *also* polished by Sunday Week 6.
 
 ---
 
 ## Up next
 
-[Week 7 — DFS](../week-07/) — once your two BFS write-ups are pushed, your visited-set invariants are clean, and you can write the canonical loop from memory without consulting the lecture.
+[Week 7 — DFS](../week-07-dfs-and-topological-sort/) — once your two BFS write-ups are pushed, your visited-set invariants are clean, and you can write the canonical loop from memory without consulting the lecture.
 
 ---
 

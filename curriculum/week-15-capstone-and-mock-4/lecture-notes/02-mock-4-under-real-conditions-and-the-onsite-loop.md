@@ -36,8 +36,8 @@ flowchart LR
 
 The 4–6 hour onsite is a sequence of 45-to-60-minute rounds, usually four to six of them. For a junior / new-grad / early-career loop, the mix is typically:
 
-- **2–3 coding rounds.** Each is one or two problems from the catalog you have trained — arrays, hash maps, sliding window, graphs, DP, the rest. UMPIRE is the method; the grading is on correctness, communication, and complexity. This is the bulk of the loop and the bulk of your C2 training.
-- **1 system-design round** (often abbreviated or "junior-flavored" at the early-career level). A 45-minute design discussion — "design a URL shortener," "design a rate limiter." Graded on whether you can scope requirements, estimate scale, propose a high-level design, and reason about trade-offs. This is what Week 12's design intro and this week's Drill 2 + Challenge 2 prepare.
+- **2–3 coding rounds.** Each is one or two problems from the catalog you have trained — arrays, hash maps, sliding window, graphs, DP, the rest. FRAME is the method; the grading is on correctness, communication, and complexity. This is the bulk of the loop and the bulk of your C2 training.
+- **1 system-design round** (often abbreviated or "junior-flavored" at the early-career level). A 45-minute design discussion — "design a URL shortener," "design a rate limiter." Graded on whether you can scope requirements, estimate scale, propose a high-level design, and reason about trade-offs. This is what Week 12's design intro and this week's Exercise 2 + Challenge 2 prepare.
 - **1 behavioral round.** 30–45 minutes of "tell me about a time…" questions. Graded on the STAR signals from Week 13 — ownership, quantified impact, self-awareness, collaboration, growth.
 - **1 hiring-manager chat.** Often the last round. It is behavioral in everything but name — "why this team," "tell me about a hard project," "what are you looking for" — plus your questions for them. The manager is deciding whether they want you on the team and whether you will accept an offer.
 
@@ -78,7 +78,7 @@ Mock #4 is a loop, so it has a structure across rounds, and each round has its o
 
 | Round | Length | Internal shape |
 |-------|--------|----------------|
-| **Coding** | 45 min | The UMPIRE allocation you have run since W4 (below). |
+| **Coding** | 45 min | The FRAME allocation you have run since W4 (below). |
 | Short break | 5 min | Stand up, reset. Real onsites have gaps between rounds. |
 | **System design** | 45 min | Requirements → estimation → high-level design → deep-dive → trade-offs (Challenge 2 framework). |
 | Short break | 5 min | Reset again. |
@@ -111,7 +111,7 @@ The protocol is the one you have run three times. For Mock #4 it applies to *eac
 - **Pass 1 — 1.5×, the whole recording, timestamp doc open.** Watch all three rounds at 1.5×. Drop one line per noticeable *pattern* (not every "um"). 15–20 timestamps across the loop. Example:
 
 ```
-CODING 04:30   Match memo ran 50 seconds — tighter than Mock #3. Good.
+CODING 04:30   R memo ran 50 seconds — tighter than Mock #3. Good.
 CODING 22:00   Found the off-by-one and narrated the fix out loud. Good — that was Mock #3's behavior change.
 DESIGN 06:00   Jumped to "use a database" before scoping requirements. Round-2 anti-pattern.
 DESIGN 31:00   Named the hash-vs-counter trade-off unprompted. Good.
@@ -124,7 +124,7 @@ BEHAV  03:00   Spent 40 seconds on Situation before getting to Action. Still the
 
 ## 7. The self-feedback write-up and the trajectory across four mocks
 
-The deliverable goes at `umpire-writeups/c2-week-15/mock-04-self-feedback.md`. Same six-section structure as the prior mocks, with a separate grade for each of the three rounds, **plus the closing trajectory section** — and this one spans all four mocks:
+The deliverable goes at `frame-writeups/c2-week-15/mock-04-self-feedback.md`. Same six-section structure as the prior mocks, with a separate grade for each of the three rounds, **plus the closing trajectory section** — and this one spans all four mocks:
 
 > ## Trajectory across Mock #1 → #2 → #3 → #4
 >

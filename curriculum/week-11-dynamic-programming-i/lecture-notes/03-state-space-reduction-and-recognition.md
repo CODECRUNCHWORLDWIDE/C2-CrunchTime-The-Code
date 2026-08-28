@@ -11,7 +11,7 @@ Lecture 1 installed the four-step pipeline and the 1D-DP suite. Lecture 2 instal
 
 > *Given a string `s`, find the longest palindromic subsequence's length in `s`. A subsequence is a sequence that can be derived from another sequence by deleting some or no elements without changing the order of the remaining elements.*
 
-**Match.** Brute force: at each pair `(i, j)` representing the substring `s[i..j]`, decide what `dp[i][j]` should be. If `s[i] == s[j]`, the palindromic subsequence extends both ends — `dp[i][j] = dp[i + 1][j - 1] + 2`. Otherwise, we drop one end — `dp[i][j] = max(dp[i + 1][j], dp[i][j - 1])`. Overlapping subproblems and optimal substructure both hold. 2D DP.
+**Research constraints.** Brute force: at each pair `(i, j)` representing the substring `s[i..j]`, decide what `dp[i][j]` should be. If `s[i] == s[j]`, the palindromic subsequence extends both ends — `dp[i][j] = dp[i + 1][j - 1] + 2`. Otherwise, we drop one end — `dp[i][j] = max(dp[i + 1][j], dp[i][j - 1])`. Overlapping subproblems and optimal substructure both hold. 2D DP.
 
 **State semantics.** `dp[i][j] = length of the LPS in s[i..j]` (substring from index `i` to `j` inclusive). The base case is `dp[i][i] = 1` (a single character is a palindrome of length 1). The answer is `dp[0][n - 1]`.
 

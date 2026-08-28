@@ -48,8 +48,9 @@ This is the week you'll actually use these.
 
 ## Videos on the pattern (free, no signup)
 
-- **NeetCode — "Linked List Cycle" walkthrough** (YouTube — free): search "neetcode linked list cycle"; the 8-minute walkthrough is enough.
-- **MIT 6.006 — Hashing lecture** (free OCW; the dictionary-with-window discussion at the end): <https://ocw.mit.edu/courses/6-006-introduction-to-algorithms-spring-2020/> — tangential, but the *adjacency in a functional graph* idea connects to Happy Number.
+- **NeetCode — cycle-detection walkthroughs** (YouTube — free): search "neetcode linked list cycle"; the 8-minute walkthrough is enough for the mechanics.
+- **MIT 6.006 — Introduction to Algorithms** (free OCW): <https://ocw.mit.edu/courses/6-006-introduction-to-algorithms-spring-2020/> — tangential to this week, but the treatment of graph representations is where "one outgoing edge per node" stops being an interview trick and starts being a definition.
+- **Wikipedia — Functional graph**: <https://en.wikipedia.org/wiki/Functional_graph> — one short article, and it is the formal statement of the tail-plus-rotation shape Exercise 4 asks you to measure.
 
 ## On *watching yourself* — the meta-skill
 
@@ -70,23 +71,26 @@ Keep this tab open. Builds on Weeks 1–3.
 | **Slow pointer (tortoise)** | Advances one node per step |
 | **Floyd's algorithm** | Cycle detection using fast + slow pointers; O(n) time, O(1) space |
 | **Cycle entrance** | The first node that is part of the cycle (where the non-cycle prefix meets the cycle) |
-| **Functional graph** | A graph where every node has exactly one outgoing edge — e.g., `n -> sum_of_squares_of_digits(n)` |
-| **Midpoint (lower)** | For a list of even length `2k`, node at index `k - 1` |
-| **Midpoint (upper)** | For a list of even length `2k`, node at index `k` (this is what `slow` lands on with the speed-2 hare) |
+| **Functional graph** | A graph where every node has exactly one outgoing edge — e.g. the states `[0, m)` under `s -> (s*s + 1) % m` |
+| **Tail** | On a functional graph, the states visited exactly once before the walk enters its cycle |
+| **Rotation** | On a functional graph, the cycle the walk settles into. A rotation of length 1 is a fixed point |
+| **Midpoint (lower)** | For a chain of even length `2k`, the node at index `k - 1`. Guard: `fast.next and fast.next.next` |
+| **Midpoint (upper)** | For a chain of even length `2k`, the node at index `k`. Guard: `fast and fast.next` — this is what `slow` lands on with the plain speed-2 hare |
+| **Fixed-gap variant** | Fast/slow where the gap is a known constant set up front, rather than discovered by a collision. Used for "counted back from the end" |
 | **Mock interview** | A timed, recorded interview simulation against a peer or solo against a camera |
 | **Self-feedback rubric** | The structured grading checklist you apply to your own recording |
 | **Behavior delta** | One specific thing you commit to changing for Mock #2 |
-| **Reorder list** | The challenge problem: `L0 → L1 → … → Ln` becomes `L0 → Ln → L1 → Ln-1 → …` |
+| **Imposition** | Printing term for arranging pages in the order a finishing machine feeds them. This week's challenge problem |
 | **Brent's algorithm** | An alternative cycle-detection algorithm; faster in practice but Floyd's is the interview standard |
 
 ## What you'll be glad you read
 
 Two things, both short, both this week:
 
-1. **The Wikipedia "Cycle detection" article** — read sections on Floyd's specifically. The proof of the cycle-entrance lemma is one paragraph. Read it once; you'll re-derive it in Drill 2.
+1. **The Wikipedia "Cycle detection" article** — read sections on Floyd's specifically. The proof of the cycle-entrance lemma is one paragraph. Read it once; you'll re-derive it in Exercise 2.
 2. **One short blog post on how to set up an OBS recording for a coding interview** — most are 5-minute reads. Worth it Monday so Friday is friction-free.
 
-If you read nothing else this week, read those two and skim the linked-list portion of LeetCode's "Linked List" tag titles.
+If you read nothing else this week, read those two, then skim ten problem *titles* from any linked-list index and classify each one from the title alone. Titles only — the point is to rehearse the 30-second match, not to read statements.
 
 ---
 

@@ -6,7 +6,7 @@
 └───┘  └───┘  └───┘  └───┘  └───┘  └───┘
 ```
 
-> *Week 14 installed the final algorithm pattern — bit manipulation — and ran Mock #3 as the first full-loop simulation under near-real conditions: video on, a hard 45-minute clock, the two-pass watching protocol, one behavior change named against Mock #1 and Mock #2. Week 15 is the last week, and it has no new pattern to teach. Everything you have built since Week 1 — the UMPIRE method, the fourteen-pattern catalog, the twelve-story behavioral bank, the URL-shortener design write-up, three recorded mocks — becomes **one public artifact you point recruiters at.** This week you polish that artifact to a recruiter-grade finish, run **Mock #4** under full real-interview conditions (a stranger interviewer if you can get one, dressed as if it were real, no notes, a hard stop), and produce the single deliverable the course has been building toward: a **personalized go-forward study plan** that tells you exactly what to drill in your last mile and how to sustain the practice after the course ends. By Sunday you publish the capstone, you have four mocks watched and self-critiqued, and you go interview.*
+> *Week 14 installed the final algorithm pattern — bit manipulation — and ran Mock #3 as the first full-loop simulation under near-real conditions: video on, a hard 45-minute clock, the two-pass watching protocol, one behavior change named against Mock #1 and Mock #2. Week 15 is the last week, and it has no new pattern to teach. Everything you have built since Week 1 — the FRAME method, the fourteen-pattern catalog, the twelve-story behavioral bank, the URL-shortener design write-up, three recorded mocks — becomes **one public artifact you point recruiters at.** This week you polish that artifact to a recruiter-grade finish, run **Mock #4** under full real-interview conditions (a stranger interviewer if you can get one, dressed as if it were real, no notes, a hard stop), and produce the single deliverable the course has been building toward: a **personalized go-forward study plan** that tells you exactly what to drill in your last mile and how to sustain the practice after the course ends. By Sunday you publish the capstone, you have four mocks watched and self-critiqued, and you go interview.*
 
 Welcome to Week 15 of **C2 · CrunchTime — The Code** — the final week of Phase 4, the capstone-and-onsite-prep block (Weeks 13–15), and the last week of the program. Week 13 installed the behavioral round. Week 14 installed the last algorithm pattern and ran Mock #3. This week installs nothing new. It is the capstone: the week where the portfolio repo that has grown since the Week 1 mini-project — five array write-ups then, now fifty-plus — is polished into a public artifact, run through a final mock under full conditions, and closed with a personalized plan for the road ahead.
 
@@ -16,7 +16,7 @@ Mock #4 is the fourth and final recorded mock — and the first run under *full 
 
 By Sunday of Week 15 you will:
 
-- **Have published the capstone portfolio** — the public repo `crunchtime-interview-prep-<yourhandle>` with a recruiter-grade README cover, **60+ UMPIRE write-ups**, all **four mock** self-feedback notes, the **system-design write-up**, the **behavioral story bank** with a coverage matrix, the **recruiter-prep pack** (resume, target companies, outreach + follow-up templates), the **personalized study plan**, and the **badges**.
+- **Have published the capstone portfolio** — the public repo `crunchtime-interview-prep-<yourhandle>` with a recruiter-grade README cover, **60+ FRAME write-ups**, all **four mock** self-feedback notes, the **system-design write-up**, the **behavioral story bank** with a coverage matrix, the **recruiter-prep pack** (resume, target companies, outreach + follow-up templates), the **personalized study plan**, and the **badges**.
 - **Have run Mock #4 under full real conditions** — a stranger interviewer if obtainable, dressed as if real, no notes, a hard 45-minute coding round plus a 45-minute system-design round plus a 20-minute behavioral round — recorded, watched twice, and turned into the closing trajectory note across Mocks #1 → #4.
 - **Have diagnosed your remaining weaknesses** from your write-up history and four mock self-feedback notes, and named the two or three patterns that need the most reps in your last mile.
 - **Have produced the personalized go-forward study plan** — the weakness self-diagnosis, the spaced-repetition schedule across the fourteen patterns, the application + funnel-math cadence, the pre-onsite four-week last-mile template, and the between-offer maintenance plan.
@@ -29,7 +29,7 @@ By Sunday of Week 15 you will:
 By the end of this week, you will be able to:
 
 - **Polish** a problem-write-up portfolio into a recruiter-grade public artifact: a README cover that earns the next ninety seconds of attention, a progress dashboard that surfaces the 60+ write-ups and four mocks at a glance, a commit history that reads as months of evidence, and a quality bar that no individual write-up falls below.
-- **Audit** your own write-ups against a concrete six-point quality bar and fix the weak ones — the half-finished Evaluate, the missing Match memo, the untested code, the write-up with no complexity derivation.
+- **Audit** your own write-ups against a concrete six-point quality bar and fix the weak ones — the half-finished Examine, the missing Research-constraints memo, the untested code, the write-up with no complexity derivation.
 - **Run** Mock #4 under full real-interview conditions: the full loop (coding + system design + behavioral), a stranger interviewer if obtainable, dressed and set up as if real, no notes, a hard stop, recorded and watched twice.
 - **Write** a junior-level system-design write-up — a URL shortener at 10K QPS — following the requirements → estimation → API → data model → ID scheme → caching → read/write path framework from Week 12's design intro.
 - **Build** a recruiter-prep pack — a resume audited against the Tech Interview Handbook guide, a tiered target-company list, and real, usable outreach and follow-up email templates.
@@ -41,19 +41,19 @@ By the end of this week, you will be able to:
 
 ## Prerequisites
 
-- **Weeks 1–14 complete.** You can deliver UMPIRE without notes on all fourteen algorithm patterns, you have a twelve-story behavioral bank from Week 13, and the URL-shortener design write-up from Week 12 exists in draft.
+- **Weeks 1–14 complete.** You can deliver FRAME without notes on all fourteen algorithm patterns, you have a twelve-story behavioral bank from Week 13, and the URL-shortener design write-up from Week 12 exists in draft.
 - **Mocks #1, #2, and #3 done.** All three are recorded, watched twice, and self-critiqued, each with one named behavior change. Mock #4 builds the closing trajectory across all four — if any prior mock is missing its self-feedback note, write it before Friday.
-- **~50+ write-ups already accumulated.** Every week's mini-project, exercises, and homework fed the portfolio repo. By the start of Week 15 you should have roughly fifty UMPIRE write-ups committed; Week 15 brings the total over sixty and audits the lot for quality.
+- **~50+ write-ups already accumulated.** Every week's mini-project, exercises, and homework fed the portfolio repo. By the start of Week 15 you should have roughly fifty FRAME write-ups committed; Week 15 brings the total over sixty and audits the lot for quality.
 - **The story bank built.** Week 13's twelve-plus STAR anecdotes with a coverage matrix are committed under `behavioral/story-bank/`.
-- **A draft resume.** You do not need a finished resume — Drill 3 finishes it — but bring whatever you have. If you have none, the Tech Interview Handbook resume guide (linked in resources) is the starting template.
+- **A draft resume.** You do not need a finished resume — Exercise 3 finishes it — but bring whatever you have. If you have none, the Tech Interview Handbook resume guide (linked in resources) is the starting template.
 
 ---
 
 ## Topics covered
 
 - **The capstone portfolio** — what makes a problem-write-up repo that converts a recruiter; the README cover; the progress dashboard; commit history as evidence; the 60+ write-up quality bar
-- **The write-up audit** — a six-point quality bar; how to find and fix the weak write-ups (missing Match memo, no complexity derivation, untested code, half-finished Evaluate)
-- **The badges** — `umpire-apprentice`, `pattern-practitioner`, `crunchtime-graduate`; what each certifies and how to earn it honestly
+- **The write-up audit** — a six-point quality bar; how to find and fix the weak write-ups (missing Research-constraints memo, no complexity derivation, untested code, half-finished Examine)
+- **The badges** — `frame-apprentice`, `pattern-practitioner`, `crunchtime-graduate`; what each certifies and how to earn it honestly
 - **Scannability** — making the repo legible in ninety seconds; what a recruiter sees first and in what order
 - **The onsite loop** — recruiter screen → phone/technical screen → the 4–6 hour virtual onsite (coding rounds + system design + behavioral + hiring-manager chat); how each round is graded
 - **Mock #4 under full conditions** — how it differs from Mocks #1–#3; the stranger interviewer, the dress-as-if-real rig, no notes, the hard stop; the full-loop structure; the two-pass watching protocol; converting a "no" into data
@@ -71,8 +71,8 @@ By the end of this week, you will be able to:
 
 | Day | Focus | Lectures | Exercises | Challenges | Quiz/Read | Homework | Mini-Project | Self-Study | Daily Total |
 |-----|-------|---------:|----------:|-----------:|----------:|---------:|-------------:|-----------:|------------:|
-| Monday | Capstone + portfolio polish; Drill 1 (portfolio audit) | 2h | 2h | 0h | 0.5h | 0.5h | 0.5h | 0.5h | 6h |
-| Tuesday | System-design write-up; Drill 2 | 2h | 2h | 0h | 0.5h | 0.5h | 0.5h | 0.5h | 6h |
+| Monday | Capstone + portfolio polish; Exercise 1 (portfolio audit) | 2h | 2h | 0h | 0.5h | 0.5h | 0.5h | 0.5h | 6h |
+| Tuesday | System-design write-up; Exercise 2 | 2h | 2h | 0h | 0.5h | 0.5h | 0.5h | 0.5h | 6h |
 | Wednesday | Recruiter-prep pack + pre-onsite plan; Drills 3–4 | 0h | 2h | 0h | 0.5h | 1h | 1h | 0.5h | 5h |
 | Thursday | Mock #4 protocol + the onsite loop; prep + warm-up; system-design mock (Challenge 2) | 2h | 0h | 1.5h | 0.5h | 0.5h | 0.5h | 0.5h | 5.5h |
 | Friday | **Mock #4 (full loop) + immediate notes** | 0h | 0h | 2.5h | 0.5h | 0.5h | 0.5h | 0.5h | 4.5h |
@@ -96,15 +96,15 @@ By the end of this week, you will be able to:
 | [lecture-notes/02-mock-4-under-real-conditions-and-the-onsite-loop.md](./lecture-notes/02-mock-4-under-real-conditions-and-the-onsite-loop.md) | The full onsite loop, how Mock #4 differs from #1–#3, the full-conditions rig, the time allocation, the debrief, and how to convert a "no" into data |
 | [lecture-notes/03-the-personalized-go-forward-study-plan.md](./lecture-notes/03-the-personalized-go-forward-study-plan.md) | Weakness diagnosis from your history, the spaced-repetition schedule, the application cadence + funnel math, the maintenance plan, the emotional arc, and the four-week pre-onsite template |
 | [exercises/README.md](./exercises/README.md) | Index of the four capstone drills |
-| [exercises/drill-01-portfolio-audit.md](./exercises/drill-01-portfolio-audit.md) | Audit your 60+ write-ups against a six-point quality bar and fix the weak ones |
-| [exercises/drill-02-system-design-writeup.md](./exercises/drill-02-system-design-writeup.md) | The system-design capstone artifact — a worked URL-shortener design brief |
-| [exercises/drill-03-recruiter-prep-pack.md](./exercises/drill-03-recruiter-prep-pack.md) | Resume, target-company list, and outreach + follow-up email templates |
-| [exercises/drill-04-pre-onsite-4-week-plan.md](./exercises/drill-04-pre-onsite-4-week-plan.md) | Build your personalized four-week last-mile plan |
+| [exercises/exercise-01-portfolio-audit.md](./exercises/exercise-01-portfolio-audit.md) | Audit your 60+ write-ups against a six-point quality bar and fix the weak ones |
+| [exercises/exercise-02-system-design-writeup.md](./exercises/exercise-02-system-design-writeup.md) | The system-design capstone artifact — a worked URL-shortener design brief |
+| [exercises/exercise-03-recruiter-prep-pack.md](./exercises/exercise-03-recruiter-prep-pack.md) | Resume, target-company list, and outreach + follow-up email templates |
+| [exercises/exercise-04-pre-onsite-4-week-plan.md](./exercises/exercise-04-pre-onsite-4-week-plan.md) | Build your personalized four-week last-mile plan |
 | [challenges/README.md](./challenges/README.md) | Index of the two challenges |
 | [challenges/challenge-01-mock-4-full-loop.md](./challenges/challenge-01-mock-4-full-loop.md) | Mock #4 under full real conditions — a simulated onsite loop with fallback problems |
 | [challenges/challenge-02-system-design-mock.md](./challenges/challenge-02-system-design-mock.md) | A 45-minute junior-level system-design mock round |
 | [quiz.md](./quiz.md) | The final readiness self-assessment — 10 questions across patterns, behavioral, complexity, and meta-readiness |
-| [homework.md](./homework.md) | **The personalized go-forward study plan** — the course's explicit deliverable |
+| [homework.md](./homework/README.md) | **The personalized go-forward study plan** — the course's explicit deliverable |
 | [mini-project/README.md](./mini-project/README.md) | **The capstone portfolio brief** — the final, complete portfolio repo spec |
 
 ---
@@ -112,10 +112,10 @@ By the end of this week, you will be able to:
 ## Stretch goals
 
 - **Run Mock #4 as a true stranger mock.** Book a real interviewing.io or Pramp session (links in resources) where you genuinely do not know the interviewer. The "stranger judging me" pressure is the one variable solo and peer mocks cannot fully reproduce — and it is exactly the variable that decides whether your prep holds under real conditions.
-- **Pair-audit a peer's portfolio.** Swap repos with another C2 learner and audit each other's write-ups against the six-point bar. Reading someone else's weak Evaluate sections is the fastest way to see your own; you will catch the missing complexity derivation in *their* repo, then go fix the same gap in yours.
+- **Pair-audit a peer's portfolio.** Swap repos with another C2 learner and audit each other's write-ups against the six-point bar. Reading someone else's weak Examine sections is the fastest way to see your own; you will catch the missing complexity derivation in *their* repo, then go fix the same gap in yours.
 - **Write a second system-design write-up.** Beyond the URL shortener, draft one more from Challenge 2's prompt list (pastebin, rate limiter, news feed at small scale). Two design write-ups in the portfolio signal that the first was not a one-off.
 - **Record a 90-second portfolio walkthrough.** Screen-record yourself scrolling your repo as if presenting it to a recruiter. If you cannot make it compelling in 90 seconds out loud, the README cover is not doing its job yet. This is the highest-leverage 90 minutes you can spend on the capstone.
-- **Send three real outreach messages.** Do not wait for the course to end. Use the Drill 3 outreach template and send three messages this week to recruiters or engineers at tier-2 target companies. The funnel starts now; the first message is the hardest.
+- **Send three real outreach messages.** Do not wait for the course to end. Use the Exercise 3 outreach template and send three messages this week to recruiters or engineers at tier-2 target companies. The funnel starts now; the first message is the hardest.
 
 ---
 
@@ -126,8 +126,8 @@ A single public GitHub repository, **`crunchtime-interview-prep-<yourhandle>`**,
 ```
 crunchtime-interview-prep-<you>/
 ├── README.md                       ← your interview-prep portfolio cover (the 90-second sell)
-├── umpire-writeups/
-│   ├── 01-two-sum.md               ← 60+ problem write-ups in UMPIRE format
+├── frame-writeups/
+│   ├── 01-two-sum.md               ← 60+ problem write-ups in FRAME format
 │   ├── 02-best-time-to-buy.md
 │   ├── …                            ← organized by pattern and/or by week (c2-week-NN/)
 │   └── 60-maximum-xor.md
@@ -137,7 +137,7 @@ crunchtime-interview-prep-<you>/
 │   ├── mock-03-week-14.md
 │   └── mock-04-week-15.md          ← full-loop self-feedback + the Mock #1→#4 trajectory
 ├── system-design/
-│   └── url-shortener.md            ← the junior-level design write-up (Drill 2)
+│   └── url-shortener.md            ← the junior-level design write-up (Exercise 2)
 ├── behavioral/
 │   └── story-bank/
 │       ├── story-bank.md           ← your 12+ STAR anecdotes
@@ -148,9 +148,9 @@ crunchtime-interview-prep-<you>/
 │   ├── outreach-template.md        ← the cold-outreach template
 │   └── follow-up-template.md       ← the thank-you + follow-up template
 ├── study-plan/
-│   └── pre-onsite-4-weeks.md       ← your personalized last-mile plan (homework + Drill 4)
+│   └── pre-onsite-4-weeks.md       ← your personalized last-mile plan (homework + Exercise 4)
 └── badges/
-    ├── umpire-apprentice.json
+    ├── frame-apprentice.json
     ├── pattern-practitioner.json
     └── crunchtime-graduate.json
 ```
@@ -164,7 +164,7 @@ This repo is what you point recruiters and hiring managers at. The commit histor
 A learner who has shipped Week 15 has, in their **public** portfolio repo:
 
 - A README cover that sells the repo in ninety seconds — a one-line pitch, a progress dashboard, a pattern × write-up index, and links to the four mocks.
-- **60+ UMPIRE write-ups**, every one audited against the six-point quality bar — no missing Match memo, no untested code, no half-finished Evaluate.
+- **60+ FRAME write-ups**, every one audited against the six-point quality bar — no missing Research-constraints memo, no untested code, no half-finished Examine.
 - All **four mock self-feedback notes** present, with the Mock #4 note carrying the closing trajectory across Mocks #1 → #4.
 - The **system-design write-up** (URL shortener at 10K QPS) present and complete through the read/write path.
 - The **behavioral story bank** with its coverage matrix present.
@@ -191,13 +191,13 @@ If you find yourself ahead by Thursday, the right stretch is **not** another wri
 
 There is no Week 16. This is the last week of C2, and you have finished it.
 
-Stop and take the measure of what you built. Fifteen weeks ago you may not have known what UMPIRE stood for. Now you have a public repository with 60+ problem write-ups, four recorded mock interviews you watched without flinching, a system-design write-up, a twelve-story behavioral bank, a recruiter-prep pack, and a written plan for the next four weeks and beyond. That is not a course completion certificate. That is a *portfolio* — the thing you point a hiring manager at when they ask "show me how you think."
+Stop and take the measure of what you built. Fifteen weeks ago you may not have known what FRAME stood for. Now you have a public repository with 60+ problem write-ups, four recorded mock interviews you watched without flinching, a system-design write-up, a twelve-story behavioral bank, a recruiter-prep pack, and a written plan for the next four weeks and beyond. That is not a course completion certificate. That is a *portfolio* — the thing you point a hiring manager at when they ask "show me how you think."
 
 Here is where you go from here:
 
-1. **Open your [personalized go-forward study plan](./homework.md).** It is the most important file you wrote this week. It tells you which two or three patterns need the most reps in your last mile, how to keep all fourteen warm, how many applications to send per week, and what the funnel math says to expect. Follow it.
+1. **Open your [personalized go-forward study plan](./homework/README.md).** It is the most important file you wrote this week. It tells you which two or three patterns need the most reps in your last mile, how to keep all fourteen warm, how many applications to send per week, and what the funnel math says to expect. Follow it.
 
-2. **You go interview.** Send the first batch of applications this week — do not wait. Use the [recruiter-prep pack](./exercises/drill-03-recruiter-prep-pack.md) you built: the tiered target list, the outreach template, the follow-up template. The funnel only starts converting once you put real applications into it.
+2. **You go interview.** Send the first batch of applications this week — do not wait. Use the [recruiter-prep pack](./exercises/exercise-03-recruiter-prep-pack.md) you built: the tiered target list, the outreach template, the follow-up template. The funnel only starts converting once you put real applications into it.
 
 3. **For compensation, offer mechanics, and negotiation** — C2 deliberately stops at the offer. The moment a recruiter says "we'd like to extend an offer," go to **[C13 · Hack the Interview](../../C13-HACK-THE-INTERVIEW/)** for the negotiation playbook, leveling, and offer comparison. You will leave money on the table if you negotiate without it.
 

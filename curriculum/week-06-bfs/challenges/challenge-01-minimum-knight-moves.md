@@ -25,7 +25,7 @@ Per the LC spec: `-300 <= x, y <= 300`. The answer is guaranteed to exist (the k
 
 - [ ] Code passes the test cases at the bottom (write your own pytest file, or extend `timed_runner.py`).
 - [ ] Solution is **`O(max(|x|, |y|)²)`** time and **`O(max(|x|, |y|)²)`** space — single-source BFS with search-region bounding. Naive uncapped BFS is accepted but is "barely passable"; the bounded version is the senior signal.
-- [ ] Your UMPIRE write-up **explicitly states the symmetry argument** (`f(x, y) = f(|x|, |y|)`) in the Match section. Naming the symmetry is the senior-level signal.
+- [ ] Your FRAME write-up **explicitly states the symmetry argument** (`f(x, y) = f(|x|, |y|)`) in the Research constraints section. Naming the symmetry is the senior-level signal.
 - [ ] Your write-up handles the **edge cases**: `(0, 0)` returns 0; `(1, 1)`, `(2, 2)`, and other "small distance, two moves required" cases trace correctly.
 - [ ] Recording **≥ 45 minutes** — yes, three quarters of an hour. First time on this problem is long; that is the right shape.
 
@@ -61,22 +61,22 @@ target (e.g., (1, 1) requires going to (-1, 2) or (2, -1) then back).
 
 The discriminator: most candidates try unbounded BFS and either time out on adversarial `(x, y)` or accidentally allow the visited set to grow unboundedly. The interview-tell move is **stating the symmetry and the search-region bound** before writing code.
 
-## UMPIRE outline
+## FRAME outline
 
-- **U:** Restate. Confirm infinite board. Confirm 8 knight moves. Confirm `(0, 0)` start. Walk `(2, 1)` by hand: one move. Walk `(5, 5)` by hand and intuit: cannot be done in fewer than 4 moves; verify each move sequence sums correctly. Confirm the spec's constraint `-300 <= x, y <= 300` — the bound matters for the search-region choice.
+- **F:** Restate. Confirm infinite board. Confirm 8 knight moves. Confirm `(0, 0)` start. Walk `(2, 1)` by hand: one move. Walk `(5, 5)` by hand and intuit: cannot be done in fewer than 4 moves; verify each move sequence sums correctly. Confirm the spec's constraint `-300 <= x, y <= 300` — the bound matters for the search-region choice.
 
-- **M:** Node-BFS on an infinite implicit graph with symmetry pruning. The 30-second memo:
+- **R:** Node-BFS on an infinite implicit graph with symmetry pruning. The 30-second memo:
   > *"Node-BFS — nodes are `(r, c)` coordinates; edges are the 8 knight offsets. BFS finds shortest path because every move has unit cost. Two optimizations: (a) symmetry reduce to first quadrant — `f(x, y) = f(|x|, |y|)` because knight moves are symmetric in both axes; (b) bound the search region to `[-2, x+2] × [-2, y+2]` — the answer is at most `|x| + |y|` moves, and the knight never strays more than 2 cells outside the target rectangle in an optimal path. Why not DFS: would not find the shortest. Why not Dijkstra: edges are unit-cost. Stretch: bidirectional BFS, expand from both `(0, 0)` and `(x, y)` and meet in the middle — exponentially faster in the worst case."*
 
-- **P:** Four things.
+- **A:** Four things.
   1. **Symmetry reduction.** `x, y = abs(x), abs(y)`.
   2. **Trivial case.** `if (x, y) == (0, 0): return 0`. `if (x, y) == (1, 1): return 2`. (The latter is a corner case where the search-region bound gets tight; explicit-handling avoids edge-case bugs.)
   3. **Search-region bound.** Define `MAX = max(x, y) + 2`. Visited cells must satisfy `-2 <= r <= MAX` and `-2 <= c <= MAX`.
   4. **BFS.** Queue = `deque([(0, 0, 0)])`. Visited = `{(0, 0)}`. Eight knight offsets. Loop: dequeue `(r, c, d)`. If `(r, c) == (x, y)`, return `d`. For each offset, compute `(nr, nc)`. If within bound and unvisited, enqueue with `d + 1`.
 
-- **I:** Implement. Sentinel-bound and visited-set discipline are the most error-prone parts. Write the bounds check explicitly: `-2 <= nr <= MAX and -2 <= nc <= MAX`.
+- **M:** Make the solution. Sentinel-bound and visited-set discipline are the most error-prone parts. Write the bounds check explicitly: `-2 <= nr <= MAX and -2 <= nc <= MAX`.
 
-- **R:** Trace on `(5, 5)`. After symmetry: still `(5, 5)`. MAX = 7. BFS from `(0, 0)`:
+- **E (verify):** Trace on `(5, 5)`. After symmetry: still `(5, 5)`. MAX = 7. BFS from `(0, 0)`:
   Level 0: `(0,0)`.
   Level 1: 8 knight offsets. Valid (in bound, unvisited): `(1,2), (2,1), (-1,2), (2,-1), (1,-2), (-2,1)` and others. Filter by bound `[-2, 7]`: all included.
   Level 2: 16+ expansions. Reach `(4, 3), (3, 4), (4, 5)`, etc.
@@ -123,18 +123,18 @@ def test_min_knight_moves(x, y, expected):
     assert min_knight_moves(x, y) == expected
 ```
 
-## Common bugs you should catch in Review
+## Common bugs you should catch in Examine (verify)
 
 - **Not reducing by symmetry.** Without the `x, y = abs(x), abs(y)` line, the search can expand into the wrong quadrant and either time out or return a stale answer. The symmetry reduction is line one.
 - **Forgetting the small negative buffer.** Bounding visited to `0 <= r <= x` and `0 <= c <= y` is too tight — for `(1, 1)`, the optimal first move is `(2, -1)` (going negative) and the second move is `(-1, 2)`. Bound `[-2, MAX]` includes those steps.
 - **Wrong knight offsets.** Eight moves: `(±1, ±2)` and `(±2, ±1)`. Forgetting any one of them produces a knight that cannot reach some squares.
-- **Adding to visited at dequeue time.** Same bug pattern from Drill 2 — multiple enqueues of the same cell. Add at enqueue time.
+- **Adding to visited at dequeue time.** Same bug pattern from Exercise 2 — multiple enqueues of the same cell. Add at enqueue time.
 - **Not handling `(0, 0)` as a special case.** Without the early return, the BFS still works (the first dequeue is `(0, 0, 0)`, which matches the target), but the explicit early return is cleaner.
 - **Bidirectional BFS without proper termination.** If you implement bidirectional, the meet condition is "the smaller frontier produces a neighbor that is already in the larger frontier." The total level is `level_a + level_b - 1` or similar; check the exact accounting with a small trace.
 
 ## The "why O(max(|x|, |y|)²)?" defense
 
-Out loud, in your Evaluate section:
+Out loud, in your Examine (cost) section:
 
 > "**Why `O(max(|x|, |y|)²)` time, same space.** We bound the search region to `(|x| + 4) × (|y| + 4)` — derived from the observation that the knight cannot need more than `|x| + |y|` moves and never strays more than 2 cells outside the target rectangle in an optimal path. Each cell in the bounded region is visited at most once (visited-set invariant), and each visit examines 8 neighbors in `O(1)`. The unbounded version's complexity is unbounded in the worst case; the bounded version is provably linear in the search-region area. The senior signal is that **the bounded version's correctness follows from the symmetry of the knight's moves** — without that observation we would have no principled bound and the algorithm would be fragile."
 
@@ -160,4 +160,4 @@ When you revisit this challenge before Mock #2, **re-derive the search-region bo
 
 ---
 
-This concludes Week 6's challenges. Take the [quiz](../quiz.md), do the [homework](../homework.md), then ship the [mini-project](../mini-project/README.md) — one grid-BFS write-up and one node-BFS write-up.
+This concludes Week 6's challenges. Take the [quiz](../quiz.md), do the [homework](../homework/README.md), then ship the [mini-project](../mini-project/README.md) — one grid-BFS write-up and one node-BFS write-up.

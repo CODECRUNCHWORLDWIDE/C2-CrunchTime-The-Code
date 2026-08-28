@@ -2,7 +2,7 @@
 
 **~10 hours per week · 52 weeks · ~520 hours total · The depth lane.**
 
-This pathway covers exactly the same material as the [15-week intensive](intensive-15-week.md), spread across a calendar year. Same patterns, same problems, same UMPIRE Method, same capstone — but at a pace a working engineer can sustain.
+This pathway covers exactly the same material as the [15-week intensive](intensive-15-week.md), spread across a calendar year. Same patterns, same problems, same FRAME Method, same capstone — but at a pace a working engineer can sustain.
 
 ---
 
@@ -12,7 +12,7 @@ Two reasons.
 
 **One:** pattern recognition is a *spaced-repetition* skill. When you see "two pointers" today and then again in 14 days and again in 30, your brain compresses the pattern in a way it can't if you binge ten two-pointer problems in a single weekend. The mastery pathway is engineered around that fact — every pattern returns at week +4 and week +12 for re-drilling.
 
-**Two:** interview readiness is partly *psychological*. Twelve months of weekly UMPIRE practice produces a candidate who has *internalized* the framework. Fifteen weeks of full-time grinding produces a candidate who *learned* it. Under interview pressure, the difference matters.
+**Two:** interview readiness is partly *psychological*. Twelve months of weekly FRAME practice produces a candidate who has *internalized* the framework. Fifteen weeks of full-time grinding produces a candidate who *learned* it. Under interview pressure, the difference matters.
 
 Use this pathway if any of:
 
@@ -31,7 +31,7 @@ The 52 weeks break into four 13-week quarters that mirror the intensive's four p
 
 | Mastery weeks | Intensive equivalent | Focus |
 |--------------:|---------------------|-------|
-| 1–3 | Week 1 | UMPIRE Method, two pointers, first 5 write-ups |
+| 1–3 | Week 1 | FRAME Method, two pointers, first 5 write-ups |
 | 4–6 | Week 2 | Complexity, hash maps, re-drill two pointers |
 | 7–9 | Week 3 | Sliding window, re-drill hash maps |
 | 10–13 | Week 4 | Fast/slow pointers + **Mock #1** + Q1 review week |
@@ -43,17 +43,17 @@ The 52 weeks break into four 13-week quarters that mirror the intensive's four p
 | 14–16 | Week 5 | Binary search |
 | 17–19 | Week 6 | BFS |
 | 20–22 | Week 7 | DFS |
-| 23–25 | Week 8 | Backtracking |
+| 23–25 | Week 8 | Heaps / priority queues |
 | 26 | — | Q2 review + **Mock #2** |
 
 ### Q3 (Weeks 27–39) — Advanced patterns
 
 | Mastery weeks | Intensive equivalent | Focus |
 |--------------:|---------------------|-------|
-| 27–29 | Week 9 | Top-K / heap |
-| 30–32 | Week 10 | Intervals + greedy |
-| 33–35 | Week 11 | DP 1D |
-| 36–38 | Week 12 | DP 2D + system design intro |
+| 27–29 | Week 9 | Tries + advanced strings |
+| 30–32 | Week 10 | Weighted graphs + union-find |
+| 33–35 | Week 11 | Dynamic programming |
+| 36–38 | Week 12 | Backtracking + combinatorics |
 | 39 | — | Q3 review |
 
 ### Q4 (Weeks 40–52) — Capstone & onsite prep
@@ -61,7 +61,7 @@ The 52 weeks break into four 13-week quarters that mirror the intensive's four p
 | Mastery weeks | Intensive equivalent | Focus |
 |--------------:|---------------------|-------|
 | 40–42 | Week 13 | Behavioral, story bank |
-| 43–45 | Week 14 | Bit manipulation, tries + **Mock #3** |
+| 43–45 | Week 14 | Bit manipulation, binary tries + **Mock #3** |
 | 46–48 | Week 15 | Capstone build-up |
 | 49–51 | — | Capstone, polish, mocks #4 |
 | 52 | — | Recruiter pack, interview launch |
@@ -77,7 +77,7 @@ A representative working-engineer week:
 ```
 Mon (1h)    Tue (1.5h)  Wed (1.5h)  Thu (1.5h)  Fri (1h)   Sat (2.5h)  Sun (1h)
 ─────────────────────────────────────────────────────────────────────────────
-read        UMPIRE      UMPIRE      Pattern     mock /     mini-       quiz +
+read        FRAME      FRAME      Pattern     mock /     mini-       quiz +
 lecture     drill       drill       challenge   peer       project /   review
                                                 review     write-up
 ```
@@ -98,14 +98,14 @@ Your `progress.md` should include:
 ## Day-streak: 184 (longest: 184)
 ## Week-streak: 27 (longest: 27)
 ## Pattern coverage: 9 / 14
-## UMPIRE write-ups: 32 / 60
+## FRAME write-ups: 32 / 60
 ## Mocks: 2 / 4
 ## Hours invested (running): 274 / 520
 
 ## This week's commitments (W28)
 - [x] Mon — read sliding-window deep-dive (still re-drilling)
-- [x] Tue — UMPIRE solve: minimum-window-substring
-- [ ] Wed — UMPIRE solve: longest-repeating-character-replacement
+- [x] Tue — FRAME solve: minimum-window-substring
+- [ ] Wed — FRAME solve: longest-repeating-character-replacement
 - [ ] Thu — challenge problem: max-of-all-subarrays-of-size-k (hard)
 - [ ] Fri — peer mock review on Mock #2
 - [ ] Sat — write up Wednesday & Thursday problems
@@ -170,7 +170,7 @@ You can move between pathways if your life changes.
 
 When the 52 weeks end, you should have:
 
-- 60+ UMPIRE write-ups committed.
+- 60+ FRAME write-ups committed.
 - 4 recorded mocks.
 - System-design write-up.
 - Behavioral story bank with 12 STAR anecdotes.

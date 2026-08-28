@@ -14,7 +14,7 @@ The solutions are in [`SOLUTIONS.md`](./SOLUTIONS.md). **Attempt each exercise o
 
 ## Order of attack
 
-1. **Exercise 1 first** — Network Delay Time is the cleanest heap-Dijkstra rep and the warm-up for the rest of the week. Aim for 25 minutes including the UMPIRE write-up.
+1. **Exercise 1 first** — Network Delay Time is the cleanest heap-Dijkstra rep and the warm-up for the rest of the week. Aim for 25 minutes including the FRAME write-up.
 2. **Exercise 3 next** — Number of Provinces is the cleanest DSU rep. Aim for 20 minutes. Doing it second cements the Lecture-3 template before you tackle the harder Bellman-Ford exercise.
 3. **Exercise 2 last** — Cheapest Flights with the hop constraint is the trickiest of the three, particularly the snapshot bug from Lecture 2 §2. Aim for 35 minutes; leave the slack for the snapshot debugging.
 
@@ -25,5 +25,5 @@ If time runs out, prioritize 1 and 3. The Bellman-Ford rep can be picked up Thur
 Each exercise is complete when:
 
 - The `.py` file's self-tests pass (`python3 exercise-NN-*.py` prints `All cases passed.`).
-- A UMPIRE write-up is committed under `umpire-writeups/c2-week-10/exercises/`.
-- The Match section of the write-up names the pattern and rejects at least one alternative algorithm with reason.
+- A FRAME write-up is committed under `frame-writeups/c2-week-10/exercises/`.
+- The Research constraints section of the write-up names the pattern and rejects at least one alternative algorithm with reason.

@@ -1,6 +1,6 @@
 # Challenge 2 — Longest Palindromic Subsequence (LeetCode 516)
 
-> **Difficulty:** Medium-Hard. **Target solve time:** 60 minutes including UMPIRE write-up. Optional this week — ship Challenge 1 first.
+> **Difficulty:** Medium-Hard. **Target solve time:** 60 minutes including FRAME write-up. Optional this week — ship Challenge 1 first.
 
 This is the canonical example of a 2D DP whose recurrence forces a non-row-major iteration order. The work this week is to implement the **by-substring-length** iteration and to defend the order in writing — most failed LC 516 attempts ship with row-major iteration and incorrect results because the recurrence reads `dp[i + 1][j - 1]` before it has been filled.
 
@@ -120,7 +120,7 @@ Twelve lines. Standard row-major LCS on `s` and `reverse(s)`. The trick is recog
 | Reads as "LPS" to a reader | Yes | No (requires the reduction explained) |
 | Code length | 20 lines | 12 lines |
 
-The discriminating factor for interviews: **Algorithm B is shorter and reuses the LCS template you have already memorized**. But it requires the conceptual move "LPS(s) = LCS(s, reverse(s))" to be defended out loud. Algorithm A is the more honest expression of the problem; under interview pressure, ship whichever you can write faster, and mention the other in the Evaluate section.
+The discriminating factor for interviews: **Algorithm B is shorter and reuses the LCS template you have already memorized**. But it requires the conceptual move "LPS(s) = LCS(s, reverse(s))" to be defended out loud. Algorithm A is the more honest expression of the problem; under interview pressure, ship whichever you can write faster, and mention the other in the Examine section.
 
 ---
 
@@ -150,7 +150,7 @@ length = 5:
 Answer: dp[0][4] = 4 (the LPS is "bbbb").
 ```
 
-The trace is the rubric for the Review section.
+The trace is the rubric for the Examine · verify section.
 
 ---
 
@@ -163,17 +163,17 @@ The trace is the rubric for the Review section.
 
 ---
 
-## UMPIRE write-up structure
+## FRAME write-up structure
 
-### Understand
+### Frame
 
 Restate: find the length of the longest palindromic *subsequence* (not substring). Confirm semantics: a palindromic subsequence reads the same forward and backward; deleting characters is allowed; order is preserved.
 
-### Match
+### Research constraints
 
 The 30-second memo. Name the pattern, the recurrence, the iteration order, the complexity. Mention both Algorithm A and Algorithm B; commit to one.
 
-### Plan
+### Assess options
 
 1. Initialize a `n x n` DP table with zeros.
 2. Set `dp[i][i] = 1` for all `i` (base case).
@@ -181,15 +181,15 @@ The 30-second memo. Name the pattern, the recurrence, the iteration order, the c
 4. Fill `dp[i][j]` via the match / no-match recurrence with the length-2 special case.
 5. Return `dp[0][n - 1]`.
 
-### Implement
+### Make the solution
 
 Algorithm A first. If time remains, ship Algorithm B as the alternative.
 
-### Review
+### Examine · verify
 
 The trace on `s = "bbbab"` above.
 
-### Evaluate
+### Examine · cost
 
 - **Time:** `O(n^2)`. Outer loop on length (n - 1 iterations); inner loop on start index (up to n iterations).
 - **Space:** `O(n^2)` for the table. Reducible to `O(n)` only via Algorithm B with rolling rows; Algorithm A's recurrence reads `dp[i + 1][j - 1]` which forbids the standard rolling-row reduction.
@@ -203,8 +203,8 @@ The trace on `s = "bbbab"` above.
 This challenge is shipped when:
 
 - A `longest_palindromic_subsequence.py` implementation (Algorithm A or B) passes all LC 516 sample cases.
-- A UMPIRE write-up under `umpire-writeups/c2-week-11/challenge-02-longest-palindromic-subsequence/` is committed with the 30-second memo at the top.
-- The Evaluate section explicitly states the trade between Algorithm A and Algorithm B.
+- A FRAME write-up under `frame-writeups/c2-week-11/challenge-02-longest-palindromic-subsequence/` is committed with the 30-second memo at the top.
+- The Examine · cost section explicitly states the trade between Algorithm A and Algorithm B.
 
 ---
 

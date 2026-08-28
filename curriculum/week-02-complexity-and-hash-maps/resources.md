@@ -58,7 +58,7 @@ Keep this tab open this week.
 | **Collision** | Two distinct keys hashing to the same bucket; resolved by probing or chaining |
 | **Load factor** | Filled-buckets ÷ total-buckets; high load factor → more collisions → slower lookups |
 | **Frequency table** | Dict mapping each value → count of its occurrences |
-| **Complement** | For target `t` and value `v`, the *complement* is `t − v`. Hash-map two-sum looks up complements. |
+| **Complement** | For target `t` and value `v`, the *complement* is `t − v`. A complement-lookup solution caches values as it goes and asks whether the complement is already there. |
 | **Counter** | `collections.Counter` — a dict subclass that counts occurrences automatically |
 | **defaultdict** | `collections.defaultdict(list)` — a dict that auto-creates a default value on missing keys |
 | **Set membership** | `x in S` — O(1) average for `set`, O(n) for `list`. Knowing the difference is the entire week. |

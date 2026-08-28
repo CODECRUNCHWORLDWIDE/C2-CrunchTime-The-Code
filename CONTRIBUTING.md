@@ -8,15 +8,16 @@ By participating, you agree to abide by our [Code of Conduct](CODE_OF_CONDUCT.md
 
 ## Ways to Contribute
 
-You don't need to be an expert to contribute. Useful contributions include:
+You don't need to have passed a FAANG loop to contribute. Useful contributions include:
 
 - 🐛 **Fixing typos, broken links, or unclear instructions**
-- 🧪 **Adding or improving exercises, challenges, or quiz questions**
-- 📝 **Improving lecture notes** — clearer explanations, better examples
+- 🧪 **Adding or improving drills, challenges, or quiz questions**
+- 📝 **Improving lecture notes** — clearer explanations, better worked examples
+- 🎙️ **Sharing an interview debrief** — what was actually asked, and how the pattern in this course did or didn't map to it
 - 🌐 **Translating** a week (or the whole curriculum) into another language
-- 🧑‍🏫 **Sharing teaching notes** if you've run this as a cohort
-- 🔧 **Improving tooling** — CI, formatting, testing scripts
-- 💡 **Proposing new modules or stretch topics** via a Discussion or Issue
+- 🧑‍🏫 **Sharing teaching notes** if you've run this as a cohort or a study group
+- 🔧 **Improving tooling** — CI, formatting, the timed runners
+- 💡 **Proposing new patterns or stretch topics** via a Discussion or Issue
 
 If you're unsure whether your idea is welcome, **open an Issue or Discussion first** — we'll happily talk it through.
 
@@ -26,18 +27,18 @@ If you're unsure whether your idea is welcome, **open an Issue or Discussion fir
 
 ```bash
 # 1. Fork on GitHub, then clone your fork
-git clone https://github.com/<your-username>/C1-Code-Crunch-Convos.git
-cd C1-Code-Crunch-Convos
+git clone https://github.com/<your-username>/C2-CrunchTime-The-Code.git
+cd C2-CrunchTime-The-Code
 
 # 2. Add the upstream remote
-git remote add upstream https://github.com/CODECRUNCHWORLDWIDE/C1-Code-Crunch-Convos.git
+git remote add upstream https://github.com/CODECRUNCHWORLDWIDE/C2-CrunchTime-The-Code.git
 
 # 3. Create a virtual environment
 python -m venv .venv
 source .venv/bin/activate         # macOS / Linux
 .venv\Scripts\activate            # Windows
 
-# 4. (Optional) install dev tools used by exercises
+# 4. (Optional) install dev tools used by the solutions
 pip install ruff black pytest
 ```
 
@@ -57,8 +58,8 @@ pip install ruff black pytest
 
    ```bash
    git checkout -b fix/week-03-typo
-   git checkout -b feat/week-08-stretch-rate-limiting
-   git checkout -b docs/improve-getting-started
+   git checkout -b feat/week-08-stretch-k-way-merge
+   git checkout -b docs/clarify-frame-examine-step
    ```
 
 3. **Make your changes.** Keep commits focused — one logical change per commit.
@@ -74,10 +75,11 @@ pip install ruff black pytest
 5. **Commit with a clear message.**
 
    ```text
-   fix(week-03): correct off-by-one in loop example
+   fix(week-03): correct the window-shrink condition in the worked example
 
-   The range() in lecture-notes/03-while-loops.md was iterating
-   0..9 but the prose described 1..10.
+   The prose said "shrink while the window is invalid" but the code in
+   lecture-notes/02-the-shrinking-and-growing-mechanics.md shrank once,
+   which silently passes the sample input and fails on duplicates.
    ```
 
 6. **Push and open a Pull Request** against `main`.
@@ -92,26 +94,39 @@ When adding or editing weekly content, keep these standards:
 
 ### Voice & style
 
-- Write for the **absolute beginner**. Define jargon the first time you use it.
-- Use the **second person** ("you'll write a function…") not the imperial "we".
+- Write for someone who can code but has **never been interviewed**. Define jargon the first time you use it.
+- Use the **second person** ("you'll state the invariant out loud…") not the imperial "we".
 - Prefer **short paragraphs** and **runnable code samples** over long prose.
-- Show one concept at a time. A 20-line example that introduces five new ideas is a teaching failure.
+- Show one idea at a time. A 40-line solution that introduces five new techniques teaches none of them.
 - Every code block should specify the language: ` ```python ` not ` ``` `.
+
+### The FRAME Method is the spine
+
+Anything you add has to fit the five steps the course is built on — Frame, Research constraints, Assess options, Make the solution, Examine. Concretely:
+
+- A drill or challenge states its **contract**: inputs, outputs, the non-obvious empty case, and what the return value means.
+- A worked solution **narrates the choice**, not just the code. "A hash map here because we need O(1) membership and order doesn't matter" is the teachable part.
+- Complexity is **stated in both time and space**, and justified in one sentence.
+- Never introduce a pattern in a challenge before the week's lecture notes have taught it.
 
 ### Citations
 
 - Link to the **official Python docs** wherever possible (https://docs.python.org).
 - Cite a primary source for any factual claim (PEPs, library docs, original papers).
-- Use the [PEP system](https://peps.python.org/) when referencing language design decisions.
+- Attribute an algorithm to its source when the name is a person's (Floyd, Dijkstra, Bellman–Ford, Knuth–Morris–Pratt).
 
 ### Exercise design
 
-Every exercise should have:
+Every drill or challenge should have:
 
-- A clear, single learning objective.
+- A clear, single learning objective, and the pattern it drills named explicitly.
 - A worked example or hint, if it introduces a new pattern.
 - A way to verify correctness (expected output, doctest, or pytest stub).
-- An estimated time-to-complete (~5–30 minutes for exercises; 30–90 for challenges).
+- An estimated time-to-complete (~10–25 minutes for drills; 30–90 for challenges).
+
+### Do not paste interview questions verbatim
+
+Problems in this course are **re-set** — same pattern, different domain, our own wording. Do not contribute a question copied from a company's process, a paywalled platform, or a book. Beyond the licensing problem, a memorised question teaches nothing the FRAME Method is trying to build. See [CONTENT-POLICY.md](CONTENT-POLICY.md).
 
 ### Reusing copyrighted material
 
@@ -125,7 +140,8 @@ We welcome translations into any language.
 
 - Create a top-level folder: `translations/<language-code>/` (use ISO 639-1, e.g. `es`, `fr`, `pt-BR`).
 - Mirror the structure of the original `curriculum/` tree.
-- Keep code samples and identifiers in English (`def add_numbers(a, b):` not `def sumar_numeros(...)`) so learners can match what they see in real-world codebases — but translate **all surrounding prose**.
+- Keep code samples and identifiers in English (`def two_sum(nums, target):` not `def dos_suma(...)`) so learners can match what they see in real interviews — but translate **all surrounding prose**.
+- Keep the FRAME acronym in English, and gloss each letter in the target language the first time it appears.
 - Open a single PR per week you translate; smaller PRs are easier to review.
 
 ---
@@ -140,7 +156,8 @@ Before opening a PR, please confirm:
 - [ ] All code blocks specify a language.
 - [ ] All links work and use relative paths within the repo where possible.
 - [ ] If I added Python files, they pass `ruff check` and `black --check`.
-- [ ] If I added exercises, I included expected output or a test stub.
+- [ ] If I added a drill or challenge, it states its contract and includes expected output or a test stub.
+- [ ] Any problem I added is re-set in our own words, not copied from a company or a platform.
 - [ ] I have not committed any personal info, API keys, or `.env` files.
 
 ---
@@ -155,4 +172,4 @@ By contributing, you agree that your contributions will be licensed under **GPL-
 
 ---
 
-Thank you! Every typo fix, every clearer example, every new exercise pushes this resource forward for thousands of future learners. 🚀
+Thank you! Every typo fix, every clearer example, every new drill pushes this resource forward for thousands of future candidates. 🚀

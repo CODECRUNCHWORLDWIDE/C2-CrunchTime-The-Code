@@ -11,4 +11,4 @@ The deep dive on LC 787 is the required rep because it forces you to articulate 
 
 The optional Smallest String With Swaps is the composition problem of the week — DSU to find the swap-equivalence classes, then sort within each class. Recognition is the work.
 
-Each challenge is graded against the rubric in [`homework.md`](../homework.md#rubric).
+Each challenge is graded against the rubric in [`homework.md`](../homework/README.md#rubric).

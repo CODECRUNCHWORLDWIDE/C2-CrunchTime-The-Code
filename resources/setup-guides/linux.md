@@ -103,4 +103,4 @@ You should see `Hello, world!`. ✅
 
 ## What's next
 
-You're ready. Continue to [Week 1 — Python Foundations](../../curriculum/week-01-python-foundations/).
+You're ready. Continue to [Week 0 — Python & Data-Structures Warm-Up](../../curriculum/week-00-python-data-structures-warmup/).

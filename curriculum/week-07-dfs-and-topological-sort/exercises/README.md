@@ -1,43 +1,97 @@
 # Week 7 — Exercises
 
-Three exercises. Each is UMPIRE-narrated, recorded, and graded against the test cases in the file itself. Worked solutions live in [`SOLUTIONS.md`](./SOLUTIONS.md) — consult only after attempting each exercise.
-
-| # | Exercise | Pattern | Difficulty | Target solve time |
-|---|----------|---------|------------|------------------:|
-| 1 | [Number of Provinces](./exercise-01-number-of-provinces.py) (LC 547) | Recursive DFS on an adjacency matrix; connectivity | Easy/Medium | 20 min |
-| 2 | [Has Path](./exercise-02-has-path.py) (LC 1971) | Iterative DFS with explicit stack; path existence | Medium | 25 min |
-| 3 | [Course Schedule II](./exercise-03-course-schedule-ii.py) (LC 210) | Topological sort — Kahn's algorithm | Medium | 30 min |
-
-Do them in order. Exercise 1 cements the recursive DFS template on a directed-but-undirected-in-practice graph (the adjacency matrix is symmetric). Exercise 2 forces you to write iterative DFS with the explicit stack — the version that survives Python's recursion limit. Exercise 3 is the canonical Phase-2 topological-sort problem; expect it on Mock #2.
-
-Each starter file contains:
-
-- The problem statement
-- The required function signature with type hints
-- An empty body marked `# TODO`
-- A `pytest`-style test block at the bottom
-- A self-check checklist (UMPIRE)
-
-Run a single exercise:
+Five exercises. Each one is a **page**: read the brief, copy the starter into
+your own `.py` file in your practice repo, fill in the `TODO` blocks, and run
+it. The page is the prompt; the file you create is the work.
 
 ```bash
-python3 exercises/exercise-01-number-of-provinces.py
+python exercise-01-repeater-clusters.py
 ```
 
-Or run all under `pytest` if you prefer that harness:
+Do them **in order**. They are not five variations on one idea — each one hands
+the next a tool it needs.
 
-```bash
-pytest exercises/ -v
-```
+| # | Exercise | What it drills | Lecture | Difficulty | Target time |
+|---|---|---|---|---|---:|
+| 01 | [Repeater clusters](./exercise-01-repeater-clusters.md) | The recursive walk, a visited set, one fresh walk per group | 01 | Easy/Medium | 45 min |
+| 02 | [Conveyor reachability](./exercise-02-conveyor-reachability.md) | The explicit stack, and the real `RecursionError` that forces it | 02 | Medium | 60 min |
+| 03 | [Batch loop audit](./exercise-03-batch-loop-audit.md) | The three colours, and reporting the loop rather than its existence | 03 | Medium | 60 min |
+| 04 | [Refit order](./exercise-04-refit-order.md) | Kahn's algorithm — waiting counts, a ready heap, and the leftovers | 03 | Medium | 60 min |
+| 05 | [Firmware install order](./exercise-05-firmware-install-order.md) | The same order the other way round: finish a package, then append it | 03 | Medium/Hard | 75 min |
 
-(Both forms work — the test block uses bare `assert` so plain `python3` execution is fine.)
-
-## A note on what is being graded
-
-Phase 1 graded you mostly on *correctness*. Phase 2 adds the *defense* axis: for every DFS exercise, your write-up must state which template you used (recursive / iterative / Kahn / three-color), why, and what the failure mode of the *other* template would have been. The recording catches whether you say it; the write-up catches whether you can write it.
-
-Defense is the difference between "the code works" and "the code is robust." Interviewers test for the latter. Drill on the latter.
+Exercise 1 is deliberately the last page this week where plain recursion is
+safe. Exercise 2 is where it stops being safe, and it is the page that shows you
+the exception and argues out why raising the limit is not the fix. Exercise 3
+adds the two extra colours that turn "have I been here?" into "am I standing on
+it?". Exercises 4 and 5 answer the same question — in what order can this be
+done? — by two different routes, and the last thing Exercise 5 asks you to do is
+say which one you would reach for and why.
 
 ---
 
-After all three exercises pass, move on to [the challenge](../challenges/challenge-01-critical-connections.md) — Critical Connections in a Network, the canonical hard DFS application of the week.
+## How each page is structured
+
+Every page carries the brief, a starter you can paste and run, the answer with
+an explanation, and a file you can download to compare against:
+
+```python
+"""
+Exercise N — Title
+"""
+
+# ---- Given data ----
+...
+
+# ---- Your task ----
+def do_the_thing(...):
+    # TODO: implement
+    ...
+
+# ---- Self-check ----
+if __name__ == "__main__":
+    assert do_the_thing(...) == expected
+    print("All checks passed.")
+```
+
+When the script prints `All checks passed.`, the exercise is done. Nothing here
+needs a `pip install` — every exercise runs on the standard library, and most on
+nothing but built-ins.
+
+The answer is on the page, under **The Solution**, and it is not hidden behind
+anything. Read it *after* you have written something and run it. The gap between
+"this should work" and "why does it print that" is where the learning happens,
+and reading first closes it for free.
+
+Beside each page sits `<page stem>-solution.py` — the same program, runnable,
+under a name that will not collide with the file you are writing.
+
+---
+
+## What is being graded
+
+Phase 1 graded you mostly on getting the right answer. Phase 2 adds a second
+axis: **the defence**. For every exercise this week, your write-up has to say
+which shape you used — recursive, explicit stack, three colours, Kahn — why you
+picked it, and what the other one would have cost. The recording catches whether
+you can say it out loud; the write-up catches whether you can write it down.
+
+That is the difference between "the code works" and "the code is the right
+code", and it is the thing interviewers are actually listening for.
+
+---
+
+## Tips
+
+- **Run before you write.** Every starter fails on its first run. That is the
+  baseline that proves the self-check is real.
+- **Read the exception text.** Each page's *Common bugs to catch* is keyed to
+  the exact message you are likely to see, captured from a real run.
+- **Say the invariant out loud** before you write the loop. "Visited means I
+  have been here." "Grey means I am standing on it." If you cannot say it, the
+  code will be a guess.
+- **Type hints are part of the exercise.** Keep them; they are documentation
+  that cannot go stale quietly.
+
+After all five pass, move on to
+[Challenge 1 — Chokepoint Mains](../challenges/challenge-01-chokepoint-mains.md),
+the hardest depth-first application of the week.

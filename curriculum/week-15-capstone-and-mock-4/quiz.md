@@ -28,7 +28,7 @@ Answer all ten before opening the key. Lectures closed. Be honest on the self-as
 
 ## Meta-readiness
 
-**Q8.** Can you, right now, deliver a clean 30-second Match memo on a random Medium from a pattern you have not touched in three weeks — naming the pattern, the cue, the complexity, and one rejected alternative? (Honest yes/no, and which patterns you are *not* yet confident on.)
+**Q8.** Can you, right now, deliver a clean 30-second Research-constraints memo on a random Medium from a pattern you have not touched in three weeks — naming the pattern, the cue, the complexity, and one rejected alternative? (Honest yes/no, and which patterns you are *not* yet confident on.)
 
 **Q9.** Across your four mocks, what is the one behavior change that is now reflexive, and the one weakness that is still present in Mock #4? (If you cannot name both, that is itself the answer.)
 
@@ -51,11 +51,11 @@ Answer all ten before opening the key. Lectures closed. Be honest on the self-as
 
 **Q5 — (1) No "I", all "we"** — it surfaces no individual ownership signal; the interviewer cannot tell what *you* did. **(2) No quantified result** — "improved things" and "everyone was happy" give the interviewer no number to score; a result without a number is a result they cannot write down in the debrief. (Bonus problem: it is all Situation/Result with no Action — the part that carries the signal is missing entirely.)
 
-**Q6 — Time `O(n)`:** one pass over `n` elements, `O(1)` work per element. **Space `O(n)`:** the hash map holds up to `n` entries. The derivation, not just the bound, is what the Evaluate section requires and what a senior states unprompted.
+**Q6 — Time `O(n)`:** one pass over `n` elements, `O(1)` work per element. **Space `O(n)`:** the hash map holds up to `n` entries. The derivation, not just the bound, is what the Examine (cost) section requires and what a senior states unprompted.
 
 **Q7 — `n² = (10⁵)² = 10¹⁰` operations.** Commodity hardware does roughly `10⁸`–`10⁹` simple operations per second, so `10¹⁰` is ~10–100 seconds — well over a 1-second limit. That is *why* the interviewer flags `O(n²)` at `n = 10⁵`: it does not finish in time, and it signals you need a better-than-quadratic approach (often `O(n log n)` or `O(n)`).
 
-**Q8 — Self-assessment.** A confident "yes" with a short list of *not-yet-confident* patterns is the ready answer. A "no" or a vague "I think so" means the Match step is not yet reflexive across the catalog — those patterns go straight into the **hot tier** of your spaced-repetition schedule (homework Part 2). The value is the honesty: naming the weak patterns is the diagnosis.
+**Q8 — Self-assessment.** A confident "yes" with a short list of *not-yet-confident* patterns is the ready answer. A "no" or a vague "I think so" means the Research constraints step is not yet reflexive across the catalog — those patterns go straight into the **hot tier** of your spaced-repetition schedule (homework Part 2). The value is the honesty: naming the weak patterns is the diagnosis.
 
 **Q9 — Self-assessment from your four mock self-feedbacks.** If you can name both — the reflexive habit *and* the still-present weakness — your self-correction record is intact and the weakness is a known last-mile drill target. If you *cannot* name both, your mocks were not watched honestly enough; re-watch Mock #4 with the trajectory section open. The still-present weakness seeds the homework's weakness diagnosis.
 
@@ -76,8 +76,8 @@ Score the seven objective questions (Q1–Q7) out of 7, then read the meta-readi
 | 4–5 | any | **Close — drill the gaps before applying broadly.** Re-read the lectures for the patterns you missed in Q1–Q3 and re-run any behavioral answer that tripped Q4–Q5. Put the missed patterns in the hot tier of your spaced-repetition schedule. You can start *targeted* applications (safety tier) while you close the gaps. |
 | ≤3 | any | **Not yet — more reps needed.** The fundamentals are not yet reflexive. Re-run the weakness diagnosis (homework Part 1), drill the weak patterns hard for two weeks on the spaced-repetition schedule, run one more mock, and retake this assessment. Applying now would waste real loops — and loops are a limited resource. |
 
-This assessment measures **readiness to apply**, not difficulty. The decisive questions are the meta-readiness ones: **Q8** (is Match reflexive across the catalog), **Q9** (is your self-correction record intact), and **Q10** (is the portfolio actually shippable). You can answer Q1–Q7 perfectly and still not be ready if Q10 is a "no" — a recruiter cannot grade skills you have not made public. Be honest; the honesty is the readiness.
+This assessment measures **readiness to apply**, not difficulty. The decisive questions are the meta-readiness ones: **Q8** (is Research constraints reflexive across the catalog), **Q9** (is your self-correction record intact), and **Q10** (is the portfolio actually shippable). You can answer Q1–Q7 perfectly and still not be ready if Q10 is a "no" — a recruiter cannot grade skills you have not made public. Be honest; the honesty is the readiness.
 
 ---
 
-When done, the final deliverable is next: the [homework](./homework.md) — your personalized go-forward study plan.
+When done, the final deliverable is next: the [homework](./homework/README.md) — your personalized go-forward study plan.

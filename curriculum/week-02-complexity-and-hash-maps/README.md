@@ -10,7 +10,7 @@
 
 Welcome to Week 2 of **C2 · CrunchTime — The Code**. The week is built around two ideas you'll use in every interview from now on:
 
-1. **Complexity is a sentence you say out loud, not an afterthought.** The UMPIRE *Evaluate* step has a standard shape. We'll drill it until it's reflex.
+1. **Complexity is a sentence you say out loud, not an afterthought.** The cost half of the FRAME *Examine* step has a standard shape. We'll drill it until it's reflex.
 2. **The hash map is the answer when sorted-array two-pointer isn't.** It is the second pattern of the course and the most commonly used data structure in modern interview problems.
 
 By Sunday of Week 2 you will:
@@ -18,7 +18,7 @@ By Sunday of Week 2 you will:
 - State **time and space complexity for any solution** in a single, standard sentence: *"Each iteration is O(1) average on the hash map; n iterations total; therefore O(n) time, O(n) space."*
 - Reach for a **hash map** instinctively when a problem says "unsorted," "frequency," "count," "first/last seen," or "complement."
 - Have re-done **all five Week 1 drills** with explicit complexity sections — the mini-project.
-- Have solved **five new hash-map drills**, two stretch challenges, the quiz, and the homework, all UMPIRE-narrated.
+- Have solved **five new hash-map drills**, two stretch challenges, the quiz, and the homework, all FRAME-narrated.
 - Be able to defend **two-pointer over hash map** (or vice versa) in 20 seconds when asked.
 
 ---
@@ -31,16 +31,16 @@ By the end of this week, you will be able to:
 - **Distinguish** best-case, average-case, and worst-case complexity, and know when each one matters in an interview answer.
 - **Reason about space complexity** as a peer to time complexity, never an afterthought.
 - **Explain amortized analysis** at the level of `list.append` and `dict[key]` lookups — the two cases you will be asked about most.
-- **Match** a problem to the hash-map pattern using the canonical signals: unsorted input, frequency / counting, complement lookup, "have I seen this before?"
+- **Spot** the hash-map pattern using the canonical signals: unsorted input, frequency / counting, complement lookup, "have I seen this before?"
 - **Justify** a hash-map choice over two-pointer (and vice versa) on the time / space tradeoff axis.
-- **Write** a UMPIRE *Evaluate* section that another engineer would read and learn from — not a one-liner, a structured tradeoff.
-- **Re-do** your five Week 1 write-ups with the new Evaluate discipline; the upgrade is visible.
+- **Write** a FRAME *Examine (cost)* section that another engineer would read and learn from — not a one-liner, a structured tradeoff.
+- **Re-do** your five Week 1 write-ups with the new Examine (cost) discipline; the upgrade is visible.
 
 ---
 
 ## Prerequisites
 
-- **Week 1 complete.** You can run UMPIRE on a two-pointer problem without notes. If you can't, repeat Week 1 — Week 2 *requires* that fluency.
+- **Week 1 complete.** You can run FRAME on a two-pointer problem without notes. If you can't, repeat Week 1 — Week 2 *requires* that fluency.
 - **Comfortable with Python `dict` and `set`.** Membership tests, iteration, `dict.get(k, default)`, `collections.Counter`, `collections.defaultdict`. We use them daily this week.
 - **Portfolio repo exists** with Week 1 contents committed (mini-project from W1). You will be editing those files.
 - **45 minutes of out-loud time per drill.** Same as Week 1 — vocalization is not optional in this course.
@@ -55,10 +55,10 @@ By the end of this week, you will be able to:
 - Amortized analysis — the `list.append` story, the `dict` story
 - The "what does adding a nested loop do" calibration drill
 - The hash map as a *pattern*, not just a data structure
-- Counting / frequency tables — the anagram family
-- Two-sum (unsorted) — the canonical hash-map problem
+- Counting / frequency tables, and choosing a canonical key
+- Complement lookup — the canonical hash-map shape
 - Caching past values during one pass — "have I seen this before?"
-- Stating complexity out loud — the standard UMPIRE *Evaluate* sentence
+- Stating complexity out loud — the standard FRAME *Examine (cost)* sentence
 - When to defend a hash-map choice over two-pointer (and vice versa)
 
 ---
@@ -69,7 +69,7 @@ By the end of this week, you will be able to:
 |-----|-------|---------:|----------:|-----------:|----------:|---------:|-------------:|-----------:|------------:|
 | Monday | Complexity mental models; drills 1-2 | 2h | 1.5h | 0h | 0.5h | 1h | 0h | 0.5h | 5.5h |
 | Tuesday | Hash-map pattern; drills 3-4 | 2h | 2h | 0h | 0.5h | 1h | 0h | 0.5h | 6h |
-| Wednesday | Stating complexity out loud; drill 5 | 2h | 2h | 1h | 0.5h | 1h | 0h | 0h | 6.5h |
+| Wednesday | Stating complexity out loud; exercise 5 | 2h | 2h | 1h | 0.5h | 1h | 0h | 0h | 6.5h |
 | Thursday | Challenges + W1 rewrite begins | 0h | 1.5h | 1h | 0.5h | 1h | 2h | 0.5h | 6.5h |
 | Friday | Stretch + W1 rewrite continues | 0h | 1h | 1h | 0.5h | 1h | 2h | 0.5h | 6h |
 | Saturday | Mini-project deep work | 0h | 0h | 1h | 0h | 1h | 3h | 0h | 5h |
@@ -87,20 +87,19 @@ By the end of this week, you will be able to:
 | [README.md](./README.md) | This overview |
 | [resources.md](./resources.md) | Free readings on complexity + the Python dict implementation + glossary |
 | [lecture-notes/01-mental-models-for-big-O.md](./lecture-notes/01-mental-models-for-big-O.md) | The six classes, the n-vs-runtime table, the nested-loop calibration drill |
-| [lecture-notes/02-the-hash-map-pattern.md](./lecture-notes/02-the-hash-map-pattern.md) | The pattern's signals; counting; two-sum unsorted; single-pass caching |
-| [lecture-notes/03-stating-complexity-out-loud.md](./lecture-notes/03-stating-complexity-out-loud.md) | The standard *Evaluate* sentence; the two-pointer-vs-hash-map debate |
+| [lecture-notes/02-the-hash-map-pattern.md](./lecture-notes/02-the-hash-map-pattern.md) | The pattern's signals; the three sub-shapes; single-pass caching |
+| [lecture-notes/03-stating-complexity-out-loud.md](./lecture-notes/03-stating-complexity-out-loud.md) | The standard *Examine (cost)* sentence; the two-pointer-vs-hash-map debate |
 | [exercises/README.md](./exercises/README.md) | Index of the five hash-map drills |
-| [exercises/drill-01-two-sum-unsorted.md](./exercises/drill-01-two-sum-unsorted.md) | The canonical hash-map problem |
-| [exercises/drill-02-contains-duplicate.md](./exercises/drill-02-contains-duplicate.md) | Set membership, the simplest hash-set use |
-| [exercises/drill-03-group-anagrams.md](./exercises/drill-03-group-anagrams.md) | Counting / frequency keys; `dict[tuple]` |
-| [exercises/drill-04-valid-sudoku-rows.md](./exercises/drill-04-valid-sudoku-rows.md) | Constraint checking with sets |
-| [exercises/drill-05-longest-consecutive-sequence.md](./exercises/drill-05-longest-consecutive-sequence.md) | O(n) via set; the "don't fall for O(n log n)" trap |
-| [exercises/timed_runner.py](./exercises/timed_runner.py) | Pytest harness for grading your solutions |
+| [exercises/exercise-01-refund-pair.md](./exercises/exercise-01-refund-pair.md) | Complement lookup; the canonical hash-map shape |
+| [exercises/exercise-02-badge-rescan.md](./exercises/exercise-02-badge-rescan.md) | Set membership, the simplest hash-set use |
+| [exercises/exercise-03-stage-twins.md](./exercises/exercise-03-stage-twins.md) | Canonical keys built from a frequency signature |
+| [exercises/exercise-04-on-call-grid.md](./exercises/exercise-04-on-call-grid.md) | Constraint checking with one set per axis |
+| [exercises/exercise-05-longest-dock-run.md](./exercises/exercise-05-longest-dock-run.md) | O(n) via a set; the "don't fall for O(n log n)" trap |
 | [challenges/README.md](./challenges/README.md) | Index of weekly challenges |
-| [challenges/challenge-01-subarray-sum-equals-k.md](./challenges/challenge-01-subarray-sum-equals-k.md) | Prefix-sum + hash map — *the* mid-level interview discriminator |
-| [challenges/challenge-02-lru-cache.md](./challenges/challenge-02-lru-cache.md) | OrderedDict / hash-map + doubly-linked-list design |
+| [challenges/challenge-01-balanced-shifts.md](./challenges/challenge-01-balanced-shifts.md) | Prefix sums + hash map — *the* mid-level interview discriminator |
+| [challenges/challenge-02-residency-board.md](./challenges/challenge-02-residency-board.md) | `OrderedDict` or hash map + doubly-linked list; a design problem |
 | [quiz.md](./quiz.md) | 10 complexity questions |
-| [homework.md](./homework.md) | Six practice problems (~5 hrs) |
+| [homework.md](./homework/README.md) | Six practice problems (~5 hrs) |
 | [mini-project/README.md](./mini-project/README.md) | Re-do Week 1's five drills with full complexity sections |
 
 ---
@@ -109,13 +108,13 @@ By the end of this week, you will be able to:
 
 - **Read the CPython `dict` implementation overview.** Knowing *why* a Python dict is O(1) average — and not always — separates good engineers from "just memorized it."
 - **Time your own code.** Use `time.perf_counter()` or `%timeit` to *measure* the difference between an O(n²) loop and an O(n) hash-map version on n = 10⁴ inputs. Theory becomes muscle memory when you watch it.
-- **Re-read Lecture 2 from Week 1.** UMPIRE doesn't get easier; it gets automatic. Drill it.
+- **Re-read Lecture 2 from Week 1.** FRAME doesn't get easier; it gets automatic. Drill it.
 
 ---
 
 ## Up next
 
-[Week 3 — Sliding Window](../week-03/) — once your Week-2 mini-project is pushed and your Evaluate sections are tight.
+[Week 3 — Sliding Window](../week-03-sliding-window/) — once your Week-2 mini-project is pushed and your Examine (cost) sections are tight.
 
 ---
 

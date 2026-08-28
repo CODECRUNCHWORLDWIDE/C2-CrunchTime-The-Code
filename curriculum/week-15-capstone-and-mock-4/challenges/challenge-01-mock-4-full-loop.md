@@ -22,7 +22,7 @@ The full protocol lives in [Lecture 2](../lecture-notes/02-mock-4-under-real-con
 
 | Round | Length | What happens |
 |-------|--------|--------------|
-| **Coding** | 45 min | One unseen Medium, full UMPIRE, the standard allocation. |
+| **Coding** | 45 min | One unseen Medium, full FRAME, the standard allocation. |
 | Break | 5 min | Stand up, reset — real loops have gaps. |
 | **System design** | 45 min | A junior-level prompt (use Challenge 2's framework; pick a prompt you have not written up). |
 | Break | 5 min | Reset again. |
@@ -42,87 +42,189 @@ If scheduling a stranger for all three rounds is impossible, the acceptable fall
 
 ## Fallback coding problem (solo mode only, and only if genuinely unseen)
 
-### Number of Islands (LC 200)
+### The Overnight Leak Survey
 
-A graph / grid-DFS Medium — a clean catalog representative for the final mock.
+> **Pattern:** Grid traversal, connected components (flood fill).
+> **Difficulty:** Medium — a clean graph representative for the final mock.
 
-Given an `m x n` 2D grid of `'1'`s (land) and `'0'`s (water), return the number of islands. An island is a maximal group of land cells connected horizontally or vertically (not diagonally). Assume all four edges of the grid are surrounded by water.
+A water utility surveys a rectangular district overnight. Every street block carries a pressure sensor, and the survey comes back as a rectangular grid of readings in kilopascals **relative to nominal** — so a reading can be negative.
 
+A block is **wet** when its reading is *strictly below* a `threshold` you are given. Wet blocks that touch **horizontally or vertically** (never diagonally) form a single **leak zone**.
+
+The crew can only dispatch to a leak they have fully bounded. A zone with a block on the **outer border of the surveyed grid** may continue into streets nobody measured, so it is *unbounded* and the crew ignores it — no matter how large it is. Every other zone is **interior** and dispatchable.
+
+Return a pair: **how many interior zones there are**, and **how many blocks are in the largest interior zone**. If there are no interior zones at all, return `(0, 0)`.
+
+One more rule, and it is graded: **the survey grid belongs to the caller. Do not modify it.** The utility replays the same grid against several thresholds.
+
+```python
+def survey_leak_zones(pressure: list[list[int]], threshold: int) -> tuple[int, int]:
+    """Return (interior_zone_count, largest_interior_zone_size) for the survey.
+    Interior means the zone touches no cell on the grid's outer border.
+    Returns (0, 0) when no interior zone exists. Must not mutate `pressure`."""
 ```
-Input:
-  grid = [
-    ["1","1","0","0","0"],
-    ["1","1","0","0","0"],
-    ["0","0","1","0","0"],
-    ["0","0","0","1","1"]
-  ]
-Output: 3
-Explanation: the top-left block is one island, the single middle cell is a
-second, and the bottom-right pair is a third.
-```
 
-**Constraints:**
+**Constraints.**
 
-- `m == len(grid)`, `n == len(grid[0])`
-- `1 <= m, n <= 300`
-- `grid[i][j]` is `'0'` or `'1'`.
+- The grid is rectangular: every row has the same length. `0 <= rows <= 1200` and `0 <= cols <= 1200`, so up to 1,440,000 blocks. That bound is chosen to kill the obvious wrong shape — re-scanning the whole grid once per zone is `O((rows·cols)²)`, about 2×10¹² operations, and will not finish. One sweep that visits each block a constant number of times is the only thing that fits.
+- The same bound rules out plain recursion. A single wet zone can snake through most of a 1200×1200 grid — hundreds of thousands of blocks deep — and Python's default recursion limit is 1000. Write the traversal **iteratively**, with an explicit stack or a `deque`, and say out loud in Research constraints that the bound is why.
+- `-2000 <= pressure[r][c] <= 2000` and `threshold` is in the same range. Readings are relative to nominal, so **negative values are ordinary and `0` is a perfectly normal reading**. If your wetness test leans on truthiness or assumes positives, this bound is what catches you.
+- `rows` may be `0`, and a row may be empty. An empty survey has no zones.
 
-The intended approach is a grid traversal: scan every cell; when you hit an unvisited `'1'`, increment the island count and flood-fill (DFS or BFS) its whole connected component, marking visited so it is counted once. Time `O(m·n)` — each cell visited a constant number of times. Space `O(m·n)` worst case for the recursion stack / queue. The reference UMPIRE solve is below — **do not read it before the mock if you are using this as your problem.**
+**Examples.** Wet blocks are shown below the threshold; everything else is dry.
+
+- `threshold = 30`, and
+
+  ```
+  [[10, 10, 10, 50, 50, 50],
+   [10, 50, 50, 10, 10, 50],
+   [50, 50, 50, 10, 50, 50],
+   [50, 10, 50, 50, 50, 50],
+   [50, 50, 50, 50, 50, 50]]
+  ```
+
+  → `(2, 3)`. Three zones exist. The top-left one — `(0,0)`, `(0,1)`, `(0,2)`, `(1,0)` — has **four** blocks, the most of any zone, but it sits on row 0 and column 0, so it is unbounded and does not count at all. The interior zones are `(1,3)`, `(1,4)`, `(2,3)` (three blocks) and the lone `(3,1)` (one block). This example exists to punish the reflex answer: if you report `4` as the largest, you sized the zone the crew cannot dispatch to.
+
+- `threshold = 10`, and
+
+  ```
+  [[90, 90, 90, 90, 90],
+   [90,  1,  1, 90, 90],
+   [90, 90,  1, 90, 90],
+   [90, 90,  1,  1,  1],
+   [90, 90, 90, 90, 90]]
+  ```
+
+  → `(0, 0)`. There is exactly one zone, six blocks, and it *starts* at the interior block `(1,1)` — but it snakes down and right to `(3,4)`, which is on the last column. Deciding "interior" from the block you started at is the single most common bug here. You have to walk the **whole** zone before you can classify it.
+
+- `threshold = 10`, and `[[80, 80, 80, 80], [80, -5, 0, 80], [80, 80, 80, 80]]` → `(1, 2)`. The readings `-5` and `0` are both below the threshold and both wet. If `0` came out dry in your solution, your wetness test is truthiness, not comparison.
+
+- `threshold = 10`, and `[[9, 9, 9], [9, 10, 9], [9, 9, 9]]` → `(0, 0)`. The centre reads exactly `10`, and the rule is *strictly* below, so the centre is dry. The eight blocks around it form one ring-shaped zone that lies entirely on the border. Strict versus non-strict is a one-character bug and a whole wrong answer.
+
+- `threshold = 10`, and `[[5, 5], [5, 5]]` → `(0, 0)`. Every block is wet, and every block in a 2×2 grid is on the border. Any grid with fewer than three rows or three columns can never produce an interior zone — worth noticing in Research constraints rather than discovering in Examine (verify).
+
+- `threshold = 5`, and `[[8, 8, 8, 8, 8, 8, 8], [8, 2, 8, 2, 8, 2, 8], [8, 8, 8, 8, 8, 8, 8]]` → `(3, 1)`. Three separate single-block zones, all interior. The count is 3 and the largest is 1 — a check that you are returning both numbers and not conflating them.
+
+- `pressure = []` → `(0, 0)`. Empty survey.
+
+**Practice elsewhere.** The underlying pattern also appears as [LeetCode 200 · Number of Islands](https://leetcode.com/problems/number-of-islands/), though the contract there differs from ours — theirs counts every component, permits mutating the grid, and returns a single integer.
+
+The intended shape: sweep every block once; when you meet a wet block you have not visited, walk its entire zone with an iterative BFS or DFS, counting its blocks and noticing whether any of them sits on the border; classify the zone only after the walk finishes. Time `O(rows·cols)` — each block is enqueued at most once. Space `O(rows·cols)` for the visited grid and, in the worst case, the frontier. The reference solve is below — **do not read it before the mock if you are using this as your problem.**
 
 <details>
 <summary>Reference solution (read only AFTER your mock)</summary>
 
-> **30-second pattern-recognition memo (graph / grid DFS):**
-> A grid where I count connected components of `'1'`s → flood fill. Scan every
-> cell; each unvisited land cell starts a new island, and I DFS/BFS its whole
-> component, marking cells visited so each island is counted once. Time O(m·n),
-> space O(m·n). Why not union-find: it also works (O(m·n·α)), but DFS flood-fill
-> is the simpler, more direct expression of "count the components."
+> **30-second pattern-recognition memo (grid connected components):**
+> A rectangular grid, a per-cell predicate, and "group the touching ones" →
+> flood fill. Sweep every cell; each unvisited wet cell seeds one zone, and I
+> walk the whole zone before I classify it, because the border test is a
+> property of the zone and not of the seed. A separate `visited` grid rather
+> than overwriting readings, because the caller keeps the survey. Iterative,
+> because 1200×1200 makes recursion depth a real risk. Time O(rows·cols),
+> space O(rows·cols). Why not union-find: it also works, at O(rows·cols·α),
+> but it costs a second pass to recover per-root sizes and border flags — the
+> single BFS reads more directly.
 
 ```python
-from typing import List
+from collections import deque
 
 
-def num_islands(grid: List[List[str]]) -> int:
-    """Count connected components of land in a grid. O(m*n) time, O(m*n) space."""
-    if not grid or not grid[0]:
-        return 0
-    rows, cols = len(grid), len(grid[0])
+def survey_leak_zones(pressure: list[list[int]], threshold: int) -> tuple[int, int]:
+    """Count interior leak zones and size the largest. O(rows*cols) time and space.
 
-    def sink(r: int, c: int) -> None:
-        # Flood-fill the connected land component starting at (r, c).
-        if r < 0 or r >= rows or c < 0 or c >= cols or grid[r][c] != "1":
-            return
-        grid[r][c] = "0"          # mark visited by sinking the land to water
-        sink(r + 1, c)
-        sink(r - 1, c)
-        sink(r, c + 1)
-        sink(r, c - 1)
+    A zone is a 4-connected group of blocks reading strictly below `threshold`.
+    A zone is interior when none of its blocks lies on the grid's outer border.
+    `pressure` is never modified.
+    """
+    if not pressure or not pressure[0]:
+        return (0, 0)
 
-    islands = 0
-    for r in range(rows):
-        for c in range(cols):
-            if grid[r][c] == "1":
-                islands += 1       # a new, unvisited land cell starts an island
-                sink(r, c)         # consume its whole component
-    return islands
+    rows, cols = len(pressure), len(pressure[0])
+    visited = [[False] * cols for _ in range(rows)]
+    interior_zones = 0
+    largest = 0
+
+    for seed_r in range(rows):
+        for seed_c in range(cols):
+            if visited[seed_r][seed_c] or pressure[seed_r][seed_c] >= threshold:
+                continue
+
+            # Walk the entire zone first; only then decide whether it counts.
+            frontier = deque([(seed_r, seed_c)])
+            visited[seed_r][seed_c] = True
+            blocks = 0
+            reaches_border = False
+
+            while frontier:
+                r, c = frontier.popleft()
+                blocks += 1
+                if r == 0 or r == rows - 1 or c == 0 or c == cols - 1:
+                    reaches_border = True
+                for nr, nc in ((r - 1, c), (r + 1, c), (r, c - 1), (r, c + 1)):
+                    if (
+                        0 <= nr < rows
+                        and 0 <= nc < cols
+                        and not visited[nr][nc]
+                        and pressure[nr][nc] < threshold
+                    ):
+                        visited[nr][nc] = True   # mark on enqueue, not on pop
+                        frontier.append((nr, nc))
+
+            if not reaches_border:
+                interior_zones += 1
+                largest = max(largest, blocks)
+
+    return (interior_zones, largest)
 
 
 if __name__ == "__main__":
-    g = [
-        ["1", "1", "0", "0", "0"],
-        ["1", "1", "0", "0", "0"],
-        ["0", "0", "1", "0", "0"],
-        ["0", "0", "0", "1", "1"],
+    district = [
+        [10, 10, 10, 50, 50, 50],
+        [10, 50, 50, 10, 10, 50],
+        [50, 50, 50, 10, 50, 50],
+        [50, 10, 50, 50, 50, 50],
+        [50, 50, 50, 50, 50, 50],
     ]
-    assert num_islands(g) == 3
-    assert num_islands([["1"]]) == 1
-    assert num_islands([["0"]]) == 0
-    assert num_islands([["1", "0", "1", "0", "1"]]) == 3
+    snapshot = [row[:] for row in district]
+    assert survey_leak_zones(district, 30) == (2, 3)
+    assert district == snapshot, "the caller's survey must come back untouched"
+
+    # The zone seeded at (1,1) leaks out to the last column: unbounded.
+    assert survey_leak_zones(
+        [
+            [90, 90, 90, 90, 90],
+            [90, 1, 1, 90, 90],
+            [90, 90, 1, 90, 90],
+            [90, 90, 1, 1, 1],
+            [90, 90, 90, 90, 90],
+        ],
+        10,
+    ) == (0, 0)
+
+    # Negative and zero readings are ordinary and both wet.
+    assert survey_leak_zones(
+        [[80, 80, 80, 80], [80, -5, 0, 80], [80, 80, 80, 80]], 10
+    ) == (1, 2)
+
+    # Strictly below: a reading equal to the threshold is dry.
+    assert survey_leak_zones([[9, 9, 9], [9, 10, 9], [9, 9, 9]], 10) == (0, 0)
+
+    # No grid narrower than three blocks can hold an interior zone.
+    assert survey_leak_zones([[5, 5], [5, 5]], 10) == (0, 0)
+
+    # Three separate one-block zones: count 3, largest 1.
+    assert survey_leak_zones(
+        [[8, 8, 8, 8, 8, 8, 8], [8, 2, 8, 2, 8, 2, 8], [8, 8, 8, 8, 8, 8, 8]], 5
+    ) == (3, 1)
+
+    assert survey_leak_zones([], 0) == (0, 0)
+    assert survey_leak_zones([[]], 0) == (0, 0)
     print("all tests passed")
 ```
 
-The recursive `sink` mutates the grid to mark visited (no separate visited set needed); for very large grids the recursion can hit Python's stack limit, so the interview-grade variant to name is the **iterative** version with an explicit stack, or a BFS with a `deque`. Union-find is the other valid approach — worth naming as the alternative.
+Two details worth narrating in a real round. **Mark on enqueue, not on pop** — if you only mark when a block comes off the frontier, a block with two wet neighbours gets queued twice and its zone is over-counted. And **the border flag belongs to the zone, not to the seed** — accumulate it across the walk, then test it once at the end.
+
+Union-find is the valid alternative to name: union adjacent wet blocks, then group by root to get sizes and OR the border flags per root. Same asymptotics, more bookkeeping. Say why you rejected it.
 
 </details>
 
@@ -139,7 +241,7 @@ Saturday (two passes, across all three rounds):
 1. **Pass 1 — 1.5×, whole recording, timestamp doc.** 15–20 timestamps of *patterns* across the loop, tagged by round. Save as `mocks/mock-04/timestamps.md`.
 2. **Pass 2 — 1.0×, flagged segments only.** For each, *what happened* + *what to do differently*.
 
-Then the self-feedback write-up at `umpire-writeups/c2-week-15/mock-04-self-feedback.md`.
+Then the self-feedback write-up at `frame-writeups/c2-week-15/mock-04-self-feedback.md`.
 
 ---
 
@@ -157,7 +259,7 @@ Then the self-feedback write-up at `umpire-writeups/c2-week-15/mock-04-self-feed
 [3–5 honest sentences. Note the stamina cost of back-to-back rounds.]
 
 ## Coding round — graded
-[Match memo under 30s? Narration? Recovery? Complexity unprompted?]
+[Research-constraints memo under 30s? Narration? Recovery? Complexity unprompted?]
 
 ## System-design round — graded
 [Scoped requirements first? Capacity estimate? High-level design? Trade-offs named?]
@@ -189,7 +291,7 @@ Total possible: 100; passing: 70.
 |-----------|-------:|-------------------------------|
 | Full conditions held | 15 | Stranger if obtainable, dressed as if real, no notes, hard stop — verifiable from the recording |
 | Full loop run | 15 | All three round types (coding + design + behavioral) recorded in one sitting |
-| Coding round | 20 | Match memo under 30s; narration; complexity unprompted; recovery audible if one occurred |
+| Coding round | 20 | Research-constraints memo under 30s; narration; complexity unprompted; recovery audible if one occurred |
 | System-design round | 15 | Requirements scoped first; capacity estimate; a clear design; one trade-off named |
 | Behavioral round | 10 | STAR; quantified result; first-person "I" |
 | Two-pass review done | 10 | Pass-1 timestamps + pass-2 prescriptions both present, across all rounds |
@@ -213,7 +315,7 @@ That reflection is the bridge from the course to the real search. It goes, near-
 
 ## Acceptance
 
-Challenge 1 is complete when, under `mocks/mock-04/` and `umpire-writeups/c2-week-15/`:
+Challenge 1 is complete when, under `mocks/mock-04/` and `frame-writeups/c2-week-15/`:
 
 - The recording link is committed (the video is too big to commit; commit the link).
 - The immediate notes, pass-1 timestamps, and self-feedback write-up are all present.

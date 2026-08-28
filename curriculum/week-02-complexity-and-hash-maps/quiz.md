@@ -27,12 +27,12 @@ def f(arr):
 **Q3.** What is the time complexity (average) of the following?
 
 ```python
-def f(nums, target):
+def f(charges, refund_total):
     seen = set()
-    for x in nums:
-        if target - x in seen:
+    for amount in charges:
+        if refund_total - amount in seen:
             return True
-        seen.add(x)
+        seen.add(amount)
     return False
 ```
 
@@ -69,7 +69,7 @@ def f(arr):
 
 **Q9.** You have an O(n²) algorithm that uses O(1) space, and an O(n) algorithm that uses O(n) space. Which do you choose for `n = 10⁹`, and why?
 
-**Q10.** What is the time complexity of `set(nums)` for a list of length `n`?
+**Q10.** What is the time complexity of `set(badge_ids)` for a list of length `n`?
 
 ---
 
@@ -82,7 +82,7 @@ def f(arr):
 
 2. **O(n log n).** The sort dominates the linear scan: `O(n log n) + O(n) = O(n log n)`. Take the max of the terms.
 
-3. **O(n) average time, O(n) space.** Single pass through `nums`; each iteration does one O(1) average set lookup and one O(1) average insert. Worst-case O(n²) in pathological hash collisions, but with Python's randomized hash we say O(n) average.
+3. **O(n) average time, O(n) space.** Single pass through `charges`; each iteration does one O(1) average set lookup and one O(1) average insert. Worst-case O(n²) in pathological hash collisions, but with Python's randomized hash we say O(n) average. Note what this function is *not*: it returns a boolean, so it is the weaker cousin of [Exercise 1](exercises/exercise-01-refund-pair.md), which must carry positions and therefore needs a `dict`, not a `set`.
 
 4. **B and C.** O(n) and O(n log n) both finish in well under a second at n = 10⁶ (one million and ~20 million ops respectively). O(n²) is 10¹² ops — hours. Even with a 1/100 constant factor, O(n²) at n = 10⁶ is 10¹⁰ ops — still too slow.
 
@@ -108,9 +108,9 @@ def f(arr):
 |------:|---------|
 | 9–10 | Your complexity intuition is interview-ready. Move on. |
 | 7–8 | Good — re-read [Lecture 1](lecture-notes/01-mental-models-for-big-O.md) for the cases you missed. |
-| 5–6 | Redo Drills 1, 3, and 5 with the *Evaluate* discipline before Week 3. |
-| <5 | Complexity is not yet automatic. Don't move to Week 3 yet — re-read Lecture 1 and Lecture 3, do all five drills again with a stricter Evaluate section. |
+| 5–6 | Redo Drills 1, 3, and 5 with the *Examine (cost)* discipline before Week 3. |
+| <5 | Complexity is not yet automatic. Don't move to Week 3 yet — re-read Lecture 1 and Lecture 3, do all five drills again with a stricter Examine (cost) section. |
 
 This quiz is about **fluency**, not difficulty. Every question is something you should be able to answer in under a minute once the patterns are in muscle memory.
 
-When done, the [homework](homework.md) is next.
+When done, the [homework](homework/README.md) is next.

@@ -1,6 +1,6 @@
 # Mini-Project — The Capstone Portfolio
 
-> The course's final deliverable, and the most important file of the week: a single public GitHub repository — **`crunchtime-interview-prep-<yourhandle>`** — that has grown from the Week 1 mini-project into a recruiter-grade artifact demonstrating UMPIRE across 60+ problems, four recorded mocks, a system-design write-up, a behavioral story bank, a recruiter-prep pack, a personalized study plan, and three honestly-earned badges. This is the thing you point a recruiter at when they say "show me how you think."
+> The course's final deliverable, and the most important file of the week: a single public GitHub repository — **`crunchtime-interview-prep-<yourhandle>`** — that has grown from the Week 1 mini-project into a recruiter-grade artifact demonstrating FRAME across 60+ problems, four recorded mocks, a system-design write-up, a behavioral story bank, a recruiter-prep pack, a personalized study plan, and three honestly-earned badges. This is the thing you point a recruiter at when they say "show me how you think."
 
 **Estimated time:** ~7 hours this week, but most of the *content* already exists — every prior week's mini-project, exercises, and homework fed this repo. Week 15 is assembly and polish, not creation. Treat Saturday–Sunday as the assembly weekend.
 
@@ -12,7 +12,7 @@ This is not a new project. It is the *closing* of the project you have been buil
 
 Three reasons.
 
-1. **The portfolio is the proof, and proof beats claims.** Anyone can say "I'm good at algorithms." A repo with 60+ UMPIRE write-ups, four recorded mocks you watched without flinching, and a commit history spanning fifteen weeks *proves* it. A recruiter who lands on this repo gives it about ninety seconds before deciding whether to keep scrolling. In those ninety seconds the README cover, the progress dashboard, and the commit history have to say "this person has been deliberate about interview prep for fifteen weeks and can back every claim." This week is where you make those ninety seconds land.
+1. **The portfolio is the proof, and proof beats claims.** Anyone can say "I'm good at algorithms." A repo with 60+ FRAME write-ups, four recorded mocks you watched without flinching, and a commit history spanning fifteen weeks *proves* it. A recruiter who lands on this repo gives it about ninety seconds before deciding whether to keep scrolling. In those ninety seconds the README cover, the progress dashboard, and the commit history have to say "this person has been deliberate about interview prep for fifteen weeks and can back every claim." This week is where you make those ninety seconds land.
 
 2. **The mock trajectory is the highest-signal artifact you own.** Mocks #1 (W4) → #2 (W9) → #3 (W14) → #4 (W15) are the record of whether you can *self-correct* — and self-correction is the single trait a senior engineer reads to judge whether you will grow on the job. Four recorded mocks with honest self-feedback, ending in the Mock #1→#4 trajectory note, is worth more than another ten write-ups. It is the part of the portfolio that cannot be faked.
 
@@ -27,8 +27,8 @@ A single **public** GitHub repository, **`crunchtime-interview-prep-<yourhandle>
 ```
 crunchtime-interview-prep-<you>/
 ├── README.md                       ← the portfolio cover (the 90-second sell) — polished this week
-├── umpire-writeups/
-│   ├── 01-two-sum.md               ← 60+ problem write-ups in UMPIRE format
+├── frame-writeups/
+│   ├── 01-two-sum.md               ← 60+ problem write-ups in FRAME format
 │   ├── 02-best-time-to-buy.md
 │   ├── …                            ← organized by pattern and/or by week (c2-week-NN/)
 │   └── 60-maximum-xor.md
@@ -38,7 +38,7 @@ crunchtime-interview-prep-<you>/
 │   ├── mock-03-week-14.md
 │   └── mock-04-week-15.md          ← full-loop self-feedback + the Mock #1→#4 trajectory note
 ├── system-design/
-│   └── url-shortener.md            ← the junior-level design write-up (Drill 2)
+│   └── url-shortener.md            ← the junior-level design write-up (Exercise 2)
 ├── behavioral/
 │   └── story-bank/
 │       ├── story-bank.md           ← your 12+ STAR anecdotes (from Week 13)
@@ -50,14 +50,14 @@ crunchtime-interview-prep-<you>/
 │   └── follow-up-template.md       ← the thank-you + follow-up template
 ├── study-plan/
 │   ├── go-forward-plan.md          ← the full personalized plan (homework Parts 1–6)
-│   └── pre-onsite-4-weeks.md       ← your personalized last-mile plan (Drill 4 + homework Part 4)
+│   └── pre-onsite-4-weeks.md       ← your personalized last-mile plan (Exercise 4 + homework Part 4)
 └── badges/
-    ├── umpire-apprentice.json
+    ├── frame-apprentice.json
     ├── pattern-practitioner.json
     └── crunchtime-graduate.json
 ```
 
-This matches the capstone tree in the [SYLLABUS](../../SYLLABUS.md#what-you-ship-capstone-deliverables) and the README's [capstone deliverables](../README.md#the-capstone-deliverables-what-you-ship) section.
+This matches the capstone tree in the [SYLLABUS](../../../README.md#what-you-ship-capstone-deliverables) and the README's [capstone deliverables](../README.md#the-capstone-deliverables-what-you-ship) section.
 
 ---
 
@@ -65,13 +65,13 @@ This matches the capstone tree in the [SYLLABUS](../../SYLLABUS.md#what-you-ship
 
 The repo README is the single highest-leverage file in the capstone. It is what loads first, and it must sell the repo before the recruiter decides whether to scroll. Build it in this order — the order matters, because a recruiter reads top-down and stops the moment they lose interest:
 
-1. **The one-line pitch (above the fold).** One sentence: who you are and what the repo proves. *"Fifteen weeks of deliberate interview prep — UMPIRE for 60+ problems, four recorded mocks, and a system-design write-up. Here's how I think."* Not "my LeetCode solutions." A pitch, not a description.
+1. **The one-line pitch (above the fold).** One sentence: who you are and what the repo proves. *"Fifteen weeks of deliberate interview prep — FRAME for 60+ problems, four recorded mocks, and a system-design write-up. Here's how I think."* Not "my LeetCode solutions." A pitch, not a description.
 
 2. **The progress dashboard.** A small table or badge row that surfaces the headline numbers at a glance: write-up count, patterns covered, mocks recorded, system-design write-ups. Example:
 
    | | |
    |---|---|
-   | **Write-ups** | 62 (UMPIRE format) |
+   | **Write-ups** | 62 (FRAME format) |
    | **Patterns** | 14 / 14 covered |
    | **Recorded mocks** | 4 (W4, W9, W14, W15) |
    | **System-design** | 1 (URL shortener, 10K QPS) |
@@ -89,16 +89,16 @@ The test: screen-record yourself scrolling the README aloud as if presenting to 
 
 ## The 60+ write-up quality bar
 
-Every write-up must clear the six-point bar from [Drill 1](../exercises/drill-01-portfolio-audit.md). A write-up that fails any one of these is not "done" — it is a liability, because a recruiter who opens one weak write-up assumes the rest are weak too:
+Every write-up must clear the six-point bar from [Exercise 1](../exercises/exercise-01-portfolio-audit.md). A write-up that fails any one of these is not "done" — it is a liability, because a recruiter who opens one weak write-up assumes the rest are weak too:
 
-1. **Match memo present** — a 30-second pattern-recognition memo at the top: the pattern, the cue, the sub-shape, and one rejected alternative.
-2. **All six UMPIRE sections present** — Understand, Match, Plan, Implement, Review, Evaluate; none half-finished.
-3. **Code is correct and tested** — it runs, it passes the examples, and there is at least one edge-case trace in Review.
-4. **Complexity is *derived*, not just stated** — the Evaluate section shows *why* the bound holds, not only the big-O.
+1. **Research-constraints memo present** — a 30-second pattern-recognition memo at the top: the pattern, the cue, the sub-shape, and one rejected alternative.
+2. **All five FRAME sections present** — Frame · Research constraints · Assess options · Make the solution · Examine; none half-finished.
+3. **Code is correct and tested** — it runs, it passes the examples, and there is at least one edge-case trace in Examine (verify).
+4. **Complexity is *derived*, not just stated** — the Examine (cost) section shows *why* the bound holds, not only the big-O.
 5. **Type hints + PEP 8** — every function typed; idiomatic Python ([PEP 8](https://peps.python.org/pep-0008/)).
 6. **It reads cleanly** — a stranger can follow it without you narrating.
 
-The audit (Drill 1) is where you find and fix the write-ups that fail — the half-finished Evaluate, the missing Match memo, the untested code. The bar is non-negotiable: **60+ write-ups, every one audited.**
+The audit (Exercise 1) is where you find and fix the write-ups that fail — the half-finished Examine, the missing Research-constraints memo, the untested code. The bar is non-negotiable: **60+ write-ups, every one audited.**
 
 ---
 
@@ -108,13 +108,13 @@ The capstone is complete when **all** of the following are true and the repo is 
 
 - [ ] The repo is **public** on GitHub at `crunchtime-interview-prep-<yourhandle>`.
 - [ ] The **README cover** follows the spec above: one-line pitch, progress dashboard, pattern × write-up index, prominent mocks section, organization note.
-- [ ] **60+ UMPIRE write-ups** are present, organized by pattern and/or week, and **every one** has been audited against the six-point bar (Drill 1) — no missing Match memo, no untested code, no half-finished Evaluate, no undrived complexity.
+- [ ] **60+ FRAME write-ups** are present, organized by pattern and/or week, and **every one** has been audited against the six-point bar (Exercise 1) — no missing Research-constraints memo, no untested code, no half-finished Examine, no underived complexity.
 - [ ] **All four mock self-feedback notes** are present (`mock-01`…`mock-04`), each with a recording link and two-pass notes; the Mock #4 note carries the **Mock #1 → #4 trajectory**.
-- [ ] The **system-design write-up** (`system-design/url-shortener.md`) is present and complete through the read/write path (Drill 2).
+- [ ] The **system-design write-up** (`system-design/url-shortener.md`) is present and complete through the read/write path (Exercise 2).
 - [ ] The **behavioral story bank** with its **coverage matrix** (no empty column) is present under `behavioral/story-bank/`.
-- [ ] The **recruiter-prep pack** is present: resume, tiered `target-companies.md`, `outreach-template.md`, `follow-up-template.md` (Drill 3).
-- [ ] The **personalized study plan** is present: `study-plan/go-forward-plan.md` (homework Parts 1–6) and `study-plan/pre-onsite-4-weeks.md` (Drill 4).
-- [ ] The three **badges** are present and **honestly earned** (`umpire-apprentice`, `pattern-practitioner`, `crunchtime-graduate`).
+- [ ] The **recruiter-prep pack** is present: resume, tiered `target-companies.md`, `outreach-template.md`, `follow-up-template.md` (Exercise 3).
+- [ ] The **personalized study plan** is present: `study-plan/go-forward-plan.md` (homework Parts 1–6) and `study-plan/pre-onsite-4-weeks.md` (Exercise 4).
+- [ ] The three **badges** are present and **honestly earned** (`frame-apprentice`, `pattern-practitioner`, `crunchtime-graduate`).
 - [ ] The **commit history** shows sustained, roughly-daily commits across the fifteen weeks — months of evidence, not one bulk dump.
 - [ ] The repo is **starred by at least one peer** who actually reviewed it (the pair-audit stretch goal is the natural way to earn this).
 
@@ -151,7 +151,7 @@ This repo is not assembled in Week 15 — it is *closed* in Week 15. The trail:
 - **W14** — the last write-ups (XOR fold, binary trie) bring the total toward sixty.
 - **W15** — the audit, Mock #4, the system-design polish, the recruiter pack, the study plan, the badges, and the README cover. The close.
 
-If a directory is thin, that is the gap Week 15 fills. The audit (Drill 1) is where you discover what is missing.
+If a directory is thin, that is the gap Week 15 fills. The audit (Exercise 1) is where you discover what is missing.
 
 ---
 
@@ -159,7 +159,7 @@ If a directory is thin, that is the gap Week 15 fills. The audit (Drill 1) is wh
 
 When this repo is public, pushed, and clears the rubric, **C2 is complete.** Stop and take the measure of it: a public repository with 60+ problem write-ups, four recorded mocks you watched without flinching, a system-design write-up, a twelve-story behavioral bank, a recruiter pack, and a written plan for the next four weeks and beyond. That is not a completion certificate. That is a *portfolio* — and it is the thing you point a hiring manager at when they ask "show me how you think."
 
-Then do the thing the portfolio is for. Open your [personalized go-forward study plan](../homework.md), send the first batch of applications this week using the [recruiter-prep pack](../exercises/drill-03-recruiter-prep-pack.md) you built, and — when an offer comes — go to [C13 · Hack the Interview](../../../C13-HACK-THE-INTERVIEW/) for negotiation and to [C3 · Crunch Labs Portfolio](../../../C3-CRUNCH-LABS-PORTFOLIO/) to build a project portfolio alongside this one.
+Then do the thing the portfolio is for. Open your [personalized go-forward study plan](../homework/README.md), send the first batch of applications this week using the [recruiter-prep pack](../exercises/exercise-03-recruiter-prep-pack.md) you built, and — when an offer comes — go to [C13 · Hack the Interview](../../../C13-HACK-THE-INTERVIEW/) for negotiation and to [C3 · Crunch Labs Portfolio](../../../C3-CRUNCH-LABS-PORTFOLIO/) to build a project portfolio alongside this one.
 
 You have done the work. The next mock is a real one, for a real job. Go get the offer.
 

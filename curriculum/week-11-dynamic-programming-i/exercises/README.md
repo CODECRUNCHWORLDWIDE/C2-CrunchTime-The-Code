@@ -1,6 +1,6 @@
 # Week 11 — Exercises
 
-Three Python exercises drilling the W11 patterns. Solve each on your own before consulting [SOLUTIONS.md](./SOLUTIONS.md). Each file has a UMPIRE checklist embedded at the top and a self-test block that runs on `python3 exercise-XX-*.py`.
+Three Python exercises drilling the W11 patterns. Solve each on your own before consulting [SOLUTIONS.md](./SOLUTIONS.md). Each file has a FRAME checklist embedded at the top and a self-test block that runs on `python3 exercise-XX-*.py`.
 
 | # | File | Pattern | LeetCode | Target time |
 |---|------|---------|----------|-------------|
@@ -10,10 +10,10 @@ Three Python exercises drilling the W11 patterns. Solve each on your own before 
 
 **How to use:**
 
-1. Open the file. Read the docstring and the UMPIRE checklist.
+1. Open the file. Read the docstring and the FRAME checklist.
 2. Close the lecture notes. Implement the function on your own.
 3. Run the file: `python3 exercise-01-climbing-stairs.py`. The self-test block prints `[OK]` for each passing case and `[FAIL]` for each failing case; assertions raise at the end if any failed.
-4. After all asserts pass, walk a UMPIRE write-up on the problem. Record audio if you can; 8–10 minutes is the target length.
-5. Read the corresponding section of [SOLUTIONS.md](./SOLUTIONS.md) and compare against your write-up. Note which UMPIRE sections you under-developed.
+4. After all asserts pass, walk a FRAME write-up on the problem. Record audio if you can; 8–10 minutes is the target length.
+5. Read the corresponding section of [SOLUTIONS.md](./SOLUTIONS.md) and compare against your write-up. Note which FRAME sections you under-developed.
 
-Solve order: 1, 2, 3 (warm-up first, 2D second, segmentation last). The exercises increase in Match-step density; by Exercise 3 you should be recognizing the DP shape in 30 seconds.
+Solve order: 1, 2, 3 (warm-up first, 2D second, segmentation last). The exercises increase in Research-constraints density; by Exercise 3 you should be recognizing the DP shape in 30 seconds.

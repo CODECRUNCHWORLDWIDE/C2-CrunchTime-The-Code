@@ -19,13 +19,13 @@ Every parametric-search problem can be rewritten in one canonical shape:
 
 (Or its mirror: "find the largest `k` such that `feasible(k)` is True." Both are the same problem with the predicate inverted.)
 
-Three examples that look completely different on the surface but compile to the same shape:
+Three of this week's problems look completely different on the surface and compile to the same shape:
 
-- **Koko Eating Bananas (LC 875).** Find the smallest hourly eating rate `k` such that Koko can finish all piles within `h` hours. Predicate: `feasible(k) = (total_hours_at_rate(k) <= h)`. Search interval: `[1, max(piles)]`.
-- **Kth Smallest Element in a Sorted Matrix (LC 378).** Find the smallest value `k` in the matrix such that at least `K` elements are `<= k`. Predicate: `feasible(k) = (count_le(matrix, k) >= K)`. Search interval: `[matrix[0][0], matrix[n-1][n-1]]`.
-- **Capacity to Ship Packages in D Days (LC 1011).** Find the smallest ship capacity `k` such that we can ship all packages within `D` days. Predicate: `feasible(k) = (days_needed(weights, k) <= D)`. Search interval: `[max(weights), sum(weights)]`.
+- **The Paving Reach** ([Exercise 5](../exercises/exercise-05-paving-reach.md)). Find the smallest nightly reach `w` such that the crew repaves every section within the night budget. Predicate: `feasible(w) = (sum(ceil(section / w) for section in sections) <= nights)`. Search interval: `[1, max(sections)]`.
+- **The Quote Rank** ([Exercise 4](../exercises/exercise-04-quote-rank.md)). Find the smallest price `v` such that at least `k` of the rate card's pairwise quotes cost no more than `v`. Predicate: `feasible(v) = (count_at_most(v) >= k)`. Search interval: `[cheapest possible quote, dearest possible quote]`.
+- **The Kiln Firing Schedule** ([Homework Problem 1](../homework/README.md)). Find the smallest kiln volume `c` such that the rail clears within the firing budget. Predicate: `feasible(c) = (firings_needed(c) <= firings)`. Search interval: `[smallest legal volume holding the biggest piece, smallest legal volume holding the whole rail]`.
 
-In all three, the structure is the same:
+Notice how little the domains have in common — a road crew, a freight broker, a pottery studio — and how identical the three lines are once written down. That is the recognition skill this lecture installs. In all three, the structure is the same:
 
 ```python
 def parametric_search(lo: int, hi: int, feasible) -> int:
@@ -55,15 +55,15 @@ Monotonicity is the deeper of the two. The interview test is: *given a candidate
 
 Examples of monotone predicates:
 
-- "Can Koko finish at rate `k` in `h` hours?" — yes, eating faster never takes more hours. Monotone.
-- "Can we ship in `D` days with capacity `k`?" — yes, a larger capacity never requires more days. Monotone.
-- "Are at least `K` elements `<= k` in the matrix?" — yes, raising `k` never decreases the count. Monotone.
+- "Can the crew finish at nightly reach `w` within the budget?" — yes: a longer reach never increases the nights any one section needs. Monotone.
+- "Can the rail clear within the budget at kiln volume `c`?" — yes: a bigger kiln never requires more firings. Monotone.
+- "Are at least `k` quotes priced at or below `v`?" — yes: raising the ceiling never removes a quote that already fit. Monotone.
 
 Example of a **non-monotone** predicate (so binary search on the answer does not apply):
 
 - "Is there an interval of length exactly `k` with sum exactly `S`?" — increasing `k` could make True become False (the sums change). Not monotone. Use sliding window or DP.
 
-The monotonicity check is the Match-step skill. In Mock #2 in Week 9, when you read a parametric prompt, **state the monotonicity claim out loud** before you write the predicate:
+The monotonicity check is the Research-constraints skill. In Mock #2 in Week 9, when you read a parametric prompt, **state the monotonicity claim out loud** before you write the predicate:
 
 > "The predicate `feasible(k)` is monotone because a larger `k` never makes the constraints harder to satisfy — specifically, [one-line reason]. Therefore binary search on the answer applies."
 
@@ -96,7 +96,7 @@ Bounds matter. Too-wide bounds make the search slower (more iterations); too-nar
 
 Write a boolean function `feasible(k)` that returns True if `k` satisfies the problem's constraints. This is usually *not* a binary search; it is a linear pass, a counting argument, or a small simulation.
 
-The cost of `feasible(k)` dominates the total complexity. If `feasible` is `O(n)`, the total is `O(n log M)` where `M` is the answer-space width. If `feasible` is `O(n²)`, the total is `O(n² log M)`. Be explicit about this in the Evaluate section.
+The cost of `feasible(k)` dominates the total complexity. If `feasible` is `O(n)`, the total is `O(n log M)` where `M` is the answer-space width. If `feasible` is `O(n²)`, the total is `O(n² log M)`. Be explicit about this in the Examine (cost) section.
 
 ### Step 3 — Run the binary search to the boundary
 
@@ -117,66 +117,59 @@ The hi bound is *inclusive* in the sense that `feasible(hi)` is guaranteed True 
 
 ---
 
-## 4. Worked example: Koko Eating Bananas (LC 875)
+## 4. Worked example: The Paving Reach
 
-This is the **canonical** parametric-search problem and Drill 5 of this week. Memorize the structure.
+This is the cleanest parametric shape in the course and it is [Exercise 5](../exercises/exercise-05-paving-reach.md) of this week. Memorize the structure.
 
 ### Problem
 
-Koko has `piles[i]` bananas in pile `i`. Each hour she eats up to `k` bananas from one pile (if fewer remain, she eats those and moves on). Guards return in `h` hours. Find the smallest `k` such that Koko finishes all piles within `h` hours.
+A highway crew repaves a road cut into numbered sections; `sections[i]` is the length of section `i` in metres. The paving train works one night at a time and, by contract with the town, may only work on **one section per night**: it lays as much of that section as its nightly reach allows, then shuts down. A section longer than the reach takes several nights. The crew has `nights` nights before the road must reopen. Find the smallest whole-metre nightly reach that finishes the job in time.
 
 ### The reframe
 
-> "Find the smallest `k` in `[1, max(piles)]` such that `total_hours_at_rate(k) <= h`."
+> "Find the smallest `w` in `[1, max(sections)]` such that `sum(ceil(s / w) for s in sections) <= nights`."
 
 ### Step 1 — Bounds
 
-- `lo = 1`. Koko must eat at least 1 banana per hour to finish in finite time.
-- `hi = max(piles)`. At a rate of `max(piles)`, Koko eats each pile in exactly one hour (since each pile has `<= max(piles)` bananas). Total hours = `len(piles) <= h` is guaranteed (problem constraint). So `feasible(hi) = True`.
+- `lo = 1`. A reach of zero never advances the work, so one metre is the smallest meaningful answer.
+- `hi = max(sections)`. At that reach every section finishes in exactly one night, so the total is `len(sections)` — the **smallest total achievable at any reach**. That last clause is the important one, and it is a better teaching case than the usual textbook bound because `feasible(hi)` is **not** guaranteed here. If `len(sections) > nights`, no reach on earth works and the answer is `None`. Checking `feasible(hi)` before the loop is not ceremony in this problem; it is the branch that produces the `None`.
 
-### Step 2 — `feasible(k)`
+### Step 2 — `feasible(w)`
 
 ```python
-def feasible(k: int) -> bool:
-    hours = 0
-    for pile in piles:
-        hours += (pile + k - 1) // k     # ceil(pile / k)
-        if hours > h:
+def feasible(w: int) -> bool:
+    total = 0
+    for s in sections:
+        total += (s + w - 1) // w     # integer ceiling of s / w
+        if total > nights:
             return False
-    return hours <= h
+    return True
 ```
 
-`(pile + k - 1) // k` is the ceiling-divide idiom. For a pile of size 7 at rate 3, it takes `⌈7/3⌉ = 3` hours.
+`(s + w - 1) // w` is the integer ceiling idiom. A 30-metre section at reach 21 takes `⌈30/21⌉ = 2` nights. Use it rather than `math.ceil(s / w)`: at section lengths near `10**9` the float division is not exact and the ceiling can come out one too low — a bug that passes your small tests and fails in production.
 
-The predicate is `O(n)` where `n = len(piles)`. Monotonicity: increasing `k` never increases the per-pile hour count (faster rate, fewer hours), so the sum can only decrease or stay the same. Monotone.
+The predicate is `O(n)` where `n = len(sections)`, with an early exit. Monotonicity: increasing `w` never increases `⌈s/w⌉` for any single section, so the sum is non-increasing in `w`, so `total <= nights` flips from False to True at most once. Monotone.
 
 ### Step 3 — Binary search
 
-```python
-def min_eating_speed(piles: list[int], h: int) -> int:
-    lo, hi = 1, max(piles)
-    while lo < hi:
-        mid = lo + (hi - lo) // 2
-        if feasible_at_rate(piles, mid, h):
-            hi = mid
-        else:
-            lo = mid + 1
-    return lo
-```
-
-The full solution:
+The full solution, guards included:
 
 ```python
-def min_eating_speed(piles: list[int], h: int) -> int:
-    def feasible(k: int) -> bool:
-        hours = 0
-        for pile in piles:
-            hours += (pile + k - 1) // k
-            if hours > h:
+def min_nightly_reach(sections: list[int], nights: int) -> int | None:
+    if not sections:
+        return 0                     # nothing to pave, no train needed
+    if len(sections) > nights:
+        return None                  # feasible(hi) is False: unsatisfiable
+
+    def feasible(w: int) -> bool:
+        total = 0
+        for s in sections:
+            total += (s + w - 1) // w
+            if total > nights:
                 return False
         return True
 
-    lo, hi = 1, max(piles)
+    lo, hi = 1, max(sections)        # half-open in spirit: hi is known feasible
     while lo < hi:
         mid = lo + (hi - lo) // 2
         if feasible(mid):
@@ -186,80 +179,110 @@ def min_eating_speed(piles: list[int], h: int) -> int:
     return lo
 ```
 
-Fourteen lines.
+Eighteen lines, and the first four are the contract rather than the algorithm. That ratio is normal for parametric problems and it is why the Frame step matters so much here.
+
+### Trace
+
+`sections = [30, 12, 21, 5, 18]`, `nights = 6`. Five sections, six nights, so the guard passes. `lo = 1, hi = 30`.
+
+```
+mid = 15  →  2 + 1 + 2 + 1 + 2 = 8  > 6   False  →  lo = 16
+mid = 23  →  2 + 1 + 1 + 1 + 1 = 6 <= 6   True   →  hi = 23
+mid = 19  →  2 + 1 + 2 + 1 + 1 = 7  > 6   False  →  lo = 20
+mid = 21  →  2 + 1 + 1 + 1 + 1 = 6 <= 6   True   →  hi = 21
+mid = 20  →  2 + 1 + 2 + 1 + 1 = 7  > 6   False  →  lo = 21
+lo == hi == 21  →  return 21
+```
+
+Five predicate calls to search a thirty-wide interval. The brute force would have made twenty-one.
 
 ### Complexity
 
-- **Time: O(n log M)** where `n = len(piles)` and `M = max(piles)`. The binary search runs `log₂(M)` iterations; each iteration calls `feasible`, which is `O(n)`.
-- **Space: O(1)** — three pointers in the search, one accumulator in the predicate.
+- **Time: O(n log M)** where `n = len(sections)` and `M = max(sections)`. The search runs `⌈log₂ M⌉` iterations — about 30 at the top of the constraint range — and each calls an `O(n)` predicate.
+- **Space: O(1)** — three integers in the search, one accumulator in the predicate.
 
 Defense:
 
-> "**O(n log M)** because we run binary search over the answer interval `[1, max(piles)]` — `log₂(max(piles))` iterations — and each iteration calls `feasible(k)`, which is a single `O(n)` pass over `piles`. The binary-search depth dominates by the `log M` factor; the predicate cost dominates by `n`. Tradeoff: the brute force tries every `k` from 1 to `max(piles)` linearly, which is `O(n M)` — strictly worse. Binary search on the answer is the canonical optimization for this family."
+> "**O(n log M)** because we binary-search the answer interval `[1, max(sections)]` — `log₂(max(sections))` iterations — and each iteration calls `feasible(w)`, a single `O(n)` pass over the sections. The two factors come from different places: the `log M` is the search depth, the `n` is the predicate cost. Tradeoff: the brute force tries `w = 1, 2, 3, …` until one works, which is `O(n · M)` — a billion predicate calls at the top of the range. Parametric search replaces the linear sweep over the answer space with a logarithmic one; the predicate cost is unchanged."
 
 ---
 
-## 5. Worked example: Kth Smallest in a Sorted Matrix (LC 378)
+## 5. Worked example: The Quote Rank
 
-A 2-D matrix where each row is sorted ascending and each column is sorted ascending. Find the `K`-th smallest element in the matrix.
+A freight broker prices a shipment as one handling fee plus one linehaul fee. Both fee lists arrive sorted ascending. Every handling fee may be paired with every linehaul fee, so the quotes the broker can produce are all `len(handling) × len(linehaul)` pairwise sums, counted **with multiplicity**. Find the `k`-th cheapest quote.
 
 ### The reframe
 
-> "Find the smallest value `v` in `[matrix[0][0], matrix[n-1][n-1]]` such that `count_le(v) >= K`."
+> "Find the smallest price `v` in `[handling[0] + linehaul[0], handling[-1] + linehaul[-1]]` such that `count_at_most(v) >= k`."
 
-Where `count_le(v)` returns the number of elements `<= v`.
+Where `count_at_most(v)` returns how many pairs sum to at most `v`.
 
 ### Why this is binary search on values, not on indices
 
-The matrix is *partially* sorted (rows and columns), but the flattened matrix is not globally sorted. There is no single sorted array to binary-search on. So we binary-search on the *value* — bisecting the integer range `[min, max]` of possible values, using a count predicate.
+There is no sorted list of quotes to index into. At the top of the constraint range there are ten billion of them: you cannot materialize them, cannot sort them, and cannot heap them. What you *do* have is a bounded value range and a count that is easy. That swap — from searching positions to searching prices — is the whole move, and it is the first sentence of your Research constraints.
 
-### `count_le(v)` — `O(n)` via the staircase walk
+### `count_at_most(v)` — `O(n + m)` via a two-pointer sweep
 
 ```python
-def count_le(matrix: list[list[int]], v: int) -> int:
-    n = len(matrix)
-    count = 0
-    row, col = n - 1, 0
-    while row >= 0 and col < n:
-        if matrix[row][col] <= v:
-            count += row + 1     # all of column `col` from row 0..row are <= v
-            col += 1
-        else:
-            row -= 1
-    return count
+def count_at_most(handling: list[int], linehaul: list[int], v: int) -> int:
+    j = len(linehaul) - 1
+    total = 0
+    for h in handling:                       # ascending
+        while j >= 0 and h + linehaul[j] > v:
+            j -= 1
+        total += j + 1                       # indices 0..j all fit
+    return total
 ```
 
-The "staircase walk" starts at the bottom-left and moves right (when the current cell is `<= v`) or up (when it is `> v`). At each step we account for an entire column-segment in `O(1)`. Total `O(n)` because each step decreases `row` or increases `col` and both are bounded by `n`.
+The sweep works because both lists ascend: as the handling fee rises, the dearest linehaul fee that still fits can only fall. So `j` is initialized **once, outside the loop** and never moves back up. That single fact is what makes the whole thing `O(n + m)` instead of `O(n · m)`, and it is a separate claim from the monotonicity of the predicate — interviewers grade both, so state them as two sentences, not one.
 
-This is Drill 4.
+`total += j + 1` and not `total += j`: indices `0` through `j` are `j + 1` values. This is the most common off-by-one in the family.
+
+This is [Exercise 4](../exercises/exercise-04-quote-rank.md).
 
 ### Binary search wrapper
 
 ```python
-def kth_smallest(matrix: list[list[int]], k: int) -> int:
-    n = len(matrix)
-    lo, hi = matrix[0][0], matrix[n-1][n-1]
+def kth_cheapest_quote(handling: list[int], linehaul: list[int], k: int) -> int | None:
+    if not handling or not linehaul or k > len(handling) * len(linehaul):
+        return None
+    lo = handling[0] + linehaul[0]
+    hi = handling[-1] + linehaul[-1]
     while lo < hi:
         mid = lo + (hi - lo) // 2
-        if count_le(matrix, mid) >= k:
+        if count_at_most(handling, linehaul, mid) >= k:
             hi = mid
         else:
             lo = mid + 1
     return lo
 ```
 
-### Why `lo` ends up being an actual matrix element
+### Why `lo` ends up being an achievable quote
 
-The binary search converges to the smallest `v` such that `count_le(v) >= k`. That value is precisely the kth smallest element of the matrix — because *the count function jumps by ≥ 1 at every actual matrix element* and is constant between consecutive matrix elements. So the boundary value `lo` is itself a matrix element.
+The search converges on the smallest integer `v` with `count_at_most(v) >= k`. That value is a real quote, not an arbitrary integer — because `count_at_most` is a step function that is constant between achievable quotes and jumps only *at* them. If `lo` were not achievable, then `lo - 1` would have the same count, and `lo - 1` would have satisfied the predicate first, contradicting minimality.
 
-This is a subtle point. State it out loud in Review:
+State it out loud in Examine (verify):
 
-> "The post-loop value `lo` is the smallest integer `v` such that at least `k` matrix entries are `<= v`. Because `count_le` is non-decreasing in `v` and jumps only at matrix entries, the boundary value coincides with an actual matrix element — specifically, the kth smallest. The algorithm does not enumerate matrix entries; it just finds the value at which the count crosses `k`."
+> "The post-loop value `lo` is the smallest integer `v` such that at least `k` quotes cost no more than `v`. Because `count_at_most` is non-decreasing in `v` and changes only at achievable quotes, the boundary value coincides with an achievable quote — specifically, the `k`-th cheapest. The algorithm never enumerates a single pair; it finds the price at which the count crosses `k`."
+
+### Trace
+
+`handling = [2, 5, 9]`, `linehaul = [1, 4, 4]`, `k = 4`. The nine quotes, in order, are `3, 6, 6, 6, 9, 9, 10, 13, 13`, so the answer should be `6`. `lo = 3, hi = 13`.
+
+```
+mid = 8   →  count_at_most(8) = 4   >= 4  True   →  hi = 8
+mid = 5   →  count_at_most(5) = 1    < 4  False  →  lo = 6
+mid = 7   →  count_at_most(7) = 4   >= 4  True   →  hi = 7
+mid = 6   →  count_at_most(6) = 4   >= 4  True   →  hi = 6
+lo == hi == 6  →  return 6
+```
+
+Walk the `v = 8` call by hand once, watching `j`: it starts at `2`; the handling fee `2` leaves it there and contributes `3`; the handling fee `5` walks it down to `0` and contributes `1`; the handling fee `9` walks it to `-1` and contributes `0`. Total `4`. `j` moved down three times across the whole call and never once moved up.
 
 ### Complexity
 
-- **Time: O(n log M)** where `n` is the matrix side and `M = matrix[n-1][n-1] - matrix[0][0]` is the value range.
-- **Space: O(1)**.
+- **Time: O((n + m) · log V)** where `n` and `m` are the two list lengths and `V` is the width of the quote range. Each search iteration is one two-pointer sweep.
+- **Space: O(1)** — nothing proportional to the pair count is ever built.
 
 ---
 
@@ -306,8 +329,10 @@ A wrong `hi` is the most common parametric-search bug. The fix is to state the b
 
 ### Two safe heuristics
 
-- **`hi = a trivially valid answer.`** Something so large that `feasible(hi)` is obviously True. For Koko, `max(piles)` works because at that rate, every pile finishes in one hour, giving `n` total hours, which is `<= h` by problem constraint.
-- **`lo = the smallest meaningful answer.`** For Koko, `lo = 1` (zero rate would never finish). For Kth-smallest-matrix, `lo = matrix[0][0]` (anything smaller has count 0).
+- **`hi = a trivially valid answer.`** Something so large that `feasible(hi)` is obviously True. For the paving crew, `max(sections)` works because at that reach every section finishes in one night, giving `len(sections)` nights in total — the fewest achievable at any reach.
+- **`lo = the smallest meaningful answer.`** For the paving crew, `lo = 1`, because a reach of zero never advances the work. For the quote rank, `lo = handling[0] + linehaul[0]`, because nothing cheaper is achievable at all.
+
+One warning the textbook version of this heuristic hides: "trivially valid" is a claim you must actually check. In the paving problem `feasible(max(sections))` can be **False** — that is what happens when there are more sections than nights — and the whole `None` branch of the contract lives in that check. Verify the claim; do not assume it.
 
 ### When `hi` is hard to bound
 
@@ -329,35 +354,35 @@ That check costs five seconds. It catches the wrong-bound bug.
 
 Most parametric problems fit one of four patterns. Recognize the shape; the rest is mechanical.
 
-### Pattern A — minimum rate / threshold to satisfy a constraint within a budget
+### Pattern A — minimum rate or threshold that satisfies a constraint within a budget
 
-- **Koko Bananas** — minimum eating rate such that all piles finish within `h` hours.
-- **Ship Capacity in D Days (LC 1011)** — minimum capacity such that shipping completes within `D` days.
-- **Allocate Books / Split Array Largest Sum (LC 410)** — minimum max-sum such that we can partition into `k` groups.
+- **The Paving Reach** ([Exercise 5](../exercises/exercise-05-paving-reach.md)) — smallest nightly reach that finishes the road within the night budget.
+- **The Kiln Firing Schedule** ([Homework 1](../homework/README.md)) — smallest kiln volume that clears the loading rail within the firing budget.
+- **The Relay Handoff** ([Homework 2](../homework/README.md)) — smallest achievable value of the longest rider's distance when the route is split into exactly `riders` contiguous blocks. The "minimise the maximum" phrasing is the same pattern wearing different words: the maximum block sum *is* the threshold.
+- **The Sprinkler Reach** (Mini-Project Problem 4) — smallest sprinkler radius that waters every plant in the row.
 
-Pattern: `lo = some minimum`, `hi = some maximum`, `feasible(k) = (resource_needed_at_k <= budget)`. Binary-search for smallest `k`.
+Pattern: `lo = some minimum`, `hi = a threshold you can prove works`, `feasible(t) = (resource_needed_at_t <= budget)`. Binary-search for the smallest `t`.
 
-### Pattern B — count threshold (kth smallest, median in a stream, etc.)
+### Pattern B — count threshold (kth smallest, rank queries)
 
-- **Kth Smallest in a Sorted Matrix** — smallest `v` such that `count_le(v) >= k`.
-- **Median of Two Sorted Arrays (challenge)** — special case using a partition argument.
+- **The Quote Rank** ([Exercise 4](../exercises/exercise-04-quote-rank.md)) — smallest price `v` such that `count_at_most(v) >= k`.
+- **The Merged Book Boundary** ([the challenge](../challenges/challenge-01-order-book-boundary.md)) — a rank query solved by a partition argument rather than a count, which is why it gets its own shape below.
 
-Pattern: `lo, hi = value range`, `feasible(v) = (count_le(v) >= k)`. Binary-search for smallest `v`.
+Pattern: `lo, hi = the value range`, `feasible(v) = (count_at_most(v) >= k)`. Binary-search for the smallest `v`. The signature to train on: *the answer is a value in a bounded range, and counting things at or below `v` is cheap.*
 
-### Pattern C — maximize the minimum (the mirror)
+### Pattern C — maximise the minimum (the mirror)
 
-- **Aggressive Cows / Magnetic Force Between Two Balls (LC 1552)** — place `m` balls in baskets at positions `pos[i]` to maximize the minimum pairwise distance.
-- **Path with Minimum Effort (LC 1631)** — minimize the maximum edge weight in a path (BFS-based predicate).
+- **The Delivery Zones** (Mini-Project Problem 5) — split a street into exactly `couriers` contiguous zones so that the worst-off courier carries as many parcels as possible.
 
-Pattern: `lo, hi = distance / effort range`, `feasible(d) = (we can place / route at threshold d)`. Binary-search for **largest** `d` where True — equivalently, the smallest `d` where False, minus 1.
+Pattern: `lo, hi = the value range`, `feasible(d) = (we can achieve threshold d)`, where `feasible` turns **False** as `d` rises rather than True. Binary-search for the **largest** `d` where it is True — which means the upper-bound template: round-up `mid`, `lo = mid` on True, `hi = mid - 1` on False. This is the shape that catches candidates out, because the direction flip is invisible until the loop hangs.
 
-### Pattern D — first true on a hidden monotone array
+### Pattern D — first true on a hidden monotone sequence
 
-- **First Bad Version (LC 278)** — `n` versions, the first bad one is the cutover. `isBadVersion(k)` is a black-box monotone predicate. Find the smallest `k` with `isBadVersion(k) = True`.
+- **The Firmware Cutover.** A device fleet has builds numbered `1..n`. Some build introduced a regression, and every build from that one onward is affected. You may call `is_faulty(build)`, which is slow — it flashes a spare unit and runs the test suite — so you want as few calls as possible. Find the first affected build.
 
-Pattern: `lo = 1, hi = n`, `feasible(k) = is_bad(k)`. Identical to lower bound on a sorted array, with the array replaced by an API call.
+Pattern: `lo = 1, hi = n`, `feasible(b) = is_faulty(b)`. Structurally identical to lower bound on a sorted array, with the array replaced by an expensive oracle. This is the purest form of the idea: there is no data structure at all, only a monotone answer to a yes/no question, and binary search still applies. If you can see this one, you can see all four.
 
-All four patterns use the same template. Recognizing which pattern applies takes practice; writing the search once you have the predicate is mechanical.
+All four patterns use the same template — with Pattern C using the mirrored half of it. Recognizing which pattern applies takes practice; writing the search once you have the predicate is mechanical.
 
 ---
 
@@ -369,7 +394,7 @@ If `feasible(k)` is True for some `k`, False for `k+1`, and True for `k+2`, bina
 
 ### Pitfall 2 — bounds that miss the answer
 
-If you pick `hi` too small (e.g., `hi = sum(piles) // h`), the answer might be outside `[lo, hi]`, and the algorithm returns garbage. Pick `hi` such that `feasible(hi) = True` *by construction*, not by hope. Verify out loud.
+If you pick `hi` too small — say `hi = sum(sections) // nights`, which looks like a sensible average — the answer can lie outside `[lo, hi]` and the algorithm returns garbage without complaining. Pick `hi` such that `feasible(hi)` is True *by construction*, not by hope, and then check the construction. Verify out loud. The failure mode here is silent: a too-small `hi` returns a number that is the right *type* and the wrong *value*, and no exception ever fires.
 
 ### Pitfall 3 — wrong shrink rule for the variant
 
@@ -385,62 +410,73 @@ The bug shifts from the binary search to the predicate. If `feasible(k)` is itse
 
 ---
 
-## 10. Worked example end-to-end: Ship Capacity in D Days (LC 1011)
+## 10. Worked example end-to-end: The Data Migration Window
 
-We will work this in full UMPIRE, abbreviated.
+A second parametric problem, worked in full FRAME, abbreviated. This one is not a drill or a homework problem — it exists so you can watch the cadence run twice on different data before you deliver it yourself.
 
-**[U — 2 minutes]**
+**The prompt.** A platform team is migrating a database. The tables must move **in dependency order**, so the order is fixed and cannot be rearranged. Each night the team opens a maintenance window and migrates a **contiguous run of tables**, as many as fit inside that night's row budget; a table is never split across nights. The team has `nights` maintenance windows before the migration must be finished. `rows[i]` is the row count of table `i`. Find the smallest nightly row budget that finishes the migration in time.
 
-> "I am given an array `weights` and an integer `D`. Each day I can ship a contiguous prefix of the remaining packages, up to the ship's capacity. Find the smallest capacity such that I can ship all packages within `D` days. Confirm: contiguous means in array order — no reordering. Confirm: `weights[i] <= capacity` always (otherwise no capacity works). Walk an example: `weights = [1,2,3,4,5,6,7,8,9,10]`, `D = 5`. The answer is 15: split into `[1,2,3,4,5]`, `[6,7]`, `[8]`, `[9]`, `[10]` — five days, max day-sum 15."
+**[F — 2 minutes]**
 
-**[M — 30 seconds]**
+> "Confirm the shape. Tables migrate in the given order — no reordering, because of the dependencies. Each night takes a contiguous run from the front of what is left. A table is atomic: it never straddles two nights, which means the budget must be at least the largest single table or that table can never move at all. The answer is the **budget**, not the number of nights. Walk an example: `rows = [120, 45, 300, 80, 210, 65]`, `nights = 3`. I claim the answer is 355 — I will verify that in Examine (verify) rather than assert it now."
 
-> "Binary search on the answer. The 30-second memo: *Bounded integer answer, monotone predicate, optimization problem — that is the parametric signal. The interval is `[max(weights), sum(weights)]` — `max(weights)` because the capacity must hold the largest single package; `sum(weights)` because shipping everything in one day always works. The predicate `feasible(c) = (days_needed(weights, c) <= D)` is monotone: larger capacity never increases the day count. Binary-search for the smallest `c` with `feasible(c) = True`.*"
+**[R — 30 seconds]**
 
-**[P — 1 minute]**
+> "Binary search on the answer. The 30-second memo: *A bounded integer answer, a monotone predicate, and an optimisation phrasing — that is the parametric signal, and nothing in the prompt said 'sorted' or 'logarithmic.' The interval is `[max(rows), sum(rows)]`: `max(rows)` because the budget must hold the largest single table, and `sum(rows)` because migrating everything in one night always works, so `feasible(hi)` is True by construction. The predicate `feasible(b) = (nights_needed(b) <= nights)` is monotone: a larger budget never increases the night count. Binary-search for the smallest `b` with `feasible(b)`.*"
 
-> "Predicate: walk weights, accumulating into a `day_sum`. When adding the next weight would exceed `c`, start a new day. Count days; return `days <= D`. Search: lower-bound template, `lo = max(weights)`, `hi = sum(weights)`. Return `lo`."
+**[A — 1 minute]**
 
-**[I — 3 minutes]**
+> "Predicate: sweep the tables accumulating into a running `load`. When adding the next table would exceed the budget, start a new night and put that table at the head of it. Count nights; return `nights_needed <= nights`. Search: the lower-bound template, half-open, `lo = max(rows)`, `hi = sum(rows)`. Return the post-loop `lo`."
+
+**[M — 3 minutes]**
 
 ```python
-def ship_within_days(weights: list[int], D: int) -> int:
-    def days_needed(c: int) -> int:
-        days = 1
+def min_nightly_rows(rows: list[int], nights: int) -> int:
+    def nights_needed(budget: int) -> int:
+        used = 1
         load = 0
-        for w in weights:
-            if load + w > c:
-                days += 1
-                load = w
+        for r in rows:
+            if load + r > budget:
+                used += 1
+                load = r
             else:
-                load += w
-        return days
+                load += r
+        return used
 
-    def feasible(c: int) -> bool:
-        return days_needed(c) <= D
-
-    lo, hi = max(weights), sum(weights)
+    lo, hi = max(rows), sum(rows)
     while lo < hi:
         mid = lo + (hi - lo) // 2
-        if feasible(mid):
+        if nights_needed(mid) <= nights:
             hi = mid
         else:
             lo = mid + 1
     return lo
 ```
 
-**[R — 2 minutes]**
+Note that `used` starts at `1`, not `0`: a non-empty migration always occupies at least one night, and starting at zero produces an answer one too small on every input. That single initializer is the most common bug in this pattern.
 
-> "Trace on `weights = [1,2,3,4,5,6,7,8,9,10]`, `D = 5`.
-> `lo = 10, hi = 55`. mid = 32. days_needed(32): pack [1,2,3,4,5,6,7] (sum 28) day 1, [8,9] day 2, [10] day 3. days = 3 <= 5. feasible. hi = 32.
-> lo = 10, hi = 32. mid = 21. days_needed(21): [1,2,3,4,5,6] (sum 21) day 1, [7,8] (15) day 2, [9] day 3, [10] day 4. days = 4 <= 5. feasible. hi = 21.
-> lo = 10, hi = 21. mid = 15. days_needed(15): [1,2,3,4,5] (15) day 1, [6,7] (13) day 2, [8] day 3, [9] day 4, [10] day 5. days = 5 <= 5. feasible. hi = 15.
-> lo = 10, hi = 15. mid = 12. days_needed(12): [1,2,3,4] (10) day 1, [5,6] (11) day 2, [7] day 3, [8] day 4, [9] day 5, [10] day 6. days = 6 > 5. not feasible. lo = 13.
-> Continue narrowing… eventually lo = 15. Return 15. ✓"
+**[E · verify — 2 minutes]**
 
-**[E — 1 minute]**
+> "Trace on `rows = [120, 45, 300, 80, 210, 65]`, `nights = 3`. `lo = 300` (the largest table), `hi = 820` (the total).
 
-> "**Time O(n log S)** where `S = sum(weights)`. Binary search runs `log₂(S)` iterations; predicate is `O(n)`. **Space O(1)** — pointers and accumulators. Tradeoff: brute force tries `c = max(weights), max(weights)+1, …` linearly until feasible — `O(n S)`. Parametric search trades that for `O(n log S)`. Best/avg/worst all `O(n log S)` — no input shortcuts the binary search."
+```
+mid = 560  →  [120,45,300,80] = 545, [210,65] = 275         →  2 nights  ≤ 3   →  hi = 560
+mid = 430  →  [120,45], [300,80], [210,65]                  →  3 nights  ≤ 3   →  hi = 430
+mid = 365  →  [120,45], [300], [80,210,65] = 355            →  3 nights  ≤ 3   →  hi = 365
+mid = 332  →  [120,45], [300], [80,210] = 290, [65]         →  4 nights  > 3   →  lo = 333
+mid = 349  →  [120,45], [300], [80,210] = 290, [65]         →  4 nights  > 3   →  lo = 350
+mid = 357  →  [120,45], [300], [80,210,65] = 355            →  3 nights  ≤ 3   →  hi = 357
+mid = 353  →  [120,45], [300], [80,210] = 290, [65]         →  4 nights  > 3   →  lo = 354
+mid = 355  →  [120,45], [300], [80,210,65] = 355            →  3 nights  ≤ 3   →  hi = 355
+mid = 354  →  [120,45], [300], [80,210] = 290, [65]         →  4 nights  > 3   →  lo = 355
+lo == hi == 355  →  return 355
+```
+
+> "Nine predicate calls to search a 520-wide interval; the brute force would have made 56. And the answer checks out by hand: the only three-way cuts that keep every night at or below 355 are `[120] | [45,300] | [80,210,65]` at 120/345/355 and `[120,45] | [300] | [80,210,65]` at 165/300/355. Every other cut pushes some night over. At a budget of 354 the last night splits and the migration needs four."
+
+**[E · cost — 1 minute]**
+
+> "**Time `O(n log S)`** where `n = len(rows)` and `S = sum(rows)`. The search runs `⌈log₂ S⌉` iterations and each calls an `O(n)` predicate. **Space `O(1)`** — three integers in the search, two accumulators in the predicate. Best, average, and worst are all `O(n log S)`: no input shortcuts the search, because the loop always runs to convergence. Tradeoff: the brute force tries `b = max(rows), max(rows) + 1, …` until one works, which is `O(n · S)`. Improvement: `hi` could be tightened from `sum(rows)` toward `sum(rows) // nights + max(rows)`, but that saves a couple of iterations off a logarithm that is already tiny, and it costs you a bound you would then have to prove out loud. Not worth it."
 
 ---
 
@@ -453,14 +489,14 @@ In Mock #2 (Week 9), if you draw a parametric problem, the interview tell is whe
 3. The **predicate** — `feasible(k)` returns True iff [property], and is monotone because [reason].
 4. The **return** — post-loop `lo` is the answer because [post-loop invariant].
 
-That is the cadence. Memorize the shape. Drill 5 is a script for delivering it.
+That is the cadence. Memorize the shape. [Exercise 5](../exercises/exercise-05-paving-reach.md) is a script for delivering it.
 
-> "Reframe: find the smallest rate `k` such that Koko finishes within `h` hours.
-> Interval: `lo = 1` (must eat *some* bananas per hour); `hi = max(piles)` (at this rate every pile finishes in one hour, so total hours = n ≤ h).
-> Predicate: `feasible(k)` returns True iff the total hours needed at rate `k` is `≤ h`. Monotone because a larger `k` never increases the per-pile hour count.
-> Return: the post-loop value of `lo` is the smallest `k` where `feasible` is True — i.e., the minimum viable rate."
+> "Reframe: find the smallest nightly reach `w` such that the crew finishes every section within the night budget.
+> Interval: `lo = 1`, because a reach of zero never advances the work; `hi = max(sections)`, because at that reach every section finishes in exactly one night, so the total is `len(sections)` — the fewest nights achievable at any reach. If that total still exceeds the budget, no reach works and the answer is `None`.
+> Predicate: `feasible(w)` returns True iff the total nights needed at reach `w` is at most the budget. Monotone because a larger `w` never increases any section's night count, so the sum is non-increasing in `w`.
+> Return: the post-loop value of `lo` is the smallest reach where `feasible` is True — the cheapest train that meets the deadline."
 
-That paragraph is ~25 seconds spoken aloud. Practice it.
+That paragraph is about 25 seconds spoken aloud. Practice it until it comes out without a stumble, then practise swapping the nouns: the same four sentences carry the kiln, the ferry, the sprinkler, and every other Pattern A problem you will ever be asked.
 
 ---
 
@@ -472,7 +508,7 @@ Without notes, answer:
 2. **State the canonical template for "find smallest k with `feasible(k) = True`."** (Half-open: `lo, hi = ...; while lo < hi: mid = lo + (hi-lo)//2; if feasible(mid): hi = mid else: lo = mid + 1; return lo`.)
 3. **How do you choose `hi`?** (Pick a value such that `feasible(hi)` is True by construction — the trivial upper bound. Pick `lo` as the smallest meaningful answer.)
 4. **What is the total complexity of parametric search?** (`O(P · log M)` where `P` is the predicate cost and `M` is the answer-space width.)
-5. **State the monotonicity claim for Koko Bananas.** (A larger rate never increases the hours required per pile; therefore the total hours is non-increasing in `k`; therefore the predicate `total_hours <= h` flips from False to True at most once.)
+5. **State the monotonicity claim for the paving problem.** (A larger reach never increases the nights required for any one section; therefore the total is non-increasing in `w`; therefore the predicate `total <= nights` flips from False to True at most once across `[1, max(sections)]`.)
 6. **When does parametric search not apply?** (When the predicate is not monotone, or when the answer space has no integer bounds, or when there is no `feasible` you can compute polynomially.)
 
 If you can answer all six without hesitation, proceed to the drills.
@@ -485,14 +521,14 @@ Parametric search is the *premium* binary-search application. Most candidates ca
 
 The interview math: every Phase 2 mock and onsite includes at least one binary-search problem. The classic ones (variants 1-3) are graded as "expected"; the parametric ones (variant 4) are graded as "shows the candidate understands what binary search is *for*." If you ship Week 5 with parametric search in your hands, you are statistically distinguishable from the median candidate at the same level.
 
-The drill: Drill 5 (Koko) and Homework Problem 1 (Ship Capacity) and Mini-Project Problem 4 and 5 are all parametric. Five at-bats this week. By Sunday the reframe-interval-predicate-return cadence should be reflexive.
+The reps: [Exercise 4](../exercises/exercise-04-quote-rank.md), [Exercise 5](../exercises/exercise-05-paving-reach.md), [Homework 1](../homework/README.md), [Homework 2](../homework/README.md), and Mini-Project Problems 4 and 5 are all parametric. Six at-bats this week, across three of the four sub-patterns. By Sunday the reframe-interval-predicate-return cadence should be reflexive.
 
 ---
 
 ## Further reading
 
 - **Codeforces EDU — "Binary Search," Step 2 ("Searching for the answer")**: <https://codeforces.com/edu/course/2/lesson/6/2> — the cleanest free treatment.
-- **LeetCode 875, 1011, 410, 378, 1631, 1552** — six parametric problems covering all four sub-patterns. Drills and homework use four of them; the others are stretch.
 - **Wikipedia — Parametric search**: <https://en.wikipedia.org/wiki/Parametric_search> — the formal name comes from optimization theory; the article is more general than interview practice but the framing is the same.
+- **A judge to run against.** For extra volume once the week's problems are done, filter the [binary-search tag on LeetCode](https://leetcode.com/tag/binary-search/) by the "greedy" tag as well — that intersection surfaces most of the parametric family. The contracts there differ from ours, so read each one from scratch rather than assuming it matches a problem you have already solved here.
 
-Next: the [drills](../exercises/README.md). Drill 5 (Koko) is the canonical parametric problem of the week — do not skip it. Then the [challenge](../challenges/challenge-01-median-of-two-sorted-arrays.md) — Median of Two Sorted Arrays, the hardest binary-search application in the standard repertoire.
+Next: the [drills](../exercises/README.md). Exercise 5 — The Paving Reach — is the canonical parametric problem of the week; do not skip it. Then the [challenge](../challenges/challenge-01-order-book-boundary.md), the hardest binary-search shape in the course.

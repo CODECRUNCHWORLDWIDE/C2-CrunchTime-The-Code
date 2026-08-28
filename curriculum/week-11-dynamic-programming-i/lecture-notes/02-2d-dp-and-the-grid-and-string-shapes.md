@@ -37,7 +37,7 @@ The 2D state is the **same shape** for all three problems. The state semantics d
 
 > *A robot is located at the top-left corner of an `m x n` grid. The robot can only move either down or right at any point in time. How many possible unique paths are there to reach the bottom-right corner?*
 
-**Match.** Brute force: from each cell `(i, j)`, recursively count paths from `(i, j)` to `(m - 1, n - 1)`. The recursion makes two calls (move right, move down) and revisits the same cells many times. Overlapping subproblems and optimal substructure both hold. 2D DP.
+**Research constraints.** Brute force: from each cell `(i, j)`, recursively count paths from `(i, j)` to `(m - 1, n - 1)`. The recursion makes two calls (move right, move down) and revisits the same cells many times. Overlapping subproblems and optimal substructure both hold. 2D DP.
 
 **State semantics.** `dp[i][j] = number of unique paths from (0, 0) to (i, j)`. The first row is all 1s (only one way to reach any cell in the top row: keep moving right). The first column is all 1s (only one way to reach any cell in the leftmost column: keep moving down).
 
@@ -114,7 +114,7 @@ Six lines. The trick: `dp[j]` on the right-hand side is the *previous-row* value
 
 > *Given two strings `text1` and `text2`, return the length of their longest common subsequence. A subsequence of a string is a new string generated from the original string with some characters (possibly none) deleted without changing the order of the remaining characters.*
 
-**Match.** Brute force: at each `(i, j)`, decide what `dp[i][j]` should be. If `s1[i - 1] == s2[j - 1]`, the current characters match and we can extend the LCS by 1 — `dp[i][j] = dp[i - 1][j - 1] + 1`. Otherwise, we skip one character from either string — `dp[i][j] = max(dp[i - 1][j], dp[i][j - 1])`. Overlapping subproblems and optimal substructure both hold. 2D DP.
+**Research constraints.** Brute force: at each `(i, j)`, decide what `dp[i][j]` should be. If `s1[i - 1] == s2[j - 1]`, the current characters match and we can extend the LCS by 1 — `dp[i][j] = dp[i - 1][j - 1] + 1`. Otherwise, we skip one character from either string — `dp[i][j] = max(dp[i - 1][j], dp[i][j - 1])`. Overlapping subproblems and optimal substructure both hold. 2D DP.
 
 **State semantics.** `dp[i][j] = length of the LCS of s1[:i] and s2[:j]`. The first row is all 0s (LCS with an empty string is 0). The first column is all 0s. `dp[m][n]` is the answer.
 
@@ -179,7 +179,7 @@ Answer: dp[5][3] = 3 (the LCS is "ace")
 
 > *Given two strings `word1` and `word2`, return the minimum number of operations required to convert `word1` to `word2`. You have the following three operations permitted: insert a character, delete a character, replace a character.*
 
-**Match.** Brute force: at each `(i, j)`, decide what `dp[i][j]` should be. If `s1[i - 1] == s2[j - 1]`, no edit is needed for this character — `dp[i][j] = dp[i - 1][j - 1]`. Otherwise, the minimum is 1 plus the minimum over three options: insert (`dp[i][j - 1]`), delete (`dp[i - 1][j]`), or replace (`dp[i - 1][j - 1]`). Overlapping subproblems and optimal substructure both hold. 2D DP.
+**Research constraints.** Brute force: at each `(i, j)`, decide what `dp[i][j]` should be. If `s1[i - 1] == s2[j - 1]`, no edit is needed for this character — `dp[i][j] = dp[i - 1][j - 1]`. Otherwise, the minimum is 1 plus the minimum over three options: insert (`dp[i][j - 1]`), delete (`dp[i - 1][j]`), or replace (`dp[i - 1][j - 1]`). Overlapping subproblems and optimal substructure both hold. 2D DP.
 
 **State semantics.** `dp[i][j] = minimum edits to convert s1[:i] into s2[:j]`. The first row is `[0, 1, 2, ..., n]` (converting an empty string to a length-`j` string takes `j` insertions). The first column is `[0, 1, 2, ..., m]` (converting a length-`i` string to an empty string takes `i` deletions).
 
@@ -301,7 +301,7 @@ The discriminator in problem prompts:
 | "contiguous" | no | yes |
 | "deleting characters" | yes | no |
 
-If the prompt does not say which, **ask the interviewer**. Interpreting "longest common pattern" as subsequence when the interviewer meant substring (or vice versa) is a Match-step failure that costs the entire problem.
+If the prompt does not say which, **ask the interviewer**. Interpreting "longest common pattern" as subsequence when the interviewer meant substring (or vice versa) is a Research-constraints failure that costs the entire problem.
 
 The longest palindromic subsequence (Lecture 3 §1, Challenge 2) and the longest palindromic substring (Phase 3) are the classic pair illustrating this distinction.
 
@@ -363,7 +363,7 @@ For unique paths, the rolling reduction was shown in §2 — the single-row vari
 Three takeaways from this lecture:
 
 1. **The 2D pipeline is the 1D pipeline with two indices.** Step 1 — write a recursion with two parameters. Step 2 — memoize with `@functools.lru_cache(maxsize=None)`. Step 3 — tabulate with a `(m + 1) x (n + 1)` table, indexing the strings with `i - 1` and `j - 1`. Step 4 — reduce to rolling rows if asked. The cadence is identical.
-2. **LCS and edit distance share the table shape.** The state, the dimensions, the base cases, and the iteration order are the same. Only the recurrence differs (max over two for LCS; min over three plus 1 for edit distance). Recognizing this is the senior-grade Match move that turns two problems into one shape.
+2. **LCS and edit distance share the table shape.** The state, the dimensions, the base cases, and the iteration order are the same. Only the recurrence differs (max over two for LCS; min over three plus 1 for edit distance). Recognizing this is the senior-grade Research constraints move that turns two problems into one shape.
 3. **Subsequence vs. substring is the trap.** The most-missed Phase-2 distinction. When in doubt, ask the interviewer. The subsequence form allows skipping (the LCS recurrence). The substring form does not (the reset-to-zero recurrence). The two have different time complexities only in extreme cases; the difference is in *correctness*, not *speed*.
 
 Lecture 3 covers state-space reduction (the longest palindromic subsequence and the diagonal-fill iteration order) and the week-level recognition flowchart.

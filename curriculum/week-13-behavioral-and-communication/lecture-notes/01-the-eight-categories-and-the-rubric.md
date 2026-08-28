@@ -51,7 +51,7 @@ What it probes: can you move people and outcomes without a title that forces the
 
 > *"Tell me about a time the requirements were unclear." / "Describe a project where you had to figure out what to build." / "How do you operate when you don't have all the information?"*
 
-What it probes: can you create clarity and make progress without a spec handed to you? The top signals are **ownership** and **impact**. The trap: waiting for someone else to resolve the ambiguity. The strong version shows you defined the problem, made an explicit assumption, validated it cheaply, and shipped — the same Understand-step discipline UMPIRE installs for coding, applied to a product or project decision.
+What it probes: can you create clarity and make progress without a spec handed to you? The top signals are **ownership** and **impact**. The trap: waiting for someone else to resolve the ambiguity. The strong version shows you defined the problem, made an explicit assumption, validated it cheaply, and shipped — the same Frame-step discipline FRAME installs for coding, applied to a product or project decision.
 
 ### 5. Teamwork / collaboration
 
@@ -81,7 +81,7 @@ What it probes: communication, narrative, and genuine fit. The top signals are *
 
 ## 3. The recognition skill — name the category in five seconds
 
-The drill this week is the same as the Match step in UMPIRE: hear the prompt, name the shape, fast. Some examples, with the recognition out loud in a blockquote:
+The drill this week is the same as the Research constraints step in FRAME: hear the prompt, name the shape, fast. Some examples, with the recognition out loud in a blockquote:
 
 ```mermaid
 flowchart TD
@@ -181,7 +181,7 @@ This is the deepest parallel to the coding course. You did not memorize a soluti
 Three takeaways from Lecture 1:
 
 1. **The behavioral round is scorable.** It grades five signals — ownership, impact, self-awareness, collaboration, growth — against eight categories of question. It is not a vibe check; it is a rubric, and rubrics are tractable.
-2. **Recognition comes first.** Hear the prompt, name the category in five seconds, identify the top signal it grades. This is the Match step, applied to behavioral. The hybrids ("conflict + leadership") are where the senior signal lives.
+2. **Recognition comes first.** Hear the prompt, name the category in five seconds, identify the top signal it grades. This is the Research constraints step, applied to behavioral. The hybrids ("conflict + leadership") are where the senior signal lives.
 3. **You build a bank, not eight scripts.** Twelve real stories, each covering several categories, selected on the fly. Invention freezes people; selection does not.
 
 Lecture 2 installs the **method** — STAR — the four-part structure that turns a war story into a scored answer, the budget that keeps it to ninety seconds, the "I vs we" discipline that balances ownership and collaboration, and the construction of the story bank and its coverage matrix. Lecture 3 installs **communication under pressure** — thinking aloud, the non-adversarial reframe, and the moves for hostile, ambiguous, and curveball questions.

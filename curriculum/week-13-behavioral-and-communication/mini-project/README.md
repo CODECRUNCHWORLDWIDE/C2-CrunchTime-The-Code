@@ -1,6 +1,6 @@
 # Mini-Project — The Behavioral Story Bank
 
-> The week's deliverable: a **behavioral story bank** of twelve-plus refined STAR anecdotes, each cross-referenced to the question categories it covers, anchored by a coverage matrix that proves every one of the eight categories is covered by at least one story, with a recording of each story delivered aloud. This is the behavioral analogue of your UMPIRE write-up library: an asset you build once and draw on for every onsite for the rest of your career. STAR is to behavioral what UMPIRE is to coding, and this bank is the library you'll select from in the room.
+> The week's deliverable: a **behavioral story bank** of twelve-plus refined STAR anecdotes, each cross-referenced to the question categories it covers, anchored by a coverage matrix that proves every one of the eight categories is covered by at least one story, with a recording of each story delivered aloud. This is the behavioral analogue of your FRAME write-up library: an asset you build once and draw on for every onsite for the rest of your career. STAR is to behavioral what FRAME is to coding, and this bank is the library you'll select from in the room.
 
 **Estimated time:** 8.5 hours, split across Thursday–Sunday.
 
@@ -30,11 +30,11 @@ crunchtime-interview-prep-<yourhandle>/
     └── story-bank/
         ├── README.md                         ← index of all stories + how to use the bank + reflection
         ├── coverage-matrix.md                ← stories × 8 categories; no empty column
-        ├── story-01-debugging.md             ← Drill 1
-        ├── story-02-conflict.md              ← Drill 2
-        ├── story-03-leadership.md            ← Drill 3
-        ├── story-04-failure.md               ← Drill 4
-        ├── story-05-ambiguity.md             ← Drill 5
+        ├── story-01-debugging.md             ← Exercise 1
+        ├── story-02-conflict.md              ← Exercise 2
+        ├── story-03-leadership.md            ← Exercise 3
+        ├── story-04-failure.md               ← Exercise 4
+        ├── story-05-ambiguity.md             ← Exercise 5
         ├── story-06-<title>.md               ← refined from W1 homework
         ├── story-07-<title>.md               ← refined from W1 homework
         ├── story-08-<title>.md               ← refined from W4 homework
@@ -123,4 +123,4 @@ The reflection is the portfolio-grade artifact. It's also the bridge to next wee
 
 ## After the mini-project
 
-Move on to [Week 14 — Bit Manipulation, Tries + Mock #3](../../week-14-mock-3-bit-manipulation-and-tries/). Mock #3 is the first full loop that includes a behavioral round graded against the rubric, and it draws directly on the bank you just built. STAR is now in your toolkit alongside UMPIRE — the coding method and the behavioral method, both mechanical, both freeing your attention for signal. Mock #4 in W15 is the dress rehearsal for the real thing.
+Move on to [Week 14 — Bit Manipulation, Tries + Mock #3](../../week-14-mock-3-bit-manipulation-and-tries/). Mock #3 is the first full loop that includes a behavioral round graded against the rubric, and it draws directly on the bank you just built. STAR is now in your toolkit alongside FRAME — the coding method and the behavioral method, both mechanical, both freeing your attention for signal. Mock #4 in W15 is the dress rehearsal for the real thing.

@@ -50,7 +50,7 @@ Three corollaries:
 2. **Inserting a new element is `O(log n)`** — append to the end, then sift up by swapping with the parent while the heap invariant is violated. The path length is bounded by the tree height, which is `log₂ n`.
 3. **Extracting the minimum is `O(log n)`** — swap the root with the last element, shrink the array by one, then sift the new root down by swapping with the smaller child while the invariant is violated. Same `log₂ n` argument.
 
-The hard part this week is **not** the algorithm — `heapq.heappush` and `heappop` are one-line wrappers around the sift functions. The hard part is the *Match-step recognition*: half of all heap problems do not say "heap" anywhere in the prompt. They say "top k," "k closest," "median of a stream," "merge sorted lists." Owning the recognition is the work.
+The hard part this week is **not** the algorithm — `heapq.heappush` and `heappop` are one-line wrappers around the sift functions. The hard part is the *Research constraints recognition*: half of all heap problems do not say "heap" anywhere in the prompt. They say "top k," "k closest," "median of a stream," "merge sorted lists." Owning the recognition is the work.
 
 ---
 
@@ -126,7 +126,7 @@ The heap invariant is the **invariant** of `heapq`. The interview defense:
 
 > "A min-heap is an array `h` such that `h[parent(i)] <= h[i]` for every valid index `i`, where `parent(i) = (i - 1) // 2`. Equivalently, `h[i] <= h[2i+1]` and `h[i] <= h[2i+2]` whenever the children exist. This is a *partial* order — siblings are unconstrained — which is what makes both insertion and extraction `O(log n)` rather than `O(n)`. The minimum is always at `h[0]`; reading it is `O(1)`. The invariant is restored after every `heappush` (by sift-up) and every `heappop` (by sift-down). Without the invariant, `heappop` would have to scan the entire array — `O(n)` per call — and the heap would be no faster than a list."
 
-Memorize that paragraph. It is roughly 30 seconds spoken aloud. In a mock interview, it is what the interviewer wants to hear during your Match step on any heap problem.
+Memorize that paragraph. It is roughly 30 seconds spoken aloud. In a mock interview, it is what the interviewer wants to hear during your Research constraints step on any heap problem.
 
 ---
 
@@ -284,27 +284,27 @@ heapq.heapify(arr)                  # O(n) in place
 
 `heapify` is `O(n)` by Floyd's bottom-up argument. For large inputs, this is the difference between `n log n` and `n` — meaningful at `n = 10⁶`. Asymptotically: `n log n / n = log n`, so the speedup is logarithmic in `n`.
 
-The interview-tell move: **mention `heapify` in Plan** when the input is already a list. *"I will call `heapify` on the input — `O(n)` — rather than push elements one at a time, which would be `O(n log n)`."*
+The interview-tell move: **mention `heapify` in Assess options** when the input is already a list. *"I will call `heapify` on the input — `O(n)` — rather than push elements one at a time, which would be `O(n log n)`."*
 
 ---
 
 ## 6. Worked example end-to-end: Kth Largest Element in an Array (LC 215)
 
-We will work this in full UMPIRE, abbreviated. Exercise 1 is this exact problem.
+We will work this in full FRAME, abbreviated. Exercise 1 is this exact problem.
 
-**[U — 1 minute]**
+**[F — 1 minute]**
 
 > "I am given an integer array `nums` and an integer `k`. Return the *k-th* largest element in the array. Note that this is the k-th in sorted order, not the k-th distinct element. Walk an example: `nums = [3, 2, 1, 5, 6, 4]`, `k = 2`. Sorted descending: `[6, 5, 4, 3, 2, 1]`. The 2nd largest is `5`. Constraint: `1 <= k <= len(nums) <= 10⁵`."
 
-**[M — 30 seconds]**
+**[R — 30 seconds]**
 
 > "Top-k pattern. The 30-second memo: *size-k min-heap. The heap holds the k largest elements seen so far; the minimum of the heap is the k-th largest. After processing all `n` elements, return `h[0]`. Why not `sorted(nums)[-k]`: `O(n log n)` vs the heap's `O(n log k)` — strictly faster when `k << n`. Why not quickselect: `O(n)` expected but `O(n²)` worst-case; the heap is the safer interview answer.*"
 
-**[P — 1 minute]**
+**[A — 1 minute]**
 
 > "Initialize: empty heap `h`. For each `x in nums`: if `len(h) < k`, push; else if `x > h[0]`, `heappushpop`. After the loop, return `h[0]`. Edge case: `len(nums) == k` — the heap fills exactly and `h[0]` is the minimum of all elements, which is the k-th largest. Edge case: `k == 1` — the heap has one element; `h[0]` is the running maximum. Edge case: `k == len(nums)` — the heap holds every element; `h[0]` is the global minimum."
 
-**[I — 2 minutes]**
+**[M — 2 minutes]**
 
 ```python
 import heapq
@@ -321,17 +321,17 @@ def find_kth_largest(nums: List[int], k: int) -> int:
     return h[0]
 ```
 
-**[R — 1 minute]**
+**[E · verify — 1 minute]**
 
 > "Trace on `nums = [3, 2, 1, 5, 6, 4]`, `k = 2`. Iter 1: `len(h)=0 < 2`, push 3. h=[3]. Iter 2: push 2. h=[2, 3]. Iter 3: `len(h) == 2`; 1 < 2 so skip. Iter 4: 5 > 2; heappushpop(5). h=[3, 5]. Iter 5: 6 > 3; heappushpop(6). h=[5, 6]. Iter 6: 4 < 5; skip. Return h[0] = 5. Correct.
 > Trace on `nums = [3, 2, 3, 1, 2, 4, 5, 5, 6]`, `k = 4`. Sorted desc: `[6, 5, 5, 4, 3, 3, 2, 2, 1]`. 4th largest is `4`. After processing: h should be `[4, 5, 5, 6]` in some order. h[0] = 4. Correct.
 > Edge case `nums = [1], k = 1`: h = [1] after iter 1; return 1. Correct."
 
-**[E — 1 minute]**
+**[E · cost — 1 minute]**
 
 > "**Time `O(n log k)`** — n elements, each does at most `log k` work (a push-then-pop on a size-k heap). **Space `O(k)`** — the heap holds at most k elements. Best case `O(n log k)` — we always have to read all n. Worst case `O(n log k)`. **Tradeoff vs sorting**: `O(n log k)` vs `O(n log n)`. For `n = 10⁵`, `k = 100`: `n log k ≈ 6.6 × 10⁵`, `n log n ≈ 1.6 × 10⁶`. About 2.5× faster. **Tradeoff vs quickselect**: `O(n)` expected but `O(n²)` worst. The heap is safer; the interview-grade answer."
 
-That is UMPIRE on Kth Largest, end-to-end, in about 6 minutes. The exercise is to do this every time.
+That is FRAME on Kth Largest, end-to-end, in about 6 minutes. The exercise is to do this every time.
 
 ---
 

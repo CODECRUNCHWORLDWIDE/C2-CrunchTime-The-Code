@@ -63,11 +63,11 @@ You now know three two-index patterns. They look similar at the line level. The 
 
 Quick test. Read these prompts. Two-pointer, sliding window, or fast/slow?
 
-1. "Detect if a linked list has a cycle." → **Fast/slow.** Two checkpoints, different speeds, same traversal.
-2. "Find the longest substring without repeating characters." → **Sliding window.** Already drilled in Week 3.
-3. "Given a sorted array, find a pair summing to target." → **Two-pointer converging.** Indices move toward each other.
-4. "Find the middle node of a linked list in one pass." → **Fast/slow.** Speed-2 hare lands on the middle when it reaches the end.
-5. "Determine if `n` is a happy number." → **Fast/slow on a functional graph.** Not obviously a "linked list," but the same algorithm applies.
+1. "A parcel sorter's chutes each forward to one other chute. Does a parcel ever circulate forever?" → **Fast/slow.** Two checkpoints, different speeds, same traversal.
+2. "Find the longest stretch of a badge-scan log in which no employee appears twice." → **Sliding window.** Already drilled in Week 3.
+3. "A price list is sorted ascending. Find two prices that sum to a budget." → **Two-pointer converging.** Indices move toward each other.
+4. "Find the middle segment of a live stream you can only follow forward, in one pass." → **Fast/slow.** Speed-2 hare lands on a middle when it reaches the end.
+5. "A flash controller picks its next erase block by applying a fixed formula to the current one. Which blocks does it end up cycling through?" → **Fast/slow on a functional graph.** Not obviously a chain of objects, but the same algorithm applies.
 
 When in doubt, ask: *"are there two indices in the same direction moving at different speeds?"* If yes, fast/slow. If no, it's one of the other two patterns.
 
@@ -194,7 +194,9 @@ The full algorithm is two `while` loops, both `O(n)`. Total time still `O(n)`, s
 
 ### Why this is in the lecture, not just the drill
 
-In Mock #1 next week, if you get a "find cycle entrance" problem (LeetCode 142), the interview tell is not whether you can code it — most candidates can fake their way through with the algorithm half-memorized. The tell is whether you can **explain the lemma in three sentences**. Out loud. While drawing on a whiteboard. Practice the explanation now.
+If a mock hands you a "where does the loop start" problem, the interview tell is not whether you can code it — most candidates can fake their way through with the algorithm half-memorized. The tell is whether you can **explain the lemma in three sentences**. Out loud. While drawing on a whiteboard. Practice the explanation now.
+
+[Exercise 2 — The Escalation Loop](../exercises/exercise-02-escalation-loop.md) is this, with one addition: it also asks for the *distance* from the start to the entrance. That number is free — phase 2 is already walking, so you only have to count — but asking for it is what separates understanding the lemma from having memorized the two-loop shape.
 
 ---
 
@@ -212,15 +214,17 @@ def middle_node(head: ListNode | None) -> ListNode | None:
     return slow
 ```
 
-The convention question: for an **even-length** list, which middle do we want? Two options:
+The convention question: for an **even-length** chain, which middle do we want? Two options, and they differ by exactly one node.
 
-- **Upper middle.** For `[1, 2, 3, 4]`, return node 3 (1-indexed). This is what the loop above returns — when fast reaches None, slow is one past the midpoint.
-- **Lower middle.** For `[1, 2, 3, 4]`, return node 2. To get this, terminate the loop when `fast.next.next is None`:
+Take a four-node chain `A → B → C → D`.
+
+- **Upper middle** is `C`. This is what the loop above returns — when fast runs out, slow has landed one past the halfway line. The guard is `while fast and fast.next`.
+- **Lower middle** is `B`. To get it, shift the guard one position forward so it looks *ahead* of fast instead of at it:
 
 ```python
 def middle_node_lower(head: ListNode | None) -> ListNode | None:
-    if head is None or head.next is None:
-        return head
+    if head is None:
+        return None
     slow = head
     fast = head
     while fast.next is not None and fast.next.next is not None:
@@ -229,46 +233,78 @@ def middle_node_lower(head: ListNode | None) -> ListNode | None:
     return slow
 ```
 
-In Mock #1, when you see a "find the middle" prompt, **ask the interviewer which convention they want** before writing code. That's a U-step move. Most prompts say "the middle" without specifying; clarifying is the right thing to do.
+Note the second guard dereferences `fast.next` on its very first evaluation, so the empty case has to be handled *before* the loop. The upper-middle guard does not have that problem — which is precisely why copying its structure while intending the lower middle breaks silently on an empty input.
 
-For odd-length lists both conventions return the same node, so the ambiguity only matters when length is even.
+That one-position guard shift is the entire difference between the two conventions, and naming it out loud is the difference between having the pattern and having memorized one loop. [Exercise 3 — The Mid-Roll Break](../exercises/exercise-03-midroll-break.md) specifies the **lower** middle, which is the less commonly published of the two, and it does that on purpose: if you carry the upper-middle loop over from memory, every even-length case fails.
+
+When a prompt says "find the middle," **ask which one they want** before writing code. That is a U-step move and it is graded, even when the spec already answers it.
+
+For odd-length chains both conventions return the same node, so the ambiguity only matters when the count is even. That is also why an odd-length trace can never catch this bug — trace both parities.
 
 ---
 
-## 6. Fast/slow on a functional graph: Happy Number
+## 6. Fast/slow on a functional graph
 
-Some fast/slow problems aren't on linked lists at all. They live on *functional graphs* — graphs where every node has exactly one outgoing edge defined by a function. Walk from any node, and you eventually either reach a fixed point or enter a cycle.
+Some fast/slow problems have no linked list in them at all. They live on *functional graphs* — graphs where every node has exactly one outgoing edge, defined by a function rather than stored in a field. Walk from any node and you must eventually either land on a fixed point or enter a cycle. There is no third option and no "runs off the end," because the state space is finite and nothing branches.
 
-**Happy Number.** A number `n` is "happy" if repeatedly replacing it with the sum of squares of its digits eventually reaches 1. If you ever cycle through numbers without reaching 1, it's not happy.
+Here is the shape, with a successor function chosen so the arithmetic is easy to check by hand. Let the state be an integer in `[0, m)` and let
 
-Naive approach: keep a set of seen numbers, stop when you see a duplicate or hit 1. `O(?)` time (the chains are short in practice), `O(?)` space.
-
-Fast/slow approach: slow does one digit-square step per iteration, fast does two. If they meet at 1, the number is happy. If they meet elsewhere, there's a cycle — not happy.
-
-```python
-def digit_square_sum(n: int) -> int:
-    total = 0
-    while n > 0:
-        d = n % 10
-        total += d * d
-        n //= 10
-    return total
-
-def is_happy(n: int) -> bool:
-    slow = n
-    fast = n
-    while True:
-        slow = digit_square_sum(slow)
-        fast = digit_square_sum(digit_square_sum(fast))
-        if fast == 1:
-            return True
-        if slow == fast:
-            return False
+```
+step(s) = (s * s + 1) % m
 ```
 
-The structure is identical to the linked-list version. The "node" is an integer; the "next pointer" is the `digit_square_sum` function; the "cycle" is a repeated value. The discriminator: every "node" has exactly one outgoing edge, so the iteration *is* a graph walk, and Floyd's applies.
+Every state has exactly one successor, so this is a functional graph on `m` states. Walk it from any seed and the picture is always the same: a **tail** of states visited once, then a **rotation** that repeats forever. Drawn for `m = 12` starting at `0`:
 
-This is the recognition skill we're drilling — *seeing* the linked-list-ness in a problem that doesn't mention linked lists. Drill 4 is this exact problem.
+```
+0 → 1 → 2 → 5 ⤾
+        ↑______|      tail = 0, 1   (length 2)
+                      rotation = 2, 5   (length 2)
+```
+
+Verify that by hand right now — `0² + 1 = 1`, `1² + 1 = 2`, `2² + 1 = 5`, `5² + 1 = 26`, and `26 % 12 = 2`, which we have already seen. Two states discarded, two states cycling.
+
+Every technique from this lecture transfers to that picture without modification:
+
+- Phase 1 (§3) finds a meeting point somewhere inside the rotation.
+- Phase 2 (§4) converts the meeting point into the rotation's entrance, counting the tail on the way.
+- A third walk measures the rotation, by stepping once around it from the entrance.
+
+```python
+def step(s: int, m: int) -> int:
+    return (s * s + 1) % m
+
+def walk_shape(seed: int, m: int) -> tuple[int, int]:
+    """Return (tail_length, rotation_length) for the walk from `seed`."""
+    slow = fast = seed
+    while True:                      # No guard: the walk cannot end.
+        slow = step(slow, m)
+        fast = step(step(fast, m), m)
+        if slow == fast:
+            break
+
+    finder, tail = seed, 0
+    while finder != slow:
+        finder = step(finder, m)
+        slow = step(slow, m)
+        tail += 1
+
+    walker, rotation = step(finder, m), 1
+    while walker != finder:
+        walker = step(walker, m)
+        rotation += 1
+
+    return tail, rotation
+```
+
+Three things in that code are worth saying out loud, because each is a place candidates go wrong.
+
+1. **Phase 1 has no loop guard.** That is not an oversight; it is a consequence of the finite state space. Writing a `return None` branch for "no cycle" produces unreachable code, and interviewers notice unreachable code.
+2. **The comparison is `==`, not `is`.** These are integers, not objects. CPython interns small integers, so `is` appears to work below 256 and then silently stops matching — a bug that passes on a toy `m` and fails on a real one. This is the exact inverse of the rule in §3, where the nodes were objects and `is` was correct. Know which world you are in.
+3. **The rotation walk takes its first step before comparing.** `walker` starts at `step(finder)`, not at `finder`, with the counter already at 1. Initialize it the other way and a fixed point — a rotation of length one, where a state is its own successor — reports a rotation of zero.
+
+The structure is identical to the chain-of-objects version. The "node" is an integer, the "next pointer" is the function, and the "cycle" is a repeated value. The discriminator is one outgoing edge per state, and nothing else.
+
+This is the recognition skill we are drilling: *seeing* the chain in a problem that mentions no chain. [Exercise 4 — The Wear-Level Rotation](../exercises/exercise-04-wear-level-rotation.md) puts this successor function inside a flash controller and asks for the tail and rotation as the deliverable. [Homework Problem 1](../homework/README.md) changes the successor function to "look up the next index in a table" and asks a yes/no question about the resulting shape. Same pattern, twice, both times invisible from the prompt.
 
 ---
 
@@ -276,12 +312,14 @@ This is the recognition skill we're drilling — *seeing* the linked-list-ness i
 
 Stop. Read the prompt slowly. Ask these in order:
 
-1. **Is there a linked list (or a similar iterated-pointer-walk structure)?** If yes, fast/slow is a strong candidate.
-2. **Does the prompt mention "cycle," "loop," "infinite," or "repeating"?** Strong signal for cycle detection.
-3. **Does the prompt mention "middle," "midpoint," "halfway"?** Strong signal for the speed-2 midpoint trick.
-4. **Does the prompt mention "nth from the end" (no length given)?** Strong signal for a fixed-gap fast/slow variant (homework).
-5. **Is the iteration a function applied repeatedly to produce the next value?** (Happy number, finding the duplicate in `[1..n]`.) That's a functional graph; fast/slow applies.
-6. **Is the answer about a position, a node, or a yes/no on cycle existence?** Fast/slow's outputs are usually one of those three.
+1. **Is there a chain you can only step forward through, one step at a time?** If yes, fast/slow is a strong candidate.
+2. **Does the prompt mention "cycle," "loop," "circulates," "forever," or "repeating"?** Strong signal for cycle detection.
+3. **Does the prompt mention "middle," "midpoint," "halfway"?** Strong signal for the speed-2 midpoint trick — and immediately ask which middle.
+4. **Does the prompt count backwards from the end without giving you a length?** Strong signal for the fixed-gap variant (homework Problem 2).
+5. **Is the next value a function of the current one?** A formula, or a table lookup like `i → table[i]`. That is a functional graph; fast/slow applies, and nothing in the prompt will say so.
+6. **Is the answer a position, a node, a count, or a yes/no about repetition?** Fast/slow's outputs are almost always one of those four.
+
+A note on 5, because it is the one people miss. The tell is not a word in the prompt — it is a *structural* property you have to notice: exactly one successor per state, no branching. A table of indices has it. A recurrence has it. A general graph does not.
 
 The 30-second decision tree:
 
@@ -319,34 +357,36 @@ Equally important: knowing when to *reject* the pattern.
 - **Arrays where you need random access.** Fast/slow makes sense on a *linked* structure where you can only step from one node to the next. If you can index into an array, you don't need fast/slow — use direct indexing.
 - **Multiple cycles to find / classify.** Floyd's detects *one* cycle reachable from `head`. If a problem asks you to enumerate all cycles in a graph with multiple components, that's DFS or union-find (Weeks 7 and beyond).
 - **Cycle in a *general* directed graph.** Fast/slow needs each node to have *exactly one* outgoing edge (a functional graph). General directed cycle detection is DFS-with-colors (Week 7).
-- **The output is the *length* of the cycle.** That's a fast/slow variant — once detected, walk slow around until it meets itself, counting. Doable, but the pattern recognition is to spot the cycle first, then count.
+- **The output is the *length* of the cycle.** This one does *not* reject the pattern — it extends it. Once slow and fast have met, the meeting point is guaranteed to be inside the cycle, so walking from there until you return, counting, measures it. The recognition move is to spot the cycle first and treat the measurement as a separate phase. Exercise 1 asks for exactly this, and the trap is a counting loop that never takes its first step.
 
 Recognizing the *negative space* of the pattern matters as much as the positive recognition.
 
 ---
 
-## 9. Worked example end-to-end: linked list cycle II (find entrance)
+## 9. Worked example end-to-end: where does the loop start?
 
-We will work this in full UMPIRE, abbreviated. Drill 2 is this exact problem.
+Full FRAME, abbreviated. [Exercise 2 — The Escalation Loop](../exercises/exercise-02-escalation-loop.md) is this problem with the on-call rota wrapped around it and one extra thing asked for; work the generic version here first so the drill is about the domain, not about the algorithm.
 
-**[U — 2 minutes]**
+**The problem, as the interviewer would say it:** you are given the first link in a chain where every link points to exactly one other link or to nothing. If following the chain loops forever, return the first link that gets visited twice — the loop's entrance — and how many steps separate the start from it. If the chain ends, return `None`.
 
-> "I'm given the head of a linked list. If there's a cycle, return the node where the cycle begins. If not, return None. Confirm: I cannot modify the list. Walk an example: nodes `A → B → C → D → E`, with `E.next = C`. The cycle starts at C. Answer: node C."
+**[F — 2 minutes]**
 
-**[M — 30 seconds]**
+> "So each link has exactly one outgoing pointer. I return the *entrance* — the first link inside the loop — not the last link before it, and not the point where my pointers happen to meet. Two things I want to pin down. First, if the starting link is itself inside the loop, the step count is zero, and I expect that to fall out of the algorithm rather than needing a branch. Second, a chain that ends returns `None` outright, not a pair with `None` in it. Let me walk one: links `A → B → C → D → E`, with `E` pointing back to `C`. The loop is `C → D → E → C`, the entrance is `C`, and `C` is two steps from `A`. Answer: `(C, 2)`."
 
-> "Fast/slow pointers. Linked list + 'cycle entrance' is the canonical Floyd's-with-entrance application. Use Floyd's to detect the cycle, then restart a finder pointer at head and walk both at speed 1 until they meet — that's the entrance, by the `2k = k + nC` lemma."
+**[R — 30 seconds]**
 
-**[P — 2 minutes]**
+> "Fast/slow pointers. One outgoing edge per link plus 'where does it start repeating' is the canonical Floyd's-with-entrance application. Phase 1 detects by walking slow at one and fast at two until they collide inside the loop. Phase 2 restarts a finder at the head and walks it alongside slow at speed 1; by the `2k = k + nC` lemma they collide on the entrance, and the number of steps that takes *is* the distance I have to report. Auxiliary state is three pointers and a counter — O(1) space, which is the whole reason I am not keeping a visited set."
 
-> "Phase 1: slow = fast = head. Loop while `fast` and `fast.next`: advance slow by 1, fast by 2. If they meet, break; that's a cycle. If the loop ends via guard, return None.
-> Phase 2: finder = head. While `finder is not slow`: advance both by 1. Return finder.
-> Edge cases: empty list (head is None) → return None. Single node with no self-loop → fast.next is None on first iter → loop ends, return None."
+**[A — 2 minutes]**
 
-**[I — 3 minutes]**
+> "Phase 1: slow = fast = head. Loop while `fast` and `fast.next`: advance slow by 1, fast by 2; if they meet, break. If the loop ends via the guard instead, there is no loop — return `None` before touching phase 2.
+> Phase 2: finder = head, steps = 0. While `finder is not slow`: advance both by 1 and increment. Return `(finder, steps)`.
+> Edge cases: empty chain — the guard's first test is `fast is not None`, which fails, so the loop never runs. A single link pointing at nothing — same, one test later. A single link pointing at itself — phase 1 meets on iteration one, phase 2's first comparison is already true, and the count is 0. No branch needed for any of them."
+
+**[M — 3 minutes]**
 
 ```python
-def detect_cycle(head: ListNode | None) -> ListNode | None:
+def find_loop_entrance(head: ListNode | None) -> tuple[ListNode, int] | None:
     slow = head
     fast = head
     while fast is not None and fast.next is not None:
@@ -355,35 +395,39 @@ def detect_cycle(head: ListNode | None) -> ListNode | None:
         if slow is fast:
             break
     else:
-        return None
+        return None            # Ended via the guard: no loop.
+
     finder = head
+    steps = 0
     while finder is not slow:
         finder = finder.next
         slow = slow.next
-    return finder
+        steps += 1
+    return finder, steps
 ```
 
-**[R — 2 minutes]**
+**[E · verify — 2 minutes]**
 
-> "Trace on `A → B → C → D → E → (C)`:
-> Start: slow=A, fast=A.
-> Iter 1: slow=B, fast=C. Not equal.
-> Iter 2: slow=C, fast=E. Not equal.
-> Iter 3: slow=D, fast=D. Equal! Break.
-> Phase 2: finder=A, slow=D. Not equal: finder=B, slow=E. Not equal: finder=C, slow=C. Equal! Return C. ✓
-> Cycle entrance is C. Correct."
+> "Trace `A → B → C → D → E → (C)`. Here the tail `T` is 2 and the loop length `C` is 3.
+> Phase 1 start: slow=A, fast=A.
+> Iter 1: slow=B, fast=C. Not the same.
+> Iter 2: slow=C, fast=E. Not the same.
+> Iter 3: slow=D, fast=D — fast went `E → C → D`. They meet at **D**.
+> Note that D is *not* the entrance. That is the whole reason phase 2 exists; if I returned the meeting point I would be one link off on this input.
+> Phase 2: finder=A, slow=D, steps=0. Step: finder=B, slow=E, steps=1. Step: finder=C, slow=C — slow went `E → C`. They meet at **C**, steps=2. Return `(C, 2)`. ✓
+> Now the degenerate one: a single link `A` pointing at itself. Phase 1 iteration 1 sets slow=A and fast=A, they match, break. Phase 2: finder is already slow, so the while never runs and steps is 0. Return `(A, 0)`. ✓ No special case fired, which is what I predicted in Assess options."
 
-**[E — 1 minute]**
+**[E · cost — 1 minute]**
 
-> "**Time O(n)** — Phase 1 is at most `T + C` ≤ `n` iterations. Phase 2 is at most `T` iterations. **Space O(1)** — three pointers, no set or dict. Tradeoff: the naive 'walk with a `seen` set' is O(n) time, O(n) space; Floyd's matches the time and beats the space. No further improvement obvious. **Best/avg/worst** all O(n) — there's no input that makes Floyd's faster or slower asymptotically."
+> "**Time O(n)** — phase 1 runs at most `T + C` iterations, phase 2 exactly `T`, and both are bounded by the number of links. **Space O(1)** — three pointers and an integer; no set, no dict. Tradeoff: walking with a `seen` set is the same O(n) time and hands me the step count for free as the insertion index, so it is genuinely *easier* to write — it loses only on space. I would ship the set on a server and Floyd's on a device with a memory budget. **Best, average and worst are all O(n)**; no input shape changes the asymptotics."
 
-That's UMPIRE on a textbook fast/slow problem, end-to-end, in about 10 minutes. The drill is to do this every single time.
+That is FRAME on a textbook fast/slow problem, end to end, in about ten minutes. Two details in that transcript are the graded ones and are easy to skip: predicting in Assess options that the degenerate case needs no branch and then *checking* it in Examine (verify), and naming what the rejected approach is better at. Do both every single time.
 
 ---
 
 ## 10. Two common bug patterns
 
-After watching ~50 candidates solve this family in mock interviews, two bugs come up repeatedly. Build them into your Review checklist.
+After watching ~50 candidates solve this family in mock interviews, two bugs come up repeatedly. Build them into your Examine (verify) checklist.
 
 ### Bug 1: forgetting the `fast.next` guard
 
@@ -423,17 +467,18 @@ Without notes, answer:
 2. **What's the loop guard for Floyd's?** (`while fast is not None and fast.next is not None`.)
 3. **State the `2k = k + nC` lemma.** (When slow and fast first meet, slow has walked `k` steps and fast `2k`. The difference `k` is some whole number of cycle laps. Starting a third pointer at head and walking both at speed 1 will land both at the cycle entrance after `T` more steps.)
 4. **Why is Floyd's preferred over the hash-set approach?** (Same `O(n)` time, but `O(1)` space instead of `O(n)`. The space efficiency is the interview tell.)
-5. **What does the midpoint loop return for a list of length 4?** (The third node — the "upper middle." For "lower middle," use `fast.next.next is None` as the guard.)
-6. **Why does fast/slow apply to Happy Number?** (Because `n → digit_square_sum(n)` defines a functional graph — every node has exactly one outgoing edge. Floyd's works on any functional graph.)
+5. **What does the midpoint loop return for a chain of length 4?** (The third node — the "upper middle." For the lower middle, shift the guard one position forward to `fast.next and fast.next.next`, and handle the empty case before the loop because that guard dereferences.)
+6. **Why does fast/slow apply to a rule like `s → (s² + 1) % m`?** (Because it gives every state exactly one successor, which is a functional graph. Floyd's works on any functional graph, and the state being an integer rather than an object changes only the comparison operator: `==`, not `is`.)
+7. **When you have found a cycle, how do you measure it?** (Walk from the meeting point — which is guaranteed to be inside the cycle — until you return to it, counting. Take the first step *before* the first comparison, or a self-loop reports zero.)
 
-If you can answer all six without hesitation, proceed to [Lecture 2 — The Mock Interview Protocol](./02-the-mock-interview-protocol.md).
+If you can answer all seven without hesitation, proceed to [Lecture 2 — The Mock Interview Protocol](./02-the-mock-interview-protocol.md).
 
 ---
 
 ## Further reading
 
-- **Wikipedia — Cycle detection**: <https://en.wikipedia.org/wiki/Cycle_detection> — the formal treatment. Read Floyd's section; skim Brent's.
-- **NeetCode's "Linked List Cycle" video** (free YouTube) — 8 minutes, the canonical walkthrough.
-- **LeetCode 141, 142, 876, 202, 287** — the five problems that cover the family. Drills 1–4 use four of them; the fifth (287, Find the Duplicate Number) is in the homework.
+- **Wikipedia — Cycle detection**: <https://en.wikipedia.org/wiki/Cycle_detection> — the formal treatment. Read Floyd's section; skim Brent's, which is faster in practice and almost never asked for.
+- **Wikipedia — Functional graph**: <https://en.wikipedia.org/wiki/Functional_graph> — one short article. The "tail plus rotation" shape from §6 is the whole content, stated formally.
+- **Practice elsewhere.** If you want a judge to run against, the patterns in this lecture appear as [LeetCode 141 · Linked List Cycle](https://leetcode.com/problems/linked-list-cycle/), [LeetCode 142 · Linked List Cycle II](https://leetcode.com/problems/linked-list-cycle-ii/), [LeetCode 876 · Middle of the Linked List](https://leetcode.com/problems/middle-of-the-linked-list/), [LeetCode 202 · Happy Number](https://leetcode.com/problems/happy-number/), and [LeetCode 287 · Find the Duplicate Number](https://leetcode.com/problems/find-the-duplicate-number/). The contracts there all differ from this week's — they return booleans or single values where ours return counts, shapes, and positions. Solve **ours** first; those will not exercise the degenerate cases the drills are built around.
 
 Next: [Lecture 2 — The Mock Interview Protocol](./02-the-mock-interview-protocol.md).

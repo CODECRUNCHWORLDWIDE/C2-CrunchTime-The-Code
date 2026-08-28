@@ -401,21 +401,21 @@ This is the structural foundation of every priority-driven scheduler — operati
 
 ## 7. Worked example end-to-end: K Closest Points (LC 973)
 
-We will work this in full UMPIRE, abbreviated. Exercise 2 is this exact problem.
+We will work this in full FRAME, abbreviated. Exercise 2 is this exact problem.
 
-**[U — 1 minute]**
+**[F — 1 minute]**
 
 > "I am given a list of `points`, each `[x, y]`, and an integer `k`. Return the `k` points closest to the origin `(0, 0)`. Distance is Euclidean. The answer can be in any order. Walk an example: `points = [[1, 3], [-2, 2]], k = 1`. Distances-squared: `1 + 9 = 10` and `4 + 4 = 8`. Closest: `[-2, 2]`. Constraints: `1 <= k <= n <= 10⁴`; coordinates fit in `int`."
 
-**[M — 30 seconds]**
+**[R — 30 seconds]**
 
 > "Top-k variant with a distance key. The 30-second memo: *size-k max-heap. Priority is `-d²` (negate to simulate a max-heap with `heapq`). The heap holds the `k` closest seen so far; the root (most negative `-d²`, equivalently largest `d²`) is the farthest of the `k` — the bar to clear. Any new point with smaller `d²` evicts it. Why not sort: `O(n log n)` vs `O(n log k)`; the heap is strictly cheaper when `k << n`. Why not `nsmallest`: same algorithm internally; mention the one-liner alternative, implement the manual version to show the template.*"
 
-**[P — 1 minute]**
+**[A — 1 minute]**
 
 > "Initialize: empty heap `h`. For each `[x, y] in points`: compute `d2 = x² + y²`. If `len(h) < k`, push `(-d2, x, y)`. Else if `-d2 > h[0][0]` (equivalently `d2 < -h[0][0]` — new point is closer), `heappushpop(h, (-d2, x, y))`. After the loop, return `[[x, y] for (_, x, y) in h]`. Tiebreaker: `(x, y)` coordinates compare cleanly. Edge case: `k == n` — heap fills exactly; every point is in the answer."
 
-**[I — 2 minutes]**
+**[M — 2 minutes]**
 
 ```python
 import heapq
@@ -435,17 +435,17 @@ def k_closest(points: List[List[int]], k: int) -> List[List[int]]:
     return [[x, y] for (_, x, y) in h]
 ```
 
-**[R — 1 minute]**
+**[E · verify — 1 minute]**
 
 > "Trace on `points = [[1, 3], [-2, 2]], k = 1`. Iter 1: `len(h)=0 < 1`, push `(-10, 1, 3)`. h = `[(-10, 1, 3)]`. Iter 2: `d2 = 8`; `-8 > -10`? Yes. `heappushpop((-8, -2, 2))`. h = `[(-8, -2, 2)]`. Return `[[-2, 2]]`. Correct.
 > Trace on `points = [[3, 3], [5, -1], [-2, 4]], k = 2`. Distances²: 18, 26, 20. Closest two: 18 and 20 (points `[3, 3]` and `[-2, 4]`). After processing: h should contain those two with `-d²` values `-18` and `-20`. h[0] is whichever is larger in negated form, i.e., `-18`. Return any order — both points are in the answer. Correct.
 > Edge case `k == len(points)`: every point ends up in `h`. Heap holds all `n` points; return all of them. Correct."
 
-**[E — 1 minute]**
+**[E · cost — 1 minute]**
 
 > "**Time `O(n log k)`** — n points, each does at most `O(log k)` work (a push-then-pop on a size-k heap). **Space `O(k)`** — the heap holds at most k tuples. **Tradeoff vs sorting `sorted(points, key=...)[:k]`**: `O(n log k)` vs `O(n log n)`. For `n = 10⁴, k = 10`: `n log k ≈ 3 × 10⁴`, `n log n ≈ 1.3 × 10⁵`. About 4× faster. **Tradeoff vs `heapify` + `nsmallest`**: `O(n + k log n)`; competitive when `k` is close to `n`. **Improvement**: quickselect gives `O(n)` expected but `O(n²)` worst-case; not stream-friendly. The size-k heap is the safer interview answer."
 
-That is UMPIRE on K Closest Points, end-to-end, in about 6 minutes.
+That is FRAME on K Closest Points, end-to-end, in about 6 minutes.
 
 ---
 
@@ -553,7 +553,7 @@ This is the "name both, defend the choice" pattern from Lecture 1 §6, applied t
 
 ## 11. Why this matters for Mock #2
 
-The Match-step recognition graded in Mock #2 includes:
+The Research constraints recognition graded in Mock #2 includes:
 
 - "Is this top-k or top-1?" — top-1 is `max()`, not a heap.
 - "Is this top-k or merge-k?" — top-k is a size-k heap; merge-k is a heap of size k *of streams* (Lecture 3).

@@ -9,7 +9,7 @@ By the end of this lecture you should be able to:
 
 - Write the iterative DFS template in under 90 seconds without notes.
 - Defend the *push-children-in-reverse* trick that makes iterative pre-order parity-preserving with the recursive version.
-- State when to choose iterative over recursive in interview Match: "for `V > 1000` or when the depth is unbounded by the input shape."
+- State when to choose iterative over recursive in Research constraints: "for `V > 1000` or when the depth is unbounded by the input shape."
 - Recognize that iterative *post-order* is harder than iterative pre-order — and choose between the three implementation patterns (two-stack, reverse-pre-order, or single-stack with state tags).
 
 This lecture is shorter than Lecture 1 because the algorithm is the same — only the data-structure choice changes. Most interview problems accept either form; the iterative version is the "robust production code" answer when asked "what would you change for `V = 10⁶`?"
@@ -30,7 +30,7 @@ Reasons to *prefer* the recursive form:
 2. **Cleaner post-order.** Post-order DFS is one line of code change in the recursive version (move `process(node)` to after the loop); the iterative form requires either two stacks or a state-tag trick.
 3. **Cleaner backtracking.** Backtracking (Week 8) is naturally recursive — the "undo" step happens after the recursive call returns. Iterating it requires explicit "do" / "undo" tagging on each stack entry.
 
-The Match-step move: **use recursive DFS unless `V > 1000` or you need to interrupt the traversal**. State this out loud. The interviewer will either say "iterative version, please" or accept the recursive version.
+The Research constraints move: **use recursive DFS unless `V > 1000` or you need to interrupt the traversal**. State this out loud. The interviewer will either say "iterative version, please" or accept the recursive version.
 
 ---
 
@@ -332,19 +332,19 @@ The interview-tell move: when a Python type-checker would flag this, fix it befo
 
 Exercise 1 is the recursive version. The iterative version is a one-stack-deep change.
 
-**[U — 1 minute]**
+**[F — 1 minute]**
 
 > "Given an `m × n` 2-D grid where `1` is land and `0` is water, return the number of islands (maximal 4-connected regions of land). Confirm: 4-directional adjacency; the grid is implicit; the visited set is on `(r, c)` tuples."
 
-**[M — 30 seconds]**
+**[R — 30 seconds]**
 
 > "Grid-DFS for connectivity. Walk the grid; when finding an unvisited land cell, run iterative DFS from it to mark its entire connected component. Increment the island counter. Iterative because the grid could be `300 × 300 = 90000` cells, and a snake-shaped island would blow the recursion limit. Why not BFS: same asymptotic complexity; DFS is shorter. Why not union-find: works equally well; DFS is structurally simpler."
 
-**[P — 1 minute]**
+**[A — 1 minute]**
 
 > "Outer loop: for each cell `(r, c)`, if `grid[r][c] == '1'` and `(r, c) not in visited`, increment islands and run iterative DFS. DFS body: stack initialized with `[(r, c)]`. While stack: pop, skip if visited, mark visited, push 4-direction land neighbors that are unvisited."
 
-**[I — 3 minutes]**
+**[M — 3 minutes]**
 
 ```python
 from typing import List
@@ -379,11 +379,11 @@ def num_islands(grid: List[List[str]]) -> int:
     return islands
 ```
 
-**[R — 1 minute]**
+**[E · verify — 1 minute]**
 
 > "Trace on `[['1','1','0'],['0','1','0'],['0','0','1']]`. r=0, c=0: land, not visited. islands=1. stack=[(0,0)]. Pop (0,0); mark; push (1,0)? No, water. Push (0,1) land. Stack=[(0,1)]. Pop (0,1); mark; push (0,0) visited, push (0,2) water, push (1,1) land. Stack=[(1,1)]. Pop (1,1); mark; push neighbors — all water or visited. Stack empty. Move on. r=0, c=1: visited. r=0, c=2: water. r=1, c=0: water. r=1, c=1: visited. r=1, c=2: water. r=2, c=0: water. r=2, c=1: water. r=2, c=2: land, not visited. islands=2. Single-cell DFS. Done. Return 2. ✓"
 
-**[E — 1 minute]**
+**[E · cost — 1 minute]**
 
 > "**Time `O(m × n)`** — every cell is visited at most once across all DFS calls; the outer loop is `O(m × n)`. **Space `O(m × n)`** for the visited set; the stack worst case is also `O(m × n)` (a single snake-shaped island). Tradeoff: recursive DFS is `O(m × n)` time, same space, but risks `RecursionError` for snake-shaped islands with `m × n > 1000`. Iterative DFS is strictly safer. Best `O(m × n)` (we always scan the grid); worst `O(m × n)`."
 
@@ -391,7 +391,7 @@ def num_islands(grid: List[List[str]]) -> int:
 
 ## 8. Defense sentence — the recursion-limit caveat
 
-In Mock #2, if you draw a DFS problem with `V > 1000` in the input bounds, the interview tell is whether you **mention the recursion-limit risk in Match before writing code**.
+In Mock #2, if you draw a DFS problem with `V > 1000` in the input bounds, the interview tell is whether you **mention the recursion-limit risk in Research constraints before writing code**.
 
 > "I will write recursive DFS for clarity. The input bound says `V ≤ 10⁵`, which is past Python's default recursion limit of 1000. For an adversarial input shaped as a long chain, the recursive version would crash. My options: (a) `sys.setrecursionlimit(10**6)` as a workaround; (b) convert to iterative DFS with an explicit stack — same asymptotic, safer constant. For interview clarity I will write the recursive version; if asked to harden for production I would convert."
 
@@ -414,7 +414,7 @@ V <= 1000?
 └── No  ──→ Iterative DFS (mandatory; recursion-limit risk)
 ```
 
-If the input bound is unclear, ask in Understand: *"What is the maximum size of `V`?"* The answer dictates the form.
+If the input bound is unclear, ask in Frame: *"What is the maximum size of `V`?"* The answer dictates the form.
 
 ---
 

@@ -13,7 +13,7 @@ The lecture covers four topics: combination sum with sum-based pruning; deduplic
 
 > *Given an array of distinct integers `candidates` and a target integer `target`, return a list of all unique combinations of `candidates` where the chosen numbers sum to `target`. You may return the combinations in any order. The same number may be chosen from `candidates` an unlimited number of times.*
 
-**Match.** Combinatorial enumeration with **reuse allowed** (same number can be picked multiple times) and **sum constraint** (the path must sum to exactly `target`). State: `(start_index, remaining_target, path)`. The reuse rule is the discriminator from combinations (LC 77, no reuse) and subsets (LC 78, no reuse).
+**Research constraints.** Combinatorial enumeration with **reuse allowed** (same number can be picked multiple times) and **sum constraint** (the path must sum to exactly `target`). State: `(start_index, remaining_target, path)`. The reuse rule is the discriminator from combinations (LC 77, no reuse) and subsets (LC 78, no reuse).
 
 **State semantics.** `start_index` is the next eligible element (no reordering — `[2, 2, 3]` and `[3, 2, 2]` would be the same combination, so we enforce non-decreasing element selection); `remaining_target` is what is left to fill; `path` is the current combination.
 
@@ -328,7 +328,7 @@ The combination of constraint-propagation pruning and feasibility pruning is wha
 
 > *Given a string `s`, partition `s` such that every substring of the partition is a palindrome. Return all possible palindrome partitionings of `s`.*
 
-**Match.** Combinatorial enumeration of **string partitions**. At each level we choose the **length** of the next piece; the piece must be a palindrome (constraint-propagation prune) and the remainder is the subproblem. State: `(start_index, path)` where `path` is the list of piece strings chosen so far.
+**Research constraints.** Combinatorial enumeration of **string partitions**. At each level we choose the **length** of the next piece; the piece must be a palindrome (constraint-propagation prune) and the remainder is the subproblem. State: `(start_index, path)` where `path` is the list of piece strings chosen so far.
 
 **State semantics.** `start_index` is the position in `s` at which the next piece begins. At each level, we try every `end` from `start + 1` to `n`; if `s[start:end]` is a palindrome, we choose it (append to `path`) and recurse with `start = end`. The leaf is reached when `start == n` (the entire string has been partitioned).
 

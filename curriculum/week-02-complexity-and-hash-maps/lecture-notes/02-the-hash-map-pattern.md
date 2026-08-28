@@ -63,7 +63,7 @@ flowchart TD
 ```
 *Which structure to reach for, based on whether the input is sorted and whether original indices must survive.*
 
-In an interview, after Match, your Plan step should *name which branch of this tree* you took and why.
+In an interview, after Research constraints, your Assess options step should *name which branch of this tree* you took and why.
 
 ---
 
@@ -73,80 +73,84 @@ Just like two-pointer had three sub-shapes (converging, same-direction, two-inpu
 
 | Sub-shape | What it looks like | Use case |
 |-----------|--------------------|----------|
-| **Complement lookup** | For each element, look up its complement; cache as you go | Two-sum unsorted, "has seen target − x?" |
-| **Frequency / counting** | Build a `dict` of `value → count` (or `Counter`); use the counts | Anagrams, top-K-frequent, duplicates |
-| **Set membership** | Build a `set` of seen / forbidden / required elements; query in O(1) | Contains-duplicate, longest-consecutive, valid-sudoku |
+| **Complement lookup** | For each element, look up the value that would complete it; cache as you go | Pair-sum on unsorted input, "have I seen `target − x`?" |
+| **Frequency / counting** | Build a `dict` of `value → count` (or `Counter`); act on the counts | Multiset equality, most-frequent, grouping by an equivalence |
+| **Set membership** | Build a `set` of seen / forbidden / required elements; query in O(1) | Repeat detection, run-finding, constraint grids |
 
-Most hash-map problems are one of these three. Knowing which one buys you a fast Plan step.
+Most hash-map problems are one of these three. Knowing which one buys you a fast Assess options step.
 
 ```mermaid
 flowchart TD
   A["Hash-map pattern"] --> B["Complement lookup"]
   A --> C["Frequency counting"]
   A --> D["Set membership"]
-  B --> B1["Two-sum unsorted"]
-  C --> C1["Anagrams - top K frequent"]
-  D --> D1["Contains duplicate - longest consecutive"]
+  B --> B1["Refund pair - exercise 1"]
+  C --> C1["Stage twins - exercise 3"]
+  D --> D1["Repeated badge - dock run - on-call grid"]
 ```
-*The three sub-shapes of the hash-map pattern, each anchored to its canonical problem.*
+*The three sub-shapes of the hash-map pattern, each anchored to the drill that teaches it.*
 
 ---
 
-## 4. Sub-shape 1: Complement lookup (the two-sum family)
+## 4. Sub-shape 1: Complement lookup
 
-The canonical interview problem. Given an unsorted array `nums` and target `t`, return indices of two numbers summing to `t`.
+The shape Exercise 1 drills. You have an unsorted sequence of values and a target, and you need to find two entries that combine to reach it — returning their **positions**, which is what stops you from just sorting.
+
+Take the drill's framing: a list of charge amounts in the order they were made, and a refund total. Find two charges that sum to it.
 
 ### The naive O(n²) version
 
 ```python
-def two_sum_naive(nums, target):
-    n = len(nums)
-    for i in range(n):
-        for j in range(i + 1, n):
-            if nums[i] + nums[j] == target:
-                return [i, j]
-    return []
+def find_refund_pair_naive(charges: list[int], refund_total: int) -> tuple[int, int] | None:
+    for i in range(len(charges)):
+        for j in range(i + 1, len(charges)):
+            if charges[i] + charges[j] == refund_total:
+                return (i, j)
+    return None
 ```
 
-For every pair `(i, j)`, check if they sum to `target`. **O(n²) time, O(1) space.** Works; in an interview at n > 10⁴ it will time out.
+For every pair of positions, check the sum. **O(n²) time, O(1) space.** Correct, and at n above about 10⁴ it will time out.
 
 ### The hash-map O(n) version
 
 ```python
-def two_sum(nums, target):
-    seen = {}                              # value → index
-    for i, x in enumerate(nums):
-        complement = target - x
+def find_refund_pair(charges: list[int], refund_total: int) -> tuple[int, int] | None:
+    seen: dict[int, int] = {}                    # amount → earliest position
+    for i, amount in enumerate(charges):
+        complement = refund_total - amount
         if complement in seen:
-            return [seen[complement], i]   # earlier index first
-        seen[x] = i
-    return []
+            return (seen[complement], i)         # earlier position first
+        if amount not in seen:                   # keep the earliest position
+            seen[amount] = i
+    return None
 ```
 
-The trick: instead of asking "for each pair `(i, j)`, do they sum to target?", ask "for each element `x`, have I seen `target − x` already?"
+The move: instead of asking "for every pair of positions, do they sum to the total?", ask "for this one charge, have I already walked past the amount that would complete it?"
 
-- Walk through the array once.
-- For each `x`, compute `complement = target - x`.
-- Look it up in the hash map (O(1) average).
-- If found → return both indices.
-- If not → cache the current value with its index, move on.
+- Walk the list once.
+- For each amount, compute `complement = refund_total - amount`.
+- Look the complement up in the hash map — `O(1)` average.
+- Found: return both positions.
+- Not found: cache this amount against its position and move on.
 
-**O(n) time, O(n) space.** Single pass. The hash map *replaces* the inner loop.
+**O(n) time, O(n) space.** One pass. The hash map has *replaced the inner loop*, which is the whole trade this lecture is about.
+
+Two details in that code are graded in Exercise 1 and are worth naming now. The lookup happens **before** the insert, or an amount matches itself. And the insert is **conditional**, so a repeated amount keeps its earliest position rather than being overwritten by a later one — which is what makes the drill's tie-break come out right.
 
 ### Recognition signals for complement lookup
 
-- "Find pair / triple summing to target" with unsorted input
-- "Find pair whose difference is k"
-- "Find x such that some derived value is in the array"
-- "Have I seen something before that completes this?"
+- "Find a pair (or triple) reaching a target" on unsorted input
+- "Find a pair whose difference is exactly `k`"
+- "Find `x` such that some value derived from `x` is also present"
+- "Have I already seen something that completes this one?"
 
-### Variants to recognize
+### Variants to recognise
 
-- **Two-sum** — pairs summing to target. (Drill 1 this week.)
-- **Two-sum with difference k** — `seen` stores values; check both `x + k` and `x - k`.
-- **Subarray sum equals k** — prefix sums + hash map of seen prefix sums. (Challenge 1.)
-- **Continuous subarray sum is multiple of k** — prefix sums modulo k + hash map.
-- **First element with X property** — "first non-repeated character" is two passes over the same `Counter`.
+- **Pair reaching a target** — the shape above. (Exercise 1 this week.)
+- **Pair separated by exactly `k`** — the map holds values; for each `x` check both `x + k` and `x - k`. The doubled check is the only difference.
+- **Windows summing to a target** — prefix sums, then the same complement lookup over the prefixes rather than over the values. (Challenge 1 this week; see §8.)
+- **Windows whose sum is a multiple of `k`** — identical, but key the map on `running % k` instead of `running`.
+- **First element with some property** — "the first value that occurs exactly once" is two passes over one `Counter`: build it, then rescan the original order.
 
 ---
 
@@ -154,65 +158,70 @@ The trick: instead of asking "for each pair `(i, j)`, do they sum to target?", a
 
 The second canonical use: build a *count* of each value, then act on the counts.
 
-### Canonical problem: are two strings anagrams of each other?
+### Are two collections the same multiset?
+
+Exercise 3 asks whether two stage load-outs are interchangeable, which is exactly this question. The hand-rolled version:
 
 ```python
-def is_anagram(s: str, t: str) -> bool:
-    if len(s) != len(t):
+def same_multiset(left: list[str], right: list[str]) -> bool:
+    if len(left) != len(right):
         return False
-    counts = {}
-    for ch in s:
-        counts[ch] = counts.get(ch, 0) + 1
-    for ch in t:
-        if ch not in counts or counts[ch] == 0:
+    counts: dict[str, int] = {}
+    for item in left:
+        counts[item] = counts.get(item, 0) + 1
+    for item in right:
+        if counts.get(item, 0) == 0:
             return False
-        counts[ch] -= 1
+        counts[item] -= 1
     return True
 ```
 
-**O(n) time, O(k) space**, where k is the size of the alphabet (often O(1) for ASCII — 256 characters at most).
+**O(m) time**, where m is the combined length, and **O(d) space** for `d` distinct items. The length check on the first line is not decoration: without it, `left` could be a strict superset and the second loop would still finish cleanly.
 
-### `collections.Counter` shortcut
+### The `collections.Counter` shortcut
 
-Python's `Counter` makes this a one-liner:
+Python's `Counter` collapses that to one line:
 
 ```python
 from collections import Counter
 
-def is_anagram(s: str, t: str) -> bool:
-    return Counter(s) == Counter(t)
+def same_multiset(left: list[str], right: list[str]) -> bool:
+    return Counter(left) == Counter(right)
 ```
 
-In an interview, **either version is fine.** The hand-rolled version shows you understand the mechanism. The `Counter` version shows you know the standard library. Most interviewers prefer the latter for production code and the former when probing your understanding. When in doubt, mention both: *"I can use Counter for brevity, but under the hood it's a dict of value → count — same complexity."*
+In an interview, **either is fine.** The hand-rolled version shows you understand the mechanism; the `Counter` version shows you know the standard library. Most interviewers want the latter in production code and the former when they are probing. When unsure, say both: *"I'd reach for `Counter` for brevity — under the hood it is a dict of value to count, so the complexity is identical."*
 
-### Canonical problem: group anagrams together
+### Grouping by an equivalence relation
+
+The bigger move is using the count itself as a **key**. Two things belong in the same bucket if their canonical forms are equal, so pick a canonical form and let the map do the grouping:
 
 ```python
 from collections import defaultdict
 
-def group_anagrams(strs: list[str]) -> list[list[str]]:
-    groups = defaultdict(list)
-    for s in strs:
-        key = tuple(sorted(s))   # canonical form
-        groups[key].append(s)
+def group_by_signature(loadouts: list[list[str]]) -> list[list[int]]:
+    groups: defaultdict[tuple[str, ...], list[int]] = defaultdict(list)
+    for i, items in enumerate(loadouts):
+        groups[tuple(sorted(items))].append(i)     # canonical form as the key
     return list(groups.values())
 ```
 
-The key insight: **two strings are anagrams iff their sorted-character tuples are equal.** Use that tuple as the dict key. Each string maps to its bucket in O(k log k) where k is string length; total **O(n · k log k)** time, **O(n · k)** space. Drill 3.
+The insight: **two collections are multiset-equal iff their sorted tuples are equal.** Sorting each one costs `O(k log k)` for `k` items, so the whole grouping is **O(n · k log k)** time and **O(n · k)** space. Note that the buckets hold *indices*, not the collections themselves — that is a contract choice, and Exercise 3 makes it a requirement.
+
+The canonical form must be **hashable** and must **preserve multiplicity**. `tuple(sorted(items))` satisfies both. `set(items)` satisfies only the first, and silently merges two guitars with one guitar.
 
 ### Recognition signals for counting / frequency
 
 - "Are these two collections the same multiset?"
-- "Top K most frequent"
-- "First non-repeating character"
-- "Find the majority element"
-- "Group by some equivalence relation" (use the canonical form as the dict key)
+- "Which value occurs most often?"
+- "Which is the first value that occurs exactly once?"
+- "Is there a value occurring more than half the time?"
+- "Group these by some equivalence" — pick a canonical form and use it as the key
 
 ### Variants
 
-- **Top K frequent elements** (Week 9, with a heap).
-- **First non-repeating character** — one pass to count, second pass to find the first whose count is 1.
-- **Find all anagrams in a string** — combines counting with sliding window (Week 3).
+- **The k most frequent values** — count, then select. Selection wants a heap, which is Week 9.
+- **The first value occurring exactly once** — one pass to count, a second pass over the original order to find it. Two passes, still `O(n)`.
+- **Matching a frequency profile inside a moving window** — counting composed with a sliding window, which is Week 3.
 
 ---
 
@@ -220,46 +229,56 @@ The key insight: **two strings are anagrams iff their sorted-character tuples ar
 
 When you don't need a value associated with a key, just *presence*, use a `set`. Smaller memory footprint than a dict; same O(1) average lookup.
 
-### Canonical problem: does the array contain a duplicate?
+### Finding the first repeat
+
+Exercise 2's shape. You are scanning a log in order and want the position where something recurs:
 
 ```python
-def contains_duplicate(nums: list[int]) -> bool:
-    seen = set()
-    for x in nums:
-        if x in seen:
-            return True
-        seen.add(x)
-    return False
+def first_repeated_scan(badge_ids: list[int]) -> int | None:
+    seen: set[int] = set()
+    for i, badge in enumerate(badge_ids):
+        if badge in seen:
+            return i
+        seen.add(badge)
+    return None
 ```
 
-**O(n) time, O(n) space.** The two-pointer version requires sorting first, which costs O(n log n). When the input is unsorted and you only need a yes/no, the set is strictly better. Drill 2.
+**O(n) time, O(n) space**, and `O(1)` in the best case, because it returns the instant it finds a repeat. A sorted two-pointer version would need `O(n log n)` to sort first — and worse, sorting destroys the positions this contract asks for. When the input is unsorted and you need to know *where*, the set is not merely faster; the alternative cannot answer the question.
 
-### Canonical problem: longest consecutive sequence
+Note the ordering, which is the bug the drill is built to catch: **check membership first, add second.** Reverse them and every element finds itself.
+
+### Finding the longest run of consecutive values
+
+Exercise 5's shape, and the one that looks like it needs a sort and does not:
 
 ```python
-def longest_consecutive(nums: list[int]) -> int:
-    nums_set = set(nums)
-    best = 0
-    for x in nums_set:
-        if x - 1 not in nums_set:        # x is a "sequence start"
-            length = 1
-            while x + length in nums_set:
-                length += 1
-            best = max(best, length)
+def longest_dock_run(reported: list[int]) -> tuple[int, int] | None:
+    docks = set(reported)
+    if not docks:
+        return None
+    best: tuple[int, int] | None = None
+    for start in docks:
+        if start - 1 in docks:            # not a root; some earlier value owns this run
+            continue
+        length = 1
+        while start + length in docks:
+            length += 1
+        if best is None or length > best[1] or (length == best[1] and start < best[0]):
+            best = (start, length)
     return best
 ```
 
-The trick: **only start counting from a sequence's smallest element.** That ensures each element is touched at most twice (once when we check `x - 1 not in set`, once when extending). **O(n) time, O(n) space.** Drill 5.
+The trick: **only walk forward from a run's smallest member.** Runs are disjoint, so each value is stepped through by exactly one walk, and the inner loops total at most `n` steps across the whole function. **O(n) time, O(n) space.**
 
-The naive sort-then-scan is O(n log n). The hash-set version is O(n). That gap is the entire point of the drill.
+Sort-then-scan is `O(n log n)`. This is `O(n)`. That gap — and the ability to *defend* it when an interviewer points at the nested loop and raises an eyebrow — is the entire point of Exercise 5.
 
 ### Recognition signals for set membership
 
-- "Does the array contain a duplicate?"
-- "Find the longest consecutive sequence in any order"
-- "Validate Sudoku rows / columns / boxes" (Drill 4)
-- "Is X in the forbidden list?" inside a tight loop
-- "Have I visited this node before?" (graph traversal, Weeks 6-7)
+- "Has this value appeared before, and where?"
+- "How long is the longest run of consecutive values, in any order?"
+- "Does this grid violate a uniqueness rule along any axis?" (Exercise 4)
+- "Is this in the forbidden list?" inside a tight loop
+- "Have I visited this node already?" — graph traversal, Weeks 6 and 7, where the visited set is the thing that makes the traversal terminate
 
 ---
 
@@ -267,7 +286,7 @@ The naive sort-then-scan is O(n log n). The hash-set version is O(n). That gap i
 
 A pattern that ties the three sub-shapes together: **as you walk through the input, build up a hash map of what you've seen so far, and query it on the current element.** This idiom — *cache as you go* — is the most common shape of hash-map solutions.
 
-The two-sum solution is the canonical example. Pseudocode:
+The complement-lookup solution in §4 is the canonical example. Pseudocode:
 
 ```
 seen = {}            # or set()
@@ -286,43 +305,53 @@ When you see a problem that *feels* like it needs two nested loops over the same
 
 ---
 
-## 8. Worked example — Subarray sum equals k
+## 8. Worked example — counting windows that reach a target
 
-This is one of the most discriminating mid-level interview problems. We will not solve it in full here (it's Challenge 1), but we will narrate the *pattern match*.
+This is one of the most discriminating mid-level shapes there is. We will not solve it in full here — that is Challenge 1 — but we will narrate the *pattern match*, because the match is the hard part.
 
-**Problem.** Given an array of integers `nums` and an integer `k`, return the number of contiguous (non-empty) subarrays whose sum equals `k`.
+**The question.** Given a list of hourly net movements, some of them negative, how many contiguous non-empty windows sum to exactly `target`?
 
-**The naive O(n²) approach.** For each starting index `i`, compute running sum for each ending index `j ≥ i`; count matches.
+**The naive O(n²) approach.** For each starting hour, extend a running sum through every later hour and count the hits. Correct, and hopeless past about 10⁴ hours.
 
-**The hash-map O(n) approach.** Let `S_i = nums[0] + nums[1] + ... + nums[i-1]` be the *prefix sum* up to index `i`. A subarray `nums[i..j]` sums to `k` iff `S_{j+1} − S_i = k`, iff `S_i = S_{j+1} − k`.
+**The reformulation.** Let `S[b] = net_moves[0] + ... + net_moves[b-1]`, with `S[0] = 0` for the empty prefix. Then the window `net_moves[i..j]` sums to `S[j+1] − S[i]`. So a window reaches `target` exactly when
 
-So: walk through the prefix sums; at each `S_j`, count how many previous prefix sums equal `S_j − k`. That count comes from a hash map of seen prefix sums.
+```
+S[j+1] − S[i] = target      ⟺      S[i] = S[j+1] − target
+```
+
+which is a **complement lookup over the prefix sums**. Sweep `b` from 1 to n and ask how many earlier prefixes carried the value `S[b] − target`. That count comes from a frequency map.
 
 ```python
-def subarray_sum_count(nums, k):
-    counts = {0: 1}          # empty prefix has sum 0
+def count_balanced_windows(net_moves: list[int], target: int) -> int:
+    counts = {0: 1}                              # the empty prefix, seen once
     running = 0
     answer = 0
-    for x in nums:
+    for x in net_moves:
         running += x
-        answer += counts.get(running - k, 0)
+        answer += counts.get(running - target, 0)
         counts[running] = counts.get(running, 0) + 1
     return answer
 ```
 
-**O(n) time, O(n) space.** Single pass. The hash-map idiom replaces the inner loop *and* tracks frequency — both sub-shapes at once.
+**O(n) time, O(n) space.** One pass. The map replaces the inner loop *and* carries a frequency — the complement sub-shape and the counting sub-shape doing one job.
 
-Why this matters: the prefix-sum + hash-map combo shows up in subarray-property problems constantly. Recognizing it within 30 seconds is the interview tell. We'll drill it in Challenge 1.
+Three things in six lines are worth naming out loud, because each is a bug you will otherwise write:
+
+- The `{0: 1}` seed is the empty prefix. Without it, no window that starts at hour 0 is ever found.
+- The query happens **before** the insert. Reverse them and, with `target = 0`, every prefix matches itself.
+- `answer += counts.get(...)` adds a **frequency**, not `1`. Three earlier prefixes with the right value close three windows in one step, which is why this stays linear.
+
+Why this matters: the prefix-sum-plus-hash-map combination shows up in window-property questions constantly, and recognising it inside thirty seconds is the tell. Challenge 1 takes it further — its contract also asks *which* window, which means the map has to carry a second payload alongside the count.
 
 ---
 
-## 9. The "I'll just use a set" temptation (and when it's wrong)
+## 9. The "I'll just use a set" temptation (and when it is wrong)
 
-Sometimes a `set` doesn't carry enough information. Examples:
+Sometimes a `set` does not carry enough information. Three cases from this week:
 
-- **Two-sum needs indices**, not just values. Use a `dict` mapping value → index.
-- **Group anagrams** needs to *collect* the originals per key. Use `defaultdict(list)`.
-- **First non-repeating character** needs counts, not membership. Use a `Counter`.
+- **Complement lookup needs positions**, not just values. Use a `dict` mapping value → index. (Exercise 1.)
+- **Grouping needs to collect the members** under each key. Use a `defaultdict(list)`. (Exercise 3.)
+- **"Occurs exactly once" needs counts**, not membership. Use a `Counter`.
 
 The rule of thumb: **`set` for presence; `dict` for presence + payload.** When the problem says "return the *first* X" or "return *all* Xs," you usually need payload. When it says "are there any duplicates / collisions / overlaps?", a set suffices.
 
@@ -348,10 +377,11 @@ Without notes, answer:
 3. **What's the difference between when you reach for two-pointer and when you reach for a hash map?** (Sorted → two-pointer; unsorted and you need O(n) time → hash map; willing to trade O(1) space for two-pointer's lower memory.)
 4. **Why is `dict.get(k, 0)` preferable to `d[k]` when `k` may not exist?**
 5. **What's the time complexity of `for k, v in d.items()`?** (O(n).)
-6. **Trace `two_sum([3, 2, 4], 6)` step by step.** (At i=2, complement 2 is in `seen` with index 1, return `[1, 2]`.)
+6. **Trace `find_refund_pair([180, 220, 380], 600)` step by step.** (Position 0: complement 420, not seen, cache `180 → 0`. Position 1: complement 380, not seen, cache `220 → 1`. Position 2: complement 220, found at position 1, return `(1, 2)`.)
 7. **When does set membership lose to two-pointer?** (When the problem requires O(1) space *and* offers sorted input.)
+8. **Why does the frequency map in §8 add a count rather than incrementing by one?** (Several earlier prefixes can carry the same value; each closes a distinct window, so all of them land in one step. That is what keeps it linear.)
 
-If you can answer all seven, proceed to [Lecture 3 — Stating Complexity Out Loud](./03-stating-complexity-out-loud.md).
+If you can answer all eight, proceed to [Lecture 3 — Stating Complexity Out Loud](./03-stating-complexity-out-loud.md).
 
 ---
 

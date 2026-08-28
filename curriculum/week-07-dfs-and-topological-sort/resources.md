@@ -53,7 +53,7 @@ The decision rule for the week:
 
 ## On the difference between BFS and DFS
 
-The recognition skill from Week 6 — "BFS or DFS?" — is the highest-yield Match-step question for any graph problem. The fuller table this week, with the new DFS rows filled in:
+The recognition skill from Week 6 — "BFS or DFS?" — is the highest-yield Research constraints question for any graph problem. The fuller table this week, with the new DFS rows filled in:
 
 | Question | BFS or DFS? |
 |----------|-------------|

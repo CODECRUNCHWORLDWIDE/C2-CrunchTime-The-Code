@@ -2,7 +2,7 @@
 
 The week's deliverable. Two backtracking write-ups demonstrating the two halves of the lecture material: **combinatorial enumeration with constraint pruning** (palindrome partitioning) and **constraint satisfaction** (sudoku solver).
 
-The mini-project is graded on the **same five dimensions** as the homework — Match, Plan, Implement (Correctness), Implement (Style), Evaluate. The weights are identical. The difference is that the mini-project asks for the **full UMPIRE narration** end-to-end, recorded and committed under `umpire-writeups/c2-week-12/mini-project/`, with both starter files completed and shipped under `mini-project/c2-week-12/`.
+The mini-project is graded on the **same five dimensions** as the homework — Research constraints, Assess options, Make the solution (correctness), Make the solution (style), Examine. The weights are identical. The difference is that the mini-project asks for the **full FRAME narration** end-to-end, recorded and committed under `frame-writeups/c2-week-12/mini-project/`, with both starter files completed and shipped under `mini-project/c2-week-12/`.
 
 This is the artifact graders use to judge whether you have internalized backtracking. Half a week's homework is the warm-up; the mini-project is the proof.
 
@@ -62,19 +62,18 @@ This is the artifact graders use to judge whether you have internalized backtrac
 
 ## How to do the write-up
 
-For each problem, produce one Markdown file under `umpire-writeups/c2-week-12/mini-project/`:
+For each problem, produce one Markdown file under `frame-writeups/c2-week-12/mini-project/`:
 
-1. **`problem-01-palindrome-partitioning.md`** — UMPIRE narration for Problem 1.
-2. **`problem-02-sudoku-solver.md`** — UMPIRE narration for Problem 2.
+1. **`problem-01-palindrome-partitioning.md`** — FRAME narration for Problem 1.
+2. **`problem-02-sudoku-solver.md`** — FRAME narration for Problem 2.
 
-Each write-up has the canonical six sections:
+Each write-up has the canonical five sections:
 
-- **Understand:** restate the problem in your words; identify the inputs and outputs; note any tricky edge cases (e.g., a length-1 string is a valid palindrome partition of itself).
-- **Match:** the 30-second pattern-recognition memo at the top; name the state design, the pruning, the recording rule.
-- **Plan:** numbered steps; pseudocode is optional but encouraged.
-- **Implement:** the working code, with type hints everywhere.
-- **Review:** a worked trace on one example; verify the output by hand.
-- **Evaluate:** time and space with derivation; one variant mentioned with its trade-off.
+- **Frame:** restate the problem in your words; identify the inputs and outputs; note any tricky edge cases (e.g., a length-1 string is a valid palindrome partition of itself).
+- **Research constraints:** the 30-second pattern-recognition memo at the top; name the limits and edge cases, the state design, the pruning, the recording rule.
+- **Assess options:** numbered steps; pseudocode is optional but encouraged.
+- **Make the solution:** the working code, with type hints everywhere.
+- **Examine:** a worked trace on one example, verifying the output by hand (verify); then time and space with derivation and one variant mentioned with its trade-off (cost).
 
 The recording is the single most useful artifact in the mini-project. A 10–15 minute video walkthrough — you reading your write-up aloud, talking through the state design, the pruning, the leaf-copy discipline — is the closest simulation of an interview that a portfolio can provide.
 
@@ -103,7 +102,7 @@ The two together — combinatorial enumeration plus constraint satisfaction — 
 The week's mini-project is complete when:
 
 - Both `mini-project/c2-week-12/problem-01-palindrome-partitioning.py` and `mini-project/c2-week-12/problem-02-sudoku-solver.py` are committed with passing self-tests.
-- Both `umpire-writeups/c2-week-12/mini-project/problem-01-palindrome-partitioning.md` and `umpire-writeups/c2-week-12/mini-project/problem-02-sudoku-solver.md` are committed.
+- Both `frame-writeups/c2-week-12/mini-project/problem-01-palindrome-partitioning.md` and `frame-writeups/c2-week-12/mini-project/problem-02-sudoku-solver.md` are committed.
 - A recording of at least one of the two write-ups is committed or linked (10–15 minutes).
 - The Week 12 retrospective notes the most-useful and the most-challenging part of the mini-project.
 

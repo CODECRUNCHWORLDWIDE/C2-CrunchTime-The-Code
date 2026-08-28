@@ -72,7 +72,7 @@ This lecture uses the mutable form. The exercises use the mutable form. The mini
 
 > *Given an integer array `nums` of unique elements, return all possible subsets (the power set). The solution set must not contain duplicate subsets. Return the solution in any order.*
 
-**Match.** Combinatorial enumeration of `2^n` subsets. Every element is either included or excluded — the decision tree has depth `n` and branching factor 2. Equivalently, at each "level" we choose which next element (if any) to include from the remaining tail. The path at every node is a valid subset.
+**Research constraints.** Combinatorial enumeration of `2^n` subsets. Every element is either included or excluded — the decision tree has depth `n` and branching factor 2. Equivalently, at each "level" we choose which next element (if any) to include from the remaining tail. The path at every node is a valid subset.
 
 **State semantics.** `(start_index, path)` where `start_index` is the next element eligible for selection (no reuse, no duplicates) and `path` is the current subset under construction. Every node — not just leaves — represents a valid subset.
 
@@ -156,7 +156,7 @@ Eight subsets — `2^3` confirmed. The traversal is depth-first; the recording o
 
 > *Given an array `nums` of distinct integers, return all the possible permutations. You can return the answer in any order.*
 
-**Match.** Combinatorial enumeration of `n!` permutations. At each level we choose **one** unused element to place next; the decision tree has depth `n` and branching factor `n` at the top, `n-1` at depth 1, ..., 1 at depth `n - 1`. The path at every leaf is a valid permutation.
+**Research constraints.** Combinatorial enumeration of `n!` permutations. At each level we choose **one** unused element to place next; the decision tree has depth `n` and branching factor `n` at the top, `n-1` at depth 1, ..., 1 at depth `n - 1`. The path at every leaf is a valid permutation.
 
 **State semantics.** `(used_set, path)` where `used_set` tracks which elements are currently on the path and `path` is the current permutation under construction. Only leaves (where `len(path) == n`) are recorded.
 
@@ -233,7 +233,7 @@ Six permutations — `3!` confirmed. The traversal is depth-first; the recording
 
 > *Given two integers `n` and `k`, return all possible combinations of `k` numbers chosen from the range `[1, n]`.*
 
-**Match.** Combinatorial enumeration of `C(n, k)` combinations. At each level we choose **one** element from the remaining tail (no reuse, no order); the decision tree has depth `k`. The path at every leaf (where `len(path) == k`) is a valid combination.
+**Research constraints.** Combinatorial enumeration of `C(n, k)` combinations. At each level we choose **one** element from the remaining tail (no reuse, no order); the decision tree has depth `k`. The path at every leaf (where `len(path) == k`) is a valid combination.
 
 **State semantics.** `(start_index, path)` where `start_index` is the next element eligible for selection (no reuse). Identical to subsets in shape; the discriminator is the recording rule — only leaves where `len(path) == k` are recorded.
 
@@ -372,7 +372,7 @@ Could we put the path in the key? Yes — `@lru_cache` accepts a `tuple` (`path`
 2. Adding the path to the cache key makes every key unique. The cache never hits.
 3. Even if a cache hit were possible, the output would be a list of completed paths from this point — but the **prefix** of each output path is the current path, which depends on the caller's state. The cache would need to return paths-from-here without the prefix, and then the caller would need to concatenate the prefix. Workable but ugly; not a real cache.
 
-The clean answer: backtracking enumerates; DP optimizes or counts. Different recursions, different output disciplines, different cache semantics. The Match-step discriminator is the prompt's verb: "return all," "list every," "find one" — backtracking. "Count," "find the max," "find the min" — try DP first.
+The clean answer: backtracking enumerates; DP optimizes or counts. Different recursions, different output disciplines, different cache semantics. The Research-constraints discriminator is the prompt's verb: "return all," "list every," "find one" — backtracking. "Count," "find the max," "find the min" — try DP first.
 
 There is one exception: **memoization of the boolean reachability question** built on top of a backtracking-like recursion. For example, "does there exist a valid configuration?" with a state-only key (no path) can cache `(state) -> bool`. This is closer to DP than to backtracking; the resources mention it in the negative-space section.
 

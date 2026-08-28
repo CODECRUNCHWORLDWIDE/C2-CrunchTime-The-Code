@@ -6,9 +6,9 @@
 └───┘  └───┘  └───┘  └───┘  └───┘  └───┘
 ```
 
-> *Week 12 installed backtracking — the choose-explore-unchoose template that enumerates every solution to a combinatorial decision problem, the last of the pure algorithm weeks of Phase 2. Week 13 installs the **behavioral** skill set: the eight categories of "tell me about a time…," the STAR structure that turns a war story into a scored answer, a **story bank** of twelve-plus refined anecdotes that covers every category, the discipline of thinking aloud under pressure, and the moves for handling ambiguous, hostile, and curveball questions without flinching. This is the **first week of Phase 4 — Capstone & Onsite Prep.** STAR is to the behavioral round what UMPIRE is to the coding round: a mechanical method that frees your attention from "what do I say next" so you can spend it on signal. By Sunday you can hear any behavioral prompt, name which of the eight categories it tests in five seconds, reach for the right story from your bank, and deliver it in ninety seconds with a quantified result and a clear "I" — and you can recover gracefully when the interviewer pushes back, goes quiet, or asks something you are not allowed to answer.*
+> *Week 12 installed backtracking — the choose-explore-unchoose template that enumerates every solution to a combinatorial decision problem, the last of the pure algorithm weeks of Phase 2. Week 13 installs the **behavioral** skill set: the eight categories of "tell me about a time…," the STAR structure that turns a war story into a scored answer, a **story bank** of twelve-plus refined anecdotes that covers every category, the discipline of thinking aloud under pressure, and the moves for handling ambiguous, hostile, and curveball questions without flinching. This is the **first week of Phase 4 — Capstone & Onsite Prep.** STAR is to the behavioral round what FRAME is to the coding round: a mechanical method that frees your attention from "what do I say next" so you can spend it on signal. By Sunday you can hear any behavioral prompt, name which of the eight categories it tests in five seconds, reach for the right story from your bank, and deliver it in ninety seconds with a quantified result and a clear "I" — and you can recover gracefully when the interviewer pushes back, goes quiet, or asks something you are not allowed to answer.*
 
-Welcome to Week 13 of **C2 · CrunchTime — The Code** — the first week of Phase 4, the capstone-and-onsite-prep block (Weeks 13–15). For twelve weeks you have trained the coding round: the UMPIRE method, twelve algorithm patterns, two recorded mocks. A real onsite is not five coding rounds. It is three or four coding rounds **plus** a behavioral round — sometimes two — plus a hiring-manager conversation that is behavioral in everything but name. Candidates who can invert a binary tree and freeze on "tell me about a time you disagreed with your manager" do not get the offer. This week closes that gap.
+Welcome to Week 13 of **C2 · CrunchTime — The Code** — the first week of Phase 4, the capstone-and-onsite-prep block (Weeks 13–15). For twelve weeks you have trained the coding round: the FRAME method, twelve algorithm patterns, two recorded mocks. A real onsite is not five coding rounds. It is three or four coding rounds **plus** a behavioral round — sometimes two — plus a hiring-manager conversation that is behavioral in everything but name. Candidates who can invert a binary tree and freeze on "tell me about a time you disagreed with your manager" do not get the offer. This week closes that gap.
 
 The misconception this week corrects: most engineers believe the behavioral round is "soft" — unstructured, unscorable, a vibe check you either pass or fail on personality. It is not. Behavioral interviewers grade against a rubric, the same way a coding interviewer grades against correctness and complexity. The rubric measures **signals**: ownership, quantified impact, self-awareness, collaboration, and growth. A rambling, modest, "we did a great job as a team" answer scores low on every axis — not because the candidate is a bad engineer, but because the answer surfaced no signal. STAR is the structure that surfaces signal on purpose.
 
@@ -21,7 +21,7 @@ By Sunday of Week 13 you will:
 - **Deliver** any story from the bank in a ninety-second STAR structure: ten seconds Situation, ten seconds Task, sixty seconds Action (first-person, specific, technical), twenty seconds Result (quantified, with a follow-on of what you learned).
 - **Hold the "I" discipline** — describe what *you* did, not what the team did, without sounding like you are taking credit for others' work. The senior move is "I" for your contribution and "we" for the outcome.
 - **Quantify every result** — latency cut, dollars saved, incidents avoided, percent improved, time-to-ship reduced, people unblocked. A result without a number is a result the interviewer cannot score.
-- **Think aloud under pressure** — narrate your reasoning when an interviewer goes quiet or pushes back, the same way the UMPIRE method makes you narrate a coding solve.
+- **Think aloud under pressure** — narrate your reasoning when an interviewer goes quiet or pushes back, the same way the FRAME method makes you narrate a coding solve.
 - **Recover** from a mid-answer wrong turn, a hostile follow-up, an ambiguous prompt, and an illegal/inappropriate question — gracefully, without freezing and without escalating.
 - Have drafted **five new stories** this week (Drills 1–5) on top of the early stories you started in the Week 1 and Week 4 homework, refining the combined set to the twelve-plus that the mini-project ships.
 - Have shipped **two challenges** — a full forty-five-minute mock behavioral round (six to eight questions, recorded, two-pass self-feedback) and a hostile-and-curveball round (weakness, why-leaving, illegal-question deflection, "sell me this pen").
@@ -46,7 +46,7 @@ By the end of this week, you will be able to:
 
 ## Prerequisites
 
-- **Weeks 1–12 complete.** You have shipped UMPIRE write-ups for every pattern through backtracking, two recorded mocks (Mock #1 in W4, Mock #2 in W8), and you can narrate a coding solve aloud. The narration habit transfers directly — thinking aloud in a behavioral round is the same muscle as thinking aloud in a coding round.
+- **Weeks 1–12 complete.** You have shipped FRAME write-ups for every pattern through backtracking, two recorded mocks (Mock #1 in W4, Mock #2 in W8), and you can narrate a coding solve aloud. The narration habit transfers directly — thinking aloud in a behavioral round is the same muscle as thinking aloud in a coding round.
 - **The early behavioral stories you started in the W1 and W4 homework.** Week 1's homework asked you to jot two rough "tell me about a time" anecdotes; Week 4's mock-prep asked for two more. Those four rough drafts are the seed of this week's story bank. Have them in front of you — even as bullet points — before Monday.
 - **45 minutes of vocalization space.** A room where you can talk aloud for forty-five minutes without an audience, and a way to record audio or video (your phone is fine). You cannot refine a spoken answer you have only ever written. Every drill this week ends with "record it and listen back." If you do not have private space, a parked car works; many of our learners drafted their first story banks in one.
 
@@ -62,7 +62,7 @@ By the end of this week, you will be able to:
 - **The story bank** — twelve-plus stories, the coverage matrix, the reuse principle (one story answers multiple categories)
 - **Thinking aloud under pressure** — narrating structure, treating silence as a prompt, the restate-and-breathe move
 - **The non-adversarial reframe** — the interviewer wants to hire you; hostile follow-ups are depth probes
-- **Handling ambiguous questions** — clarify the scope, state your assumption, then answer; the same Understand-step discipline as UMPIRE
+- **Handling ambiguous questions** — clarify the scope, state your assumption, then answer; the same Frame-step discipline as FRAME
 - **Handling hostile / curveball / illegal questions** — the weakness move, the why-leaving move, the failure-with-a-twist, the illegal-question deflect, the estimation curveball
 - **The recovery move** — what to do when you realize mid-answer you picked the wrong story or buried the result
 - **The follow-up email** — the same-day, specific, low-effort, high-leverage close
@@ -73,10 +73,10 @@ By the end of this week, you will be able to:
 
 | Day | Focus | Lectures | Exercises | Challenges | Quiz/Read | Homework | Mini-Project | Self-Study | Daily Total |
 |-----|-------|---------:|----------:|-----------:|----------:|---------:|-------------:|-----------:|------------:|
-| Monday | Lecture 1 (eight categories + rubric); Drill 1 (debugging story) | 2h | 2h | 0h | 0.5h | 1h | 0h | 0.5h | 6h |
-| Tuesday | Lecture 2 (STAR + story bank); Drill 2 (conflict story) | 2h | 2h | 0h | 0.5h | 1h | 0h | 0.5h | 6h |
+| Monday | Lecture 1 (eight categories + rubric); Exercise 1 (debugging story) | 2h | 2h | 0h | 0.5h | 1h | 0h | 0.5h | 6h |
+| Tuesday | Lecture 2 (STAR + story bank); Exercise 2 (conflict story) | 2h | 2h | 0h | 0.5h | 1h | 0h | 0.5h | 6h |
 | Wednesday | Lecture 3 (pressure + hostile); Drills 3–4 (leadership, failure) | 2h | 2h | 0h | 0.5h | 0.5h | 0h | 0.5h | 5.5h |
-| Thursday | Drill 5 (ambiguity); story-bank drafting; challenge ramp | 0h | 1h | 1h | 0.5h | 1h | 1.5h | 1h | 6h |
+| Thursday | Exercise 5 (ambiguity); story-bank drafting; challenge ramp | 0h | 1h | 1h | 0.5h | 1h | 1.5h | 1h | 6h |
 | Friday | Challenge 1 (full 45-min mock behavioral round) | 0h | 0h | 2h | 0.5h | 1h | 1.5h | 0.5h | 5.5h |
 | Saturday | Challenge 2 (hostile/curveball round); story-bank build | 0h | 0h | 1.5h | 0h | 1h | 2h | 0h | 4.5h |
 | Sunday | Coverage matrix + record the bank + retro + push | 0h | 0h | 0h | 0.5h | 0.5h | 3.5h | 0h | 4.5h |
@@ -98,17 +98,17 @@ By the end of this week, you will be able to:
 | [lecture-notes/02-the-star-method-and-the-story-bank.md](./lecture-notes/02-the-star-method-and-the-story-bank.md) | STAR in depth, the S/T over-spend trap, the "I vs we" discipline, quantifying results, the story bank and coverage matrix |
 | [lecture-notes/03-communication-under-pressure-and-hostile-questions.md](./lecture-notes/03-communication-under-pressure-and-hostile-questions.md) | Thinking aloud, the non-adversarial reframe, ambiguous questions, hostile/curveball/illegal questions, the recovery move, the follow-up email |
 | [exercises/README.md](./exercises/README.md) | Index of the five STAR drafting drills and the portfolio tree they produce |
-| [exercises/drill-01-debugging-story.md](./exercises/drill-01-debugging-story.md) | "Tell me about a time you debugged a hard problem" — full worked STAR example |
-| [exercises/drill-02-conflict-story.md](./exercises/drill-02-conflict-story.md) | "Tell me about a disagreement with a coworker" — full worked STAR example |
-| [exercises/drill-03-leadership-influence-story.md](./exercises/drill-03-leadership-influence-story.md) | "Tell me about a time you led without authority" — full worked STAR example |
-| [exercises/drill-04-failure-story.md](./exercises/drill-04-failure-story.md) | "Tell me about a time you failed" — full worked STAR example |
-| [exercises/drill-05-ambiguity-story.md](./exercises/drill-05-ambiguity-story.md) | "Tell me about a time you worked with unclear requirements" — full worked STAR example |
-| [exercises/star_template.md](./exercises/star_template.md) | The reusable STAR write-up template (the behavioral analogue of `umpire_template.md`) |
+| [exercises/exercise-01-debugging-story.md](./exercises/exercise-01-debugging-story.md) | "Tell me about a time you debugged a hard problem" — full worked STAR example |
+| [exercises/exercise-02-conflict-story.md](./exercises/exercise-02-conflict-story.md) | "Tell me about a disagreement with a coworker" — full worked STAR example |
+| [exercises/exercise-03-leadership-influence-story.md](./exercises/exercise-03-leadership-influence-story.md) | "Tell me about a time you led without authority" — full worked STAR example |
+| [exercises/exercise-04-failure-story.md](./exercises/exercise-04-failure-story.md) | "Tell me about a time you failed" — full worked STAR example |
+| [exercises/exercise-05-ambiguity-story.md](./exercises/exercise-05-ambiguity-story.md) | "Tell me about a time you worked with unclear requirements" — full worked STAR example |
+| [exercises/star_template.md](./exercises/star_template.md) | The reusable STAR write-up template (the behavioral analogue of `frame_template.md`) |
 | [challenges/README.md](./challenges/README.md) | Index of the two mock rounds |
 | [challenges/challenge-01-full-behavioral-round.md](./challenges/challenge-01-full-behavioral-round.md) | A full 45-minute mock behavioral round — 6–8 questions, timing, rubric, two-pass self-feedback |
 | [challenges/challenge-02-hostile-and-curveball-round.md](./challenges/challenge-02-hostile-and-curveball-round.md) | Hostile, ambiguous, curveball, and illegal questions — worked responses and the recovery framework |
 | [quiz.md](./quiz.md) | 10 category-recognition prompts — name the category, the story you'd deploy, and the top signal |
-| [homework.md](./homework.md) | Six tasks (~5–6 hrs) — refine to 12 stories, record a round, build the matrix, draft the pitch and the email, reflect |
+| [homework.md](./homework/README.md) | Six tasks (~5–6 hrs) — refine to 12 stories, record a round, build the matrix, draft the pitch and the email, reflect |
 | [mini-project/README.md](./mini-project/README.md) | **The story bank** — 12+ STAR anecdotes, coverage matrix, recordings — the week's deliverable |
 
 ---
@@ -143,7 +143,7 @@ If all of that is present and pushed, Phase 4's first week is closed. Your codin
 
 Phase 4 — Capstone & Onsite Prep — is the final block: Weeks 13–15. Week 13 (this week) installs the behavioral skill set. Week 14 is **Mock #3** (with a bit-manipulation-and-tries algorithm refresher woven in); Mock #3 is the first full-loop simulation that includes a behavioral round, so the story bank you build this week is *used* next week under timed pressure. Week 15 is the capstone and **Mock #4** — the dress rehearsal for the real thing.
 
-The mistake to avoid this week is treating behavioral prep as something you can "wing." You cannot. The story bank is exactly like the UMPIRE write-up library: an asset you build once and draw on forever. Engineers who freeze in behavioral rounds are almost always engineers who tried to invent the answer in real time. Engineers who shine are reaching into a bank of twelve rehearsed stories and selecting the right one — the cognitive load is *selection*, not *invention*, and selection is fast. STAR is to behavioral what UMPIRE is to coding: the method that frees your attention from "what do I say" so you can spend it on signal.
+The mistake to avoid this week is treating behavioral prep as something you can "wing." You cannot. The story bank is exactly like the FRAME write-up library: an asset you build once and draw on forever. Engineers who freeze in behavioral rounds are almost always engineers who tried to invent the answer in real time. Engineers who shine are reaching into a bank of twelve rehearsed stories and selecting the right one — the cognitive load is *selection*, not *invention*, and selection is fast. STAR is to behavioral what FRAME is to coding: the method that frees your attention from "what do I say" so you can spend it on signal.
 
 If you find yourself ahead by Friday, the right stretch is **not** drafting a thirteenth story — it is recording your best three stories a second time and cutting thirty seconds out of each. Concision is the skill that separates a good behavioral round from a great one.
 

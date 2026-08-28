@@ -1,6 +1,6 @@
 # Challenge 1 — Merge k Sorted Lists (LeetCode 23)
 
-> **Difficulty:** Hard. **Target solve time:** 60 minutes including UMPIRE write-up.
+> **Difficulty:** Hard. **Target solve time:** 60 minutes including FRAME write-up.
 
 The canonical k-way-merge problem. Every Phase-2 onsite includes at least one variant of this; the FAANG onsite frequency is on par with "Two Sum" for entry-level questions, except this one is asked of mid-to-senior candidates and graded on the *defense* of the asymptotic improvement, not just the code.
 
@@ -183,21 +183,21 @@ The recursive pairwise merge: split the input array of lists in half; merge each
 <details>
 <summary>Click after attempting</summary>
 
-The complete code is in the §"intended algorithm" block above. The full UMPIRE write-up follows the same six sections.
+The complete code is in the §"intended algorithm" block above. The full FRAME write-up follows the same five sections.
 
-### UMPIRE
+### FRAME
 
-**[U]** Restate. K sorted linked lists; merge into one sorted list. Edge cases: empty input, all-None input, single-list input.
+**[F]** Restate. K sorted linked lists; merge into one sorted list. Edge cases: empty input, all-None input, single-list input.
 
-**[M]** K-way merge with a heap of size k. The tuple is `(val, list_index, node)`; the list_index is the tiebreaker. Alternative: divide-and-conquer pairwise merge in `O(log k)` levels.
+**[R]** K-way merge with a heap of size k. The tuple is `(val, list_index, node)`; the list_index is the tiebreaker. Alternative: divide-and-conquer pairwise merge in `O(log k)` levels.
 
-**[P]** (1) Seed the heap with the head of every non-empty list. (2) Build a dummy + tail. (3) Loop: pop the min, append to tail, refill from `node.next`. (4) Return `dummy.next`.
+**[A]** (1) Seed the heap with the head of every non-empty list. (2) Build a dummy + tail. (3) Loop: pop the min, append to tail, refill from `node.next`. (4) Return `dummy.next`.
 
-**[I]** See §"intended algorithm" above.
+**[M]** See §"intended algorithm" above.
 
-**[R]** Trace on `[[1, 4, 5], [1, 3, 4], [2, 6]]` (above). Edge case `[]`: return `None`. Edge case `[None, None]`: skip both in the for-loop; return `None`.
+**[E · verify]** Trace on `[[1, 4, 5], [1, 3, 4], [2, 6]]` (above). Edge case `[]`: return `None`. Edge case `[None, None]`: skip both in the for-loop; return `None`.
 
-**[E]** **Time `O(N log k)`** — `N` total elements, each one push and one pop, each `O(log k)`. **Space `O(k)`** for the heap. Tradeoff vs brute-force-then-sort: `O(N log N)`; the heap wins when `k << N`. Tradeoff vs pairwise divide-and-conquer: same `O(N log k)` time, `O(log k)` recursion depth, slightly cleaner code; either is acceptable.
+**[E · cost]** **Time `O(N log k)`** — `N` total elements, each one push and one pop, each `O(log k)`. **Space `O(k)`** for the heap. Tradeoff vs brute-force-then-sort: `O(N log N)`; the heap wins when `k << N`. Tradeoff vs pairwise divide-and-conquer: same `O(N log k)` time, `O(log k)` recursion depth, slightly cleaner code; either is acceptable.
 
 ### Common bugs
 
@@ -214,8 +214,8 @@ The complete code is in the §"intended algorithm" block above. The full UMPIRE 
 
 A learner who has shipped this challenge *well* has:
 
-- A full UMPIRE write-up with the 30-second memo at the top.
-- Both `O(N log N)` and `O(N log k)` named in Match; the heap defended.
+- A full FRAME write-up with the 30-second memo at the top.
+- Both `O(N log N)` and `O(N log k)` named in Research constraints; the heap defended.
 - The divide-and-conquer pairwise-merge alternative mentioned.
 - Code that uses `heapq` correctly with the tiebreaker.
 - A trace on at least the three-list example, plus two edge cases.
@@ -223,7 +223,7 @@ A learner who has shipped this challenge *well* has:
 
 A learner who has shipped this challenge *poorly* has:
 
-- No memo at the top; the Match step is just "use a heap."
+- No memo at the top; the Research constraints step is just "use a heap."
 - The brute-force concatenate-then-sort version, with no mention of the heap.
 - The heap version without a tiebreaker (works on the LeetCode test cases but fails on equal-value cross-list ties).
 - No mention of the divide-and-conquer alternative.

@@ -63,11 +63,11 @@ Answer key at the bottom.
 |------:|---------|
 | 9-10 | Backtracking recognition is interview-ready, including the negative-space rejections (Q2, Q9) and the constraint-satisfaction sub-shape (Q6, Q7). Move on. |
 | 7-8 | Good — re-read [Lecture 3 §6](./lecture-notes/03-grid-backtracking-and-constraint-satisfaction.md) for the negative-space rejections. Most learners miss Q2 (counting subsets is DP, not backtracking) or Q9 (counting climbing-stairs is DP) first time; that is normal. |
-| 5-6 | Redo Exercises 1, 2, and 3 with stricter Match sections. The combinatorial-vs-counting distinction and the prune-and-skip discipline need more reps. |
+| 5-6 | Redo Exercises 1, 2, and 3 with stricter Research constraints sections. The combinatorial-vs-counting distinction and the prune-and-skip discipline need more reps. |
 | <5 | The pattern recognition is not yet automatic. Re-read all three lectures, re-do all three exercises with the state and the prune stated aloud, then retake the quiz. |
 
 This quiz is about **fluency**, not difficulty. The discriminating questions are Q2 and Q9 (counting prompts that go to DP, not backtracking), Q4 (string partitioning is backtracking, not DP), and Q7 (sudoku is backtracking, not search). Q2 and Q9 are the most-missed; senior candidates over-apply backtracking to any "return all" prompt without checking whether "count" alone is asked.
 
 Q1 (subsets) and Q3 (combinations) are the cleanest direct-template questions. Q6 (N-Queens) and Q7 (sudoku) test recognition of the constraint-satisfaction sub-shape.
 
-When done, the [homework](./homework.md) is next.
+When done, the [homework](./homework/README.md) is next.

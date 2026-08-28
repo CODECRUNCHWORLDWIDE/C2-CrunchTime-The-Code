@@ -1,6 +1,6 @@
 # Challenge 2 — Task Scheduler (LeetCode 621)
 
-> **Difficulty:** Medium / Hard. **Target solve time:** 60 minutes including UMPIRE write-up.
+> **Difficulty:** Medium / Hard. **Target solve time:** 60 minutes including FRAME write-up.
 
 The canonical "heap + auxiliary structure" problem. Builds on the size-k template (Exercise 1) and the heap-of-tuples idiom (Lecture 2). The optional Phase-2 stretch — useful if you have energy left after Challenge 1.
 
@@ -185,8 +185,8 @@ But this can be less than `len(tasks)` when there are many distinct low-frequenc
 
 A learner who has shipped this challenge *well* has:
 
-- A full UMPIRE write-up with the 30-second memo.
-- Both the simulation and the closed-form math named in Match; the simulation defended as the general answer.
+- A full FRAME write-up with the 30-second memo.
+- Both the simulation and the closed-form math named in Research constraints; the simulation defended as the general answer.
 - A trace on the documented example showing the heap and cooldown state at each tick.
 - Time complexity: `O(L log m)` for simulation; `O(L)` for math.
 - Recording ≥ 15 minutes.

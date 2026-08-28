@@ -1,6 +1,6 @@
 # Mini-Project — Mock #3 Recorded, Plus an XOR-Trick and a Binary-Trie Write-Up
 
-> The week's deliverable: the Mock #3 recording with a two-pass self-feedback note, plus two compact portfolio artifacts that demonstrate fluency across the highest-leverage Week-14 patterns — one XOR-trick write-up and one binary-trie write-up, each fully UMPIRE-narrated. The three pieces together are the proof that you can run a full mock under pressure *and* defend the two bit sub-shapes that matter most. The binary-trie write-up is the bridge artifact — it ties this week's bit work back to the Week 9 trie family.
+> The week's deliverable: the Mock #3 recording with a two-pass self-feedback note, plus two compact portfolio artifacts that demonstrate fluency across the highest-leverage Week-14 patterns — one XOR-trick write-up and one binary-trie write-up, each fully FRAME-narrated. The three pieces together are the proof that you can run a full mock under pressure *and* defend the two bit sub-shapes that matter most. The binary-trie write-up is the bridge artifact — it ties this week's bit work back to the Week 9 trie family.
 
 **Estimated time:** 10 hours, split across Thursday–Saturday (Mock #3 on Friday).
 
@@ -30,7 +30,7 @@ mocks/mock-03/
 ├── immediate-notes.md         ← 5-minute brain dump right after the clock stops
 └── timestamps.md              ← pass-1 timestamps
 
-umpire-writeups/c2-week-14/
+frame-writeups/c2-week-14/
 ├── mock-03-self-feedback.md   ← the two-pass self-feedback + trajectory section
 └── mini-project/
     ├── README.md                              ← short overview + index + reflection
@@ -38,7 +38,7 @@ umpire-writeups/c2-week-14/
     └── problem-02-binary-trie-maximum-xor.md  ← binary trie (Maximum XOR, LC 421)
 ```
 
-Each write-up is the full UMPIRE format from Week 1, **plus a leading 30-second pattern-recognition memo at the top**.
+Each write-up is the full FRAME format from Week 1, **plus a leading 30-second pattern-recognition memo at the top**.
 
 The two problems are chosen so that:
 
@@ -85,44 +85,44 @@ Read each aloud; both should hit 25–30 seconds.
 
 ---
 
-## UMPIRE structure for each write-up
+## FRAME structure for each write-up
 
-The full six-section format. The Match section opens with the 30-second memo above.
+The full five-section format. The Research constraints section opens with the 30-second memo above.
 
-### Understand
+### Frame
 
-Restate the problem in your own words. Walk one example by hand. Note the constraints. Specifically:
+Restate the problem in your own words. Walk one example by hand.
+
+### Research constraints
+
+Open with the 30-second memo. Then in 2–3 sentences name the sub-shape (XOR fold / binary trie), the discriminating cue, and the rejected alternative (hash map for Problem 1; brute force for Problem 2). Note the limits and what makes the problem hard:
 
 - Problem 1 — state the binding constraints (linear time, constant space) and why they rule out the hash-map answer.
 - Problem 2 — state why the `O(n**2)` brute force is too slow for the constraints, and the structural insight that high bits dominate the XOR.
 
-### Match
-
-Open with the 30-second memo. Then in 2–3 sentences name the sub-shape (XOR fold / binary trie), the discriminating cue, and the rejected alternative (hash map for Problem 1; brute force for Problem 2).
-
-### Plan
+### Assess options
 
 Numbered steps; 4–6 lines. State the data structure (none / the binary trie) first, the loop shape second, the termination third.
 
 - Problem 1: seed an accumulator at 0; XOR every element; return it.
 - Problem 2: build the trie MSB-first; for each number, greedy opposite-bit walk; track the max.
 
-### Implement
+### Make the solution
 
 The code. Type hints on every function. Docstrings on every public function. Comments only where the line is non-obvious — the binary trie's `want = 1 - bit` and the same-bit fallback deserve a comment; the XOR accumulator does not.
 
-### Review
+### Examine (verify)
 
 Trace each implementation by hand on at least two inputs: one positive case and one edge case (single element for both; for Problem 2 the edge is `[0]` → `0`).
 
-### Evaluate
+### Examine (cost)
 
 Time and space bounds **with derivation** — the derivation is mandatory, not the bound alone.
 
 - Problem 1: `O(n)` time / `O(1)` space, derived from "one pass, one accumulator."
 - Problem 2: `O(n · 32)` time / `O(n · 32)` space, derived from "n insertions of 32 bits, then n walks of 32 steps."
 
-Mention at least one variant in each Evaluate. Problem 1: Single Number III (LC 260), which folds to `a ^ b` and partitions on a differing bit. Problem 2: the `O(n**2)` brute force, and a note that the trie generalizes to "max XOR with a constraint" variants (LC 1707).
+Mention at least one variant in each Examine (cost). Problem 1: Single Number III (LC 260), which folds to `a ^ b` and partitions on a differing bit. Problem 2: the `O(n**2)` brute force, and a note that the trie generalizes to "max XOR with a constraint" variants (LC 1707).
 
 ---
 
@@ -130,8 +130,8 @@ Mention at least one variant in each Evaluate. Problem 1: Single Number III (LC 
 
 The pair must be navigable. At minimum:
 
-- The Problem 1 write-up cites Problem 2 in its Evaluate: "Compare to the binary-trie write-up — Single Number uses XOR's *algebra* (cancellation in a fold), while Maximum XOR uses XOR's *structure* (high bits dominate, so it needs a data structure). Same operator, two problem shapes."
-- The Problem 2 write-up cites Problem 1 in its Match, and cites the Week 9 trie: "Unlike the XOR-fold problem, this cannot be solved by a one-line fold — the structure (high bits dominate) requires the binary trie, which is the Week 9 dict-of-dict trie restricted to the alphabet `{0, 1}`."
+- The Problem 1 write-up cites Problem 2 in its Examine (cost): "Compare to the binary-trie write-up — Single Number uses XOR's *algebra* (cancellation in a fold), while Maximum XOR uses XOR's *structure* (high bits dominate, so it needs a data structure). Same operator, two problem shapes."
+- The Problem 2 write-up cites Problem 1 in its Research constraints, and cites the Week 9 trie: "Unlike the XOR-fold problem, this cannot be solved by a one-line fold — the structure (high bits dominate) requires the binary trie, which is the Week 9 dict-of-dict trie restricted to the alphabet `{0, 1}`."
 
 The cross-references earn senior signal — they show you navigate the *taxonomy* of the bit family, not just the individual templates.
 
@@ -147,7 +147,7 @@ The Mock #3 artifact and each write-up are graded. Total possible: 100; passing:
 |-----------|-------:|-------------------------------|
 | Conditions held | 20 | Video on, hard 45-min clock, no peeking — verifiable from the recording |
 | Two-pass review done | 20 | Pass-1 timestamps + pass-2 prescriptions both present |
-| Self-feedback complete | 25 | All sections present; Match / thinking-aloud / recovery / Evaluate each graded |
+| Self-feedback complete | 25 | All sections present; Research constraints / thinking-aloud / recovery / Examine (cost) each graded |
 | Trajectory section | 20 | Honest comparison across Mock #1 → #2 → #3; prior behavior changes assessed |
 | One behavior change for Mock #4 | 15 | Specific and testable; not "be more confident" |
 
@@ -156,24 +156,24 @@ The Mock #3 artifact and each write-up are graded. Total possible: 100; passing:
 | Dimension | Points | What "full credit" looks like |
 |-----------|-------:|-------------------------------|
 | 30-second memo at the top | 10 | All lines present; the constant-space discriminator vs hash map stated |
-| Understand | 10 | One example walked; the constraints that rule out the hash map stated |
-| Match | 20 | XOR fold named; the four identities cited; hash map rejected with reason |
-| Plan | 10 | Accumulator-and-fold sketched |
-| Implement | 25 | Test cases pass; type hints; PEP 8; idiomatic Python |
-| Review | 10 | Positive trace + single-element edge case |
-| Evaluate | 15 | `O(n)`/`O(1)` derived; trade vs hash map; the Single Number III variant named |
+| Frame | 10 | One example walked; the contract restated in your own words |
+| Research constraints | 20 | The constraints that rule out the hash map stated; XOR fold named; the four identities cited; hash map rejected with reason |
+| Assess options | 10 | Accumulator-and-fold sketched |
+| Make the solution | 25 | Test cases pass; type hints; PEP 8; idiomatic Python |
+| Examine (verify) | 10 | Positive trace + single-element edge case |
+| Examine (cost) | 15 | `O(n)`/`O(1)` derived; trade vs hash map; the Single Number III variant named |
 
 ### Problem 2 (binary trie) rubric
 
 | Dimension | Points | What "full credit" looks like |
 |-----------|-------:|-------------------------------|
 | 30-second memo at the top | 10 | All lines present; the MSB-first / opposite-bit rule stated |
-| Understand | 10 | One example walked; why brute force is too slow stated |
-| Match | 20 | Binary trie named; greedy opposite-bit walk explained; brute force rejected |
-| Plan | 10 | Insert MSB-first + greedy walk outlined |
-| Implement | 25 | Test cases pass; MSB-first insertion correct; same-bit fallback present; type hints |
-| Review | 10 | Positive trace + `[0]` edge case |
-| Evaluate | 15 | `O(n · 32)` derived; brute-force trade; the Week 9 trie cross-reference present |
+| Frame | 10 | One example walked; the contract restated in your own words |
+| Research constraints | 20 | Why brute force is too slow stated; binary trie named; greedy opposite-bit walk explained; brute force rejected |
+| Assess options | 10 | Insert MSB-first + greedy walk outlined |
+| Make the solution | 25 | Test cases pass; MSB-first insertion correct; same-bit fallback present; type hints |
+| Examine (verify) | 10 | Positive trace + `[0]` edge case |
+| Examine (cost) | 15 | `O(n · 32)` derived; brute-force trade; the Week 9 trie cross-reference present |
 
 ---
 
@@ -182,8 +182,8 @@ The Mock #3 artifact and each write-up are graded. Total possible: 100; passing:
 The mini-project is complete when:
 
 - The Mock #3 recording link, immediate notes, and pass-1 timestamps are committed under `mocks/mock-03/`.
-- The Mock #3 self-feedback (with the trajectory section and one behavior change for Mock #4) is committed under `umpire-writeups/c2-week-14/`.
-- Both problem write-ups are committed under `umpire-writeups/c2-week-14/mini-project/`, each with the 30-second memo at the top.
+- The Mock #3 self-feedback (with the trajectory section and one behavior change for Mock #4) is committed under `frame-writeups/c2-week-14/`.
+- Both problem write-ups are committed under `frame-writeups/c2-week-14/mini-project/`, each with the 30-second memo at the top.
 - The cross-references in both directions are present.
 - Both implementations pass the test cases in the Week-14 exercise starters.
 
@@ -193,7 +193,7 @@ Push everything by Sunday end-of-day. Phase 4's second week is closed on the pus
 
 ## Self-reflection (in the mini-project README)
 
-End `umpire-writeups/c2-week-14/mini-project/README.md` with a short reflection — 4–6 sentences — addressing:
+End `frame-writeups/c2-week-14/mini-project/README.md` with a short reflection — 4–6 sentences — addressing:
 
 1. Which sub-shape felt more natural — the XOR fold's algebra or the binary trie's structure? Why?
 2. What was the hardest part of the binary trie to articulate aloud — the MSB-first insertion, or the opposite-bit greedy walk?

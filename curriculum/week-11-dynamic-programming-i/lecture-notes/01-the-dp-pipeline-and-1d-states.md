@@ -184,9 +184,9 @@ The lecture-time takeaway: **memoization is essentially free under interview con
 
 > *You are climbing a staircase. It takes `n` steps to reach the top. Each time you can climb 1 or 2 steps. How many distinct ways can you climb to the top?*
 
-**Match.** The brute-force recursion: `ways(n) = ways(n - 1) + ways(n - 2)` (take a 1-step from `n - 1`, or take a 2-step from `n - 2`). Base cases: `ways(0) = 1` (one way to stand still); `ways(1) = 1` (one way: a single 1-step). Overlapping subproblems and optimal substructure both hold. DP.
+**Research constraints.** The brute-force recursion: `ways(n) = ways(n - 1) + ways(n - 2)` (take a 1-step from `n - 1`, or take a 2-step from `n - 2`). Base cases: `ways(0) = 1` (one way to stand still); `ways(1) = 1` (one way: a single 1-step). Overlapping subproblems and optimal substructure both hold. DP.
 
-**State semantics.** `dp[i] = number of distinct ways to reach step i`. This is the senior-grade Match move: name the state in words, not just the formula. The interviewer is checking that you understand why the recurrence has the shape it does, not just that you remember the shape.
+**State semantics.** `dp[i] = number of distinct ways to reach step i`. This is the senior-grade Research constraints move: name the state in words, not just the formula. The interviewer is checking that you understand why the recurrence has the shape it does, not just that you remember the shape.
 
 **Recurrence.** `dp[i] = dp[i - 1] + dp[i - 2]`. The number of ways to reach step `i` is the number of ways to reach step `i - 1` (then take a 1-step) plus the number of ways to reach step `i - 2` (then take a 2-step). The two paths are disjoint (the final step is different), so addition is correct.
 
@@ -216,7 +216,7 @@ Eight lines including the base case. The rolling-pair reduction is the natural f
 
 > *You are a professional robber planning to rob houses along a street. Each house has a certain amount of money. The constraint is that adjacent houses are connected and will automatically contact the police if both are robbed on the same night. Return the maximum amount of money you can rob without alerting the police.*
 
-**Match.** The brute-force recursion: for each house `i`, decide to rob it (collect `nums[i]` and skip house `i - 1`) or skip it (move on to house `i - 1`). `rob(i) = max(rob(i - 1), rob(i - 2) + nums[i])`. Overlapping subproblems and optimal substructure both hold. DP.
+**Research constraints.** The brute-force recursion: for each house `i`, decide to rob it (collect `nums[i]` and skip house `i - 1`) or skip it (move on to house `i - 1`). `rob(i) = max(rob(i - 1), rob(i - 2) + nums[i])`. Overlapping subproblems and optimal substructure both hold. DP.
 
 **State semantics.** `dp[i] = maximum loot considering houses 0..i (inclusive)`. The state is the index of the rightmost house under consideration; the DP captures "what is the best we can do up to here?"
 
@@ -250,7 +250,7 @@ Six lines. The rolling pair is identical in structure to climbing stairs, only t
 
 > *A message containing letters from A–Z is encoded to numbers using the mapping 'A' -> '1', 'B' -> '2', ..., 'Z' -> '26'. Given a string `s` containing only digits, return the number of ways to decode it.*
 
-**Match.** The brute-force recursion: for each position `i`, decide whether to consume one digit (if `s[i]` is in `1..9`) or two digits (if `s[i..i+1]` is in `10..26`). The count is the sum of the counts from each valid choice. Overlapping subproblems and optimal substructure both hold. DP.
+**Research constraints.** The brute-force recursion: for each position `i`, decide whether to consume one digit (if `s[i]` is in `1..9`) or two digits (if `s[i..i+1]` is in `10..26`). The count is the sum of the counts from each valid choice. Overlapping subproblems and optimal substructure both hold. DP.
 
 **State semantics.** `dp[i] = number of ways to decode the prefix s[:i]`. `dp[0] = 1` (the empty string has one decoding: itself). `dp[n]` is the answer.
 
@@ -306,7 +306,7 @@ Eighteen lines. The two conditional branches are visible in the loop body. The r
 
 > *Given a string `s` and a dictionary of strings `wordDict`, return True if `s` can be segmented into a space-separated sequence of one or more dictionary words.*
 
-**Match.** The brute-force recursion: try every possible split point `j`; if `s[:j]` is segmentable and `s[j:]` is a dictionary word, the answer is True. The recursion revisits the same subproblems (e.g., the segmentability of every prefix). Overlapping subproblems and optimal substructure both hold. DP.
+**Research constraints.** The brute-force recursion: try every possible split point `j`; if `s[:j]` is segmentable and `s[j:]` is a dictionary word, the answer is True. The recursion revisits the same subproblems (e.g., the segmentability of every prefix). Overlapping subproblems and optimal substructure both hold. DP.
 
 **State semantics.** `dp[i] = True iff s[:i] can be segmented`. `dp[0] = True` (the empty string is trivially segmentable). `dp[n]` is the answer.
 

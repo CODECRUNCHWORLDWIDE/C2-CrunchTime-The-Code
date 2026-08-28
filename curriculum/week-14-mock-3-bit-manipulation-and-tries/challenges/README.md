@@ -5,7 +5,7 @@ Two challenges. Both are required this week — Challenge 1 is the centerpiece o
 | # | Challenge | Pattern | Difficulty | Target solve time |
 |---|-----------|---------|------------|------------------:|
 | 1 | [Mock #3 — Timed Round](./challenge-01-mock-3-timed-round.md) | Full-loop mock under near-real conditions | — (a mock, not a problem) | 45 min hard clock + 90 min review |
-| 2 | [Sum of Two Integers](./challenge-02-sum-of-two-integers.md) (LC 371) | XOR (sum without carry) + carry; 32-bit masking | Medium | 50 min including UMPIRE write-up |
+| 2 | [Sum of Two Integers](./challenge-02-sum-of-two-integers.md) (LC 371) | XOR (sum without carry) + carry; 32-bit masking | Medium | 50 min including FRAME write-up |
 
 Challenge 1 is the week. It is not an algorithm problem — it is the protocol for running Mock #3 as a recorded full loop under near-real conditions: video on, a hard 45-minute clock, no peeking. The deliverable is a recording, a two-pass self-feedback note, and the trajectory comparison across Mock #1 → #2 → #3.
 
@@ -17,9 +17,9 @@ Challenge 2 is the bit problem that most cleanly separates strong candidates: ad
 
 For Challenge 2 (the algorithm problem), the deliverable is:
 
-1. **A UMPIRE write-up** — under `umpire-writeups/c2-week-14/challenges/`. Full six sections; the Match section opens with the 30-second pattern-recognition memo from the challenge file.
+1. **A FRAME write-up** — under `frame-writeups/c2-week-14/challenges/`. Full five sections; the Research constraints section opens with the 30-second pattern-recognition memo from the challenge file.
 2. **A working implementation** — committed as `challenges/sum-of-two-integers.py` in your portfolio. Must pass the test cases listed in the challenge file.
-3. **A recording** — minimum 10 minutes, walking through the Match → Plan → Implement narration. The masking subtlety should be narrated explicitly.
+3. **A recording** — minimum 10 minutes, walking through the Research constraints → Assess options → Make the solution narration. The masking subtlety should be narrated explicitly.
 
 For Challenge 1 (the mock), the deliverable is the recording link, the immediate notes, the pass-1 timestamps, and the self-feedback write-up — see the challenge file for the exact artifact list.
 

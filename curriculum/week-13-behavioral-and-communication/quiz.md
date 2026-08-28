@@ -6,7 +6,7 @@ Ten behavioral prompts. **Do not answer them.** For each, decide three things, f
 2. Which **story from your bank** would you deploy?
 3. What is the **top signal** the interviewer wants from this prompt?
 
-This is the Match step, applied to behavioral. Time yourself — 15 seconds per question is the target. Lectures closed.
+This is the Research constraints step, applied to behavioral. Time yourself — 15 seconds per question is the target. Lectures closed.
 
 Answer key at the bottom. (Story choices in the key are illustrative — yours will differ; what's graded is whether the *category* and *top signal* are right.)
 
@@ -74,4 +74,4 @@ Answer key at the bottom. (Story choices in the key are illustrative — yours w
 
 This quiz is about **fluency**, not difficulty. The discriminating questions are Q2 and Q8 (hybrids — naming both categories is the senior move), Q7 and Q10 (the non-story "why" prompts that need a pitch and genuine motivation, not a STAR story), and Q9 (primarily Failure, not Leadership, despite "what you did about it"). The most-missed are the hybrids: candidates pick one category and miss that a story landing *both* beats scores higher.
 
-When done, the [homework](./homework.md) is next.
+When done, the [homework](./homework/README.md) is next.

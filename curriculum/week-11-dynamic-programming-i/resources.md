@@ -138,7 +138,7 @@ A short table of the four 2D DPs you should be able to write from memory.
 
 Three observations:
 
-1. **LCS and edit distance share the table shape, differ in the transition.** LCS picks the max over two; edit distance picks the min over three (delete, insert, replace). Recognizing this similarity is the senior-grade Match move.
+1. **LCS and edit distance share the table shape, differ in the transition.** LCS picks the max over two; edit distance picks the min over three (delete, insert, replace). Recognizing this similarity is the senior-grade Research constraints move.
 2. **LCS measures subsequence (skipping allowed); longest common substring measures substring (contiguous).** The substring variant uses a different recurrence: match extends `dp[i-1][j-1] + 1`; no-match resets to 0. The reset is the discriminator. This week is **subsequence only**; the substring variant is briefly noted in Lecture 2 §5.
 3. **Longest palindromic subsequence requires diagonal iteration.** The recurrence reads `dp[i+1][j-1]` — the cell *below and to the left* — so the standard row-major iteration is wrong. Iterate by *substring length* (1, 2, 3, ..., n) so that shorter substrings are filled before longer ones. The iteration order is the discriminator, not the recurrence.
 

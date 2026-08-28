@@ -1,10 +1,10 @@
-# Mini-Project — Top-k + Two-Heap, Fully UMPIRE-Narrated
+# Mini-Project — Top-k + Two-Heap, Fully FRAME-Narrated
 
-> The week's deliverable: two compact portfolio artifacts that demonstrate fluency across the two highest-leverage Week-8 templates — the size-k top-k heap and the two-heap running-statistic pattern — with full UMPIRE narration end-to-end. The pair is the discriminating element — Mock #2 grades both templates separately, and shipping one of each forces you to articulate the structural differences out loud.
+> The week's deliverable: two compact portfolio artifacts that demonstrate fluency across the two highest-leverage Week-8 templates — the size-k top-k heap and the two-heap running-statistic pattern — with full FRAME narration end-to-end. The pair is the discriminating element — Mock #2 grades both templates separately, and shipping one of each forces you to articulate the structural differences out loud.
 
 **Estimated time:** 10 hours, split across Thursday-Saturday.
 
-This mini-project is *narration-heavy* rather than *content-heavy*. You will produce two UMPIRE write-ups, each fully delivered in all six sections, each anchored by a 30-second pattern-recognition memo at the top. The two write-ups must be navigable as a pair — cross-references between them are part of the rubric.
+This mini-project is *narration-heavy* rather than *content-heavy*. You will produce two FRAME write-ups, each fully delivered in all five sections, each anchored by a 30-second pattern-recognition memo at the top. The two write-ups must be navigable as a pair — cross-references between them are part of the rubric.
 
 ---
 
@@ -12,11 +12,11 @@ This mini-project is *narration-heavy* rather than *content-heavy*. You will pro
 
 Three reasons.
 
-1. **Phase 2 is graded on Match.** Phase 1 spent four weeks installing the UMPIRE habit; the Implement step was the primary work. Phase 2 patterns are heavier and the Match step matters more — recognition cost is no longer "30 seconds to name the pattern" but "60 seconds to name the algorithm choice (size-k / k-closest / two-heap / k-way merge / scheduler / lazy deletion), defend the size bound or balance invariant, and reject one wrong alternative." This mini-project is the third in C2 to grade two parallel write-ups as a *pair* (W6 BFS pair, W7 DFS pair, W8 heap pair).
+1. **Phase 2 is graded on Research constraints.** Phase 1 spent four weeks installing the FRAME habit; the Make step was the primary work. Phase 2 patterns are heavier and the Research constraints step matters more — recognition cost is no longer "30 seconds to name the pattern" but "60 seconds to name the algorithm choice (size-k / k-closest / two-heap / k-way merge / scheduler / lazy deletion), defend the size bound or balance invariant, and reject one wrong alternative." This mini-project is the third in C2 to grade two parallel write-ups as a *pair* (W6 BFS pair, W7 DFS pair, W8 heap pair).
 
 2. **Top-k and two-heap are the two structural shapes of every interview heap question.** Half of all FAANG heap problems are top-k variants; the other half are running-statistic variants. The pair forces you to articulate the differences: when is the heap bounded vs unbounded, when is one heap enough vs two, when does the size invariant matter vs the balance invariant. After two write-ups side-by-side, the disambiguation is reflexive.
 
-3. **The full UMPIRE narration is the rubric.** Drills are graded on Match + Implement; the mini-project adds Plan, Review, Evaluate, *and* cross-references. By Sunday you should be able to produce a full UMPIRE narration on a heap problem in 20-25 minutes, recorded, without rehearsal.
+3. **The full FRAME narration is the rubric.** Drills are graded on Research constraints + Make the solution; the mini-project adds Assess options, Examine (verify), Examine (cost), *and* cross-references. By Sunday you should be able to produce a full FRAME narration on a heap problem in 20-25 minutes, recorded, without rehearsal.
 
 ---
 
@@ -25,19 +25,19 @@ Three reasons.
 Three files: two problem write-ups plus a short overview.
 
 ```
-umpire-writeups/c2-week-08/mini-project/
+frame-writeups/c2-week-08/mini-project/
 ├── README.md                                              ← short overview + index + reflection
 ├── problem-01-topk-top-k-frequent-words.md                ← top-k + heap-of-tuples
 └── problem-02-twoheap-sliding-window-median.md            ← two-heap + lazy deletion
 ```
 
-Each write-up is the full UMPIRE format from Week 1, **plus a leading 30-second pattern-recognition memo at the top**.
+Each write-up is the full FRAME format from Week 1, **plus a leading 30-second pattern-recognition memo at the top**.
 
 The two problems are chosen so that:
 
 - **Problem 1 (top-k + heap-of-tuples):** the algorithm is a size-k heap with a *conflicting-direction* tiebreaker (count is max-first; word is min-first on ties). This forces you to write either a custom-comparator wrapper or a two-pass `sort-then-truncate` solution — and to defend the choice. A subtle variant that catches candidates who only practice plain top-k.
 
-- **Problem 2 (two-heap + lazy deletion):** the algorithm is the two-heap running median *under a sliding window* — meaning expired elements must be removed from the heaps. The Match move is recognizing that "running median under a sliding window" composes the two-heap pattern (Lecture 3 §1) with lazy deletion (Lecture 3 §4).
+- **Problem 2 (two-heap + lazy deletion):** the algorithm is the two-heap running median *under a sliding window* — meaning expired elements must be removed from the heaps. The Research constraints move is recognizing that "running median under a sliding window" composes the two-heap pattern (Lecture 3 §1) with lazy deletion (Lecture 3 §4).
 
 The two problems together cover every Week-8 idiom: size-k bound, heap-of-tuples with custom tiebreakers, two-heap balance, lazy deletion. After this pair, the recognition for any heap problem should reduce to: *which of these idioms applies?*
 
@@ -106,10 +106,10 @@ Each write-up's grade comes from five axes:
 | Axis | Weight | "Great" looks like |
 |------|------:|--------------------|
 | 30-second memo at the top | 25% | Six lines, all required elements named, hits cadence on read-aloud (≤30s) |
-| Match section (expanded body) | 25% | Explicit comparison against the *other* template; one-paragraph "why this algorithm and not the other"; rejection of one wrong pattern (sort / quickselect / single-heap) |
-| Plan + Implement | 20% | Clean code; the canonical template visible; the heap setup (initial seed, bound, invariant restore) is a single named function or block |
-| Review | 15% | Trace on at least two examples; one common bug called out and avoided |
-| Evaluate (five-piece from W2) | 15% | Time / space / best-avg-worst / tradeoff / improvement, with the `O(n log k)` or `O(log n)` defense sentence and explicit rejection of one alternative |
+| Research constraints section (expanded body) | 25% | Explicit comparison against the *other* template; one-paragraph "why this algorithm and not the other"; rejection of one wrong pattern (sort / quickselect / single-heap) |
+| Assess options + Make the solution | 20% | Clean code; the canonical template visible; the heap setup (initial seed, bound, invariant restore) is a single named function or block |
+| Examine · verify | 15% | Trace on at least two examples; one common bug called out and avoided |
+| Examine · cost (five-piece from W2) | 15% | Time / space / best-avg-worst / tradeoff / improvement, with the `O(n log k)` or `O(log n)` defense sentence and explicit rejection of one alternative |
 
 A grade of "great" on both write-ups is the bar. The cross-references between Problems 1 and 2 are graded separately as the navigation rubric — see below.
 
@@ -146,9 +146,9 @@ The answer should be sorted by frequency from highest to lowest. If two words ha
 
 The senior insight is that **for `n <= 500`, the asymptotic difference is invisible** — both algorithms run in microseconds. The choice is on code clarity, not on speed. Implementation A is the simpler answer; Implementation B is the template rep. Name both; defend one.
 
-### Full UMPIRE narration for Problem 1
+### Full FRAME narration for Problem 1
 
-**[U — Understand]** (write 2-3 paragraphs)
+**[F — Frame]** (write 2-3 paragraphs)
 
 Restate the problem in your own words. Confirm:
 
@@ -159,7 +159,7 @@ Restate the problem in your own words. Confirm:
 
 Walk an example by hand. For `words = ["i", "love", "leetcode", "i", "love", "coding"], k = 2`: counts = `{"i": 2, "love": 2, "leetcode": 1, "coding": 1}`. Top 2 by count: `"i"` and `"love"` (both count 2). Order: count is the same, so alphabetical: `"i" < "love"`. Output: `["i", "love"]`.
 
-**[M — Match]** (write 3-4 paragraphs)
+**[R — Research constraints]** (write 3-4 paragraphs)
 
 Top-k with a conflicting-direction tiebreaker. Restate the memo elements:
 
@@ -170,7 +170,7 @@ Top-k with a conflicting-direction tiebreaker. Restate the memo elements:
 
 Compare against Problem 2 (two-heap median). The structural parallel: both use a heap-based template; the differences are (a) bounded (Problem 1, size k) vs unbounded (Problem 2, full stream), (b) one heap vs two heaps, (c) the *invariant* — size bound (Problem 1) vs balance (Problem 2). Naming this parallel out loud is the senior signal.
 
-**[P — Plan]** (write the algorithm in 4-6 bullets, no code yet)
+**[A — Assess options]** (write the algorithm in 4-6 bullets, no code yet)
 
 **Implementation A — sort and truncate (simpler):**
 
@@ -186,7 +186,7 @@ Compare against Problem 2 (two-heap median). The structural parallel: both use a
 
 Edge cases: `k == len(counts)` (return everything); all distinct words (each count is 1; alphabetical order).
 
-**[I — Implement]** (code with brief narration)
+**[M — Make the solution]** (code with brief narration)
 
 Implementation A is the cleaner answer. Implementation B is the template rep.
 
@@ -245,7 +245,7 @@ def top_k_frequent_words_heap(words: List[str], k: int) -> List[str]:
 
 The Implementation A version is six lines; B is closer to 25. The senior framing in the write-up: "I would write A in an interview; I am writing B here to demonstrate the template."
 
-**[R — Review]** (trace at least two examples)
+**[E — Examine · verify]** (trace at least two examples)
 
 Trace 1 — `words = ["i", "love", "leetcode", "i", "love", "coding"], k = 2`. counts = `{"i": 2, "love": 2, "leetcode": 1, "coding": 1}`. Sort by `(-count, word)`: `[("i", 2), ("love", 2), ("coding", 1), ("leetcode", 1)]`. Take first 2: `["i", "love"]`. Correct.
 
@@ -253,7 +253,7 @@ Trace 2 — `words = ["the", "day", "is", "sunny", "the", "the", "the", "sunny",
 
 Common bug avoided: forgetting that the output must be *sorted* by frequency. The heap layout is not sorted; if you skip the final `sorted` step in Implementation B, the order is implementation-defined.
 
-**[E — Evaluate]** (the five-piece)
+**[E — Examine · cost]** (the five-piece)
 
 - **Time**:
   - Implementation A: `O(n log n)` from the sort.
@@ -296,15 +296,15 @@ The answer is a list of `len(nums) - k + 1` floats.
 
 The senior insight is that **eager deletion would be `O(k)` per slide** (linear scan to find and remove the element). **Lazy deletion makes each slide amortized `O(log k)`** — the stale element is marked in constant time and discarded only when it surfaces to the heap top.
 
-### Full UMPIRE narration for Problem 2
+### Full FRAME narration for Problem 2
 
-(Use the same UMPIRE-section structure as Problem 1. Below is the abbreviated version; full write-up should match Problem 1's section depth.)
+(Use the same FRAME-section structure as Problem 1. Below is the abbreviated version; full write-up should match Problem 1's section depth.)
 
-**[U]** Restate. Sliding window of size `k`; report median after each slide. Edge case `k = 1`: the median of a single-element window is that element. Edge case `k = len(nums)`: only one window; one median.
+**[F]** Restate. Sliding window of size `k`; report median after each slide. Edge case `k = 1`: the median of a single-element window is that element. Edge case `k = len(nums)`: only one window; one median.
 
-**[M]** Two-heap pattern + lazy deletion. Algorithm choice: the two-heap median from Exercise 3, plus a `Counter` of stale entries; clean the heap tops at the start of each median query. Compare against Problem 1: same heap *family* but different sub-pattern (size-k bounded vs unbounded; one heap vs two; size invariant vs balance invariant). The structural parallel: both rest on `heapq` operations; both have a clear invariant; both have a defense sentence. The differences are the discriminators graded on Mock #2.
+**[R]** Two-heap pattern + lazy deletion. Algorithm choice: the two-heap median from Exercise 3, plus a `Counter` of stale entries; clean the heap tops at the start of each median query. Compare against Problem 1: same heap *family* but different sub-pattern (size-k bounded vs unbounded; one heap vs two; size invariant vs balance invariant). The structural parallel: both rest on `heapq` operations; both have a clear invariant; both have a defense sentence. The differences are the discriminators graded on Mock #2.
 
-**[P]** Five bullets:
+**[A]** Five bullets:
 
 1. Initialize `lower` (max-heap, negated), `upper` (min-heap), `stale = Counter()`, `result = []`.
 2. For each new element `nums[i]`: add to the appropriate heap (push-then-rebalance from Exercise 3).
@@ -312,7 +312,7 @@ The senior insight is that **eager deletion would be `O(k)` per slide** (linear 
 4. After each insertion (and stale-marking once the window is full), clean the tops of both heaps by popping any stale entries.
 5. If `i >= k - 1`: compute the median from the cleaned tops and append to `result`.
 
-**[I]**
+**[M]**
 
 ```python
 import heapq
@@ -376,18 +376,18 @@ def median_sliding_window(nums: List[int], k: int) -> List[float]:
 
 About 45 lines. The bookkeeping (`balance`, `stale`, `prune`) is more involved than the bare two-heap from Exercise 3; that is the cost of the sliding-window composition.
 
-**[R]** Trace on `nums = [1, 3, -1, -3, 5, 3, 6, 7], k = 3`. The trace is mechanical but useful to verify; do it in the write-up at least for the first three windows.
+**[E · verify]** Trace on `nums = [1, 3, -1, -3, 5, 3, 6, 7], k = 3`. The trace is mechanical but useful to verify; do it in the write-up at least for the first three windows.
 
 - i=0, x=1: lower=[-1] (negated). balance=1. i<k=3; no expire. balance=1; no rebalance needed (balance in {0,1}). prune (no stales). i < k-1; no emit.
 - i=1, x=3: 3 > 1; push to upper. upper=[3]. balance=0. No expire. balance=0; no rebalance. No emit.
 - i=2, x=-1: -1 <= 1; push to lower. lower=[-1, -1] (root -1). balance=1. No expire. balance=1; OK. Emit median: k odd; median = -lower[0] = 1.0. result=[1.0]. Correct.
 - i=3, x=-3: -3 <= 1; push to lower. balance=2. Expire nums[0] = 1; 1 <= -lower_root? Yes; balance -= 1 = 1. stale[1] = 1. Rebalance? balance=1; OK. Prune lower: lower_root is -1 (max of lower = 1); stale[1]=1; pop it; stale[1]=0. lower=[-3, -1]. Emit: k=3, odd; median = -lower[0] = 3? Wait — lower stores -1 and -(-3)=3; the root (min of negated) is -3, so max of lower = 3. Hmm — let me re-trace ... [the trace continues].
 
-The point of the trace is to catch bookkeeping bugs — the `balance` tracking and the stale-counter discipline are the hardest parts. Do at least two example traces in the Review.
+The point of the trace is to catch bookkeeping bugs — the `balance` tracking and the stale-counter discipline are the hardest parts. Do at least two example traces in Examine (verify).
 
 Common bug avoided: forgetting that `stale[old] += 1` does *not* immediately remove `old` from the heap. It only marks it for deferred removal. Forgetting the `prune` call after each insert/expire is the most common bug.
 
-**[E]** **Time `O(n log k)`** per slide amortized: each element is pushed at most once (`O(log k)`) and popped at most twice (real + stale; `O(log k)`). Total over `n` slides: `O(n log k)`. **Space `O(k)`** for the heaps and `O(k)` for the stale counter; total `O(k)`. **Tradeoff vs sorted-list with bisect**: `bisect.insort` is `O(k)` per add (list-shift cost); slow at `k = 10⁵`. The two-heap + lazy deletion is the canonical answer. **Tradeoff vs `sorted.SortedList` from the `sortedcontainers` library**: `O(log k)` per add and remove; cleaner code; allowed in some interviews but the `heapq` version is the "from-first-principles" answer interviewers grade.
+**[E · cost]** **Time `O(n log k)`** per slide amortized: each element is pushed at most once (`O(log k)`) and popped at most twice (real + stale; `O(log k)`). Total over `n` slides: `O(n log k)`. **Space `O(k)`** for the heaps and `O(k)` for the stale counter; total `O(k)`. **Tradeoff vs sorted-list with bisect**: `bisect.insort` is `O(k)` per add (list-shift cost); slow at `k = 10⁵`. The two-heap + lazy deletion is the canonical answer. **Tradeoff vs `sorted.SortedList` from the `sortedcontainers` library**: `O(log k)` per add and remove; cleaner code; allowed in some interviews but the `heapq` version is the "from-first-principles" answer interviewers grade.
 
 ---
 
@@ -421,17 +421,17 @@ Each problem write-up follows this skeleton. Save as `problem-NN-<slug>.md`.
 
 [1 paragraph: what makes this template distinct from the other; one sentence comparing against the other mini-project problem.]
 
-## UMPIRE write-up
+## FRAME write-up
 
-### Understand
-### Match
+### Frame
+### Research constraints
 [Expanded body — comparison against the other template, rejection of one wrong pattern.]
-### Plan
-### Implement
+### Assess options
+### Make the solution
 [Code with brief inline narration.]
-### Review
+### Examine · verify
 [Trace on 2 examples + 1 common bug avoided.]
-### Evaluate
+### Examine · cost
 [5-piece from W2, with the time-defense sentence cleanly delivered.]
 
 ## Cross-references
@@ -449,13 +449,13 @@ Each problem write-up follows this skeleton. Save as `problem-NN-<slug>.md`.
 
 ## Acceptance criteria
 
-- [ ] Both write-ups present in `umpire-writeups/c2-week-08/mini-project/`.
+- [ ] Both write-ups present in `frame-writeups/c2-week-08/mini-project/`.
 - [ ] Each write-up has a leading 30-second memo following the schema above.
 - [ ] **Problem 1 uses the top-k memo schema; Problem 2 uses the two-heap memo schema.**
-- [ ] Each write-up has all six UMPIRE sections fully written out (no "see exercise" placeholders).
-- [ ] Each write-up has a trace on at least two examples in the Review section.
+- [ ] Each write-up has all five FRAME sections (Frame · Research constraints · Assess options · Make the solution · Examine) fully written out (no "see exercise" placeholders).
+- [ ] Each write-up has a trace on at least two examples in the Examine (verify) section.
 - [ ] Each write-up has a Cross-references section linking to the other mini-project problem with a 1-2 sentence comparison.
-- [ ] Both `.py` solution files (extracted from the Implement sections) are present and pass their respective LeetCode test cases.
+- [ ] Both `.py` solution files (extracted from the Make the solution sections) are present and pass their respective LeetCode test cases.
 
 ---
 
@@ -469,14 +469,14 @@ Each problem write-up follows this skeleton. Save as `problem-NN-<slug>.md`.
 
 ### Friday — Problem 1 (3h)
 
-4. Write up Problem 1 in full UMPIRE. Allow 3 hours — the in-depth Understand and Match are the time-consuming parts. The "conflicting-direction tiebreaker" Match move is the senior signal; spend the time getting that paragraph right.
-5. Trace at least two examples in Review.
+4. Write up Problem 1 in full FRAME. Allow 3 hours — the in-depth Frame and Research constraints are the time-consuming parts. The "conflicting-direction tiebreaker" Research constraints move is the senior signal; spend the time getting that paragraph right.
+5. Trace at least two examples in Examine (verify).
 6. Code + commit.
 
 ### Saturday — Problem 2 (3h)
 
-7. Write up Problem 2 in full UMPIRE. Cross-reference back to Problem 1 in the Match section ("size-k bounded vs unbounded; one heap vs two; size invariant vs balance invariant" — the structural parallel).
-8. Trace at least two examples in Review.
+7. Write up Problem 2 in full FRAME. Cross-reference back to Problem 1 in the Research constraints section ("size-k bounded vs unbounded; one heap vs two; size invariant vs balance invariant" — the structural parallel).
+8. Trace at least two examples in Examine (verify).
 9. Code + commit.
 
 ### Sunday — polish + push (0.5h)
@@ -493,16 +493,16 @@ Each problem write-up follows this skeleton. Save as `problem-NN-<slug>.md`.
 A learner who has shipped this mini-project *well* has:
 
 - Both memos under 30 seconds when read aloud.
-- Match sections that explicitly compare the two templates (top-k vs two-heap; bounded vs unbounded; one heap vs two).
-- Implement sections with the heap setup (initial seed, bound, invariant restore) clearly visible as a named function or labeled block.
+- Research constraints sections that explicitly compare the two templates (top-k vs two-heap; bounded vs unbounded; one heap vs two).
+- Make the solution sections with the heap setup (initial seed, bound, invariant restore) clearly visible as a named function or labeled block.
 - Cross-references at the bottom of each write-up linking to the other.
-- Recordings ≥ 20 minutes each, with the full UMPIRE narration.
+- Recordings ≥ 20 minutes each, with the full FRAME narration.
 
 A learner who has shipped this mini-project *poorly* has:
 
 - Memos that run 60+ seconds — too verbose, missing the cadence.
-- Match sections that name "heap" but do not specify the sub-shape or invariant.
-- Implement sections without a clearly extracted size bound (Problem 1) or balance discipline (Problem 2).
+- Research constraints sections that name "heap" but do not specify the sub-shape or invariant.
+- Make the solution sections without a clearly extracted size bound (Problem 1) or balance discipline (Problem 2).
 - No cross-references; each write-up reads as a stand-alone with no awareness of the other.
 
 If you catch yourself producing the "poorly" shape, the fix is to re-read [Lecture 1 §7](../lecture-notes/01-heapq-and-top-k.md) (the 30-second recognition signals) and [Lecture 3 §7](../lecture-notes/03-two-heap-and-k-way-merge.md) (the complete decision tree) and re-do whichever write-up is weaker.
@@ -515,7 +515,7 @@ Two reasons.
 
 1. **One top-k + one two-heap is the diet of a real heap interview.** Phase 2 onsites typically ask one heap problem; that problem is either a "find k-something" (50% of the time) or a "running statistic on a stream" (50% of the time). Shipping one of each guarantees you have practiced the at-bat for whichever you draw.
 
-2. **The syllabus mandates exactly this composition.** From the Week 8 line in `SYLLABUS.md`: *"Mini-project: A top-k problem (k-largest, k-frequent, k-closest family) and a two-heap problem (median, running statistic, sliding-window statistic). Both UMPIRE-narrated."* The composition is the contract.
+2. **The syllabus mandates exactly this composition.** From the Week 8 line in `SYLLABUS.md`: *"Mini-project: A top-k problem (k-largest, k-frequent, k-closest family) and a two-heap problem (median, running statistic, sliding-window statistic). Both FRAME-narrated."* The composition is the contract.
 
 If you finish before Sunday with energy to spare, add a third write-up from the LeetCode Heap tag at your discretion — for example, "Find K Pairs with Smallest Sums" (LC 373) is a great stretch because the senior insight is that **a heap of pairs can be primed lazily** rather than enumerating all `n²` pairs upfront. The acceptance criterion is *two* — anything beyond is bonus.
 

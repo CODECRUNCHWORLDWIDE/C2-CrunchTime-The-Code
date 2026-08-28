@@ -88,8 +88,8 @@ You should see `Hello, world!`. ✅
 ## Common issues
 
 - **`command not found: python3`** — re-run `brew install python@3.12` and make sure your terminal restarts after install. On Apple Silicon Macs you may also need to add `/opt/homebrew/bin` to your `PATH`.
-- **Permission errors when running `pip`** — never use `sudo pip`. Always use a [virtual environment](../../curriculum/week-01-python-foundations/lecture-notes/) instead.
+- **Permission errors when running `pip`** — never use `sudo pip`. Always use a [virtual environment](../../curriculum/week-00-python-data-structures-warmup/lecture-notes/) instead.
 
 ## What's next
 
-You're ready. Go to [Week 1 — Python Foundations](../../curriculum/week-01-python-foundations/).
+You're ready. Go to [Week 0 — Python & Data-Structures Warm-Up](../../curriculum/week-00-python-data-structures-warmup/).

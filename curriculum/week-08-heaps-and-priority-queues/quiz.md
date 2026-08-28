@@ -63,11 +63,11 @@ Answer key at the bottom.
 |------:|---------|
 | 9-10 | Heap recognition is interview-ready, including the negative-space rejections. Move on. |
 | 7-8 | Good — re-read [Lecture 1 §7](./lecture-notes/01-heapq-and-top-k.md) and [Lecture 3 §7](./lecture-notes/03-two-heap-and-k-way-merge.md) for the sub-shape questions you missed. Most learners miss Q5 or Q7 first time; that is normal. |
-| 5-6 | Redo Exercises 2 and 3 with stricter Match sections. The k-closest and two-heap recognition needs more reps before Mock #2. |
+| 5-6 | Redo Exercises 2 and 3 with stricter Research constraints sections. The k-closest and two-heap recognition needs more reps before Mock #2. |
 | <5 | The pattern recognition is not yet automatic. Re-read all three lectures, re-do all three exercises with the size-bound and tiebreaker invariants stated aloud, then retake the quiz. |
 
 This quiz is about **fluency**, not difficulty. The discriminating questions are Q5, Q7, and Q10 — all "looks like a heap but is not" questions. Recognizing the negative space is the senior-level skill being measured.
 
 Q5 (`max(arr)`) and Q10 (missing element in a sorted matrix) are the cleanest negative-space traps. Q7 (Dijkstra) is the trickier one — the heap *is* present, but the algorithm has a different name; treating it as "just a heap problem" loses the point.
 
-When done, the [homework](./homework.md) is next.
+When done, the [homework](./homework/README.md) is next.

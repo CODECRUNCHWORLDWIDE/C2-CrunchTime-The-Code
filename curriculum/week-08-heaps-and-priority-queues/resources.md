@@ -278,7 +278,7 @@ Three things, all short, all this week:
 
 1. **The module docstring at the top of `Lib/heapq.py`** — ten minutes. The cleanest free explanation of the heap invariant and why the array layout works.
 2. **The "Examples" section of the `heapq` docs** — five minutes. The `nlargest`, `nsmallest`, and `merge` examples are the templates you will reach for.
-3. **Two LeetCode problem statements at the "Heap (Priority Queue)" tag** — five minutes each. Predict the algorithm before reading the solution. The recognition reps are what build Match-step muscle.
+3. **Two LeetCode problem statements at the "Heap (Priority Queue)" tag** — five minutes each. Predict the algorithm before reading the solution. The recognition reps are what build Research constraints muscle.
 
 If you read nothing else this week, read those three and skim five problem titles in the LeetCode Heap tag.
 

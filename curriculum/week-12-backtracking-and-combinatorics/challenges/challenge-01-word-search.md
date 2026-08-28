@@ -9,11 +9,11 @@
 - `1 <= len(word) <= 15`.
 - `board` and `word` consist of lowercase and uppercase English letters.
 
-**The deliverable.** A full UMPIRE write-up published to `umpire-writeups/c2-week-12/challenge-01/`, recorded as a `>= 10`-minute video walkthrough, with the code committed under `challenges/c2-week-12/word-search.py`.
+**The deliverable.** A full FRAME write-up published to `frame-writeups/c2-week-12/challenge-01/`, recorded as a `>= 10`-minute video walkthrough, with the code committed under `challenges/c2-week-12/word-search.py`.
 
 ---
 
-## Understand
+## Frame
 
 Re-read the prompt twice. Note the four required behaviors:
 
@@ -49,7 +49,7 @@ The senior-grade observation: brute-force enumeration of paths is `O((m*n) * 4^L
 
 ---
 
-## Match
+## Research constraints
 
 The 30-second pattern-recognition memo (put this at the top of your write-up):
 
@@ -64,7 +64,7 @@ The 30-second pattern-recognition memo (put this at the top of your write-up):
 
 ---
 
-## Plan
+## Assess options
 
 1. Extract `rows = len(board)` and `cols = len(board[0])`. Handle the empty-board edge case (return `False` if `rows == 0` or `cols == 0`).
 2. Initialize `visited: Set[Tuple[int, int]] = set()`.
@@ -83,7 +83,7 @@ The four early-out checks must be ordered: leaf first (cheapest), bounds second 
 
 ---
 
-## Implement
+## Make the solution
 
 ```python
 from __future__ import annotations
@@ -160,7 +160,7 @@ The two forms are equivalent in correctness. The in-place form saves `O(rows * c
 
 ---
 
-## Review
+## Examine · verify
 
 Trace `board = [["A","B","C","E"], ["S","F","C","S"], ["A","D","E","E"]], word = "ABCCED"`.
 
@@ -218,7 +218,7 @@ No path spells `"ABCB"`. The output is `False`.
 
 ---
 
-## Evaluate
+## Examine · cost
 
 - **Time:** `O(m * n * 4^L)` worst case where `m, n` are the grid dimensions and `L = len(word)`. The outer loop iterates `m * n` cells; from each starting cell, the recursion branches up to 4 ways per level for up to `L` levels. The character-match prune cuts this drastically in practice — most paths fail within the first 1–2 characters.
 - **Space:** `O(L)` for the recursion stack. The `visited` set is at most `L` cells (the cells currently on the path). The in-place variant has `O(L)` recursion-stack space and `O(1)` additional state (the `tmp` variable per frame).
@@ -240,10 +240,10 @@ Your write-up is graded on five dimensions:
 
 | Dimension | Weight | What "yes" looks like |
 |-----------|-------:|----------------------|
-| Match (Pattern Recognition) | 25% | 30-second memo at the top; "backtracking on a 2D grid with a visited set"; alternatives rejected (DP, BFS) with reason |
-| Plan | 15% | Numbered steps; the four early-out conditions in the right order; the four-direction iterator |
-| Implement (Correctness) | 25% | All LC sample cases pass; the unchoose step is present; the leaf check is the first condition |
-| Implement (Style) | 10% | Type hints everywhere; docstring on every function; PEP 8; idiomatic Python |
-| Evaluate (Defense) | 25% | `O(m * n * 4^L)` time with derivation; in-place variant mentioned; trade against trie-based form (LC 212) named |
+| Research constraints (pattern recognition) | 25% | 30-second memo at the top; "backtracking on a 2D grid with a visited set"; alternatives rejected (DP, BFS) with reason |
+| Assess options | 15% | Numbered steps; the four early-out conditions in the right order; the four-direction iterator |
+| Make the solution (correctness) | 25% | All LC sample cases pass; the unchoose step is present; the leaf check is the first condition |
+| Make the solution (style) | 10% | Type hints everywhere; docstring on every function; PEP 8; idiomatic Python |
+| Examine (defense) | 25% | `O(m * n * 4^L)` time with derivation; in-place variant mentioned; trade against trie-based form (LC 212) named |
 
 The mini-project will ask you to compose the visited-set discipline with the cell-iteration discipline of sudoku. Practice both forms (set and in-place) so the choice is reflexive.

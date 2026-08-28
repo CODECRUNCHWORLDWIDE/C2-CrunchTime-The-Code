@@ -3,7 +3,7 @@
 > **Duration:** ~2 hours.
 > **Outcome:** You can structure any behavioral answer in STAR with the 10/10/60/20-second budget; you can hold the "I vs we" discipline; you can turn an unquantified outcome into a number; and you can construct a story bank of twelve-plus anecdotes with a coverage matrix that proves every category is covered.
 
-Lecture 1 gave you the map — eight categories, five signals. This lecture gives you the **method**: STAR, the four-part structure that turns a real experience into a scored answer. STAR is to the behavioral round what UMPIRE is to the coding round. UMPIRE keeps you from blurting code before you understand the problem; STAR keeps you from rambling before you have structured the answer. Both are mechanical scaffolds whose entire purpose is to free your attention from "what do I say next" so you can spend it on signal.
+Lecture 1 gave you the map — eight categories, five signals. This lecture gives you the **method**: STAR, the four-part structure that turns a real experience into a scored answer. STAR is to the behavioral round what FRAME is to the coding round. FRAME keeps you from blurting code before you understand the problem; STAR keeps you from rambling before you have structured the answer. Both are mechanical scaffolds whose entire purpose is to free your attention from "what do I say next" so you can spend it on signal.
 
 ---
 
@@ -162,7 +162,7 @@ The artifact that proves your bank is complete is the **coverage matrix**: a gri
 
 Read the matrix **down each column.** Every column must have at least one ●. If a column is empty — say, "Difficult person" had no strong story — you have found a gap, and you write or refine a story to fill it before an onsite. Reading down the columns is the whole point: it converts "do I have enough stories?" from a vague worry into a checkable invariant.
 
-Read the matrix **across each row** to see how flexible each story is. Story 10 (cross-team API alignment) covers six categories — that is a workhorse story, worth polishing first. Story 4 (the deploy I broke) covers only Failure — that is fine; some stories are specialists, and Failure is a category you want a dedicated story for.
+Read the matrix **across each row** to see how flexible each story is. Story 10 (cross-team API alignment) covers five categories — that is a workhorse story, worth polishing first. Story 4 (the deploy I broke) covers only Failure — that is fine; some stories are specialists, and Failure is a category you want a dedicated story for.
 
 The coverage matrix is the deliverable at the center of this week's mini-project. Building it forces the discipline that distinguishes prepared candidates: you walk into the onsite knowing you have a strong story for every question they can ask, and a backup for the categories most likely to come up twice.
 

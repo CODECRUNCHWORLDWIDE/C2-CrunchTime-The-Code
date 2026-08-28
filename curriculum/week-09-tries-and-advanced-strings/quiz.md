@@ -63,11 +63,11 @@ Answer key at the bottom.
 |------:|---------|
 | 9-10 | Trie / KMP / Aho-Corasick recognition is interview-ready, including the negative-space rejections. Move on. |
 | 7-8 | Good — re-read [Lecture 1 §9](./lecture-notes/01-trie-basics-and-autocomplete.md) and [Lecture 3 §6](./lecture-notes/03-kmp-and-z-algorithm.md) for the sub-shape questions you missed. Most learners miss Q7 (anagram) or Q10 (suffix trie) first time; that is normal. |
-| 5-6 | Redo Exercises 2 and 3 with stricter Match sections. The word-break and LCP recognition needs more reps before Mock #2. |
+| 5-6 | Redo Exercises 2 and 3 with stricter Research constraints sections. The word-break and LCP recognition needs more reps before Mock #2. |
 | <5 | The pattern recognition is not yet automatic. Re-read all three lectures, re-do all three exercises with the data-structure choice stated aloud, then retake the quiz. |
 
 This quiz is about **fluency**, not difficulty. The discriminating questions are Q7, Q9, and Q10 — Q7 is the negative-space rejection (anagram is *not* a trie problem); Q9 is the trie + heap composition (Phase-3 stretch, but the recognition cue is Week-9 material); Q10 is the suffix-trie observation (stretch). Recognizing the right tool — *and the wrong ones* — is the senior-level skill being measured.
 
 Q5 (LCP) and Q8 (shortest root) are the cleanest direct-template questions. Q2 and Q6 test the substring family (KMP for one pattern; Aho-Corasick for many).
 
-When done, the [homework](./homework.md) is next.
+When done, the [homework](./homework/README.md) is next.

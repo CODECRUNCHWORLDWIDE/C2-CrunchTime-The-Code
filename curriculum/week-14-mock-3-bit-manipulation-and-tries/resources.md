@@ -7,7 +7,7 @@ Every resource is **free** and **publicly accessible** unless marked as a book.
 - **Python docs — "Bitwise operations on integer types"**: <https://docs.python.org/3/reference/expressions.html#binary-bitwise-operations> — the canonical reference for `& | ^ ~ << >>` in Python. Reread if any operator's precedence or behavior on negative ints feels uncertain.
 - **Python docs — `int.bit_count()`**: <https://docs.python.org/3/library/stdtypes.html#int.bit_count> — the one-line popcount, available in Python 3.10+. This is the answer you say *first* in an interview for Number of 1 Bits (LC 191).
 - **Sean Eron Anderson — "Bit Twiddling Hacks"**: <https://graphics.stanford.edu/~seander/bithacks.html> — the open-web reference for bit idioms. Read the "Counting bits set," "Compute the lowest set bit," and "Reverse the bits" sections this week; they back Lecture 1 §4–§5 and homework problems 2–3.
-- **LeetCode — Bit Manipulation tag**: <https://leetcode.com/tag/bit-manipulation/> — skim 20 titles and predict the sub-shape for each in 5 seconds. The Match-step muscle for the curveball pattern.
+- **LeetCode — Bit Manipulation tag**: <https://leetcode.com/tag/bit-manipulation/> — skim 20 titles and predict the sub-shape for each in 5 seconds. The Research-constraints muscle for the curveball pattern.
 - **LeetCode — Trie tag**: <https://leetcode.com/tag/trie/> — re-skim five titles to re-activate the Week 9 recognition before the binary-trie exercise.
 - **PEP 8 (recurring)**: <https://peps.python.org/pep-0008/>
 - **Big-O Cheat Sheet (recurring)**: <https://www.bigocheatsheet.com/>

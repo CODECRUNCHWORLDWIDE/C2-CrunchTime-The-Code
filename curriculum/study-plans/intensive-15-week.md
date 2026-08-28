@@ -20,18 +20,18 @@ A representative week:
 ```
 Monday        Tuesday       Wednesday     Thursday      Friday        Saturday      Sunday
 ─────────────────────────────────────────────────────────────────────────────────────────
-Lectures      Lectures      UMPIRE        Pattern       Mock prep     Mini-project  Quiz +
+Lectures      Lectures      FRAME        Pattern       Mock prep     Mini-project  Quiz +
 + readings    + readings    drills        challenges    + portfolio   deep work     review
 (6h)          (6h)          (8h)          (4h)          (3h)          (7h)          (2h)
 ```
 
-Monday morning is the "set the table" session: read the week's three lectures, skim the resources, write your week's UMPIRE drill targets. Tuesday is your second reading + first hands-on. Wednesday and Thursday are the drill heart of the week — that's where pattern recognition becomes automatic. Friday is for mock-interview prep (peer scheduling, recording setup, behavioral story refinement). Saturday is mini-project deep work. Sunday is the quiz and a 1-hour reflection (write what clicked, what didn't, what to drill next week).
+Monday morning is the "set the table" session: read the week's three lectures, skim the resources, write your week's FRAME drill targets. Tuesday is your second reading + first hands-on. Wednesday and Thursday are the drill heart of the week — that's where pattern recognition becomes automatic. Friday is for mock-interview prep (peer scheduling, recording setup, behavioral story refinement). Saturday is mini-project deep work. Sunday is the quiz and a 1-hour reflection (write what clicked, what didn't, what to drill next week).
 
 ---
 
 ## Per-week targets
 
-| Week | Pattern | UMPIRE problems | Mock | Other deliverable |
+| Week | Pattern | FRAME problems | Mock | Other deliverable |
 |-----:|---------|:--------------:|:----:|-------------------|
 | **1** | Two pointers | 5 | — | First week write-ups committed |
 | **2** | Hash maps + complexity | 5 | — | Re-write Week-1 with complexity sections |
@@ -40,16 +40,16 @@ Monday morning is the "set the table" session: read the week's three lectures, s
 | **5** | Binary search | 5 | — | 2 "search on answer" variants |
 | **6** | BFS | 5 | — | One grid + one node BFS, fully narrated |
 | **7** | DFS | 5 | — | Topological sort write-up |
-| **8** | Backtracking | 4 | — | Subsets + permutations from scratch |
-| **9** | Top-K / heap | 4 | **Mock #2** | Top-K freq elements write-up |
-| **10** | Intervals + greedy | 5 | — | Greedy proof sketches for each |
-| **11** | DP 1D | 4 | — | One problem, three ways |
-| **12** | DP 2D + system design | 4 + 1 design | — | URL shortener design doc |
+| **8** | Heaps / priority queues | 4 | — | One top-K + one two-heap write-up |
+| **9** | Tries + advanced strings | 4 | **Mock #2** | One trie + one KMP write-up |
+| **10** | Weighted graphs + union-find | 5 | — | One Dijkstra + one DSU write-up |
+| **11** | Dynamic programming | 4 | — | One 1-D + one 2-D DP write-up |
+| **12** | Backtracking + combinatorics | 4 | — | Partitioning + constraint-satisfaction solver |
 | **13** | Behavioral | — | — | Story bank with 12 STAR anecdotes |
 | **14** | Bit manipulation, tries | 4 | **Mock #3** | XOR trick + trie write-ups |
 | **15** | Capstone | — | **Mock #4** | Portfolio published; recruiter pack |
 
-**Total problems UMPIRE-written:** ~60.
+**Total problems FRAME-written:** ~60.
 **Total mocks:** 4.
 
 ---
@@ -62,7 +62,7 @@ Maintain a `progress.md` at the root of your portfolio repo. Suggested format:
 # CrunchTime Progress
 
 ## Streak: 47 days
-## Problems UMPIRE-written: 38 / 60
+## Problems FRAME-written: 38 / 60
 ## Patterns completed: 9 / 14
 ## Mocks recorded: 2 / 4
 
@@ -83,13 +83,14 @@ Maintain a `progress.md` at the root of your portfolio repo. Suggested format:
 - [x] Binary search
 - [x] BFS
 - [x] DFS
-- [x] Backtracking
-- [x] Top-K / heap
-- [ ] Intervals + greedy
-- [ ] DP 1D
-- [ ] DP 2D
+- [x] Heaps / top-K
+- [ ] Tries + string matching
+- [ ] Weighted graphs (Dijkstra, Bellman-Ford, MST)
+- [ ] Union-find
+- [ ] DP 1-D
+- [ ] DP 2-D
+- [ ] Backtracking
 - [ ] Bit manipulation
-- [ ] Tries
 
 ## Behavioral story bank: 7 / 12 refined
 ```

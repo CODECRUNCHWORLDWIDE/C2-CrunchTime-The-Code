@@ -1,6 +1,6 @@
 # Week 8 — Exercises
 
-Three exercises. Each is UMPIRE-narrated, recorded, and graded against the test cases in the file itself. Worked solutions live in [`SOLUTIONS.md`](./SOLUTIONS.md) — consult only after attempting each exercise.
+Three exercises. Each is FRAME-narrated, recorded, and graded against the test cases in the file itself. Worked solutions live in [`SOLUTIONS.md`](./SOLUTIONS.md) — consult only after attempting each exercise.
 
 | # | Exercise | Pattern | Difficulty | Target solve time |
 |---|----------|---------|------------|------------------:|
@@ -16,7 +16,7 @@ Each starter file contains:
 - The required function signature with type hints
 - An empty body marked `# TODO`
 - A self-test block at the bottom
-- A UMPIRE checklist
+- A FRAME checklist
 
 Run a single exercise:
 

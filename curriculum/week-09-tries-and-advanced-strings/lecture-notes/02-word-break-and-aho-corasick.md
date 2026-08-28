@@ -285,7 +285,7 @@ The naive solution is to run a DFS per word — `O(W * m * n * 4^L)` where `W` i
 
 The trie solution builds a trie of the dictionary, then runs *one* DFS per grid cell that walks the grid and descends the trie in lockstep: at each cell, look up the cell's character in the current trie node's children; if present, descend; if `is_end` is True at the new node, emit the word and continue (to find longer words). The complexity drops to `O(m * n * 4^L)` because the trie shares work across words.
 
-The Match-step recognition:
+The Research-constraints recognition:
 
 > "Dictionary on a grid → trie. DFS over the grid in lockstep with descent in the trie. Mark visited cells, unmark on backtrack. Mark words as found to avoid duplicates. Stop the descent when the trie node has no matching child."
 
@@ -333,13 +333,13 @@ Before writing code on any trie problem, run the four-question checklist:
 3. **Is there per-node state?** Word frequency? Original word (for emit)? Best-suffix payload? If yes, the class form is preferred. If no, dict-of-dict.
 4. **What is the query pattern?** One query per insert? Many queries per insert? Streaming? The query pattern affects whether the trie is right at all — for pure exact-match with few queries, the hash set is simpler.
 
-Four questions, ninety seconds. Asking them before writing code is the senior habit that earns Plan-step credit.
+Four questions, ninety seconds. Asking them before writing code is the senior habit that earns Assess-options credit.
 
 ---
 
 ## 8. What to do this week
 
-1. **Exercise 2 — Word Break (LC 139).** The trie + memo composition. Target 35 minutes including UMPIRE.
+1. **Exercise 2 — Word Break (LC 139).** The trie + memo composition. Target 35 minutes including FRAME.
 2. **Exercise 3 — Longest Common Prefix (LC 14).** The three-solutions problem. Implement all three; write up which you would default to and why.
 3. **Read the Aho-Corasick Wikipedia article.** Aim for 20 minutes. The "Goto function" and "Failure function" sections are the focal points. You will not implement; you will read.
 4. **Move to Lecture 3** for KMP and the Z-algorithm.

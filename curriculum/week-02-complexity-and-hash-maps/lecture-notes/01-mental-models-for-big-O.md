@@ -3,7 +3,7 @@
 > **Duration:** ~2 hours.
 > **Outcome:** You can name the six common complexity classes from memory, describe what each *feels like* on n = 10 / 100 / 1000 / 10⁶, calibrate how a single nested loop changes a function's class, and articulate amortized cost at the level of `list.append` and `dict[key]`.
 
-Last week we drilled UMPIRE. The *Evaluate* step kept saying "state the time and space complexity" as if you already knew how. This lecture is where we put real teeth on that step. From here forward, *Evaluate* is not a one-liner — it is a structured tradeoff conversation you can hold for two minutes without notes.
+Last week we drilled FRAME. The *Examine* step kept saying "state the time and space complexity" as if you already knew how. This lecture is where we put real teeth on that step. From here forward, the cost half of *Examine* is not a one-liner — it is a structured tradeoff conversation you can hold for two minutes without notes.
 
 ---
 
@@ -25,7 +25,7 @@ Six classes cover ≥95% of interview problems. Memorize them.
 | **O(log n)** | Logarithmic | Binary search, balanced-tree operations |
 | **O(n)** | Linear | One pass through an array, summing a list |
 | **O(n log n)** | Linearithmic | Comparison-based sorting (`Timsort`, `heapsort`, `mergesort`) |
-| **O(n²)** | Quadratic | Nested loop over the same input — bubble sort, naive two-sum |
+| **O(n²)** | Quadratic | Nested loop over the same input — bubble sort, checking every pair |
 | **O(2ⁿ)** | Exponential | Recursive subset enumeration, naive Fibonacci |
 
 There are others — O(n³), O(n!), O(log log n), O(n²log n). They exist; they show up rarely. If you can place a problem in one of the six classes above, you'll be right almost every time.
@@ -111,7 +111,7 @@ def sort_and_first(arr):
 # total: O(n log n)
 ```
 
-The `n log n` almost always comes from a *sort*. If you see `arr.sort()` or `sorted(arr)`, you've committed to O(n log n). The big question is whether you needed to. (Sometimes yes — see Week 1's three-sum. Sometimes no — see Week 2's longest-consecutive.)
+The `n log n` almost always comes from a *sort*. If you see `arr.sort()` or `sorted(arr)`, you've committed to O(n log n). The big question is whether you needed to. Sometimes yes — a converging two-pointer requires sorted input, so you pay for the sort to earn the O(1) space. Sometimes no — this week's [Exercise 5](../exercises/exercise-05-longest-dock-run.md) looks like it needs a sort and is O(n) without one, which is exactly the kind of thing an interviewer is watching for.
 
 ### O(n²) — "compare every pair"
 
@@ -179,9 +179,9 @@ Most candidates state time and forget space. **State both, every time.** They ar
 
 | Algorithm | Time | Space |
 |-----------|------|-------|
-| Two-sum, sorted input, two-pointer | O(n) | O(1) |
-| Two-sum, unsorted input, hash map | O(n) | O(n) |
-| Two-sum, unsorted input, sort then two-pointer | O(n log n) | O(1) or O(n) depending on sort |
+| Find a pair reaching a target — sorted input, converging two-pointer | O(n) | O(1) |
+| Find a pair reaching a target — unsorted input, hash map | O(n) | O(n) |
+| Find a pair reaching a target — unsorted input, sort then two-pointer | O(n log n) | O(1) or O(n), depending on the sort |
 | Bubble sort | O(n²) | O(1) |
 | Merge sort | O(n log n) | O(n) |
 
@@ -347,13 +347,13 @@ Branching recursion, two recursive calls each step, depth n → roughly **O(2ⁿ
 
 ### How to calibrate yourself
 
-For each of the seven examples, on a blank piece of paper:
+For each of the eight examples, on a blank piece of paper:
 
 1. Write your guess.
 2. Write **why** — which loop or branch contributes which factor.
 3. Compare to the answer above.
 
-If you got fewer than 6 of 7 right, **redo this section.** Pattern-class identification at sight is a skill, not a guessing game.
+If you got fewer than 7 of 8 right, **redo this section.** Pattern-class identification at sight is a skill, not a guessing game.
 
 ---
 

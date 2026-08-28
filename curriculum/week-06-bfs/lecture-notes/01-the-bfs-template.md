@@ -42,7 +42,7 @@ Two corollaries:
 1. **The first time you encounter a node, you have found its shortest path** from the source (in number of edges). You never need to revisit it.
 2. **The total work is `O(V + E)`** — every node is enqueued once (so `O(V)` enqueue / dequeue operations) and every edge is examined twice (once from each endpoint, in an undirected graph) or once (in a directed graph).
 
-The hard part is not the algorithm. The hard part is **modeling the problem as a graph in the first place** — for grid problems, recognizing that cells are nodes and orthogonal neighbors are edges; for string problems, recognizing that words are nodes and "one letter different" is an edge. That modeling step is Match-grade work.
+The hard part is not the algorithm. The hard part is **modeling the problem as a graph in the first place** — for grid problems, recognizing that cells are nodes and orthogonal neighbors are edges; for string problems, recognizing that words are nodes and "one letter different" is an edge. That modeling step is Research constraints work.
 
 ---
 
@@ -309,11 +309,11 @@ Twenty lines. Read it line by line; the same shape powers Drills 1, 2, 3, 4, 5 a
 
 The only thing that varies across problems is **`neighbors_fn`**:
 
-- **Drill 1 (level order):** `neighbors_fn(node) = [n for n in (node.left, node.right) if n is not None]`.
-- **Drill 2 (shortest path in grid):** `neighbors_fn((r, c)) = [(r+dr, c+dc) for dr, dc in DIRS if in_bounds(r+dr, c+dc) and grid[r+dr][c+dc] == 0]`.
-- **Drill 3 (rotting oranges):** same grid neighbor function as Drill 2; the *seed* is multi-source.
-- **Drill 4 (word ladder):** `neighbors_fn(word) = bucket_lookup(word)` where the bucket index groups words by wildcard patterns.
-- **Drill 5 (right side view):** same as Drill 1; the level-tracking idiom emits the last node of each level.
+- **Exercise 1 (level order):** `neighbors_fn(node) = [n for n in (node.left, node.right) if n is not None]`.
+- **Exercise 2 (shortest path in grid):** `neighbors_fn((r, c)) = [(r+dr, c+dc) for dr, dc in DIRS if in_bounds(r+dr, c+dc) and grid[r+dr][c+dc] == 0]`.
+- **Exercise 3 (rotting oranges):** same grid neighbor function as Exercise 2; the *seed* is multi-source.
+- **Exercise 4 (word ladder):** `neighbors_fn(word) = bucket_lookup(word)` where the bucket index groups words by wildcard patterns.
+- **Exercise 5 (right side view):** same as Exercise 1; the level-tracking idiom emits the last node of each level.
 
 The lesson: **the algorithm is the same; the neighbor function and the seed are the variations.** Recognize that, and Week 6 collapses into "what is `neighbors_fn`?" plus boilerplate.
 
@@ -325,7 +325,7 @@ The visited set is the **invariant** of BFS. The interview defense:
 
 > "The visited set guarantees every node enters the queue at most once. We add to `visited` at *enqueue* time — immediately after the membership check — so no duplicate copies of a node can be in the queue at any moment. This bounds total work at `O(V + E)`: every node generates its outgoing edges exactly once. Without the visited set, a cyclic graph would loop forever; with visited added at *dequeue* time, the algorithm is correct but silently quadratic. The canonical idiom is enqueue-time visiting."
 
-Memorize that paragraph. It is roughly 30 seconds spoken aloud. In a mock interview, it is what the interviewer wants to hear during your Match step on any BFS problem.
+Memorize that paragraph. It is roughly 30 seconds spoken aloud. In a mock interview, it is what the interviewer wants to hear during your Research constraints step on any BFS problem.
 
 ---
 
@@ -390,7 +390,7 @@ return [[1], [2, 3], [4, 5, 6]]
 
 Three levels, three outer iterations. The `range(len(queue))` snapshot is what makes this work — it freezes the size of "this level" before any of "next level" is enqueued.
 
-This is Drill 1.
+This is Exercise 1.
 
 ---
 
@@ -452,7 +452,7 @@ dequeue (2, 2, 5)
 
 Five cells in the shortest path: `(0,0) → (0,1) → (0,2) → (1,2) → (2,2)`. Correct.
 
-This is Drill 2.
+This is Exercise 2.
 
 ---
 
@@ -472,21 +472,21 @@ Recognizing the *negative space* of the pattern matters as much as the positive 
 
 ## 11. Worked example end-to-end: shortest path in a binary matrix
 
-We will work this in full UMPIRE, abbreviated. Drill 2 is this exact problem with 8-directional moves.
+We will work this in full FRAME, abbreviated. Exercise 2 is this exact problem with 8-directional moves.
 
-**[U — 1 minute]**
+**[F — 1 minute]**
 
 > "I am given an `n x n` binary matrix where `0` is walkable and `1` is a wall. Return the length of the shortest path from `(0, 0)` to `(n-1, n-1)`, where 'length' is the number of cells in the path. Diagonal moves are allowed (8-directional). Return `-1` if no path exists. Confirm: empty input is invalid by problem spec. Walk an example: a 3x3 grid where the diagonal is open, the answer is 3."
 
-**[M — 30 seconds]**
+**[R — 30 seconds]**
 
 > "BFS on an unweighted grid. The 30-second memo: *Grid-BFS — the canonical shortest-path-on-an-implicit-graph idiom. Nodes are cells; edges are 8-directional offsets to walkable neighbors. Auxiliary state: FIFO queue, visited set, distance accumulator. Why not DFS: DFS finds any path but not the shortest; BFS's level-by-level expansion is what guarantees shortest. Why not Dijkstra: the graph is unweighted (every move has cost 1), and Dijkstra on unit costs degenerates to BFS — BFS is the right tool by spec.*"
 
-**[P — 1 minute]**
+**[A — 1 minute]**
 
 > "Initialize: queue with `(0, 0, 1)`, visited with `{(0,0)}`. Eight direction vectors. Loop: dequeue `(r, c, d)`. If `(r, c) == (n-1, n-1)`, return `d`. For each direction, compute `(nr, nc)`. Bounds check, walkability check, visited check. If passes, mark visited and enqueue `(nr, nc, d+1)`. After loop, return `-1`."
 
-**[I — 3 minutes]**
+**[M — 3 minutes]**
 
 ```python
 from collections import deque
@@ -510,7 +510,7 @@ def shortest_path_binary_matrix(grid: list[list[int]]) -> int:
     return -1
 ```
 
-**[R — 1 minute]**
+**[E · verify — 1 minute]**
 
 > "Trace on the 3x3 grid `[[0,0,0],[1,1,0],[1,1,0]]`.
 > Dequeue (0,0,1). Eight neighbors; the valid ones are (0,1) and (1,1) blocked. Add (0,1).
@@ -520,11 +520,11 @@ def shortest_path_binary_matrix(grid: list[list[int]]) -> int:
 > Dequeue (2,2,4). Goal! Return 4. ✓
 > Trace on a closed grid: never reach the goal, queue empties, return -1. ✓"
 
-**[E — 1 minute]**
+**[E · cost — 1 minute]**
 
 > "**Time O(R × C)** where `R x C` is the grid size. Every cell enters the queue once; each visit examines eight neighbors in `O(1)`. **Space O(R × C)** for the visited set; the queue can hold up to one level, bounded by `R × C` in the worst case. Tradeoff: DFS is the same asymptotic complexity but does *not* return the shortest path. Dijkstra on unit costs is BFS with extra log-factor overhead — strictly worse here. Best case `O(1)` (start equals goal); worst case `O(R × C)`. Improvement: bidirectional BFS could halve the visited set when source and target are both fixed (we know both here), but the constant-factor win is not worth the implementation complexity unless `R × C >= 10⁶`."
 
-That is UMPIRE on shortest-path-in-grid, end-to-end, in about 7 minutes. The drill is to do this every time.
+That is FRAME on shortest-path-in-grid, end-to-end, in about 7 minutes. The drill is to do this every time.
 
 ---
 
@@ -601,6 +601,6 @@ That is the cadence interviewers want. Memorize the shape, plug in the names. Th
 
 - **Wikipedia — Breadth-first search**: <https://en.wikipedia.org/wiki/Breadth-first_search> — the pseudocode is the canonical reference.
 - **CSES Competitive Programmer's Handbook — Chapter 12**: <https://cses.fi/book/book.pdf> — twenty minutes; the cleanest free pseudocode treatment.
-- **LeetCode 102, 1091, 994, 127, 199** — the five problems that anchor Drills 1-5. Read all five spec pages before starting Drill 1.
+- **LeetCode 102, 1091, 994, 127, 199** — the five problems that anchor Drills 1-5. Read all five spec pages before starting Exercise 1.
 
 Next: [Lecture 2 — Grid BFS and Graph BFS](./02-grid-bfs-and-graph-bfs.md).

@@ -70,7 +70,7 @@ The rubric behind every behavioral round. A strong answer surfaces three or four
 ## Glossary additions
 
 - **Behavioral round** — an interview round, usually 30–60 minutes, in which the interviewer asks "tell me about a time…" questions and grades the answers against a signal rubric. As scorable as a coding round, despite feeling "soft."
-- **STAR** — Situation, Task, Action, Result. The four-part structure for a behavioral answer. The behavioral analogue of the UMPIRE method: a mechanical scaffold that frees attention for signal.
+- **STAR** — Situation, Task, Action, Result. The four-part structure for a behavioral answer. The behavioral analogue of the FRAME method: a mechanical scaffold that frees attention for signal.
 - **Story bank** — a curated set of twelve-plus refined, rehearsed STAR anecdotes drawn from your real experience, each cross-referenced to the categories it covers. The asset this week builds.
 - **Coverage matrix** — a grid of stories (rows) against the eight categories (columns), with a mark in each cell a story covers. Used to verify every category has at least one story behind it.
 - **Signal** — a gradable attribute of a behavioral answer: ownership, impact, self-awareness, collaboration, growth. Interviewers score signals, not stories.

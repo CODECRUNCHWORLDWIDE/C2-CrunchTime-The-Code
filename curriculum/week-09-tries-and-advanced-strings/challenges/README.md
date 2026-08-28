@@ -9,7 +9,7 @@ Two challenges. The first is required; the second is optional stretch.
 
 The challenges scale the trie pattern beyond the canonical three operations. Challenge 1 composes the trie with backtracking DFS over a 2-D grid — the highest-yield trie problem in the Phase-2 portfolio. Challenge 2 is a recognition rep on the "given a dictionary of roots, replace each word by its shortest root" family.
 
-By Sunday of Week 9, you must have a clean UMPIRE write-up of Challenge 1. Challenge 2 is stretch; do it if Friday goes well.
+By Sunday of Week 9, you must have a clean FRAME write-up of Challenge 1. Challenge 2 is stretch; do it if Friday goes well.
 
 ---
 
@@ -17,9 +17,9 @@ By Sunday of Week 9, you must have a clean UMPIRE write-up of Challenge 1. Chall
 
 For each challenge, the deliverable is:
 
-1. **A UMPIRE write-up** — under `umpire-writeups/c2-week-09/challenges/`. Full six sections; the Match section opens with the 30-second pattern-recognition memo from the challenge file.
+1. **A FRAME write-up** — under `frame-writeups/c2-week-09/challenges/`. Full five sections (Frame · Research constraints · Assess options · Make the solution · Examine); the Research constraints section opens with the 30-second pattern-recognition memo from the challenge file.
 2. **A working implementation** — committed as `challenges/<challenge-name>.py` in your portfolio. Must pass the test cases listed in the challenge file.
-3. **A recording** — minimum 10 minutes, walking through the Match → Plan → Implement narration. The Review and Evaluate sections can be brief if the implementation is clean.
+3. **A recording** — minimum 10 minutes, walking through the Research constraints → Assess options → Make the solution narration. The two halves of Examine can be brief if the implementation is clean.
 
 The challenges grade *recognition speed* and *defense quality*. Implementation correctness is the entry bar; defending the algorithm choice over alternatives is what earns the senior signal.
 

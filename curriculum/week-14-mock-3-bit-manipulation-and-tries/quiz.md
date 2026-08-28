@@ -71,9 +71,9 @@ Answer key at the bottom.
 |------:|---------|
 | 9–10 | Bit-pattern recognition is interview-ready, including the negative-space rejections (Q5, Q9). Move on to Mock #3. |
 | 7–8 | Good — re-read [Lecture 1 §6–§9](./lecture-notes/01-bit-manipulation-fundamentals-and-xor.md) and [Lecture 2 §4](./lecture-notes/02-bitmasks-and-subset-enumeration-and-bit-dp.md) for the sub-shapes you missed. Most learners miss Q5 (duplicate, not a bit problem) or Q9 (character trie, not binary) first time; that is normal. |
-| 5–6 | Redo Exercises 1 and 3 with stricter Match sections. The XOR-fold / binary-trie distinction needs more reps before Mock #3. |
+| 5–6 | Redo Exercises 1 and 3 with stricter Research constraints sections. The XOR-fold / binary-trie distinction needs more reps before Mock #3. |
 | <5 | The recognition is not yet automatic. Re-read all three lectures, re-do all three exercises with the sub-shape stated aloud, then retake the quiz. |
 
 This quiz is about **fluency**, not difficulty. The discriminating questions are the negative-space ones: **Q5** (duplicate detection is a `set`, not a bit trick), **Q7** (recognizing bitmask DP *and* being honest it is recognition-grade), and **Q9** (a *character* trie is not a *binary* trie — the bit family's bridge structure is specifically the binary one). Recognizing the right tool — *and the wrong ones* — is the senior-level skill being measured.
 
-When done, the [homework](./homework.md) is next.
+When done, the [homework](./homework/README.md) is next.

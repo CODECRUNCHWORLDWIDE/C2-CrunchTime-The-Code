@@ -5,7 +5,7 @@
 
 Lectures 1 and 2 installed the trie — a structure for *prefix* queries. This lecture installs two algorithms for *exact-substring* queries: **KMP** (Knuth-Morris-Pratt) and the **Z-algorithm**. Both run in `O(n + m)` time and `O(m)` extra space. Both are linear-time alternatives to the naive `O(nm)` two-pointer scan. Both are honest interview material at the "name the algorithm and explain when it applies" level; full re-derivation from scratch is a Phase-3 stretch.
 
-The interview register of this lecture is different from the trie material. The Match-step expectation is:
+The interview register of this lecture is different from the trie material. The Research-constraints expectation is:
 
 > "Given the constraints, the naive `O(nm)` scan is too slow. I would reach for KMP — `O(n + m)` via the failure function, which records the longest proper prefix that is also a suffix of each prefix of the pattern. In production Python 3.10+, `text.find(pattern)` is already linear-time via CPython's two-way + bitap hybrid; for the interview, I'll write the KMP."
 
@@ -244,7 +244,7 @@ The interview-grade recognition:
 
 ## 6. When to reach for KMP / Z
 
-The Match-step trigger phrases:
+The Research-constraints trigger phrases:
 
 1. **"Find the first / all occurrences of pattern in text."** The canonical substring problem. KMP or Z.
 2. **"Find the longest prefix of `text` that is also a suffix of `text`."** A textbook KMP application — run `build_failure` on `text` itself; `fail[n - 1]` is the answer.
@@ -252,7 +252,7 @@ The Match-step trigger phrases:
 4. **"Find the shortest rotation that is lexicographically smallest."** Composes KMP with the rotation trick `s + s`.
 5. **"Find the longest substring that occurs `k` times."** Z-array on `s` plus a counter.
 
-The Match-step *negative* signals:
+The Research-constraints *negative* signals:
 
 1. **"Are these two strings anagrams?"** Counting / sort. Not KMP.
 2. **"Is this a palindrome?"** Two-pointer. Not KMP.
@@ -283,11 +283,11 @@ That answer turns a perceived weakness ("I'm reinventing the wheel") into a stre
 
 LeetCode 28 — Find the Index of the First Occurrence in a String. Given `haystack` and `needle`, return the index of the first occurrence of `needle` in `haystack`, or `-1` if `needle` is not part of `haystack`.
 
-**Match.** This is exact-substring search. The naive `O(nm)` is the baseline. For LeetCode constraints (`n, m <= 10^4`), the naive is acceptable; for interview, mention KMP.
+**Research constraints.** This is exact-substring search. The naive `O(nm)` is the baseline. For LeetCode constraints (`n, m <= 10^4`), the naive is acceptable; for interview, mention KMP.
 
-**Plan.** Build the KMP failure function on `needle`; run the matcher on `haystack` with the failure array. Return `i - m + 1` at the first full match.
+**Assess options.** Build the KMP failure function on `needle`; run the matcher on `haystack` with the failure array. Return `i - m + 1` at the first full match.
 
-**Implement.**
+**Make the solution.**
 
 ```python
 from typing import List
@@ -320,7 +320,7 @@ def _build_failure(pattern: str) -> List[int]:
     return fail
 ```
 
-**Review.** Trace on `haystack = "ABABDABACDABABCABAB"`, `needle = "ABABCABAB"`. The failure array for `needle` is `[0, 0, 1, 2, 0, 1, 2, 3, 4]`. The matcher finds the match at index 10. Hand-verify the first few iterations:
+**Examine · verify.** Trace on `haystack = "ABABDABACDABABCABAB"`, `needle = "ABABCABAB"`. The failure array for `needle` is `[0, 0, 1, 2, 0, 1, 2, 3, 4]`. The matcher finds the match at index 10. Hand-verify the first few iterations:
 
 - `i = 0`, `ch = 'A'`: `j = 0`; `needle[0] = 'A' == 'A'`; `j = 1`.
 - `i = 1`, `ch = 'B'`: `j = 1`; `needle[1] = 'B' == 'B'`; `j = 2`.
@@ -330,7 +330,7 @@ def _build_failure(pattern: str) -> List[int]:
 
 And so on. Each step either advances `i` (always) or adjusts `j` without re-reading `haystack`.
 
-**Evaluate.** Time: `O(n + m)`. Space: `O(m)` for the failure array. Trade against the naive `O(nm)`: KMP wins by a factor of `m` when `m` is large. Trade against `haystack.find(needle)`: same asymptotics in CPython 3.10+; KMP is the explicit-implementation form.
+**Examine · cost.** Time: `O(n + m)`. Space: `O(m)` for the failure array. Trade against the naive `O(nm)`: KMP wins by a factor of `m` when `m` is large. Trade against `haystack.find(needle)`: same asymptotics in CPython 3.10+; KMP is the explicit-implementation form.
 
 ---
 
@@ -373,7 +373,7 @@ The match position is `i - j + 1` where `j == len(pattern)` at the match. Forget
 3. **Read the Codeforces Z-algorithm blog post.** About 10 minutes. You do not need to implement; you need to recognize the Z-array form.
 4. **Move to the exercises and the mini-project.** The KMP write-up in the mini-project is the deliverable form of this lecture.
 
-The single most important rep this week is **delivering the KMP three-sentence Match-step memo from memory**. If you can say "exact-substring search, naive is `O(nm)` and too slow for these constraints, KMP gives `O(n + m)` via the failure function which tracks the longest proper prefix-suffix at each pattern position" in 25 seconds, you have the interview-grade recognition.
+The single most important rep this week is **delivering the KMP three-sentence Research-constraints memo from memory**. If you can say "exact-substring search, naive is `O(nm)` and too slow for these constraints, KMP gives `O(n + m)` via the failure function which tracks the longest proper prefix-suffix at each pattern position" in 25 seconds, you have the interview-grade recognition.
 
 ---
 

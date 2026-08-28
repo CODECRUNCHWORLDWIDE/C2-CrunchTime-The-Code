@@ -399,7 +399,7 @@ Three things, all short, all this week:
 
 1. **The Wikipedia "Trie" article — `Operations` and `Implementation` sections** — about 15 minutes. The cleanest free trie pictures.
 2. **The Wikipedia "Knuth-Morris-Pratt algorithm" worked example on `ABABAC`** — about 10 minutes. Where the failure function "clicks."
-3. **Two LeetCode problem statements at the "Trie" tag** — five minutes each. Predict the algorithm before reading the solution. The recognition reps are what build Match-step muscle.
+3. **Two LeetCode problem statements at the "Trie" tag** — five minutes each. Predict the algorithm before reading the solution. The recognition reps are what build Research-constraints muscle.
 
 If you read nothing else this week, read those three and skim five problem titles in the LeetCode Trie tag.
 

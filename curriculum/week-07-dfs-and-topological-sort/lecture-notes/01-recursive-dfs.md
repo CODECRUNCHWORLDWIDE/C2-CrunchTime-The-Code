@@ -45,7 +45,7 @@ Three corollaries:
 2. **The total work is `O(V + E)`** — same as BFS. Every node is entered once; every edge is examined twice (once from each endpoint) in an undirected graph.
 3. **DFS does *not* find shortest paths.** The visit order is path-dependent; the *first* time DFS visits a node may be via a long detour. This is the discriminator with BFS — DFS is for connectivity / cycle / topo, not shortest path.
 
-The hard part this week is **not** the algorithm — recursive DFS is six lines. The hard part is **the invariants you maintain on the recursion stack**: the visited set is one; the three colors (Lecture 3) are another; the parent pointer (for undirected cycle detection) is a third. Maintaining the right invariant for the right problem is Match-grade work.
+The hard part this week is **not** the algorithm — recursive DFS is six lines. The hard part is **the invariants you maintain on the recursion stack**: the visited set is one; the three colors (Lecture 3) are another; the parent pointer (for undirected cycle detection) is a third. Maintaining the right invariant for the right problem is Research constraints work.
 
 ---
 
@@ -101,7 +101,7 @@ The visited set is the **invariant** of DFS. The interview defense:
 
 > "The visited set guarantees every node enters `dfs` at most once. We add to `visited` at the *top* of the recursive function — immediately on entry — so no recursive call is made for an already-visited node. This bounds total work at `O(V + E)`: every node generates its outgoing edges exactly once. Without the visited set, a cyclic graph would loop forever; on a tree the visited set is technically optional (no cycles), but defending it explicitly is the senior signal. The canonical idiom is mark-on-entry."
 
-Memorize that paragraph. It is roughly 25 seconds spoken aloud. In a mock interview, it is what the interviewer wants to hear during your Match step on any DFS problem.
+Memorize that paragraph. It is roughly 25 seconds spoken aloud. In a mock interview, it is what the interviewer wants to hear during your Research constraints step on any DFS problem.
 
 ---
 
@@ -137,7 +137,7 @@ Use post-order when the work on a node *depends* on its descendants' results —
 
 ### The discriminating sentence
 
-In Match, state which one and why:
+In Research constraints, state which one and why:
 
 > "Pre-order because the work on a node does not depend on the children's results."
 > "Post-order because the answer for a node aggregates the answers for its descendants."
@@ -187,7 +187,7 @@ Python's default recursion limit is 1000 frames. A path graph of length `>= 1000
 1. **`sys.setrecursionlimit(10**6)`** — raise the limit. Works for LeetCode (most problems have `V <= 10⁵`); risky in production because Python itself uses some of the stack.
 2. **Iterative DFS with an explicit stack** — Lecture 2. The correct fix for production code.
 
-The interview-tell move: **mention the recursion-limit risk in Match** if `V` could be large. *"The recursive version is `O(V)` stack space — for `V <= 1000` this is fine; for larger `V` I would switch to the iterative version with an explicit stack."*
+The interview-tell move: **mention the recursion-limit risk in Research constraints** if `V` could be large. *"The recursive version is `O(V)` stack space — for `V <= 1000` this is fine; for larger `V` I would switch to the iterative version with an explicit stack."*
 
 ### Bug 3 — using a list for the visited set
 
@@ -301,21 +301,21 @@ Three lines. The recursion is bottom-up: each node returns `1 + max(left_depth, 
 
 ## 7. Worked example end-to-end: number of provinces (LC 547)
 
-We will work this in full UMPIRE, abbreviated. Exercise 1 is this exact problem.
+We will work this in full FRAME, abbreviated. Exercise 1 is this exact problem.
 
-**[U — 1 minute]**
+**[F — 1 minute]**
 
 > "I am given an `n × n` matrix `isConnected` where `isConnected[i][j] == 1` if city `i` is directly connected to city `j` and `0` otherwise. A province is a maximal group of directly or indirectly connected cities. Return the number of provinces. The matrix is symmetric (`isConnected[i][j] == isConnected[j][i]`); the diagonal is always 1 (every city is connected to itself). Confirm: the input encodes an undirected graph as an adjacency matrix. Walk an example: `[[1,1,0],[1,1,0],[0,0,1]]` — cities 0 and 1 are connected; city 2 is alone. Two provinces."
 
-**[M — 30 seconds]**
+**[R — 30 seconds]**
 
 > "Connectivity / connected components on an undirected graph. The 30-second memo: *Graph-DFS on an adjacency matrix. Nodes are cities (indices 0..n-1); edges are matrix `1`-entries off the diagonal. The answer counts the number of times we start a fresh DFS from an unvisited city — each fresh start covers exactly one province. Why not BFS: same asymptotic complexity but DFS is shorter to write recursively, and shortest path is not the answer. Why not union-find: works equally well in `O(n² × α(n))`; DFS is `O(n²)` and structurally simpler.*"
 
-**[P — 1 minute]**
+**[A — 1 minute]**
 
 > "Initialize: `visited` as an empty set, `provinces = 0`. Outer loop: for each city `i` from 0 to `n-1`, if `i not in visited`, increment `provinces` and run DFS from `i` to mark every reachable city as visited. DFS body: add `node` to visited, iterate neighbors via the matrix row, recurse on unvisited connected neighbors. After the outer loop, return `provinces`."
 
-**[I — 2 minutes]**
+**[M — 2 minutes]**
 
 ```python
 from typing import List
@@ -338,17 +338,17 @@ def find_circle_num(is_connected: List[List[int]]) -> int:
     return provinces
 ```
 
-**[R — 1 minute]**
+**[E · verify — 1 minute]**
 
 > "Trace on `[[1,1,0],[1,1,0],[0,0,1]]`. i=0: not visited; provinces=1; dfs(0). visited={0}; neighbors of 0 are columns where matrix[0][col]==1 → col=0 (self, visited) and col=1. dfs(1). visited={0,1}; neighbors of 1 are col=0 (visited), col=1 (self, visited). Return. Return. i=1: visited; skip. i=2: not visited; provinces=2; dfs(2). visited={0,1,2}; col=2 (self, visited). Return. Loop done. Return 2. ✓
 > Trace on `[[1]]`: single city. i=0: provinces=1; dfs(0). Visited. Return 1. ✓
 > Trace on `[[1,0],[0,1]]`: two isolated cities. provinces=2 after both outer iterations. ✓"
 
-**[E — 1 minute]**
+**[E · cost — 1 minute]**
 
 > "**Time `O(n²)`** because the adjacency matrix has `n²` entries; the DFS scans every row in the worst case, and across all DFS calls every cell is examined exactly once. **Space `O(n)`** for the visited set and the recursion stack (worst case the graph is a single chain through all `n` cities). Tradeoff: BFS solves the same problem in the same `O(n²)` time; union-find solves it in `O(n² × α(n))` which is effectively `O(n²)` with a slightly larger constant. DFS is the cleanest of the three. Best case `O(n²)` (we always have to read the matrix); worst case `O(n²)`."
 
-That is UMPIRE on number of provinces, end-to-end, in about 6 minutes. The exercise is to do this every time.
+That is FRAME on number of provinces, end-to-end, in about 6 minutes. The exercise is to do this every time.
 
 ---
 

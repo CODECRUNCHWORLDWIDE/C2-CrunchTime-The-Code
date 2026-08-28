@@ -472,7 +472,7 @@ prompt mentions "top k" / "k largest" / "k smallest"?
     └── otherwise — re-read; the pattern is probably not a heap
 ```
 
-By Sunday, this tree should be reflexive. The Match step on any heap problem is the 30 seconds it takes to read down the tree until a match fires.
+By Sunday, this tree should be reflexive. The Research constraints step on any heap problem is the 30 seconds it takes to read down the tree until a match fires.
 
 ---
 
@@ -496,7 +496,7 @@ By Sunday, this tree should be reflexive. The Match step on any heap problem is 
 **Scheduler (this lecture):**
 > "Max-heap of ready tasks by count, deque of cooling tasks by ready-time. Each tick: promote any expired cooling tasks, run the most-frequent ready task, cool the remaining count. Linear in the total run time."
 
-Memorize all six. They are the spoken outputs of the Match step.
+Memorize all six. They are the spoken outputs of the Research constraints step.
 
 ---
 
@@ -534,11 +534,11 @@ These four templates plus lazy deletion (§4) cover every heap problem you will 
 
 Week 9 is Mock #2 — a full simulated onsite. The heap problems in Mock #2 are graded on:
 
-- **Match-step recognition.** 30 seconds to name the pattern; 30 seconds to defend it.
-- **Implement-step correctness.** Can you write the template from memory without a bug.
-- **Evaluate-step defense.** Can you explain why `O(n log k)` beats `O(n log n)`, or why two heaps beat one sorted list.
+- **Research constraints — naming the pattern.** 30 seconds to name the pattern; 30 seconds to defend it.
+- **Make the solution — correctness.** Can you write the template from memory without a bug.
+- **Examine — cost defense.** Can you explain why `O(n log k)` beats `O(n log n)`, or why two heaps beat one sorted list.
 
-This lecture (and Lectures 1 and 2) install the templates. The exercises drill them. The mini-project consolidates them into two UMPIRE write-ups. By Sunday Week 8, the heap is a *small, sharp tool* — invariant clear, complexity defended, template reflexive.
+This lecture (and Lectures 1 and 2) install the templates. The exercises drill them. The mini-project consolidates them into two FRAME write-ups. By Sunday Week 8, the heap is a *small, sharp tool* — invariant clear, complexity defended, template reflexive.
 
 That is the bar. The exercises are next.
 

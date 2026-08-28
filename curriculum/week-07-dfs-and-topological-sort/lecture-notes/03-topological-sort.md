@@ -261,7 +261,7 @@ Both algorithms are `O(V + E)`. Both detect cycles as a by-product. The choice i
 | Cleaner code on a balanced DAG | tie | tie |
 | Cleaner code on a sparse DAG | ✓ (less in-degree bookkeeping vs DFS) | tie |
 
-The default for Phase-2 interviews: **Kahn's algorithm**, because it is iterative, has no recursion-limit risk, and the in-degree computation is a clean and inspectable invariant. State this out loud in Match: *"I will use Kahn's algorithm because the input bound is `V ≤ 10⁵` and Kahn is iterative — no recursion limit, no `setrecursionlimit` workaround."*
+The default for Phase-2 interviews: **Kahn's algorithm**, because it is iterative, has no recursion-limit risk, and the in-degree computation is a clean and inspectable invariant. State this out loud in Research constraints: *"I will use Kahn's algorithm because the input bound is `V ≤ 10⁵` and Kahn is iterative — no recursion limit, no `setrecursionlimit` workaround."*
 
 If the problem specifically asks for **cycle detection with a partial order on failure** (rare but real), DFS post-order is cleaner — you get the order up to the cycle's first node naturally. If the problem asks for **SCCs**, you need Tarjan or Kosaraju — both DFS post-order. If you anticipate a follow-up like "enumerate all valid orders" (interviewers love this), Kahn extends naturally.
 
@@ -373,11 +373,11 @@ Eighteen lines. The three-color invariant is the entire algorithm.
 
 ### The senior signal
 
-Out loud, in Match:
+Out loud, in Research constraints:
 
 > "Two equivalent approaches: three-color DFS for cycle detection, or Kahn's algorithm checking whether the queue empties before all `V` nodes are processed. I will use the three-color DFS because the problem asks only for the yes/no, and the three-color invariant is the cleanest statement: a back-edge to a gray node is a cycle. If the problem asked for the order, I would use Kahn's instead."
 
-Choosing the algorithm explicitly and defending the choice is the Match-step skill being graded.
+Choosing the algorithm explicitly and defending the choice is the Research constraints skill being graded.
 
 ---
 
@@ -429,7 +429,7 @@ def dfs(node):
     ...                            # Works on LeetCode; risky in production
 ```
 
-For `V > 1000`, recursive DFS in Python can crash. The setrecursionlimit workaround is acceptable but the cleaner answer is Kahn (iterative by construction). Match-step move: state the recursion-limit risk before writing recursive code.
+For `V > 1000`, recursive DFS in Python can crash. The setrecursionlimit workaround is acceptable but the cleaner answer is Kahn (iterative by construction). Research constraints move: state the recursion-limit risk before writing recursive code.
 
 ### Pitfall 3 — confusing undirected and directed cycle detection
 
@@ -491,7 +491,7 @@ If you can answer all six without hesitation, proceed to the [exercises](../exer
 
 ## 11. The bridge to Tarjan — preview
 
-The week's [challenge](../challenges/challenge-01-critical-connections.md) is **Critical Connections in a Network** — finding the bridges of an undirected graph using Tarjan's low-link algorithm. The structural cousin: low-link is a *DFS post-order* computation, but instead of emitting nodes in reverse finish order, you compute a numerical value per node (the smallest discovery time reachable from the subtree). The post-order pattern is identical; the work-on-finish is different.
+The week's [challenge](../challenges/challenge-01-chokepoint-mains.md) is **Chokepoint Mains** — finding the pipes whose failure splits a water network, using discovery times and low-links. The structural cousin: low-link is a *DFS post-order* computation, but instead of emitting nodes in reverse finish order, you compute a numerical value per node (the smallest discovery time reachable from the subtree). The post-order pattern is identical; the work-on-finish is different.
 
 Mastery of Lecture 3 — the three-color invariant and the post-order emission — is the foundation for understanding Tarjan's algorithm. If you can write topological sort via DFS post-order cleanly, the bridge algorithm is a one-paragraph extension.
 
@@ -520,4 +520,4 @@ Memorize both. The discriminator in interview is which you choose and why; deliv
 - **Cormen, Leiserson, Rivest, Stein — Introduction to Algorithms, Chapter 22** (the standard graph-algorithms textbook; the 4th edition's free instructor materials at <https://mitpress.mit.edu/9780262046305/introduction-to-algorithms/> include the full chapter outline). The post-order topological-sort proof is in §22.4.
 - **LeetCode 207, 210, 269, 802, 1136, 1462** — six topological-sort problems covering Course Schedule (cycle detection), Course Schedule II (full order), Alien Dictionary (the challenge stretch), Find Eventual Safe States, Parallel Courses, and Course Schedule IV. Exercise 3 covers LC 210; the challenge stretch covers LC 269.
 
-Next: the [exercises](../exercises/README.md). Exercise 3 (Course Schedule II) is the canonical topological-sort problem of the week — do not skip it. Then the [challenge](../challenges/challenge-01-critical-connections.md) — Critical Connections via Tarjan's bridges, the hardest DFS application in the standard repertoire.
+Next: the [exercises](../exercises/README.md). Exercise 4 (Refit Order) is the canonical topological-sort drill of the week — do not skip it. Then the [challenge](../challenges/challenge-01-chokepoint-mains.md) — chokepoint mains via discovery times and low-links, the hardest depth-first application in the standard repertoire.

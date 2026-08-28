@@ -4,7 +4,7 @@
 
 [![License: GPL v3](https://img.shields.io/badge/License-GPL%20v3-blue.svg)](LICENSE)
 [![Python 3.11+](https://img.shields.io/badge/python-3.11+-blue.svg)](https://www.python.org/downloads/)
-[![Built in the open](https://img.shields.io/badge/built-in%20the%20open-2DD4BF.svg)](https://github.com/CODE-CRUNCH-CLUB)
+[![Built in the open](https://img.shields.io/badge/built-in%20the%20open-2DD4BF.svg)](https://github.com/CODECRUNCHWORLDWIDE)
 [![Two pathways](https://img.shields.io/badge/pathways-15--week_intensive_|_1--year_mastery-2DD4BF.svg)](README.md)
 
 ---

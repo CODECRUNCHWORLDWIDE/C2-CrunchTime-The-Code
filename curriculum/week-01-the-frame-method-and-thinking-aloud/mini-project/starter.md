@@ -55,7 +55,7 @@ progress and so that other learners can fork the approach.
 
 ## Method
 
-This work follows [C2 · CrunchTime — The Code](https://github.com/CODE-CRUNCH-CLUB/C2-CrunchTime-The-Code),
+This work follows [C2 · CrunchTime — The Code](https://github.com/CODECRUNCHWORLDWIDE/C2-CrunchTime-The-Code),
 a free open-source interview-prep curriculum built around the FRAME method:
 Frame, Research constraints, Assess options, Make the solution, Examine.
 

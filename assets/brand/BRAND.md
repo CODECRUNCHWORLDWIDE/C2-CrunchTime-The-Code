@@ -14,9 +14,9 @@ This guide extends the family brand (see `../../../assets/brand/BRAND-FAMILY.md`
 - **Full title in copy:** *C2 · CrunchTime — The Code*
 - **Tagline (short):** Interview prep, done right.
 - **Tagline (long):** A free, open-source technical interview preparation course built around the FRAME Method — recognize patterns, explain your thinking, and walk out with the offer.
-- **Parent org:** Code Crunch Club ([github.com/CODE-CRUNCH-CLUB](https://github.com/CODE-CRUNCH-CLUB))
+- **Parent org:** Code Crunch Worldwide ([github.com/CODECRUNCHWORLDWIDE](https://github.com/CODECRUNCHWORLDWIDE))
 - **Canonical URL:** `codecrunchglobal.vercel.app/course-c2-crunchtime`
-- **Repository:** [github.com/CODE-CRUNCH-CLUB/C2-CrunchTime-The-Code](https://github.com/CODE-CRUNCH-CLUB/C2-CrunchTime-The-Code)
+- **Repository:** [github.com/CODECRUNCHWORLDWIDE/C2-CrunchTime-The-Code](https://github.com/CODECRUNCHWORLDWIDE/C2-CrunchTime-The-Code)
 - **License:** GPL-3.0
 
 ---

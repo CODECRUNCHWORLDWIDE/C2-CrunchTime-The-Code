@@ -189,7 +189,7 @@ at most one from the top count. So once the cost drops to within budget, more
 trimming cannot push it back out. That is why a single `while` is enough, and
 it is the same property that made Exercise 4's shrink safe.
 
-**No setup needed — you can solve this one in the browser.** Open the starter in the [online code editor](/courses/ide#src=C2-CrunchTime-The-Code/curriculum/week-03-sliding-window/challenges/challenge-02-repaving-stretch.md) and run it there. Nothing to install, nothing to configure, and your work stays on your own machine.
+**No setup needed — you can solve this one in the browser.** Open the starter in the [online code editor](/ide#src=C2-CrunchTime-The-Code/curriculum/week-03-sliding-window/challenges/challenge-02-repaving-stretch.md) and run it there. Nothing to install, nothing to configure, and your work stays on your own machine.
 
 ## Requirements
 

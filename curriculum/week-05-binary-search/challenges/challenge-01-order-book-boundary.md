@@ -178,7 +178,7 @@ off-the-end comparisons come out right without a special case. Do not invent
 a "very big number" instead: deltas run to a trillion in either direction, and
 every one of those is a legal value.
 
-**No setup needed — you can solve this one in the browser.** Open the starter in the [online code editor](/courses/ide#src=C2-CrunchTime-The-Code/curriculum/week-05-binary-search/challenges/challenge-01-order-book-boundary.md) and run it there. Nothing to install, nothing to configure, and your work stays on your own machine.
+**No setup needed — you can solve this one in the browser.** Open the starter in the [online code editor](/ide#src=C2-CrunchTime-The-Code/curriculum/week-05-binary-search/challenges/challenge-01-order-book-boundary.md) and run it there. Nothing to install, nothing to configure, and your work stays on your own machine.
 
 ## Requirements
 

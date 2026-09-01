@@ -172,7 +172,7 @@ not cherry-picking; it is discarding a cost you are not trying to measure.
 appears on your terminal but is not part of stdout. Nothing about your program
 crashed — stderr is simply the channel for everything that is not the output.
 
-**No setup needed — you can solve this one in the browser.** Open the starter in the [online code editor](/courses/ide#src=C2-CrunchTime-The-Code/curriculum/week-02-complexity-and-hash-maps/homework/problem-02-time-the-gap.md) and run it there. Nothing to install, nothing to configure, and your work stays on your own machine.
+**No setup needed — you can solve this one in the browser.** Open the starter in the [online code editor](/ide#src=C2-CrunchTime-The-Code/curriculum/week-02-complexity-and-hash-maps/homework/problem-02-time-the-gap.md) and run it there. Nothing to install, nothing to configure, and your work stays on your own machine.
 
 ## Requirements
 

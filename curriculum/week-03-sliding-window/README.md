@@ -1,9 +1,9 @@
 # Week 3 — Sliding Window
 
 ```
-┌───┐  ┌───┐  ┌───┐  ┌───┐  ┌───┐  ┌───┐
-│ U │  │ M │  │ P │  │ I │  │ R │  │ E │
-└───┘  └───┘  └───┘  └───┘  └───┘  └───┘
+┌───┐  ┌───┐  ┌───┐  ┌───┐  ┌───┐
+│ F │  │ R │  │ A │  │ M │  │ E │
+└───┘  └───┘  └───┘  └───┘  └───┘
 ```
 
 > *Last week we taught you to reach for a hash map when the array is unsorted. This week we teach you to recognize when "something over every contiguous slice" is actually a single linear scan.* By Sunday you can spot a sliding-window problem in 30 seconds, decide fixed-size versus variable-size in the next 30, and write the canonical two-index loop without notes.

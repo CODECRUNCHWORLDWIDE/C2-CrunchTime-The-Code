@@ -34,7 +34,7 @@ is the reason the week is split this way.
 
 ## Running the harness
 
-Every drill's page has an [online code editor](/courses/ide#src=C2-CrunchTime-The-Code/curriculum/week-04-fast-slow-pointers-and-mock-1/exercises/exercise-01-conveyor-loop.md)
+Every drill's page has an [online code editor](/ide#src=C2-CrunchTime-The-Code/curriculum/week-04-fast-slow-pointers-and-mock-1/exercises/exercise-01-conveyor-loop.md)
 link, so you can solve any of them in the browser with nothing installed. When
 you want the week's larger and nastier cases — two-hundred-thousand-chute
 sorters, thousand-slot walks above CPython's cached-integer range, the

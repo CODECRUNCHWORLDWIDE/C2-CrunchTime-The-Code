@@ -2,315 +2,1237 @@
   "repo": "C2-CrunchTime-The-Code",
   "updated": "2026-08-28T11:05:05-04:00",
   "files": [
-    {"path": "CODE_OF_CONDUCT.md", "title": "Contributor Covenant Code of Conduct"},
-    {"path": "CONTENT-POLICY.md", "title": "C2 Content Policy — Original Problems Only"},
-    {"path": "CONTRIBUTING.md", "title": "Contributing to CrunchTime — The Code"},
-    {"path": "LICENSE.md", "title": "LICENSE"},
-    {"path": "README.md", "title": "C2 · CrunchTime — The Code · Course Syllabus"},
-    {"path": "assets/brand/BRAND.md", "title": "C2 · CrunchTime — The Code — Brand Guide"},
-    {"path": "community/faqs.md", "title": "Frequently Asked Questions"},
-    {"path": "community/support.md", "title": "Getting Help"},
-    {"path": "curriculum/study-plans/intensive-15-week.md", "title": "C2 — 15-Week Intensive Study Plan"},
-    {"path": "curriculum/study-plans/mastery-1-year.md", "title": "C2 — 1-Year Mastery Pathway"},
-    {"path": "curriculum/week-00-python-data-structures-warmup/CHEATSHEET.md", "title": "The Built-In Complexity Cheat Sheet"},
-    {"path": "curriculum/week-00-python-data-structures-warmup/README.md", "title": "Week 0 — Python Data Structures Warm-Up"},
-    {"path": "curriculum/week-00-python-data-structures-warmup/challenges/challenge-01-tide-board-digest.md", "title": "Challenge 1 — The Tide Board Digest"},
-    {"path": "curriculum/week-00-python-data-structures-warmup/challenges/challenge-02-kiln-cone-audit.md", "title": "Challenge 2 — The Kiln Cone Audit"},
-    {"path": "curriculum/week-00-python-data-structures-warmup/exercises/README.md", "title": "Week 0 — Exercises"},
-    {"path": "curriculum/week-00-python-data-structures-warmup/exercises/exercise-01-seed-packet-codes.md", "title": "Exercise 1 — Seed Packet Codes"},
-    {"path": "curriculum/week-00-python-data-structures-warmup/exercises/exercise-02-cable-ferry-lane.md", "title": "Exercise 2 — The Cable Ferry's Waiting Lane"},
-    {"path": "curriculum/week-00-python-data-structures-warmup/exercises/exercise-03-garden-plot-map.md", "title": "Exercise 3 — The Community Garden's Plot Map"},
-    {"path": "curriculum/week-00-python-data-structures-warmup/exercises/exercise-04-lost-property-shelf.md", "title": "Exercise 4 — The Depot's Lost-Property Shelf"},
-    {"path": "curriculum/week-00-python-data-structures-warmup/exercises/exercise-05-radio-check-rosters.md", "title": "Exercise 5 — Two Nights on the Coastal Net"},
-    {"path": "curriculum/week-00-python-data-structures-warmup/homework/README.md", "title": "Week 0 — Homework"},
-    {"path": "curriculum/week-00-python-data-structures-warmup/homework/problem-01-banner-copy-count.md", "title": "Problem 1 — Counting the Copies in a Banner"},
-    {"path": "curriculum/week-00-python-data-structures-warmup/homework/problem-02-bakery-order-slips.md", "title": "Problem 2 — The Bakery's Order Slips"},
-    {"path": "curriculum/week-00-python-data-structures-warmup/homework/problem-03-sled-team-rotation.md", "title": "Problem 3 — The Sled Team's Rotation"},
-    {"path": "curriculum/week-00-python-data-structures-warmup/homework/problem-04-returns-cart.md", "title": "Problem 4 — The Library's Returns Cart"},
-    {"path": "curriculum/week-00-python-data-structures-warmup/homework/problem-05-hive-inspection-log.md", "title": "Problem 5 — The Hive Inspection Log"},
-    {"path": "curriculum/week-00-python-data-structures-warmup/homework/problem-06-tool-crib-signoffs.md", "title": "Problem 6 — The Tool Crib's Sign-Offs"},
-    {"path": "curriculum/week-00-python-data-structures-warmup/lecture-notes/01-strings-and-immutability.md", "title": "Lecture 1 — Strings and the Cost of Immutability"},
-    {"path": "curriculum/week-00-python-data-structures-warmup/lecture-notes/02-lists-tuples-and-the-dynamic-array.md", "title": "Lecture 2 — Lists, Tuples and the Dynamic Array"},
-    {"path": "curriculum/week-00-python-data-structures-warmup/lecture-notes/03-dicts-sets-and-the-hash-table.md", "title": "Lecture 3 — Dicts, Sets and the Hash Table"},
-    {"path": "curriculum/week-00-python-data-structures-warmup/mini-project/README.md", "title": "Week 0 — Mini-Project: Your Own Cost Table"},
-    {"path": "curriculum/week-00-python-data-structures-warmup/quiz.md", "title": "Week 0 — Self-Check"},
-    {"path": "curriculum/week-00-python-data-structures-warmup/resources.md", "title": "Week 0 — Resources"},
-    {"path": "curriculum/week-01-the-frame-method-and-thinking-aloud/README.md", "title": "Week 1 — The FRAME Method & Thinking Aloud"},
-    {"path": "curriculum/week-01-the-frame-method-and-thinking-aloud/challenges/README.md", "title": "Week 1 — Challenges"},
-    {"path": "curriculum/week-01-the-frame-method-and-thinking-aloud/challenges/challenge-01-settlement-trio.md", "title": "Challenge 1 — The Settlement Trio"},
-    {"path": "curriculum/week-01-the-frame-method-and-thinking-aloud/challenges/challenge-02-levee-ponding.md", "title": "Challenge 2 — Ponding on the Levee Road"},
-    {"path": "curriculum/week-01-the-frame-method-and-thinking-aloud/exercises/README.md", "title": "Week 1 — Exercises (FRAME Drills)"},
-    {"path": "curriculum/week-01-the-frame-method-and-thinking-aloud/exercises/exercise-01-reverse-the-siding.md", "title": "Exercise 1 — Reverse the Siding"},
-    {"path": "curriculum/week-01-the-frame-method-and-thinking-aloud/exercises/exercise-02-mirror-serial.md", "title": "Exercise 2 — The Mirror Serial"},
-    {"path": "curriculum/week-01-the-frame-method-and-thinking-aloud/exercises/exercise-03-widest-ballast-pair.md", "title": "Exercise 3 — The Widest Ballast Pair"},
-    {"path": "curriculum/week-01-the-frame-method-and-thinking-aloud/exercises/exercise-04-stuck-gauge.md", "title": "Exercise 4 — The Stuck Gauge"},
-    {"path": "curriculum/week-01-the-frame-method-and-thinking-aloud/exercises/exercise-05-market-awning.md", "title": "Exercise 5 — The Market Awning"},
-    {"path": "curriculum/week-01-the-frame-method-and-thinking-aloud/exercises/frame_template.md", "title": "Problem N: <title>"},
-    {"path": "curriculum/week-01-the-frame-method-and-thinking-aloud/homework/README.md", "title": "Week 1 — Homework"},
-    {"path": "curriculum/week-01-the-frame-method-and-thinking-aloud/homework/problem-01-portfolio-setup.md", "title": "Problem 1 — Portfolio Setup"},
-    {"path": "curriculum/week-01-the-frame-method-and-thinking-aloud/homework/problem-02-narration-review.md", "title": "Problem 2 — Narration Review"},
-    {"path": "curriculum/week-01-the-frame-method-and-thinking-aloud/homework/problem-03-wild-problem.md", "title": "Problem 3 — A Problem You Have Never Seen"},
-    {"path": "curriculum/week-01-the-frame-method-and-thinking-aloud/homework/problem-04-behavioral-story.md", "title": "Problem 4 — Behavioral Story"},
-    {"path": "curriculum/week-01-the-frame-method-and-thinking-aloud/homework/problem-05-system-design-warmup.md", "title": "Problem 5 — System-Design Warm-Up"},
-    {"path": "curriculum/week-01-the-frame-method-and-thinking-aloud/lecture-notes/01-what-interviewers-actually-score.md", "title": "Lecture 1 — What Interviewers Actually Score"},
-    {"path": "curriculum/week-01-the-frame-method-and-thinking-aloud/lecture-notes/02-the-frame-method.md", "title": "Lecture 2 — The FRAME Method"},
-    {"path": "curriculum/week-01-the-frame-method-and-thinking-aloud/lecture-notes/03-arrays-and-two-pointers.md", "title": "Lecture 3 — Arrays and Two Pointers"},
-    {"path": "curriculum/week-01-the-frame-method-and-thinking-aloud/mini-project/README.md", "title": "Mini-Project — Your Interview-Prep Portfolio Repo"},
-    {"path": "curriculum/week-01-the-frame-method-and-thinking-aloud/mini-project/starter.md", "title": "Mini-Project starter — the repository skeleton"},
-    {"path": "curriculum/week-01-the-frame-method-and-thinking-aloud/quiz.md", "title": "Week 1 — Pattern-Recognition Quiz"},
-    {"path": "curriculum/week-01-the-frame-method-and-thinking-aloud/resources.md", "title": "Week 1 — Resources"},
-    {"path": "curriculum/week-02-complexity-and-hash-maps/README.md", "title": "Week 2 — Complexity & Hash Maps"},
-    {"path": "curriculum/week-02-complexity-and-hash-maps/challenges/README.md", "title": "Week 2 — Challenges"},
-    {"path": "curriculum/week-02-complexity-and-hash-maps/challenges/challenge-01-balanced-shifts.md", "title": "Challenge 1 — The Balanced Shift"},
-    {"path": "curriculum/week-02-complexity-and-hash-maps/challenges/challenge-02-residency-board.md", "title": "Challenge 2 — The Texture Residency Board"},
-    {"path": "curriculum/week-02-complexity-and-hash-maps/exercises/README.md", "title": "Week 2 — Exercises (FRAME Drills)"},
-    {"path": "curriculum/week-02-complexity-and-hash-maps/exercises/exercise-01-refund-pair.md", "title": "Exercise 1 — The Refund Pair"},
-    {"path": "curriculum/week-02-complexity-and-hash-maps/exercises/exercise-02-badge-rescan.md", "title": "Exercise 2 — The Repeated Badge"},
-    {"path": "curriculum/week-02-complexity-and-hash-maps/exercises/exercise-03-stage-twins.md", "title": "Exercise 3 — Stage Twins"},
-    {"path": "curriculum/week-02-complexity-and-hash-maps/exercises/exercise-04-on-call-grid.md", "title": "Exercise 4 — The On-Call Grid"},
-    {"path": "curriculum/week-02-complexity-and-hash-maps/exercises/exercise-05-longest-dock-run.md", "title": "Exercise 5 — The Longest Dock Run"},
-    {"path": "curriculum/week-02-complexity-and-hash-maps/homework/README.md", "title": "Week 2 — Homework"},
-    {"path": "curriculum/week-02-complexity-and-hash-maps/homework/problem-01-locker-handshake.md", "title": "Homework Problem 1 — The Locker Handshake"},
-    {"path": "curriculum/week-02-complexity-and-hash-maps/homework/problem-02-time-the-gap.md", "title": "Homework Problem 2 — Time the Gap"},
-    {"path": "curriculum/week-02-complexity-and-hash-maps/homework/problem-03-renarrate-market-awning.md", "title": "Homework Problem 3 — Re-narrate the Market Awning"},
-    {"path": "curriculum/week-02-complexity-and-hash-maps/homework/problem-04-tradeoff-story.md", "title": "Homework Problem 4 — The Tradeoff Story"},
-    {"path": "curriculum/week-02-complexity-and-hash-maps/homework/problem-05-top-queries-design.md", "title": "Homework Problem 5 — Counting the Top Queries"},
-    {"path": "curriculum/week-02-complexity-and-hash-maps/homework/problem-06-week-02-reflection.md", "title": "Homework Problem 6 — Week 2 Reflection"},
-    {"path": "curriculum/week-02-complexity-and-hash-maps/lecture-notes/01-mental-models-for-big-O.md", "title": "Lecture 1 — Mental Models for Big-O"},
-    {"path": "curriculum/week-02-complexity-and-hash-maps/lecture-notes/02-the-hash-map-pattern.md", "title": "Lecture 2 — The Hash Map Pattern"},
-    {"path": "curriculum/week-02-complexity-and-hash-maps/lecture-notes/03-stating-complexity-out-loud.md", "title": "Lecture 3 — Stating Complexity Out Loud"},
-    {"path": "curriculum/week-02-complexity-and-hash-maps/mini-project/README.md", "title": "Mini-Project — The Complexity Audit"},
-    {"path": "curriculum/week-02-complexity-and-hash-maps/quiz.md", "title": "Week 2 — Complexity Quiz"},
-    {"path": "curriculum/week-02-complexity-and-hash-maps/resources.md", "title": "Week 2 — Resources"},
-    {"path": "curriculum/week-03-sliding-window/README.md", "title": "Week 3 — Sliding Window"},
-    {"path": "curriculum/week-03-sliding-window/challenges/README.md", "title": "Week 3 — Challenges"},
-    {"path": "curriculum/week-03-sliding-window/challenges/challenge-01-shortest-kit-span.md", "title": "Challenge 1 — The Shortest Kit Span"},
-    {"path": "curriculum/week-03-sliding-window/challenges/challenge-02-repaving-stretch.md", "title": "Challenge 2 — The Repaving Stretch"},
-    {"path": "curriculum/week-03-sliding-window/exercises/README.md", "title": "Week 3 — Exercises (FRAME Drills)"},
-    {"path": "curriculum/week-03-sliding-window/exercises/exercise-01-staffing-block.md", "title": "Exercise 1 — The Busiest Staffing Block"},
-    {"path": "curriculum/week-03-sliding-window/exercises/exercise-02-longest-clean-run.md", "title": "Exercise 2 — The Longest Clean Run"},
-    {"path": "curriculum/week-03-sliding-window/exercises/exercise-03-rota-window.md", "title": "Exercise 3 — The Rota Window"},
-    {"path": "curriculum/week-03-sliding-window/exercises/exercise-04-shortest-catchment.md", "title": "Exercise 4 — The Shortest Catchment"},
-    {"path": "curriculum/week-03-sliding-window/exercises/exercise-05-cold-chain-load.md", "title": "Exercise 5 — The Cold-Chain Load"},
-    {"path": "curriculum/week-03-sliding-window/homework/README.md", "title": "Week 3 — Homework"},
-    {"path": "curriculum/week-03-sliding-window/homework/problem-01-the-unlabelled-prompt.md", "title": "Problem 1 — The Unlabelled Prompt"},
-    {"path": "curriculum/week-03-sliding-window/homework/problem-02-courier-zone-count.md", "title": "Problem 2 — The Courier's Zone Count"},
-    {"path": "curriculum/week-03-sliding-window/homework/problem-03-when-the-window-fails.md", "title": "Problem 3 — When the Window Fails"},
-    {"path": "curriculum/week-03-sliding-window/homework/problem-04-behavioral-story-03.md", "title": "Problem 4 — Behavioral Story 3"},
-    {"path": "curriculum/week-03-sliding-window/homework/problem-05-rolling-error-rate.md", "title": "Problem 5 — The Rolling Error Rate"},
-    {"path": "curriculum/week-03-sliding-window/lecture-notes/01-the-sliding-window-pattern.md", "title": "Lecture 1 — The Sliding Window Pattern"},
-    {"path": "curriculum/week-03-sliding-window/lecture-notes/02-the-shrinking-and-growing-mechanics.md", "title": "Lecture 2 — The Shrinking and Growing Mechanics"},
-    {"path": "curriculum/week-03-sliding-window/mini-project/README.md", "title": "Mini-Project — Six Sliding-Window Write-Ups with 30-Second Pattern-Recognition Memos"},
-    {"path": "curriculum/week-03-sliding-window/quiz.md", "title": "Week 3 — Pattern-Recognition Quiz"},
-    {"path": "curriculum/week-03-sliding-window/resources.md", "title": "Week 3 — Resources"},
-    {"path": "curriculum/week-04-fast-slow-pointers-and-mock-1/README.md", "title": "Week 4 — Fast/Slow Pointers + Mock Interview #1"},
-    {"path": "curriculum/week-04-fast-slow-pointers-and-mock-1/challenges/README.md", "title": "Week 4 — Challenges"},
-    {"path": "curriculum/week-04-fast-slow-pointers-and-mock-1/challenges/challenge-01-booklet-imposition.md", "title": "Challenge 1 — Booklet Imposition"},
-    {"path": "curriculum/week-04-fast-slow-pointers-and-mock-1/challenges/challenge-02-feedline-weld.md", "title": "Challenge 2 — The Feed-Line Weld"},
-    {"path": "curriculum/week-04-fast-slow-pointers-and-mock-1/exercises/README.md", "title": "Week 4 — Exercises"},
-    {"path": "curriculum/week-04-fast-slow-pointers-and-mock-1/exercises/exercise-01-conveyor-loop.md", "title": "Exercise 1 — The Conveyor Loop"},
-    {"path": "curriculum/week-04-fast-slow-pointers-and-mock-1/exercises/exercise-02-escalation-loop.md", "title": "Exercise 2 — The Escalation Loop"},
-    {"path": "curriculum/week-04-fast-slow-pointers-and-mock-1/exercises/exercise-03-midroll-break.md", "title": "Exercise 3 — The Mid-Roll Break"},
-    {"path": "curriculum/week-04-fast-slow-pointers-and-mock-1/exercises/exercise-04-wear-level-rotation.md", "title": "Exercise 4 — The Wear-Level Rotation"},
-    {"path": "curriculum/week-04-fast-slow-pointers-and-mock-1/exercises/exercise-05-relay-hop-budget.md", "title": "Exercise 5 — The Relay Hop Budget"},
-    {"path": "curriculum/week-04-fast-slow-pointers-and-mock-1/homework/README.md", "title": "Week 4 — Homework"},
-    {"path": "curriculum/week-04-fast-slow-pointers-and-mock-1/homework/problem-01-loopback-self-test.md", "title": "Problem 1 — The Loopback Self-Test"},
-    {"path": "curriculum/week-04-fast-slow-pointers-and-mock-1/homework/problem-02-trim-scan.md", "title": "Problem 2 — Trim the Duplicate Scan"},
-    {"path": "curriculum/week-04-fast-slow-pointers-and-mock-1/homework/problem-03-symmetric-dies.md", "title": "Problem 3 — The Symmetric Die Sequence"},
-    {"path": "curriculum/week-04-fast-slow-pointers-and-mock-1/homework/problem-04-behavioral-story.md", "title": "Problem 4 — Behavioral Story #4"},
-    {"path": "curriculum/week-04-fast-slow-pointers-and-mock-1/homework/problem-05-system-design-warmup.md", "title": "Problem 5 — System-Design Ground Zero #4"},
-    {"path": "curriculum/week-04-fast-slow-pointers-and-mock-1/homework/problem-06-phase-1-retrospective.md", "title": "Problem 6 — The Phase-1 Retrospective"},
-    {"path": "curriculum/week-04-fast-slow-pointers-and-mock-1/lecture-notes/01-floyds-tortoise-and-hare.md", "title": "Lecture 1 — Floyd's Tortoise and Hare"},
-    {"path": "curriculum/week-04-fast-slow-pointers-and-mock-1/lecture-notes/02-the-mock-interview-protocol.md", "title": "Lecture 2 — The Mock Interview Protocol"},
-    {"path": "curriculum/week-04-fast-slow-pointers-and-mock-1/mini-project/README.md", "title": "Mini-Project — Mock Interview #1"},
-    {"path": "curriculum/week-04-fast-slow-pointers-and-mock-1/quiz.md", "title": "Week 4 — Pattern-Recognition Quiz"},
-    {"path": "curriculum/week-04-fast-slow-pointers-and-mock-1/resources.md", "title": "Week 4 — Resources"},
-    {"path": "curriculum/week-05-binary-search/README.md", "title": "Week 5 — Binary Search Beyond Sorted Arrays"},
-    {"path": "curriculum/week-05-binary-search/challenges/README.md", "title": "Week 5 — Challenges"},
-    {"path": "curriculum/week-05-binary-search/challenges/challenge-01-order-book-boundary.md", "title": "Challenge 1 — The Merged Book Boundary"},
-    {"path": "curriculum/week-05-binary-search/challenges/challenge-02-signal-mast-spacing.md", "title": "Challenge 2 — The Signal Mast Spacing"},
-    {"path": "curriculum/week-05-binary-search/exercises/README.md", "title": "Week 5 — Exercises"},
-    {"path": "curriculum/week-05-binary-search/exercises/exercise-01-ladder-seat.md", "title": "Exercise 1 — The Ladder Seat"},
-    {"path": "curriculum/week-05-binary-search/exercises/exercise-02-scan-window.md", "title": "Exercise 2 — The Scan Window"},
-    {"path": "curriculum/week-05-binary-search/exercises/exercise-03-ring-buffer-probe.md", "title": "Exercise 3 — The Ring Buffer Probe"},
-    {"path": "curriculum/week-05-binary-search/exercises/exercise-04-quote-rank.md", "title": "Exercise 4 — The Quote Rank"},
-    {"path": "curriculum/week-05-binary-search/exercises/exercise-05-paving-reach.md", "title": "Exercise 5 — The Paving Reach"},
-    {"path": "curriculum/week-05-binary-search/homework/README.md", "title": "Week 5 — Homework"},
-    {"path": "curriculum/week-05-binary-search/homework/problem-01-kiln-firing-schedule.md", "title": "Homework Problem 1 — The Kiln Firing Schedule"},
-    {"path": "curriculum/week-05-binary-search/homework/problem-02-relay-handoff.md", "title": "Homework Problem 2 — The Relay Handoff"},
-    {"path": "curriculum/week-05-binary-search/homework/problem-03-ridge-line.md", "title": "Homework Problem 3 — The Ridge Line"},
-    {"path": "curriculum/week-05-binary-search/homework/problem-04-duplicated-manifest.md", "title": "Homework Problem 4 — The Duplicated Manifest"},
-    {"path": "curriculum/week-05-binary-search/homework/problem-05-deciding-without-the-full-picture.md", "title": "Homework Problem 5 — Deciding Without the Full Picture"},
-    {"path": "curriculum/week-05-binary-search/homework/problem-06-autocomplete-at-scale.md", "title": "Homework Problem 6 — Autocomplete at Scale"},
-    {"path": "curriculum/week-05-binary-search/lecture-notes/01-the-binary-search-template.md", "title": "Lecture 1 — The Binary-Search Template"},
-    {"path": "curriculum/week-05-binary-search/lecture-notes/02-binary-search-on-the-answer.md", "title": "Lecture 2 — Binary Search on the Answer"},
-    {"path": "curriculum/week-05-binary-search/mini-project/README.md", "title": "Mini-Project — Five Binary-Search Write-Ups (Including Two \"Search on Answer\" Variants)"},
-    {"path": "curriculum/week-05-binary-search/quiz.md", "title": "Week 5 — Pattern-Recognition Quiz"},
-    {"path": "curriculum/week-05-binary-search/resources.md", "title": "Week 5 — Resources"},
-    {"path": "curriculum/week-06-bfs/README.md", "title": "Week 6 — Breadth-First Search"},
-    {"path": "curriculum/week-06-bfs/challenges/README.md", "title": "Week 6 — Challenges"},
-    {"path": "curriculum/week-06-bfs/challenges/challenge-01-minimum-knight-moves.md", "title": "Challenge 1 — Minimum Knight Moves (LeetCode 1197)"},
-    {"path": "curriculum/week-06-bfs/challenges/challenge-01-trunk-splice.md", "title": "Challenge 1 — Trunk Splice"},
-    {"path": "curriculum/week-06-bfs/challenges/challenge-02-tide-gate.md", "title": "Challenge 2 — Tide Gate"},
-    {"path": "curriculum/week-06-bfs/exercises/README.md", "title": "Week 6 — Exercises"},
-    {"path": "curriculum/week-06-bfs/exercises/exercise-01-level-order.md", "title": "Exercise 1 — Binary Tree Level Order Traversal"},
-    {"path": "curriculum/week-06-bfs/exercises/exercise-01-relay-roster.md", "title": "Exercise 1 — Relay Roster"},
-    {"path": "curriculum/week-06-bfs/exercises/exercise-02-hoist-route.md", "title": "Exercise 2 — Hoist Route"},
-    {"path": "curriculum/week-06-bfs/exercises/exercise-02-shortest-path-grid.md", "title": "Exercise 2 — Shortest Path in a Binary Matrix"},
-    {"path": "curriculum/week-06-bfs/exercises/exercise-03-rotting-oranges.md", "title": "Exercise 3 — Rotting Oranges"},
-    {"path": "curriculum/week-06-bfs/exercises/exercise-03-siren-reach.md", "title": "Exercise 3 — Siren Reach"},
-    {"path": "curriculum/week-06-bfs/exercises/exercise-04-cable-pull.md", "title": "Exercise 4 — Cable Pull"},
-    {"path": "curriculum/week-06-bfs/exercises/exercise-04-word-ladder.md", "title": "Exercise 4 — Word Ladder"},
-    {"path": "curriculum/week-06-bfs/exercises/exercise-05-binary-tree-right-side-view.md", "title": "Exercise 5 — Binary Tree Right Side View"},
-    {"path": "curriculum/week-06-bfs/exercises/exercise-05-feeder-tier-load.md", "title": "Exercise 5 — Feeder Tier Load"},
-    {"path": "curriculum/week-06-bfs/homework/README.md", "title": "Week 6 — Homework"},
-    {"path": "curriculum/week-06-bfs/homework/problem-01-scrap-heaps.md", "title": "Problem 1 — Scrap Heaps"},
-    {"path": "curriculum/week-06-bfs/homework/problem-02-worst-served-bay.md", "title": "Problem 2 — Worst-Served Bay"},
-    {"path": "curriculum/week-06-bfs/lecture-notes/01-the-bfs-template.md", "title": "Lecture 1 — The BFS Template"},
-    {"path": "curriculum/week-06-bfs/lecture-notes/02-grid-bfs-and-graph-bfs.md", "title": "Lecture 2 — Grid BFS and Graph BFS"},
-    {"path": "curriculum/week-06-bfs/mini-project/README.md", "title": "Mini-Project — Grid BFS + Node BFS, Fully FRAME-Narrated"},
-    {"path": "curriculum/week-06-bfs/quiz.md", "title": "Week 6 — Pattern-Recognition Quiz"},
-    {"path": "curriculum/week-06-bfs/resources.md", "title": "Week 6 — Resources"},
-    {"path": "curriculum/week-07-dfs-and-topological-sort/README.md", "title": "Week 7 — Depth-First Search and Topological Sort"},
-    {"path": "curriculum/week-07-dfs-and-topological-sort/challenges/README.md", "title": "Week 7 — Challenges"},
-    {"path": "curriculum/week-07-dfs-and-topological-sort/challenges/challenge-01-chokepoint-mains.md", "title": "Challenge 1 — Chokepoint Mains"},
-    {"path": "curriculum/week-07-dfs-and-topological-sort/challenges/challenge-02-consist-reconstruction.md", "title": "Challenge 2 — Consist Reconstruction"},
-    {"path": "curriculum/week-07-dfs-and-topological-sort/exercises/README.md", "title": "Week 7 — Exercises"},
-    {"path": "curriculum/week-07-dfs-and-topological-sort/exercises/exercise-01-repeater-clusters.md", "title": "Exercise 1 — Repeater Clusters"},
-    {"path": "curriculum/week-07-dfs-and-topological-sort/exercises/exercise-02-conveyor-reachability.md", "title": "Exercise 2 — Conveyor Reachability"},
-    {"path": "curriculum/week-07-dfs-and-topological-sort/exercises/exercise-03-batch-loop-audit.md", "title": "Exercise 3 — Batch Loop Audit"},
-    {"path": "curriculum/week-07-dfs-and-topological-sort/exercises/exercise-04-refit-order.md", "title": "Exercise 4 — Refit Order"},
-    {"path": "curriculum/week-07-dfs-and-topological-sort/exercises/exercise-05-firmware-install-order.md", "title": "Exercise 5 — Firmware Install Order"},
-    {"path": "curriculum/week-07-dfs-and-topological-sort/homework/README.md", "title": "Week 7 — Homework"},
-    {"path": "curriculum/week-07-dfs-and-topological-sort/homework/problem-01-hose-clusters.md", "title": "Problem 1 — Hose Clusters"},
-    {"path": "curriculum/week-07-dfs-and-topological-sort/homework/problem-02-prep-step-audit.md", "title": "Problem 2 — Prep Step Audit"},
-    {"path": "curriculum/week-07-dfs-and-topological-sort/lecture-notes/01-recursive-dfs.md", "title": "Lecture 1 — Recursive DFS"},
-    {"path": "curriculum/week-07-dfs-and-topological-sort/lecture-notes/02-iterative-dfs.md", "title": "Lecture 2 — Iterative DFS"},
-    {"path": "curriculum/week-07-dfs-and-topological-sort/lecture-notes/03-topological-sort.md", "title": "Lecture 3 — Topological Sort and Cycle Detection"},
-    {"path": "curriculum/week-07-dfs-and-topological-sort/mini-project/README.md", "title": "Mini-Project — The Restart Planner"},
-    {"path": "curriculum/week-07-dfs-and-topological-sort/mini-project/starter.md", "title": "Mini-Project scaffolding — the two write-ups"},
-    {"path": "curriculum/week-07-dfs-and-topological-sort/quiz.md", "title": "Week 7 — Pattern-Recognition Quiz"},
-    {"path": "curriculum/week-07-dfs-and-topological-sort/resources.md", "title": "Week 7 — Resources"},
-    {"path": "curriculum/week-08-heaps-and-priority-queues/README.md", "title": "Week 8 — Heaps and Priority Queues"},
-    {"path": "curriculum/week-08-heaps-and-priority-queues/challenges/README.md", "title": "Week 8 — Challenges"},
-    {"path": "curriculum/week-08-heaps-and-priority-queues/challenges/challenge-01-merge-k-sorted-lists.md", "title": "Challenge 1 — Merge k Sorted Lists (LeetCode 23)"},
-    {"path": "curriculum/week-08-heaps-and-priority-queues/challenges/challenge-02-task-scheduler.md", "title": "Challenge 2 — Task Scheduler (LeetCode 621)"},
-    {"path": "curriculum/week-08-heaps-and-priority-queues/exercises/README.md", "title": "Week 8 — Exercises"},
-    {"path": "curriculum/week-08-heaps-and-priority-queues/exercises/exercise-01-sluice-gate-order.md", "title": "Exercise 1 — Sluice Gate Order"},
-    {"path": "curriculum/week-08-heaps-and-priority-queues/homework/README.md", "title": "Week 8 — Homework"},
-    {"path": "curriculum/week-08-heaps-and-priority-queues/lecture-notes/01-heapq-and-top-k.md", "title": "Lecture 1 — `heapq` and the Top-k Template"},
-    {"path": "curriculum/week-08-heaps-and-priority-queues/lecture-notes/02-heap-of-tuples-and-k-closest.md", "title": "Lecture 2 — Heap of Tuples and k-Closest"},
-    {"path": "curriculum/week-08-heaps-and-priority-queues/lecture-notes/03-two-heap-and-k-way-merge.md", "title": "Lecture 3 — Two-Heap, k-Way Merge, and Lazy Deletion"},
-    {"path": "curriculum/week-08-heaps-and-priority-queues/mini-project/README.md", "title": "Mini-Project — Top-k + Two-Heap, Fully FRAME-Narrated"},
-    {"path": "curriculum/week-08-heaps-and-priority-queues/quiz.md", "title": "Week 8 — Pattern-Recognition Quiz"},
-    {"path": "curriculum/week-08-heaps-and-priority-queues/resources.md", "title": "Week 8 — Resources"},
-    {"path": "curriculum/week-09-tries-and-advanced-strings/README.md", "title": "Week 9 — Tries and Advanced Strings"},
-    {"path": "curriculum/week-09-tries-and-advanced-strings/challenges/README.md", "title": "Week 9 — Challenges"},
-    {"path": "curriculum/week-09-tries-and-advanced-strings/exercises/README.md", "title": "Week 9 — Exercises"},
-    {"path": "curriculum/week-09-tries-and-advanced-strings/homework/README.md", "title": "Week 9 — Homework"},
-    {"path": "curriculum/week-09-tries-and-advanced-strings/lecture-notes/01-trie-basics-and-autocomplete.md", "title": "Lecture 1 — Trie Basics and Autocomplete"},
-    {"path": "curriculum/week-09-tries-and-advanced-strings/lecture-notes/02-word-break-and-aho-corasick.md", "title": "Lecture 2 — Word Break, Longest Common Prefix, and Aho-Corasick (read only)"},
-    {"path": "curriculum/week-09-tries-and-advanced-strings/lecture-notes/03-kmp-and-z-algorithm.md", "title": "Lecture 3 — KMP and the Z-Algorithm"},
-    {"path": "curriculum/week-09-tries-and-advanced-strings/mini-project/README.md", "title": "Mini-Project — Trie + KMP, Fully FRAME-Narrated"},
-    {"path": "curriculum/week-09-tries-and-advanced-strings/quiz.md", "title": "Week 9 — Pattern-Recognition Quiz"},
-    {"path": "curriculum/week-09-tries-and-advanced-strings/resources.md", "title": "Week 9 — Resources"},
-    {"path": "curriculum/week-10-weighted-graphs-and-union-find/README.md", "title": "Week 10 — Weighted Graphs and Union-Find"},
-    {"path": "curriculum/week-10-weighted-graphs-and-union-find/challenges/README.md", "title": "Week 10 — Challenges"},
-    {"path": "curriculum/week-10-weighted-graphs-and-union-find/challenges/challenge-01-cheapest-flights-k-stops.md", "title": "Challenge 1 — Cheapest Flights Within K Stops (Deep Dive, LeetCode 787)"},
-    {"path": "curriculum/week-10-weighted-graphs-and-union-find/challenges/challenge-02-smallest-string-with-swaps.md", "title": "Challenge 2 — Smallest String With Swaps (LeetCode 1202, Optional)"},
-    {"path": "curriculum/week-10-weighted-graphs-and-union-find/exercises/README.md", "title": "Week 10 — Exercises"},
-    {"path": "curriculum/week-10-weighted-graphs-and-union-find/homework/README.md", "title": "Week 10 — Homework"},
-    {"path": "curriculum/week-10-weighted-graphs-and-union-find/lecture-notes/01-dijkstra-and-the-shortest-path-picker.md", "title": "Lecture 1 — Dijkstra and the Shortest-Path Picker"},
-    {"path": "curriculum/week-10-weighted-graphs-and-union-find/lecture-notes/02-bellman-ford-floyd-warshall-and-mst.md", "title": "Lecture 2 — Bellman-Ford, Floyd-Warshall, and Minimum Spanning Trees"},
-    {"path": "curriculum/week-10-weighted-graphs-and-union-find/lecture-notes/03-union-find-and-the-dsu-triggers.md", "title": "Lecture 3 — Union-Find and the DSU Triggers"},
-    {"path": "curriculum/week-10-weighted-graphs-and-union-find/mini-project/README.md", "title": "Mini-Project — Dijkstra + DSU, Fully FRAME-Narrated"},
-    {"path": "curriculum/week-10-weighted-graphs-and-union-find/quiz.md", "title": "Week 10 — Pattern-Recognition Quiz"},
-    {"path": "curriculum/week-10-weighted-graphs-and-union-find/resources.md", "title": "Week 10 — Resources"},
-    {"path": "curriculum/week-11-dynamic-programming-i/README.md", "title": "Week 11 — Dynamic Programming I"},
-    {"path": "curriculum/week-11-dynamic-programming-i/challenges/README.md", "title": "Week 11 — Challenges"},
-    {"path": "curriculum/week-11-dynamic-programming-i/challenges/challenge-01-edit-distance.md", "title": "Challenge 1 — Edit Distance (Deep Dive, LeetCode 72)"},
-    {"path": "curriculum/week-11-dynamic-programming-i/challenges/challenge-02-longest-palindromic-subsequence.md", "title": "Challenge 2 — Longest Palindromic Subsequence (LeetCode 516)"},
-    {"path": "curriculum/week-11-dynamic-programming-i/exercises/README.md", "title": "Week 11 — Exercises"},
-    {"path": "curriculum/week-11-dynamic-programming-i/exercises/exercise-01-ferry-ramp-manifests.md", "title": "Exercise 1 — Ferry Ramp Manifests"},
-    {"path": "curriculum/week-11-dynamic-programming-i/exercises/exercise-02-survey-station-walk.md", "title": "Exercise 2 — The Survey Station Walk"},
-    {"path": "curriculum/week-11-dynamic-programming-i/exercises/exercise-03-stencil-line-split.md", "title": "Exercise 3 — The Stencil Line"},
-    {"path": "curriculum/week-11-dynamic-programming-i/homework/README.md", "title": "Week 11 — Homework"},
-    {"path": "curriculum/week-11-dynamic-programming-i/lecture-notes/01-the-dp-pipeline-and-1d-states.md", "title": "Lecture 1 — The DP Pipeline and 1D States"},
-    {"path": "curriculum/week-11-dynamic-programming-i/lecture-notes/02-2d-dp-and-the-grid-and-string-shapes.md", "title": "Lecture 2 — 2D DP and the Grid and String-Pair Shapes"},
-    {"path": "curriculum/week-11-dynamic-programming-i/lecture-notes/03-state-space-reduction-and-recognition.md", "title": "Lecture 3 — State-Space Reduction and Recognition"},
-    {"path": "curriculum/week-11-dynamic-programming-i/mini-project/README.md", "title": "Mini-Project — 1D DP + 2D DP, Fully FRAME-Narrated"},
-    {"path": "curriculum/week-11-dynamic-programming-i/quiz.md", "title": "Week 11 — Pattern-Recognition Quiz"},
-    {"path": "curriculum/week-11-dynamic-programming-i/resources.md", "title": "Week 11 — Resources"},
-    {"path": "curriculum/week-12-backtracking-and-combinatorics/README.md", "title": "Week 12 — Backtracking and Combinatorics"},
-    {"path": "curriculum/week-12-backtracking-and-combinatorics/challenges/README.md", "title": "Week 12 — Challenges"},
-    {"path": "curriculum/week-12-backtracking-and-combinatorics/challenges/challenge-01-word-search.md", "title": "Challenge 1 — Word Search (LC 79)"},
-    {"path": "curriculum/week-12-backtracking-and-combinatorics/challenges/challenge-02-n-queens.md", "title": "Challenge 2 — N-Queens"},
-    {"path": "curriculum/week-12-backtracking-and-combinatorics/exercises/README.md", "title": "Week 12 — Exercises"},
-    {"path": "curriculum/week-12-backtracking-and-combinatorics/homework/README.md", "title": "Week 12 — Homework"},
-    {"path": "curriculum/week-12-backtracking-and-combinatorics/lecture-notes/01-the-backtracking-template-and-the-three-warmups.md", "title": "Lecture 1 — The Backtracking Template and the Three Warm-ups"},
-    {"path": "curriculum/week-12-backtracking-and-combinatorics/lecture-notes/02-pruning-and-deduplication-and-string-partitioning.md", "title": "Lecture 2 — Pruning, Deduplication, and String Partitioning"},
-    {"path": "curriculum/week-12-backtracking-and-combinatorics/lecture-notes/03-grid-backtracking-and-constraint-satisfaction.md", "title": "Lecture 3 — Grid Backtracking and Constraint Satisfaction"},
-    {"path": "curriculum/week-12-backtracking-and-combinatorics/mini-project/README.md", "title": "Week 12 — Mini-Project: Palindrome Partitioning + Sudoku Solver"},
-    {"path": "curriculum/week-12-backtracking-and-combinatorics/quiz.md", "title": "Week 12 — Pattern-Recognition Quiz"},
-    {"path": "curriculum/week-12-backtracking-and-combinatorics/resources.md", "title": "Week 12 — Resources"},
-    {"path": "curriculum/week-13-behavioral-and-communication/README.md", "title": "Week 13 — Behavioral & Communication"},
-    {"path": "curriculum/week-13-behavioral-and-communication/challenges/README.md", "title": "Week 13 — Challenges"},
-    {"path": "curriculum/week-13-behavioral-and-communication/challenges/challenge-01-full-behavioral-round.md", "title": "Challenge 1 — The Full 45-Minute Mock Behavioral Round"},
-    {"path": "curriculum/week-13-behavioral-and-communication/challenges/challenge-02-hostile-and-curveball-round.md", "title": "Challenge 2 — The Hostile and Curveball Round"},
-    {"path": "curriculum/week-13-behavioral-and-communication/exercises/README.md", "title": "Week 13 — Exercises"},
-    {"path": "curriculum/week-13-behavioral-and-communication/exercises/exercise-01-debugging-story.md", "title": "Exercise 1 — The Debugging Story"},
-    {"path": "curriculum/week-13-behavioral-and-communication/exercises/exercise-02-conflict-story.md", "title": "Exercise 2 — The Conflict Story"},
-    {"path": "curriculum/week-13-behavioral-and-communication/exercises/exercise-03-leadership-influence-story.md", "title": "Exercise 3 — The Leadership / Influence Story"},
-    {"path": "curriculum/week-13-behavioral-and-communication/exercises/exercise-04-failure-story.md", "title": "Exercise 4 — The Failure Story"},
-    {"path": "curriculum/week-13-behavioral-and-communication/exercises/exercise-05-ambiguity-story.md", "title": "Exercise 5 — The Ambiguity Story"},
-    {"path": "curriculum/week-13-behavioral-and-communication/exercises/star_template.md", "title": "Story N: <one-line title>"},
-    {"path": "curriculum/week-13-behavioral-and-communication/homework/README.md", "title": "Week 13 — Homework"},
-    {"path": "curriculum/week-13-behavioral-and-communication/lecture-notes/01-the-eight-categories-and-the-rubric.md", "title": "Lecture 1 — The Eight Categories and the Rubric"},
-    {"path": "curriculum/week-13-behavioral-and-communication/lecture-notes/02-the-star-method-and-the-story-bank.md", "title": "Lecture 2 — The STAR Method and the Story Bank"},
-    {"path": "curriculum/week-13-behavioral-and-communication/lecture-notes/03-communication-under-pressure-and-hostile-questions.md", "title": "Lecture 3 — Communication Under Pressure and Hostile Questions"},
-    {"path": "curriculum/week-13-behavioral-and-communication/mini-project/README.md", "title": "Mini-Project — The Behavioral Story Bank"},
-    {"path": "curriculum/week-13-behavioral-and-communication/quiz.md", "title": "Week 13 — Category-Recognition Quiz"},
-    {"path": "curriculum/week-13-behavioral-and-communication/resources.md", "title": "Week 13 — Resources"},
-    {"path": "curriculum/week-14-mock-3-bit-manipulation-and-tries/README.md", "title": "Week 14 — Bit Manipulation, Tries + Mock #3"},
-    {"path": "curriculum/week-14-mock-3-bit-manipulation-and-tries/challenges/README.md", "title": "Week 14 — Challenges"},
-    {"path": "curriculum/week-14-mock-3-bit-manipulation-and-tries/challenges/challenge-01-mock-3-timed-round.md", "title": "Challenge 1 — Mock #3, the Timed Round"},
-    {"path": "curriculum/week-14-mock-3-bit-manipulation-and-tries/challenges/challenge-02-sum-of-two-integers.md", "title": "Challenge 2 — Sum of Two Integers (LeetCode 371)"},
-    {"path": "curriculum/week-14-mock-3-bit-manipulation-and-tries/exercises/README.md", "title": "Week 14 — Exercises"},
-    {"path": "curriculum/week-14-mock-3-bit-manipulation-and-tries/homework/README.md", "title": "Week 14 — Homework"},
-    {"path": "curriculum/week-14-mock-3-bit-manipulation-and-tries/lecture-notes/01-bit-manipulation-fundamentals-and-xor.md", "title": "Lecture 1 — Bit Manipulation Fundamentals and the XOR Family"},
-    {"path": "curriculum/week-14-mock-3-bit-manipulation-and-tries/lecture-notes/02-bitmasks-and-subset-enumeration-and-bit-dp.md", "title": "Lecture 2 — Bitmasks, Subset Enumeration, and Bit DP"},
-    {"path": "curriculum/week-14-mock-3-bit-manipulation-and-tries/lecture-notes/03-the-mock-interview-protocol-mock-3-and-tries-review.md", "title": "Lecture 3 — The Mock Interview Protocol (Mock #3) and Tries Review"},
-    {"path": "curriculum/week-14-mock-3-bit-manipulation-and-tries/mini-project/README.md", "title": "Mini-Project — Mock #3 Recorded, Plus an XOR-Trick and a Binary-Trie Write-Up"},
-    {"path": "curriculum/week-14-mock-3-bit-manipulation-and-tries/quiz.md", "title": "Week 14 — Pattern-Recognition Quiz"},
-    {"path": "curriculum/week-14-mock-3-bit-manipulation-and-tries/resources.md", "title": "Week 14 — Resources"},
-    {"path": "curriculum/week-15-capstone-and-mock-4/README.md", "title": "Week 15 — Capstone + Mock #4"},
-    {"path": "curriculum/week-15-capstone-and-mock-4/challenges/README.md", "title": "Week 15 — Challenges"},
-    {"path": "curriculum/week-15-capstone-and-mock-4/challenges/challenge-01-mock-4-full-loop.md", "title": "Challenge 1 — Mock #4, the Full Loop"},
-    {"path": "curriculum/week-15-capstone-and-mock-4/challenges/challenge-02-system-design-mock.md", "title": "Challenge 2 — System-Design Mock (45 minutes, junior level)"},
-    {"path": "curriculum/week-15-capstone-and-mock-4/exercises/README.md", "title": "Week 15 — Exercises (Capstone Drills)"},
-    {"path": "curriculum/week-15-capstone-and-mock-4/exercises/exercise-01-portfolio-audit.md", "title": "Exercise 1 — Portfolio Audit"},
-    {"path": "curriculum/week-15-capstone-and-mock-4/exercises/exercise-02-system-design-writeup.md", "title": "Exercise 2 — System-Design Write-Up (URL Shortener)"},
-    {"path": "curriculum/week-15-capstone-and-mock-4/exercises/exercise-03-recruiter-prep-pack.md", "title": "Exercise 3 — Recruiter-Prep Pack"},
-    {"path": "curriculum/week-15-capstone-and-mock-4/exercises/exercise-04-pre-onsite-4-week-plan.md", "title": "Exercise 4 — Pre-Onsite 4-Week Plan"},
-    {"path": "curriculum/week-15-capstone-and-mock-4/homework/README.md", "title": "Week 15 — Homework: The Personalized Go-Forward Study Plan"},
-    {"path": "curriculum/week-15-capstone-and-mock-4/lecture-notes/01-the-capstone-and-portfolio-polish.md", "title": "Lecture 1 — The Capstone and Portfolio Polish"},
-    {"path": "curriculum/week-15-capstone-and-mock-4/lecture-notes/02-mock-4-under-real-conditions-and-the-onsite-loop.md", "title": "Lecture 2 — Mock #4 Under Real Conditions and the Onsite Loop"},
-    {"path": "curriculum/week-15-capstone-and-mock-4/lecture-notes/03-the-personalized-go-forward-study-plan.md", "title": "Lecture 3 — The Personalized Go-Forward Study Plan"},
-    {"path": "curriculum/week-15-capstone-and-mock-4/mini-project/README.md", "title": "Mini-Project — The Capstone Portfolio"},
-    {"path": "curriculum/week-15-capstone-and-mock-4/quiz.md", "title": "Week 15 — Final Readiness Self-Assessment"},
-    {"path": "curriculum/week-15-capstone-and-mock-4/resources.md", "title": "Week 15 — Resources"},
-    {"path": "past-sessions/README.md", "title": "Past Sessions"},
-    {"path": "past-sessions/SPRING-2025/README.md", "title": "Week - #"},
-    {"path": "projects/capstone/README.md", "title": "Capstone Project Master Guide"},
-    {"path": "projects/mini-projects/README.md", "title": "Mini-Projects Index"},
-    {"path": "resources/cheatsheets/git-commands.md", "title": "Git Commands Cheatsheet"},
-    {"path": "resources/cheatsheets/python-syntax.md", "title": "Python Syntax Cheatsheet"},
-    {"path": "resources/coding-standards.md", "title": "Coding Standards"},
-    {"path": "resources/git-github-workflow.md", "title": "Git & GitHub Workflow"},
-    {"path": "resources/setup-guides/README.md", "title": "Setup Guides"},
-    {"path": "resources/setup-guides/browser.md", "title": "Browser-Based Setup (No Install)"},
-    {"path": "resources/setup-guides/linux.md", "title": "Linux Setup Guide"},
-    {"path": "resources/setup-guides/macos.md", "title": "macOS Setup Guide"},
-    {"path": "resources/setup-guides/windows.md", "title": "Windows Setup Guide"}
+    {
+      "path": "CODE_OF_CONDUCT.md",
+      "title": "Contributor Covenant Code of Conduct"
+    },
+    {
+      "path": "CONTENT-POLICY.md",
+      "title": "C2 Content Policy — Original Problems Only"
+    },
+    {
+      "path": "CONTRIBUTING.md",
+      "title": "Contributing to CrunchTime — The Code"
+    },
+    {
+      "path": "LICENSE.md",
+      "title": "LICENSE"
+    },
+    {
+      "path": "README.md",
+      "title": "C2 · CrunchTime — The Code · Course Syllabus"
+    },
+    {
+      "path": "assets/brand/BRAND.md",
+      "title": "C2 · CrunchTime — The Code — Brand Guide"
+    },
+    {
+      "path": "community/faqs.md",
+      "title": "Frequently Asked Questions"
+    },
+    {
+      "path": "community/support.md",
+      "title": "Getting Help"
+    },
+    {
+      "path": "curriculum/study-plans/intensive-15-week.md",
+      "title": "C2 — 15-Week Intensive Study Plan"
+    },
+    {
+      "path": "curriculum/study-plans/mastery-1-year.md",
+      "title": "C2 — 1-Year Mastery Pathway"
+    },
+    {
+      "path": "curriculum/week-00-python-data-structures-warmup/CHEATSHEET.md",
+      "title": "The Built-In Complexity Cheat Sheet"
+    },
+    {
+      "path": "curriculum/week-00-python-data-structures-warmup/README.md",
+      "title": "Week 0 — Python Data Structures Warm-Up"
+    },
+    {
+      "path": "curriculum/week-00-python-data-structures-warmup/challenges/challenge-01-tide-board-digest.md",
+      "title": "Challenge 1 — The Tide Board Digest"
+    },
+    {
+      "path": "curriculum/week-00-python-data-structures-warmup/challenges/challenge-02-kiln-cone-audit.md",
+      "title": "Challenge 2 — The Kiln Cone Audit"
+    },
+    {
+      "path": "curriculum/week-00-python-data-structures-warmup/exercises/README.md",
+      "title": "Week 0 — Exercises"
+    },
+    {
+      "path": "curriculum/week-00-python-data-structures-warmup/exercises/exercise-01-seed-packet-codes.md",
+      "title": "Exercise 1 — Seed Packet Codes"
+    },
+    {
+      "path": "curriculum/week-00-python-data-structures-warmup/exercises/exercise-02-cable-ferry-lane.md",
+      "title": "Exercise 2 — The Cable Ferry's Waiting Lane"
+    },
+    {
+      "path": "curriculum/week-00-python-data-structures-warmup/exercises/exercise-03-garden-plot-map.md",
+      "title": "Exercise 3 — The Community Garden's Plot Map"
+    },
+    {
+      "path": "curriculum/week-00-python-data-structures-warmup/exercises/exercise-04-lost-property-shelf.md",
+      "title": "Exercise 4 — The Depot's Lost-Property Shelf"
+    },
+    {
+      "path": "curriculum/week-00-python-data-structures-warmup/exercises/exercise-05-radio-check-rosters.md",
+      "title": "Exercise 5 — Two Nights on the Coastal Net"
+    },
+    {
+      "path": "curriculum/week-00-python-data-structures-warmup/homework/README.md",
+      "title": "Week 0 — Homework"
+    },
+    {
+      "path": "curriculum/week-00-python-data-structures-warmup/homework/problem-01-banner-copy-count.md",
+      "title": "Problem 1 — Counting the Copies in a Banner"
+    },
+    {
+      "path": "curriculum/week-00-python-data-structures-warmup/homework/problem-02-bakery-order-slips.md",
+      "title": "Problem 2 — The Bakery's Order Slips"
+    },
+    {
+      "path": "curriculum/week-00-python-data-structures-warmup/homework/problem-03-sled-team-rotation.md",
+      "title": "Problem 3 — The Sled Team's Rotation"
+    },
+    {
+      "path": "curriculum/week-00-python-data-structures-warmup/homework/problem-04-returns-cart.md",
+      "title": "Problem 4 — The Library's Returns Cart"
+    },
+    {
+      "path": "curriculum/week-00-python-data-structures-warmup/homework/problem-05-hive-inspection-log.md",
+      "title": "Problem 5 — The Hive Inspection Log"
+    },
+    {
+      "path": "curriculum/week-00-python-data-structures-warmup/homework/problem-06-tool-crib-signoffs.md",
+      "title": "Problem 6 — The Tool Crib's Sign-Offs"
+    },
+    {
+      "path": "curriculum/week-00-python-data-structures-warmup/lecture-notes/01-strings-and-immutability.md",
+      "title": "Lecture 1 — Strings and the Cost of Immutability"
+    },
+    {
+      "path": "curriculum/week-00-python-data-structures-warmup/lecture-notes/02-lists-tuples-and-the-dynamic-array.md",
+      "title": "Lecture 2 — Lists, Tuples and the Dynamic Array"
+    },
+    {
+      "path": "curriculum/week-00-python-data-structures-warmup/lecture-notes/03-dicts-sets-and-the-hash-table.md",
+      "title": "Lecture 3 — Dicts, Sets and the Hash Table"
+    },
+    {
+      "path": "curriculum/week-00-python-data-structures-warmup/mini-project/README.md",
+      "title": "Week 0 — Mini-Project: Your Own Cost Table"
+    },
+    {
+      "path": "curriculum/week-00-python-data-structures-warmup/quiz.md",
+      "title": "Week 0 — Self-Check"
+    },
+    {
+      "path": "curriculum/week-00-python-data-structures-warmup/resources.md",
+      "title": "Week 0 — Resources"
+    },
+    {
+      "path": "curriculum/week-01-the-frame-method-and-thinking-aloud/README.md",
+      "title": "Week 1 — The FRAME Method & Thinking Aloud"
+    },
+    {
+      "path": "curriculum/week-01-the-frame-method-and-thinking-aloud/challenges/README.md",
+      "title": "Week 1 — Challenges"
+    },
+    {
+      "path": "curriculum/week-01-the-frame-method-and-thinking-aloud/challenges/challenge-01-settlement-trio.md",
+      "title": "Challenge 1 — The Settlement Trio"
+    },
+    {
+      "path": "curriculum/week-01-the-frame-method-and-thinking-aloud/challenges/challenge-02-levee-ponding.md",
+      "title": "Challenge 2 — Ponding on the Levee Road"
+    },
+    {
+      "path": "curriculum/week-01-the-frame-method-and-thinking-aloud/exercises/README.md",
+      "title": "Week 1 — Exercises (FRAME Drills)"
+    },
+    {
+      "path": "curriculum/week-01-the-frame-method-and-thinking-aloud/exercises/exercise-01-reverse-the-siding.md",
+      "title": "Exercise 1 — Reverse the Siding"
+    },
+    {
+      "path": "curriculum/week-01-the-frame-method-and-thinking-aloud/exercises/exercise-02-mirror-serial.md",
+      "title": "Exercise 2 — The Mirror Serial"
+    },
+    {
+      "path": "curriculum/week-01-the-frame-method-and-thinking-aloud/exercises/exercise-03-widest-ballast-pair.md",
+      "title": "Exercise 3 — The Widest Ballast Pair"
+    },
+    {
+      "path": "curriculum/week-01-the-frame-method-and-thinking-aloud/exercises/exercise-04-stuck-gauge.md",
+      "title": "Exercise 4 — The Stuck Gauge"
+    },
+    {
+      "path": "curriculum/week-01-the-frame-method-and-thinking-aloud/exercises/exercise-05-market-awning.md",
+      "title": "Exercise 5 — The Market Awning"
+    },
+    {
+      "path": "curriculum/week-01-the-frame-method-and-thinking-aloud/exercises/frame_template.md",
+      "title": "Problem N: <title>"
+    },
+    {
+      "path": "curriculum/week-01-the-frame-method-and-thinking-aloud/homework/README.md",
+      "title": "Week 1 — Homework"
+    },
+    {
+      "path": "curriculum/week-01-the-frame-method-and-thinking-aloud/homework/problem-01-portfolio-setup.md",
+      "title": "Problem 1 — Portfolio Setup"
+    },
+    {
+      "path": "curriculum/week-01-the-frame-method-and-thinking-aloud/homework/problem-02-narration-review.md",
+      "title": "Problem 2 — Narration Review"
+    },
+    {
+      "path": "curriculum/week-01-the-frame-method-and-thinking-aloud/homework/problem-03-wild-problem.md",
+      "title": "Problem 3 — A Problem You Have Never Seen"
+    },
+    {
+      "path": "curriculum/week-01-the-frame-method-and-thinking-aloud/homework/problem-04-behavioral-story.md",
+      "title": "Problem 4 — Behavioral Story"
+    },
+    {
+      "path": "curriculum/week-01-the-frame-method-and-thinking-aloud/homework/problem-05-system-design-warmup.md",
+      "title": "Problem 5 — System-Design Warm-Up"
+    },
+    {
+      "path": "curriculum/week-01-the-frame-method-and-thinking-aloud/lecture-notes/01-what-interviewers-actually-score.md",
+      "title": "Lecture 1 — What Interviewers Actually Score"
+    },
+    {
+      "path": "curriculum/week-01-the-frame-method-and-thinking-aloud/lecture-notes/02-the-frame-method.md",
+      "title": "Lecture 2 — The FRAME Method"
+    },
+    {
+      "path": "curriculum/week-01-the-frame-method-and-thinking-aloud/lecture-notes/03-arrays-and-two-pointers.md",
+      "title": "Lecture 3 — Arrays and Two Pointers"
+    },
+    {
+      "path": "curriculum/week-01-the-frame-method-and-thinking-aloud/mini-project/README.md",
+      "title": "Mini-Project — Your Interview-Prep Portfolio Repo"
+    },
+    {
+      "path": "curriculum/week-01-the-frame-method-and-thinking-aloud/mini-project/starter.md",
+      "title": "Mini-Project starter — the repository skeleton"
+    },
+    {
+      "path": "curriculum/week-01-the-frame-method-and-thinking-aloud/quiz.md",
+      "title": "Week 1 — Pattern-Recognition Quiz"
+    },
+    {
+      "path": "curriculum/week-01-the-frame-method-and-thinking-aloud/resources.md",
+      "title": "Week 1 — Resources"
+    },
+    {
+      "path": "curriculum/week-02-complexity-and-hash-maps/README.md",
+      "title": "Week 2 — Complexity & Hash Maps"
+    },
+    {
+      "path": "curriculum/week-02-complexity-and-hash-maps/challenges/README.md",
+      "title": "Week 2 — Challenges"
+    },
+    {
+      "path": "curriculum/week-02-complexity-and-hash-maps/challenges/challenge-01-balanced-shifts.md",
+      "title": "Challenge 1 — The Balanced Shift"
+    },
+    {
+      "path": "curriculum/week-02-complexity-and-hash-maps/challenges/challenge-02-residency-board.md",
+      "title": "Challenge 2 — The Texture Residency Board"
+    },
+    {
+      "path": "curriculum/week-02-complexity-and-hash-maps/exercises/README.md",
+      "title": "Week 2 — Exercises (FRAME Drills)"
+    },
+    {
+      "path": "curriculum/week-02-complexity-and-hash-maps/exercises/exercise-01-refund-pair.md",
+      "title": "Exercise 1 — The Refund Pair"
+    },
+    {
+      "path": "curriculum/week-02-complexity-and-hash-maps/exercises/exercise-02-badge-rescan.md",
+      "title": "Exercise 2 — The Repeated Badge"
+    },
+    {
+      "path": "curriculum/week-02-complexity-and-hash-maps/exercises/exercise-03-stage-twins.md",
+      "title": "Exercise 3 — Stage Twins"
+    },
+    {
+      "path": "curriculum/week-02-complexity-and-hash-maps/exercises/exercise-04-on-call-grid.md",
+      "title": "Exercise 4 — The On-Call Grid"
+    },
+    {
+      "path": "curriculum/week-02-complexity-and-hash-maps/exercises/exercise-05-longest-dock-run.md",
+      "title": "Exercise 5 — The Longest Dock Run"
+    },
+    {
+      "path": "curriculum/week-02-complexity-and-hash-maps/homework/README.md",
+      "title": "Week 2 — Homework"
+    },
+    {
+      "path": "curriculum/week-02-complexity-and-hash-maps/homework/problem-01-locker-handshake.md",
+      "title": "Homework Problem 1 — The Locker Handshake"
+    },
+    {
+      "path": "curriculum/week-02-complexity-and-hash-maps/homework/problem-02-time-the-gap.md",
+      "title": "Homework Problem 2 — Time the Gap"
+    },
+    {
+      "path": "curriculum/week-02-complexity-and-hash-maps/homework/problem-03-renarrate-market-awning.md",
+      "title": "Homework Problem 3 — Re-narrate the Market Awning"
+    },
+    {
+      "path": "curriculum/week-02-complexity-and-hash-maps/homework/problem-04-tradeoff-story.md",
+      "title": "Homework Problem 4 — The Tradeoff Story"
+    },
+    {
+      "path": "curriculum/week-02-complexity-and-hash-maps/homework/problem-05-top-queries-design.md",
+      "title": "Homework Problem 5 — Counting the Top Queries"
+    },
+    {
+      "path": "curriculum/week-02-complexity-and-hash-maps/homework/problem-06-week-02-reflection.md",
+      "title": "Homework Problem 6 — Week 2 Reflection"
+    },
+    {
+      "path": "curriculum/week-02-complexity-and-hash-maps/lecture-notes/01-mental-models-for-big-O.md",
+      "title": "Lecture 1 — Mental Models for Big-O"
+    },
+    {
+      "path": "curriculum/week-02-complexity-and-hash-maps/lecture-notes/02-the-hash-map-pattern.md",
+      "title": "Lecture 2 — The Hash Map Pattern"
+    },
+    {
+      "path": "curriculum/week-02-complexity-and-hash-maps/lecture-notes/03-stating-complexity-out-loud.md",
+      "title": "Lecture 3 — Stating Complexity Out Loud"
+    },
+    {
+      "path": "curriculum/week-02-complexity-and-hash-maps/mini-project/README.md",
+      "title": "Mini-Project — The Complexity Audit"
+    },
+    {
+      "path": "curriculum/week-02-complexity-and-hash-maps/quiz.md",
+      "title": "Week 2 — Complexity Quiz"
+    },
+    {
+      "path": "curriculum/week-02-complexity-and-hash-maps/resources.md",
+      "title": "Week 2 — Resources"
+    },
+    {
+      "path": "curriculum/week-03-sliding-window/README.md",
+      "title": "Week 3 — Sliding Window"
+    },
+    {
+      "path": "curriculum/week-03-sliding-window/challenges/README.md",
+      "title": "Week 3 — Challenges"
+    },
+    {
+      "path": "curriculum/week-03-sliding-window/challenges/challenge-01-shortest-kit-span.md",
+      "title": "Challenge 1 — The Shortest Kit Span"
+    },
+    {
+      "path": "curriculum/week-03-sliding-window/challenges/challenge-02-repaving-stretch.md",
+      "title": "Challenge 2 — The Repaving Stretch"
+    },
+    {
+      "path": "curriculum/week-03-sliding-window/exercises/README.md",
+      "title": "Week 3 — Exercises (FRAME Drills)"
+    },
+    {
+      "path": "curriculum/week-03-sliding-window/exercises/exercise-01-staffing-block.md",
+      "title": "Exercise 1 — The Busiest Staffing Block"
+    },
+    {
+      "path": "curriculum/week-03-sliding-window/exercises/exercise-02-longest-clean-run.md",
+      "title": "Exercise 2 — The Longest Clean Run"
+    },
+    {
+      "path": "curriculum/week-03-sliding-window/exercises/exercise-03-rota-window.md",
+      "title": "Exercise 3 — The Rota Window"
+    },
+    {
+      "path": "curriculum/week-03-sliding-window/exercises/exercise-04-shortest-catchment.md",
+      "title": "Exercise 4 — The Shortest Catchment"
+    },
+    {
+      "path": "curriculum/week-03-sliding-window/exercises/exercise-05-cold-chain-load.md",
+      "title": "Exercise 5 — The Cold-Chain Load"
+    },
+    {
+      "path": "curriculum/week-03-sliding-window/homework/README.md",
+      "title": "Week 3 — Homework"
+    },
+    {
+      "path": "curriculum/week-03-sliding-window/homework/problem-01-the-unlabelled-prompt.md",
+      "title": "Problem 1 — The Unlabelled Prompt"
+    },
+    {
+      "path": "curriculum/week-03-sliding-window/homework/problem-02-courier-zone-count.md",
+      "title": "Problem 2 — The Courier's Zone Count"
+    },
+    {
+      "path": "curriculum/week-03-sliding-window/homework/problem-03-when-the-window-fails.md",
+      "title": "Problem 3 — When the Window Fails"
+    },
+    {
+      "path": "curriculum/week-03-sliding-window/homework/problem-04-behavioral-story-03.md",
+      "title": "Problem 4 — Behavioral Story 3"
+    },
+    {
+      "path": "curriculum/week-03-sliding-window/homework/problem-05-rolling-error-rate.md",
+      "title": "Problem 5 — The Rolling Error Rate"
+    },
+    {
+      "path": "curriculum/week-03-sliding-window/lecture-notes/01-the-sliding-window-pattern.md",
+      "title": "Lecture 1 — The Sliding Window Pattern"
+    },
+    {
+      "path": "curriculum/week-03-sliding-window/lecture-notes/02-the-shrinking-and-growing-mechanics.md",
+      "title": "Lecture 2 — The Shrinking and Growing Mechanics"
+    },
+    {
+      "path": "curriculum/week-03-sliding-window/mini-project/README.md",
+      "title": "Mini-Project — Six Sliding-Window Write-Ups with 30-Second Pattern-Recognition Memos"
+    },
+    {
+      "path": "curriculum/week-03-sliding-window/quiz.md",
+      "title": "Week 3 — Pattern-Recognition Quiz"
+    },
+    {
+      "path": "curriculum/week-03-sliding-window/resources.md",
+      "title": "Week 3 — Resources"
+    },
+    {
+      "path": "curriculum/week-04-fast-slow-pointers-and-mock-1/README.md",
+      "title": "Week 4 — Fast/Slow Pointers + Mock Interview #1"
+    },
+    {
+      "path": "curriculum/week-04-fast-slow-pointers-and-mock-1/challenges/README.md",
+      "title": "Week 4 — Challenges"
+    },
+    {
+      "path": "curriculum/week-04-fast-slow-pointers-and-mock-1/challenges/challenge-01-booklet-imposition.md",
+      "title": "Challenge 1 — Booklet Imposition"
+    },
+    {
+      "path": "curriculum/week-04-fast-slow-pointers-and-mock-1/challenges/challenge-02-feedline-weld.md",
+      "title": "Challenge 2 — The Feed-Line Weld"
+    },
+    {
+      "path": "curriculum/week-04-fast-slow-pointers-and-mock-1/exercises/README.md",
+      "title": "Week 4 — Exercises"
+    },
+    {
+      "path": "curriculum/week-04-fast-slow-pointers-and-mock-1/exercises/exercise-01-conveyor-loop.md",
+      "title": "Exercise 1 — The Conveyor Loop"
+    },
+    {
+      "path": "curriculum/week-04-fast-slow-pointers-and-mock-1/exercises/exercise-02-escalation-loop.md",
+      "title": "Exercise 2 — The Escalation Loop"
+    },
+    {
+      "path": "curriculum/week-04-fast-slow-pointers-and-mock-1/exercises/exercise-03-midroll-break.md",
+      "title": "Exercise 3 — The Mid-Roll Break"
+    },
+    {
+      "path": "curriculum/week-04-fast-slow-pointers-and-mock-1/exercises/exercise-04-wear-level-rotation.md",
+      "title": "Exercise 4 — The Wear-Level Rotation"
+    },
+    {
+      "path": "curriculum/week-04-fast-slow-pointers-and-mock-1/exercises/exercise-05-relay-hop-budget.md",
+      "title": "Exercise 5 — The Relay Hop Budget"
+    },
+    {
+      "path": "curriculum/week-04-fast-slow-pointers-and-mock-1/homework/README.md",
+      "title": "Week 4 — Homework"
+    },
+    {
+      "path": "curriculum/week-04-fast-slow-pointers-and-mock-1/homework/problem-01-loopback-self-test.md",
+      "title": "Problem 1 — The Loopback Self-Test"
+    },
+    {
+      "path": "curriculum/week-04-fast-slow-pointers-and-mock-1/homework/problem-02-trim-scan.md",
+      "title": "Problem 2 — Trim the Duplicate Scan"
+    },
+    {
+      "path": "curriculum/week-04-fast-slow-pointers-and-mock-1/homework/problem-03-symmetric-dies.md",
+      "title": "Problem 3 — The Symmetric Die Sequence"
+    },
+    {
+      "path": "curriculum/week-04-fast-slow-pointers-and-mock-1/homework/problem-04-behavioral-story.md",
+      "title": "Problem 4 — Behavioral Story #4"
+    },
+    {
+      "path": "curriculum/week-04-fast-slow-pointers-and-mock-1/homework/problem-05-system-design-warmup.md",
+      "title": "Problem 5 — System-Design Ground Zero #4"
+    },
+    {
+      "path": "curriculum/week-04-fast-slow-pointers-and-mock-1/homework/problem-06-phase-1-retrospective.md",
+      "title": "Problem 6 — The Phase-1 Retrospective"
+    },
+    {
+      "path": "curriculum/week-04-fast-slow-pointers-and-mock-1/lecture-notes/01-floyds-tortoise-and-hare.md",
+      "title": "Lecture 1 — Floyd's Tortoise and Hare"
+    },
+    {
+      "path": "curriculum/week-04-fast-slow-pointers-and-mock-1/lecture-notes/02-the-mock-interview-protocol.md",
+      "title": "Lecture 2 — The Mock Interview Protocol"
+    },
+    {
+      "path": "curriculum/week-04-fast-slow-pointers-and-mock-1/mini-project/README.md",
+      "title": "Mini-Project — Mock Interview #1"
+    },
+    {
+      "path": "curriculum/week-04-fast-slow-pointers-and-mock-1/quiz.md",
+      "title": "Week 4 — Pattern-Recognition Quiz"
+    },
+    {
+      "path": "curriculum/week-04-fast-slow-pointers-and-mock-1/resources.md",
+      "title": "Week 4 — Resources"
+    },
+    {
+      "path": "curriculum/week-05-binary-search/README.md",
+      "title": "Week 5 — Binary Search Beyond Sorted Arrays"
+    },
+    {
+      "path": "curriculum/week-05-binary-search/challenges/README.md",
+      "title": "Week 5 — Challenges"
+    },
+    {
+      "path": "curriculum/week-05-binary-search/challenges/challenge-01-order-book-boundary.md",
+      "title": "Challenge 1 — The Merged Book Boundary"
+    },
+    {
+      "path": "curriculum/week-05-binary-search/challenges/challenge-02-signal-mast-spacing.md",
+      "title": "Challenge 2 — The Signal Mast Spacing"
+    },
+    {
+      "path": "curriculum/week-05-binary-search/exercises/README.md",
+      "title": "Week 5 — Exercises"
+    },
+    {
+      "path": "curriculum/week-05-binary-search/exercises/exercise-01-ladder-seat.md",
+      "title": "Exercise 1 — The Ladder Seat"
+    },
+    {
+      "path": "curriculum/week-05-binary-search/exercises/exercise-02-scan-window.md",
+      "title": "Exercise 2 — The Scan Window"
+    },
+    {
+      "path": "curriculum/week-05-binary-search/exercises/exercise-03-ring-buffer-probe.md",
+      "title": "Exercise 3 — The Ring Buffer Probe"
+    },
+    {
+      "path": "curriculum/week-05-binary-search/exercises/exercise-04-quote-rank.md",
+      "title": "Exercise 4 — The Quote Rank"
+    },
+    {
+      "path": "curriculum/week-05-binary-search/exercises/exercise-05-paving-reach.md",
+      "title": "Exercise 5 — The Paving Reach"
+    },
+    {
+      "path": "curriculum/week-05-binary-search/homework/README.md",
+      "title": "Week 5 — Homework"
+    },
+    {
+      "path": "curriculum/week-05-binary-search/homework/problem-01-kiln-firing-schedule.md",
+      "title": "Homework Problem 1 — The Kiln Firing Schedule"
+    },
+    {
+      "path": "curriculum/week-05-binary-search/homework/problem-02-relay-handoff.md",
+      "title": "Homework Problem 2 — The Relay Handoff"
+    },
+    {
+      "path": "curriculum/week-05-binary-search/homework/problem-03-ridge-line.md",
+      "title": "Homework Problem 3 — The Ridge Line"
+    },
+    {
+      "path": "curriculum/week-05-binary-search/homework/problem-04-duplicated-manifest.md",
+      "title": "Homework Problem 4 — The Duplicated Manifest"
+    },
+    {
+      "path": "curriculum/week-05-binary-search/homework/problem-05-deciding-without-the-full-picture.md",
+      "title": "Homework Problem 5 — Deciding Without the Full Picture"
+    },
+    {
+      "path": "curriculum/week-05-binary-search/homework/problem-06-autocomplete-at-scale.md",
+      "title": "Homework Problem 6 — Autocomplete at Scale"
+    },
+    {
+      "path": "curriculum/week-05-binary-search/lecture-notes/01-the-binary-search-template.md",
+      "title": "Lecture 1 — The Binary-Search Template"
+    },
+    {
+      "path": "curriculum/week-05-binary-search/lecture-notes/02-binary-search-on-the-answer.md",
+      "title": "Lecture 2 — Binary Search on the Answer"
+    },
+    {
+      "path": "curriculum/week-05-binary-search/mini-project/README.md",
+      "title": "Mini-Project — Five Binary-Search Write-Ups (Including Two \"Search on Answer\" Variants)"
+    },
+    {
+      "path": "curriculum/week-05-binary-search/quiz.md",
+      "title": "Week 5 — Pattern-Recognition Quiz"
+    },
+    {
+      "path": "curriculum/week-05-binary-search/resources.md",
+      "title": "Week 5 — Resources"
+    },
+    {
+      "path": "curriculum/week-06-bfs/README.md",
+      "title": "Week 6 — Breadth-First Search"
+    },
+    {
+      "path": "curriculum/week-06-bfs/challenges/README.md",
+      "title": "Week 6 — Challenges"
+    },
+    {
+      "path": "curriculum/week-06-bfs/challenges/challenge-01-minimum-knight-moves.md",
+      "title": "Challenge 1 — Minimum Knight Moves (LeetCode 1197)"
+    },
+    {
+      "path": "curriculum/week-06-bfs/challenges/challenge-01-trunk-splice.md",
+      "title": "Challenge 1 — Trunk Splice"
+    },
+    {
+      "path": "curriculum/week-06-bfs/challenges/challenge-02-tide-gate.md",
+      "title": "Challenge 2 — Tide Gate"
+    },
+    {
+      "path": "curriculum/week-06-bfs/exercises/README.md",
+      "title": "Week 6 — Exercises"
+    },
+    {
+      "path": "curriculum/week-06-bfs/exercises/exercise-01-level-order.md",
+      "title": "Exercise 1 — Binary Tree Level Order Traversal"
+    },
+    {
+      "path": "curriculum/week-06-bfs/exercises/exercise-01-relay-roster.md",
+      "title": "Exercise 1 — Relay Roster"
+    },
+    {
+      "path": "curriculum/week-06-bfs/exercises/exercise-02-hoist-route.md",
+      "title": "Exercise 2 — Hoist Route"
+    },
+    {
+      "path": "curriculum/week-06-bfs/exercises/exercise-02-shortest-path-grid.md",
+      "title": "Exercise 2 — Shortest Path in a Binary Matrix"
+    },
+    {
+      "path": "curriculum/week-06-bfs/exercises/exercise-03-rotting-oranges.md",
+      "title": "Exercise 3 — Rotting Oranges"
+    },
+    {
+      "path": "curriculum/week-06-bfs/exercises/exercise-03-siren-reach.md",
+      "title": "Exercise 3 — Siren Reach"
+    },
+    {
+      "path": "curriculum/week-06-bfs/exercises/exercise-04-cable-pull.md",
+      "title": "Exercise 4 — Cable Pull"
+    },
+    {
+      "path": "curriculum/week-06-bfs/exercises/exercise-04-word-ladder.md",
+      "title": "Exercise 4 — Word Ladder"
+    },
+    {
+      "path": "curriculum/week-06-bfs/exercises/exercise-05-binary-tree-right-side-view.md",
+      "title": "Exercise 5 — Binary Tree Right Side View"
+    },
+    {
+      "path": "curriculum/week-06-bfs/exercises/exercise-05-feeder-tier-load.md",
+      "title": "Exercise 5 — Feeder Tier Load"
+    },
+    {
+      "path": "curriculum/week-06-bfs/homework/README.md",
+      "title": "Week 6 — Homework"
+    },
+    {
+      "path": "curriculum/week-06-bfs/homework/problem-01-scrap-heaps.md",
+      "title": "Problem 1 — Scrap Heaps"
+    },
+    {
+      "path": "curriculum/week-06-bfs/homework/problem-02-worst-served-bay.md",
+      "title": "Problem 2 — Worst-Served Bay"
+    },
+    {
+      "path": "curriculum/week-06-bfs/lecture-notes/01-the-bfs-template.md",
+      "title": "Lecture 1 — The BFS Template"
+    },
+    {
+      "path": "curriculum/week-06-bfs/lecture-notes/02-grid-bfs-and-graph-bfs.md",
+      "title": "Lecture 2 — Grid BFS and Graph BFS"
+    },
+    {
+      "path": "curriculum/week-06-bfs/mini-project/README.md",
+      "title": "Mini-Project — Grid BFS + Node BFS, Fully FRAME-Narrated"
+    },
+    {
+      "path": "curriculum/week-06-bfs/quiz.md",
+      "title": "Week 6 — Pattern-Recognition Quiz"
+    },
+    {
+      "path": "curriculum/week-06-bfs/resources.md",
+      "title": "Week 6 — Resources"
+    },
+    {
+      "path": "curriculum/week-07-dfs-and-topological-sort/README.md",
+      "title": "Week 7 — Depth-First Search and Topological Sort"
+    },
+    {
+      "path": "curriculum/week-07-dfs-and-topological-sort/challenges/README.md",
+      "title": "Week 7 — Challenges"
+    },
+    {
+      "path": "curriculum/week-07-dfs-and-topological-sort/challenges/challenge-01-chokepoint-mains.md",
+      "title": "Challenge 1 — Chokepoint Mains"
+    },
+    {
+      "path": "curriculum/week-07-dfs-and-topological-sort/challenges/challenge-02-consist-reconstruction.md",
+      "title": "Challenge 2 — Consist Reconstruction"
+    },
+    {
+      "path": "curriculum/week-07-dfs-and-topological-sort/exercises/README.md",
+      "title": "Week 7 — Exercises"
+    },
+    {
+      "path": "curriculum/week-07-dfs-and-topological-sort/exercises/exercise-01-repeater-clusters.md",
+      "title": "Exercise 1 — Repeater Clusters"
+    },
+    {
+      "path": "curriculum/week-07-dfs-and-topological-sort/exercises/exercise-02-conveyor-reachability.md",
+      "title": "Exercise 2 — Conveyor Reachability"
+    },
+    {
+      "path": "curriculum/week-07-dfs-and-topological-sort/exercises/exercise-03-batch-loop-audit.md",
+      "title": "Exercise 3 — Batch Loop Audit"
+    },
+    {
+      "path": "curriculum/week-07-dfs-and-topological-sort/exercises/exercise-04-refit-order.md",
+      "title": "Exercise 4 — Refit Order"
+    },
+    {
+      "path": "curriculum/week-07-dfs-and-topological-sort/exercises/exercise-05-firmware-install-order.md",
+      "title": "Exercise 5 — Firmware Install Order"
+    },
+    {
+      "path": "curriculum/week-07-dfs-and-topological-sort/homework/README.md",
+      "title": "Week 7 — Homework"
+    },
+    {
+      "path": "curriculum/week-07-dfs-and-topological-sort/homework/problem-01-hose-clusters.md",
+      "title": "Problem 1 — Hose Clusters"
+    },
+    {
+      "path": "curriculum/week-07-dfs-and-topological-sort/homework/problem-02-prep-step-audit.md",
+      "title": "Problem 2 — Prep Step Audit"
+    },
+    {
+      "path": "curriculum/week-07-dfs-and-topological-sort/lecture-notes/01-recursive-dfs.md",
+      "title": "Lecture 1 — Recursive DFS"
+    },
+    {
+      "path": "curriculum/week-07-dfs-and-topological-sort/lecture-notes/02-iterative-dfs.md",
+      "title": "Lecture 2 — Iterative DFS"
+    },
+    {
+      "path": "curriculum/week-07-dfs-and-topological-sort/lecture-notes/03-topological-sort.md",
+      "title": "Lecture 3 — Topological Sort and Cycle Detection"
+    },
+    {
+      "path": "curriculum/week-07-dfs-and-topological-sort/mini-project/README.md",
+      "title": "Mini-Project — The Restart Planner"
+    },
+    {
+      "path": "curriculum/week-07-dfs-and-topological-sort/mini-project/starter.md",
+      "title": "Mini-Project scaffolding — the two write-ups"
+    },
+    {
+      "path": "curriculum/week-07-dfs-and-topological-sort/quiz.md",
+      "title": "Week 7 — Pattern-Recognition Quiz"
+    },
+    {
+      "path": "curriculum/week-07-dfs-and-topological-sort/resources.md",
+      "title": "Week 7 — Resources"
+    },
+    {
+      "path": "curriculum/week-08-heaps-and-priority-queues/README.md",
+      "title": "Week 8 — Heaps and Priority Queues"
+    },
+    {
+      "path": "curriculum/week-08-heaps-and-priority-queues/challenges/README.md",
+      "title": "Week 8 — Challenges"
+    },
+    {
+      "path": "curriculum/week-08-heaps-and-priority-queues/challenges/challenge-01-merge-k-sorted-lists.md",
+      "title": "Challenge 1 — Merge k Sorted Lists (LeetCode 23)"
+    },
+    {
+      "path": "curriculum/week-08-heaps-and-priority-queues/challenges/challenge-02-task-scheduler.md",
+      "title": "Challenge 2 — Task Scheduler (LeetCode 621)"
+    },
+    {
+      "path": "curriculum/week-08-heaps-and-priority-queues/exercises/README.md",
+      "title": "Week 8 — Exercises"
+    },
+    {
+      "path": "curriculum/week-08-heaps-and-priority-queues/exercises/exercise-01-sluice-gate-order.md",
+      "title": "Exercise 1 — Sluice Gate Order"
+    },
+    {
+      "path": "curriculum/week-08-heaps-and-priority-queues/homework/README.md",
+      "title": "Week 8 — Homework"
+    },
+    {
+      "path": "curriculum/week-08-heaps-and-priority-queues/lecture-notes/01-heapq-and-top-k.md",
+      "title": "Lecture 1 — `heapq` and the Top-k Template"
+    },
+    {
+      "path": "curriculum/week-08-heaps-and-priority-queues/lecture-notes/02-heap-of-tuples-and-k-closest.md",
+      "title": "Lecture 2 — Heap of Tuples and k-Closest"
+    },
+    {
+      "path": "curriculum/week-08-heaps-and-priority-queues/lecture-notes/03-two-heap-and-k-way-merge.md",
+      "title": "Lecture 3 — Two-Heap, k-Way Merge, and Lazy Deletion"
+    },
+    {
+      "path": "curriculum/week-08-heaps-and-priority-queues/mini-project/README.md",
+      "title": "Mini-Project — Top-k + Two-Heap, Fully FRAME-Narrated"
+    },
+    {
+      "path": "curriculum/week-08-heaps-and-priority-queues/quiz.md",
+      "title": "Week 8 — Pattern-Recognition Quiz"
+    },
+    {
+      "path": "curriculum/week-08-heaps-and-priority-queues/resources.md",
+      "title": "Week 8 — Resources"
+    },
+    {
+      "path": "curriculum/week-09-tries-and-advanced-strings/README.md",
+      "title": "Week 9 — Tries and Advanced Strings"
+    },
+    {
+      "path": "curriculum/week-09-tries-and-advanced-strings/challenges/README.md",
+      "title": "Week 9 — Challenges"
+    },
+    {
+      "path": "curriculum/week-09-tries-and-advanced-strings/exercises/README.md",
+      "title": "Week 9 — Exercises"
+    },
+    {
+      "path": "curriculum/week-09-tries-and-advanced-strings/homework/README.md",
+      "title": "Week 9 — Homework"
+    },
+    {
+      "path": "curriculum/week-09-tries-and-advanced-strings/lecture-notes/01-trie-basics-and-autocomplete.md",
+      "title": "Lecture 1 — Trie Basics and Autocomplete"
+    },
+    {
+      "path": "curriculum/week-09-tries-and-advanced-strings/lecture-notes/02-word-break-and-aho-corasick.md",
+      "title": "Lecture 2 — Word Break, Longest Common Prefix, and Aho-Corasick (read only)"
+    },
+    {
+      "path": "curriculum/week-09-tries-and-advanced-strings/lecture-notes/03-kmp-and-z-algorithm.md",
+      "title": "Lecture 3 — KMP and the Z-Algorithm"
+    },
+    {
+      "path": "curriculum/week-09-tries-and-advanced-strings/mini-project/README.md",
+      "title": "Mini-Project — Trie + KMP, Fully FRAME-Narrated"
+    },
+    {
+      "path": "curriculum/week-09-tries-and-advanced-strings/quiz.md",
+      "title": "Week 9 — Pattern-Recognition Quiz"
+    },
+    {
+      "path": "curriculum/week-09-tries-and-advanced-strings/resources.md",
+      "title": "Week 9 — Resources"
+    },
+    {
+      "path": "curriculum/week-10-weighted-graphs-and-union-find/README.md",
+      "title": "Week 10 — Weighted Graphs and Union-Find"
+    },
+    {
+      "path": "curriculum/week-10-weighted-graphs-and-union-find/challenges/README.md",
+      "title": "Week 10 — Challenges"
+    },
+    {
+      "path": "curriculum/week-10-weighted-graphs-and-union-find/challenges/challenge-01-cheapest-flights-k-stops.md",
+      "title": "Challenge 1 — Cheapest Flights Within K Stops (Deep Dive, LeetCode 787)"
+    },
+    {
+      "path": "curriculum/week-10-weighted-graphs-and-union-find/challenges/challenge-02-smallest-string-with-swaps.md",
+      "title": "Challenge 2 — Smallest String With Swaps (LeetCode 1202, Optional)"
+    },
+    {
+      "path": "curriculum/week-10-weighted-graphs-and-union-find/exercises/README.md",
+      "title": "Week 10 — Exercises"
+    },
+    {
+      "path": "curriculum/week-10-weighted-graphs-and-union-find/homework/README.md",
+      "title": "Week 10 — Homework"
+    },
+    {
+      "path": "curriculum/week-10-weighted-graphs-and-union-find/lecture-notes/01-dijkstra-and-the-shortest-path-picker.md",
+      "title": "Lecture 1 — Dijkstra and the Shortest-Path Picker"
+    },
+    {
+      "path": "curriculum/week-10-weighted-graphs-and-union-find/lecture-notes/02-bellman-ford-floyd-warshall-and-mst.md",
+      "title": "Lecture 2 — Bellman-Ford, Floyd-Warshall, and Minimum Spanning Trees"
+    },
+    {
+      "path": "curriculum/week-10-weighted-graphs-and-union-find/lecture-notes/03-union-find-and-the-dsu-triggers.md",
+      "title": "Lecture 3 — Union-Find and the DSU Triggers"
+    },
+    {
+      "path": "curriculum/week-10-weighted-graphs-and-union-find/mini-project/README.md",
+      "title": "Mini-Project — Dijkstra + DSU, Fully FRAME-Narrated"
+    },
+    {
+      "path": "curriculum/week-10-weighted-graphs-and-union-find/quiz.md",
+      "title": "Week 10 — Pattern-Recognition Quiz"
+    },
+    {
+      "path": "curriculum/week-10-weighted-graphs-and-union-find/resources.md",
+      "title": "Week 10 — Resources"
+    },
+    {
+      "path": "curriculum/week-11-dynamic-programming-i/README.md",
+      "title": "Week 11 — Dynamic Programming I"
+    },
+    {
+      "path": "curriculum/week-11-dynamic-programming-i/challenges/README.md",
+      "title": "Week 11 — Challenges"
+    },
+    {
+      "path": "curriculum/week-11-dynamic-programming-i/challenges/challenge-01-edit-distance.md",
+      "title": "Challenge 1 — Edit Distance (Deep Dive, LeetCode 72)"
+    },
+    {
+      "path": "curriculum/week-11-dynamic-programming-i/challenges/challenge-02-longest-palindromic-subsequence.md",
+      "title": "Challenge 2 — Longest Palindromic Subsequence (LeetCode 516)"
+    },
+    {
+      "path": "curriculum/week-11-dynamic-programming-i/exercises/README.md",
+      "title": "Week 11 — Exercises"
+    },
+    {
+      "path": "curriculum/week-11-dynamic-programming-i/exercises/exercise-01-ferry-ramp-manifests.md",
+      "title": "Exercise 1 — Ferry Ramp Manifests"
+    },
+    {
+      "path": "curriculum/week-11-dynamic-programming-i/exercises/exercise-02-survey-station-walk.md",
+      "title": "Exercise 2 — The Survey Station Walk"
+    },
+    {
+      "path": "curriculum/week-11-dynamic-programming-i/exercises/exercise-03-stencil-line-split.md",
+      "title": "Exercise 3 — The Stencil Line"
+    },
+    {
+      "path": "curriculum/week-11-dynamic-programming-i/homework/README.md",
+      "title": "Week 11 — Homework"
+    },
+    {
+      "path": "curriculum/week-11-dynamic-programming-i/lecture-notes/01-the-dp-pipeline-and-1d-states.md",
+      "title": "Lecture 1 — The DP Pipeline and 1D States"
+    },
+    {
+      "path": "curriculum/week-11-dynamic-programming-i/lecture-notes/02-2d-dp-and-the-grid-and-string-shapes.md",
+      "title": "Lecture 2 — 2D DP and the Grid and String-Pair Shapes"
+    },
+    {
+      "path": "curriculum/week-11-dynamic-programming-i/lecture-notes/03-state-space-reduction-and-recognition.md",
+      "title": "Lecture 3 — State-Space Reduction and Recognition"
+    },
+    {
+      "path": "curriculum/week-11-dynamic-programming-i/mini-project/README.md",
+      "title": "Mini-Project — 1D DP + 2D DP, Fully FRAME-Narrated"
+    },
+    {
+      "path": "curriculum/week-11-dynamic-programming-i/quiz.md",
+      "title": "Week 11 — Pattern-Recognition Quiz"
+    },
+    {
+      "path": "curriculum/week-11-dynamic-programming-i/resources.md",
+      "title": "Week 11 — Resources"
+    },
+    {
+      "path": "curriculum/week-12-backtracking-and-combinatorics/README.md",
+      "title": "Week 12 — Backtracking and Combinatorics"
+    },
+    {
+      "path": "curriculum/week-12-backtracking-and-combinatorics/challenges/README.md",
+      "title": "Week 12 — Challenges"
+    },
+    {
+      "path": "curriculum/week-12-backtracking-and-combinatorics/challenges/challenge-01-word-search.md",
+      "title": "Challenge 1 — Word Search (LC 79)"
+    },
+    {
+      "path": "curriculum/week-12-backtracking-and-combinatorics/challenges/challenge-02-n-queens.md",
+      "title": "Challenge 2 — N-Queens"
+    },
+    {
+      "path": "curriculum/week-12-backtracking-and-combinatorics/exercises/README.md",
+      "title": "Week 12 — Exercises"
+    },
+    {
+      "path": "curriculum/week-12-backtracking-and-combinatorics/homework/README.md",
+      "title": "Week 12 — Homework"
+    },
+    {
+      "path": "curriculum/week-12-backtracking-and-combinatorics/lecture-notes/01-the-backtracking-template-and-the-three-warmups.md",
+      "title": "Lecture 1 — The Backtracking Template and the Three Warm-ups"
+    },
+    {
+      "path": "curriculum/week-12-backtracking-and-combinatorics/lecture-notes/02-pruning-and-deduplication-and-string-partitioning.md",
+      "title": "Lecture 2 — Pruning, Deduplication, and String Partitioning"
+    },
+    {
+      "path": "curriculum/week-12-backtracking-and-combinatorics/lecture-notes/03-grid-backtracking-and-constraint-satisfaction.md",
+      "title": "Lecture 3 — Grid Backtracking and Constraint Satisfaction"
+    },
+    {
+      "path": "curriculum/week-12-backtracking-and-combinatorics/mini-project/README.md",
+      "title": "Week 12 — Mini-Project: Palindrome Partitioning + Sudoku Solver"
+    },
+    {
+      "path": "curriculum/week-12-backtracking-and-combinatorics/quiz.md",
+      "title": "Week 12 — Pattern-Recognition Quiz"
+    },
+    {
+      "path": "curriculum/week-12-backtracking-and-combinatorics/resources.md",
+      "title": "Week 12 — Resources"
+    },
+    {
+      "path": "curriculum/week-13-behavioral-and-communication/README.md",
+      "title": "Week 13 — Behavioral & Communication"
+    },
+    {
+      "path": "curriculum/week-13-behavioral-and-communication/challenges/README.md",
+      "title": "Week 13 — Challenges"
+    },
+    {
+      "path": "curriculum/week-13-behavioral-and-communication/challenges/challenge-01-full-behavioral-round.md",
+      "title": "Challenge 1 — The Full 45-Minute Mock Behavioral Round"
+    },
+    {
+      "path": "curriculum/week-13-behavioral-and-communication/challenges/challenge-02-hostile-and-curveball-round.md",
+      "title": "Challenge 2 — The Hostile and Curveball Round"
+    },
+    {
+      "path": "curriculum/week-13-behavioral-and-communication/exercises/README.md",
+      "title": "Week 13 — Exercises"
+    },
+    {
+      "path": "curriculum/week-13-behavioral-and-communication/exercises/exercise-01-debugging-story.md",
+      "title": "Exercise 1 — The Debugging Story"
+    },
+    {
+      "path": "curriculum/week-13-behavioral-and-communication/exercises/exercise-02-conflict-story.md",
+      "title": "Exercise 2 — The Conflict Story"
+    },
+    {
+      "path": "curriculum/week-13-behavioral-and-communication/exercises/exercise-03-leadership-influence-story.md",
+      "title": "Exercise 3 — The Leadership / Influence Story"
+    },
+    {
+      "path": "curriculum/week-13-behavioral-and-communication/exercises/exercise-04-failure-story.md",
+      "title": "Exercise 4 — The Failure Story"
+    },
+    {
+      "path": "curriculum/week-13-behavioral-and-communication/exercises/exercise-05-ambiguity-story.md",
+      "title": "Exercise 5 — The Ambiguity Story"
+    },
+    {
+      "path": "curriculum/week-13-behavioral-and-communication/exercises/star_template.md",
+      "title": "Story N: <one-line title>"
+    },
+    {
+      "path": "curriculum/week-13-behavioral-and-communication/homework/README.md",
+      "title": "Week 13 — Homework"
+    },
+    {
+      "path": "curriculum/week-13-behavioral-and-communication/lecture-notes/01-the-eight-categories-and-the-rubric.md",
+      "title": "Lecture 1 — The Eight Categories and the Rubric"
+    },
+    {
+      "path": "curriculum/week-13-behavioral-and-communication/lecture-notes/02-the-star-method-and-the-story-bank.md",
+      "title": "Lecture 2 — The STAR Method and the Story Bank"
+    },
+    {
+      "path": "curriculum/week-13-behavioral-and-communication/lecture-notes/03-communication-under-pressure-and-hostile-questions.md",
+      "title": "Lecture 3 — Communication Under Pressure and Hostile Questions"
+    },
+    {
+      "path": "curriculum/week-13-behavioral-and-communication/mini-project/README.md",
+      "title": "Mini-Project — The Behavioral Story Bank"
+    },
+    {
+      "path": "curriculum/week-13-behavioral-and-communication/quiz.md",
+      "title": "Week 13 — Category-Recognition Quiz"
+    },
+    {
+      "path": "curriculum/week-13-behavioral-and-communication/resources.md",
+      "title": "Week 13 — Resources"
+    },
+    {
+      "path": "curriculum/week-14-mock-3-bit-manipulation-and-tries/README.md",
+      "title": "Week 14 — Bit Manipulation, Tries + Mock #3"
+    },
+    {
+      "path": "curriculum/week-14-mock-3-bit-manipulation-and-tries/challenges/README.md",
+      "title": "Week 14 — Challenges"
+    },
+    {
+      "path": "curriculum/week-14-mock-3-bit-manipulation-and-tries/challenges/challenge-01-mock-3-timed-round.md",
+      "title": "Challenge 1 — Mock #3, the Timed Round"
+    },
+    {
+      "path": "curriculum/week-14-mock-3-bit-manipulation-and-tries/challenges/challenge-02-sum-of-two-integers.md",
+      "title": "Challenge 2 — Sum of Two Integers (LeetCode 371)"
+    },
+    {
+      "path": "curriculum/week-14-mock-3-bit-manipulation-and-tries/exercises/README.md",
+      "title": "Week 14 — Exercises"
+    },
+    {
+      "path": "curriculum/week-14-mock-3-bit-manipulation-and-tries/homework/README.md",
+      "title": "Week 14 — Homework"
+    },
+    {
+      "path": "curriculum/week-14-mock-3-bit-manipulation-and-tries/lecture-notes/01-bit-manipulation-fundamentals-and-xor.md",
+      "title": "Lecture 1 — Bit Manipulation Fundamentals and the XOR Family"
+    },
+    {
+      "path": "curriculum/week-14-mock-3-bit-manipulation-and-tries/lecture-notes/02-bitmasks-and-subset-enumeration-and-bit-dp.md",
+      "title": "Lecture 2 — Bitmasks, Subset Enumeration, and Bit DP"
+    },
+    {
+      "path": "curriculum/week-14-mock-3-bit-manipulation-and-tries/lecture-notes/03-the-mock-interview-protocol-mock-3-and-tries-review.md",
+      "title": "Lecture 3 — The Mock Interview Protocol (Mock #3) and Tries Review"
+    },
+    {
+      "path": "curriculum/week-14-mock-3-bit-manipulation-and-tries/mini-project/README.md",
+      "title": "Mini-Project — Mock #3 Recorded, Plus an XOR-Trick and a Binary-Trie Write-Up"
+    },
+    {
+      "path": "curriculum/week-14-mock-3-bit-manipulation-and-tries/quiz.md",
+      "title": "Week 14 — Pattern-Recognition Quiz"
+    },
+    {
+      "path": "curriculum/week-14-mock-3-bit-manipulation-and-tries/resources.md",
+      "title": "Week 14 — Resources"
+    },
+    {
+      "path": "curriculum/week-15-capstone-and-mock-4/README.md",
+      "title": "Week 15 — Capstone + Mock #4"
+    },
+    {
+      "path": "curriculum/week-15-capstone-and-mock-4/challenges/README.md",
+      "title": "Week 15 — Challenges"
+    },
+    {
+      "path": "curriculum/week-15-capstone-and-mock-4/challenges/challenge-01-mock-4-full-loop.md",
+      "title": "Challenge 1 — Mock #4, the Full Loop"
+    },
+    {
+      "path": "curriculum/week-15-capstone-and-mock-4/challenges/challenge-02-system-design-mock.md",
+      "title": "Challenge 2 — System-Design Mock (45 minutes, junior level)"
+    },
+    {
+      "path": "curriculum/week-15-capstone-and-mock-4/exercises/README.md",
+      "title": "Week 15 — Exercises (Capstone Drills)"
+    },
+    {
+      "path": "curriculum/week-15-capstone-and-mock-4/exercises/exercise-01-portfolio-audit.md",
+      "title": "Exercise 1 — Portfolio Audit"
+    },
+    {
+      "path": "curriculum/week-15-capstone-and-mock-4/exercises/exercise-02-system-design-writeup.md",
+      "title": "Exercise 2 — System-Design Write-Up (URL Shortener)"
+    },
+    {
+      "path": "curriculum/week-15-capstone-and-mock-4/exercises/exercise-03-recruiter-prep-pack.md",
+      "title": "Exercise 3 — Recruiter-Prep Pack"
+    },
+    {
+      "path": "curriculum/week-15-capstone-and-mock-4/exercises/exercise-04-pre-onsite-4-week-plan.md",
+      "title": "Exercise 4 — Pre-Onsite 4-Week Plan"
+    },
+    {
+      "path": "curriculum/week-15-capstone-and-mock-4/homework/README.md",
+      "title": "Week 15 — Homework: The Personalized Go-Forward Study Plan"
+    },
+    {
+      "path": "curriculum/week-15-capstone-and-mock-4/lecture-notes/01-the-capstone-and-portfolio-polish.md",
+      "title": "Lecture 1 — The Capstone and Portfolio Polish"
+    },
+    {
+      "path": "curriculum/week-15-capstone-and-mock-4/lecture-notes/02-mock-4-under-real-conditions-and-the-onsite-loop.md",
+      "title": "Lecture 2 — Mock #4 Under Real Conditions and the Onsite Loop"
+    },
+    {
+      "path": "curriculum/week-15-capstone-and-mock-4/lecture-notes/03-the-personalized-go-forward-study-plan.md",
+      "title": "Lecture 3 — The Personalized Go-Forward Study Plan"
+    },
+    {
+      "path": "curriculum/week-15-capstone-and-mock-4/mini-project/README.md",
+      "title": "Mini-Project — The Capstone Portfolio"
+    },
+    {
+      "path": "curriculum/week-15-capstone-and-mock-4/quiz.md",
+      "title": "Week 15 — Final Readiness Self-Assessment"
+    },
+    {
+      "path": "curriculum/week-15-capstone-and-mock-4/resources.md",
+      "title": "Week 15 — Resources"
+    },
+    {
+      "path": "projects/capstone/README.md",
+      "title": "Capstone Project Master Guide"
+    },
+    {
+      "path": "projects/mini-projects/README.md",
+      "title": "Mini-Projects Index"
+    },
+    {
+      "path": "resources/cheatsheets/git-commands.md",
+      "title": "Git Commands Cheatsheet"
+    },
+    {
+      "path": "resources/cheatsheets/python-syntax.md",
+      "title": "Python Syntax Cheatsheet"
+    },
+    {
+      "path": "resources/coding-standards.md",
+      "title": "Coding Standards"
+    },
+    {
+      "path": "resources/git-github-workflow.md",
+      "title": "Git & GitHub Workflow"
+    },
+    {
+      "path": "resources/setup-guides/README.md",
+      "title": "Setup Guides"
+    },
+    {
+      "path": "resources/setup-guides/browser.md",
+      "title": "Browser-Based Setup (No Install)"
+    },
+    {
+      "path": "resources/setup-guides/linux.md",
+      "title": "Linux Setup Guide"
+    },
+    {
+      "path": "resources/setup-guides/macos.md",
+      "title": "macOS Setup Guide"
+    },
+    {
+      "path": "resources/setup-guides/windows.md",
+      "title": "Windows Setup Guide"
+    }
   ]
 }

@@ -136,7 +136,7 @@ objective — you just compare in two steps.
 whole table. This recurrence never reads further back than two pools, so two
 variables are enough.
 
-**No setup needed — you can solve this one in the browser.** Open the starter in the [online code editor](/courses/ide#src=C2-CrunchTime-The-Code/curriculum/week-11-dynamic-programming-i/exercises/exercise-02-survey-station-walk.md) and run it there. Nothing to install, nothing to configure, and your work stays on your own machine.
+**No setup needed — you can solve this one in the browser.** Open the starter in the [online code editor](/ide#src=C2-CrunchTime-The-Code/curriculum/week-11-dynamic-programming-i/exercises/exercise-02-survey-station-walk.md) and run it there. Nothing to install, nothing to configure, and your work stays on your own machine.
 
 ## Requirements
 

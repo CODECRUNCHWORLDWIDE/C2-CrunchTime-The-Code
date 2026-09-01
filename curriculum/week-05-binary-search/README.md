@@ -1,9 +1,9 @@
 # Week 5 — Binary Search Beyond Sorted Arrays
 
 ```
-┌───┐  ┌───┐  ┌───┐  ┌───┐  ┌───┐  ┌───┐
-│ U │  │ M │  │ P │  │ I │  │ R │  │ E │
-└───┘  └───┘  └───┘  └───┘  └───┘  └───┘
+┌───┐  ┌───┐  ┌───┐  ┌───┐  ┌───┐
+│ F │  │ R │  │ A │  │ M │  │ E │
+└───┘  └───┘  └───┘  └───┘  └───┘
 ```
 
 > *Phase 1 trained you on contiguous slices, cycles, and lockstep traversal. Phase 2 opens with the pattern most candidates think they know but rarely write cleanly: **binary search**. The "search a sorted array" version is the warm-up. The real lesson is "binary search on the answer" — parametric search — the idiom that turns a monotone predicate into a logarithmic optimization.* By Sunday you can write the canonical `lo <= hi` loop without notes, defend your boundary convention out loud, and convert "find the smallest `k` such that …" into a binary search in 30 seconds.

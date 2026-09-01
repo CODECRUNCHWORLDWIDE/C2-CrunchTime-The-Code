@@ -91,7 +91,7 @@ if __name__ == "__main__":
     print("All checks passed.")
 ```
 
-**No setup needed — you can solve this one in the browser.** Open the starter in the [online code editor](/courses/ide#src=C2-CrunchTime-The-Code/curriculum/week-01-the-frame-method-and-thinking-aloud/homework/problem-02-narration-review.md) and run it there. Nothing to install, nothing to configure, and your work stays on your own machine.
+**No setup needed — you can solve this one in the browser.** Open the starter in the [online code editor](/ide#src=C2-CrunchTime-The-Code/curriculum/week-01-the-frame-method-and-thinking-aloud/homework/problem-02-narration-review.md) and run it there. Nothing to install, nothing to configure, and your work stays on your own machine.
 
 ## Requirements
 

@@ -1,9 +1,9 @@
 # Week 9 — Tries and Advanced Strings
 
 ```
-┌───┐  ┌───┐  ┌───┐  ┌───┐  ┌───┐  ┌───┐
-│ U │  │ M │  │ P │  │ I │  │ R │  │ E │
-└───┘  └───┘  └───┘  └───┘  └───┘  └───┘
+┌───┐  ┌───┐  ┌───┐  ┌───┐  ┌───┐
+│ F │  │ R │  │ A │  │ M │  │ E │
+└───┘  └───┘  └───┘  └───┘  └───┘
 ```
 
 > *Week 8 installed the heap — the `heapq` module, the size-k top-k template, the heap-of-tuples idiom, the two-heap median pattern. Week 9 installs the **trie** — the prefix tree, the dict-of-dict and Node-class forms, the autocomplete walk, the word-break with memoization, and the introductory framing for Aho-Corasick. Then a short, interview-honest tour of **KMP** and the **Z-algorithm** — when to reach for them, what the failure function is doing, and which LeetCode prompts hint at exact substring matching versus prefix queries. By Sunday you can write a trie from scratch in either form, defend `O(L)` insert / lookup against a `HashSet[str]` baseline, run autocomplete from any prefix, and explain in one sentence what KMP's failure function buys over the naive `O(nm)` scanner.*

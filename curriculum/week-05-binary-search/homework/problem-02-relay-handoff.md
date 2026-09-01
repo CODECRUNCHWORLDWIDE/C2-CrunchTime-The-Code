@@ -132,7 +132,7 @@ arrangement. That makes `max(legs)` the smallest cap worth testing — and, more
 importantly, it makes every cap below it *infeasible*, so starting the search
 lower would waste iterations testing caps that can never work.
 
-**No setup needed — you can solve this one in the browser.** Open the starter in the [online code editor](/courses/ide#src=C2-CrunchTime-The-Code/curriculum/week-05-binary-search/homework/problem-02-relay-handoff.md) and run it there. Nothing to install, nothing to configure, and your work stays on your own machine.
+**No setup needed — you can solve this one in the browser.** Open the starter in the [online code editor](/ide#src=C2-CrunchTime-The-Code/curriculum/week-05-binary-search/homework/problem-02-relay-handoff.md) and run it there. Nothing to install, nothing to configure, and your work stays on your own machine.
 
 ## Requirements
 

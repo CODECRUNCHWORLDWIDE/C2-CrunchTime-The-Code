@@ -128,7 +128,7 @@ outer minus flips it back. So `-(-64 // 5)` is `13`, meaning thirteen 5-litre
 steps — a 65-litre kiln. It is exact at every size, which
 `math.ceil(64 / 5)` is not once the numbers get large.
 
-**No setup needed — you can solve this one in the browser.** Open the starter in the [online code editor](/courses/ide#src=C2-CrunchTime-The-Code/curriculum/week-05-binary-search/homework/problem-01-kiln-firing-schedule.md) and run it there. Nothing to install, nothing to configure, and your work stays on your own machine.
+**No setup needed — you can solve this one in the browser.** Open the starter in the [online code editor](/ide#src=C2-CrunchTime-The-Code/curriculum/week-05-binary-search/homework/problem-01-kiln-firing-schedule.md) and run it there. Nothing to install, nothing to configure, and your work stays on your own machine.
 
 ## Requirements
 

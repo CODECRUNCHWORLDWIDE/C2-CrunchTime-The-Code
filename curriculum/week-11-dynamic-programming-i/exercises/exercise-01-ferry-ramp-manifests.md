@@ -144,7 +144,7 @@ in an order that guarantees each entry's predecessors are already there. Filling
 a table is called **tabulation**, and it is the same recurrence run bottom-up
 instead of top-down.
 
-**No setup needed — you can solve this one in the browser.** Open the starter in the [online code editor](/courses/ide#src=C2-CrunchTime-The-Code/curriculum/week-11-dynamic-programming-i/exercises/exercise-01-ferry-ramp-manifests.md) and run it there. Nothing to install, nothing to configure, and your work stays on your own machine.
+**No setup needed — you can solve this one in the browser.** Open the starter in the [online code editor](/ide#src=C2-CrunchTime-The-Code/curriculum/week-11-dynamic-programming-i/exercises/exercise-01-ferry-ramp-manifests.md) and run it there. Nothing to install, nothing to configure, and your work stays on your own machine.
 
 ## Requirements
 

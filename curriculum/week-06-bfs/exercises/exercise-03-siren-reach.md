@@ -172,7 +172,7 @@ than it sounds until you try to write it the other way.
 this page. A square is "already reached" exactly when its entry is no longer
 `-1`. One structure, two jobs, and no chance of the two disagreeing.
 
-**No setup needed — you can solve this one in the browser.** Open the starter in the [online code editor](/courses/ide#src=C2-CrunchTime-The-Code/curriculum/week-06-bfs/exercises/exercise-03-siren-reach.md) and run it there. Nothing to install, nothing to configure, and your work stays on your own machine.
+**No setup needed — you can solve this one in the browser.** Open the starter in the [online code editor](/ide#src=C2-CrunchTime-The-Code/curriculum/week-06-bfs/exercises/exercise-03-siren-reach.md) and run it there. Nothing to install, nothing to configure, and your work stays on your own machine.
 
 ## Requirements
 

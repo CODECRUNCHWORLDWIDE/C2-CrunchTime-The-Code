@@ -175,7 +175,7 @@ keeps the title, and the first bay in scan order is the lowest row and then
 the lowest column. That is why `_worse` never mentions rows or columns, and
 why you must not use `>=`.
 
-**No setup needed — you can solve this one in the browser.** Open the starter in the [online code editor](/courses/ide#src=C2-CrunchTime-The-Code/curriculum/week-06-bfs/homework/problem-02-worst-served-bay.md) and run it there. Nothing to install, nothing to configure, and your work stays on your own machine.
+**No setup needed — you can solve this one in the browser.** Open the starter in the [online code editor](/ide#src=C2-CrunchTime-The-Code/curriculum/week-06-bfs/homework/problem-02-worst-served-bay.md) and run it there. Nothing to install, nothing to configure, and your work stays on your own machine.
 
 ## Requirements
 

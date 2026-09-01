@@ -214,7 +214,7 @@ the whole reason it is the right container here.
 inside the horizon when its second is greater than `now - horizon`, which is
 sixty buckets: `now`, and the fifty-nine before it.
 
-**No setup needed — you can solve this one in the browser.** Open the starter in the [online code editor](/courses/ide#src=C2-CrunchTime-The-Code/curriculum/week-03-sliding-window/homework/problem-05-rolling-error-rate.md) and run it there. Nothing to install, nothing to configure, and your work stays on your own machine.
+**No setup needed — you can solve this one in the browser.** Open the starter in the [online code editor](/ide#src=C2-CrunchTime-The-Code/curriculum/week-03-sliding-window/homework/problem-05-rolling-error-rate.md) and run it there. Nothing to install, nothing to configure, and your work stays on your own machine.
 
 ## Requirements
 

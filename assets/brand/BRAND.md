@@ -82,9 +82,9 @@ We **keep** the family display + body faces and **add** one technical accent.
 The six letters U-M-P-I-R-E are the most recognizable C2 visual element. Treat them as a system:
 
 ```
-┌───┐  ┌───┐  ┌───┐  ┌───┐  ┌───┐  ┌───┐
-│ U │  │ M │  │ P │  │ I │  │ R │  │ E │
-└───┘  └───┘  └───┘  └───┘  └───┘  └───┘
+┌───┐  ┌───┐  ┌───┐  ┌───┐  ┌───┐
+│ F │  │ R │  │ A │  │ M │  │ E │
+└───┘  └───┘  └───┘  └───┘  └───┘
 ```
 
 Rules:

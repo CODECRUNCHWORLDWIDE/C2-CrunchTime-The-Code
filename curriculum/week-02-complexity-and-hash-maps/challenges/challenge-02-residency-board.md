@@ -250,7 +250,7 @@ deliverable of a design problem, and this page lists five of them below.
 other cannot. The joint is the important bit: here, the map's value is a
 *node*, and that one decision is what makes everything `O(1)`.
 
-**No setup needed — you can solve this one in the browser.** Open the starter in the [online code editor](/courses/ide#src=C2-CrunchTime-The-Code/curriculum/week-02-complexity-and-hash-maps/challenges/challenge-02-residency-board.md) and run it there. Nothing to install, nothing to configure, and your work stays on your own machine.
+**No setup needed — you can solve this one in the browser.** Open the starter in the [online code editor](/ide#src=C2-CrunchTime-The-Code/curriculum/week-02-complexity-and-hash-maps/challenges/challenge-02-residency-board.md) and run it there. Nothing to install, nothing to configure, and your work stays on your own machine.
 
 ## Requirements
 

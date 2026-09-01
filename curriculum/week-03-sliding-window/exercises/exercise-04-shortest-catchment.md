@@ -152,7 +152,7 @@ Here: as you trim days off the left, the running total is monotone
 non-increasing. That is what makes "stop as soon as it drops below the quota"
 safe — once it drops, more trimming cannot bring it back.
 
-**No setup needed — you can solve this one in the browser.** Open the starter in the [online code editor](/courses/ide#src=C2-CrunchTime-The-Code/curriculum/week-03-sliding-window/exercises/exercise-04-shortest-catchment.md) and run it there. Nothing to install, nothing to configure, and your work stays on your own machine.
+**No setup needed — you can solve this one in the browser.** Open the starter in the [online code editor](/ide#src=C2-CrunchTime-The-Code/curriculum/week-03-sliding-window/exercises/exercise-04-shortest-catchment.md) and run it there. Nothing to install, nothing to configure, and your work stays on your own machine.
 
 ## Requirements
 

@@ -1,9 +1,9 @@
 # Week 13 — Behavioral & Communication
 
 ```
-┌───┐  ┌───┐  ┌───┐  ┌───┐  ┌───┐  ┌───┐
-│ U │  │ M │  │ P │  │ I │  │ R │  │ E │
-└───┘  └───┘  └───┘  └───┘  └───┘  └───┘
+┌───┐  ┌───┐  ┌───┐  ┌───┐  ┌───┐
+│ F │  │ R │  │ A │  │ M │  │ E │
+└───┘  └───┘  └───┘  └───┘  └───┘
 ```
 
 > *Week 12 installed backtracking — the choose-explore-unchoose template that enumerates every solution to a combinatorial decision problem, the last of the pure algorithm weeks of Phase 2. Week 13 installs the **behavioral** skill set: the eight categories of "tell me about a time…," the STAR structure that turns a war story into a scored answer, a **story bank** of twelve-plus refined anecdotes that covers every category, the discipline of thinking aloud under pressure, and the moves for handling ambiguous, hostile, and curveball questions without flinching. This is the **first week of Phase 4 — Capstone & Onsite Prep.** STAR is to the behavioral round what FRAME is to the coding round: a mechanical method that frees your attention from "what do I say next" so you can spend it on signal. By Sunday you can hear any behavioral prompt, name which of the eight categories it tests in five seconds, reach for the right story from your bank, and deliver it in ninety seconds with a quantified result and a clear "I" — and you can recover gracefully when the interviewer pushes back, goes quiet, or asks something you are not allowed to answer.*

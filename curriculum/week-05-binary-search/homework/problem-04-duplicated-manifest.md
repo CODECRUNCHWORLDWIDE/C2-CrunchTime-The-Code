@@ -131,7 +131,7 @@ which half is sorted. With duplicates, that test is only trustworthy when the
 three probe points are not all equal, which is exactly what the fallback
 branch is for.
 
-**No setup needed — you can solve this one in the browser.** Open the starter in the [online code editor](/courses/ide#src=C2-CrunchTime-The-Code/curriculum/week-05-binary-search/homework/problem-04-duplicated-manifest.md) and run it there. Nothing to install, nothing to configure, and your work stays on your own machine.
+**No setup needed — you can solve this one in the browser.** Open the starter in the [online code editor](/ide#src=C2-CrunchTime-The-Code/curriculum/week-05-binary-search/homework/problem-04-duplicated-manifest.md) and run it there. Nothing to install, nothing to configure, and your work stays on your own machine.
 
 ## Requirements
 

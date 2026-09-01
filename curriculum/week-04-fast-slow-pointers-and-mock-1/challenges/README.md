@@ -36,7 +36,7 @@ at all.
 ## Grading them
 
 Both pages can be solved in the browser with nothing installed; each one links
-its own [online code editor](/courses/ide#src=C2-CrunchTime-The-Code/curriculum/week-04-fast-slow-pointers-and-mock-1/challenges/challenge-01-booklet-imposition.md)
+its own [online code editor](/ide#src=C2-CrunchTime-The-Code/curriculum/week-04-fast-slow-pointers-and-mock-1/challenges/challenge-01-booklet-imposition.md)
 starter. For the week's larger cases — the four-thousand-page booklet that
 raises `RecursionError` on a recursive reversal, and the plants that assert the
 wiring was restored — use the drill harness:

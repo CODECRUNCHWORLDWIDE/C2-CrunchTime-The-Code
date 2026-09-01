@@ -1,9 +1,9 @@
 # Week 6 — Breadth-First Search
 
 ```
-┌───┐  ┌───┐  ┌───┐  ┌───┐  ┌───┐  ┌───┐
-│ U │  │ M │  │ P │  │ I │  │ R │  │ E │
-└───┘  └───┘  └───┘  └───┘  └───┘  └───┘
+┌───┐  ┌───┐  ┌───┐  ┌───┐  ┌───┐
+│ F │  │ R │  │ A │  │ M │  │ E │
+└───┘  └───┘  └───┘  └───┘  └───┘
 ```
 
 > *Week 5 trained the first logarithmic-time pattern of Phase 2. Week 6 trains the first **graph** pattern — **BFS**, the canonical "shortest path on an unweighted graph" algorithm. The lecture work is short; the recognition work is heavier. By Sunday you can write the canonical queue + visited-set template without notes, distinguish grid-BFS from node-BFS in 30 seconds, defend "BFS finds shortest paths only because the graph is unweighted" out loud, and apply multi-source BFS as the high-leverage idiom of the week.*

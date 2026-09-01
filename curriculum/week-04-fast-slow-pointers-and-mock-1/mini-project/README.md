@@ -88,7 +88,7 @@ fixed at all at 14:55 on Friday.
 **A warm-up you can run in the browser.** Before Friday, do one 10-minute
 recorded pass on a problem you have already solved, so that the strangeness of
 being recorded is out of the way before it costs you anything. Any of this
-week's drills will do — open one in the [online code editor](/courses/ide#src=C2-CrunchTime-The-Code/curriculum/week-04-fast-slow-pointers-and-mock-1/exercises/exercise-01-conveyor-loop.md), start the recorder, and narrate. Nothing to install, nothing to
+week's drills will do — open one in the [online code editor](/ide#src=C2-CrunchTime-The-Code/curriculum/week-04-fast-slow-pointers-and-mock-1/exercises/exercise-01-conveyor-loop.md), start the recorder, and narrate. Nothing to install, nothing to
 configure, and your work stays on your own machine.
 
 ## Requirements

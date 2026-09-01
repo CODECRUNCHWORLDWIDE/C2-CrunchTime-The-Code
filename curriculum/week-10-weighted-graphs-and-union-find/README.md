@@ -1,9 +1,9 @@
 # Week 10 — Weighted Graphs and Union-Find
 
 ```
-┌───┐  ┌───┐  ┌───┐  ┌───┐  ┌───┐  ┌───┐
-│ U │  │ M │  │ P │  │ I │  │ R │  │ E │
-└───┘  └───┘  └───┘  └───┘  └───┘  └───┘
+┌───┐  ┌───┐  ┌───┐  ┌───┐  ┌───┐
+│ F │  │ R │  │ A │  │ M │  │ E │
+└───┘  └───┘  └───┘  └───┘  └───┘
 ```
 
 > *Week 9 installed the trie — the dict-of-dict prefix tree, the autocomplete walk, the KMP failure function. Week 10 installs the **weighted-graph algorithm family** and the **disjoint-set union** data structure. Dijkstra with a heap (when it is correct, when it fails on negative weights), Bellman-Ford (negative weights OK, negative-cycle detection in pass `V`), Floyd-Warshall (all-pairs, `O(V^3)`, when `V` is small). Minimum spanning trees via Prim (Dijkstra-shaped) and Kruskal (sort-and-union). Union-Find with path compression and union by rank — the near-`O(1)` reach for "number of connected components" / "account merge" / "redundant connection" / "number of islands" variants. By Sunday you can pick the right shortest-path algorithm in 30 seconds based on the constraint signal, write a heap-Dijkstra from memory in under ten minutes, and recognize a DSU problem before the word "components" appears in the prompt.*

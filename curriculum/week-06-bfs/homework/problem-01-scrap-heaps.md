@@ -126,7 +126,7 @@ outer scan will start a *second* walk from every square of a heap it has
 already measured, and the work goes from linear to quadratic. The shared set
 is what lets the outer scan say "skip, done that" in one lookup.
 
-**No setup needed — you can solve this one in the browser.** Open the starter in the [online code editor](/courses/ide#src=C2-CrunchTime-The-Code/curriculum/week-06-bfs/homework/problem-01-scrap-heaps.md) and run it there. Nothing to install, nothing to configure, and your work stays on your own machine.
+**No setup needed — you can solve this one in the browser.** Open the starter in the [online code editor](/ide#src=C2-CrunchTime-The-Code/curriculum/week-06-bfs/homework/problem-01-scrap-heaps.md) and run it there. Nothing to install, nothing to configure, and your work stays on your own machine.
 
 ## Requirements
 

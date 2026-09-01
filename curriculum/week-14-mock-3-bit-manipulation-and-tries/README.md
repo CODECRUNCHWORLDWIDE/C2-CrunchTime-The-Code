@@ -1,9 +1,9 @@
 # Week 14 — Bit Manipulation, Tries + Mock #3
 
 ```
-┌───┐  ┌───┐  ┌───┐  ┌───┐  ┌───┐  ┌───┐
-│ U │  │ M │  │ P │  │ I │  │ R │  │ E │
-└───┘  └───┘  └───┘  └───┘  └───┘  └───┘
+┌───┐  ┌───┐  ┌───┐  ┌───┐  ┌───┐
+│ F │  │ R │  │ A │  │ M │  │ E │
+└───┘  └───┘  └───┘  └───┘  └───┘
 ```
 
 > *Week 13 installed the behavioral skill set — the eight categories, the STAR structure, the twelve-story bank, the discipline of thinking aloud through an ambiguous prompt. Week 14 installs the last pure-algorithm pattern of the catalog — **bit manipulation** (pattern #13 of 14) — and threads it through the program's third recorded mock. The bit family is three sub-shapes: the **XOR fold** (a^a cancels, so the lone survivor is the answer — Single Number, Missing Number, Single Number III by partitioning on a differing bit); **bitmask-as-set** (enumerate every subset of n items by counting 0..2^n−1, the engine behind Subsets and the recognition-grade framing of bitmask DP); and **bit DP** (build a small answer from a smaller one, as in Counting Bits where `dp[i] = dp[i>>1] + (i&1)`). Then we close the loop with a **tries review** — the dict-of-dict and TrieNode templates from Week 9 — because the bridge between this week's two topics is the **binary trie** that solves Maximum XOR (LC 421). Mock #3 is the first full-loop simulation run under near-real conditions: video on, a hard 45-minute clock, no peeking. By Sunday you can recognize a bit problem in 30 seconds, fold an array with XOR, enumerate subsets with a bitmask, build a binary trie for max-XOR, and run a recorded mock that you watch back twice and turn into one specific behavior change versus Mock #1 and Mock #2.*

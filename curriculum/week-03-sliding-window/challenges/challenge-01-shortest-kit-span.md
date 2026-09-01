@@ -215,7 +215,7 @@ touch it when something relevant changes. Both are correct; only the second
 scales. Recognising which one you have written is a habit worth building, and
 this problem is the cleanest example of the difference in the whole course.
 
-**No setup needed — you can solve this one in the browser.** Open the starter in the [online code editor](/courses/ide#src=C2-CrunchTime-The-Code/curriculum/week-03-sliding-window/challenges/challenge-01-shortest-kit-span.md) and run it there. Nothing to install, nothing to configure, and your work stays on your own machine.
+**No setup needed — you can solve this one in the browser.** Open the starter in the [online code editor](/ide#src=C2-CrunchTime-The-Code/curriculum/week-03-sliding-window/challenges/challenge-01-shortest-kit-span.md) and run it there. Nothing to install, nothing to configure, and your work stays on your own machine.
 
 ## Requirements
 

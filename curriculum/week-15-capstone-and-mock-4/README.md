@@ -1,9 +1,9 @@
 # Week 15 — Capstone + Mock #4
 
 ```
-┌───┐  ┌───┐  ┌───┐  ┌───┐  ┌───┐  ┌───┐
-│ U │  │ M │  │ P │  │ I │  │ R │  │ E │
-└───┘  └───┘  └───┘  └───┘  └───┘  └───┘
+┌───┐  ┌───┐  ┌───┐  ┌───┐  ┌───┐
+│ F │  │ R │  │ A │  │ M │  │ E │
+└───┘  └───┘  └───┘  └───┘  └───┘
 ```
 
 > *Week 14 installed the final algorithm pattern — bit manipulation — and ran Mock #3 as the first full-loop simulation under near-real conditions: video on, a hard 45-minute clock, the two-pass watching protocol, one behavior change named against Mock #1 and Mock #2. Week 15 is the last week, and it has no new pattern to teach. Everything you have built since Week 1 — the FRAME method, the fourteen-pattern catalog, the twelve-story behavioral bank, the URL-shortener design write-up, three recorded mocks — becomes **one public artifact you point recruiters at.** This week you polish that artifact to a recruiter-grade finish, run **Mock #4** under full real-interview conditions (a stranger interviewer if you can get one, dressed as if it were real, no notes, a hard stop), and produce the single deliverable the course has been building toward: a **personalized go-forward study plan** that tells you exactly what to drill in your last mile and how to sustain the practice after the course ends. By Sunday you publish the capstone, you have four mocks watched and self-critiqued, and you go interview.*

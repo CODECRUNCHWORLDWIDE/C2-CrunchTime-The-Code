@@ -173,7 +173,7 @@ which changes nothing, and the loop runs forever. Rounding up,
 `lo + (hi - lo + 1) // 2`, gives `5` and the interval always shrinks. The rule
 is mechanical: **whichever branch keeps `mid`, round away from it.**
 
-**No setup needed — you can solve this one in the browser.** Open the starter in the [online code editor](/courses/ide#src=C2-CrunchTime-The-Code/curriculum/week-05-binary-search/challenges/challenge-02-signal-mast-spacing.md) and run it there. Nothing to install, nothing to configure, and your work stays on your own machine.
+**No setup needed — you can solve this one in the browser.** Open the starter in the [online code editor](/ide#src=C2-CrunchTime-The-Code/curriculum/week-05-binary-search/challenges/challenge-02-signal-mast-spacing.md) and run it there. Nothing to install, nothing to configure, and your work stays on your own machine.
 
 ## Requirements
 

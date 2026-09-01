@@ -1,9 +1,9 @@
 # Week 2 — Complexity & Hash Maps
 
 ```
-┌───┐  ┌───┐  ┌───┐  ┌───┐  ┌───┐  ┌───┐
-│ U │  │ M │  │ P │  │ I │  │ R │  │ E │
-└───┘  └───┘  └───┘  └───┘  └───┘  └───┘
+┌───┐  ┌───┐  ┌───┐  ┌───┐  ┌───┐
+│ F │  │ R │  │ A │  │ M │  │ E │
+└───┘  └───┘  └───┘  └───┘  └───┘
 ```
 
 > *Last week we taught you to talk while you code. This week we teach you to talk about cost while you code.* By Sunday you can state the time and space complexity of any solution you write — out loud, in the same sentence, with confidence — and you have a second pattern in your library.

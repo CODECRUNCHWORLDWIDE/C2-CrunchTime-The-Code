@@ -238,7 +238,7 @@ label is in it exactly when it has been queued. So `if neighbour not in hops`
 is the reached check, and there is no separate `set`. Fewer structures, fewer
 ways to disagree.
 
-**No setup needed — you can solve this one in the browser.** Open the starter in the [online code editor](/courses/ide#src=C2-CrunchTime-The-Code/curriculum/week-06-bfs/exercises/exercise-04-cable-pull.md) and run it there. Nothing to install, nothing to configure, and your work stays on your own machine.
+**No setup needed — you can solve this one in the browser.** Open the starter in the [online code editor](/ide#src=C2-CrunchTime-The-Code/curriculum/week-06-bfs/exercises/exercise-04-cable-pull.md) and run it there. Nothing to install, nothing to configure, and your work stays on your own machine.
 
 ## Requirements
 

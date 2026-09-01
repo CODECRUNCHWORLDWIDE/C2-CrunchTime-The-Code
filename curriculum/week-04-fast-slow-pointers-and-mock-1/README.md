@@ -1,9 +1,9 @@
 # Week 4 — Fast/Slow Pointers + Mock Interview #1
 
 ```
-┌───┐  ┌───┐  ┌───┐  ┌───┐  ┌───┐  ┌───┐
-│ U │  │ M │  │ P │  │ I │  │ R │  │ E │
-└───┘  └───┘  └───┘  └───┘  └───┘  └───┘
+┌───┐  ┌───┐  ┌───┐  ┌───┐  ┌───┐
+│ F │  │ R │  │ A │  │ M │  │ E │
+└───┘  └───┘  └───┘  └───┘  └───┘
 ```
 
 > *Week 3 taught you to recognize a contiguous slice. Week 4 teaches you to recognize a cycle — and to put yourself in front of a recorder for the first time, alone or with a peer, and watch yourself solve a problem cold.* By Sunday you can write Floyd's tortoise-and-hare without notes, derive the cycle-start trick out loud, and have shipped Mock #1 as a recording plus a self-feedback write-up.

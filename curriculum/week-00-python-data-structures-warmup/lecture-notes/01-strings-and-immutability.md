@@ -95,9 +95,13 @@ def is_palindrome(s):
 `a + b` must allocate a new string of length `len(a) + len(b)` and copy both in. So it is `O(len(a) + len(b))`. That is fine once. In a loop it is a disaster:
 
 ```python
+chars = "polder sluice gate"
+
 out = ""
 for ch in chars:          # n iterations
     out += ch             # copies the whole accumulated string each time
+
+print(out)
 ```
 
 Iteration `i` copies `i` characters. Total work is `1 + 2 + 3 + ... + n = n(n+1)/2`, which is **`O(n²)`**.
@@ -105,10 +109,14 @@ Iteration `i` copies `i` characters. Total work is `1 + 2 + 3 + ... + n = n(n+1)
 The fix is to collect into a list and join once:
 
 ```python
+chars = "polder sluice gate"
+
 parts = []
 for ch in chars:
     parts.append(ch)      # amortized O(1) each
 out = "".join(parts)      # O(total length), one allocation
+
+print(out)
 ```
 
 `O(n)` total. `str.join` walks the sequence once to compute the final length, allocates exactly that much, and copies each piece in — one allocation, no repeated copying.
@@ -246,16 +254,160 @@ Time `O(n)`. Space `O(n)` for the output. The generator expression itself is `O(
 
 ## 10. Check yourself
 
-Answer before moving to Lecture 2. Cover the cheat sheet.
+Answer before moving to Lecture 2. Cover the cheat sheet. Say each answer out
+loud first — the interview is spoken — then open the fold and compare.
 
-1. What are the time **and** space costs of `s[2:8]`?
-2. Why does `for ch in s: out += ch` cost `O(n²)`, and what is the fix?
-3. What is the worst-case cost of `"abc" in text`, and what does CPython actually do?
-4. `"  a  b  ".split()` versus `"  a  b  ".split(" ")` — what does each return?
-5. `s.startswith("http")` versus `s[:4] == "http"` — same result. Why prefer the first?
-6. Building a 26-element `counts` list with `ord(ch) - ord('a')` — what is the space complexity, and how do you justify the answer out loud?
-7. `"".join(sorted(word))` — what is it for, and what does it cost?
-8. Why can a string be a dict key when a list cannot?
+**1.** What are the time **and** space costs of `s[2:8]`?
+
+<details>
+<summary>Answer</summary>
+
+`O(k)` time and `O(k)` space, where `k` is the length of the slice — six here.
+A slice is a **new string**: Python copies the characters into a fresh
+allocation. There is no view type for `str`, so there is no way to take a slice
+without paying for it. Say both numbers; a candidate who gives only the time is
+answering half the question.
+
+</details>
+
+**2.** Why does `for ch in s: out += ch` cost `O(n²)`, and what is the fix?
+
+<details>
+<summary>Answer</summary>
+
+Because strings are immutable, `out += ch` cannot extend `out` in place — it
+allocates a new string and copies everything accumulated so far. Iteration `i`
+copies `i` characters, so the total is `1 + 2 + … + n = n(n+1)/2`, which is
+`O(n²)`.
+
+The fix is to collect into a list and join once:
+
+```python
+parts = []
+for ch in s:
+    parts.append(ch)
+out = "".join(parts)
+```
+
+`str.join` walks the sequence once to compute the final length, allocates
+exactly that much, and copies each piece in — one allocation, `O(n)` total.
+
+</details>
+
+**3.** What is the worst-case cost of `"abc" in text`, and what does CPython actually do?
+
+<details>
+<summary>Answer</summary>
+
+The bound to state is `O(n·m)` — `n` the length of `text`, `m` the length of the
+needle — because that is what naive scan-and-compare costs and it is the answer
+you can defend from first principles.
+
+Then add what actually happens: CPython does not scan naively. It uses a
+Horspool-style bad-character skip for short needles and switches to the
+Crochemore–Perrin *two-way* algorithm for longer ones, which is `O(n + m)` in
+the worst case. Lead with the bound, follow with the implementation note. That
+order is what reads as "knows the theory and has read the source", rather than
+"memorised a trivium".
+
+</details>
+
+**4.** `"  a  b  ".split()` versus `"  a  b  ".split(" ")` — what does each return?
+
+<details>
+<summary>Answer</summary>
+
+```python
+"  a  b  ".split()      # ['a', 'b']
+"  a  b  ".split(" ")   # ['', '', 'a', '', 'b', '', '']
+```
+
+With no argument, `split` treats any **run** of whitespace as one separator and
+discards leading and trailing whitespace. Given an explicit separator it splits
+on **every single occurrence**, so each adjacent pair of spaces yields an empty
+string between them.
+
+This is the bug behind half the "why is there an empty string in my list"
+questions. Default to the no-argument form unless you genuinely need to preserve
+empty fields — parsing a CSV line, where an empty field is data.
+
+</details>
+
+**5.** `s.startswith("http")` versus `s[:4] == "http"` — same result. Why prefer the first?
+
+<details>
+<summary>Answer</summary>
+
+Both are correct, including on a string shorter than four characters. Prefer
+`startswith` for three reasons:
+
+- It allocates nothing. The slice builds a throwaway four-character string first.
+- The `4` is a magic number that has to be kept in step with the literal. Change
+  the prefix to `https` and forget the slice length, and the check silently
+  starts lying.
+- It takes a tuple: `s.startswith(("http://", "https://"))` is one call.
+
+It also states intent. `startswith` reads as a question about a prefix; the
+slice reads as arithmetic that happens to be about a prefix.
+
+</details>
+
+**6.** Building a 26-element `counts` list with `ord(ch) - ord('a')` — what is the space complexity, and how do you justify the answer out loud?
+
+<details>
+<summary>Answer</summary>
+
+`O(1)` auxiliary space. The list has 26 entries whether the input is 10
+characters or 10 million — its size is fixed by the alphabet, not by `n`.
+
+The out-loud justification is the part being graded: *"The counts array is
+bounded by the alphabet size, which is a constant 26 for lowercase ASCII and
+does not grow with the input, so it is `O(1)` auxiliary space. If the alphabet
+were a parameter — Unicode, say — I would call it `O(σ)` and say what `σ` is."*
+
+Naming the assumption and then saying what happens when it is dropped is what
+separates a memorised answer from an understood one.
+
+</details>
+
+**7.** `"".join(sorted(word))` — what is it for, and what does it cost?
+
+<details>
+<summary>Answer</summary>
+
+It is the **canonical form** of a word: two words are anagrams exactly when
+their sorted letters are equal, so this expression is the key you group
+anagrams by.
+
+For a word of length `m` it costs `O(m log m)` time — the sort dominates — and
+`O(m)` space for the intermediate list of characters and the joined result. When
+grouping `n` words, that is `O(n · m log m)` overall.
+
+Worth knowing: for a fixed small alphabet you can key by a 26-slot count tuple
+instead and drop the log factor to `O(m)`. Offer that only after the sorted-key
+version is on the board and working.
+
+</details>
+
+**8.** Why can a string be a dict key when a list cannot?
+
+<details>
+<summary>Answer</summary>
+
+Because a string is immutable, so its hash is fixed for its lifetime. A dict
+places a key in a bucket chosen from its hash at insertion time and looks it up
+the same way later; that only works if the hash cannot change underneath it.
+
+A list is mutable. If a list could be a key, appending to it after insertion
+would change its hash, and the entry would sit in a bucket the lookup no longer
+visits — present in the dict and unreachable. Python forecloses that by giving
+`list` no `__hash__` at all, so the attempt fails loudly at insertion rather
+than quietly at lookup.
+
+The general rule: hashable means immutable **all the way down**. A tuple is
+hashable until it contains a list, at which point hashing it raises.
+
+</details>
 
 ---
 

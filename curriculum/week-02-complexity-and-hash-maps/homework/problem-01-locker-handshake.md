@@ -111,7 +111,7 @@ straightforward way to enforce one, because each map guards one direction.
 payload and used a `set`. This problem's whole difficulty is that it does need
 one, and the sixth self-check is there to make that cost you if you forget.
 
-**No setup needed — you can solve this one in the browser.** Open the starter in the [online code editor](/courses/ide#src=C2-CrunchTime-The-Code/curriculum/week-02-complexity-and-hash-maps/homework/problem-01-locker-handshake.md) and run it there. Nothing to install, nothing to configure, and your work stays on your own machine.
+**No setup needed — you can solve this one in the browser.** Open the starter in the [online code editor](/ide#src=C2-CrunchTime-The-Code/curriculum/week-02-complexity-and-hash-maps/homework/problem-01-locker-handshake.md) and run it there. Nothing to install, nothing to configure, and your work stays on your own machine.
 
 ## Requirements
 

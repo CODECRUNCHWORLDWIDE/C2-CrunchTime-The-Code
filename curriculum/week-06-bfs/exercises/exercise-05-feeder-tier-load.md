@@ -188,7 +188,7 @@ never again — you will use it for the rest of your career.
 the best so far. Sorting the whole tier to read its first entry does more
 work for the same answer, and says something untrue about what you asked for.
 
-**No setup needed — you can solve this one in the browser.** Open the starter in the [online code editor](/courses/ide#src=C2-CrunchTime-The-Code/curriculum/week-06-bfs/exercises/exercise-05-feeder-tier-load.md) and run it there. Nothing to install, nothing to configure, and your work stays on your own machine.
+**No setup needed — you can solve this one in the browser.** Open the starter in the [online code editor](/ide#src=C2-CrunchTime-The-Code/curriculum/week-06-bfs/exercises/exercise-05-feeder-tier-load.md) and run it there. Nothing to install, nothing to configure, and your work stays on your own machine.
 
 ## Requirements
 

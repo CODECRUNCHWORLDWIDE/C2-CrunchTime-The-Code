@@ -1,9 +1,9 @@
 # Week 8 — Heaps and Priority Queues
 
 ```
-┌───┐  ┌───┐  ┌───┐  ┌───┐  ┌───┐  ┌───┐
-│ U │  │ M │  │ P │  │ I │  │ R │  │ E │
-└───┘  └───┘  └───┘  └───┘  └───┘  └───┘
+┌───┐  ┌───┐  ┌───┐  ┌───┐  ┌───┐
+│ F │  │ R │  │ A │  │ M │  │ E │
+└───┘  └───┘  └───┘  └───┘  └───┘
 ```
 
 > *Week 7 installed DFS — the recursion stack, the three-color invariant, the post-order trick. Week 8 installs the **heap** — `heapq`, the min-heap-as-list invariant, the heap-of-tuples idiom for custom keys, the two-heap median pattern, k-way merge, k-closest points, and lazy deletion. By Sunday you can write `heapq.heappush` / `heapq.heappop` and the two-heap median template from memory, you can defend each against `sorted(...)[k]`, and the prompt-to-pattern reflex "top-k / closest-k / median of a stream" produces the heap one-liner without hesitation.*

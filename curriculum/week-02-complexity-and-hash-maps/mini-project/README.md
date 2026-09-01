@@ -254,7 +254,7 @@ row of four poles with heights 0 to 3 — that is 256 rows, and it takes no time
 at all. "It agreed on the six examples" is weak evidence. "It agreed on all 256
 four-pole rows" is a different sentence.
 
-**No setup needed — you can build this one in the browser.** Open the starter in the [online code editor](/courses/ide#src=C2-CrunchTime-The-Code/curriculum/week-02-complexity-and-hash-maps/mini-project/README.md) and run it there. Nothing to install, nothing to configure, and your work stays on your own machine.
+**No setup needed — you can build this one in the browser.** Open the starter in the [online code editor](/ide#src=C2-CrunchTime-The-Code/curriculum/week-02-complexity-and-hash-maps/mini-project/README.md) and run it there. Nothing to install, nothing to configure, and your work stays on your own machine.
 
 ## Requirements
 

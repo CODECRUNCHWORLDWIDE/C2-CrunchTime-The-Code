@@ -1,9 +1,9 @@
 # Week 11 — Dynamic Programming I
 
 ```
-┌───┐  ┌───┐  ┌───┐  ┌───┐  ┌───┐  ┌───┐
-│ U │  │ M │  │ P │  │ I │  │ R │  │ E │
-└───┘  └───┘  └───┘  └───┘  └───┘  └───┘
+┌───┐  ┌───┐  ┌───┐  ┌───┐  ┌───┐
+│ F │  │ R │  │ A │  │ M │  │ E │
+└───┘  └───┘  └───┘  └───┘  └───┘
 ```
 
 > *Week 10 installed the weighted-graph family — Dijkstra, Bellman-Ford, Floyd-Warshall, MST, DSU. Week 11 installs the **dynamic-programming pipeline**: the disciplined route from a brute-force recursion, through a `functools.lru_cache` memoization, to a hand-rolled bottom-up tabulation, and finally to a state-space reduction with a rolling array. 1D DP first — Fibonacci, climbing stairs, house robber, decode ways, word break. Then 2D DP — unique paths, longest common subsequence, edit distance, longest palindromic subsequence. The Research-constraints skill: what signal in the prompt screams DP (overlapping subproblems plus optimal substructure), and the four mechanical steps to convert any top-down recursion into a bottom-up table. By Sunday you can read a problem and say, in 30 seconds, "this is 1D-DP with state `i`," or "this is 2D-DP with state `(i, j)` and the recurrence is `dp[i][j] = ...`," and you can ship the table with a rolling-array space reduction if asked.*

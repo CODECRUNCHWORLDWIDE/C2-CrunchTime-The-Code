@@ -146,7 +146,7 @@ parameter, and then reuse. `k` here is the parameter. Hard-coding
 `while len(counts) > 2` gives you a correct answer to this exact page and
 nothing you can carry anywhere else.
 
-**No setup needed — you can solve this one in the browser.** Open the starter in the [online code editor](/courses/ide#src=C2-CrunchTime-The-Code/curriculum/week-03-sliding-window/exercises/exercise-05-cold-chain-load.md) and run it there. Nothing to install, nothing to configure, and your work stays on your own machine.
+**No setup needed — you can solve this one in the browser.** Open the starter in the [online code editor](/ide#src=C2-CrunchTime-The-Code/curriculum/week-03-sliding-window/exercises/exercise-05-cold-chain-load.md) and run it there. Nothing to install, nothing to configure, and your work stays on your own machine.
 
 ## Requirements
 

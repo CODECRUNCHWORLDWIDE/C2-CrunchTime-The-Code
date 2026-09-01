@@ -1,9 +1,9 @@
 # Week 12 — Backtracking and Combinatorics
 
 ```
-┌───┐  ┌───┐  ┌───┐  ┌───┐  ┌───┐  ┌───┐
-│ U │  │ M │  │ P │  │ I │  │ R │  │ E │
-└───┘  └───┘  └───┘  └───┘  └───┘  └───┘
+┌───┐  ┌───┐  ┌───┐  ┌───┐  ┌───┐
+│ F │  │ R │  │ A │  │ M │  │ E │
+└───┘  └───┘  └───┘  └───┘  └───┘
 ```
 
 > *Week 11 installed the dynamic-programming pipeline — the disciplined route from a brute-force recursion through `functools.lru_cache` to a bottom-up tabulation. Week 12 installs the **other** disciplined recursion: **backtracking**, the choose-explore-unchoose template that enumerates every solution to a combinatorial decision problem. Subsets, permutations, combinations, combination sum, palindrome partitioning, word search, N-Queens, sudoku solver. The Research-constraints skill: what tells you "this is a backtracking problem" — the prompt asks for **all** solutions, not the count or the optimum; the search tree has clear branching; constraints prune entire subtrees. State + pruning + visited-set patterns. The mechanical template: `choose -> recurse -> unchoose`. By Sunday you can read a problem and say, in 30 seconds, "this enumerates subsets / permutations / partitions, the decision at each level is `<X>`, the prune is `<Y>`, the unchoose step is `<Z>`," and you can ship the recursion with the path-array mutation discipline that does not produce duplicate or aliased outputs.*

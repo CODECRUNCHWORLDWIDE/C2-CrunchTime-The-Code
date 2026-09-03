@@ -438,12 +438,6 @@ column, finds the maximum *of that column* in `O(rows)`, and recurses on one
 side, giving `O(rows · log columns)`. It is a good example of a pattern that
 extends but not for free, and of why "just do it in both dimensions" deserves
 suspicion.
-
-**Practice elsewhere.** The same local-rule bisection appears as
-[LeetCode 162 · Find Peak Element](https://leetcode.com/problems/find-peak-element/)
-if you want a judge to run against. Its contract differs from ours — it returns
-a bare index and does not define the empty case.
-
 </details>
 
 ## Acceptance checklist

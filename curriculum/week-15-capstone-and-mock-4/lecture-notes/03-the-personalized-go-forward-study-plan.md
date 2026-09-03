@@ -85,7 +85,9 @@ Sun:  One mock OR rest
 
 That is ~10 problems a week — sustainable, weighted toward the weak, and it touches every pattern within a three-week window so none goes fully cold. Re-run the §1 diagnosis every two weeks: as a hot pattern becomes fluent, promote it to warm and pull the next weak one up. The schedule is *living* — it tracks your actual weaknesses, not a fixed list.
 
-The free tools that support this: NeetCode 150 / the NeetCode roadmap (<https://neetcode.io/>) groups problems by pattern, which maps directly onto the tiers; LeetCode tag pages (`leetcode.com/tag/<pattern>/`) give you an endless supply per pattern; Blind 75 is the minimum-viable cold-tier rotation if you are short on time.
+Where the problems come from: **this course**. Every week ships five exercises, two challenges, six homework problems and a mini-project, all with published answers — call it four hundred problems already grouped by pattern, which is exactly the grouping the tiers need. Weeks 0–15 are your cold tier; the week matching your weakest pattern is your hot one.
+
+When you exhaust a pattern here, write your own. Take a problem you solved, change the return contract — a count instead of a boolean, positions instead of a length, a different sentinel for impossible — and solve it again. That is a harder exercise than a new prompt from a problem bank, because you cannot pattern-match your way to it, and it is the same skill an interviewer is testing when they extend a question you have just finished.
 
 ---
 
@@ -209,7 +211,6 @@ If you can answer all six, you can build your personalized plan. It is the homew
 
 ## Further reading
 
-- **NeetCode roadmap**: <https://neetcode.io/> — patterns grouped for the spaced-repetition tiers; the cleanest free structure for the maintenance rotation.
 - **Tech Interview Handbook**: <https://www.techinterviewhandbook.org/> — the study-plan and behavioral sections; the resume guide at <https://www.techinterviewhandbook.org/resume/>.
 - **levels.fyi**: <https://www.levels.fyi/> — compensation context for the target-company list, so the funnel is aimed at roles worth the effort.
 - **"Staff Engineer" by Will Larson**: <https://staffeng.com/> — for the longer arc beyond the first offer; the maintenance mindset scales to a whole career.

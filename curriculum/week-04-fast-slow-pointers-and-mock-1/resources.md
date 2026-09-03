@@ -23,8 +23,6 @@ If a write-up calls "two pointers from each end" a "fast/slow" approach, it's wr
 
 ## Free practice platforms
 
-- **LeetCode — Linked List tag** (free): <https://leetcode.com/tag/linked-list/>
-- **LeetCode — Two Pointers tag** (free): <https://leetcode.com/tag/two-pointers/> — the fast/slow problems live under this tag too.
 - **HackerRank — Linked Lists track**: <https://www.hackerrank.com/domains/data-structures?filters%5Bsubdomains%5D%5B%5D=linked-lists>
 - **Exercism — Python Track, linked-list exercises**: <https://exercism.org/tracks/python>
 
@@ -48,7 +46,6 @@ This is the week you'll actually use these.
 
 ## Videos on the pattern (free, no signup)
 
-- **NeetCode — cycle-detection walkthroughs** (YouTube — free): search "neetcode linked list cycle"; the 8-minute walkthrough is enough for the mechanics.
 - **MIT 6.006 — Introduction to Algorithms** (free OCW): <https://ocw.mit.edu/courses/6-006-introduction-to-algorithms-spring-2020/> — tangential to this week, but the treatment of graph representations is where "one outgoing edge per node" stops being an interview trick and starts being a definition.
 - **Wikipedia — Functional graph**: <https://en.wikipedia.org/wiki/Functional_graph> — one short article, and it is the formal statement of the tail-plus-rotation shape Exercise 4 asks you to measure.
 

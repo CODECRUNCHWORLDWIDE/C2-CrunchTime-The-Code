@@ -64,7 +64,7 @@ Mock #3 was *near*-real. Mock #4 closes the remaining gap. Five conditions tight
 
 - **A stranger interviewer, ideally.** The one variable a peer or solo mock cannot reproduce is the "stranger judging me" pressure. Book a real interviewing.io (<https://interviewing.io/blog>) or Pramp (<https://www.pramp.com/>) session if you possibly can. A stranger who does not know your prep, on a problem you have never seen, is the closest thing to the real screen.
 - **Dress as if it were real.** Whatever you would wear to the actual interview, wear it for Mock #4. Set up the rig — camera at eye level, quiet room, water at hand — exactly as you would on the day. The dress and the setup are not theater; they change how you carry yourself, and that is part of what you are rehearsing.
-- **No notes. None.** No template file open, no cheat sheet, no LeetCode tab. If you cannot recall a pattern's template from memory, narrate the gap and code what you remember. The gap is data.
+- **No notes. None.** No template file open, no cheat sheet, no practice site. If you cannot recall a pattern's template from memory, narrate the gap and code what you remember. The gap is data.
 - **A hard stop.** When each round's timer hits zero, you stop mid-line. Real loops do not give extensions.
 - **The full loop, required.** For the first time, the behavioral round and a system-design round are *required*, not optional. Mock #4 is a compressed onsite: a coding round, a system-design round, a behavioral round — back to back. See Challenge 1 for the exact sequence and timings.
 

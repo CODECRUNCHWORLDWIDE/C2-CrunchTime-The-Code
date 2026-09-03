@@ -1,29 +1,50 @@
 # Week 6 — Exercises
 
-Five drills. Each is FRAME-narrated, recorded, and graded by [`timed_runner.py`](timed_runner.py).
+Five exercises, in order. Each has a page with the brief, the constraints, the
+worked solution and the acceptance checklist, and a runnable file beside it that
+ends by printing `All checks passed.`
 
-| # | Drill | Pattern | Difficulty | Target solve time |
-|---|-------|---------|------------|------------------:|
-| 1 | [Level order traversal](exercise-01-level-order.md) | Node-BFS on a tree, level-tracking idiom | Easy | 15 min |
-| 2 | [Shortest path in a binary matrix](exercise-02-shortest-path-grid.md) | Grid-BFS, 8-directional, per-node distance | Medium | 25 min |
-| 3 | [Rotting oranges](exercise-03-rotting-oranges.md) | Multi-source grid-BFS | Medium | 25 min |
-| 4 | [Word ladder](exercise-04-word-ladder.md) | Node-BFS on an implicit graph + wildcard bucket index | Medium/Hard | 35 min |
-| 5 | [Binary tree right side view](exercise-05-binary-tree-right-side-view.md) | Node-BFS on a tree, level-tracking with last-node emit | Medium | 20 min |
+| # | Exercise | Sub-shape | Difficulty | Target time |
+|---|----------|-----------|------------|------------:|
+| 1 | [Relay Roster](./exercise-01-relay-roster.md) | Node BFS, one hop at a time, with the level frozen before the queue grows | Easy | 30 min |
+| 2 | [Hoist Route](./exercise-02-hoist-route.md) | Grid BFS with obstacles, carrying the distance on the queue | Medium | 40 min |
+| 3 | [Siren Reach](./exercise-03-siren-reach.md) | Multi-source grid BFS — one walk, a whole map of answers | Medium | 40 min |
+| 4 | [Cable Pull](./exercise-04-cable-pull.md) | The same search on a network big enough to punish the wrong queue | Medium | 45 min |
+| 5 | [Feeder Tier Load](./exercise-05-feeder-tier-load.md) | Reducing each level to numbers while it is still one batch | Medium | 35 min |
 
-Do them in order. Drills 1 and 5 cement level tracking on trees. Drills 2 and 3 install grid-BFS with the single-source vs multi-source distinction. Exercise 4 is the node-BFS-on-strings problem that anchors the rest of the week — it is the prep for the Word Ladder homework variants and the bidirectional-BFS discussion.
+Do them in order. Exercise 1 installs the level snapshot, which every "by level",
+"by tier", "by round" answer for the rest of the course reuses. Exercise 2 puts
+the same loop on a grid and teaches the bounds check properly — Python's negative
+indexing means a missing bounds check does not crash, it wraps to the far side
+and answers a different question. Exercise 3 is the one-line change in the seed
+that turns one search into an answer for every source at once. Exercise 4 is
+where `list.pop(0)` finally costs real time and you count it instead of taking it
+on trust. Exercise 5 reduces a level rather than listing it, and carries the trap
+that catches everyone on their first real network: a node wired to two parents is
+one node in one tier, however many times it is mentioned.
 
-After all five drills pass `timed_runner.py`, move on to [the challenge](../challenges/challenge-01-minimum-knight-moves.md) — Minimum Knight Moves, the canonical "BFS on an infinite implicit graph" problem.
-
-Run the harness:
+Run any of them directly:
 
 ```bash
-pytest exercises/timed_runner.py -v
+python exercise-01-relay-roster-solution.py
 ```
 
-Each drill has its own write-up template at the bottom of the drill file. Use it.
+No packages, no arguments, no input.
 
 ## A note on what is being graded
 
-Phase 1's drills graded you mostly on *correctness*. Phase 2's drills add a second axis: **invariant defense**. For every BFS drill, your write-up must state the visited-set invariant and justify enqueue-time marking in one sentence. The recording catches whether you say it; the write-up catches whether you can write it.
+Phase 1 graded you mostly on *correctness*. Phase 2 adds a second axis:
+**invariant defence**. For every BFS exercise, your write-up must state the
+visited-set invariant and justify enqueue-time marking in one sentence — not
+"mark on enqueue" but *why*, and what specifically goes wrong otherwise.
 
-Invariant defense is the difference between "the code works" and "the code is robust." Interviewers test for the latter. Drill on the latter.
+The recording catches whether you say it; the write-up catches whether you can
+write it. And the reason it is graded separately is that marking on dequeue
+produces correct answers on small inputs, so nothing in your test output will
+ever tell you.
+
+---
+
+After all five pass, move on to
+[Challenge 1 — Trunk Splice](../challenges/challenge-01-trunk-splice.md), which
+searches from both ends at once.

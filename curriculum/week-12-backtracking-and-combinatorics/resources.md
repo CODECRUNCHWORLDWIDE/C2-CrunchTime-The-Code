@@ -6,7 +6,7 @@ Every resource is **free** and **publicly accessible**.
 
 - **Backtracking — Wikipedia**: <https://en.wikipedia.org/wiki/Backtracking> — the canonical written description of the technique. The "Description of the method" section is the textbook version of the choose-explore-unchoose template; the "Examples" section walks the eight-queens puzzle and the constraint-satisfaction framing. The "Pseudocode" subsection mirrors the three-line template almost verbatim — read it twice and walk it aloud.
 - **Eight queens puzzle — Wikipedia**: <https://en.wikipedia.org/wiki/Eight_queens_puzzle> — N-Queens at N=8, the historical case. The "Solutions" section gives the 12 unique solutions (92 with rotations and reflections); the "Solution by backtracking" subsection is the canonical algorithm and reads cleanly after Lecture 3.
-- **Sudoku solving algorithms — Wikipedia**: <https://en.wikipedia.org/wiki/Sudoku_solving_algorithms> — the backtracking section is the baseline solver Week 12 implements; the "Stochastic search" and "Constraint programming" sections are Phase-3 stretches. The "Optimizations of brute-force algorithms" subsection lists the cell-iteration-order heuristics (most-constrained cell first) that the LC 37 solution does not require but a senior candidate mentions.
+- **Sudoku solving algorithms — Wikipedia**: <https://en.wikipedia.org/wiki/Sudoku_solving_algorithms> — the backtracking section is the baseline solver Week 12 implements; the "Stochastic search" and "Constraint programming" sections are Phase-3 stretches. The "Optimizations of brute-force algorithms" subsection lists the cell-iteration-order heuristics (most-constrained cell first) that the solution does not require but a senior candidate mentions.
 - **Constraint satisfaction problem — Wikipedia**: <https://en.wikipedia.org/wiki/Constraint_satisfaction_problem> — the formal framing of N-Queens, sudoku, and many backtracking problems as CSPs (variables, domains, constraints). Reading the "Resolution of CSPs" section reveals that backtracking is the baseline algorithm for the entire CSP family.
 - **Peter Norvig — "Solving Every Sudoku Puzzle"**: <https://norvig.com/sudoku.html> — the canonical written treatment of sudoku as constraint propagation plus backtracking. The Python code is short (less than 100 lines), the article is short (about 5,000 words), and the combination of the two is the senior-grade reference. Phase-3 stretch reading; do not implement during Week 12.
 - **PEP 8 (recurring)**: <https://peps.python.org/pep-0008/>
@@ -16,28 +16,15 @@ Every resource is **free** and **publicly accessible**.
 
 Backtracking appears in interview prompts under several surface forms. The recognition skill is mapping the surface form to the underlying enumeration shape.
 
-- **"Return all possible ..."** — combinatorial enumeration. The path at each leaf is one solution. State: usually `(start_index, path)`. Examples: subsets (LC 78), permutations (LC 46), combinations (LC 77), combination sum (LC 39), palindrome partitioning (LC 131).
-- **"Find one valid ..."** — constraint satisfaction. The first leaf reached is the answer; the recursion returns `True` and unwinds. State: usually `(current_position, partial_configuration)`. Examples: N-Queens (LC 51 — though LC 51 actually asks for *all* configurations; the count-only variant is LC 52), sudoku (LC 37), word search (LC 79).
-- **"Does there exist a ..."** — feasibility check. Same shape as constraint satisfaction; the first leaf reached confirms existence. Returns `True` on first success. Example: word search (LC 79 — the prompt is "return True if the word exists in the grid," which is a feasibility framing).
-- **"Generate all valid ..."** — same as enumeration but with constraints inside the recursion. The constraint check happens before the choose step; an invalid candidate is skipped without a recursive call. Examples: generate parentheses (LC 22), restore IP addresses (LC 93).
+- **"Return all possible ..."** — combinatorial enumeration. The path at each leaf is one solution. State: usually `(start_index, path)`. Examples: the glaze sample set, the firing order, the tasting panel, the clay weigh-out, the batch split.
+- **"Find one valid ..."** — constraint satisfaction. The first leaf reached is the answer; the recursion returns `True` and unwinds. State: usually `(current_position, partial_configuration)`. Examples: the drying rack sensors, sudoku, the kiln firing trail.
+- **"Does there exist a ..."** — feasibility check. Same shape as constraint satisfaction; the first leaf reached confirms existence. Returns `True` on first success. Example: the kiln firing trail.
+- **"Generate all valid ..."** — same as enumeration but with constraints inside the recursion. The constraint check happens before the choose step; an invalid candidate is skipped without a recursive call. Examples: the sluice pairing, the grid reference split.
 
 If a prompt says "return all" and the brute-force enumeration has a clear branching decision at each step — backtracking. If it says "count the number of" with a clear branching decision — try DP first (counting often allows caching). If it says "find one valid" with constraints that prune — backtracking with early-return. If it says "find the minimum / maximum" — try DP or greedy first; backtracking is the fallback when neither applies.
 
 ## Free practice platforms
 
-- **LeetCode — Backtracking tag** (free): <https://leetcode.com/tag/backtracking/>
-- **LeetCode — Subsets** (LC 78): <https://leetcode.com/problems/subsets/> — the canonical backtracking warm-up; Exercise 1 exactly.
-- **LeetCode — Permutations** (LC 46): <https://leetcode.com/problems/permutations/> — the canonical permutation backtracking; Exercise 2 exactly.
-- **LeetCode — Combination Sum** (LC 39): <https://leetcode.com/problems/combination-sum/> — backtracking with sum-based pruning; Exercise 3.
-- **LeetCode — Word Search** (LC 79): <https://leetcode.com/problems/word-search/> — 2D-grid backtracking with visited set; Challenge 1.
-- **LeetCode — N-Queens** (LC 51): <https://leetcode.com/problems/n-queens/> — constraint satisfaction with three pruning sets; Challenge 2.
-- **LeetCode — Palindrome Partitioning** (LC 131): <https://leetcode.com/problems/palindrome-partitioning/> — string-partitioning backtracking; mini-project Problem 1.
-- **LeetCode — Sudoku Solver** (LC 37): <https://leetcode.com/problems/sudoku-solver/> — the canonical CSP backtracking; mini-project Problem 2.
-- **LeetCode — Combinations** (LC 77): <https://leetcode.com/problems/combinations/> — the canonical "k-of-n" backtracking; homework.
-- **LeetCode — Generate Parentheses** (LC 22): <https://leetcode.com/problems/generate-parentheses/> — constraint-aware backtracking; homework.
-- **LeetCode — Restore IP Addresses** (LC 93): <https://leetcode.com/problems/restore-ip-addresses/> — backtracking with string-piece constraints; homework.
-- **LeetCode — Letter Combinations of a Phone Number** (LC 17): <https://leetcode.com/problems/letter-combinations-of-a-phone-number/> — the canonical "Cartesian product" backtracking; homework.
-- **LeetCode — Subsets II** (LC 90): <https://leetcode.com/problems/subsets-ii/> — deduplication variant of subsets; homework.
 - **HackerRank — Recursion and Backtracking**: <https://www.hackerrank.com/domains/algorithms?filters%5Bsubdomains%5D%5B%5D=recursion>
 - **CSES Problem Set — Introductory section**: <https://cses.fi/problemset/> — problems 7 (creating strings), 8 (apple division), and 25 (chessboard and queens) are all backtracking; ~30 minutes each.
 
@@ -63,7 +50,6 @@ Three observations:
 from __future__ import annotations
 
 from typing import List
-
 
 def subsets(nums: List[int]) -> List[List[int]]:
     """Return all 2^n subsets of nums in any order."""
@@ -136,7 +122,7 @@ def backtrack(start: int) -> None:
 
 The discriminator is `i > start`, not `i > 0`. The condition "skip duplicates at the same level" allows the first occurrence of a duplicate to be chosen (which produces one valid solution for the duplicate group) but rejects subsequent occurrences at the same depth (which would produce identical solutions).
 
-This idiom appears in subsets II (LC 90), permutations II (LC 47), combination sum II (LC 40), and many others. The signature is "sort plus `if i > start and nums[i] == nums[i - 1]: continue`."
+This idiom appears in the repeat bin picks, the firing order with repeats, the tare weight picks, and many others. The signature is "sort plus `if i > start and nums[i] == nums[i - 1]: continue`."
 
 ## On the 2D-grid backtracking template
 
@@ -146,7 +132,6 @@ Word search and similar problems extend the three-line template to a 2D grid wit
 from __future__ import annotations
 
 from typing import List
-
 
 def word_search(board: List[List[str]], word: str) -> bool:
     """Return True iff word can be traced through the board with four-direction moves."""

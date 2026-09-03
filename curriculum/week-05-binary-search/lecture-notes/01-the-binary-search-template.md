@@ -593,6 +593,6 @@ That is the cadence interviewers want. Memorize the shape, plug in the names. Th
 
 - **Wikipedia — Binary search algorithm**: <https://en.wikipedia.org/wiki/Binary_search_algorithm> — the formal treatment. Read the Variations section.
 - **Joshua Bloch — "Nearly all binary searches are broken"**: <https://research.google/blog/extra-extra-read-all-about-it-nearly-all-binary-searches-and-mergesorts-are-broken/> — five minutes; permanent takeaway.
-- **A judge to run against.** If you want a scoreboard once the drills are done, the [binary-search tag on LeetCode](https://leetcode.com/tag/binary-search/) holds hundreds of instances of the classic family. The contracts there differ from ours — most return `-1`, guarantee a solution exists, or skip the empty case entirely — so do the drills first, then use the tag for volume.
+- **A judge to run against.** If you want a scoreboard once the drills are done, any practice archive holds hundreds of instances of the classic family. Expect their contracts to differ from ours — most return `-1`, guarantee a solution exists, or skip the empty case entirely — so do the drills first, and read each outside contract from scratch rather than assuming it matches one you have already solved here.
 
 Next: [Lecture 2 — Binary Search on the Answer](./02-binary-search-on-the-answer.md).

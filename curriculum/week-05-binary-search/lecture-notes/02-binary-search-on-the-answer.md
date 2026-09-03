@@ -529,6 +529,6 @@ The reps: [Exercise 4](../exercises/exercise-04-quote-rank.md), [Exercise 5](../
 
 - **Codeforces EDU — "Binary Search," Step 2 ("Searching for the answer")**: <https://codeforces.com/edu/course/2/lesson/6/2> — the cleanest free treatment.
 - **Wikipedia — Parametric search**: <https://en.wikipedia.org/wiki/Parametric_search> — the formal name comes from optimization theory; the article is more general than interview practice but the framing is the same.
-- **A judge to run against.** For extra volume once the week's problems are done, filter the [binary-search tag on LeetCode](https://leetcode.com/tag/binary-search/) by the "greedy" tag as well — that intersection surfaces most of the parametric family. The contracts there differ from ours, so read each one from scratch rather than assuming it matches a problem you have already solved here.
+- **A judge to run against.** For extra volume once the week's problems are done, look for problems tagged both "binary search" and "greedy" wherever you practise — that intersection is where most of the parametric family lives. Read each contract from scratch rather than assuming it matches a problem you have already solved here.
 
 Next: the [drills](../exercises/README.md). Exercise 5 — The Paving Reach — is the canonical parametric problem of the week; do not skip it. Then the [challenge](../challenges/challenge-01-order-book-boundary.md), the hardest binary-search shape in the course.

@@ -33,11 +33,6 @@ If a write-up mentions "given a dictionary," "prefix search," "autocomplete," "s
 
 ## Free practice platforms
 
-- **LeetCode — Trie tag** (free): <https://leetcode.com/tag/trie/>
-- **LeetCode — Implement Trie (Prefix Tree)** (LC 208): <https://leetcode.com/problems/implement-trie-prefix-tree/> — the canonical trie problem; Exercise 1 exactly.
-- **LeetCode — Word Search II** (LC 212): <https://leetcode.com/problems/word-search-ii/> — the canonical trie-on-grid problem; Challenge 1 exactly.
-- **LeetCode — Implement strStr()** (LC 28): <https://leetcode.com/problems/find-the-index-of-the-first-occurrence-in-a-string/> — the canonical exact-substring-matching problem; KMP reference implementation lives here.
-- **LeetCode — String Matching tag** (free): <https://leetcode.com/tag/string-matching/>
 - **HackerRank — Tries domain**: <https://www.hackerrank.com/domains/data-structures?filters%5Bsubdomains%5D%5B%5D=trie>
 - **Codeforces — Strings tag**: <https://codeforces.com/problemset?tags=strings>
 - **CSES Problem Set — String Algorithms section**: <https://cses.fi/problemset/> — the canonical curated set; several problems whose intended solution is a trie, KMP, or Z.
@@ -76,7 +71,6 @@ def make_trie(words: List[str]) -> Dict[str, Any]:
         node[END] = True
     return root
 
-
 def search(root: Dict[str, Any], word: str) -> bool:
     """Return True if `word` was inserted into the trie."""
     node = root
@@ -85,7 +79,6 @@ def search(root: Dict[str, Any], word: str) -> bool:
             return False
         node = node[ch]
     return END in node
-
 
 def starts_with(root: Dict[str, Any], prefix: str) -> bool:
     """Return True if any stored key has `prefix` as a prefix."""
@@ -104,14 +97,12 @@ Twenty lines including the helpers. Memorize the shape. The `setdefault(ch, {})`
 ```python
 from typing import Dict, Optional
 
-
 class TrieNode:
     """Single node in a trie."""
 
     def __init__(self) -> None:
         self.children: Dict[str, "TrieNode"] = {}
         self.is_end: bool = False
-
 
 class Trie:
     """Trie with insert, search, and starts_with."""
@@ -154,7 +145,6 @@ from typing import Dict, Any, List
 
 END = "$"
 
-
 def autocomplete(root: Dict[str, Any], prefix: str) -> List[str]:
     """Return all stored keys with `prefix` as a prefix."""
     node = root
@@ -165,7 +155,6 @@ def autocomplete(root: Dict[str, Any], prefix: str) -> List[str]:
     out: List[str] = []
     _collect(node, prefix, out)
     return out
-
 
 def _collect(node: Dict[str, Any], path: str, out: List[str]) -> None:
     """DFS from `node`, accumulating `path`; emit when END is reached."""
@@ -193,7 +182,6 @@ from typing import Dict, Any, List
 
 END = "$"
 
-
 def make_trie(words: List[str]) -> Dict[str, Any]:
     root: Dict[str, Any] = {}
     for word in words:
@@ -203,13 +191,11 @@ def make_trie(words: List[str]) -> Dict[str, Any]:
         node[END] = True
     return root
 
-
 def word_break(s: str, words: List[str]) -> bool:
     """Return True if s can be segmented into space-separated words from `words`."""
     trie = make_trie(words)
     memo: Dict[int, bool] = {}
     return _can_break(s, 0, trie, memo)
-
 
 def _can_break(s: str, i: int, trie: Dict[str, Any], memo: Dict[int, bool]) -> bool:
     if i == len(s):
@@ -238,7 +224,7 @@ The two paragraphs to absorb.
 
 > **Aho-Corasick** augments a trie of patterns with **failure links** — each node `v` has a failure link to the longest *proper suffix* of `v`'s path that is also a prefix in the trie. With failure links in place, the algorithm processes the input text once, character by character, never moving the text pointer backward: at each character, either descend if a child matches or follow failure links until a child does match (or until reaching the root). Every node visited along the failure links corresponds to a pattern match ending at the current text position. The total work is `O(n + m + z)` where `n` is the text length, `m` is the total pattern length, and `z` is the number of matches reported.
 
-> The classical application is **multi-pattern substring matching** — given one long text and a fixed set of patterns, find every occurrence of every pattern. Use cases include intrusion-detection signature scanners (Snort), spam-filter token matchers, plagiarism detectors, and the original `fgrep` implementation. For LeetCode purposes, recognize the trigger phrase ("many patterns, one text") and mention Aho-Corasick as the right tool; you will rarely be asked to implement it under interview pressure.
+> The classical application is **multi-pattern substring matching** — given one long text and a fixed set of patterns, find every occurrence of every pattern. Use cases include intrusion-detection signature scanners (Snort), spam-filter token matchers, plagiarism detectors, and the original `fgrep` implementation. In an interview, recognise the trigger phrase — "many patterns, one text" — and name Aho-Corasick as the right tool. You will rarely be asked to implement it under pressure, and naming it is most of the credit.
 
 You will not implement Aho-Corasick this week. The read-level outcome is: (1) you can name the algorithm when the prompt fits; (2) you can describe the failure-link idea in one sentence; (3) you can defend `O(n + m + z)` over the naive `O(nm + nW)` baseline where `W` is the number of patterns. Three sentences total. That is the interview register.
 
@@ -248,7 +234,6 @@ The canonical reference implementation.
 
 ```python
 from typing import List
-
 
 def build_failure(pattern: str) -> List[int]:
     """Build the KMP failure function (a.k.a. prefix function).
@@ -265,7 +250,6 @@ def build_failure(pattern: str) -> List[int]:
             k += 1
         fail[i] = k
     return fail
-
 
 def kmp_search(text: str, pattern: str) -> int:
     """Return the index of the first occurrence of pattern in text, or -1."""
@@ -297,7 +281,6 @@ The companion to KMP. Same `O(n + m)`, slightly different bookkeeping. Used most
 ```python
 from typing import List
 
-
 def z_array(s: str) -> List[int]:
     """Build the Z-array: z[i] = length of the longest substring starting at i
     that matches a prefix of s. By convention, z[0] = len(s).
@@ -314,7 +297,6 @@ def z_array(s: str) -> List[int]:
         if i + z[i] > r:
             l, r = i, i + z[i]
     return z
-
 
 def z_search(text: str, pattern: str) -> int:
     """Return the index of the first occurrence of pattern in text, or -1."""
@@ -348,8 +330,6 @@ That sentence is the discriminator.
 
 ## Videos on the pattern (free, no signup)
 
-- **NeetCode — "Implement Trie (Prefix Tree)"** (YouTube — free): search "neetcode trie 208"; the 12-minute walkthrough is enough for the dict-of-dict template.
-- **NeetCode — "Word Search II"** (YouTube — free): the canonical trie-on-grid; if you have not seen the pattern in video form, watch this before Challenge 1.
 - **William Fiset — "Trie data structure"** (YouTube — free): a slower, more visual walkthrough; good for the autocomplete subtree.
 - **MIT 6.006 — Lecture on string matching** (free OCW): <https://ocw.mit.edu/courses/6-006-introduction-to-algorithms-spring-2020/> — Lecture 16 covers KMP and the failure function with the textbook level of rigor.
 - **Tushar Roy — "KMP Substring Pattern Search"** (YouTube — free): the clearest free walkthrough of the failure-function construction; about 18 minutes.
@@ -399,9 +379,9 @@ Three things, all short, all this week:
 
 1. **The Wikipedia "Trie" article — `Operations` and `Implementation` sections** — about 15 minutes. The cleanest free trie pictures.
 2. **The Wikipedia "Knuth-Morris-Pratt algorithm" worked example on `ABABAC`** — about 10 minutes. Where the failure function "clicks."
-3. **Two LeetCode problem statements at the "Trie" tag** — five minutes each. Predict the algorithm before reading the solution. The recognition reps are what build Research-constraints muscle.
+3. **Two trie problem statements from any practice set** — five minutes each. Predict the structure before reading anything else. The recognition reps are what build Research-constraints muscle.
 
-If you read nothing else this week, read those three and skim five problem titles in the LeetCode Trie tag.
+If you read nothing else this week, read those three and skim five trie-flavoured problem titles from any practice set, naming the shape of each before you open it.
 
 ---
 

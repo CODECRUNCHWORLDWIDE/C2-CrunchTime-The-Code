@@ -1,154 +1,335 @@
 # Week 11 — Homework
 
-Six practice problems plus the rubric. Allow ~5 hours total. Do the problems on your own with the lectures *closed*; consult the lecture or the resources only after a 15-minute stuck-period on a single problem.
+Six problems, all original, all with a runnable worked answer beside this page.
+Allow about five hours. Do each with the lectures closed; open the worked answer
+only after your own version runs, or after fifteen minutes stuck on one step.
 
-The problems are chosen to drill the six Week-11 sub-patterns: 1D counting, 1D optimization (../take-or-skip), 1D conditional transition, 2D grid optimization, 2D subsequence (LCS variant), and 2D three-way-min (edit distance variant). By Sunday, the recognition step on each should be reflexive.
+The six cover the shapes the week teaches that the exercises did not: a 1D count
+with a two-step lookahead, a grid optimised rather than counted, a 1D pass that
+has to carry two states at once, and three two-string tables.
 
-| # | Problem | Pattern | Source | Est. time |
-|---|---------|---------|--------|----------:|
-| 1 | Decode Ways | 1D DP — conditional transition | LeetCode 91 | 50 min |
-| 2 | Minimum Path Sum | 2D grid optimization DP | LeetCode 64 | 40 min |
-| 3 | Maximum Product Subarray | 1D DP — track both min and max | LeetCode 152 | 50 min |
-| 4 | Distinct Subsequences | 2D DP — counting subsequences | LeetCode 115 | 60 min |
-| 5 | Interleaving String | 2D boolean DP — string merge | LeetCode 97 | 50 min |
-| 6 | Delete Operation for Two Strings | 2D DP — LCS in disguise | LeetCode 583 | 30 min |
+| # | Problem | Sub-shape | Est. time |
+|---|---------|-----------|----------:|
+| 1 | [The Ledger Ribbon](#problem-1--the-ledger-ribbon) | 1D count with a two-character lookahead | 45 min |
+| 2 | [The Kiln Flue Draw](#problem-2--the-kiln-flue-draw) | The counting grid with `min` where it had `+` | 40 min |
+| 3 | [The Gauge Drift Run](#problem-3--the-gauge-drift-run) | One pass carrying two states, because negatives swap them | 50 min |
+| 4 | [The Stencil Match Count](#problem-4--the-stencil-match-count) | Two-string counting table | 50 min |
+| 5 | [The Two-Clerk Day Book](#problem-5--the-two-clerk-day-book) | Two-string reachability, where greedy is wrong | 55 min |
+| 6 | [The Paired Manifest Strike](#problem-6--the-paired-manifest-strike) | Two-string table, then one line of arithmetic | 45 min |
 
-Problems 1, 3, and 6 are the high-yield 1D and 2D drills; problem 2 is the grid rep; problem 4 is the rare counting-subsequence DP; problem 5 is the boolean 2D rep.
+Every worked answer runs on its own with no arguments and no packages, and ends
+by printing `All checks passed.` Run one like this:
 
----
-
-## Problem 1 — Decode Ways (LC 91)
-
-**Spec.** A message containing letters from A–Z is encoded to numbers using the mapping 'A' -> '1', ..., 'Z' -> '26'. Given a string `s` containing only digits, return the number of ways to decode it.
-
-**Constraints.** `1 <= s.length <= 100`; `s` contains only digits and may contain leading zeros.
-
-**Pattern.** 1D DP with conditional transitions (Lecture 1 §6).
-
-**Hint.** State: `dp[i] = ways to decode s[:i]`. Two conditional branches: add `dp[i - 1]` if `s[i - 1]` is in `'1'..'9'`; add `dp[i - 2]` if `s[i - 2 : i]` is in `'10'..'26'`. Base case: `dp[0] = 1`.
-
-**Acceptance.** Function signature `num_decodings(s: str) -> int`. Time: `O(../n)`. Space: `O(../n)` for the array; reducible to `O(../1)` with a rolling pair.
-
-**Variant.** Memoization with `@functools.lru_cache(../maxsize=None)` is the easier-to-write form; tabulation with rolling pair is the optimization. Discuss the trade.
+```bash
+python problem-01-ledger-ribbon-solution.py
+```
 
 ---
 
-## Problem 2 — Minimum Path Sum (LC 64)
+## Problem 1 — The Ledger Ribbon
 
-**Spec.** Given an `m x n` grid filled with non-negative numbers, find a path from top-left to bottom-right that *minimizes* the sum of all numbers along its path. You can only move down or right.
+**The brief.** An old adding machine prints a ribbon of digits with **no
+separators** between entries. Each entry is one or two digits and names a till
+code from 1 to 26. No entry may start with a zero, because the machine never
+printed a leading zero — so a `0` on the ribbon can only ever be the second digit
+of `10` or `20`.
 
-**Constraints.** `1 <= m, n <= 200`; `0 <= grid[i][j] <= 200`.
+Count the readings that account for every digit.
 
-**Pattern.** 2D grid optimization DP (Lecture 2 §2 variant).
+**The data.** Ribbons including `1226`, `1010`, `2101`, `111111`, `27`, `06`,
+`100` and `2626262626`.
 
-**Hint.** State: `dp[i][j] = minimum path sum from (0, 0) to (i, j)`. Recurrence: `dp[i][j] = grid[i][j] + min(dp[i - 1][j], dp[i][j - 1])`. Base cases: `dp[0][0] = grid[0][0]`; first row is cumulative sum left-to-right; first column is cumulative sum top-to-bottom.
+**Constraints.** A reading has to account for **every** digit — no leftovers. An
+unreadable ribbon has zero readings, which is a real answer.
 
-**Acceptance.** Function signature `min_path_sum(grid: List[List[int]]) -> int`. Time: `O(../mn)`. Space: `O(../n)` rolling row.
+**Answer.** Build the count left to right. The number of readings of the first
+`n` digits depends on exactly two things: the count for `n - 1` digits, when the
+last digit stands alone as a valid entry, and the count for `n - 2`, when the
+last two digits together do. Add whichever apply.
 
-**Variant.** In-place modification of `grid` to use `O(../1)` extra space. Mention by name.
+Only those two ever matter, so the whole table is two integers rather than a
+list.
 
----
+`1226` reads **five** ways. `100` reads **none** — `10-0` fails because 0 is not
+an entry, and `1-00` fails for the same reason twice.
 
-## Problem 3 — Maximum Product Subarray (LC 152)
+**Signatures.** `is_entry(digits)`, `reading_count(ribbon)`,
+`reading_table(ribbon)`, `first_dead_prefix(ribbon)`.
 
-**Spec.** Given an integer array `nums`, find a contiguous non-empty subarray within the array that has the largest product, and return the product.
+**Watch for.** Treating `06` as 6 — the leading zero is what makes it invalid,
+and the whole zero rule follows from it. Six ones give 13 readings, which is a
+Fibonacci number and a good check. But `2626262626` gives **32**, not a Fibonacci
+number, because `62` is over 26 and only every other pair is an entry — worth
+checking by hand, precisely because it looks like it should behave the same way.
 
-**Constraints.** `1 <= len(../nums) <= 2 * 10^4`; `-10 <= nums[i] <= 10`.
+The empty ribbon has **one** reading, the empty one. That is not a special case
+to add; it is what makes the recurrence start cleanly.
 
-**Pattern.** 1D DP that tracks **both** the running maximum *and* the running minimum at each index (because a negative number can flip a small minimum into a large maximum).
-
-**Hint.** Track two scalars: `max_so_far` and `min_so_far`. At each `nums[i]`, the new `max_ending_here = max(nums[i], nums[i] * max_so_far, nums[i] * min_so_far)`; the new `min_ending_here = min(../...)`. Update the global max. The discriminator versus the maximum-subarray problem (Kadane's algorithm): products can flip sign with negative numbers, so tracking only the max is wrong.
-
-**Acceptance.** Function signature `max_product(nums: List[int]) -> int`. Time: `O(../n)`. Space: `O(../1)`.
-
-**Variant.** A full 2D DP `dp[i][0] = max, dp[i][1] = min` is equivalent and is the textbook form. The two-scalar form is the rolling-pair reduction.
-
----
-
-## Problem 4 — Distinct Subsequences (LC 115)
-
-**Spec.** Given two strings `s` and `t`, return the number of distinct subsequences of `s` which equals `t`.
-
-**Constraints.** `1 <= s.length, t.length <= 1000`; `s` and `t` consist of English letters.
-
-**Pattern.** 2D DP — counting subsequences (Lecture 2 §3 variant; LCS in shape but counting instead of length).
-
-**Hint.** State: `dp[i][j] = number of distinct subsequences of s[:i] that equal t[:j]`. Recurrence: if `s[i - 1] == t[j - 1]`, then `dp[i][j] = dp[i - 1][j - 1] + dp[i - 1][j]` (use this match, or skip `s[i - 1]`); otherwise `dp[i][j] = dp[i - 1][j]` (skip `s[i - 1]`). Base case: `dp[i][0] = 1` (empty target has one subsequence — the empty subsequence).
-
-**Acceptance.** Function signature `num_distinct(s: str, t: str) -> int`. Time: `O(../mn)`. Space: `O(../mn)`; reducible to `O(min(m, n))`.
-
-**Variant.** The recurrence is *very close* to LCS but **counts** instead of taking the max. This is the canonical example that the same table shape supports different recurrences.
+**Worked answer.** [`problem-01-ledger-ribbon-solution.py`](./problem-01-ledger-ribbon-solution.py)
 
 ---
 
-## Problem 5 — Interleaving String (LC 97)
+## Problem 2 — The Kiln Flue Draw
 
-**Spec.** Given strings `s1`, `s2`, and `s3`, return `True` iff `s3` is formed by an interleaving of `s1` and `s2`. An interleaving picks characters from `s1` and `s2` in order without rearranging within each string.
+**The brief.** A bottle kiln is packed as a grid of shelves, each costing a
+known number of fuel units. The flue draws from the top-left shelf to the
+bottom-right one, and heat only moves **down or right**. Find the cheapest draw —
+the total fuel of the shelves the heat passes through, both ends included.
 
-**Constraints.** `0 <= s1.length, s2.length <= 100`; `s1.length + s2.length == s3.length`.
+**The data.**
 
-**Pattern.** 2D boolean DP.
+```text
+ 1   3   1   8
+ 1   5   1   2
+ 4   2   1   9
+ 7   6   3   1
+```
 
-**Hint.** State: `dp[i][j] = True iff s3[:i + j] is an interleaving of s1[:i] and s2[:j]`. Recurrence: `dp[i][j] = (dp[i - 1][j] and s1[i - 1] == s3[i + j - 1]) or (dp[i][j - 1] and s2[j - 1] == s3[i + j - 1])`. Base case: `dp[0][0] = True`; first row and column initialize via the running match against `s3`.
+**Constraints.** Greedy fails on the **first step**. Down from the corner costs 1
+and right costs 3, so a greedy fireman goes down — and the cheapest draw goes
+right, along the top row to the cheap third column.
 
-**Acceptance.** Function signature `is_interleave(s1: str, s2: str, s3: str) -> bool`. Time: `O(../mn)`. Space: `O(min(m, n))` rolling row.
+**Answer.** This is [Exercise 4](../exercises/exercise-04-terrace-route-table.md)
+with one thing changed. There the answer was how many routes exist and the two
+routes arriving at a shelf were combined with `+`; here it is the best one, so
+they are combined with `min`. The row-by-row fill, the special first row and
+column, the single pass — all identical.
 
-**Variant.** BFS / DFS with memoization is the alternative — equivalent in complexity but slower in practice. Mention by name.
+Naming that one line is the whole write-up.
 
----
+Cheapest draw on this kiln: **11 fuel units**, over seven shelves. The file also
+ships `route_count`, which is the same fill with `+` instead of `min` and gives
+**20** — so you can run both and see that the shape of a table and what you put
+in it are separate decisions.
 
-## Problem 6 — Delete Operation for Two Strings (LC 583)
+**Signatures.** `check_kiln(kiln)`, `draw_table(kiln)`, `cheapest_draw(kiln)`,
+`draw_route(kiln)`, `route_count(kiln)`.
 
-**Spec.** Given two strings `word1` and `word2`, return the minimum number of deletions required to make `word1` and `word2` equal. You can delete one character from either string at each step.
+**Watch for.** Reading a neighbour that has not been filled yet. Forgetting that
+the first row and first column each have only one way in. A route always passes
+through `height + width - 1` shelves whatever it costs, which is a check that
+does not depend on the numbers at all.
 
-**Constraints.** `1 <= word1.length, word2.length <= 500`; lowercase English letters.
-
-**Pattern.** 2D DP — LCS in disguise.
-
-**Hint.** The minimum number of deletions to make the strings equal is `m + n - 2 * LCS(word1, word2)`. The LCS is the largest set of characters that *do not need to be deleted*; the rest are deleted from one side or the other.
-
-**Acceptance.** Function signature `min_distance_deletions(word1: str, word2: str) -> int`. Time: `O(../mn)`. Space: `O(min(m, n))`.
-
-**Variant.** A direct DP `dp[i][j] = deletions to make word1[:i] and word2[:j] equal` is also correct; the recurrence is `dp[i - 1][j - 1]` if match, `1 + min(dp[i - 1][j], dp[i][j - 1])` otherwise (no replace option, since only deletion is allowed). The two forms produce the same answer; the LCS-based form is cleaner.
-
----
-
-## Rubric
-
-For each problem, your write-up is graded on five dimensions:
-
-| Dimension | Weight | What "yes" looks like |
-|-----------|-------:|----------------------|
-| Research constraints (pattern recognition) | 25% | 30-second memo at the top; pattern named in one of the six shapes; alternative rejected with reason |
-| Assess options | 15% | Numbered steps; state semantics stated in words; recurrence stated in formula |
-| Make the solution (../correctness) | 25% | All LC sample cases pass; no off-by-one on the table dimension; the index-offset (`s[i - 1]`, not `s[i]`) is correct |
-| Make the solution (../style) | 10% | Type hints everywhere; docstrings on every function; PEP 8; idiomatic Python |
-| Examine (../defense) | 25% | Time + space bounds with derivation; one variant mentioned; trade against a non-DP alternative stated |
-
-The Research constraints weight is the highest for a reason. Phase 2 grades recognition heavily; you can have a working implementation and still lose the rep if you cannot defend the choice over the alternative.
+**Worked answer.** [`problem-02-kiln-flue-draw-solution.py`](./problem-02-kiln-flue-draw-solution.py)
 
 ---
 
-## Suggested order
+## Problem 3 — The Gauge Drift Run
 
-1. **Problem 1** first — Decode Ways is the highest-recognition-density 1D DP. The conditional-transition pattern cements the Lecture 1 §6 template.
-2. **Problem 2** second — Minimum Path Sum is the canonical 2D grid optimization. The min-over-two recurrence is the simplest 2D rep.
-3. **Problem 6** third — Delete Operation is LCS in disguise. Quick rep on the LCS template.
-4. **Problem 3** fourth — Maximum Product Subarray is the rare 1D DP that requires tracking two scalars. The discriminator vs. Kadane's algorithm is the recognition rep.
-5. **Problem 4** fifth — Distinct Subsequences is the counting-subsequence DP. The "same table shape, different recurrence" lesson is the work.
-6. **Problem 5** last — Interleaving String is the 2D boolean DP. Save for the latter half of the week; the state design (`dp[i][j]` against `s3[i + j - 1]`) is the work.
+**The brief.** A tide gauge is checked every day and the check records a **drift
+factor** — the number the day's readings must be multiplied by to correct them. A
+factor of 1 means the gauge was right. A **negative** factor means the float was
+stuck upside down and the readings came out inverted.
 
-If time runs out, prioritize Problems 1, 2, and 6. They are the three patterns most likely to appear on Mock #2.
+Find the run of consecutive days whose factors multiply to the **largest**
+number.
+
+**The data.** `2, 3, -2, 4, -1, 2, 2, -3, 1, 2` — a fortnight, with three
+inverted days.
+
+**Constraints.** The factors are whole numbers, so the arithmetic stays exact. A
+run of one day is allowed, so the answer is never worse than the best single
+factor.
+
+**Answer.** The trap is the negatives, and it is a good one: a running product
+that is **badly negative** is one negative day away from being the best product
+in the record. So tracking the best run so far is not enough.
+
+Carry **both** the best and the worst run ending at each day. On a negative day
+they swap — and both candidates must be computed from the *old* pair before
+either is written back, which is one line and the most common place to get this
+wrong.
+
+**Signatures.** `worst_drift(factors)`, `worst_drift_run(factors)`,
+`daily_best(factors)`.
+
+**Watch for.** Tracking only the best: `(2, -3, -4, 1)` then comes out as 2 when
+24 is right. A zero cuts the record in two — nothing multiplies across it and
+survives — and when every run through it is worse, zero itself is the answer.
+`worst_drift_run` is a brute force over every run, shipped so the one-pass
+version has something to be checked against on every prefix rather than only on
+the whole record.
+
+**Worked answer.** [`problem-03-gauge-drift-run-solution.py`](./problem-03-gauge-drift-run-solution.py)
 
 ---
 
-## Acceptance
+## Problem 4 — The Stencil Match Count
 
-The week's homework is complete when:
+**The brief.** A depot stencils long runs of characters onto crate sides. An
+inspector looks for a short mark inside a run, and the mark's characters must
+appear **in order but not necessarily next to each other** — the die skips.
 
-- All six problems have a committed implementation under `homework/c2-week-11/`.
-- All six problems have a FRAME write-up under `frame-writeups/c2-week-11/homework/`.
-- The quiz is taken and scored.
-- The score is in the retrospective: which sub-pattern needs the most reps before Mock #2.
+Count how many distinct ways the mark can be picked out of the run. Two ways are
+distinct when they use different positions, even if they read the same.
 
-The retrospective is the single most useful artifact this week. The pattern most candidates need more reps on after W11 is "the state semantics in words" — the recurrence is easy to memorize, but the discipline of saying out loud "the state is `dp[i][j] = ...`" before writing the recurrence separates the senior signal from the junior one. Drill the verbal Research-constraints step in writing, then drill it aloud.
+**The data.** Run `RABBABRAB`, mark `RAB`.
+
+**Constraints.** Order matters and adjacency does not. `BA` is not in a run where
+every `A` precedes every `B`.
+
+**Answer.** A two-dimensional table where every entry has the same shape of
+answer. To account for the first `m` characters of the mark using the first `r`
+of the run, either the run's character is **not used** — which is the entry one
+column left — or it **is used and matches**, which is the entry one row up and
+one column left. Add them.
+
+The empty mark is found exactly once, by taking nothing, which is what makes the
+first row all ones and lets the recurrence start without a special case.
+
+`RAB` sits inside `RABBABRAB` **eight** ways.
+
+**Signatures.** `match_count(run, mark)`, `match_table(run, mark)`,
+`first_match(run, mark)`.
+
+**Watch for.** Filling the table in an order that reads entries not yet written.
+Forgetting the "not used" branch, which is taken on *every* cell including the
+matching ones. `AAA` contains `AA` three ways, not one — repeats multiply, and
+that is the case to check by hand first.
+
+**Worked answer.** [`problem-04-stencil-match-count-solution.py`](./problem-04-stencil-match-count-solution.py)
+
+---
+
+## Problem 5 — The Two-Clerk Day Book
+
+**The brief.** Two clerks share one day book. Each writes their own entries into
+it as the day goes on, so the finished book holds both clerks' entries
+interleaved — but **each clerk's entries appear in the order that clerk wrote
+them**, because neither goes back.
+
+Given both clerks' own records and the finished book, say whether the book could
+have been produced this way.
+
+**The data.** Clerk one `ABAB`, clerk two `AABB`, day book `AABABABB`. Plus a
+second, smaller book built to catch a greedy reader: clerk one `AA`, clerk two
+`AB`, book `AABA`.
+
+**Constraints.** Neither clerk's order may change. The lengths have to add up,
+which is worth checking first because it is free.
+
+**Answer.** The obvious approach — walk the book and hand each entry to whichever
+clerk has it next — is **wrong**, and wrong in a way that looks right on most
+data. When both clerks are due to write the same character, choosing one commits
+you.
+
+On the trap book, the greedy reader takes both of clerk one's `A`s and then has
+nothing that can write the `B`. It answers **False**; the table answers **True**.
+The file ships both so you can run them side by side.
+
+The table is the answer: entry `[a][b]` says whether the first `a` entries of
+clerk one and the first `b` of clerk two could have made the first `a + b`
+entries of the book. A cell is reachable when the cell above it is and clerk
+one's next entry matches, or the cell to its left is and clerk two's does.
+
+**Signatures.** `interleaves(first, second, book)`,
+`interleave_table(first, second, book)`,
+`greedy_interleaves(first, second, book)`, `split_book(first, second, book)`.
+
+**Watch for.** Reaching for the greedy version because the book is short. Two
+empty records make an empty book and nothing else. `split_book` walking the
+finished table backwards is what turns "yes it interleaves" into "here is who
+wrote each line", which is the part a clerk can act on.
+
+**Worked answer.** [`problem-05-two-clerk-daybook-solution.py`](./problem-05-two-clerk-daybook-solution.py)
+
+---
+
+## Problem 6 — The Paired Manifest Strike
+
+**The brief.** A cargo is listed twice — once by the shipper and once by the
+receiving depot. The two disagree, and the clerk strikes lines out of each until
+they read the same. Nothing may be added and nothing reordered; only whole lines
+struck out.
+
+Report the fewest strikes, counting a strike on either manifest as one.
+
+**The data.**
+
+```text
+shipper   SALT  HIDES  TALLOW  OATS  PITCH  ROPE
+depot     HIDES  SALT  OATS  TAR  ROPE
+```
+
+**Constraints.** `HIDES` is on both manifests and **cannot survive**, because it
+comes before `SALT` on one and after it on the other. That is the whole reason
+this is not a set intersection, and it is the first thing to check by hand.
+
+**Answer.** The lines that survive are the same on both sides *and in the same
+order* on both — the longest run common to the two manifests without needing to
+be contiguous. Once that length is known the answer is one line of arithmetic:
+
+```text
+strikes = len(shipper) + len(depot) - 2 * len(common run)
+```
+
+Deriving that line is the exercise; the table under it is the ordinary two-string
+fill — matching lines take the diagonal plus one, mismatching lines take the
+better of up and left.
+
+`SALT OATS ROPE` survives, so `6 + 5 - 2 × 3 = 5` strikes.
+
+**Signatures.** `common_run(shipper, depot)`, `run_table(shipper, depot)`,
+`strikes_needed(shipper, depot)`, `struck_lines(shipper, depot)`.
+
+**Watch for.** Intersecting the two as sets, which keeps `HIDES` and gives 3.
+Counting a strike on both sides as one. Identical manifests need zero strikes;
+manifests with nothing in common lose everything on both sides. `struck_lines`
+is the useful output — a count alone is not something a clerk can act on.
+
+**Worked answer.** [`problem-06-paired-manifest-strike-solution.py`](./problem-06-paired-manifest-strike-solution.py)
+
+---
+
+## Rubric (5 axes, 4 points each)
+
+| Axis | What "great" looks like |
+|------|--------------------------|
+| Frame the problem | The memo names the state — what one table entry *means*, in a sentence — and the base case, before any recurrence. |
+| Reason about options | Four to six bullets before any code, with the greedy or brute-force alternative named and, where it is wrong, said to be wrong and why. |
+| Assemble the solution | Idiomatic Python; the fill order stated and justified; type hints throughout. |
+| Measure it | A trace on at least two inputs, one degenerate, and — where the file prints a table — the table read back in the write-up. |
+| Evaluate the cost | Time, space, best/average/worst, the trade-off and the improvement. Three of these six reduce to a couple of variables; say which and why. |
+
+Twenty points per problem, 120 for the set. Score yourself honestly; the number
+is only useful if it is true.
+
+---
+
+## How to submit
+
+Commit your write-ups under `frame-writeups/c2-week-11/homework/`, one file per
+problem:
+
+```
+frame-writeups/c2-week-11/homework/
+├── problem-1-ledger-ribbon.md
+├── problem-2-kiln-flue-draw.md
+├── problem-3-gauge-drift-run.md
+├── problem-4-stencil-match-count.md
+├── problem-5-two-clerk-daybook.md
+└── problem-6-paired-manifest-strike.md
+```
+
+Each file is 100–200 lines: the five FRAME sections plus a five-line memo at the
+top. The code is part of the Assemble section, not a separate file.
+
+When the set is done, push and move on to the
+[mini-project](../mini-project/README.md).
+
+---
+
+## Time budget
+
+| Problem | Solve | Write-up | Total |
+|---------|------:|---------:|------:|
+| 1 — Ledger Ribbon | 30 min | 15 min | 45 min |
+| 2 — Kiln Flue Draw | 25 min | 15 min | 40 min |
+| 3 — Gauge Drift Run | 35 min | 15 min | 50 min |
+| 4 — Stencil Match Count | 35 min | 15 min | 50 min |
+| 5 — Two-Clerk Day Book | 40 min | 15 min | 55 min |
+| 6 — Paired Manifest Strike | 30 min | 15 min | 45 min |
+
+About four and a half hours. Problems 2, 3 and 5 are the three worth the most:
+each one is a familiar algorithm with exactly one thing changed, and being able
+to say **which thing** is what separates knowing a recipe from knowing a method.

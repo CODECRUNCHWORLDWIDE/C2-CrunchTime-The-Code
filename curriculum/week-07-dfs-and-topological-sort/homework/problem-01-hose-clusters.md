@@ -692,8 +692,5 @@ extra data structure, and this is a DFS week.
   Two defensible answers to one English sentence, and the difference is entirely
   in what you decided "a hose" means. That decision belongs in your Frame step,
   out loud, before any code — which is the actual point of the exercise.
-
-> **Practice elsewhere.** The same pattern appears as [LeetCode 323 · Number of Connected Components in an Undirected Graph](https://leetcode.com/problems/number-of-connected-components-in-an-undirected-graph/) if you want a judge to run against. Ours also asks for the largest cluster's size, tolerates a repeated or self-joining pair, and raises on an out-of-range valve rather than assuming clean input.
-
 When your survey is right, move on to
 [Problem 2 — Prep Step Audit](./problem-02-prep-step-audit.md).

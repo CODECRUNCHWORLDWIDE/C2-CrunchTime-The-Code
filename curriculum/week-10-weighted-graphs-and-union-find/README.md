@@ -23,10 +23,10 @@ By Sunday of Week 10 you will:
 - **Write** a Kruskal MST: sort edges by weight, iterate; for each edge, union the endpoints if they are not already connected; accumulate weight.
 - **Read** a Prim MST and recognize it as a Dijkstra-shaped variant that grows a tree from a start vertex by greedily picking the lightest crossing edge.
 - **Write** a Union-Find class with path compression (`find` flattens the tree) and union by rank (the smaller tree is attached under the larger). Defend the amortized `O(alpha(n))` claim out loud.
-- **Recognize** the DSU triggers: "number of connected components after a sequence of operations," "is this graph a tree" (`V - 1` edges and one component), "redundant connection" (LC 684), "accounts merge" (LC 721), "smallest string with swaps" (LC 1202), "number of islands II" (LC 305 — streaming variant).
-- Have solved **three weighted-graph / DSU exercises** — Network Delay Time (Dijkstra), Cheapest Flights Within K Stops (Bellman-Ford or modified Dijkstra), and a DSU drill (Number of Provinces).
-- Have shipped **one challenge** (Cheapest Flights — the constrained-Dijkstra) plus an optional stretch (Smallest String With Swaps — the DSU + sort composition).
-- Have shipped the quiz, the homework, and the **mini-project**: one Dijkstra write-up (Network Delay Time) and one DSU write-up (Redundant Connection), fully FRAME-narrated.
+- **Recognize** the union-find triggers: "how many separate groups after this sequence of joins", "is this graph a tree" (`V - 1` edges and one component), "which join closed a loop", "merge these records by a shared attribute", "which positions may be swapped with which", and the streaming variant where the joins arrive one at a time and the count is wanted after each. Every one of those appears in this week's pages.
+- Have solved **three weighted-graph / DSU exercises** — the hut relay timing (Dijkstra), the reefer transfer budget (Bellman-Ford or modified Dijkstra), and a DSU drill (the mooring chain groups).
+- Have shipped **one challenge** (Cheapest Flights — the constrained-Dijkstra) plus an optional stretch (the gantry swap groups — the DSU + sort composition).
+- Have shipped the quiz, the homework, and the **mini-project**: one Dijkstra write-up (the hut relay timing) and one DSU write-up (the radiator loop check), fully FRAME-narrated.
 
 ---
 
@@ -103,13 +103,15 @@ By the end of this week, you will be able to:
 | [lecture-notes/02-bellman-ford-floyd-warshall-and-mst.md](./lecture-notes/02-bellman-ford-floyd-warshall-and-mst.md) | Bellman-Ford with negative-cycle detection, Floyd-Warshall, Kruskal and Prim |
 | [lecture-notes/03-union-find-and-the-dsu-triggers.md](./lecture-notes/03-union-find-and-the-dsu-triggers.md) | DSU with path compression + union by rank, the amortized `alpha(n)` defense, the trigger taxonomy |
 | [exercises/README.md](./exercises/README.md) | Index of the three weighted-graph / DSU exercises and SOLUTIONS |
-| [exercises/exercise-01-network-delay-time.py](./exercises/exercise-01-network-delay-time.py) | LC 743 — the canonical Dijkstra warm-up |
-| [exercises/exercise-02-cheapest-flights-bellman-ford.py](./exercises/exercise-02-cheapest-flights-bellman-ford.py) | LC 787 — Bellman-Ford with a hop constraint |
-| [exercises/exercise-03-number-of-provinces.py](./exercises/exercise-03-number-of-provinces.py) | LC 547 — the canonical DSU warm-up |
+| [exercises/exercise-01-hut-relay-timing.md](./exercises/exercise-01-hut-relay-timing.md) | The hut relay timing — the shortest-path picker at its plainest, on one-way links |
+| [exercises/exercise-02-sluice-gate-settling.md](./exercises/exercise-02-sluice-gate-settling.md) | The sluice gate settling — what the settled set is for, shown by removing it |
+| [exercises/exercise-03-mooring-chain-groups.md](./exercises/exercise-03-mooring-chain-groups.md) | The mooring chain groups — union-find, with path compression printed |
+| [exercises/exercise-04-greenhouse-pipe-run.md](./exercises/exercise-04-greenhouse-pipe-run.md) | The greenhouse pipe run — the spanning tree, with union-find deciding what to accept |
+| [exercises/exercise-05-shunting-rebate-legs.md](./exercises/exercise-05-shunting-rebate-legs.md) | The shunting rebate legs — why the settled set stops being safe on a negative cost |
 | [exercises/SOLUTIONS.md](./exercises/SOLUTIONS.md) | Worked solutions with FRAME narration; consult after attempting each exercise |
 | [challenges/README.md](./challenges/README.md) | Index of weekly challenges |
-| [challenges/challenge-01-cheapest-flights-k-stops.md](./challenges/challenge-01-cheapest-flights-k-stops.md) | LC 787 deep-dive — Bellman-Ford vs. Dijkstra-with-state |
-| [challenges/challenge-02-smallest-string-with-swaps.md](./challenges/challenge-02-smallest-string-with-swaps.md) | LC 1202 — DSU + sort composition |
+| [challenges/challenge-01-reefer-transfer-budget.md](./challenges/challenge-01-reefer-transfer-budget.md) | The reefer transfer budget — a bounded number of hops, and what that does to the state |
+| [challenges/challenge-02-gantry-swap-groups.md](./challenges/challenge-02-gantry-swap-groups.md) | The gantry swap groups — union-find composed with a sort |
 | [quiz.md](./quiz.md) | 10 pattern-recognition questions |
 | [homework.md](./homework/README.md) | Six practice problems (~5 hrs) — three Dijkstra-flavored, three DSU-flavored |
 | [mini-project/README.md](./mini-project/README.md) | **One Dijkstra write-up + one DSU write-up, fully FRAME-narrated** — the week's deliverable |
@@ -118,7 +120,7 @@ By the end of this week, you will be able to:
 
 ## Stretch goals
 
-- **Read the LeetCode "Shortest Path" tag** and skim 20 titles. For each, predict in 5 seconds: Dijkstra? Bellman-Ford? Floyd-Warshall? BFS-on-unweighted? Stretches the Research-constraints muscle most directly.
+- **Skim twenty problem titles from any practice set** and, for each, predict in five seconds which of the four this is: the frontier picker, repeated relaxing, all-pairs, or plain breadth-first on an unweighted graph. This is the recognition rep that transfers most directly, because the four look alike from a distance and behave nothing alike.
 - **Re-derive heap-Dijkstra from scratch** without re-reading Lecture 1. If you cannot, you do not yet own the template. Re-read and re-derive until you can.
 - **Read the Wikipedia "Disjoint-set data structure" article** end-to-end (about 25 minutes). The "Path compression" and "Union by rank" sections explain the `alpha(n)` analysis at a level appropriate for a senior interview answer. Tarjan's 1975 paper is cited; you do not need to read it.
 - **Implement Prim MST with a heap** from scratch. Most learners ship Kruskal because DSU is the cleaner illustration; Prim is the better fit when the graph is dense (`E` close to `V^2`) and the heap variant amortizes well.
@@ -147,7 +149,7 @@ Week 10 is the *graph-week* sandwiched between W9 (strings) and W11 (dynamic pro
 
 If you find yourself ahead by Friday, the right stretch is **not** another exercise — it is reading the disjoint-set Wikipedia article end-to-end, or skimming a competitive-programming explanation of Johnson's algorithm. The Phase-2 retrospective at the end of Week 12 will be much easier if W10 leaves you with a sense of *which* graph algorithm to mention in interviews, not just *that* there is one.
 
-If you find yourself *behind* by Wednesday, skip Exercise 2 (Cheapest Flights — Bellman-Ford) for now and prioritize Exercise 1 (Network Delay Time — Dijkstra) and Exercise 3 (Number of Provinces — DSU) — those are the two patterns that show up most often in Mock #2, and the Bellman-Ford variant can be picked up in 30 minutes once the Dijkstra template is fluent.
+If you find yourself *behind* by Wednesday, skip Exercise 2 (Cheapest Flights — Bellman-Ford) for now and prioritize Exercise 1 (the hut relay timing — Dijkstra) and Exercise 3 (the mooring chain groups — DSU) — those are the two patterns that show up most often in Mock #2, and the Bellman-Ford variant can be picked up in 30 minutes once the Dijkstra template is fluent.
 
 ---
 

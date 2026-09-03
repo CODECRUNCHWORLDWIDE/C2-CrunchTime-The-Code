@@ -30,8 +30,6 @@ If a write-up mentions "top," "largest," "smallest," "closest," "median," or "me
 
 ## Free practice platforms
 
-- **LeetCode — Heap (Priority Queue) tag** (free): <https://leetcode.com/tag/heap-priority-queue/>
-- **LeetCode — Top K Frequent Elements**: <https://leetcode.com/problems/top-k-frequent-elements/> — the canonical top-k problem; Exercise 1 variant.
 - **HackerRank — Heap domain**: <https://www.hackerrank.com/domains/data-structures?filters%5Bsubdomains%5D%5B%5D=heap>
 - **Codeforces — Data structures tag**: <https://codeforces.com/problemset?tags=data+structures> — filter for heap / priority-queue problems.
 - **CSES Problem Set — Sorting and Searching section**: <https://cses.fi/problemset/> — several problems whose intended solution is a heap or a multiset.
@@ -207,8 +205,6 @@ For an existing implementation, `heapq.merge(*sources)` does the same in one lin
 
 ## Videos on the pattern (free, no signup)
 
-- **NeetCode — "Heap / Priority Queue"** (YouTube — free): search "neetcode heap"; the 12-minute walkthrough is enough for the size-k template.
-- **NeetCode — "Find Median from Data Stream"** (YouTube — free): the canonical two-heap problem; if you have not seen the pattern in video form, watch this before Exercise 3.
 - **MIT 6.006 — Lecture on heaps and heapsort** (free OCW): <https://ocw.mit.edu/courses/6-006-introduction-to-algorithms-spring-2020/> — the rigorous version; the proof that `heapify` is `O(n)` (not `O(n log n)`) is laid out cleanly.
 
 ## On the negation trick for max-heaps
@@ -278,9 +274,9 @@ Three things, all short, all this week:
 
 1. **The module docstring at the top of `Lib/heapq.py`** — ten minutes. The cleanest free explanation of the heap invariant and why the array layout works.
 2. **The "Examples" section of the `heapq` docs** — five minutes. The `nlargest`, `nsmallest`, and `merge` examples are the templates you will reach for.
-3. **Two LeetCode problem statements at the "Heap (Priority Queue)" tag** — five minutes each. Predict the algorithm before reading the solution. The recognition reps are what build Research constraints muscle.
+3. **Two heap problem statements from any practice set** — five minutes each. Predict the sub-shape before reading anything else: bounded top-k, heap of tuples, two-heap statistic, k-way merge, or scheduler. The recognition reps are what build the Reason-about-constraints muscle.
 
-If you read nothing else this week, read those three and skim five problem titles in the LeetCode Heap tag.
+If you read nothing else this week, read those three and skim five heap problem titles from any practice set, naming the sub-shape of each before you open it.
 
 ---
 

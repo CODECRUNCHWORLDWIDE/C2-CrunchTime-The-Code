@@ -43,13 +43,13 @@ Answer key at the bottom.
 
 5. **BFS — multi-source grid-BFS.** Exercise 3. The plural "rotten oranges" is the signal: multiple seeds. Seed the queue with all rotten cells at minute 0; the answer is the max distance reached after confirming every fresh orange is reachable. `O(R × C)`.
 
-6. **BFS — node-BFS on an implicit string graph + wildcard-bucket index.** Exercise 4. The standard Word Ladder problem. Level-tracking idiom; the answer is a level count. `O(N × L²)` with the bucket index, where `N` is dictionary size and `L` is word length.
+6. **BFS — node-BFS on an implicit string graph + wildcard-bucket index.** Exercise 4. The standard the cable pull problem. Level-tracking idiom; the answer is a level count. `O(N × L²)` with the bucket index, where `N` is dictionary size and `L` is word length.
 
 7. **NOT pure BFS — topological sort.** Kahn's algorithm uses a BFS-shaped queue, but with extra state (in-degree counts) and a different termination condition. Tarjan's algorithm uses DFS with post-order. Both are covered in Week 7 (DFS). Calling it "BFS" oversimplifies; the right answer is "topological sort via Kahn (BFS-shaped) or Tarjan (DFS-shaped)."
 
 8. **NOT BFS — heap (Week 9).** "Top-K" is the heap pattern. Pure BFS has no role here — there is no graph, no distance, no traversal. The trap is "k" appearing in the prompt; in BFS contexts, "k" might be a level, but here it is a count.
 
-9. **BFS — multi-source grid-BFS.** Identical to Exercise 3 in structure: seed the queue with all `0` cells, expand outward, record distance to each `1` cell. The result is the per-cell distance to the nearest `0`. `O(R × C)`. LeetCode 542.
+9. **BFS — multi-source grid-BFS.** Identical to Exercise 3 in structure: seed the queue with all `0` cells, expand outward, record distance to each `1` cell. The result is the per-cell distance to the nearest `0`. `O(R × C)`.
 
 10. **BFS — node-BFS on an infinite implicit graph + symmetry + bounded search region.** The week's challenge. The trap is the infinite graph; the senior move is symmetry reduction to the first quadrant and bounding the visited set to a `(|x| + 4) × (|y| + 4)` rectangle. Bidirectional BFS is the production-grade optimization.
 

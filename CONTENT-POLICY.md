@@ -14,6 +14,10 @@ Not restated from somewhere else. Not reskinned from somewhere else. Written.
 
 That covers the problem statement, the constraints, the examples, the test cases, the worked solutions, and the explanatory prose around them.
 
+**And the course does not send the learner to a puzzle catalogue.** Not in a problem, not in a lecture, not in a resources list, not as a pointer to "the same pattern, if you want a judge to run against."
+
+That second half is newer than the first, and it is a house rule rather than a legal requirement — the section below explains what we gave up and why. It is aimed at the ranked, numbered problem catalogues, not at every site on the internet: a mentored track, a contest archive or a peer mock-interview service is a different kind of thing and may still be listed.
+
 ---
 
 ## Why the stricter rule
@@ -32,28 +36,42 @@ There is a pedagogical dividend, and it is not small. A learner who has memorize
 
 ## What is allowed
 
-**Reference by name and link.** Problem titles are not copyrightable — [37 CFR § 202.1(a)](https://www.law.cornell.edu/cfr/text/37/202.1) excludes "names, titles, and slogans." Problem numbers are facts (*Feist Publications v. Rural Telephone*, 499 U.S. 340). A hyperlink reproduces nothing. So this is fine, and is the standard form:
-
-> **Practice elsewhere.** The same pattern appears as [LeetCode 51 · N-Queens](https://leetcode.com/problems/n-queens/) if you want a judge to run against.
-
-Title, number, plain out-link. Nothing else crosses over.
-
-**Naming the platforms.** Nominative fair use (*New Kids on the Block v. News America Publishing*, 971 F.2d 302) lets us name LeetCode, NeetCode, and CodePath to say true things about them. Plain word marks only.
-
 **Teaching a published method.** FRAME is a *procedure*, excluded from copyright by § 102(b). We teach it in our own words. We do not copy anyone's write-up of it.
 
 **Standard algorithms.** Dijkstra, KMP, Timsort, union-find — algorithms are not copyrightable. Textbook implementations are ours to write. What we may not do is copy a specific author's *implementation*, including their variable names when those are distinctive.
 
 ---
 
+## What we gave up, and why
+
+Naming an outside problem was legally fine and we stopped doing it anyway.
+
+The legal position has not changed and is worth keeping on the record, because a future contributor will otherwise assume we were forced. Problem *titles* are not copyrightable — [37 CFR § 202.1(a)](https://www.law.cornell.edu/cfr/text/37/202.1) excludes "names, titles, and slogans." Problem *numbers* are facts (*Feist Publications v. Rural Telephone*, 499 U.S. 340). A hyperlink reproduces nothing at all. And nominative fair use (*New Kids on the Block v. News America Publishing*, 971 F.2d 302) permits naming a platform to say true things about it.
+
+So a line reading "the same pattern appears as problem 51 on such-and-such a site, if you want a judge to run against" was defensible, and the course carried fifty-six of them.
+
+They are gone, for two reasons that are ours rather than the law's.
+
+1. **A pointer is an endorsement, whatever the disclaimer says.** Fifty-six lines sending a learner to one commercial catalogue is a recommendation of it, made by a free course that competes with it. We would rather the course stand on its own material.
+2. **It quietly makes the outside catalogue the real syllabus.** Once every page ends by naming its outside twin, the pattern being taught becomes "problem 51" in the learner's head, and our version becomes the practice run. That is exactly backwards, and it undoes the pedagogical dividend the rest of this document is about.
+
+The distinction being drawn is between a *catalogue* and a *resource*. A numbered list of interview puzzles competes with this course and re-anchors its material; a mentored language track, a contest archive, or a peer mock-interview service does not. The second kind stays in the resources lists.
+
+What replaces them is nothing. A learner who wants more repetitions has the stretch section at the foot of every page, and those extend *our* problem rather than pointing away from it.
+
+---
+
 ## What is forbidden
+
+This document is the **one place** in the course where an outside platform may be named, because a rule that cannot name what it forbids cannot be enforced. Two entries below name one. Nothing outside this file may.
 
 - Any problem statement taken or adapted from another platform.
 - Any example input/output taken from another platform — including their explanation text.
 - Any constraint block taken from another platform. **Choose our own bounds, and justify them pedagogically.**
 - Any test case taken from another platform, especially judge cases that were never published as examples.
 - Any implementation derived from another site's editorial, including its variable naming.
-- Any section that announces borrowed provenance: `Constraints (LeetCode)`, `Per the LC spec`, or similar. If that phrase is needed, the content underneath is already a violation.
+- Any section that announces borrowed provenance: a "Constraints (as published elsewhere)" heading, a "per their spec" aside, or similar. If that phrase is needed, the content underneath is already a violation.
+- **Naming or linking a ranked problem catalogue** anywhere in the course — in a problem, a lecture, a resources list, a stretch goal or a further-reading section. That includes the sites whose whole shape is a numbered, tagged list of interview puzzles, and the roadmap sites built on top of one. Mentored tracks, contest archives and peer mock-interview services are not catalogues in this sense and may be listed.
 - Any logo, stylesheet, typography, or repo/domain name implying affiliation. No `leetcode-*`, no `neetcode-*`.
 - Scraping any platform. That is contract, not copyright — the fair-use arguments above do not apply to it.
 - **CodePath material in any form.** `github.com/codepath/compsci_guides` carries `license: null`, and their ToS requires prior written consent to republish. Their pedagogy may be described in our words; their prose, guides, and problem sets may not be reproduced at all.
@@ -94,7 +112,9 @@ Any of these in a diff is a rejection, no discussion:
 
 Every course README carries this, verbatim:
 
-> **Not affiliated with, endorsed by, or sponsored by LeetCode, NeetCode, or CodePath.** Problem names and numbers are referenced for practice only; all problems, examples, constraints, and test cases in this course are original work, published under GPL-3.0. LeetCode is a trademark of LeetCode LLC; NeetCode and CodePath are trademarks of their respective owners.
+> **All problems, examples, constraints and test cases in this course are original work**, written for this course and published under GPL-3.0.
+
+The previous footer disclaimed affiliation with the platforms the course used to name. Nothing names them now, so there is no affiliation left to disclaim, and a disclaimer that mentions a company is itself a mention. If a future edit reintroduces a reference, the trademark disclaimer has to come back with it — which is one more reason not to.
 
 ---
 

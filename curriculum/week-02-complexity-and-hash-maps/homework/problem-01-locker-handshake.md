@@ -613,7 +613,4 @@ knows it.
   then injects exactly one break at a known index. If your early return is off
   by one, this catches it and hand-written cases do not — because you would have
   written the hand case with the same off-by-one in your head.
-
-**Practice elsewhere.** The same pattern appears as [LeetCode 290 · Word Pattern](https://leetcode.com/problems/word-pattern/) if you want a judge to run against. The contract there returns a boolean, so it never forces you to carry the index, to name which side broke, or to tell a legal repeat apart from a contradiction — which are three of the four things this page is grading.
-
 Next: [Homework Problem 2 — Time the Gap](./problem-02-time-the-gap.md).

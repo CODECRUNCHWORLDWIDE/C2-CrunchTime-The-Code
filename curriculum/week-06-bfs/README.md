@@ -16,7 +16,7 @@ By Sunday of Week 6 you will:
 
 - **Recognize** a BFS problem in 30 seconds, classify it as **grid-BFS** or **node-BFS**, and pick the right neighbor-generation function for the sub-shape.
 - **Write** the canonical queue + visited-set template from memory, defend the visited-set as an invariant out loud, and explain why BFS finds shortest paths on an unweighted graph and *only* on an unweighted graph.
-- **Apply multi-source BFS** — the high-leverage Week-6 idiom — by seeding the queue with multiple starts. The rotting-oranges and 0/1 matrix families compile to one line of seed code.
+- **Apply multi-source BFS** — the high-leverage Week-6 idiom — by seeding the queue with every start at once. The whole change is one line, in the seed.
 - **Distinguish** when to track distance level-by-level (an outer `for _ in range(len(queue))` loop) and when to store `(node, dist)` on the queue. Both work; only one defends cleanly per problem family.
 - Have solved **five BFS drills** spanning both sub-shapes — level-order traversal, shortest path in a grid, rotting oranges (multi-source), word ladder (node-BFS on a string graph), and binary tree right-side view (per-level visibility).
 - Have shipped one challenge (Minimum Knight Moves on an infinite board — the canonical "BFS on an implicit graph"), the quiz, and the homework.
@@ -35,7 +35,7 @@ By the end of this week, you will be able to:
 - **Apply multi-source BFS** by seeding the initial queue with multiple starts. Recognize the idiom from prompts like "starting from all fresh oranges simultaneously" or "distance from every zero in the matrix."
 - **Choose** between level-tracking (outer loop over `len(queue)`) and per-node distance (queue of `(node, dist)` tuples) and defend the choice. Level tracking pairs with "by level" outputs (right side view, level order). Per-node distance pairs with "shortest path to a specific target" outputs.
 - **Recognize** when BFS does *not* apply — weighted graphs (use Dijkstra), graphs with no monotone-cost structure (use DFS / iterative deepening), problems where the answer is not a distance (use DFS, backtracking, or DP).
-- **Apply bidirectional BFS** as the high-end optimization for "shortest path between two known endpoints in a large graph" — the technique that turns Word Ladder from `O(N · L²)` into roughly `O(sqrt) · N · L²)`.
+- **Apply bidirectional BFS** as the high-end optimization for "shortest path between two known endpoints in a large graph" — the technique that turns the cable pull from `O(N · L²)` into roughly `O(sqrt) · N · L²)`.
 
 ---
 
@@ -54,8 +54,8 @@ By the end of this week, you will be able to:
 - The two sub-shapes: **grid-BFS** (implicit graph on `(r, c)` cells) and **node-BFS** (explicit or implicit graph on hashable nodes)
 - **Level tracking:** outer `for _ in range(len(queue))` loop — the idiom for "by level" outputs
 - **Per-node distance:** `(node, dist)` tuples on the queue — the idiom for "shortest path to one target"
-- **Multi-source BFS:** seed the queue with multiple starts — the rotting-oranges / 0-1-matrix idiom
-- **Bidirectional BFS:** advance from both endpoints, halt when the frontiers meet — the Word Ladder optimization
+- **Multi-source BFS:** seed the queue with every start at once, all at distance zero
+- **Bidirectional BFS:** advance from both endpoints, halt when the frontiers meet — the cable pull optimization
 - **Why BFS finds shortest paths on unweighted graphs** — the level-monotonicity argument
 - **Why BFS does not find shortest paths on weighted graphs** — and what Dijkstra adds (one paragraph; depth in C5)
 - **When BFS does not apply** — weighted graphs, problems where the answer is not a distance, problems where the state space is exponential without aggressive pruning
@@ -89,26 +89,26 @@ By the end of this week, you will be able to:
 | [resources.md](./resources.md) | Free readings + BFS references + glossary additions |
 | [lecture-notes/01-the-bfs-template.md](./lecture-notes/01-the-bfs-template.md) | The canonical queue + visited-set template, level tracking, the four bug patterns |
 | [lecture-notes/02-grid-bfs-and-graph-bfs.md](./lecture-notes/02-grid-bfs-and-graph-bfs.md) | The two sub-shapes; multi-source BFS; bidirectional BFS |
-| [exercises/README.md](./exercises/README.md) | Index of the five BFS drills |
-| [exercises/exercise-01-level-order.md](./exercises/exercise-01-level-order.md) | Binary tree level-order traversal — the cleanest "by level" exercise |
-| [exercises/exercise-02-shortest-path-grid.md](./exercises/exercise-02-shortest-path-grid.md) | Shortest path in a binary matrix — grid-BFS with obstacles |
-| [exercises/exercise-03-rotting-oranges.md](./exercises/exercise-03-rotting-oranges.md) | Multi-source BFS — the canonical "spread" problem |
-| [exercises/exercise-04-word-ladder.md](./exercises/exercise-04-word-ladder.md) | Node-BFS on a string graph with a wildcard-bucket neighbor index |
-| [exercises/exercise-05-binary-tree-right-side-view.md](./exercises/exercise-05-binary-tree-right-side-view.md) | Level tracking — emit the last node at each depth |
-| [exercises/timed_runner.py](./exercises/timed_runner.py) | Pytest harness for the five drills |
-| [challenges/README.md](./challenges/README.md) | Index of weekly challenges |
-| [challenges/challenge-01-minimum-knight-moves.md](./challenges/challenge-01-minimum-knight-moves.md) | BFS on an infinite implicit graph — the canonical hard BFS problem |
+| [exercises/README.md](./exercises/README.md) | Index of the five exercises, in order |
+| [exercises/exercise-01-relay-roster.md](./exercises/exercise-01-relay-roster.md) | Relay roster — one hop at a time, with the level frozen before the queue grows |
+| [exercises/exercise-02-hoist-route.md](./exercises/exercise-02-hoist-route.md) | Hoist route — a grid with obstacles, and the bounds check that does not crash |
+| [exercises/exercise-03-siren-reach.md](./exercises/exercise-03-siren-reach.md) | Siren reach — every source seeded at once, a whole map out of one walk |
+| [exercises/exercise-04-cable-pull.md](./exercises/exercise-04-cable-pull.md) | Cable pull — twenty thousand junction boxes, where the wrong queue finally costs |
+| [exercises/exercise-05-feeder-tier-load.md](./exercises/exercise-05-feeder-tier-load.md) | Feeder tier load — reducing a level while it is still one batch |
+| [challenges/README.md](./challenges/README.md) | Index of the two challenges |
+| [challenges/challenge-01-trunk-splice.md](./challenges/challenge-01-trunk-splice.md) | Trunk splice — searching from both ends, and which nodes lie on a shortest route |
+| [challenges/challenge-02-tide-gate.md](./challenges/challenge-02-tide-gate.md) | Tide gate — when a cell is not a state, and what goes in the visited set instead |
 | [quiz.md](./quiz.md) | 10 pattern-recognition questions |
-| [homework.md](./homework/README.md) | Six practice problems (~5 hrs) — two grid, two node, one bidirectional, plus the behavioral and design warm-ups |
-| [mini-project/README.md](./mini-project/README.md) | **One grid-BFS write-up + one node-BFS write-up, fully FRAME-narrated** — the week's deliverable |
+| [homework/README.md](./homework/README.md) | Six practice problems (~5 hrs) — two grid, two node, one bidirectional, plus the behavioral and design warm-ups |
+| [mini-project/README.md](./mini-project/README.md) | **The muster report** — three BFS questions in one program, plus two write-ups |
 
 ---
 
 ## Stretch goals
 
-- **Read the LeetCode "Breadth-First Search" tag** and skim 20 titles. For each, predict in 5 seconds: grid? node? multi-source? bidirectional? Stretches the Research constraints muscle.
+- **Skim twenty problem titles from any practice set** and, for each, predict in five seconds which shape it is: grid, node graph, multi-source, or two-ended. The prediction is the rep; being wrong quickly is fine.
 - **Re-derive the canonical template from scratch** without re-reading Lecture 1. If you cannot, you do not yet own the template. Re-read and re-derive until you can.
-- **Find one production-engineering BFS story.** Examples: web crawler frontier, social-graph "people you may know," package-manager dependency level ordering. The "where does BFS live in real systems?" question lifts you out of the LeetCode frame.
+- **Find one production-engineering BFS story.** Examples: a web crawler's frontier, a social graph's "people you may know", a package manager ordering dependencies by level. The "where does this live in real systems?" question lifts you out of the puzzle frame and into the engineering one.
 - **Read about 0-1 BFS** (deque-based; `appendleft` for zero-cost edges, `append` for one-cost). It is the natural next step between BFS and Dijkstra. Out of scope for the drills but worth knowing the name.
 
 ---

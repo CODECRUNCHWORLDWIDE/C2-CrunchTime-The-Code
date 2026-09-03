@@ -24,8 +24,6 @@ If a write-up mentions "Dijkstra," "A*," or "uniform-cost search" — those are 
 
 ## Free practice platforms
 
-- **LeetCode — Breadth-First Search tag** (free): <https://leetcode.com/tag/breadth-first-search/>
-- **LeetCode — Graph tag** (free): <https://leetcode.com/tag/graph/> — BFS problems mixed with DFS and weighted-graph problems. Filter by difficulty.
 - **HackerRank — Graph Theory domain**: <https://www.hackerrank.com/domains/algorithms?filters%5Bsubdomains%5D%5B%5D=graph-theory>
 - **Codeforces — BFS tag**: <https://codeforces.com/problemset?tags=bfs>
 - **CSES Problem Set — Graph Algorithms section**: <https://cses.fi/problemset/> — a Finnish university free problem bank; the Graph Algorithms section is the cleanest free curriculum on BFS / DFS / shortest paths.
@@ -56,8 +54,6 @@ Memorize the first row and the last two rows; the rest you can derive in intervi
 
 ## Videos on the pattern (free, no signup)
 
-- **NeetCode — "BFS Algorithm"** (YouTube — free): search "neetcode bfs"; the 10-minute walkthrough is enough.
-- **NeetCode — "Rotting Oranges"** (YouTube — free): the canonical multi-source BFS problem; if you have not seen the pattern in video form, watch this before Exercise 3.
 - **MIT 6.006 — Lecture on BFS** (free OCW): the rigorous version; the proof that BFS finds shortest paths on unweighted graphs is laid out cleanly.
 
 ## On bidirectional BFS
@@ -95,7 +91,7 @@ Two things, both short, both this week:
 1. **The "Pseudocode" section of the BFS Wikipedia article** — three minutes. The takeaway: the canonical template is six lines.
 2. **Chapter 12 of Laaksonen's CSES handbook** — twenty minutes. The cleanest pseudocode treatment of BFS and DFS side-by-side in free material.
 
-If you read nothing else this week, read those two and skim five problem titles in the LeetCode BFS tag.
+If you read nothing else this week, read those two and skim five breadth-first-search problem titles from any practice set, predicting grid or node graph for each before you open it.
 
 ---
 

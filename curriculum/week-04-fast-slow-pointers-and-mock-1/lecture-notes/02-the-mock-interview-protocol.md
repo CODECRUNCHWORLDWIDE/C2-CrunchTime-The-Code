@@ -42,7 +42,7 @@ You and another C2 learner (or any technical peer) interview each other. One of 
 - **Platform.** Zoom / Meet / Teams. Both cameras on. Screen-share required.
 - **Coding environment.** CoderPad (free sandbox), VS Code Live Share, or a shared Excalidraw board if the problem is whiteboard-heavy. *Do not use a personal IDE on your local machine.* The friction of an interview shell is part of the test.
 - **Recording.** The candidate records on their side via OBS / QuickTime / built-in recorder. The interviewer's recording is optional but useful.
-- **Problem source.** The interviewer picks one problem the candidate has *not* seen. Pull from LeetCode Medium tagged "Linked List," "Two Pointers," "Hash Map," or "Sliding Window." That's our pattern coverage so far.
+- **Problem source.** The interviewer picks one problem the candidate has *not* seen, from anywhere they like — a practice site, a textbook, a problem they were once asked themselves. Medium difficulty, and on one of the patterns covered so far: linked lists, two pointers, hash maps, sliding windows. The one rule is that the candidate has not seen it.
 
 **During the mock:**
 
@@ -63,7 +63,7 @@ This is the most "interview-like" option because it's with a stranger. The downs
 
 No peer available, can't schedule a Pramp match in time, want to run a controlled mock anyway. The setup:
 
-- **Pick a problem you haven't seen.** Use a random Medium from LeetCode's "Linked List" or "Two Pointers" tag. Use a random-problem button if available.
+- **Pick a problem you haven't seen.** Any medium linked-list or two-pointer problem from any source will do, and picking it at random is better than choosing — choosing is how you end up with one you half-remember.
 - **Camera on. Recorder running.** Treat the camera as if it's an interviewer. Make eye contact with the lens periodically. Do not look at your screen the entire time.
 - **45-minute timer.** Hard stop.
 - **Out loud the entire time.** Every step of FRAME, every line of code, every doubt, every recovery.
@@ -233,7 +233,7 @@ This is the deliverable. The file goes at `frame-writeups/c2-week-04/mock-01-sel
 # Mock #1 — Self-Feedback
 
 **Date:** YYYY-MM-DD
-**Problem:** [name + LeetCode link]
+**Problem:** [name, and where it came from]
 **Flavor:** A (peer) / B (Pramp) / C (solo)
 **Duration:** 45 minutes
 **Outcome:** [solved correctly / solved with bug / didn't finish / etc.]

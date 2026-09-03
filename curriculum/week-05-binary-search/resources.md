@@ -23,8 +23,6 @@ If a write-up uses "ternary search" or "exponential search" — those are differ
 
 ## Free practice platforms
 
-- **LeetCode — Binary Search tag** (free): <https://leetcode.com/tag/binary-search/>
-- **LeetCode — Search problems on the answer space**: tag combination "binary search" + "greedy" surfaces most parametric problems.
 - **HackerRank — Search domain**: <https://www.hackerrank.com/domains/algorithms?filters%5Bsubdomains%5D%5B%5D=search>
 - **Codeforces — Binary search tag**: <https://codeforces.com/problemset?tags=binary+search>
 - **Exercism — Python Track, search exercises**: <https://exercism.org/tracks/python>
@@ -38,7 +36,6 @@ Binary search is famous for being *almost* trivial and *actually* hard to write 
 
 ## Videos on the pattern (free, no signup)
 
-- **NeetCode — "Binary Search" walkthrough** (YouTube — free): search "neetcode binary search"; the 10-minute walkthrough is enough.
 - **Any "binary search on the answer" walkthrough** (YouTube — free): search that exact phrase. If you have never seen the parametric idiom explained in video form, watch one before Exercise 5. Watch for the *shape* — reframe, interval, predicate, return — not for the specific problem the presenter picked; our drills use different contracts and you will get more from the video if you are listening for the cadence.
 - **MIT 6.006 — Lecture on binary search trees** (free OCW): tangential but the discussion of "decision-tree depth" is the same idea as binary search depth.
 
@@ -80,7 +77,7 @@ Two things, both short, both this week:
 1. **Joshua Bloch's "Nearly all binary searches are broken"** — five-minute read. The takeaway is permanent: write `mid = lo + (hi - lo) // 2`, always, even though Python does not need it.
 2. **Codeforces EDU "Searching for the answer"** sections 1–3 — twenty minutes. The cleanest treatment of parametric search in free material.
 
-If you read nothing else this week, read those two and skim five problem titles in the LeetCode Binary Search tag.
+If you read nothing else this week, read those two and skim five binary-search problem titles from any practice set, predicting the sub-shape of each before you open it.
 
 ---
 

@@ -71,7 +71,7 @@ Here is a concrete cover skeleton. Adapt the numbers to your real repo:
 | Hash maps | [Group Anagrams](frame-writeups/05-group-anagrams.md), … |
 | Sliding window | … |
 | … | … |
-| Bit manipulation | [Single Number](frame-writeups/58-single-number.md), [Maximum XOR](frame-writeups/60-maximum-xor.md) |
+| Bit manipulation | [the relay fold](frame-writeups/58-single-number.md), [the pairing register](frame-writeups/60-maximum-xor.md) |
 
 ## Mocks
 

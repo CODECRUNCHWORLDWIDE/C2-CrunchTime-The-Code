@@ -557,14 +557,6 @@ Note what the wrapper does *not* need: a second search. The even-length median
 is the mean of two adjacent ranks, and adjacent ranks are precisely what a
 boundary is. Designing the return value so the common caller needs no extra
 work is a small piece of API judgement worth naming in your write-up.
-
-**Practice elsewhere.** The same partition idea appears as
-[LeetCode 4 · Median of Two Sorted Arrays](https://leetcode.com/problems/median-of-two-sorted-arrays/)
-if you want a judge to run against. The contract there is different from ours —
-it asks for a float median rather than a rank boundary, and it never defines
-the out-of-range case — so solve **this** one first and treat that as a
-follow-up.
-
 </details>
 
 ## Acceptance checklist

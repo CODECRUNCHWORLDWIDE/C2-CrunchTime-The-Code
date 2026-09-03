@@ -60,7 +60,7 @@ The hard part this week is **not** the algorithm — `insert` and `search` are s
 
 A `Set[str]` answers exact-match queries — does the set contain the word `"cart"`? — in `O(L)` *expected* time, where `L = len("cart")`. Under pathological hash collisions, this degrades to `O(n)` worst-case, where `n` is the set size. In practice, Python's `str.__hash__` is salted and well-distributed, and `O(L)` expected is the bound you use in interviews.
 
-A trie answers the same exact-match query in `O(L)` *worst-case* — there is no probability-of-failure mode. The path length is the key length, period. For most LeetCode problems this distinction does not matter; for systems that promise SLAs under adversarial input it does.
+A trie answers the same exact-match query in `O(L)` *worst-case* — there is no probability-of-failure mode. The path length is the key length, period. On the inputs a practice problem hands you this distinction does not matter; for a system promising a latency bound under adversarial input it is the whole argument.
 
 The discriminator is **prefix queries**. A hash set cannot answer "does any stored key start with `pre`" without iterating every key — `O(n L)` worst case, or `O(n)` if you index by length. A trie answers it in `O(P)` where `P = len(pre)`. That capability is the reason tries exist as a separate data structure.
 
@@ -355,7 +355,7 @@ The LCP walk (covered in Lecture 2 §1) terminates when a node has more than one
 
 ## 8. A worked Implement-Trie example
 
-LC 208 — Implement Trie (Prefix Tree). The canonical entry-level trie problem.
+ — the gate tag tree (Prefix Tree). The canonical entry-level trie problem.
 
 **Research constraints.** A trie problem because the operations are exactly `insert / search / starts_with`. No other data structure offers `starts_with` in `O(P)`.
 
@@ -397,7 +397,7 @@ class Trie:
         return True
 ```
 
-(LeetCode uses `startsWith` rather than `starts_with` — match the harness. In your portfolio, prefer the PEP 8 form.)
+(If a harness hands you a camel-case signature, match the harness — that is its contract, not your style choice. In your own code and in your portfolio, use the PEP 8 form.)
 
 **Examine · verify.** Test on `["apple", "app"]`. After both inserts, `search("apple") == True`, `search("app") == True`, `search("ap") == False`, `startsWith("ap") == True`. Each matches the spec.
 
@@ -425,13 +425,13 @@ A clean way to articulate the negative space:
 
 After this lecture, your weekly path is:
 
-1. **Exercise 1 — Implement Trie (LC 208).** The dict-of-dict template; the canonical warm-up. Aim for 20 minutes including FRAME.
+1. **Exercise 1 — the gate tag tree.** The dict-of-dict template; the canonical warm-up. Aim for 20 minutes including FRAME.
 2. **Read the resources entries on the dict-of-dict and class forms.** Memorize both shapes; you will pick one in Mock #2 based on the prompt.
-3. **Skim five LeetCode Trie-tag problem titles.** For each, predict in 5 seconds: `insert/search/starts_with`? autocomplete? word-break? dictionary-on-grid? Drill the recognition.
+3. **Skim five trie-flavoured problem titles from any practice set.** For each, predict in five seconds: `insert/search/starts_with`? autocomplete? word-break? dictionary-on-grid? Drill the recognition.
 4. **Move to Lecture 2** for word-break and longest-common-prefix.
 
 The single most important rep this week is **typing the canonical dict-of-dict trie from memory three times**. Three reps installs the muscle memory. Without it, Mock #2 will catch the hesitation.
 
 ---
 
-*Next: [Lecture 2 — Word Break and Aho-Corasick (read only)](./02-word-break-and-aho-corasick.md).*
+*Next: [Lecture 2 — the stripped manifest line and Aho-Corasick (read only)](./02-word-break-and-aho-corasick.md).*

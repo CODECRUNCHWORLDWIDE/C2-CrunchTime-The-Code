@@ -25,9 +25,6 @@ If a write-up mentions "shortest path" without "weighted," it is almost certainl
 
 ## Free practice platforms
 
-- **LeetCode — Depth-First Search tag** (free): <https://leetcode.com/tag/depth-first-search/>
-- **LeetCode — Topological Sort tag** (free): <https://leetcode.com/tag/topological-sort/>
-- **LeetCode — Graph tag** (free): <https://leetcode.com/tag/graph/> — DFS problems mixed with BFS and weighted-graph problems. Filter by difficulty.
 - **HackerRank — Graph Theory domain**: <https://www.hackerrank.com/domains/algorithms?filters%5Bsubdomains%5D%5B%5D=graph-theory>
 - **Codeforces — DFS and similar tag**: <https://codeforces.com/problemset?tags=dfs+and+similar>
 - **CSES Problem Set — Graph Algorithms section**: <https://cses.fi/problemset/> — the Finnish university free problem bank; the Graph Algorithms section has both DFS and topological-sort problems.
@@ -73,8 +70,6 @@ Memorize the first three rows and the topological-sort row; the rest you can der
 
 ## Videos on the pattern (free, no signup)
 
-- **NeetCode — "DFS Algorithm"** (YouTube — free): search "neetcode dfs"; the 10-minute walkthrough is enough.
-- **NeetCode — "Course Schedule"** (YouTube — free): the canonical topological-sort problem; if you have not seen the pattern in video form, watch this before Exercise 3.
 - **MIT 6.006 — Lecture on DFS** (free OCW): <https://ocw.mit.edu/courses/6-006-introduction-to-algorithms-spring-2020/> — the rigorous version; the post-order topo argument is laid out cleanly with proofs.
 - **MIT 6.006 — Lecture on Topological Sort and DAG Shortest Paths** (free OCW): the same course; the lecture on DAGs gives the "topo first, then relax edges in order" framing that anchors several weighted-DAG algorithms in C5.
 
@@ -159,7 +154,7 @@ Two things, both short, both this week:
 1. **The "Pseudocode" and "Vertex orderings" sections of the DFS Wikipedia article** — five minutes. The takeaway: pre-order, post-order, reverse post-order are three views of the same traversal.
 2. **Chapter 16 of Laaksonen's CSES handbook** — twenty minutes. The cleanest pseudocode treatment of cycle detection, topo sort, and SCCs in free material.
 
-If you read nothing else this week, read those two and skim five problem titles in the LeetCode Topological Sort tag.
+If you read nothing else this week, read those two and skim five ordering-flavoured problem titles from any practice set, predicting for each whether it wants an order or only whether one exists.
 
 ---
 

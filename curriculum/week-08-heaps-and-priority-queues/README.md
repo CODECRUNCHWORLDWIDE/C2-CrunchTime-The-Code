@@ -21,8 +21,8 @@ By Sunday of Week 8 you will:
 - **Implement the two-heap pattern** for the running median: a max-heap of the lower half, a min-heap of the upper half, balanced so that their sizes differ by at most one.
 - **Implement k-way merge** of sorted streams using a heap of size k that holds one element per stream.
 - **Implement lazy deletion** — the canonical trick for "remove an arbitrary element from a heap" without paying `O(n)` to search. Mark the slot stale; skip stale entries on pop.
-- Have solved **three heap exercises** — Kth Largest Element in an Array, K Closest Points to Origin, Find Median from Data Stream — each with a FRAME write-up.
-- Have shipped **one challenge** (Merge k Sorted Lists — the canonical k-way merge) plus an optional stretch (Task Scheduler — heap-with-cooldown).
+- Have solved **three heap exercises** — the crest watch shortlist, the k-closest shape, the oven probe midline — each with a FRAME write-up.
+- Have shipped **one challenge** (the hut roll call — the canonical k-way merge) plus an optional stretch (the dye vat rotation — heap-with-cooldown).
 - Have shipped the quiz, the homework, and the **mini-project**: one top-k write-up and one two-heap write-up, fully FRAME-narrated.
 
 ---
@@ -76,7 +76,7 @@ By the end of this week, you will be able to:
 | Tuesday | Heap-of-tuples + k-closest; exercise 2 | 2h | 2h | 0h | 0.5h | 1h | 0h | 0.5h | 6h |
 | Wednesday | Two-heap median + lazy deletion; exercise 3 | 2h | 2h | 0h | 0.5h | 1h | 0h | 0.5h | 6h |
 | Thursday | Mini-project drafting; challenge ramp | 0h | 1h | 1h | 0.5h | 1h | 1.5h | 1h | 6h |
-| Friday | Challenge (Merge k Sorted Lists) | 0h | 0h | 2h | 0.5h | 1h | 1.5h | 1h | 6h |
+| Friday | Challenge (the hut roll call) | 0h | 0h | 2h | 0.5h | 1h | 1.5h | 1h | 6h |
 | Saturday | Mini-project — top-k + two-heap write-ups | 0h | 0h | 0h | 0.5h | 1h | 3h | 0h | 4.5h |
 | Sunday | Quiz + retro + push | 0h | 0h | 0h | 0.5h | 0h | 4h | 0h | 4.5h |
 | **Total** | | **6h** | **7h** | **3h** | **3h** | **6h** | **10h** | **3.5h** | **38.5h** |
@@ -96,26 +96,27 @@ By the end of this week, you will be able to:
 | [lecture-notes/01-heapq-and-top-k.md](./lecture-notes/01-heapq-and-top-k.md) | The `heapq` module, the min-heap invariant, the top-k template, the four common bug patterns |
 | [lecture-notes/02-heap-of-tuples-and-k-closest.md](./lecture-notes/02-heap-of-tuples-and-k-closest.md) | Custom keys via tuples; the tiebreaker rule; k-closest-points; max-heap simulation by negation |
 | [lecture-notes/03-two-heap-and-k-way-merge.md](./lecture-notes/03-two-heap-and-k-way-merge.md) | Two-heap running median, k-way merge, lazy deletion, scheduler patterns |
-| [exercises/README.md](./exercises/README.md) | Index of the three heap exercises and SOLUTIONS |
-| [exercises/exercise-01-kth-largest.py](./exercises/exercise-01-kth-largest.py) | Top-k via a size-k min-heap — the canonical warm-up |
-| [exercises/exercise-02-k-closest-points.py](./exercises/exercise-02-k-closest-points.py) | k-closest points via a size-k max-heap (negated min-heap) of tuples |
-| [exercises/exercise-03-median-from-stream.py](./exercises/exercise-03-median-from-stream.py) | Two-heap running median; rebalance discipline |
-| [exercises/SOLUTIONS.md](./exercises/SOLUTIONS.md) | Worked solutions with FRAME narration; consult after attempting each exercise |
-| [challenges/README.md](./challenges/README.md) | Index of weekly challenges |
-| [challenges/challenge-01-merge-k-sorted-lists.md](./challenges/challenge-01-merge-k-sorted-lists.md) | The canonical k-way merge; `O(N log k)` time |
-| [challenges/challenge-02-task-scheduler.md](./challenges/challenge-02-task-scheduler.md) | Heap with cooldown queue — the canonical scheduler pattern |
+| [exercises/README.md](./exercises/README.md) | Index of the five exercises, in order |
+| [exercises/exercise-01-sluice-gate-order.md](./exercises/exercise-01-sluice-gate-order.md) | The sluice gate order — `heapify`, `heappush`, `heappop`, reading the front |
+| [exercises/exercise-02-crest-watch-shortlist.md](./exercises/exercise-02-crest-watch-shortlist.md) | The crest watch shortlist — six entries held while forty thousand go past |
+| [exercises/exercise-03-tool-bench-slots.md](./exercises/exercise-03-tool-bench-slots.md) | The tool bench rota — a max-heap out of `heapq`, by negation |
+| [exercises/exercise-04-rescue-intake-queue.md](./exercises/exercise-04-rescue-intake-queue.md) | The rescue intake desk — a heap of tuples, and the tiebreaker that stops it crashing |
+| [exercises/exercise-05-tide-log-stitch.md](./exercises/exercise-05-tide-log-stitch.md) | The estuary ledger — one heap entry per source, not one per row |
+| [challenges/README.md](./challenges/README.md) | Index of the two challenges |
+| [challenges/challenge-01-hut-roll-call-stitch.md](./challenges/challenge-01-hut-roll-call-stitch.md) | The hut roll call — the k-way merge as a generator, read only as far as needed |
+| [challenges/challenge-02-dye-vat-rotation.md](./challenges/challenge-02-dye-vat-rotation.md) | The dye vat rotation — greedy scheduling on two heaps with a cooldown |
 | [quiz.md](./quiz.md) | 10 pattern-recognition questions |
-| [homework.md](./homework/README.md) | Five practice problems (~5 hrs) — one top-k, one k-closest, one stream, one merge, one scheduler |
-| [mini-project/README.md](./mini-project/README.md) | **One top-k write-up + one two-heap write-up, fully FRAME-narrated** — the week's deliverable |
+| [homework/README.md](./homework/README.md) | Six practice problems (~5 hrs), each with its answer stated and a runnable file beside it |
+| [mini-project/README.md](./mini-project/README.md) | **The repair cafe desk** — every idiom of the week in one working system, plus two write-ups |
 
 ---
 
 ## Stretch goals
 
-- **Read the LeetCode "Heap (Priority Queue)" tag** and skim 20 titles. For each, predict in 5 seconds: top-k? closest-k? median? merge? scheduler? Stretches the Research constraints muscle.
+- **Skim twenty problem titles from any practice set** and, for each, predict in five seconds which shape it is: bounded top-k, heap of tuples, two-heap statistic, k-way merge, or scheduler. The prediction is the rep; being wrong quickly is fine.
 - **Re-derive the canonical top-k template from scratch** without re-reading Lecture 1. If you cannot, you do not yet own the template. Re-read and re-derive until you can.
 - **Read the first 100 lines of CPython's `Lib/heapq.py`** — the sift-up and sift-down implementations are short enough to internalize, and the module docstring contains the cleanest free explanation of the heap invariant.
-- **Find one production-engineering heap story.** Examples: the Linux kernel's `CFS` scheduler uses a red-black tree but the same priority-queue abstraction; Dijkstra's algorithm uses a min-heap as its frontier; load-shedding in web servers prioritizes inflight requests by deadline. The "where does a heap live in real systems?" question lifts you out of the LeetCode frame.
+- **Find one production-engineering heap story.** Examples: the Linux kernel's `CFS` scheduler uses a red-black tree but the same priority-queue abstraction; Dijkstra's algorithm uses a min-heap as its frontier; load-shedding in web servers prioritizes inflight requests by deadline. The "where does a heap live in real systems?" question lifts you out of the puzzle frame and into the engineering one.
 
 ---
 
@@ -124,7 +125,7 @@ By the end of this week, you will be able to:
 A learner who has shipped Week 8 has, in their portfolio repo:
 
 - Three FRAME write-ups for the exercises, with recordings >= 10 minutes.
-- One FRAME write-up for the Merge k Sorted Lists challenge.
+- One FRAME write-up for the hut roll call challenge.
 - The quiz answered (score recorded).
 - The homework problems committed.
 - **Two mini-project write-ups** (one top-k, one two-heap), each with a 30-second pattern-recognition memo at the top, under `frame-writeups/c2-week-08/mini-project/`.

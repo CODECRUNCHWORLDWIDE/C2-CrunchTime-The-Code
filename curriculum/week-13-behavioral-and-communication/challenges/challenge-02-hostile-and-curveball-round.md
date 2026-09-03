@@ -1,18 +1,113 @@
 # Challenge 2 — The Hostile and Curveball Round
 
-> *Drill the questions that throw people: the weakness question, the why-leaving question, the failure-with-a-twist follow-up, the illegal/inappropriate question, and the estimation/"sell me this pen" curveball. Each has a specific move (Lecture 3 §4). This challenge gives you worked responses and the recovery framework, then asks you to record your own.*
+> Format: eight questions that do not map to a story, answered cold and recorded · Time: about 25 minutes recorded, plus review · Difficulty: shorter than Challenge 1 and harder to stay composed through · Why this one: your story bank does not help here, and that is the point — what is being drilled is poise and reaching for a move.
 
-**The deliverable.** A recording of you answering the eight hardball prompts below, plus notes on the recovery move, committed to `behavioral/mock-rounds/round-02-hardball.md`. Shorter than Challenge 1 — budget ~25 minutes.
+<!-- deliverable-page: the answer is a recorded round and its notes, not a program -->
 
----
+## The Brief
 
-## Why this round is separate
+[Challenge 1](./challenge-01-full-behavioral-round.md) drilled the standard
+categories with the stories you built this week. This one drills the questions
+that do not map cleanly to a story — the weakness question, the why-are-you-
+leaving question, the failure follow-up with a twist in it, the question that
+should not have been asked at all, and the curveball that is not really a
+question.
+
+The skill here is not "have the right story ready". It is **stay composed and
+reach for the move**. Every one of these has a specific move, and every one of
+them is easier once you have said it out loud once.
+
+Reframe the whole round as non-adversarial before you start. Almost none of these
+are hostile in intent; they are handing you a chance to show poise, and treating
+them as attacks is what produces the bad answer.
+
+The deliverable is a recording of all eight, plus notes on which move you used
+and whether you stayed composed.
+
+## Starter
 
 Challenge 1 drilled the *standard* categories with your story bank. This challenge drills the questions that do not map cleanly to a story — the ones designed (intentionally or not) to put you on the back foot. The skill here is not "have the right story"; it is **stay composed and reach for the move.** Reframe every one of these as non-adversarial: the interviewer is handing you a chance to show poise.
 
 ---
 
-## The hardball prompts (answer each on the recording)
+## Requirements
+
+1. A recording of roughly 25 minutes covering all eight prompts, answered from
+   memory.
+2. One deliberate practised recovery reset on the recording — a mediocre answer
+   started and then cleanly reset.
+3. Per-prompt notes: which move you reached for, and whether composure held.
+4. The why-are-you-leaving answer drafted **in writing** as well. It is the one
+   most likely to come out bitter under pressure, so the words are chosen in
+   advance.
+
+### The eight prompts
+
+Read these once, then close the page until the recorder is running. The moves and
+the worked responses are further down under `## The Solution` — reading those
+first turns this into a memory test instead of a composure test.
+
+1. 1. "What's your biggest weakness?"
+2. 2. "Why are you leaving your current role?"
+3. 3. "You said you fixed that yourself — didn't your teammates feel cut out?"
+4. 4. "Tell me about your failure again — what would you have done with more time?"
+5. 5. An illegal / inappropriate question — e.g. "Do you have kids? This role has on-call."
+6. 6. "Sell me this pen."
+7. 7. "How many golf balls fit in a school bus?"
+8. 8. "Why should we hire you over the other candidates?"
+
+## Constraints
+
+- **From memory, not from notes.** The words for these have to be available under
+  pressure, which is a different thing from having written them down.
+- **No fake weakness.** "I'm a perfectionist" and "I care too much" are the two
+  most common answers to question 1 and both score zero. A real weakness with a
+  real system around it is the only version that works.
+- **Never bitter on question 2**, no matter how the current role actually ended.
+  Frame it as moving toward something, not away.
+- **The improper question is answered on the job's terms**, not on the
+  questioner's. You answer the legitimate concern behind it and give up nothing
+  personal.
+- **The estimation question is graded on structure, not on the number.** State
+  the assumptions, decompose, compute, sanity-check. An answer of "about 400,000"
+  with no working scores nothing.
+- **Composure is the whole grade.** An imperfect answer delivered calmly beats a
+  sharp one delivered rattled, on every one of these eight.
+
+## Expected output
+
+What the recording should look like when it is done:
+
+```text
+prompts answered        8, from memory
+recording length        ~25 min
+per-prompt length       30-90s - these are shorter than story answers
+deliberate resets       1, practised on purpose
+written drafts          1, the why-are-you-leaving answer
+```
+
+Per prompt, note two things and nothing else: **the move you reached for**, and
+**whether composure held**. If the answer to the second is no, note where it went
+— the sentence, not the feeling. "I got defensive at the on-call question" is
+usable; "I felt uncomfortable" is not.
+
+## Steps
+
+1. Read the eight prompts above once. Do not read the worked responses yet.
+2. Draft the why-are-you-leaving answer in writing. It is the only one worth
+   pre-writing, and it is the one that goes wrong.
+3. Hit record. Answer all eight in order, from memory.
+4. Somewhere in the middle, deliberately start a weak answer and practise the
+   full reset. It feels awkward the first time and natural by the third.
+5. Stop. Then read `## The Solution` below and compare move for move — not word
+   for word.
+6. Write the per-prompt notes: move used, composure held or not.
+7. Re-record any prompt where composure did not hold.
+
+## The Solution
+
+The moves, with a worked response for each. These are models of the *shape*, not
+scripts — the response has to be true of you, or the follow-up will find it.
 
 ### 1. "What's your biggest weakness?"
 
@@ -80,7 +175,7 @@ Specific evidence tied to the role beats generic confidence.
 
 ---
 
-## The recovery framework
+### The recovery framework
 
 Mid-answer, you will sometimes realize you picked the wrong story or are burying the result. The recovery move (Lecture 3 §5):
 
@@ -91,14 +186,12 @@ On your recording, deliberately practice one full reset: start a deliberately-me
 
 ---
 
-## Acceptance criteria
+## How to deliver it
 
-- A recording (~25 min) of you answering all eight hardball prompts from memory.
-- One deliberate practiced recovery reset on the recording.
-- Notes in `behavioral/mock-rounds/round-02-hardball.md`: for each prompt, which move you used and whether you stayed composed.
-- The why-leaving answer drafted in writing as well (it's the one most likely to come out bitter under pressure — write it so the words are pre-chosen).
+Record on anything that will run for twenty-five minutes. Audio is enough here —
+these are shorter answers and the review is about composure rather than posture.
 
-## What to commit to your portfolio repo
+Commit the notes and link the recording:
 
 ```
 crunchtime-interview-prep-<you>/
@@ -110,3 +203,39 @@ crunchtime-interview-prep-<you>/
 ```
 
 When both challenges are pushed and your story bank is assembled, you're ready for the [mini-project](../mini-project/README.md) coverage matrix — and for **Mock #3** next week, the first full loop that grades the behavioral round.
+
+## Common bugs to catch
+
+- **The fake weakness.** Symptom: "I'm a perfectionist", and an interviewer who
+  has heard it forty times this month. A real weakness with a system around it is
+  the answer.
+- **Bitterness on the why-leaving question.** Symptom: a sentence about your
+  current manager. Everything after it is discounted.
+- **Surrendering information on the improper question.** Symptom: you answered it.
+  Answer the job's concern instead.
+- **Panicking on the curveball.** Symptom: a number with no working, or a joke.
+  Both read as "did not engage".
+- **Pitching before asking on "sell me this pen".** Symptom: a fluent pitch that
+  misses the entire point. Asking what they need it for *is* the signal.
+- **Defending the failure on the follow-up.** Symptom: "with more time I'd have
+  succeeded", which undoes the ownership you spent
+  [Exercise 4](../exercises/exercise-04-failure-story.md) building.
+- **Skipping the practised reset.** Symptom: the first time you ever reset an
+  answer is in a real round, where it costs ten seconds you have not budgeted.
+
+## Acceptance checklist
+
+- [ ] A recording (~25 min) of you answering all eight hardball prompts from memory.
+- [ ] One deliberate practiced recovery reset on the recording.
+- [ ] Notes in `behavioral/mock-rounds/round-02-hardball.md`: for each prompt, which move you used and whether you stayed composed.
+- [ ] The why-leaving answer drafted in writing as well (it's the one most likely to come out bitter under pressure — write it so the words are pre-chosen).
+
+## Stretch
+
+- Have somebody else ask the eight prompts, in a different order, without warning
+  you which is coming. Composure under a known list is not the same skill.
+- Write the version of the weakness answer you would give if the interviewer
+  followed up with *"and what has that cost you recently?"* It is the follow-up
+  that separates a real answer from a rehearsed one.
+- Add two prompts of your own — the two questions you would least like to be
+  asked — and record answers to those as well. You already know what they are.

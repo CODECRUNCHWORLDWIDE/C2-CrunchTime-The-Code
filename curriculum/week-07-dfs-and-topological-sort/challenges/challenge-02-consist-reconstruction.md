@@ -911,15 +911,6 @@ stack are the loop; that is the first stretch.
   is the same claim the contract makes and now you have it from an independent
   direction. Do not run this past about nine wagons: `permutations` is
   factorial, and 12 wagons is already half a billion arrangements.
-
-**Practice elsewhere.** The same "derive the edges, then topologically sort"
-move appears as
-[LeetCode 269 · Alien Dictionary](https://leetcode.com/problems/alien-dictionary/)
-if you want a judge to run against — ours differs in that the evidence is many
-partial sightings rather than one fully sorted list, there is no prefix rule to
-trip over, and the answer carries a verdict separating a forced order from a
-merely possible one.
-
 That is the week's problem set. Take the [quiz](../quiz.md), work through the
 [homework](../homework/README.md), then ship the
 [mini-project](../mini-project/README.md).

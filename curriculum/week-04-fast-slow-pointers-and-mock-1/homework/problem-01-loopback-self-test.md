@@ -508,11 +508,4 @@ loop, and none of them will say so in the prompt.
   the fabric, and you have your counterexample in one line. Having both
   directions settled is what lets you say "one of these is redundant, and it is
   *that* one" instead of "one of these is probably redundant".
-
-**Practice elsewhere.** The same pattern appears as
-[LeetCode 287 · Find the Duplicate Number](https://leetcode.com/problems/find-the-duplicate-number/)
-if you want a judge to run against. That contract guarantees a duplicate exists
-and asks for its value rather than for the shape of the walk, so it never makes
-you run all three phases. Solve this one first.
-
 Next: [Problem 2 — Trim the Duplicate Scan](./problem-02-trim-scan.md).

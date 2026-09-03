@@ -1,154 +1,294 @@
 # Week 9 — Homework
 
-Six practice problems plus the rubric. Allow ~5 hours total. Do the problems on your own with the lectures *closed*; consult the lecture or the resources only after a 15-minute stuck-period on a single problem.
+Six problems, all original, all with a runnable worked answer beside this page.
+Allow about five hours. Do each with the lectures closed; open the worked answer
+only after your own version runs, or after fifteen minutes stuck on one step.
 
-The problems are chosen to drill the six Week-9 sub-patterns: trie API, autocomplete, word-break variant, KMP, trie + DFS, and trie-shortest-prefix. By Sunday, the recognition step on each should be reflexive.
+The six cover every shape the week teaches: a wildcard walk, a chain of prefixes,
+the border table, a tree built backwards, a tree that queries itself, and a walk
+carrying a budget.
 
-| # | Problem | Pattern | Source | Est. time |
-|---|---------|---------|--------|----------:|
-| 1 | Design Add and Search Words Data Structure | Trie + wildcard recursion | LeetCode 211 | 45 min |
-| 2 | Longest Word in Dictionary | Trie + BFS / DFS over the trie | LeetCode 720 | 35 min |
-| 3 | Repeated Substring Pattern | KMP failure-function application | LeetCode 459 | 40 min |
-| 4 | Stream of Characters | Reverse-trie + streaming match | LeetCode 1032 | 50 min |
-| 5 | Concatenated Words | Trie + DP composition | LeetCode 472 | 60 min |
-| 6 | Implement Magic Dictionary | Trie + one-character-edit recursion | LeetCode 676 | 40 min |
+| # | Problem | Sub-shape | Est. time |
+|---|---------|-----------|----------:|
+| 1 | [The Smudged Stencil](#problem-1--the-smudged-stencil) | Prefix tree with a single-character wildcard | 45 min |
+| 2 | [The Growable Dock Sign](#problem-2--the-growable-dock-sign) | Every prefix must itself be a word | 40 min |
+| 3 | [The Splice Point](#problem-3--the-splice-point) | The border table, and a scan that never backs up | 55 min |
+| 4 | [The Radio Tail Watch](#problem-4--the-radio-tail-watch) | A tree built backwards, walked from the newest letter | 50 min |
+| 5 | [The Double-Stamped Label](#problem-5--the-double-stamped-label) | A tree queried against its own contents | 55 min |
+| 6 | [The One-Key Typo Desk](#problem-6--the-one-key-typo-desk) | A walk carrying a budget of one mismatch | 50 min |
 
-Problems 1, 2, and 6 are the high-yield trie drills; problem 3 is the KMP rep; problem 4 is the streaming/reverse-trie composition; problem 5 is the trie + DP composition that combines two Week-9 primitives.
+Every worked answer runs on its own with no arguments and no packages, and ends
+by printing `All checks passed.` Run one like this:
 
----
-
-## Problem 1 — Design Add and Search Words Data Structure (LC 211)
-
-**Spec.** Design a data structure that supports two operations: `add_word(../word)` adds a word; `search(../word)` returns True if any added word matches `word`, where `word` may contain the character `'.'` matching any single character.
-
-**Constraints.** `1 <= len(../word) <= 25`; `add_word` consists of lowercase letters; `search` may contain `'.'`; up to `10^4` calls.
-
-**Pattern.** Trie + wildcard recursion. The `'.'` triggers a recursive descent into every child at that level.
-
-**Hint.** `class WordDictionary: def __init__(../self): self.root: Dict[str, Any] = {}`. `add_word` is the canonical insert. `search` is a recursive helper that, at each level, either descends on the specific character or — if the character is `'.'` — iterates every child and recurses, returning True if any branch returns True.
-
-**Acceptance.** Function signature `class WordDictionary: def add_word(self, word: str) -> None; def search(self, word: str) -> bool`. Time: `O(../L)` for `add_word`; `O(26^d * L)` worst case for `search` where `d` is the number of `'.'` characters. Space: `O(../N)` for the trie.
-
-**Variant.** What if the alphabet were Unicode? The `26` becomes the alphabet size; the asymptotic is unchanged. Mention in the write-up.
+```bash
+python problem-01-smudged-stencil-solution.py
+```
 
 ---
 
-## Problem 2 — Longest Word in Dictionary (LC 720)
+## Problem 1 — The Smudged Stencil
 
-**Spec.** Given a list of strings, return the longest word in the list that can be built one character at a time by other words from the list. If more than one tie, return the lexicographically smallest.
+**The brief.** Depot crates carry a stencilled code. Rain smudges letters, and
+the clerk types a question mark where a letter is unreadable. **One question mark
+stands for exactly one letter** — never for none, and never for two. Given the
+register of real codes and a smudged pattern, list every code the pattern could
+be, A to Z.
 
-**Constraints.** `1 <= len(../words) <= 1000`; `1 <= len(../word) <= 30`.
+**The data.** Eight stencils: `CRATE GRATE GRAPE CRANE PLATE SLATE SLATS PLAN`.
 
-**Pattern.** Trie + BFS or DFS over the trie. Sort the words first to break ties; then for each word, check whether every prefix is in the trie (i.e., every prefix has `END` marked).
+**Constraints.** The wildcard is exactly one letter, so a four-character pattern
+can only match a four-character code. `??` matches nothing here, because no code
+is two letters long — and that is a real answer, not an empty one.
 
-**Hint.** Sort by `(../-len(w), w)`; build the trie; iterate sorted words; for each word, walk the trie and check `END in node` at every step except the root. The first word that passes the check is the answer.
+**Answer.** Build a prefix tree over the codes, then walk it one character at a
+time. On a letter, descend that one branch. On a `?`, **descend every branch**.
+At the end of the pattern, collect the codes at nodes marked as ends.
 
-**Acceptance.** Function signature `longest_word(words: List[str]) -> str`. Time: `O(N log N + N L)` where `N = len(../words)` and `L` is the longest word length. Space: `O(sum of lengths)`.
+The reason the tree beats scanning the register is what happens on `?????`: a
+scan tries every code against every position, while the tree's five-wildcard walk
+visits each node once and stops dead on any branch that runs out of depth. Sorted
+output falls out of walking the branches in order rather than needing a sort.
 
-**Variant.** Alternative without sorting: BFS over the trie, level by level, tracking the longest fully-marked path. The BFS version is one pass over the trie and asymptotically slightly faster on dense inputs; the sort version is shorter to write.
+On this data `?????` gives **seven** codes — every five-letter stencil — and
+`PL??` gives one, `PLAN`.
 
----
+**Signatures.** `build_stencil_tree(codes)`, `matches(root, pattern)`.
 
-## Problem 3 — Repeated Substring Pattern (LC 459)
+**Watch for.** Letting `?` match zero characters or two — the length has to be
+exact. Returning codes from nodes that are merely *on the way* rather than marked
+as ends: `PL??` must not return `PLATE`. And a pattern longer than every code
+returns an empty list, not an error.
 
-**Spec.** Given a string `s`, return True if `s` can be constructed by taking a substring of it and appending multiple copies of that substring together.
-
-**Constraints.** `1 <= len(../s) <= 10^4`; lowercase English letters.
-
-**Pattern.** KMP failure-function application. Build `fail` on `s`; let `n = len(../s)`. Then `s` is a repeat iff `n % (n - fail[n - 1]) == 0` and `fail[n - 1] > 0`.
-
-**Hint.** The period of a string is `n - fail[n - 1]` (the difference between the string length and the longest proper prefix-suffix). The string is a repeat iff the period divides the length.
-
-**Acceptance.** Function signature `repeated_substring_pattern(s: str) -> bool`. Time: `O(../n)`. Space: `O(../n)` for the failure array.
-
-**Variant.** The folk-trick alternative: `s in (s + s)[1:-1]` is `O(../n)` in CPython 3.10+ thanks to the two-way matcher; mention as the production answer. The KMP version is the explicit-defense form.
-
----
-
-## Problem 4 — Stream of Characters (LC 1032)
-
-**Spec.** Design a data structure with two methods: `__init__(../words)` initializes with a list of words; `query(../letter)` records `letter` and returns True if any suffix of the current stream is in `words`.
-
-**Constraints.** `1 <= len(../words) <= 2000`; `1 <= len(../word) <= 200`; up to `4 * 10^4` query calls.
-
-**Pattern.** Reverse-trie. Build a trie of the *reversed* words; on each query, walk the reversed accumulated stream against the trie and return True if any path reaches an `END`.
-
-**Hint.** Storing reversed words lets us match suffixes by walking the stream backwards. The query buffer grows; truncate it to the longest word's length to bound memory.
-
-**Acceptance.** Function signature `class StreamChecker: def __init__(self, words: List[str]); def query(self, letter: str) -> bool`. Time per query: `O(../L)` where `L` is the longest word. Space: `O(W L)` for the trie + `O(../L)` for the buffer.
-
-**Variant.** Aho-Corasick is the heavier-weight answer: build an Aho-Corasick automaton from the patterns, then process the stream character by character. Mention by name; do not implement.
+**Worked answer.** [`problem-01-smudged-stencil-solution.py`](./problem-01-smudged-stencil-solution.py)
 
 ---
 
-## Problem 5 — Concatenated Words (LC 472)
+## Problem 2 — The Growable Dock Sign
 
-**Spec.** Given a list of strings, return all strings that can be formed by concatenating at least two other strings from the list.
+**The brief.** A dock sign is built by sliding letter tiles on, one at a time,
+left to right. **Every stage has to be a code the harbour already recognises** —
+you cannot show a half-finished word to the public. Find the longest sign that
+can be built this way, and report the whole build, stage by stage.
 
-**Constraints.** `1 <= len(../words) <= 10^4`; `1 <= sum(../len(w) for w in words) <= 10^5`; lowercase English letters.
+**The data.** Fourteen codes, including the chains `B BE BER BERT BERTH`,
+`D DO DOC DOCK DOCKS`, and `Q QU QUAY`, plus the orphan `TIDE`.
 
-**Pattern.** Trie + DP. For each word, run the Word Break check (Exercise 2) against the trie of all *other* words; if it segments into at least two pieces, include it.
+**Constraints.** `DOCKS` is five letters and so is `BERTH`, so the tie has to
+resolve by a stated rule. `TIDE` is longer than `QUAY` and buildable at no stage
+past its first letter — length alone is not the answer.
 
-**Hint.** Build the trie once from all words. For each word `w`, run a modified Word Break that requires segmentation into at least *two* pieces (not just one); collect the words for which the modified check returns True. The "at least two pieces" requires not counting the word itself as a one-piece trivial segmentation; the cleanest fix is to require `i > 0 or j < len(../w)` at the recursive emit.
+**Answer.** Build the prefix tree, then walk **only through nodes marked as
+ends**. The moment a node on the path is not itself a code, that branch is dead —
+there is no point looking further down it, because every deeper sign would have
+to pass through the stage you just rejected.
 
-**Acceptance.** Function signature `find_all_concatenated_words(words: List[str]) -> List[str]`. Time: `O(../sum(len(w))^2)`. Space: `O(../sum(len(w)))`.
+That early stop is the whole idea. Checking each code's prefixes separately does
+the same work repeatedly; the tree does the chain once and shares it between
+every code that starts the same way.
 
-**Variant.** Sorting words by length first lets the DP build up smaller-word answers before checking longer words; this is a recognition optimization that earns senior signal in the write-up.
+Longest here is **BERTH**, in five stages.
 
----
+**Signatures.** `build_register_tree(codes)`, `longest_build(root)`.
 
-## Problem 6 — Implement Magic Dictionary (LC 676)
+**Watch for.** Walking past a non-end node "just in case" — that is the pruning,
+and without it the answer is `TIDE`. Ties between two equally long chains need a
+rule, and the file states one rather than trusting dictionary order. An empty
+register gives an empty build.
 
-**Spec.** Design a data structure that supports `build_dict(../dict)` and `search(../word)`. `search(../word)` returns True iff there is *exactly one* character in `word` that can be replaced to make the result a stored word.
-
-**Constraints.** `1 <= len(../words) <= 100`; `1 <= len(../word) <= 100`; up to `100` searches.
-
-**Pattern.** Trie + one-character-edit recursion. The recursion tracks "edits used so far" (0 or 1); on a character match it descends with the same edit count; on a mismatch it descends into every other child (consuming the one allowed edit).
-
-**Hint.** Recursive helper `match(node, i, edits_used)`: base case `i == len(../word)` returns True iff `END in node` and `edits_used == 1`. On character match, recurse with the same `edits_used`. If `edits_used == 0`, also try every other child with `edits_used = 1`.
-
-**Acceptance.** Function signature `class MagicDictionary: def build_dict(self, dict: List[str]) -> None; def search(self, word: str) -> bool`. Time per `search`: `O(L * 26)` worst case where `L = len(../word)`. Space: `O(sum of dictionary word lengths)`.
-
-**Variant.** Two-character-edit (../Levenshtein-1) is the natural generalization; same recursion with an `edits_used` budget of up to 2 and a richer branching (insert / delete / substitute). Out of scope but worth mentioning.
-
----
-
-## Rubric
-
-For each problem, your write-up is graded on five dimensions:
-
-| Dimension | Weight | What "yes" looks like |
-|-----------|-------:|----------------------|
-| Research constraints (pattern recognition) | 25% | 30-second memo at the top; pattern named in one of the six families; alternative rejected with reason |
-| Assess options | 15% | Numbered steps; data structure choice stated; recursion / iteration form noted |
-| Make the solution (../correctness) | 25% | All LC sample cases pass; no off-by-one; the canonical bug list checked |
-| Make the solution (../style) | 10% | Type hints everywhere; docstrings on every function; PEP 8; idiomatic Python |
-| Examine (../defense) | 25% | Time + space bounds with derivation; one variant mentioned; trade against the alternative algorithm stated |
-
-The Research constraints weight is the highest for a reason. Phase 2 grades recognition heavily; you can have a working implementation and still lose the rep if you cannot defend the choice over the alternative.
+**Worked answer.** [`problem-02-growable-dock-sign-solution.py`](./problem-02-growable-dock-sign-solution.py)
 
 ---
 
-## Suggested order
+## Problem 3 — The Splice Point
 
-1. **Problem 1** first — it cements the trie API with a new operation (`search` with wildcards). This is the highest recognition density of the six.
-2. **Problem 6** second — Magic Dictionary is structurally similar to Problem 1 (trie + recursion) and the lift is small once Problem 1 is fluent.
-3. **Problem 2** third — Longest Word in Dictionary is a clean trie-walk problem; do it as a recognition rep on the `END`-at-every-step pattern.
-4. **Problem 3** fourth — Repeated Substring Pattern is the KMP rep. Aim for 40 minutes; the failure-function bookkeeping is the entire trick.
-5. **Problem 4** fifth — Stream of Characters is the trick-stretch (../reverse-trie); leave 50 minutes.
-6. **Problem 5** last — Concatenated Words is the composition; the longest at 60 minutes. Save for the latter half of the week.
+**The brief.** A cable spool is labelled with the colour bands printed along it,
+one letter per band. A splice code is a short band sequence the workshop wants to
+find. Report **every** position where the code appears — **including positions
+that overlap an earlier hit**, because a splice can share bands with its
+neighbour.
 
-If time runs out, prioritize Problems 1, 3, and 5. They are the three patterns most likely to appear on Mock #2.
+**The data.** Label `RGRGRGBRGRGRGR`, code `RGRGR`. Plus a 4000-band label built
+from a repeating pattern, to make the cost visible.
+
+**Constraints.** Overlaps count. On `BBBB` looking for `BB` the answer is
+`[0, 1, 2]`, not `[0, 2]`, and getting that right is what stops you advancing by
+the code's whole length after a hit.
+
+**Answer.** The **border table**: for each position in the code, the length of
+the longest proper prefix that is also a suffix ending there. On a mismatch it
+says how far back to slide the code without moving the position in the label at
+all — so the label is read once, forwards, and never backed up.
+
+The nested-loop version re-reads bands it has already seen. On a label built from
+a repeating pattern that is nearly all of them, which is exactly the case here
+and exactly why the long label is in the data.
+
+On the shipped label the hits are `[0, 7, 9]` — 7 and 9 overlap.
+
+**Signatures.** `border_table(code)`, `splice_points(label, code)`.
+
+**Watch for.** Advancing by the code length after a hit, which drops every
+overlap. Building the table with `>=` where `>` belongs, which makes a border
+claim a prefix is its own proper prefix. An empty code, or a code longer than the
+label, returns an empty list.
+
+**Worked answer.** [`problem-03-splice-point-solution.py`](./problem-03-splice-point-solution.py)
 
 ---
 
-## Acceptance
+## Problem 4 — The Radio Tail Watch
 
-The week's homework is complete when:
+**The brief.** A harbour radio desk receives letters one at a time, forever.
+Certain words are **call words** the duty officer must be told about, and a call
+word counts **only when it lands at the very end** of what has arrived so far.
 
-- All six problems have a committed implementation under `homework/c2-week-09/`.
-- All six problems have a FRAME write-up under `frame-writeups/c2-week-09/homework/`.
-- The quiz is taken and scored.
-- The score is in the retrospective: which sub-pattern needs the most reps before Mock #2.
+**The data.** Call words `PAN PANPAN MAY MAYDAY`; the stream `QPANPANZMAYDAY`.
 
-The retrospective is the single most useful artifact this week. The pattern most candidates need more reps on after W9 is "KMP recognition under interview pressure" — the failure-function defense is short but easy to flub on the spot. Drill it in writing, then drill it aloud.
+**Constraints.** The stream never ends, so nothing may be re-scanned from the
+start. `PANPAN` contains `PAN`, so one letter can complete two different call
+words at different times — and the answer at each letter is which call word ended
+*there*.
+
+**Answer.** Build the tree out of the call words **spelled backwards**. Then a
+walk from the newest letter backwards through the stream is an ordinary walk down
+a prefix tree, and it stops as soon as no branch matches.
+
+That inversion is the whole trick and it is worth a paragraph in the write-up:
+the interesting end of a stream is the newest letter, and a prefix tree only walks
+forwards, so you reverse the words rather than the stream.
+
+**Signatures.** `TailWatch` with the letter-at-a-time interface.
+
+**Watch for.** Storing the whole stream and re-searching it — correct, and
+unbounded in memory on a stream that does not end. Reporting a call word that
+ends anywhere but at the newest letter. And the walk must stop at the deepest
+matching branch rather than walking the whole history back.
+
+**Worked answer.** [`problem-04-radio-tail-watch-solution.py`](./problem-04-radio-tail-watch-solution.py)
+
+---
+
+## Problem 5 — The Double-Stamped Label
+
+**The brief.** A boatyard stamps part labels from a set of metal dies, one die per
+registered code. Some labels were stamped with two or more dies in a row, so the
+label reads as one code but is really several registered codes joined end to end.
+Find every registered code that is **exactly two or more other registered codes**
+laid end to end, longest first.
+
+**The data.** Eleven die codes including `FIN`, `BOARD`, `FINBOARD`, `KEEL`,
+`SON`, `KEELSON`, `BOARDKEELSON`, `MAST`, `MASTFIN`, `FINBOARDMAST`, `RUDDER`.
+
+**Constraints.** "Two or more" is the rule, so a code is not double-stamped by
+being itself. `FINBOARDMAST` is three dies, which is why the rule is not "exactly
+two". And `BOARDKEELSON` is made from `BOARD` plus `KEELSON`, which is itself
+made from two dies — the decomposition does not have to be into single dies only.
+
+**Answer.** Build the tree over all the codes, then for each code walk it against
+**the tree it is a member of**, splitting wherever a registered code ends and
+recursing on the remainder. Count the pieces; two or more means double-stamped.
+
+The subtlety is that a code must not match itself as its own only piece, which is
+what the "two or more" count is really enforcing.
+
+Five codes qualify here, longest first: `BOARDKEELSON`, `FINBOARDMAST`,
+`FINBOARD`, `KEELSON`, `MASTFIN`.
+
+**Signatures.** `build_die_tree(codes)`, `is_double_stamped(root, code)`,
+`double_stamped(codes)`.
+
+**Watch for.** Counting a code as made of one piece — itself. Missing the
+three-piece cases by only ever trying one split. Re-walking the same suffix
+repeatedly on a large register, which is where memoising the suffix pays.
+
+**Worked answer.** [`problem-05-double-stamped-label-solution.py`](./problem-05-double-stamped-label-solution.py)
+
+---
+
+## Problem 6 — The One-Key Typo Desk
+
+**The brief.** The yard office types four-letter locker codes all day, and the
+commonest mistake is hitting one neighbouring key. The desk answers one question:
+which real codes are **exactly one letter** away from what was typed?
+
+Exactly one. A code that matches perfectly is not an answer, because nothing was
+mistyped. A code two letters away is not an answer either.
+
+**The data.** Lockers `HOLD HOLE HULL BOLT BOLD BOAT OARS`; typed strings
+including `HOLD`, `BOLD`, `BOAT`, `HULL`, and the wrong-length `HOL` and `HOLDS`.
+
+**Constraints.** Only substitutions count — no insertions, no deletions — so a
+code of a different length is never an answer. `HOL` and `HOLDS` both return
+nothing, and that is the constraint doing its job rather than a gap in the data.
+
+**Answer.** Walk the tree carrying a **budget of one swap**. While the budget is
+unspent the walk may branch into every letter other than the typed one, spending
+the budget as it does. Once it is spent the walk must follow the typed letters
+exactly. At the end, accept only nodes that are marked as ends **and** whose
+budget was actually spent.
+
+That last clause is the one people miss: a walk that never spends the budget has
+found the typed code itself, which is not a typo.
+
+`HOLD` gives `BOLD` and `HOLE`; `BOAT` gives only `BOLT`; `HULL` gives nothing.
+
+**Signatures.** `build_locker_tree(codes)`, `one_key_away(root, typed)`.
+
+**Watch for.** Returning the exact match — the budget must be spent. Allowing the
+budget to go negative, which quietly turns this into two-letter matching. Walking
+a branch after the budget is spent and the letters diverge.
+
+**Worked answer.** [`problem-06-one-key-typo-desk-solution.py`](./problem-06-one-key-typo-desk-solution.py)
+
+---
+
+## Rubric (5 axes, 4 points each)
+
+| Axis | What "great" looks like |
+|------|--------------------------|
+| Frame the problem | The memo names the structure — prefix tree, border table, reversed tree, budgeted walk — and what a node means in this problem. |
+| Reason about options | Four to six bullets before any code, with the scan-everything alternative named and costed rather than dismissed. |
+| Assemble the solution | Idiomatic Python; one clear representation for a node; type hints on every function. |
+| Measure it | A trace on at least two inputs, one of them a degenerate case. |
+| Evaluate the cost | Time, space, best/average/worst, the trade-off, and the improvement — in terms of the register's own size, not abstract n. |
+
+Twenty points per problem, 120 for the set. Score yourself honestly; the number
+is only useful if it is true.
+
+---
+
+## How to submit
+
+Commit your write-ups under `frame-writeups/c2-week-09/homework/`, one file per
+problem:
+
+```
+frame-writeups/c2-week-09/homework/
+├── problem-1-smudged-stencil.md
+├── problem-2-growable-dock-sign.md
+├── problem-3-splice-point.md
+├── problem-4-radio-tail-watch.md
+├── problem-5-double-stamped-label.md
+└── problem-6-one-key-typo-desk.md
+```
+
+Each file is 100–200 lines: the five FRAME sections plus a five-line memo at the
+top. The code is part of the Assemble section, not a separate file.
+
+When the set is done, push and move on to the
+[mini-project](../mini-project/README.md).
+
+---
+
+## Time budget
+
+| Problem | Solve | Write-up | Total |
+|---------|------:|---------:|------:|
+| 1 — Smudged Stencil | 35 min | 10 min | 45 min |
+| 2 — Growable Dock Sign | 30 min | 10 min | 40 min |
+| 3 — Splice Point | 40 min | 15 min | 55 min |
+| 4 — Radio Tail Watch | 35 min | 15 min | 50 min |
+| 5 — Double-Stamped Label | 40 min | 15 min | 55 min |
+| 6 — One-Key Typo Desk | 35 min | 15 min | 50 min |
+
+About five hours, and Mock #2 grades the recognition step rather than the code.

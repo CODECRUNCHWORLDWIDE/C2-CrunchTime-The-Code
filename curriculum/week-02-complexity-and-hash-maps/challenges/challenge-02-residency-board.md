@@ -1041,9 +1041,6 @@ t". Every one of them is this trick with a different second structure.
   with that count — which is the same trick you just learned, applied twice.
   That is genuinely a hard problem and a fair thing to attempt only after this
   page is comfortable.
-
-**Practice elsewhere.** The same pattern appears as [LeetCode 146 · LRU Cache](https://leetcode.com/problems/lru-cache/) if you want a judge to run against. The contract there has a single read method, signals absence with `-1` rather than `None`, and makes neither the eviction nor the internal ordering observable — so it never forces the read-versus-use split, which is the half of this page that a remembered solution cannot supply.
-
 ---
 
 That concludes Week 2's challenges. Take the [quiz](../quiz.md), do the

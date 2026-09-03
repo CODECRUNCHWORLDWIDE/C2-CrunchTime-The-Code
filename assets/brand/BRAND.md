@@ -70,7 +70,7 @@ We **keep** the family display + body faces and **add** one technical accent.
 |------|--------|-----|
 | Display | EB Garamond (italic 500) | Section headers, chapter numerals — same as family |
 | Body | Lora | Long-form lecture notes, study plans |
-| **Mono / UI / code / FRAME letters** | **JetBrains Mono** | **C2 prefers JetBrains Mono for nearly every UI element** — buttons, badges, the U-M-P-I-R-E step chips, terminal output. This is the visual signal: "you are reading something that runs." |
+| **Mono / UI / code / FRAME letters** | **JetBrains Mono** | **C2 prefers JetBrains Mono for nearly every UI element** — buttons, badges, the F-R-A-M-E step chips, terminal output. This is the visual signal: "you are reading something that runs." |
 | Optional | Inter | Acceptable substitute for JetBrains Mono in dense UI tables (e.g., the pattern grid). |
 
 > If you have to pick one face that makes C2 feel different from C1, it's **JetBrains Mono used as a UI face**, not just as code. C1 uses mono only in code blocks. C2 uses mono in chrome.
@@ -79,7 +79,7 @@ We **keep** the family display + body faces and **add** one technical accent.
 
 ## The FRAME glyphs
 
-The six letters U-M-P-I-R-E are the most recognizable C2 visual element. Treat them as a system:
+The five letters F-R-A-M-E are the most recognisable C2 visual element. Treat them as a system:
 
 ```
 ┌───┐  ┌───┐  ┌───┐  ┌───┐  ┌───┐
@@ -91,9 +91,9 @@ Rules:
 
 - **Always** in JetBrains Mono, weight 700, monospace.
 - **Always** with the hairline frame around each letter (`--rule` color, 1px).
-- **Always** in this order. Never reorder, never abbreviate to "UM" or "UPI."
+- **Always** in this order. Never reorder, and never abbreviate to "FR" or "FRA."
 - **Step active state:** swap the frame color to `--teal-deep` and fill the background with `--teal-soft`. Inactive frames stay on parchment with rule color.
-- **Letters retain meaning under translation.** Don't localize the letters. In a Spanish edition, the words below the letters translate (Entender / Coincidir / Planear / …), but the letters stay U-M-P-I-R-E.
+- **Letters retain meaning under translation.** Do not localise the letters. In a Spanish edition the words below them translate (Enmarcar / Restricciones / Alternativas / Materializar / Examinar), and the letters stay F-R-A-M-E.
 
 This glyph block is C2's equivalent of the C1 gold dot — the visual handshake of the program.
 

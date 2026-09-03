@@ -439,8 +439,6 @@ If you can answer all six without hesitation, proceed to [Lecture 2 — The Shri
 
 ## Further reading
 
-- **NeetCode's free sliding-window playlist** (YouTube): a clean, free run-through of 10+ canonical problems. Skim two or three videos at 1.5×.
 - **CP-Algorithms — Sliding Window Maximum**: <https://cp-algorithms.com/data_structures/deque.html#sliding-window-minimum> — preview of the deque-based window-max idiom for Week 9.
-- **LeetCode Sliding Window tag** (free practice ground): <https://leetcode.com/tag/sliding-window/> — pick titles and predict fixed vs variable before reading constraints.
 
 Next: [Lecture 2 — The Shrinking and Growing Mechanics](./02-the-shrinking-and-growing-mechanics.md).

@@ -31,17 +31,6 @@ If a write-up mentions "non-negative weights" and "shortest path" — it is almo
 
 ## Free practice platforms
 
-- **LeetCode — Shortest Path tag** (free): <https://leetcode.com/tag/shortest-path/>
-- **LeetCode — Graph tag** (free): <https://leetcode.com/tag/graph/>
-- **LeetCode — Union Find tag** (free): <https://leetcode.com/tag/union-find/>
-- **LeetCode — Minimum Spanning Tree tag** (free): <https://leetcode.com/tag/minimum-spanning-tree/>
-- **LeetCode — Network Delay Time** (LC 743): <https://leetcode.com/problems/network-delay-time/> — the canonical Dijkstra problem; Exercise 1 exactly.
-- **LeetCode — Cheapest Flights Within K Stops** (LC 787): <https://leetcode.com/problems/cheapest-flights-within-k-stops/> — the canonical hop-constrained Dijkstra / Bellman-Ford; Exercise 2 and Challenge 1.
-- **LeetCode — Number of Provinces** (LC 547): <https://leetcode.com/problems/number-of-provinces/> — the canonical DSU warm-up; Exercise 3 exactly.
-- **LeetCode — Redundant Connection** (LC 684): <https://leetcode.com/problems/redundant-connection/> — the DSU half of the mini-project.
-- **LeetCode — Smallest String With Swaps** (LC 1202): <https://leetcode.com/problems/smallest-string-with-swaps/> — Challenge 2.
-- **LeetCode — Accounts Merge** (LC 721): <https://leetcode.com/problems/accounts-merge/> — the trick DSU problem; homework.
-- **LeetCode — Min Cost to Connect All Points** (LC 1584): <https://leetcode.com/problems/min-cost-to-connect-all-points/> — the canonical MST disguised problem.
 - **HackerRank — Graph Theory domain**: <https://www.hackerrank.com/domains/algorithms?filters%5Bsubdomains%5D%5B%5D=graph-theory>
 - **CSES Problem Set — Graph Algorithms section**: <https://cses.fi/problemset/> — the canonical curated set; several problems whose intended solution is Dijkstra, Bellman-Ford, MST, or DSU.
 
@@ -69,7 +58,6 @@ Three observations:
 import heapq
 from collections import defaultdict
 from typing import Dict, List, Tuple
-
 
 def dijkstra(graph: Dict[int, List[Tuple[int, int]]], source: int) -> Dict[int, float]:
     """Return shortest distances from `source` to every reachable node.
@@ -117,7 +105,6 @@ Three observations:
 
 ```python
 from typing import List
-
 
 class UnionFind:
     """DSU with path compression and union by rank."""

@@ -1,9 +1,9 @@
 # Lecture 2 — Bitmasks, Subset Enumeration, and Bit DP
 
 > **Duration:** ~2 hours.
-> **Outcome:** You can represent a subset of `n` items as an `n`-bit integer, enumerate every subset by counting `0 .. 2**n - 1` (Subsets, LC 78), iterate the submasks of a mask, recognize when a problem is bitmask DP (state = subset) at the interview level, and apply the Counting Bits recurrence `dp[i] = dp[i >> 1] + (i & 1)` (LC 338) with a full worked FRAME.
+> **Outcome:** You can represent a subset of `n` items as an `n`-bit integer, enumerate every subset by counting `0 .. 2**n - 1` (the glaze sample set, iterate the submasks of a mask, recognize when a problem is bitmask DP (state = subset) at the interview level, and apply the set-bit tally recurrence `dp[i] = dp[i >> 1] + (i & 1)` with a full worked FRAME.
 
-Lecture 1 used bits as *values* — folding, isolating, counting. This lecture uses bits as a *set*: each bit is a membership flag for one of `n` items. That single reframing — "an `n`-bit integer is a subset of `{0, …, n-1}`" — unlocks subset enumeration, submask iteration, and the recognition-grade view of bitmask DP. We close with Counting Bits, the cleanest bit-DP recurrence in the canon.
+Lecture 1 used bits as *values* — folding, isolating, counting. This lecture uses bits as a *set*: each bit is a membership flag for one of `n` items. That single reframing — "an `n`-bit integer is a subset of `{0, …, n-1}`" — unlocks subset enumeration, submask iteration, and the recognition-grade view of bitmask DP. We close with the set-bit tally, the cleanest bit-DP recurrence in the canon.
 
 ---
 
@@ -37,11 +37,11 @@ Notice these are exactly the single-bit operations from Lecture 1 §3, reinterpr
 
 ---
 
-## 2. Subset enumeration — counting to 2^n (Subsets, LC 78)
+## 2. Subset enumeration — counting to 2^n
 
 To enumerate every subset of `n` items, count an integer `mask` from `0` to `2**n - 1`. There are exactly `2**n` integers in that range, one per subset. For each `mask`, read off which bits are set to recover the subset.
 
-This is the bitmask solution to Subsets (LC 78): given a list of `n` distinct integers, return all `2**n` subsets.
+This is the bitmask answer to the power-set question: given a list of `n` distinct items, return all `2**n` subsets. [Exercise 3](../exercises/exercise-03-mask-roster.md) is this, on a named roster.
 
 ```python
 from typing import List
@@ -120,9 +120,9 @@ Here is the honest interview register, and you should internalize it precisely: 
 
 ---
 
-## 5. Worked FRAME — Counting Bits (LC 338)
+## 5. Worked FRAME — the set-bit table
 
-Counting Bits is the cleanest bit-DP recurrence in the interview canon, and it is Exercise 2. Full method.
+the set-bit tally is the cleanest bit-DP recurrence in the interview canon, and it is Exercise 2. Full method.
 
 ### Problem statement
 
@@ -151,7 +151,7 @@ flowchart LR
   A["dp of i right shift 1"] --> B["Add i bitwise AND 1"]
   B --> C["dp of i"]
 ```
-*The Counting Bits recurrence builds each answer from one smaller already-computed subproblem.*
+*The the set-bit tally recurrence builds each answer from one smaller already-computed subproblem.*
 
 > **The 30-second Research-constraints memo (bit DP):**
 > *"This is bit DP — I build `dp[i]` from a strictly smaller, already-computed subproblem in `O(1)`. The recurrence is `dp[i] = dp[i >> 1] + (i & 1)`: right-shift drops the low bit (so `i >> 1` is `i // 2`, whose count I have), and `i & 1` adds the dropped bit back. One forward pass, `O(n)` time, `O(n)` output. The naive per-element popcount is `O(n log n); this is the `O(n)` answer the follow-up wants."*
@@ -206,7 +206,7 @@ Edge case `n = 0`: the loop does not run; `dp = [0]` ✓.
 
 ---
 
-## 6. A second bit-DP flavor — Bitwise AND of Numbers Range (LC 201)
+## 6. A second bit-DP flavour — the AND of a whole range
 
 Not strictly DP, but it lives in the same "look at the bits structurally" register and is homework problem 4. Given `[left, right]`, return the bitwise AND of every integer in the inclusive range. The insight: the AND of a range equals the **common binary prefix** of `left` and `right`, with all lower bits zeroed — because somewhere in the range a bit flips, and once it flips, the AND of that column is zero. Shift both numbers right until they are equal (that equal value is the common prefix), counting shifts, then shift back.
 
@@ -231,7 +231,7 @@ Without notes, answer:
 
 1. **How do you enumerate every subset of `n` items?** (Loop `mask` over `range(1 << n)`; bit `i` of `mask` means item `i` is in the subset.)
 2. **What is `(1 << n) - 1`, and why does it recur?** (The all-ones mask of width `n` — the full set / universe.)
-3. **State the Counting Bits recurrence and explain each term.** (`dp[i] = dp[i >> 1] + (i & 1)`: `i >> 1` strips the low bit so its count is already known; `i & 1` adds the dropped bit back.)
+3. **State the set-bit tally recurrence and explain each term.** (`dp[i] = dp[i >> 1] + (i & 1)`: `i >> 1` strips the low bit so its count is already known; `i & 1` adds the dropped bit back.)
 4. **What is the recognition cue that bitmask enumeration is on the table?** (`n` is small — roughly `n ≤ 20`, because `2**20` is about a million.)
 5. **What is the honest interview register of bitmask DP?** (Recognition-grade: recognize "state is which subset I've used," name TSP / assignment as archetypes; full implementation is a Phase-4 stretch, not an interview-cold expectation.)
 6. **What does `(sub - 1) & m` do in submask iteration?** (Steps to the next-lower submask of `m`.)

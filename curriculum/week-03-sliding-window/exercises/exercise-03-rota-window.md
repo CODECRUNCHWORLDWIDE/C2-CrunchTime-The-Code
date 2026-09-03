@@ -192,7 +192,15 @@ Real stdout from the shipped file, captured on CPython 3.13.2:
 
 ```text
 $ python exercise-03-rota-window.py
-placeholder
+required ['RN', 'NA']           roster ['RN', 'NA', 'RN', 'LPN', 'RN', 'NA']        -> 3
+required ['RN', 'RN', 'NA']     roster ['RN', 'NA', 'NA', 'RN', 'RN', 'NA']         -> 2
+required ['RN', 'RN']           roster ['RN', 'RN', 'RN', 'LPN']                    -> 2
+required ['LPN']                roster ['RN', 'RN']                                 -> 0
+required ['RN', 'NA']           roster ['RN']                                       -> 0
+required []                     roster ['RN']                                       -> 0
+required ['RN']                 roster []                                           -> 0
+
+All checks passed.
 ```
 
 The second row is the one to study. Both the roster and the requirement are
@@ -224,7 +232,93 @@ confidently and instantly.
 ## The Solution
 
 ```python
-placeholder
+"""exercise-03-rota-window-solution.py — counting compliant staffing blocks.
+
+A ward publishes its roster as one role code per shift. Regulation says any
+run of len(required) consecutive shifts must be covered by exactly the mix in
+`required` — same roles, same counts, order irrelevant.
+
+The window is a fixed size and the state inside it is a frequency table. One
+Counter is built once from the requirement; the other is nudged by two keys
+per slide. The graded line is the deletion: a key sitting at zero is not the
+same as a key that is absent, and Counter equality knows the difference.
+
+The self-checks are the starter's, unchanged. When they all pass the file
+prints "All checks passed."
+"""
+
+from collections import Counter
+
+
+def count_compliant_blocks(roster: list[str], required: list[str]) -> int:
+    """Return how many staffing blocks in the roster are compliant.
+
+    Args:
+        roster: Role codes, one per shift, in chronological order.
+        required: The role mix a block must be covered by. Repeats are real
+            requirements: two "RN" entries mean two registered nurses.
+
+    Returns:
+        The number of contiguous blocks of len(required) shifts whose role
+        counts equal the requirement's. Overlapping blocks count separately.
+        Zero when the requirement is empty or longer than the roster.
+    """
+    size = len(required)
+    if size == 0 or size > len(roster):
+        return 0
+
+    wanted = Counter(required)
+    window = Counter(roster[:size])
+    compliant = 1 if window == wanted else 0
+
+    for right in range(size, len(roster)):
+        window[roster[right]] += 1
+        leaving = roster[right - size]
+        window[leaving] -= 1
+        if window[leaving] == 0:
+            del window[leaving]
+        if window == wanted:
+            compliant += 1
+
+    return compliant
+
+
+# ---- Self-check ----
+if __name__ == "__main__":
+    cases: list[tuple[list[str], list[str]]] = [
+        (["RN", "NA", "RN", "LPN", "RN", "NA"], ["RN", "NA"]),
+        (["RN", "NA", "NA", "RN", "RN", "NA"], ["RN", "RN", "NA"]),
+        (["RN", "RN", "RN", "LPN"], ["RN", "RN"]),
+        (["RN", "RN"], ["LPN"]),
+        (["RN"], ["RN", "NA"]),
+        (["RN"], []),
+        ([], ["RN"]),
+    ]
+    for roster, required in cases:
+        found = count_compliant_blocks(roster, required)
+        print(f"required {str(required):<22} roster {str(roster):<44} -> {found}")
+    print()
+
+    assert count_compliant_blocks(["RN", "NA", "RN", "LPN", "RN", "NA"], ["RN", "NA"]) == 3
+    assert count_compliant_blocks(["RN", "NA", "NA", "RN", "RN", "NA"], ["RN", "RN", "NA"]) == 2
+    assert count_compliant_blocks(["RN", "RN", "RN", "LPN"], ["RN", "RN"]) == 2
+    assert count_compliant_blocks(["RN", "RN"], ["LPN"]) == 0
+    assert count_compliant_blocks(["RN"], ["RN", "NA"]) == 0
+    assert count_compliant_blocks(["RN"], []) == 0
+    assert count_compliant_blocks([], ["RN"]) == 0
+
+    # The incremental table must agree with rebuilding one per block.
+    for roster, required in cases:
+        size = len(required)
+        if size == 0 or size > len(roster):
+            continue
+        slow = sum(
+            Counter(roster[i : i + size]) == Counter(required)
+            for i in range(len(roster) - size + 1)
+        )
+        assert count_compliant_blocks(roster, required) == slow
+
+    print("All checks passed.")
 ```
 
 **Both guards live in one line, and both are contract decisions rather than
@@ -493,7 +587,4 @@ condition)` is clearer when the condition is long.
   actually ask if extra staff turned up. One operator changes in the
   comparison, and the window size stops being forced — which is a much bigger
   change than it sounds, and it is what Challenge 1 is about.
-
-**Practice elsewhere.** The same pattern appears as [LeetCode 567 · Permutation in String](https://leetcode.com/problems/permutation-in-string/) if you want a judge to run against. The contract there returns a boolean and may stop at the first match, so the early return that solves it will fail this one.
-
 Next: [Exercise 4 — The Shortest Catchment](./exercise-04-shortest-catchment.md).

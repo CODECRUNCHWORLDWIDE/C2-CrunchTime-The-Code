@@ -184,7 +184,7 @@ def dfs(node, adj, visited):
 
 Python's default recursion limit is 1000 frames. A path graph of length `>= 1000` will crash. Two fixes:
 
-1. **`sys.setrecursionlimit(10**6)`** — raise the limit. Works for LeetCode (most problems have `V <= 10⁵`); risky in production because Python itself uses some of the stack.
+1. **`sys.setrecursionlimit(10**6)`** — raise the limit. It gets a graded run past a deep input, and it is risky anywhere it matters: the limit is not arbitrary, it is Python's guess at how many frames the C stack can hold, and raising it past what the stack can take turns a clean `RecursionError` into a segfault.
 2. **Iterative DFS with an explicit stack** — Lecture 2. The correct fix for production code.
 
 The interview-tell move: **mention the recursion-limit risk in Research constraints** if `V` could be large. *"The recursive version is `O(V)` stack space — for `V <= 1000` this is fine; for larger `V` I would switch to the iterative version with an explicit stack."*
@@ -299,7 +299,7 @@ Three lines. The recursion is bottom-up: each node returns `1 + max(left_depth, 
 
 ---
 
-## 7. Worked example end-to-end: number of provinces (LC 547)
+## 7. Worked example end-to-end: the mooring chain groups
 
 We will work this in full FRAME, abbreviated. Exercise 1 is this exact problem.
 
@@ -495,6 +495,5 @@ The drill: Exercises 1-3 cover connectivity, iterative DFS, and topological sort
 
 - **Wikipedia — Depth-first search**: <https://en.wikipedia.org/wiki/Depth-first_search> — the pseudocode is the canonical reference.
 - **CSES Competitive Programmer's Handbook — Chapters 12 and 16**: <https://cses.fi/book/book.pdf> — twenty minutes; the cleanest free pseudocode treatment of DFS, cycle detection, and topological sort.
-- **LeetCode 547, 200, 207, 210, 261, 802** — six problems that anchor the connectivity / cycle / topo families. Exercises and homework cover four of them; the others are stretch.
 
 Next: [Lecture 2 — Iterative DFS](./02-iterative-dfs.md).

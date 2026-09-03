@@ -201,7 +201,7 @@ When you see a weighted-graph problem, walk this in 30 seconds:
           (Lecture 2 §2, Exercise 2, Challenge 1.)
 ```
 
-The signal hierarchy is **weights first, sign second, source-count third, hop-count last**. Most LeetCode prompts settle the algorithm at step 1 or 2; the constraint signals at steps 3-5 are the discriminating moves for senior-level problems.
+The signal hierarchy is **weights first, sign second, source-count third, hop-count last**. Most prompts settle the algorithm at step 1 or 2; the constraint signals at steps 3-5 are the discriminating moves for senior-level problems.
 
 The negative-space reflections — what is *not* a shortest-path problem — are equally graded:
 
@@ -332,7 +332,7 @@ The `prev` dictionary doubles the space (still `O(V)`) and adds two lines to the
 
 Junior-grade implementations of Dijkstra fail in four predictable ways. Recognizing each bug pattern lets you debug your own implementation in under a minute.
 
-**Bug 1 — Forgetting the lazy-delete guard.** Without `if d > dist[node]: continue`, the algorithm is still correct but does `O(E)` extra heap pops. On large graphs this is the difference between accepted and TLE on LeetCode 743.
+**Bug 1 — Forgetting the lazy-delete guard.** Without `if d > dist[node]: continue`, the algorithm is still correct but does `O(E)` extra heap pops. On large graphs this is the difference between finishing and tLE on.
 
 ```python
 # WRONG (slow but correct):

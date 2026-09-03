@@ -843,13 +843,6 @@ needed the circle itself rather than just its existence."*
 
   Nothing in the refit is free — every job is tied to something. That is itself
   a finding, and it is the kind of thing worth saying in a Examine step.
-
-**Practice elsewhere.** The same pattern appears as
-[LeetCode 210 · Course Schedule II](https://leetcode.com/problems/course-schedule-ii/)
-if you want a judge to run against — though that contract accepts any valid
-order and returns an empty list on failure, where ours fixes the tie-break and
-hands back the blocked jobs rather than throwing that information away.
-
 When your plan is right, move on to
 [Exercise 5 — Firmware Install Order](./exercise-05-firmware-install-order.md),
 which answers the same question from the other end.

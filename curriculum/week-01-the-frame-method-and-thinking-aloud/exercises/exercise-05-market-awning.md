@@ -473,9 +473,6 @@ linear one, which is why the greedy proof is not optional.
 - [ ] There is no nested loop anywhere in your solution.
 - [ ] The function has type hints and a docstring.
 - [ ] Committed to Git with a message like `Add Week 1 exercise 5: market awning`.
-
-**Practice elsewhere.** The same pattern appears as [LeetCode 11 · Container With Most Water](https://leetcode.com/problems/container-with-most-water/) if you want a judge to run against. The width there is measured differently, so every numeric answer differs and the adjacent-pair case behaves differently too — work the geometry from our definition rather than from a remembered formula.
-
 ## Stretch
 
 - **Return which two poles win, not just the area.**

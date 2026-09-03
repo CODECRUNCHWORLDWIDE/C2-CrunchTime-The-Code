@@ -183,7 +183,7 @@ The outer loop is the level. The inner `for _ in range(len(queue))` consumes exa
 | "Shortest path length but with very few targets" | A (per-node distance) |
 | "Level order traversal of a tree" | B (level tracking) |
 | "Right side view / leftmost at each level / by-level operation" | B (level tracking) |
-| "Word Ladder — shortest transformation length" | Either; B is cleaner because the answer is a level count |
+| "the cable pull — shortest transformation length" | Either; B is cleaner because the answer is a level count |
 | "All shortest paths from s" | A (per-node distance) |
 
 Both idioms are correct. The discriminating skill in mock interviews is **explaining why you picked one over the other**. Single defensible sentence: *"I picked level tracking because the answer is a level count and the outer loop's level variable maps cleanly to the answer."* Or: *"I picked per-node distance because the answer requires distance to one specific target, so storing distances per node is more natural than tracking levels and returning early."*
@@ -234,7 +234,7 @@ while queue:
     ...
 ```
 
-`list.pop(0)` is `O(n)` because it shifts every remaining element. With `V` dequeue calls, the total cost is `O(V²)` — silent quadratic blowup. On `V = 10⁴` this is `10⁸` operations, enough to time out a LeetCode hard.
+`list.pop(0)` is `O(n)` because it shifts every remaining element. With `V` dequeue calls, the total cost is `O(V²)` — silent quadratic blowup. On `V = 10⁴` this is `10⁸` operations, which is several seconds of pure shifting and enough to time out any graded runner.
 
 **Fix:** use `collections.deque`. `deque.popleft()` is `O(1)`.
 
@@ -601,6 +601,5 @@ That is the cadence interviewers want. Memorize the shape, plug in the names. Th
 
 - **Wikipedia — Breadth-first search**: <https://en.wikipedia.org/wiki/Breadth-first_search> — the pseudocode is the canonical reference.
 - **CSES Competitive Programmer's Handbook — Chapter 12**: <https://cses.fi/book/book.pdf> — twenty minutes; the cleanest free pseudocode treatment.
-- **LeetCode 102, 1091, 994, 127, 199** — the five problems that anchor Drills 1-5. Read all five spec pages before starting Exercise 1.
 
 Next: [Lecture 2 — Grid BFS and Graph BFS](./02-grid-bfs-and-graph-bfs.md).

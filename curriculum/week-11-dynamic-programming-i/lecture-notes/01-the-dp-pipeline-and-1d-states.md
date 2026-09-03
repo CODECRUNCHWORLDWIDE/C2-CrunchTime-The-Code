@@ -180,7 +180,7 @@ The lecture-time takeaway: **memoization is essentially free under interview con
 
 ---
 
-## 4. Climbing stairs (LC 70) — Fibonacci in disguise
+## 4. the ferry ramp manifests — Fibonacci in disguise
 
 > *You are climbing a staircase. It takes `n` steps to reach the top. Each time you can climb 1 or 2 steps. How many distinct ways can you climb to the top?*
 
@@ -212,7 +212,7 @@ Eight lines including the base case. The rolling-pair reduction is the natural f
 
 ---
 
-## 5. House robber (LC 198) — the take-or-skip recurrence
+## 5. the survey station walk — the take-or-skip recurrence
 
 > *You are a professional robber planning to rob houses along a street. Each house has a certain amount of money. The constraint is that adjacent houses are connected and will automatically contact the police if both are robbed on the same night. Return the maximum amount of money you can rob without alerting the police.*
 
@@ -246,7 +246,7 @@ Six lines. The rolling pair is identical in structure to climbing stairs, only t
 
 ---
 
-## 6. Decode ways (LC 91) — the conditional-transition 1D
+## 6. the ledger ribbon — the conditional-transition 1D
 
 > *A message containing letters from A–Z is encoded to numbers using the mapping 'A' -> '1', 'B' -> '2', ..., 'Z' -> '26'. Given a string `s` containing only digits, return the number of ways to decode it.*
 
@@ -302,7 +302,7 @@ Eighteen lines. The two conditional branches are visible in the loop body. The r
 
 ---
 
-## 7. Word break (LC 139) — the segmentation 1D
+## 7. the stripped manifest line — the segmentation 1D
 
 > *Given a string `s` and a dictionary of strings `wordDict`, return True if `s` can be segmented into a space-separated sequence of one or more dictionary words.*
 

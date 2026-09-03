@@ -39,19 +39,19 @@ Answer key at the bottom.
 
 3. **Floyd-Warshall.** All-pairs shortest paths with `V <= 200` = Floyd-Warshall. `O(V^3) = 8 * 10^6` operations — fast in Python. The three-nested-loop DP with `k` outermost. Lecture 2 §3.
 
-4. **MST (Kruskal preferred for the cleanest illustration; Prim acceptable).** "Minimum total cost to connect all of them" = spanning tree minimization. The graph is dense (`E = O(n^2)` for points on a plane), so Prim is asymptotically competitive; Kruskal with a sort by Manhattan distance is the cleaner answer. LC 1584. Lecture 2 §4-6.
+4. **MST (Kruskal preferred for the cleanest illustration; Prim acceptable).** "Minimum total cost to connect all of them" = spanning tree minimization. The graph is dense (`E = O(n^2)` for points on a plane), so Prim is asymptotically competitive; Kruskal with a sort by Manhattan distance is the cleaner answer.. Lecture 2 §4-6.
 
 5. **Bellman-Ford bounded by `K + 1` passes, OR modified Dijkstra with state `(node, hops)`.** Hop-constrained shortest path. Bellman-Ford is safer to write under pressure; Dijkstra-with-state can be faster on real inputs. Exercise 2 / Challenge 1 exactly. Lecture 2 §2.
 
-6. **DSU (redundant connection sub-shape).** Iterate edges in order; the first edge whose `union(u, v)` returns `False` (already in the same component) is the redundant one. LC 684. The DSU half of the mini-project. Lecture 3 §4.
+6. **DSU (redundant connection sub-shape).** Iterate edges in order; the first edge whose `union(u, v)` returns `False` (already in the same component) is the redundant one.. The DSU half of the mini-project. Lecture 3 §4.
 
-7. **DSU (account merge sub-shape).** Map emails to account indices; union accounts that share an email; group emails by their account's root. LC 721. Lecture 3 §4.
+7. **DSU (account merge sub-shape).** Map emails to account indices; union accounts that share an email; group emails by their account's root.. Lecture 3 §4.
 
 8. **Not a Week-10 algorithm — BFS from Week 6.** Unweighted = BFS. The trap is reaching for Dijkstra (which works but is overkill); BFS is `O(V + E)` and simpler. Negative-space rejection.
 
 9. **DSU.** The relation "share a character at the same position" is symmetric and induces equivalence classes after transitive closure. DSU over the `n` words; for each pair `(i, j)`, union if they share a character at the same position. `O(n^2 L)` for the comparison + `O(n^2 alpha(n))` for the unions. The trap is reaching for BFS-on-a-virtual-graph; DSU is shorter and cleaner.
 
-10. **DSU (streaming-islands sub-shape).** LC 305 — Number of Islands II. Each new cell starts as its own component (`count += 1`); each successful union with an existing adjacent land cell decrements the count. The streaming variant is what makes DSU the only clean choice — BFS would re-run on the full grid per operation. Lecture 3 §4.
+10. **DSU (streaming-islands sub-shape).** — the streaming island count. Each new cell starts as its own component (`count += 1`); each successful union with an existing adjacent land cell decrements the count. The streaming variant is what makes DSU the only clean choice — BFS would re-run on the full grid per operation. Lecture 3 §4.
 
 </details>
 

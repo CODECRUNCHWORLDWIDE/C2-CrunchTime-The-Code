@@ -511,7 +511,4 @@ that order cannot be relied on.
   Third structure, third question. Set answers *have I seen it*, dict answers
   *where did I see it*, `Counter` answers *how many times*. Exercise 3 is built
   on the third one.
-
-**Practice elsewhere.** The same pattern appears as [LeetCode 217 · Contains Duplicate](https://leetcode.com/problems/contains-duplicate/) if you want a judge to run against. The contract there returns a boolean, so it never forces you to keep the index or to tell "no repeat" apart from a falsy zero — which is where most of this page's marks live.
-
 Next: [Exercise 3 — Stage Twins](./exercise-03-stage-twins.md).

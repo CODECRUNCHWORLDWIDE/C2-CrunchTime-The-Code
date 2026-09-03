@@ -1,50 +1,53 @@
 # Week 9 — Exercises
 
-Three exercises. Each is FRAME-narrated, recorded, and graded against the test cases in the file itself. Worked solutions live in [`SOLUTIONS.md`](./SOLUTIONS.md) — consult only after attempting each exercise.
+Five exercises, in order. Each has a page with the brief, the constraints, the
+worked solution and the acceptance checklist, and a runnable file beside it that
+ends by printing `All checks passed.`
 
-| # | Exercise | Pattern | Difficulty | Target solve time |
-|---|----------|---------|------------|------------------:|
-| 1 | [Implement Trie (Prefix Tree)](./exercise-01-implement-trie.py) (LC 208) | Dict-of-dict trie; `insert / search / starts_with` | Medium | 20 min |
-| 2 | [Word Break](./exercise-02-word-break.py) (LC 139) | Trie + memoization composition | Medium | 35 min |
-| 3 | [Longest Common Prefix](./exercise-03-longest-common-prefix.py) (LC 14) | Three solutions; vertical / horizontal / trie | Easy | 25 min |
+| # | Exercise | Sub-shape | Difficulty | Target time |
+|---|----------|-----------|------------|------------:|
+| 1 | [The Gate Tag Tree](./exercise-01-gate-tag-tree.md) | A prefix tree from nested dicts, and the two queries people conflate | Easy | 35 min |
+| 2 | [The Ferry Desk Lookahead](./exercise-02-ferry-desk-lookahead.md) | Collecting under a prefix, stopping early at a limit | Easy-Medium | 35 min |
+| 3 | [The Callsign Stub](./exercise-03-callsign-stub.md) | A count at every node — precompute at build, read at query | Medium | 40 min |
+| 4 | [The Beacon Flash Period](./exercise-04-beacon-flash-period.md) | The border table, and the arithmetic that reads a repeat out of it | Medium | 45 min |
+| 5 | [The Stripped Manifest Line](./exercise-05-stripped-manifest-line.md) | A tree and a memo together — the week's composition | Medium | 45 min |
 
-Do them in order. Exercise 1 cements the dict-of-dict template on the canonical three operations. Exercise 2 forces you to compose the trie with memoization — the high-leverage pattern for the broader trie family (Word Break II, Concatenated Words, Word Squares). Exercise 3 is the recognition rep — three valid solutions, articulate why you would default to vertical scan but mention the trie.
+Do them in order. Exercise 1 is the structure with nothing on top, and it settles
+the difference between "is this registered" and "is anything registered below
+here" — a distinction the rest of the week depends on. Exercise 2 puts the limit
+*inside* the walk. Exercise 3 stores something other than letters at a node,
+which is the move that makes tries useful rather than merely tidy. Exercise 4
+leaves trees entirely for the border table, and prints the cost difference
+instead of asserting it. Exercise 5 is the composition the week has been building
+towards, and it is the direct preparation for
+[Challenge 1](../challenges/challenge-01-cold-store-aisle-sweep.md).
 
-Each starter file contains:
-
-- The problem statement
-- The required function signature with type hints
-- An empty body marked `# TODO`
-- A self-test block at the bottom
-- A FRAME checklist
-
-Run a single exercise:
-
-```bash
-python3 exercises/exercise-01-implement-trie.py
-```
-
-Or run all under `pytest` if you prefer that harness:
+Run any of them directly:
 
 ```bash
-pytest exercises/ -v
+python exercise-01-gate-tag-tree-solution.py
 ```
 
-(Both forms work — the test block uses bare `assert` so plain `python3` execution is fine.)
+No packages, no arguments, no input.
 
 ## A note on what is being graded
 
-Phase 1 graded you mostly on *correctness*. Phase 2 adds the *defense* axis: for every trie exercise, your write-up must state which template you used (dict-of-dict / class / trie + memo / trie-on-grid), why, and what the failure mode of a *hash set* alternative would have been. The recording catches whether you say it; the write-up catches whether you can write it.
+Two things beyond correctness, and both are habits this week installs.
 
-For Week 9 specifically, the defense includes:
+**The reserved key.** Every tree here stores at least one thing that is not a
+letter — the end marker, and in Exercise 3 a count as well. Your write-up has to
+say how you know that key cannot collide with real data. It is the one way a
+dict-of-dicts trie fails silently, and "I used an asterisk" is not the answer;
+"no code in this register contains an asterisk, and the builder refuses one that
+does" is.
 
-- **Why a trie and not `set[str]`.** State the prefix-query discriminator out loud: "the hash set cannot answer prefix queries in less than `O(n L)`; the trie answers them in `O(P)`."
-- **Why dict-of-dict over the `TrieNode` class** (or vice versa). State the cue: per-node state means class form; pure structure means dict form.
-- **The `END` sentinel rule** when using the dict-of-dict form — what character you picked and why it cannot appear in the input.
-- **For Exercise 3:** state which of the three solutions you would default to and why. The expected answer is "vertical scan for the one-shot LC 14 input; trie for the multi-query generalization."
-
-Defense is the difference between "the code works" and "the code is robust." Interviewers test for the latter. Drill on the latter.
+**The cost, as a number.** Three of these five exercises print a comparison or
+node count, and they do it because a claim like "the trie saves work" is worth
+nothing without one. Your Evaluate section should quote the number the file
+printed, not the asymptotic bound alone.
 
 ---
 
-After all three exercises pass, move on to [the challenge](../challenges/challenge-01-word-search-ii.md) — Word Search II, the canonical trie-on-grid application of the week.
+After all five pass, move on to
+[Challenge 1 — The Cold Store Aisle Sweep](../challenges/challenge-01-cold-store-aisle-sweep.md),
+which is Exercise 5's composition applied to a grid.

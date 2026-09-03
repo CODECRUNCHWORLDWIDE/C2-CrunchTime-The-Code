@@ -107,13 +107,13 @@ By the end of this week, you will be able to:
 | [lecture-notes/02-2d-dp-and-the-grid-and-string-shapes.md](./lecture-notes/02-2d-dp-and-the-grid-and-string-shapes.md) | Unique paths, LCS, edit distance; the subsequence-vs-substring distinction |
 | [lecture-notes/03-state-space-reduction-and-recognition.md](./lecture-notes/03-state-space-reduction-and-recognition.md) | Rolling-array reductions, longest palindromic subsequence and diagonal iteration, the recognition flowchart |
 | [exercises/README.md](./exercises/README.md) | Index of the three DP exercises and SOLUTIONS |
-| [exercises/exercise-01-climbing-stairs.py](./exercises/exercise-01-climbing-stairs.py) | LC 70 — the canonical 1D DP warm-up |
-| [exercises/exercise-02-longest-common-subsequence.py](./exercises/exercise-02-longest-common-subsequence.py) | LC 1143 — the canonical 2D subsequence DP |
-| [exercises/exercise-03-word-break.py](./exercises/exercise-03-word-break.py) | LC 139 — 1D DP with a string-set check |
+| [exercises/exercise-01-climbing-stairs.py](./exercises/exercise-01-climbing-stairs.py) | — the canonical 1D DP warm-up |
+| [exercises/exercise-02-longest-common-subsequence.py](./exercises/exercise-02-longest-common-subsequence.py) | — the canonical 2D subsequence DP |
+| [exercises/exercise-03-word-break.py](./exercises/exercise-03-word-break.py) | — 1D DP with a string-set check |
 | [exercises/SOLUTIONS.md](./exercises/SOLUTIONS.md) | Worked solutions with FRAME narration; consult after attempting each exercise |
 | [challenges/README.md](./challenges/README.md) | Index of weekly challenges |
-| [challenges/challenge-01-edit-distance.md](./challenges/challenge-01-edit-distance.md) | LC 72 deep-dive — the three-way-min recurrence and the rolling-array reduction |
-| [challenges/challenge-02-longest-palindromic-subsequence.md](./challenges/challenge-02-longest-palindromic-subsequence.md) | LC 516 — the diagonal-fill DP and the subsequence/substring rejection |
+| [challenges/challenge-01-edit-distance.md](./challenges/challenge-01-edit-distance.md) | deep-dive — the three-way-min recurrence and the rolling-array reduction |
+| [challenges/challenge-02-longest-palindromic-subsequence.md](./challenges/challenge-02-longest-palindromic-subsequence.md) | — the diagonal-fill DP and the subsequence/substring rejection |
 | [quiz.md](./quiz.md) | 10 pattern-recognition questions |
 | [homework.md](./homework/README.md) | Six practice problems (~5 hrs) — three 1D, three 2D |
 | [mini-project/README.md](./mini-project/README.md) | **One 1D DP write-up (house robber) + one 2D DP write-up (unique paths)** — the week's deliverable |
@@ -122,7 +122,7 @@ By the end of this week, you will be able to:
 
 ## Stretch goals
 
-- **Read the LeetCode "Dynamic Programming" tag** and skim 30 titles. For each, predict in 5 seconds: 1D or 2D? counting or optimization? string-pair or grid or array? Stretches the Research-constraints muscle harder than any exercise this week.
+- **Skim thirty problem titles from any practice set** and, for each, predict in five seconds: 1D or 2D? counting or optimization? string-pair or grid or array? Stretches the Research-constraints muscle harder than any exercise this week.
 - **Re-derive the four-step pipeline** without re-reading Lecture 1. State the four steps aloud; if you cannot, you do not yet own the pipeline. Re-read and re-derive until you can.
 - **Read the Wikipedia "Dynamic programming" article** end-to-end (about 20 minutes). The "Overlapping sub-problems" and "Optimal substructure" sections are the canonical written defenses of the two triggers; the "Examples of dynamic programming" section has six worked problems including the matrix-chain multiplication that Phase 3 revisits.
 - **Implement Fibonacci with matrix exponentiation** for `O(log n)` time. The recurrence `[F(n+1), F(n)] = [[1,1],[1,0]] * [F(n), F(n-1)]` plus fast exponentiation gives the bound. Phase-3 stretch; the recognition cue is "compute the `n`-th Fibonacci number where `n` is `10^18`."
@@ -151,7 +151,7 @@ Week 11 is the *pipeline-week* — the first of two DP weeks. The four-step pipe
 
 If you find yourself ahead by Friday, the right stretch is **not** another exercise — it is re-implementing climbing stairs from scratch *three different ways* (naive recursion, memoized, tabulated with rolling pair) and timing each on `n = 35`. The asymptotic difference is the most visceral demonstration of why DP matters; nothing in the lecture matches the moment a `2^35`-operation recursion runs for 20 seconds and the same problem with `@lru_cache` runs in 50 microseconds.
 
-If you find yourself *behind* by Wednesday, skip Exercise 3 (Word Break) for now and prioritize Exercise 1 (Climbing Stairs — 1D) and Exercise 2 (LCS — 2D) — those are the two patterns that show up most often in Mock #2, and Word Break can be picked up in 30 minutes once the 1D template is fluent.
+If you find yourself *behind* by Wednesday, skip Exercise 3 (the stripped manifest line) for now and prioritize Exercise 1 (the ferry ramp manifests — 1D) and Exercise 2 (LCS — 2D) — those are the two patterns that show up most often in Mock #2, and the stripped manifest line can be picked up in 30 minutes once the 1D template is fluent.
 
 ---
 

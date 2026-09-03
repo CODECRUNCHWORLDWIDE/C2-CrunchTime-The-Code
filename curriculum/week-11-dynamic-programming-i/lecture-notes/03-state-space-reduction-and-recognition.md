@@ -7,7 +7,7 @@ Lecture 1 installed the four-step pipeline and the 1D-DP suite. Lecture 2 instal
 
 ---
 
-## 1. Longest palindromic subsequence (LC 516) — the diagonal-fill DP
+## 1. the reversible rake — the diagonal-fill DP
 
 > *Given a string `s`, find the longest palindromic subsequence's length in `s`. A subsequence is a sequence that can be derived from another sequence by deleting some or no elements without changing the order of the remaining elements.*
 
@@ -209,9 +209,9 @@ The flowchart is the artifact. Memorize the five steps and the prompts at each s
 
 ---
 
-## 5. Worked example — Decode Ways (LC 91) through the flowchart
+## 5. Worked example — the ledger ribbon through the flowchart
 
-Walk the flowchart on Decode Ways without re-reading Lecture 1.
+Walk the flowchart on the ledger ribbon without re-reading Lecture 1.
 
 > *A message containing letters from A–Z is encoded to numbers using the mapping 'A' -> '1', ..., 'Z' -> '26'. Given a string `s` containing only digits, return the number of ways to decode it.*
 
@@ -229,7 +229,7 @@ Five-step walk: 1D-counting-left-to-right-rolling-pair. The 30-second classifica
 
 ---
 
-## 6. Worked example — Edit Distance (LC 72) through the flowchart
+## 6. Worked example — the timetable amendment through the flowchart
 
 **Step 1.** Brute-force recursion: `edit(s1, s2, i, j) = ...`. Revisits the same `(i, j)` from many paths. Overlapping subproblems. Optimum composes. Optimal substructure. DP.
 

@@ -93,7 +93,7 @@ Sun:  one mock OR rest
 
 That is ~10 problems a week — weighted toward the weak, touching every pattern within a three-week window so none goes fully cold. **The schedule is living:** re-run the Part 1 diagnosis every two weeks; as a hot pattern becomes fluent, promote it to warm and pull the next weak one up.
 
-Problem sources, free: the [NeetCode roadmap](https://neetcode.io/) groups problems by pattern (maps directly onto the tiers); [LeetCode](https://leetcode.com/) tag pages give an endless supply per pattern; the Blind 75 / NeetCode 150 lists are the minimum-viable cold-tier rotation when time is short.
+Problem sources, free: any pattern-grouped study plan maps directly onto the tiers, and any practice archive's tag pages give an endless supply per pattern. When time is short, a curated short list of a hundred-odd problems grouped by pattern is the minimum-viable cold-tier rotation; several exist, and which one matters far less than picking one and sticking to it.
 
 **Acceptance.** The three-tier table filled with your patterns, plus a written weekly rhythm naming specific patterns per day and a named problem source per hot pattern.
 

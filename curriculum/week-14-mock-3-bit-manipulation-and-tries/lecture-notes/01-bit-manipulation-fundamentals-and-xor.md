@@ -1,7 +1,7 @@
 # Lecture 1 — Bit Manipulation Fundamentals and the XOR Family
 
 > **Duration:** ~2 hours.
-> **Outcome:** You can read and write the six bitwise operators fluently, set / clear / toggle / test a single bit with a mask, isolate and clear the lowest set bit, count set bits three ways, and recognize an XOR-fold problem in 30 seconds — solving Single Number (LC 136), Missing Number (LC 268), and Single Number III (LC 260) from the four XOR identities.
+> **Outcome:** You can read and write the six bitwise operators fluently, set / clear / toggle / test a single bit with a mask, isolate and clear the lowest set bit, count set bits three ways, and recognize an XOR-fold problem in 30 seconds — solving the relay fold, the missing ticket, and the odd tally from the four XOR identities.
 
 Bit manipulation is pattern #13 of the fourteen-pattern catalog, and it is the one most candidates under-rate. It is rarely the centerpiece of a loop, but it is the curveball: the "warm-up" that hides an `O(1)`-space trick, the follow-up an interviewer adds when you finish early, the systems-flavored question at an embedded or infrastructure team. The whole family reduces to two ideas you can hold in one hand: *bits are a set* (each bit is a yes/no membership flag), and *XOR cancels* (`a ^ a == 0`, so pairs vanish and the survivor is the answer). Own those two ideas and the pattern is yours.
 
@@ -18,7 +18,7 @@ An integer is a sequence of bits. The unsigned value of a bit string is `sum(bit
 
 Negative integers use **two's complement**: to negate a number, flip every bit and add one. In an 8-bit register, `-1` is `0b11111111` and `-13` is `0b11110011`. The top bit is the sign bit; the representation is chosen so that ordinary binary addition "just works" across the sign boundary.
 
-Python is the wrinkle. **Python `int` is unbounded** — it does not live in a fixed-width register, so there is no overflow and no natural wrap-around. Conceptually, a negative Python int behaves like an infinite two's-complement string of leading `1`s: `~0 == -1`, `bin(-13)` is `-0b1101` (Python prints a sign, not the two's-complement bits). This matters in exactly one interview problem — Sum of Two Integers (LC 371), Challenge 2 — where we *simulate* a 32-bit register with a `& 0xFFFFFFFF` mask because Python will not overflow for us. Everywhere else, the unboundedness is a convenience: no overflow bugs.
+Python is the wrinkle. **Python `int` is unbounded** — it does not live in a fixed-width register, so there is no overflow and no natural wrap-around. Conceptually, a negative Python int behaves like an infinite two's-complement string of leading `1`s: `~0 == -1`, `bin(-13)` is `-0b1101` (Python prints a sign, not the two's-complement bits). This matters in exactly one interview problem — the ledger adder, Challenge 2 — where we *simulate* a 32-bit register with a `& 0xFFFFFFFF` mask because Python will not overflow for us. Everywhere else, the unboundedness is a convenience: no overflow bugs.
 
 The bit-position convention we use all week: **bit 0 is the lowest (rightmost, value `2**0 = 1`)**; bit `i` has value `2**i`. The mask `1 << i` is "a 1 in position `i` and zeros everywhere else."
 
@@ -101,7 +101,7 @@ x      = 0b0110_1100   (108)
 x & -x = 0b0000_0100   (4 — the lowest set bit, isolated)
 ```
 
-This is the engine of Single Number III (§9) and of Fenwick/binary-indexed trees (Phase 3). Trace it once on paper and it sticks.
+This is the engine of the odd tally (§9) and of Fenwick/binary-indexed trees (Phase 3). Trace it once on paper and it sticks.
 
 ### `x & (x - 1)` — clear the lowest set bit
 
@@ -119,7 +119,7 @@ This is **Brian Kernighan's algorithm** for popcount: the loop `while x: x &= x 
 
 ## 5. Popcount — counting set bits, three ways
 
-"How many 1 bits?" is Number of 1 Bits / Hamming Weight (LC 191) and the inner workhorse of Counting Bits (LC 338, Lecture 2). Three answers, in the order an interviewer wants to hear them:
+"How many 1 bits?" is the popcount question — [Homework 2](../homework/README.md) — and the inner workhorse of the lamp tally in [Exercise 2](../exercises/exercise-02-set-bit-tally.md). Three answers, in the order an interviewer wants to hear them:
 
 ```python
 def popcount_builtin(x: int) -> int:
@@ -161,7 +161,7 @@ Put 1, 3, and 4 together and you get the central lemma: **fold a multiset by XOR
 
 ---
 
-## 7. Worked FRAME — Single Number (LC 136)
+## 7. Worked FRAME — the lone unpaired value
 
 Let us run the full method on the canonical XOR-fold problem.
 
@@ -240,7 +240,7 @@ Edge cases: `[1]` → `0 ^ 1 == 1` ✓ (the single element fold). Negative input
 
 ---
 
-## 8. Missing Number (LC 268)
+## 8. The missing value in a full range
 
 Given an array `nums` containing `n` distinct numbers in the range `[0, n]`, return the one number in the range that is missing.
 
@@ -274,7 +274,7 @@ The Gauss-sum alternative — `n*(n+1)//2 - sum(nums)` — is equally `O(n)`/`O(
 
 ---
 
-## 9. Single Number III (LC 260) — partition on a differing bit
+## 9. Two unpaired values — partition on a differing bit
 
 This is the XOR family's senior-signal problem. Given an array where exactly **two** elements appear once and all others appear twice, return the two singletons. Linear time, constant space.
 
@@ -290,7 +290,7 @@ flowchart TD
   E --> G["Fold group to get singleton a"]
   G --> H["Derive singleton b by XOR with a"]
 ```
-*How Single Number III narrows a combined XOR into its two singleton values.*
+*How the odd tally narrows a combined XOR into its two singleton values.*
 
 The cleanest way to grab "any differing bit" is the lowest-set-bit idiom from §4: `diff & -diff`.
 
@@ -344,7 +344,7 @@ Without notes, answer:
 2. **What does `x & -x` compute, and what does `x & (x - 1)` compute?** (Isolate the lowest set bit; clear the lowest set bit.)
 3. **State the four XOR identities.** (`a ^ a == 0`; `a ^ 0 == a`; commutative; associative.)
 4. **Why does folding an array by XOR return the unpaired element?** (Pairs cancel to 0 by self-cancellation; order/grouping irrelevant by commutativity/associativity; the survivor remains by identity.)
-5. **In Single Number III, why does isolating a differing bit work?** (`a ^ b` is 1 exactly where `a` and `b` differ; any such bit separates `a` from `b` while keeping every paired value together.)
+5. **In the odd tally, why does isolating a differing bit work?** (`a ^ b` is 1 exactly where `a` and `b` differ; any such bit separates `a` from `b` while keeping every paired value together.)
 6. **Name three ways to count set bits and which one you say first in an interview.** (`x.bit_count()`, `bin(x).count("1")`, the Kernighan loop; say `bit_count()` first, then the Kernighan loop as the from-scratch defense.)
 
 If you can answer all six without hesitation, the XOR family is in your hands. The bitmask and bit-DP families are next.

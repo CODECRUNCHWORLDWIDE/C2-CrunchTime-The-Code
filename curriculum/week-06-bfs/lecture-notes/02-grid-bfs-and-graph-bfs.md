@@ -54,10 +54,10 @@ The visited set stores `(r, c)` tuples. Tuples are hashable; lists are not. The 
 
 A **node-BFS** problem has an explicit graph (adjacency list, edge list, or `dict[node, list[node]]`) or an implicit graph where the neighbor function is non-trivial. Examples:
 
-- **Word Ladder (LC 127):** nodes are words; an edge connects two words that differ by exactly one letter. The neighbor function is "all words in the dictionary one letter different from `word`." Implicit; computed via a wildcard-bucket index.
-- **Open the Lock (LC 752):** nodes are 4-digit combinations; an edge connects two combinations one rotation apart. Implicit; eight neighbors per node (each digit can rotate up or down).
-- **Network Delay Time (LC 743):** nodes are servers; an edge is a directed link with a weight. *Not BFS on the canonical form* — Dijkstra. But the *unweighted* version (count of hops) is node-BFS.
-- **Course Schedule II (LC 210):** nodes are courses; an edge is a prerequisite. Topological sort via Kahn's algorithm — uses a queue but with extra state (in-degree). Covered Week 7 (DFS).
+- **the cable pull:** nodes are words; an edge connects two words that differ by exactly one letter. The neighbor function is "all words in the dictionary one letter different from `word`." Implicit; computed via a wildcard-bucket index.
+- **the shim dial:** nodes are 4-digit combinations; an edge connects two combinations one rotation apart. Implicit; eight neighbors per node (each digit can rotate up or down).
+- **the hut relay timing:** nodes are servers; an edge is a directed link with a weight. *Not BFS on the canonical form* — Dijkstra. But the *unweighted* version (count of hops) is node-BFS.
+- **the prep step audit, ordered:** nodes are courses; an edge is a prerequisite. Topological sort via Kahn's algorithm — uses a queue but with extra state (in-degree). Covered Week 7 (DFS).
 
 ### The neighbor function
 
@@ -68,7 +68,7 @@ def neighbors_fn(node):
     return adj.get(node, [])
 ```
 
-For Word Ladder with a wildcard index:
+For the cable pull with a wildcard index:
 
 ```python
 def build_bucket_index(word_list):
@@ -92,7 +92,7 @@ The wildcard bucket precomputes all "one letter different" relationships in `O(N
 
 ### The visited set on a node graph
 
-For an explicit adjacency list, the visited set stores node identifiers (strings, ints, whatever the graph's "node type" is — must be hashable). For Word Ladder, visited stores words (strings). For Open the Lock, visited stores 4-character combination strings.
+For an explicit adjacency list, the visited set stores node identifiers (strings, ints, whatever the graph's "node type" is — must be hashable). For the cable pull, visited stores words (strings). For the shim dial, visited stores 4-character combination strings.
 
 Same `O(V)` space, same `O(1)` membership check.
 
@@ -142,10 +142,10 @@ The proof is the same level-monotonicity argument from Lecture 1 §3. The invari
 
 ### Canonical use cases
 
-- **Rotting oranges (LC 994).** Every rotten orange is a source; the answer is "after how many minutes is no fresh orange left?" Multi-source BFS over the rotten cells; the answer is the max distance reached. This is Exercise 3.
-- **0-1 matrix (LC 542).** Every cell containing 0 is a source; the answer is "distance to the nearest 0 for every cell." Multi-source BFS over all 0-cells; the answer is the `dist` dictionary.
-- **As far from land as possible (LC 1162).** Every land cell is a source; the answer is "what is the maximum-distance water cell?" Multi-source BFS over the land cells; the answer is `max(dist.values())`.
-- **Walls and gates (LC 286).** Every gate is a source; fill in the distances to the nearest gate for every empty cell.
+- **siren reach.** Every rotten orange is a source; the answer is "after how many minutes is no fresh orange left?" Multi-source BFS over the rotten cells; the answer is the max distance reached. This is Exercise 3.
+- **the worst-served bay.** Every cell containing 0 is a source; the answer is "distance to the nearest 0 for every cell." Multi-source BFS over all 0-cells; the answer is the `dist` dictionary.
+- **the worst-served bay.** Every land cell is a source; the answer is "what is the maximum-distance water cell?" Multi-source BFS over the land cells; the answer is `max(dist.values())`.
+- **the worst-served bay.** Every gate is a source; fill in the distances to the nearest gate for every empty cell.
 
 The pattern is consistent: when the prompt says "starting from any of these cells" or "spread from multiple sources," it is multi-source BFS.
 
@@ -165,7 +165,7 @@ One character (the `s`) is the entire difference.
 
 ---
 
-## 5. Worked example: rotting oranges (LC 994)
+## 5. Worked example: siren reach
 
 This is **the** canonical multi-source BFS problem and Exercise 3 of this week. Memorize the structure.
 
@@ -252,7 +252,7 @@ All four use the same template. The choice of "answer extracted from" varies; th
 
 For a graph with branching factor `b` and shortest-path distance `d`, single-source BFS visits `O(b^d)` nodes. Bidirectional BFS, by meeting in the middle, visits `O(b^(d/2)) + O(b^(d/2)) = O(b^(d/2))` — exponentially fewer for large `d`.
 
-For Word Ladder with `N` words of length `L`, single-source BFS is `O(N × L²)`. Bidirectional BFS is roughly `O(sqrt(N) × L²)` in practice — usually 4-10x faster for moderate `N`. The complexity argument is not strictly `sqrt(N)` (it depends on the branching factor), but the speedup is real.
+For the cable pull with `N` words of length `L`, single-source BFS is `O(N × L²)`. Bidirectional BFS is roughly `O(sqrt(N) × L²)` in practice — usually 4-10x faster for moderate `N`. The complexity argument is not strictly `sqrt(N)` (it depends on the branching factor), but the speedup is real.
 
 ```mermaid
 flowchart LR
@@ -319,7 +319,7 @@ Bidirectional BFS is **not** the default. Use it when:
 - Both endpoints are known.
 - The branching factor is moderate (4-30 neighbors per node) — the speedup is most dramatic in this range.
 
-For interview problems on small graphs (`V <= 10³`), single-source BFS is cleaner and fast enough. The interview-tell on Word Ladder is **mentioning that bidirectional is the production optimization** but defending single-source if the interviewer accepts it. Demonstrating awareness without over-engineering is the senior signal.
+For interview problems on small graphs (`V <= 10³`), single-source BFS is cleaner and fast enough. The interview-tell on the cable pull is **mentioning that bidirectional is the production optimization** but defending single-source if the interviewer accepts it. Demonstrating awareness without over-engineering is the senior signal.
 
 ---
 
@@ -328,7 +328,7 @@ For interview problems on small graphs (`V <= 10³`), single-source BFS is clean
 In real interviews, the grid vs node distinction is almost always obvious from the problem statement. The trap is in the *implicit* cases:
 
 - **Chess knight on a board** — the board is a grid, but the moves are not adjacency. Treat it as node-BFS with `neighbors(r, c) = [(r + dr, c + dc) for dr, dc in KNIGHT_OFFSETS if in_bounds]`. The grid coordinates are the node IDs, but the algorithm is more naturally framed as node-BFS because the neighbor function is non-trivial.
-- **Word Ladder** — the graph is "words as nodes, one-letter-changes as edges." It is node-BFS, not grid-BFS, even though words can be indexed by character position.
+- **the cable pull** — the graph is "words as nodes, one-letter-changes as edges." It is node-BFS, not grid-BFS, even though words can be indexed by character position.
 - **2-D puzzle states** — for the 8-puzzle, state is a 3x3 board, but the "graph" is "states reachable by sliding the empty square." Node-BFS on the implicit state graph.
 
 The cleanest mental model: **grid-BFS is the special case of node-BFS where the node ID is an `(r, c)` tuple and the neighbor function is a direction-offset loop.** Everything else is node-BFS.
@@ -411,7 +411,7 @@ For algorithmic BFS we treat all moves as unit cost. This is *correct* for "mini
 
 ---
 
-## 10. Worked example end-to-end: word ladder (LC 127)
+## 10. Worked example end-to-end: the cable pull
 
 We will work this in full FRAME, abbreviated.
 
@@ -541,7 +541,7 @@ That sentence is roughly 20-25 seconds spoken aloud. Practice it.
 
 Without notes, answer:
 
-1. **State the two sub-shapes of BFS and one representative problem each.** (Grid-BFS — shortest path in a binary matrix. Node-BFS — Word Ladder. Both use the same algorithm with different `neighbors_fn`.)
+1. **State the two sub-shapes of BFS and one representative problem each.** (Grid-BFS — shortest path in a binary matrix. Node-BFS — the cable pull. Both use the same algorithm with different `neighbors_fn`.)
 2. **Write the multi-source BFS seed in one line.** (`queue = deque(sources); visited = set(sources); dist = {s: 0 for s in sources}`.)
 3. **What is the complexity of multi-source BFS?** (`O(V + E)` time, same as single-source — multi-source visits each node exactly once.)
 4. **State the bidirectional BFS termination condition.** (When the smaller frontier produces a neighbor that is already in the larger frontier — the two searches have met. The combined level is the answer.)
@@ -570,6 +570,5 @@ The drill: Drills 1-5 cover both sub-shapes, plus level tracking and multi-sourc
 
 - **CSES Competitive Programmer's Handbook — Chapter 12 ("Graph traversal")**: <https://cses.fi/book/book.pdf>
 - **GeeksforGeeks — "Bidirectional Search"**: a single-page explainer with code; the complexity-halving argument is laid out cleanly.
-- **LeetCode 200, 994, 1091, 127, 286, 542, 752, 1162** — the eight problems that anchor grid-BFS, node-BFS, multi-source, and bidirectional families. Drills and homework cover four of them; the others are stretch.
 
-Next: the [drills](../exercises/README.md). Exercise 3 (Rotting Oranges) is the canonical multi-source problem of the week — do not skip it. Exercise 4 (Word Ladder) is the canonical node-BFS problem. Then the [challenge](../challenges/challenge-01-minimum-knight-moves.md) — Minimum Knight Moves on an infinite board, the hardest BFS application in the standard repertoire.
+Next: the [drills](../exercises/README.md). Exercise 3 (siren reach) is the canonical multi-source problem of the week — do not skip it. Exercise 4 (the cable pull) is the canonical node-BFS problem. Then the [challenge](../challenges/challenge-01-minimum-knight-moves.md) — Minimum Knight Moves on an infinite board, the hardest BFS application in the standard repertoire.

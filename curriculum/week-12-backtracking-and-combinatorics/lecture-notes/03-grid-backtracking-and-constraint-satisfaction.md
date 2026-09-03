@@ -11,7 +11,7 @@ The lecture closes with the week's recognition flowchart, which is the artifact 
 
 ---
 
-## 1. Word Search (LC 79) — grid backtracking with a visited set
+## 1. the kiln firing trail — grid backtracking with a visited set
 
 > *Given an `m x n` grid of characters `board` and a string `word`, return `True` iff `word` exists in the grid. The word can be constructed from letters of sequentially adjacent cells, where adjacent cells are horizontally or vertically neighboring. The same letter cell may not be used more than once.*
 
@@ -95,7 +95,7 @@ flowchart LR
 
 **Defense.** "Word search is a 2D-grid backtracking with a visited set. State is `(row, col, word_index)`. At each cell, check the four early-out conditions, then mark visited, recurse into the four neighbors, unmark. Return True on the first success and unwind. The visited set prevents cycles within a single path; the unchoose step restores it for the next starting cell. Worst-case time is `O(m * n * 4^L)` where `L = len(word)` — `mn` starting cells, `4^L` paths from each (each level branches 4 ways), but most paths are pruned early by the character mismatch. Space is `O(L)` for the recursion stack plus the visited set."
 
-**The in-place optimization.** Instead of a separate `visited` set, mark cells visited by mutating the board in place: `board[r][c] = '#'` to mark, `board[r][c] = word[idx]` to restore. Saves the `O(L)` set space; trade is that the board is temporarily mutated. Senior candidates mention both forms. The LC 79 reference solution typically uses the in-place form.
+**The in-place optimization.** Instead of a separate `visited` set, mark cells visited by mutating the board in place: `board[r][c] = '#'` to mark, `board[r][c] = word[idx]` to restore. Saves the `O(L)` set space; trade is that the board is temporarily mutated. Senior candidates mention both forms. The reference solution typically uses the in-place form.
 
 ```python
 def exist_inplace(board: List[List[str]], word: str) -> bool:
@@ -127,7 +127,7 @@ The `tmp` variable captures the original character; restoring it on unchoose. Th
 
 ---
 
-## 2. N-Queens (LC 51) — three pruning sets
+## 2. the drying rack sensors — three pruning sets
 
 > *The N-Queens puzzle is the problem of placing N chess queens on an N x N chessboard such that no two queens attack each other. Return all distinct solutions to the N-Queens puzzle.*
 
@@ -154,7 +154,7 @@ def solve_n_queens(n: int) -> List[List[str]]:
     diag2: Set[int] = set()                     # row + col
 
     def render(path: List[int]) -> List[str]:
-        """Convert column-index path to the LC 51 board format."""
+        """Convert column-index path to the board format."""
         return [
             "." * c + "Q" + "." * (n - c - 1)
             for c in path
@@ -181,7 +181,7 @@ def solve_n_queens(n: int) -> List[List[str]]:
     return result
 ```
 
-Thirty-three lines. The `render` helper converts the path (a list of column indices) to the LC 51 board format (a list of `n` strings of length `n`). The four-mutation choose-unchoose pair is the discipline reminder: `path`, `cols`, `diag1`, `diag2` must all be undone before returning.
+Thirty-three lines. The `render` helper converts the path (a list of column indices) to the board format (a list of `n` strings of length `n`). The four-mutation choose-unchoose pair is the discipline reminder: `path`, `cols`, `diag1`, `diag2` must all be undone before returning.
 
 **Why `row - col` and `row + col`.** A diagonal running from top-left to bottom-right (`\`) has a constant `row - col` value — for `(0,0), (1,1), (2,2), ...` the difference is 0; for `(0,1), (1,2), (2,3), ...` the difference is -1. A diagonal running from top-right to bottom-left (`/`) has a constant `row + col` value — for `(0,3), (1,2), (2,1), (3,0)` the sum is 3. The two indexing schemes uniquely identify the two diagonal directions.
 
@@ -227,7 +227,7 @@ Two solutions for N=4. The full N=8 case has 92 solutions; the canonical N=8 puz
 
 ---
 
-## 3. Sudoku Solver (LC 37) — cell iteration plus digit trial
+## 3. the test tray fill — cell iteration plus digit trial
 
 > *Write a program to solve a sudoku puzzle by filling the empty cells. A sudoku solution must satisfy: each of the digits 1-9 must occur exactly once in each row, each column, and each of the nine 3x3 sub-boxes of the grid. The '.' character indicates empty cells. You may assume there will be only one unique solution.*
 
@@ -296,7 +296,7 @@ Forty-two lines. Two design choices:
 
 **The implicit cell-iteration order.** This implementation visits the empty cells in row-major order (the order they appear in the `empties` list). A more sophisticated cell-ordering heuristic — "pick the empty cell with the fewest candidates remaining" — reduces the recursion depth dramatically. This is the **most-constrained-variable** heuristic; Phase-3 stretch.
 
-**Defense.** "Sudoku is a constraint satisfaction problem on a 9x9 grid. State is the board (mutated in place) plus three constraint sets per row, column, and box. Find the next empty cell; try digits 1–9; for each digit, check the three sets in `O(1)`; if valid, place and recurse. Return True on the first complete board; the recursion unwinds without exploring further. Worst-case time is `O(9^81)` — exponential in the number of empty cells — but the constraint sets prune most candidates, and the LC 37 cases solve in microseconds. Space is `O(81)` for the constraint sets plus the recursion stack."
+**Defense.** "Sudoku is a constraint satisfaction problem on a 9x9 grid. State is the board (mutated in place) plus three constraint sets per row, column, and box. Find the next empty cell; try digits 1–9; for each digit, check the three sets in `O(1)`; if valid, place and recurse. Return True on the first complete board; the recursion unwinds without exploring further. Worst-case time is `O(9^81)` — exponential in the number of empty cells — but the constraint sets prune most candidates, and the cases solve in microseconds. Space is `O(81)` for the constraint sets plus the recursion stack."
 
 ---
 
@@ -356,7 +356,7 @@ The flowchart is the artifact. Memorize the five steps and the prompts at each s
 
 ---
 
-## 5. Worked example — Letter Combinations of a Phone Number (LC 17) through the flowchart
+## 5. Worked example — the dial board through the flowchart
 
 > *Given a string containing digits from 2-9 inclusive, return all possible letter combinations that the number could represent. The mapping is the canonical phone keypad: 2 -> "abc", 3 -> "def", 4 -> "ghi", 5 -> "jkl", 6 -> "mno", 7 -> "pqrs", 8 -> "tuv", 9 -> "wxyz".*
 

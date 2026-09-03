@@ -836,13 +836,6 @@ error message anyway.
   Same loop here, because there is only one. The point is the verdict: *has a
   loop* is a property of the plan, and no walk order can disagree about it. The
   proof is in the first Under the hood block.
-
-**Practice elsewhere.** The same question, asked as a yes or no, appears as
-[LeetCode 207 · Course Schedule](https://leetcode.com/problems/course-schedule/)
-if you want a judge to run against — though that contract wants a boolean, where
-ours wants the loop itself, in a fixed rotation, which is what forces the grey
-path to be a list rather than a set.
-
 When your audit is right, move on to
 [Exercise 4 — Refit Order](./exercise-04-refit-order.md), where the same
 machinery stops asking whether the work can be done and starts saying in what

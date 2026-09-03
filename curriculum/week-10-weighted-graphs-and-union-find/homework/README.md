@@ -1,154 +1,315 @@
 # Week 10 — Homework
 
-Six practice problems plus the rubric. Allow ~5 hours total. Do the problems on your own with the lectures *closed*; consult the lecture or the resources only after a 15-minute stuck-period on a single problem.
+Six problems, all original, all with a runnable worked answer beside this page.
+Allow about five and a half hours. Do each with the lectures closed; open the
+worked answer only after your own version runs, or after fifteen minutes stuck on
+one step.
 
-The problems are chosen to drill the six Week-10 sub-patterns: heap-Dijkstra, Bellman-Ford variant, MST disguise, DSU components, DSU account-merge, and DSU edge-case (cycle detection). By Sunday, the recognition step on each should be reflexive.
+The six cover the week's whole range: union-find as a grouping tool and as a
+diagnosis, a spanning tree, a search where the cost is a maximum rather than a
+sum, all-pairs distances, and a search where the cost multiplies.
 
-| # | Problem | Pattern | Source | Est. time |
-|---|---------|---------|--------|----------:|
-| 1 | Accounts Merge | DSU + account-merge sub-shape | LeetCode 721 | 60 min |
-| 2 | Path With Minimum Effort | Dijkstra on a grid (binary-search alternative) | LeetCode 1631 | 50 min |
-| 3 | Min Cost to Connect All Points | MST (Kruskal or Prim) on a complete graph | LeetCode 1584 | 45 min |
-| 4 | Graph Valid Tree | DSU + edge-count check | LeetCode 261 | 30 min |
-| 5 | Find the City With the Smallest Number of Neighbors at a Threshold Distance | Floyd-Warshall | LeetCode 1334 | 50 min |
-| 6 | Path With Maximum Probability | Dijkstra with a max-heap (multiplicative weights) | LeetCode 1514 | 45 min |
+| # | Problem | Sub-shape | Est. time |
+|---|---------|-----------|----------:|
+| 1 | [The Claim Slip Merge](#problem-1--the-claim-slip-merge) | Union-find over a shared attribute | 50 min |
+| 2 | [The Kerb Step Route](#problem-2--the-kerb-step-route) | Minimising the worst step, not the total | 60 min |
+| 3 | [The Mast Trench Network](#problem-3--the-mast-trench-network) | Minimum spanning tree with a non-obvious cost | 55 min |
+| 4 | [The Radiator Loop Check](#problem-4--the-radiator-loop-check) | Union-find as a diagnosis, naming both faults | 50 min |
+| 5 | [The Market Stall Reach](#problem-5--the-market-stall-reach) | All pairs at once, rather than one search per start | 50 min |
+| 6 | [The Relay Reliability](#problem-6--the-relay-reliability) | The same search where cost multiplies and bigger is better | 55 min |
 
-Problems 1, 4, and 6 are the high-yield DSU and Dijkstra drills; problem 2 is the grid-Dijkstra rep; problem 3 is the MST disguise; problem 5 is the rare Floyd-Warshall rep.
+Every worked answer runs on its own with no arguments and no packages, and ends
+by printing `All checks passed.` Run one like this:
 
----
-
-## Problem 1 — Accounts Merge (LC 721)
-
-**Spec.** Given a list of `accounts`, where each `account` is `[name, email1, email2, ...]`, merge accounts that share at least one email. Return the merged list with emails sorted within each account.
-
-**Constraints.** `1 <= len(../accounts) <= 1000`; `2 <= len(../account) <= 10`; emails are lowercase strings with valid format.
-
-**Pattern.** DSU + account-merge sub-shape (Lecture 3 §4).
-
-**Hint.** Two phases: (../a) map each email to an account index, unioning the current account with any earlier account that owns the email; (../b) group emails by `uf.find(../account_index)` and assemble the output with the original name at the front, emails sorted.
-
-**Acceptance.** Function signature `accounts_merge(accounts: List[List[str]]) -> List[List[str]]`. Time: `O(N alpha(../N))` where `N` is total email count. Space: `O(../N)`.
-
-**Variant.** The alternative is BFS on a graph of "accounts that share an email" — same asymptotic but more complex. Mention by name in the write-up.
+```bash
+python problem-01-claim-slip-merge-solution.py
+```
 
 ---
 
-## Problem 2 — Path With Minimum Effort (LC 1631)
+## Problem 1 — The Claim Slip Merge
 
-**Spec.** Given a 2D grid of heights, find a path from top-left to bottom-right minimizing the *maximum* absolute height difference between consecutive cells on the path.
+**The brief.** A station lost-property office writes a claim slip every time
+somebody rings about a missing bag. Each slip has a name and one or more phone
+numbers. The same person rings back from a different phone, and now there are two
+slips.
 
-**Constraints.** `1 <= rows, cols <= 100`; `0 <= heights[i][j] <= 10^6`.
+Two slips belong to the same person when they **share at least one phone number**,
+and that spreads: slip A shares a number with slip B, slip B shares a different
+number with slip C, so all three are one person.
 
-**Pattern.** Dijkstra on a grid where the "distance" is the *max* of edge weights along the path, not the *sum*. The relaxation becomes `new_max = max(d, abs(h[r][c] - h[nr][nc]))` instead of `d + weight`. Otherwise the algorithm is the canonical heap-Dijkstra.
+**Constraints.** **The name is not the key.** Two different people can share a
+name, and the shipped data has exactly that case in it. Merging on the name is
+the wrong answer that passes a careless test.
 
-**Hint.** Treat the grid as a graph; vertices are `(r, c)` pairs; edges connect orthogonally adjacent cells; weights are absolute height differences. Run heap-Dijkstra with the max-of-edges relaxation.
+**Answer.** Union-find over the **phone numbers**, not the slips. Keep a map from
+each number to the first slip that mentioned it; for every later slip, union it
+with that slip. Numbers do the joining because the numbers are what is shared.
 
-**Acceptance.** Function signature `minimum_effort_path(heights: List[List[int]]) -> int`. Time: `O(R C log(R C))` where `R, C` are grid dimensions. Space: `O(R C)`.
+Then group the slips by root and read the name off any member of the group — they
+all agree, because they are one person by construction.
 
-**Variant.** Binary search + BFS is an alternative: binary-search on the answer, BFS to check feasibility. Same asymptotic; slightly more code; the Dijkstra variant is preferred.
+**Signatures.** `Slips` with the union-find, `merged_claims(slips)`,
+`phone_owner(records, phone)`.
 
----
+**Watch for.** Grouping by name — the shipped data punishes it. Building the
+union over slips directly without the number-to-slip map, which misses the
+transitive case. A number nobody claimed returns `None`, not an empty string.
 
-## Problem 3 — Min Cost to Connect All Points (LC 1584)
-
-**Spec.** Given `n` points on a 2D plane, return the minimum cost to connect all points into a single connected component, where the cost between two points is the Manhattan distance `|x1 - x2| + |y1 - y2|`.
-
-**Constraints.** `1 <= n <= 1000`; `-10^6 <= x, y <= 10^6`.
-
-**Pattern.** MST on a complete graph where edge weights are Manhattan distances. Kruskal with DSU is the standard reach; Prim is competitive because `E = n(../n-1)/2` is dense.
-
-**Hint.** Generate all `n(../n-1)/2` edges as `(weight, i, j)` triples; sort by weight; run Kruskal. The complete-graph cost is the price of dense connectivity; for very large `n`, generate edges lazily.
-
-**Acceptance.** Function signature `min_cost_connect_points(points: List[List[int]]) -> int`. Time: `O(n^2 log n)` dominated by the sort. Space: `O(../n^2)` for the edge list.
-
-**Variant.** For large `n`, the linear-time MST algorithm (../Karger-Klein-Tarjan) and the "Manhattan distance MST in `O(n log n)`" specialized algorithm (../Guibas-Stolfi) are both Phase-3 stretch. Mention by name.
-
----
-
-## Problem 4 — Graph Valid Tree (LC 261)
-
-**Spec.** Given `n` vertices labeled `0..n-1` and an edge list, determine whether the graph is a valid tree (connected and acyclic).
-
-**Constraints.** `1 <= n <= 2000`; `0 <= len(../edges) <= 5000`.
-
-**Pattern.** DSU + edge-count check. A tree has exactly `n - 1` edges and is connected. With DSU: if `len(../edges) != n - 1`, return False immediately. Otherwise, union every edge; if any `union` returns False (../cycle), return False. Finally, check `uf.components == 1`.
-
-**Hint.** The two checks must both pass: `len(../edges) == n - 1` *and* all unions succeed (i.e., no cycle was ever encountered). The `components == 1` check is equivalent to "all unions succeeded" when there are exactly `n - 1` edges.
-
-**Acceptance.** Function signature `valid_tree(n: int, edges: List[List[int]]) -> bool`. Time: `O(E alpha(../V))`. Space: `O(../V)`.
-
-**Variant.** BFS or DFS counting vertices reached + checking for back edges is the BFS-flavored alternative. Same asymptotic; the DSU is shorter to write.
+**Worked answer.** [`problem-01-claim-slip-merge-solution.py`](./problem-01-claim-slip-merge-solution.py)
 
 ---
 
-## Problem 5 — Find the City With the Smallest Number of Neighbors (LC 1334)
+## Problem 2 — The Kerb Step Route
 
-**Spec.** Given `n` cities with `m` weighted edges and a `distanceThreshold`, find the city with the smallest number of other cities reachable within `distanceThreshold`. If multiple, return the city with the largest index.
+**The brief.** A market square is paved in blocks, each surveyed to a height in
+millimetres. A wheelchair crosses from the north-west corner to the south-east
+corner, one block at a time, north, south, east or west. Stepping between two
+blocks means climbing the difference in their heights.
 
-**Constraints.** `2 <= n <= 100`; `1 <= m <= n * (n - 1) / 2`; `1 <= edge[i].length == 3`; weights up to `10^4`.
+**Nobody cares about the total climb.** What matters is the **single worst step**
+on the route, because that is the one that stops the chair. Make it as small as
+possible.
 
-**Pattern.** All-pairs shortest paths. `n <= 100`, so `O(../n^3) = 10^6` is trivially fast — Floyd-Warshall is the cleanest reach.
+**Constraints.** The cost of a route is a **maximum**, not a sum. That one change
+breaks every instinct built up on shortest-path problems, and it is the whole
+reason this problem is here.
 
-**Hint.** Initialize `dist[i][j] = inf` for `i != j` and `dist[i][i] = 0`. Set `dist[i][j] = w` for each edge. Run Floyd-Warshall. For each city `i`, count `j != i` with `dist[i][j] <= distanceThreshold`. Return the city with the smallest count, breaking ties by larger index.
+**Answer.** Two answers, and the write-up should name both.
 
-**Acceptance.** Function signature `find_the_city(n: int, edges: List[List[int]], distance_threshold: int) -> int`. Time: `O(../n^3)`. Space: `O(../n^2)`.
+The first is a **search where the accumulated cost is a maximum**: the frontier is
+ordered by the worst step so far, and extending a route costs
+`max(worst_so_far, this_step)` rather than `worst_so_far + this_step`. Everything
+else about the search is unchanged, which is the point worth making.
 
-**Variant.** Running Dijkstra from each vertex is also correct — `O(n * (V + E) log V)`. For `n = 100` this is `~ 10^5 * 7 ≈ 7 * 10^5` vs Floyd-Warshall's `10^6`; comparable. Floyd-Warshall is shorter to write.
+The second is a **decision procedure plus a search over the answer**: ask "is
+there a route where no step exceeds `limit`?" — which is a plain reachability
+question — and binary-search `limit`. `route_within` is that decision procedure,
+and having it in the file lets you check the first answer against the second.
 
----
+On the shipped square the answer is **6**: no route at limit 5, a route at limit 6.
 
-## Problem 6 — Path With Maximum Probability (LC 1514)
+**Signatures.** `gentlest_route(square)`, `route_within(square, limit)`.
 
-**Spec.** Given a graph where each edge has a "success probability" in `[0, 1]`, find the path from `start` to `end` maximizing the product of edge probabilities.
+**Watch for.** Summing the steps, which answers a different and easier question.
+Comparing heights rather than the difference between them. A one-block square is
+zero, not an error.
 
-**Constraints.** `2 <= n <= 10^4`; `0 <= len(../edges) <= 2 * 10^4`.
-
-**Pattern.** Dijkstra with a **max-heap** (or negate-and-use-min-heap). The relaxation is *multiplicative*: `new_prob = d * prob[edge]`; we pick the largest.
-
-**Hint.** Initialize `prob[start] = 1.0`, all others `0.0`. Heap stores `(-d, node)` to use Python's min-heap as a max-heap. Relaxation: `new_prob = d * weight`; if `new_prob > prob[neighbor]`, update.
-
-**Acceptance.** Function signature `max_probability(n: int, edges: List[List[int]], succ_prob: List[float], start: int, end: int) -> float`. Time: `O((V + E) log V)`. Space: `O(V + E)`.
-
-**Variant.** The Bellman-Ford variant works for negative-log transformation: take `-log(../p)` of each weight; minimize the sum; the original probability is `exp(../-sum)`. Same asymptotic; Dijkstra is faster for this problem since all log-weights are non-negative.
-
----
-
-## Rubric
-
-For each problem, your write-up is graded on five dimensions:
-
-| Dimension | Weight | What "yes" looks like |
-|-----------|-------:|----------------------|
-| Research constraints (pattern recognition) | 25% | 30-second memo at the top; pattern named in one of the six families; alternative rejected with reason |
-| Assess options | 15% | Numbered steps; data structure choice stated; algorithm form noted |
-| Make the solution (../correctness) | 25% | All LC sample cases pass; no off-by-one; the canonical bug list checked |
-| Make the solution (../style) | 10% | Type hints everywhere; docstrings on every function; PEP 8; idiomatic Python |
-| Examine (../defense) | 25% | Time + space bounds with derivation; one variant mentioned; trade against the alternative algorithm stated |
-
-The Research constraints weight is the highest for a reason. Phase 2 grades recognition heavily; you can have a working implementation and still lose the rep if you cannot defend the choice over the alternative.
+**Worked answer.** [`problem-02-kerb-step-route-solution.py`](./problem-02-kerb-step-route-solution.py)
 
 ---
 
-## Suggested order
+## Problem 3 — The Mast Trench Network
 
-1. **Problem 4** first — Graph Valid Tree is the highest-recognition-density DSU rep. The `n - 1` edges + no cycles + one component composition cements the Lecture 3 template.
-2. **Problem 1** second — Accounts Merge is the canonical DSU disguise. The two-phase structure (union then group) is the template for the rest of Phase 2's DSU problems.
-3. **Problem 6** third — Path With Maximum Probability is the Dijkstra variant with multiplicative weights. Quick rep on the heap-priority pattern.
-4. **Problem 2** fourth — Path With Minimum Effort is the grid-Dijkstra rep with a non-standard relaxation. Take time on the max-of-edges vs sum-of-edges distinction.
-5. **Problem 3** fifth — Min Cost to Connect All Points is the MST disguise. The "connect all" cue is the recognition rep.
-6. **Problem 5** last — Find the City is the Floyd-Warshall rep. Save for the latter half of the week; the three-nested-loop is short but the loop-order discipline is the work.
+**The brief.** Six weather masts stand on a moor. Every mast has to end up wired
+to every other, directly or through its neighbours. A trenching machine digs
+between two masts, and the price is set by the machine's boom: **it swings once,
+so a trench costs whichever is larger — the east-west gap or the north-south
+gap.** Not the two added together, and not the straight-line distance.
 
-If time runs out, prioritize Problems 1, 4, and 6. They are the three patterns most likely to appear on Mock #2.
+**Constraints.** Every pair could be trenched, so the surveyor is choosing five
+trenches from fifteen candidates. The cost function is the trap: it is a maximum
+of two differences, and every wrong answer here comes from using the sum instead.
+
+**Answer.** Build all fifteen candidate trenches with the boom cost, sort them
+cheapest first, and accept a trench only when its two masts are **not already
+joined** — union-find answering that question in near-constant time. Stop after
+five, which for six masts is one fewer than the mast count.
+
+Total on this moor: **13 metres across five trenches**, and the longest single
+trench — the one that sizes the boom you have to hire — is Beacon Ridge to Ewe
+Crag at 4 metres.
+
+The data includes one pair, Alder Hill to Drum Rig, where the boom cost is 6 and
+the sum of the two gaps is 11. That row is in the output on purpose: it is the
+evidence that the cost rule matters.
+
+**Signatures.** `boom_cost(first, second)`, `cheapest_network(masts)`,
+`longest_trench(chosen)`.
+
+**Watch for.** Adding the two gaps. Accepting a trench between masts already
+joined, which builds a ring and costs money for nothing. Forgetting that the
+answer is `n - 1` trenches, not `n`.
+
+**Worked answer.** [`problem-03-mast-trench-network-solution.py`](./problem-03-mast-trench-network-solution.py)
 
 ---
 
-## Acceptance
+## Problem 4 — The Radiator Loop Check
 
-The week's homework is complete when:
+**The brief.** A plumber surveys the heating in an old building. Radiators are
+numbered from zero and each pipe run joins two of them. Good pipework is a tree:
+every radiator fed, and no ring letting water go round without ever reaching the
+far end.
 
-- All six problems have a committed implementation under `homework/c2-week-10/`.
-- All six problems have a FRAME write-up under `frame-writeups/c2-week-10/homework/`.
-- The quiz is taken and scored.
-- The score is in the retrospective: which sub-pattern needs the most reps before Mock #2.
+**Two faults are possible and they are independent**, so a plain true-or-false
+answer loses information. Name both:
 
-The retrospective is the single most useful artifact this week. The pattern most candidates need more reps on after W10 is "Bellman-Ford with the snapshot idiom under interview pressure" — the snapshot is short but easy to flub on the spot. Drill it in writing, then drill it aloud.
+```text
+"tree"            every radiator fed, no ring
+"loop"            there is a ring, but everything is still fed
+"split"           no ring, but some radiators are unreachable
+"loop and split"  both
+```
+
+**Constraints.** Reporting one bit where there are two facts is the wrong answer
+the problem is built to reject. A survey can be a ring *and* have an orphaned
+wing, and the plumber needs to know which of the two they are dealing with — the
+fixes are different.
+
+**Answer.** Union-find, one pass over the runs. A run whose two radiators are
+**already joined** closes a ring — that run is a loop-closer. After the pass,
+count the distinct roots: more than one means the system is split.
+
+Both facts come out of the same walk, which is why they cost nothing extra to
+report separately.
+
+`loop_closing_runs` returns the runs you could cut — the ones that closed a ring —
+which is the actionable half of the answer.
+
+**Signatures.** `Pipework` with the union-find,
+`survey_pipework(radiator_count, runs)`,
+`loop_closing_runs(radiator_count, runs)`.
+
+**Watch for.** Returning a boolean. Counting roots before the pass rather than
+after. A building with zero pipe runs and one radiator is a tree; with zero runs
+and three radiators it is split.
+
+**Worked answer.** [`problem-04-radiator-loop-check-solution.py`](./problem-04-radiator-loop-check-solution.py)
+
+---
+
+## Problem 5 — The Market Stall Reach
+
+**The brief.** A covered market has numbered stalls joined by aisles. Pushing a
+loaded barrow along an aisle takes a known number of seconds, and an aisle is
+walkable both ways at the same cost.
+
+The market wants the **quietest pitch**: the stall from which the fewest other
+stalls are within a barrow-push budget.
+
+**Constraints.** The question is about **every pair** of stalls, not about one
+starting point. That is what decides the algorithm, and saying so is the
+recognition step.
+
+**Answer.** All-pairs distances in one go: start from the direct aisle times, then
+for every possible intermediate stall, check whether going via it is quicker than
+what you have. Three nested loops, and the intermediate stall must be the
+**outermost** of the three — that ordering is the whole correctness argument and
+it is the thing to get right before writing anything else.
+
+Then count, per stall, how many others are within the budget, and take the
+smallest count.
+
+With a budget of 10 seconds the quietest pitch is **stall 6, reaching one other
+stall**.
+
+Running one search per stall gives the same answer. On a market this size it
+costs about the same; the write-up should say at what size that stops being true
+and why.
+
+**Signatures.** `push_times(stall_count, aisles)`,
+`neighbours_within(times, stall, budget)`,
+`quietest(stall_count, aisles, budget)`.
+
+**Watch for.** Putting the intermediate stall in an inner loop — the answer is
+then wrong in a way that looks plausible on small inputs. Counting the stall
+itself among its neighbours. Unreachable pairs must stay at infinity rather than
+becoming a large number that later arithmetic treats as real.
+
+**Worked answer.** [`problem-05-market-stall-reach-solution.py`](./problem-05-market-stall-reach-solution.py)
+
+---
+
+## Problem 6 — The Relay Reliability
+
+**The brief.** A harbour passes messages between boats by short-range radio. Each
+hop works some fraction of the time — a hop of 0.9 gets through nine times in ten.
+A relay through several boats works only if **every** hop works, so the chance of
+the whole relay is the hops **multiplied**, never added.
+
+Find the most reliable relay from one boat to another.
+
+**Constraints.** Multiplying makes a route worse the longer it gets, and the job
+is to make the number **as large as possible** rather than as small as possible.
+Both of those invert the usual search, and inverting exactly one of them is the
+most common wrong answer.
+
+**Answer.** The same search shape as a shortest path, with two changes and no
+others: combine costs by multiplying instead of adding, and take the **best**
+frontier entry as the largest rather than the smallest. Reliabilities are between
+0 and 1, so multiplying can only shrink a route — which is what makes the greedy
+argument hold, exactly as non-negative edge weights do in the additive case.
+
+That sentence is what the write-up is really for. It is also why the same trick
+does not survive a hop with reliability above 1, and saying so shows you
+understand the argument rather than the recipe.
+
+From Anvil: Cutter at 0.9 in one hop, Dredger at 0.4 in two, Ebb at 0.36 in
+three, and Fluke unreachable.
+
+**Signatures.** `build_radio(hops)`, `best_relay(hops, start, end)`,
+`relay_rows(hops, boats, start)`.
+
+**Watch for.** Adding the reliabilities, which can exceed 1 and means nothing.
+Taking the smallest frontier entry, which finds the *worst* relay confidently.
+Starting the source at 0 rather than 1 — the multiplicative identity is 1, and
+starting at 0 makes every relay impossible. An unreachable boat returns `None`.
+
+**Worked answer.** [`problem-06-relay-reliability-solution.py`](./problem-06-relay-reliability-solution.py)
+
+---
+
+## Rubric (5 axes, 4 points each)
+
+| Axis | What "great" looks like |
+|------|--------------------------|
+| Frame the problem | The memo names the structure and — for problems 2 and 6 — exactly which part of the usual search changed and which part did not. |
+| Reason about options | Four to six bullets before any code, with the alternative named and costed. |
+| Assemble the solution | Idiomatic Python; union-find with both path compression and union by size, and a sentence on why each is there; type hints throughout. |
+| Measure it | A trace on at least two inputs, one of them degenerate or unreachable. |
+| Evaluate the cost | Time, space, best/average/worst, the trade-off and the improvement — in the problem's own numbers. |
+
+Twenty points per problem, 120 for the set. Score yourself honestly; the number
+is only useful if it is true.
+
+---
+
+## How to submit
+
+Commit your write-ups under `frame-writeups/c2-week-10/homework/`, one file per
+problem:
+
+```
+frame-writeups/c2-week-10/homework/
+├── problem-1-claim-slip-merge.md
+├── problem-2-kerb-step-route.md
+├── problem-3-mast-trench-network.md
+├── problem-4-radiator-loop-check.md
+├── problem-5-market-stall-reach.md
+└── problem-6-relay-reliability.md
+```
+
+Each file is 100–200 lines: the five FRAME sections plus a five-line memo at the
+top. The code is part of the Assemble section, not a separate file.
+
+When the set is done, push and move on to the
+[mini-project](../mini-project/README.md).
+
+---
+
+## Time budget
+
+| Problem | Solve | Write-up | Total |
+|---------|------:|---------:|------:|
+| 1 — Claim Slip Merge | 35 min | 15 min | 50 min |
+| 2 — Kerb Step Route | 45 min | 15 min | 60 min |
+| 3 — Mast Trench Network | 40 min | 15 min | 55 min |
+| 4 — Radiator Loop Check | 35 min | 15 min | 50 min |
+| 5 — Market Stall Reach | 35 min | 15 min | 50 min |
+| 6 — Relay Reliability | 40 min | 15 min | 55 min |
+
+About five and a half hours. Problems 2 and 6 are the two that pay off most in a
+real round, because both are the same search with one thing changed — and being
+able to say which thing is the difference between knowing an algorithm and
+knowing what it is made of.

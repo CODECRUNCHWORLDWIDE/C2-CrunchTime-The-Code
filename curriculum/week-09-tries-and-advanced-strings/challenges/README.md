@@ -1,36 +1,42 @@
 # Week 9 — Challenges
 
-Two challenges. The first is required; the second is optional stretch.
+Two challenges. Do at least the first; the second is shorter and catches a
+mistake almost everybody makes.
 
-| # | Challenge | Pattern | Difficulty | Target solve time |
-|---|-----------|---------|------------|------------------:|
-| 1 | [Word Search II](./challenge-01-word-search-ii.md) (LC 212) | Trie + DFS on grid (the canonical composition) | Hard | 60 min |
-| 2 | [Replace Words](./challenge-02-replace-words.md) (LC 648) | Trie of roots; shortest-prefix replacement | Medium | 40 min |
+| # | Challenge | Sub-shape | Difficulty | Target time |
+|---|-----------|-----------|------------|------------:|
+| 1 | [The Cold Store Aisle Sweep](./challenge-01-cold-store-aisle-sweep.md) | One tree over the whole word list, one walk of the grid | Hard | 70 min |
+| 2 | [The Berth Ledger Shorthand](./challenge-02-berth-ledger-shorthand.md) | The longest matching stem, not the first one | Medium-Hard | 55 min |
 
-The challenges scale the trie pattern beyond the canonical three operations. Challenge 1 composes the trie with backtracking DFS over a 2-D grid — the highest-yield trie problem in the Phase-2 portfolio. Challenge 2 is a recognition rep on the "given a dictionary of roots, replace each word by its shortest root" family.
+Challenge 1 is the composition the week exists for: a grid walk whose pruning
+comes from a prefix tree, so that the walk stops early for every code at once
+rather than once per code. It ships both versions and prints both step counts, so
+the argument is a number rather than a paragraph.
 
-By Sunday of Week 9, you must have a clean FRAME write-up of Challenge 1. Challenge 2 is stretch; do it if Friday goes well.
+Challenge 2 is shorter and its whole difficulty is one line. Walking a name
+against a tree of stems and returning the first stem you meet is the natural way
+to write it, it is wrong, and it passes any test data where no stem is a prefix
+of another. The register on that page has two such pairs on purpose.
 
----
+Both have a runnable worked solution beside the page:
 
-## What a complete challenge write-up looks like
+```bash
+python challenge-01-cold-store-aisle-sweep-solution.py
+```
 
-For each challenge, the deliverable is:
+Each challenge page contains the brief, the constraints including the alternative
+to reject, a real captured run, the full solution, the bugs it prevents, and an
+acceptance checklist.
 
-1. **A FRAME write-up** — under `frame-writeups/c2-week-09/challenges/`. Full five sections (Frame · Research constraints · Assess options · Make the solution · Examine); the Research constraints section opens with the 30-second pattern-recognition memo from the challenge file.
-2. **A working implementation** — committed as `challenges/<challenge-name>.py` in your portfolio. Must pass the test cases listed in the challenge file.
-3. **A recording** — minimum 10 minutes, walking through the Research constraints → Assess options → Make the solution narration. The two halves of Examine can be brief if the implementation is clean.
+The challenges differ from the exercises in two ways:
 
-The challenges grade *recognition speed* and *defense quality*. Implementation correctness is the entry bar; defending the algorithm choice over alternatives is what earns the senior signal.
+1. **You design the representation.** The function names are given; what a node
+   carries, and what the walk remembers as it goes, are yours to choose and yours
+   to defend.
+2. **Longer target time.** Fifty-five to seventy minutes against forty. Both have
+   a correct-but-slow version that is worth writing first, and both pages ask you
+   to keep it and compare.
 
----
-
-## A note on the trie-on-grid composition
-
-Challenge 1 is the highest-yield trie problem in Phase 2. Three reasons:
-
-1. **It composes two patterns** — trie (W9) + DFS (W7). Composition is the Phase-2 discriminator; single-pattern problems are Phase-1 work.
-2. **The naive solution is `O(W * m * n * 4^L)`** — for 50 words of length 10 on a 12x12 grid, that is over `10^9`. The trie solution drops the `W` factor by sharing dictionary prefixes across the DFS, getting to `O(m * n * 4^L)` — about `10^7`, three orders of magnitude cheaper.
-3. **The implementation has three subtle bugs** that show up in interviews. Read the challenge file's "Common bugs" section before you start — knowing the bug list shortens your debug cycle by 20 minutes.
-
-If you only ship one challenge this week, ship this one. The Replace Words stretch is recognition-rep practice; Word Search II is the portfolio piece.
+If you are stuck past ninety minutes on Challenge 1, the thing to check is the
+unmarking: a walk that marks a bin on entry and never unmarks it on the way back
+out produces confident, wrong, much smaller answers.

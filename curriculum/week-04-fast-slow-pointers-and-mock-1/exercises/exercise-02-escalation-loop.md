@@ -561,12 +561,5 @@ merging two slots into one dictionary entry.
   of 200,000 slots with the loop at the very end. Then measure the memory with
   `tracemalloc`. Seeing the two numbers side by side — same milliseconds, wildly
   different bytes — is what makes the space argument stop being an abstraction.
-
-**Practice elsewhere.** The same pattern appears as
-[LeetCode 142 · Linked List Cycle II](https://leetcode.com/problems/linked-list-cycle-ii/)
-if you want a judge to run against. That contract returns only the node, so it
-never forces you to understand where the distance comes from. Solve this one
-first.
-
 When the lemma sounds natural out loud, move on to
 [Exercise 3 — The Mid-Roll Break](./exercise-03-midroll-break.md).

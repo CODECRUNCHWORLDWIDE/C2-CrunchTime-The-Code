@@ -786,13 +786,6 @@ hands you free.
   install order, but pre-order gives you something that is neither. One line
   moved, and the output stops being an answer to any question. That is worth
   sitting with for a minute.
-
-**Practice elsewhere.** The same walk appears as
-[LeetCode 210 · Course Schedule II](https://leetcode.com/problems/course-schedule-ii/)
-if you want a judge to run against — though there the arrows point the other
-way, so the post-order list has to be reversed, and the contract returns an
-empty list on a loop where ours raises with the loop named.
-
 That is the last exercise. Next:
 [Challenge 1 — Chokepoint Mains](../challenges/challenge-01-chokepoint-mains.md),
 where the work done on the way back up is a number rather than a name.

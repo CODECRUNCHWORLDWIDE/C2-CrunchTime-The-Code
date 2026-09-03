@@ -21,7 +21,6 @@ You do not need to memorize CPython internals, but knowing *why* dict lookups ar
 
 ## Free practice platforms (same as Week 1)
 
-- **LeetCode** (free problems): <https://leetcode.com/> — search the **Hash Table** tag for Week 2 problems
 - **HackerRank — Interview Preparation Kit**: <https://www.hackerrank.com/interview/interview-preparation-kit>
 - **Exercism — Python Track**: <https://exercism.org/tracks/python>
 - **Codeforces Educational** rounds: <https://codeforces.com/edu/courses>

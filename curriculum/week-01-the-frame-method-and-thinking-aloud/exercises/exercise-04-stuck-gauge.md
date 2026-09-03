@@ -456,9 +456,6 @@ any code, is the exercise.
 - [ ] Your trace table for `[-2, -2, 0, 0, -2]` shows `read`, `write`, and the value compared against, at every step.
 - [ ] The function has type hints and a docstring.
 - [ ] Committed to Git with a message like `Add Week 1 exercise 4: stuck gauge`.
-
-**Practice elsewhere.** The same pattern appears as [LeetCode 26 · Remove Duplicates from Sorted Array](https://leetcode.com/problems/remove-duplicates-from-sorted-array/) if you want a judge to run against. Theirs guarantees a sorted input, which makes every duplicate adjacent and hides the distinction this page is built on — solve ours first.
-
 ## Stretch
 
 - **Keep at most two samples from any run.** Chatter is normal; a long stick

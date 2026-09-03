@@ -68,7 +68,7 @@ This lecture uses the mutable form. The exercises use the mutable form. The mini
 
 ---
 
-## 2. Subsets (LC 78) — the canonical warm-up
+## 2. the glaze sample set — the canonical warm-up
 
 > *Given an integer array `nums` of unique elements, return all possible subsets (the power set). The solution set must not contain duplicate subsets. Return the solution in any order.*
 
@@ -152,7 +152,7 @@ Eight subsets — `2^3` confirmed. The traversal is depth-first; the recording o
 
 ---
 
-## 3. Permutations (LC 46) — the canonical second
+## 3. the firing order — the canonical second
 
 > *Given an array `nums` of distinct integers, return all the possible permutations. You can return the answer in any order.*
 
@@ -229,7 +229,7 @@ Six permutations — `3!` confirmed. The traversal is depth-first; the recording
 
 ---
 
-## 4. Combinations (LC 77) — the canonical third
+## 4. the tasting panel — the canonical third
 
 > *Given two integers `n` and `k`, return all possible combinations of `k` numbers chosen from the range `[1, n]`.*
 

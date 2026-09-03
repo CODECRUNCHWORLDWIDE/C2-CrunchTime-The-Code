@@ -661,15 +661,5 @@ shape rather than a patchwork.
   its position, and every position plus a whole number of laps works too. State
   the answer as "smallest budget, and the period after that", and notice that
   masts on the footpath have no period at all — you can only land on them once.
-
-**Practice elsewhere.** There is no single platform problem that matches this
-contract, which is deliberate — the shape you are practising is *reduce a huge
-repetition count with a cycle*, and it turns up inside harder problems rather
-than as one of its own. The closest published relatives are
-[LeetCode 141 · Linked List Cycle](https://leetcode.com/problems/linked-list-cycle/)
-for the detection half and
-[LeetCode 142 · Linked List Cycle II](https://leetcode.com/problems/linked-list-cycle-ii/)
-for the entrance half.
-
 When all five drills pass, move on to
 [Challenge 1 — Booklet Imposition](../challenges/challenge-01-booklet-imposition.md).

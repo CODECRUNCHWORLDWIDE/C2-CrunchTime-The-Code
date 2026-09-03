@@ -5,7 +5,7 @@
 
 Lecture 1 covered recursive DFS. Lecture 2 covered iterative DFS. This lecture covers the **two highest-leverage Phase-2 applications** of DFS: cycle detection in a directed graph (the three-color invariant) and topological sort (two algorithms, both `O(V + E)`).
 
-Topological sort is the canonical Week-7 problem and is graded heavily in Mock #2. Course Schedule (LC 207) and Course Schedule II (LC 210) — the two textbook problems — are both in the homework or exercises. By Sunday you should be able to read either prompt and write the canonical Kahn or DFS post-order template without notes, in under three minutes.
+Topological sort is the canonical Week-7 problem and is graded heavily in Mock #2. the prep step audit and the prep step audit, ordered — the two textbook problems — are both in the homework or exercises. By Sunday you should be able to read either prompt and write the canonical Kahn or DFS post-order template without notes, in under three minutes.
 
 By the end of this lecture you should be able to read a graph problem and, within 30 seconds, say one of three things out loud: "Topological sort — Kahn's algorithm with in-degree array," "Topological sort — DFS post-order with three-color cycle check," or "Cycle detection only — DFS with three-color invariant, no order produced."
 
@@ -267,7 +267,7 @@ If the problem specifically asks for **cycle detection with a partial order on f
 
 ---
 
-## 6. Worked example: course schedule II (LC 210)
+## 6. Worked example: the prep step audit, ordered
 
 This is **the** canonical topological-sort interview problem and Exercise 3 of this week. Memorize the structure.
 
@@ -338,7 +338,7 @@ This is the cleanest Phase-2 topological sort write-up. Exercise 3 grades this t
 
 ## 7. Worked example: cycle detection via DFS
 
-Course Schedule (LC 207) is the cycle-detection-only variant of Course Schedule II — return `True` if all courses can be finished (DAG), else `False`. We can use either the three-color DFS or Kahn (check `len(order) == num_courses`). Both are `O(V + E)`. Here is the DFS form, to drill the three-color invariant.
+the prep step audit is the cycle-detection-only variant of the prep step audit, ordered — return `True` if all courses can be finished (DAG), else `False`. We can use either the three-color DFS or Kahn (check `len(order) == num_courses`). Both are `O(V + E)`. Here is the DFS form, to drill the three-color invariant.
 
 ```python
 from collections import defaultdict
@@ -419,14 +419,14 @@ for a, b in prerequisites:
     adj[a].append(b)               # WRONG — reverses the dependency
 ```
 
-In Course Schedule, `[a, b]` means "b is a prerequisite of a" — the edge is `b → a` (do `b`, then `a`). Reversing the edge gives the wrong topological order (which is also a valid topo sort of the *reversed* graph, just not the one the problem asks for). Always read the prompt twice to fix the direction.
+In the prep step audit, `[a, b]` means "b is a prerequisite of a" — the edge is `b → a` (do `b`, then `a`). Reversing the edge gives the wrong topological order (which is also a valid topo sort of the *reversed* graph, just not the one the problem asks for). Always read the prompt twice to fix the direction.
 
 ### Pitfall 2 — using DFS recursion on `V = 10⁵`
 
 ```python
 sys.setrecursionlimit(10**6)
 def dfs(node):
-    ...                            # Works on LeetCode; risky in production
+    ...                            # gets past a graded run; risky in production
 ```
 
 For `V > 1000`, recursive DFS in Python can crash. The setrecursionlimit workaround is acceptable but the cleaner answer is Kahn (iterative by construction). Research constraints move: state the recursion-limit risk before writing recursive code.
@@ -518,6 +518,5 @@ Memorize both. The discriminator in interview is which you choose and why; deliv
 - **Wikipedia — Topological sorting**: <https://en.wikipedia.org/wiki/Topological_sorting> — both algorithms side-by-side with pseudocode.
 - **CSES Competitive Programmer's Handbook — Chapter 16**: <https://cses.fi/book/book.pdf> — cycle detection and topological sort in clean pseudocode.
 - **Cormen, Leiserson, Rivest, Stein — Introduction to Algorithms, Chapter 22** (the standard graph-algorithms textbook; the 4th edition's free instructor materials at <https://mitpress.mit.edu/9780262046305/introduction-to-algorithms/> include the full chapter outline). The post-order topological-sort proof is in §22.4.
-- **LeetCode 207, 210, 269, 802, 1136, 1462** — six topological-sort problems covering Course Schedule (cycle detection), Course Schedule II (full order), Alien Dictionary (the challenge stretch), Find Eventual Safe States, Parallel Courses, and Course Schedule IV. Exercise 3 covers LC 210; the challenge stretch covers LC 269.
 
 Next: the [exercises](../exercises/README.md). Exercise 4 (Refit Order) is the canonical topological-sort drill of the week — do not skip it. Then the [challenge](../challenges/challenge-01-chokepoint-mains.md) — chokepoint mains via discovery times and low-links, the hardest depth-first application in the standard repertoire.

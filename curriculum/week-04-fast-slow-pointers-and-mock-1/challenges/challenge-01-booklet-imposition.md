@@ -740,12 +740,5 @@ sort, not quicksort, is the sort you use on a linked structure.
   outside-in   [1, 2, 3, 4, 5, 6]  ->  [6, 1, 5, 2, 4, 3]
   front-first  [1, 2, 3, 4, 5, 6]  ->  [1, 6, 2, 5, 3, 4]
   ```
-
-**Practice elsewhere.** The same composition appears as
-[LeetCode 143 · Reorder List](https://leetcode.com/problems/reorder-list/) if
-you want a judge to run against. That contract is front-first, mutates without
-returning, and guarantees sequential values, so a remembered solution from
-there fails every example on this page. Solve this one first.
-
 When the booklet collates, move on to
 [Challenge 2 — The Feed-Line Weld](./challenge-02-feedline-weld.md).

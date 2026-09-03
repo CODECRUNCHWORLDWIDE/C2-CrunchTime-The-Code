@@ -10,7 +10,7 @@ The six problems below are stated in full. Every one of them is a **different co
 
 ---
 
-## Why this matters
+## The Brief
 
 Two reasons.
 
@@ -20,28 +20,15 @@ Two reasons.
 
 ---
 
-## What you ship
+## Starter
 
-Seven files: six problem write-ups plus a short overview.
+`README-solution.py` sits beside this page: six reference implementations, one
+per problem, each with its own worked examples. It is the answer, not the
+starter — read it after your own attempt, not before.
 
-```
-frame-writeups/c2-week-03/mini-project/
-├── README.md                              ← short overview + index
-├── problem-01-maintenance-window.md       ← fixed-size, running sum, minimum
-├── problem-02-reprint-run.md              ← variable shape A, multiplicity invariant
-├── problem-03-pallet-seal.md              ← fixed-size + frequency invariant, returns positions
-├── problem-04-recall-window.md            ← variable shape B, counting invariant
-├── problem-05-tasting-flights.md          ← variable shape C, at-most-K distinct, counting
-└── problem-06-rehearsal-block.md          ← variable shape B + frequency, matched count
-```
-
-Each write-up is the full FRAME format from Week 1, **plus a leading 30-second pattern-recognition memo at the top**.
-
-These six filenames are what **you** create in your portfolio repo — they are not files in this course.
-
----
-
-## The 30-second pattern-recognition memo (the signature element)
+What you actually start from is the memo template below. Copy it to the top of
+every write-up before you write a line of code, and fill it in from the prompt
+alone. If you cannot fill it in, you have not finished reading the problem.
 
 At the top of every write-up, immediately after the title, place a single bordered block in this exact shape:
 
@@ -71,7 +58,28 @@ Six write-ups, six memos. By the sixth, the cadence is automatic.
 
 ---
 
-## Per-problem rubric
+## Requirements
+
+Seven files: six problem write-ups plus a short overview.
+
+```
+frame-writeups/c2-week-03/mini-project/
+├── README.md                              ← short overview + index
+├── problem-01-maintenance-window.md       ← fixed-size, running sum, minimum
+├── problem-02-reprint-run.md              ← variable shape A, multiplicity invariant
+├── problem-03-pallet-seal.md              ← fixed-size + frequency invariant, returns positions
+├── problem-04-recall-window.md            ← variable shape B, counting invariant
+├── problem-05-tasting-flights.md          ← variable shape C, at-most-K distinct, counting
+└── problem-06-rehearsal-block.md          ← variable shape B + frequency, matched count
+```
+
+Each write-up is the full FRAME format from Week 1, **plus a leading 30-second pattern-recognition memo at the top**.
+
+These six filenames are what **you** create in your portfolio repo — they are not files in this course.
+
+---
+
+### Per-problem rubric
 
 Each write-up's grade comes from five axes:
 
@@ -87,7 +95,7 @@ A grade of "great" on all six write-ups is the bar.
 
 ---
 
-## The six problems
+### The six problems
 
 ### Problem 1 — The Quietest Maintenance Window
 
@@ -325,21 +333,80 @@ The two operators that carry the whole trick, restated:
 
 ---
 
-## Acceptance criteria
+## Constraints
 
-- [ ] All six write-ups committed in `frame-writeups/c2-week-03/mini-project/`.
-- [ ] Each write-up has the **30-second memo at the top** in the exact block format above.
-- [ ] Each write-up has all five FRAME sections (Frame · Research constraints · Assess options · Make the solution · Examine).
-- [ ] Each write-up's tests cover **every example stated in its spec**, plus at least one adversarial case you generated yourself.
-- [ ] Each Examine (cost) section follows the **five-piece structure** from Week 2.
-- [ ] Each Examine (cost) section includes the **amortized-`O(n)` defence sentence** for the variable-size shapes, or the equivalent `O(n)` defence for the fixed-size ones.
-- [ ] The mini-project `README.md` is the index file linking to all six.
-- [ ] At least six commits this week with meaningful messages — *"Add mini-project problem 4: shortest recall window"* is a good message.
-- [ ] Repository is **still public** and the README still renders cleanly.
+- Every write-up opens with the five-line memo, filled from the prompt alone.
+- Every problem is a **different contract** from the drill that shares its
+  shape — a different return type, a different tie-break, a different sentinel
+  for "impossible". Pasting a drill solution in and passing means the
+  mini-project taught you nothing, so it is written so that it cannot.
+- The window loop is `while` on the shrink, always.
+- Cross-reference: each write-up links to its lecture section and to at least one
+  other write-up in this set.
 
----
+## Expected output
 
-## Suggested order of operations
+Real stdout from the shipped solution, captured on CPython 3.13.2. Each block is
+one problem, run against the examples stated in its section above — use it to
+check your own implementation before you write the memo about it:
+
+```text
+$ python README-solution.py
+1 - the quietest maintenance window
+    k=2  [80, 20, 30, 90, 10] -> 50
+    k=2  [3, 4, 5]            -> 7
+    k=2  [0, 0, 0]            -> 0
+    k=1  [7]                  -> 7
+    k=3  [5, 5]               -> None
+    k=1  []                   -> None
+2 - the longest reprint run
+    m=2  ['A', 'B', 'A', 'A', 'C', 'A']   -> 4
+    m=2  ['A', 'A', 'A', 'B', 'B', 'B']   -> 4
+    m=1  ['A', 'A', 'A']                  -> 1
+    m=5  ['A', 'B', 'C']                  -> 3
+    m=0  ['A', 'B']                       -> 0
+    m=2  []                               -> 0
+3 - the pallet seal check
+    ['X1', 'Y2']         ['X1', 'X1', 'Y2', 'X1', 'Y2', 'X1']         -> [1, 2, 3, 4]
+    ['X1', 'X1', 'Y2']   ['X1', 'Y2', 'Y2', 'X1', 'X1', 'Y2']         -> [2, 3]
+    ['X1']               ['X1', 'X1', 'X1']                           -> [0, 1, 2]
+    ['Z3']               ['X1', 'Y2']                                 -> []
+    ['X1', 'Y2']         ['X1']                                       -> []
+    []                   ['X1']                                       -> []
+    ['X1']               []                                           -> []
+4 - the shortest recall window
+    q=2  ['pass', 'fail', 'pass', 'pass', 'fail', 'pass', 'fail']         -> 3
+    q=2  ['pass', 'fail', 'fail']                                         -> 2
+    q=2  ['fail', 'pass', 'pass', 'pass', 'fail']                         -> 5
+    q=2  ['fail', 'fail', 'pass']                                         -> 2
+    q=1  ['pass', 'pass', 'pass']                                         -> 0
+    q=1  []                                                               -> 0
+5 - the tasting flight count
+    k=2  ['ipa', 'stout', 'ipa', 'lager']         -> 8
+    k=1  ['ipa', 'ipa', 'ipa']                    -> 6
+    k=1  ['ipa', 'stout']                         -> 2
+    k=5  ['ipa', 'stout']                         -> 3
+    k=0  ['ipa']                                  -> 0
+    k=3  []                                       -> 0
+6 - the tightest rehearsal block
+    ['vln', 'vla', 'cel']  ['vln', 'vla', 'cel', 'vln', 'vla', 'cel']               -> (0, 3)
+    ['vln', 'vla', 'cel']  ['cel', 'cel', 'vln', 'hrn', 'vla', 'cel', 'vln']        -> (4, 3)
+    ['vla', 'vla']         ['vla', 'vln', 'vla', 'vla', 'vln']                      -> (2, 2)
+    ['vla', 'vln']         ['vla', 'vla', 'vln']                                    -> (1, 2)
+    ['vln', 'cel']         ['cel', 'hrn', 'vln']                                    -> (0, 3)
+    ['vln', 'cel']         ['vln', 'vln', 'vln']                                    -> None
+    ['vla', 'vla']         ['vla', 'vln']                                           -> None
+    []                     ['vln']                                                  -> (0, 0)
+    ['vln']                []                                                       -> None
+
+All checks passed.
+```
+
+The `None` and `[]` rows are the ones to look at. Every problem here returns a
+different sentinel for "impossible", and getting that wrong is the single most
+common way a correct window loop still fails its tests.
+
+## Steps
 
 ### Thursday — Problems 1, 2, 3 (2.5h)
 
@@ -364,6 +431,390 @@ The two operators that carry the whole trick, restated:
 
 ---
 
+## The Solution
+
+```python
+"""README-solution.py — the Week 3 sliding-window toolkit.
+
+Six problems, six functions, one file. Each one is a different corner of the
+same pattern, and the point of putting them side by side is that you can see
+how little changes between them:
+
+    1. quietest_window_cost   fixed window, running sum, smallest total
+    2. longest_reprint_run    growing window, one count watched
+    3. valid_pallet_starts    fixed window, two frequency tables, positions out
+    4. shortest_recall_window shrinking window, a single counter
+    5. flights_within_paddle  growing window, counting whole families at once
+    6. tightest_rehearsal_block shrinking window, tables plus a matched count
+
+Every one is a single pass with two indices that only move forward. What
+differs is the state inside the window, the moment the answer is recorded, and
+the contract — four return types and three different ways of saying "no".
+
+The self-checks are the starter's, unchanged. When they all pass the file
+prints "All checks passed."
+"""
+
+from collections import Counter
+
+
+def quietest_window_cost(requests: list[int], k: int) -> int | None:
+    """Return the smallest request total over any k consecutive hours.
+
+    Args:
+        requests: Requests served in each hour of operation, in time order.
+        k: How many consecutive hours the outage covers.
+
+    Returns:
+        The requests lost during the quietest block. None when the block does
+        not fit inside the log. There is no tie-break, because the answer is a
+        number rather than a position.
+    """
+    if k > len(requests):
+        return None
+
+    window_total = sum(requests[:k])
+    quietest = window_total
+    for right in range(k, len(requests)):
+        window_total += requests[right] - requests[right - k]
+        if window_total < quietest:
+            quietest = window_total
+    return quietest
+
+
+def longest_reprint_run(titles: list[str], m: int) -> int:
+    """Return the longest run of blocks in which no title repeats past m times.
+
+    Args:
+        titles: Title code of each book block, logged bottom to top.
+        m: How many times one title may appear before the blade is reground.
+
+    Returns:
+        The length of the longest qualifying run. Zero when m is zero or the
+        stack is empty.
+    """
+    if m == 0 or not titles:
+        return 0
+
+    counts: dict[str, int] = {}
+    left = 0
+    longest = 0
+
+    for right, title in enumerate(titles):
+        counts[title] = counts.get(title, 0) + 1
+        # Only the title just added can have broken the invariant, so only its
+        # count needs checking. That is why no other count is looked at here.
+        while counts[title] > m:
+            counts[titles[left]] -= 1
+            left += 1
+        if right - left + 1 > longest:
+            longest = right - left + 1
+
+    return longest
+
+
+def valid_pallet_starts(scan: list[str], manifest: list[str]) -> list[int]:
+    """Return the start index of every pallet matching the manifest exactly.
+
+    Args:
+        scan: SKU of each carton, in the order the scanner read them.
+        manifest: The SKUs a pallet must hold. Repeats are real requirements.
+
+    Returns:
+        Ascending start indices of every window whose SKU counts equal the
+        manifest's. Empty list when the manifest is empty or longer than the
+        scan. Overlapping pallets are separate candidates and both count.
+    """
+    size = len(manifest)
+    if size == 0 or size > len(scan):
+        return []
+
+    wanted = Counter(manifest)
+    window = Counter(scan[:size])
+    starts = [0] if window == wanted else []
+
+    for right in range(size, len(scan)):
+        window[scan[right]] += 1
+        leaving = scan[right - size]
+        window[leaving] -= 1
+        if window[leaving] == 0:
+            del window[leaving]
+        if window == wanted:
+            starts.append(right - size + 1)
+
+    return starts
+
+
+def shortest_recall_window(verdicts: list[str], q: int) -> int:
+    """Return the length of the shortest run holding at least q failures.
+
+    Args:
+        verdicts: "pass" or "fail" for each unit, in production order.
+        q: How many failures a recall must cover. At least one, which is what
+            makes zero a safe way of saying "impossible".
+
+    Returns:
+        The length of the shortest qualifying run, or 0 when the line never
+        accumulates q failures.
+    """
+    left = 0
+    failures = 0
+    shortest = 0
+
+    for right, verdict in enumerate(verdicts):
+        if verdict == "fail":
+            failures += 1
+        while failures >= q:
+            # Record first. Removing first measures a window you just broke.
+            length = right - left + 1
+            if shortest == 0 or length < shortest:
+                shortest = length
+            if verdicts[left] == "fail":
+                failures -= 1
+            left += 1
+
+    return shortest
+
+
+def flights_within_paddle(taps: list[str], k: int) -> int:
+    """Return how many flights hold at most k distinct beer styles.
+
+    Args:
+        taps: The style poured by each tap, logged left to right along the bar.
+        k: How many glasses the guest's paddle holds, so how many distinct
+            styles one flight may contain.
+
+    Returns:
+        The number of contiguous runs of one or more taps within the limit.
+        Zero when k is zero or the bar is empty.
+    """
+    if k == 0 or not taps:
+        return 0
+
+    counts: dict[str, int] = {}
+    left = 0
+    flights = 0
+
+    for right, style in enumerate(taps):
+        counts[style] = counts.get(style, 0) + 1
+
+        while len(counts) > k:
+            leaving = taps[left]
+            counts[leaving] -= 1
+            if counts[leaving] == 0:
+                del counts[leaving]
+            left += 1
+
+        # Dropping taps from the left can never raise the distinct count, so
+        # every flight ending here and starting at or after `left` qualifies.
+        flights += right - left + 1
+
+    return flights
+
+
+def tightest_rehearsal_block(schedule: list[str], call: list[str]) -> tuple[int, int] | None:
+    """Return the shortest block of slots covering the whole call sheet.
+
+    Args:
+        schedule: The section called to each ten-minute slot, in order.
+        call: Sections the coach needs. Repeats are real requirements.
+
+    Returns:
+        (start, length) for the shortest covering block. Ties go to the
+        smaller start — the opposite of Challenge 1, and the reason this
+        problem exists. An empty call sheet returns (0, 0); a call sheet no
+        block can cover returns None.
+    """
+    if not call:
+        return (0, 0)
+    if len(call) > len(schedule):
+        return None
+
+    wanted = Counter(call)
+    distinct_wanted = len(wanted)
+
+    in_block: dict[str, int] = {}
+    left = 0
+    matched = 0
+    best: tuple[int, int] | None = None
+
+    for right, section in enumerate(schedule):
+        in_block[section] = in_block.get(section, 0) + 1
+        if section in wanted and in_block[section] == wanted[section]:
+            matched += 1
+
+        while matched == distinct_wanted:
+            candidate = (right - left + 1, left)
+            if best is None or candidate < best:
+                best = candidate
+            leaving = schedule[left]
+            in_block[leaving] -= 1
+            if leaving in wanted and in_block[leaving] < wanted[leaving]:
+                matched -= 1
+            left += 1
+
+    if best is None:
+        return None
+    length, start = best
+    return (start, length)
+
+
+# ---- Self-check ----
+if __name__ == "__main__":
+    print("1 - the quietest maintenance window")
+    for requests, k in [([80, 20, 30, 90, 10], 2), ([3, 4, 5], 2), ([0, 0, 0], 2), ([7], 1), ([5, 5], 3), ([], 1)]:
+        print(f"    k={k}  {str(requests):<20} -> {quietest_window_cost(requests, k)}")
+
+    print("2 - the longest reprint run")
+    for titles, m in [(["A", "B", "A", "A", "C", "A"], 2), (["A", "A", "A", "B", "B", "B"], 2), (["A", "A", "A"], 1), (["A", "B", "C"], 5), (["A", "B"], 0), ([], 2)]:
+        print(f"    m={m}  {str(titles):<32} -> {longest_reprint_run(titles, m)}")
+
+    print("3 - the pallet seal check")
+    for scan, manifest in [(["X1", "X1", "Y2", "X1", "Y2", "X1"], ["X1", "Y2"]), (["X1", "Y2", "Y2", "X1", "X1", "Y2"], ["X1", "X1", "Y2"]), (["X1", "X1", "X1"], ["X1"]), (["X1", "Y2"], ["Z3"]), (["X1"], ["X1", "Y2"]), (["X1"], []), ([], ["X1"])]:
+        print(f"    {str(manifest):<20} {str(scan):<44} -> {valid_pallet_starts(scan, manifest)}")
+
+    print("4 - the shortest recall window")
+    for verdicts, q in [(["pass", "fail", "pass", "pass", "fail", "pass", "fail"], 2), (["pass", "fail", "fail"], 2), (["fail", "pass", "pass", "pass", "fail"], 2), (["fail", "fail", "pass"], 2), (["pass", "pass", "pass"], 1), ([], 1)]:
+        print(f"    q={q}  {str(verdicts):<64} -> {shortest_recall_window(verdicts, q)}")
+
+    print("5 - the tasting flight count")
+    for taps, k in [(["ipa", "stout", "ipa", "lager"], 2), (["ipa", "ipa", "ipa"], 1), (["ipa", "stout"], 1), (["ipa", "stout"], 5), (["ipa"], 0), ([], 3)]:
+        print(f"    k={k}  {str(taps):<40} -> {flights_within_paddle(taps, k)}")
+
+    print("6 - the tightest rehearsal block")
+    for schedule, call in [(["vln", "vla", "cel", "vln", "vla", "cel"], ["vln", "vla", "cel"]), (["cel", "cel", "vln", "hrn", "vla", "cel", "vln"], ["vln", "vla", "cel"]), (["vla", "vln", "vla", "vla", "vln"], ["vla", "vla"]), (["vla", "vla", "vln"], ["vla", "vln"]), (["cel", "hrn", "vln"], ["vln", "cel"]), (["vln", "vln", "vln"], ["vln", "cel"]), (["vla", "vln"], ["vla", "vla"]), (["vln"], []), ([], ["vln"])]:
+        print(f"    {str(call):<22} {str(schedule):<56} -> {tightest_rehearsal_block(schedule, call)}")
+    print()
+
+    assert quietest_window_cost([80, 20, 30, 90, 10], 2) == 50
+    assert quietest_window_cost([3, 4, 5], 2) == 7
+    assert quietest_window_cost([0, 0, 0], 2) == 0
+    assert quietest_window_cost([7], 1) == 7
+    assert quietest_window_cost([5, 5], 3) is None
+    assert quietest_window_cost([], 1) is None
+
+    assert longest_reprint_run(["A", "B", "A", "A", "C", "A"], 2) == 4
+    assert longest_reprint_run(["A", "A", "A", "B", "B", "B"], 2) == 4
+    assert longest_reprint_run(["A", "A", "A"], 1) == 1
+    assert longest_reprint_run(["A", "B", "C"], 5) == 3
+    assert longest_reprint_run(["A", "B"], 0) == 0
+    assert longest_reprint_run([], 2) == 0
+
+    assert valid_pallet_starts(["X1", "X1", "Y2", "X1", "Y2", "X1"], ["X1", "Y2"]) == [1, 2, 3, 4]
+    assert valid_pallet_starts(["X1", "Y2", "Y2", "X1", "X1", "Y2"], ["X1", "X1", "Y2"]) == [2, 3]
+    assert valid_pallet_starts(["X1", "X1", "X1"], ["X1"]) == [0, 1, 2]
+    assert valid_pallet_starts(["X1", "Y2"], ["Z3"]) == []
+    assert valid_pallet_starts(["X1"], ["X1", "Y2"]) == []
+    assert valid_pallet_starts(["X1"], []) == []
+    assert valid_pallet_starts([], ["X1"]) == []
+
+    assert shortest_recall_window(["pass", "fail", "pass", "pass", "fail", "pass", "fail"], 2) == 3
+    assert shortest_recall_window(["pass", "fail", "fail"], 2) == 2
+    assert shortest_recall_window(["fail", "pass", "pass", "pass", "fail"], 2) == 5
+    assert shortest_recall_window(["fail", "fail", "pass"], 2) == 2
+    assert shortest_recall_window(["pass", "pass", "pass"], 1) == 0
+    assert shortest_recall_window([], 1) == 0
+
+    assert flights_within_paddle(["ipa", "stout", "ipa", "lager"], 2) == 8
+    assert flights_within_paddle(["ipa", "ipa", "ipa"], 1) == 6
+    assert flights_within_paddle(["ipa", "stout"], 1) == 2
+    assert flights_within_paddle(["ipa", "stout"], 5) == 3
+    assert flights_within_paddle(["ipa"], 0) == 0
+    assert flights_within_paddle([], 3) == 0
+
+    assert tightest_rehearsal_block(["vln", "vla", "cel", "vln", "vla", "cel"], ["vln", "vla", "cel"]) == (0, 3)
+    assert tightest_rehearsal_block(["cel", "cel", "vln", "hrn", "vla", "cel", "vln"], ["vln", "vla", "cel"]) == (4, 3)
+    assert tightest_rehearsal_block(["vla", "vln", "vla", "vla", "vln"], ["vla", "vla"]) == (2, 2)
+    assert tightest_rehearsal_block(["vla", "vla", "vln"], ["vla", "vln"]) == (1, 2)
+    assert tightest_rehearsal_block(["cel", "hrn", "vln"], ["vln", "cel"]) == (0, 3)
+    assert tightest_rehearsal_block(["vln", "vln", "vln"], ["vln", "cel"]) is None
+    assert tightest_rehearsal_block(["vla", "vln"], ["vla", "vla"]) is None
+    assert tightest_rehearsal_block(["vln"], []) == (0, 0)
+    assert tightest_rehearsal_block([], ["vln"]) is None
+
+    # Problem 5 counts what Problem 5 says it counts: check the shape-C sum
+    # against a flat enumeration of every flight on a small bar.
+    bar = ["ipa", "stout", "ipa", "lager", "ipa", "ipa", "stout"]
+    for limit in range(0, 5):
+        slow = sum(
+            1
+            for i in range(len(bar))
+            for j in range(i + 1, len(bar) + 1)
+            if len(set(bar[i:j])) <= limit
+        )
+        assert flights_within_paddle(bar, limit) == slow
+
+    print("All checks passed.")
+```
+
+Six implementations, one per problem, each with the examples from its section
+above. Read the sentinels: `None`, `0`, `[]` and a length all appear, and each
+one is the contract its problem states rather than a house convention.
+
+## Download and run
+
+Download the solution beside this page and run it:
+
+```bash
+python README-solution.py
+```
+
+No third-party packages, no arguments, no input. It prints the six blocks above.
+
+Or open it in the browser IDE from the Run button on the block above, and change
+the examples to probe a case you are unsure about.
+
+## Common bugs to catch
+
+- **Shrinking with `if` instead of `while`.** Symptom: the invariant holds for
+  one step and then quietly breaks; answers are a little too large. One
+  violation can need more than one shrink to clear.
+- **Recording the answer outside the valid region.** Symptom: off-by-one, and a
+  window that is one element too long. Record after restoring the invariant, not
+  before.
+- **Counting subarrays as `1` per valid window.** Symptom: counts far too low on
+  problems 5 and 6. A valid window ending at `right` contributes
+  `right - left + 1` subarrays, not one.
+- **Reusing a drill's return type.** Symptom: the code is right and the tests
+  fail. Every problem here returns something different from the drill that
+  shares its shape — a length, a list of start positions, a count, a sentinel.
+  Read the return contract twice.
+- **A frequency table that never shrinks back to zero.** Symptom: the window
+  refuses to grow again after a bad stretch. Deleting the key at zero and
+  decrementing to zero are not the same thing to `len(counts)`.
+
+## Acceptance checklist
+
+- [ ] All six write-ups committed in `frame-writeups/c2-week-03/mini-project/`.
+- [ ] Each write-up has the **30-second memo at the top** in the exact block format above.
+- [ ] Each write-up has all five FRAME sections (Frame · Research constraints · Assess options · Make the solution · Examine).
+- [ ] Each write-up's tests cover **every example stated in its spec**, plus at least one adversarial case you generated yourself.
+- [ ] Each Examine (cost) section follows the **five-piece structure** from Week 2.
+- [ ] Each Examine (cost) section includes the **amortized-`O(n)` defence sentence** for the variable-size shapes, or the equivalent `O(n)` defence for the fixed-size ones.
+- [ ] The mini-project `README.md` is the index file linking to all six.
+- [ ] At least six commits this week with meaningful messages — *"Add mini-project problem 4: shortest recall window"* is a good message.
+- [ ] Repository is **still public** and the README still renders cleanly.
+
+---
+
+## Stretch
+
+Five would cover the sub-shapes: fixed, A, B, C, and one frequency variant. The sixth is the **discriminator**, and it earns its place by being the only problem in the week whose contract *contradicts* one you have already solved. Carrying a pattern across a domain change is ordinary. Carrying it across a contract change, and noticing which line has to flip, is the thing being measured.
+
+---
+
+When you're done: push, send the link to one peer in the org for review, then move on to [Week 4 — Fast-and-Slow Pointers + Mock 1](../../week-04-fast-slow-pointers-and-mock-1/).
+
+Two more, if the six came easily:
+
+- Take any one of the six and write the **negative-space** paragraph properly:
+  which sub-shape it is *not*, and the single sentence that rules that one out.
+  This is the part interviewers probe when they suspect pattern-matching without
+  understanding.
+- Re-run one memo against a colleague or a rubber duck, out loud, timed. If it
+  runs past 40 seconds it is a summary, not a memo — cut it back to the five
+  lines and see what you were hiding in the extra time.
+
 ## The mini-project README index
 
 Suggested shape:
@@ -382,7 +833,7 @@ Six sliding-window write-ups, each anchored by a 30-second pattern-recognition m
 | 5 | `problem-05-tasting-flights.md` | Variable C (count) | Frequency table |
 | 6 | `problem-06-rehearsal-block.md` | Variable B + frequency | Frequency tables + matched count |
 
-## What this project demonstrates
+### What this project demonstrates
 
 - Research-constraints fluency: every problem's pattern is named in the first 30 seconds.
 - Sub-shape discrimination: fixed vs variable; longest vs shortest vs count; sum vs frequency vs counter as state.
@@ -394,7 +845,7 @@ That index, with your six links, is the second-most-important artifact of the we
 
 ---
 
-## What "great" looks like (rubric)
+### What "great" looks like (rubric)
 
 | Criterion | Weight | "Great" looks like |
 |-----------|------:|--------------------|
@@ -406,11 +857,3 @@ That index, with your six links, is the second-most-important artifact of the we
 | Commits are meaningful | 5% | "Add mini-project problem 4" beats "update" |
 
 ---
-
-## Why six, not five?
-
-Five would cover the sub-shapes: fixed, A, B, C, and one frequency variant. The sixth is the **discriminator**, and it earns its place by being the only problem in the week whose contract *contradicts* one you have already solved. Carrying a pattern across a domain change is ordinary. Carrying it across a contract change, and noticing which line has to flip, is the thing being measured.
-
----
-
-When you're done: push, send the link to one peer in the org for review, then move on to [Week 4 — Fast-and-Slow Pointers + Mock 1](../../week-04-fast-slow-pointers-and-mock-1/).

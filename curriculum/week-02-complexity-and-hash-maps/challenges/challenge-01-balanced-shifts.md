@@ -721,7 +721,4 @@ costs you nothing here and one sentence in an interview.
   the perfect oracle. Small random inputs find tie-break bugs that hand-written
   cases miss, because you cannot write a hand case for a rule you have
   misunderstood.
-
-**Practice elsewhere.** The same pattern appears as [LeetCode 560 · Subarray Sum Equals K](https://leetcode.com/problems/subarray-sum-equals-k/) if you want a judge to run against. The contract there returns only the count, so its map stores a frequency and nothing else — it never forces the second payload or the tie-break, which are where two thirds of this page's work lives.
-
 Next: [Challenge 2 — The Texture Residency Board](./challenge-02-residency-board.md).

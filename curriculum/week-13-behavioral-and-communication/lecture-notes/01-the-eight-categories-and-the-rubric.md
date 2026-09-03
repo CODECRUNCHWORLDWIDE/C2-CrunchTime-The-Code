@@ -172,7 +172,7 @@ flowchart LR
 
 One story, four categories. Twelve well-chosen stories cover all eight categories several times over. Building that bank — and the coverage matrix that proves no category is uncovered — is Lecture 2's subject and this week's mini-project.
 
-This is the deepest parallel to the coding course. You did not memorize a solution to every LeetCode problem; you learned twelve patterns and learned to *match* a new problem to one. Behavioral works the same way: you do not memorize an answer to every possible question; you build twelve stories and learn to *match* a new question to the right one. The cognitive load in the room is **selection, not invention** — and selection is fast, which is why prepared candidates never freeze.
+This is the deepest parallel to the coding course. You did not memorise a solution to every problem you might be asked; you learned twelve patterns and learned to *match* a new problem to one. Behavioral works the same way: you do not memorize an answer to every possible question; you build twelve stories and learn to *match* a new question to the right one. The cognitive load in the room is **selection, not invention** — and selection is fast, which is why prepared candidates never freeze.
 
 ---
 

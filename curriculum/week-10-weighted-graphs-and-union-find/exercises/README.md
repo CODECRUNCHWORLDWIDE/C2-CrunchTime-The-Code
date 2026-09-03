@@ -1,29 +1,56 @@
 # Week 10 — Exercises
 
-Three exercises covering the three Week-10 pattern centers: heap-Dijkstra (Network Delay Time), Bellman-Ford with a hop constraint (Cheapest Flights), and the canonical DSU drill (Number of Provinces).
+Five exercises, in order. Each has a page with the brief, the constraints, the
+worked solution and the acceptance checklist, and a runnable file beside it that
+ends by printing `All checks passed.`
 
-| # | File | Pattern | LC | Target time |
-|---|------|---------|---:|------------:|
-| 1 | [exercise-01-network-delay-time.py](./exercise-01-network-delay-time.py) | Heap-Dijkstra | 743 | 25 min |
-| 2 | [exercise-02-cheapest-flights-bellman-ford.py](./exercise-02-cheapest-flights-bellman-ford.py) | Bellman-Ford (K + 1 passes; snapshot) | 787 | 35 min |
-| 3 | [exercise-03-number-of-provinces.py](./exercise-03-number-of-provinces.py) | Union-Find (path compression + union by rank) | 547 | 20 min |
+| # | Exercise | Sub-shape | Difficulty | Target time |
+|---|----------|-----------|------------|------------:|
+| 1 | [The Hut Relay Timing](./exercise-01-hut-relay-timing.md) | The shortest-path picker at its plainest, on one-way links | Easy | 35 min |
+| 2 | [The Sluice Gate Settling](./exercise-02-sluice-gate-settling.md) | What the settled set is for, shown by removing it | Easy-Medium | 40 min |
+| 3 | [The Mooring Chain Groups](./exercise-03-mooring-chain-groups.md) | Union-find, with path compression printed before and after | Easy-Medium | 35 min |
+| 4 | [The Greenhouse Pipe Run](./exercise-04-greenhouse-pipe-run.md) | The minimum spanning tree, with union-find deciding what to accept | Medium | 40 min |
+| 5 | [The Shunting Rebate Legs](./exercise-05-shunting-rebate-legs.md) | Why the settled set stops being safe once a cost can be negative | Medium | 45 min |
 
-Each `.py` file is **runnable as a script** — it ships with a self-test block at the bottom that runs a battery of asserts. Implement the function bodies; running the file should print `All cases passed.` once your implementation is correct.
+Do them in order — this week's five build in pairs and the order carries an
+argument.
 
-The solutions are in [`SOLUTIONS.md`](./SOLUTIONS.md). **Attempt each exercise on your own first.** Reading the solution before drafting your own forfeits the recognition rep, which is what Phase 2 is grading.
+Exercise 1 is the search with nothing on top, and it settles the one-way-link
+mistake early. Exercise 2 then runs the *same* algorithm with the settled set
+deleted, on data where exactly one gate comes out wrong, and prints both tables
+side by side. Exercise 5 comes back at the end and runs it again with a negative
+cost, where the settled set is not merely unnecessary but **wrong** — two rows,
+each one minute high, in a table that otherwise agrees.
 
-## Order of attack
+Exercises 3 and 4 are the other pair. Union-find on its own, with the parent
+array printed before and after a lookup so path compression is a thing you have
+watched rather than read about; then the spanning tree, where the whole algorithm
+is "sort by price, accept if it joins two things not already joined" and the
+second half of that sentence is a union-find query.
 
-1. **Exercise 1 first** — Network Delay Time is the cleanest heap-Dijkstra rep and the warm-up for the rest of the week. Aim for 25 minutes including the FRAME write-up.
-2. **Exercise 3 next** — Number of Provinces is the cleanest DSU rep. Aim for 20 minutes. Doing it second cements the Lecture-3 template before you tackle the harder Bellman-Ford exercise.
-3. **Exercise 2 last** — Cheapest Flights with the hop constraint is the trickiest of the three, particularly the snapshot bug from Lecture 2 §2. Aim for 35 minutes; leave the slack for the snapshot debugging.
+Run any of them directly:
 
-If time runs out, prioritize 1 and 3. The Bellman-Ford rep can be picked up Thursday during the challenge ramp.
+```bash
+python exercise-01-hut-relay-timing-solution.py
+```
 
-## Acceptance
+No packages, no arguments, no input.
 
-Each exercise is complete when:
+## A note on what is being graded
 
-- The `.py` file's self-tests pass (`python3 exercise-NN-*.py` prints `All cases passed.`).
-- A FRAME write-up is committed under `frame-writeups/c2-week-10/exercises/`.
-- The Research constraints section of the write-up names the pattern and rejects at least one alternative algorithm with reason.
+**Show the invariant, do not assert it.** Three of these five files print
+something the algorithm is doing — a settling order, a parent array, two tables
+side by side. That is deliberate, and your write-ups should do the same. "The
+settled set guarantees the answer is final" is a sentence anyone can write; the
+Cut Sluice row is evidence.
+
+**Say which algorithm and why *this* one.** By the end of the week you have four
+that all look similar from a distance: the frontier picker, repeated relaxing,
+all-pairs, and the spanning tree. Naming the discriminator — negative costs, all
+pairs wanted, connect-everything rather than shortest-route — in one sentence is
+what Mock #2 grades.
+
+---
+
+After all five pass, move on to
+[Challenge 1 — The Reefer Transfer Budget](../challenges/challenge-01-reefer-transfer-budget.md).

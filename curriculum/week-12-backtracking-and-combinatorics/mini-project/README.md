@@ -1,66 +1,65 @@
-# Week 12 — Mini-Project: Palindrome Partitioning + Sudoku Solver
+# Week 12 — Mini-Project: The Batch Split and the Glaze Square
 
-The week's deliverable. Two backtracking write-ups demonstrating the two halves of the lecture material: **combinatorial enumeration with constraint pruning** (palindrome partitioning) and **constraint satisfaction** (sudoku solver).
+> Topic: combinatorial enumeration and constraint satisfaction · Lecture: [1](../lecture-notes/01-the-backtracking-template-and-the-three-warmups.md), [2](../lecture-notes/02-pruning-and-deduplication-and-string-partitioning.md), [3](../lecture-notes/03-grid-backtracking-and-constraint-satisfaction.md) · Difficulty: Medium-Hard · Target time: one week · Why this one: two problems that look nothing alike and are the same shape underneath.
 
-The mini-project is graded on the **same five dimensions** as the homework — Research constraints, Assess options, Make the solution (correctness), Make the solution (style), Examine. The weights are identical. The difference is that the mini-project asks for the **full FRAME narration** end-to-end, recorded and committed under `frame-writeups/c2-week-12/mini-project/`, with both starter files completed and shipped under `mini-project/c2-week-12/`.
+## The Brief
 
-This is the artifact graders use to judge whether you have internalized backtracking. Half a week's homework is the warm-up; the mini-project is the proof.
+The week's deliverable. Two backtracking write-ups covering the two halves of
+the lecture material: **combinatorial enumeration with pruning**, and
+**constraint satisfaction**.
 
----
+The pair is chosen because the two prune differently and *terminate* differently,
+and saying which of the two you are doing — out loud, before any code — is the
+week's actual lesson.
 
-## Problem 1 — Palindrome Partitioning (LC 131)
+**Half one, the batch split.** A kiln fires a run of pots at rising then falling
+temperatures. A *batch* is a stretch of that run whose temperatures read the same
+forwards and backwards, because the kiln ramps up and back down symmetrically.
+Cut the whole run into batches. Enumerate **every** legal cut, then report the one
+using fewest batches.
 
-> *Given a string `s`, partition `s` such that every substring of the partition is a palindrome. Return all possible palindrome partitionings of `s`.*
+**Half two, the glaze square.** A 4×4 rack is divided into four 2×2 quadrants.
+Every row, every column and every quadrant must hold each of the four glaze codes
+exactly once. Some cells are already loaded. Fill the rest — and stop at the first
+filling, because a filled rack is a filled rack.
 
-**Constraints (LeetCode).** `1 <= len(s) <= 16`; `s` contains only lowercase English letters.
+One counts. One stops. Everything else about them is the same three steps: choose,
+explore, undo.
 
-**The pattern.** Backtracking — string partitioning with palindrome constraint (Lecture 2 §4).
+## Starter
 
-**The state.** `(start_index, path)` where `path` is the list of palindromic pieces. At each level, try every `end` from `start + 1` to `n`; if `s[start:end]` is a palindrome, choose, recurse, unchoose. Record at leaves where `start == n`.
+`README-solution.py` sits beside this page with both halves solved and the
+self-checks you must satisfy. Read the checks; then look away.
 
-**The pruning.** Constraint-propagation — the palindrome check on each candidate piece. The check is `O(end - start)` per call; an optional optimization is to precompute a 2D boolean palindrome table in `O(n^2)` time and space.
+The given data:
 
-**The starter file.** [problem-01-palindrome-partitioning-starter.py](./problem-01-palindrome-partitioning-starter.py)
+```text
+firing run:  940  1010  940  780  780  1180
 
-**What to ship.**
+glaze rack   A . . D
+             . . A .
+             . C . .
+             B . . C
+```
 
-1. A complete implementation of `partition(s: str) -> List[List[str]]`.
-2. A 30-second pattern-recognition memo at the top of the write-up.
-3. A worked trace on at least one example (`s = "aab"` or `s = "raceacar"`).
-4. The time and space complexity with derivation.
-5. One mentioned variant (precomputed palindrome table) and its trade-off.
+Work the firing run by hand first. `940 1010 940` is symmetric, `780 780` is
+symmetric, `1180` is a single pot — and there is more than one way to cut it.
+Finding the second cut on paper takes two minutes and saves an hour.
 
-**Acceptance.** The included self-test block passes. The output for `s = "aab"` is `[["a", "a", "b"], ["aa", "b"]]` (order-independent). The output for `s = "a"` is `[["a"]]`. The output for `s = "abba"` is `[["a", "b", "b", "a"], ["a", "bb", "a"], ["abba"]]`.
+## Requirements
 
----
+1. `all_splits(run)` returns every way to cut the run into symmetric batches;
+   `fewest_batches(run)` returns the one with the fewest, ties settled by reading
+   order.
+2. `solve_glaze(rack)` returns a **solved copy** and leaves the input untouched,
+   or returns `None` when no filling exists.
+3. `solve_glaze` raises `ValueError` on a rack that is not 4×4, or that holds a
+   symbol which is neither a glaze code nor `.`.
+4. `render(...)` draws a rack so a human can check it by eye.
+5. Both halves are narrated in full FRAME, committed under
+   `frame-writeups/c2-week-12/mini-project/`.
 
-## Problem 2 — Sudoku Solver (LC 37)
-
-> *Write a program to solve a sudoku puzzle by filling the empty cells. A sudoku solution must satisfy: each of the digits 1-9 must occur exactly once in each row, each column, and each of the nine 3x3 sub-boxes of the grid. The '.' character indicates empty cells. You may assume there will be only one unique solution.*
-
-**Constraints (LeetCode).** The board is a 9x9 grid of characters where each cell is either '.' or a digit '1'-'9'. The input is guaranteed to have a unique solution.
-
-**The pattern.** Backtracking — constraint satisfaction with three pruning sets (Lecture 3 §3).
-
-**The state.** The board itself (mutated in place) plus three `Set[str]` per row, column, and box. The recursion finds the next empty cell; for each digit 1–9, checks the three constraint sets; places the digit if all three pass; recurses; undoes on failure.
-
-**The pruning.** Constraint-propagation — three `O(1)` set membership checks per candidate digit (row, column, 3x3 box). Without the sets, every check would walk the board for `O(81)` cost; with the sets, the check is `O(1)`.
-
-**The starter file.** [problem-02-sudoku-solver-starter.py](./problem-02-sudoku-solver-starter.py)
-
-**What to ship.**
-
-1. A complete implementation of `solve_sudoku(board: List[List[str]]) -> None` that mutates `board` in place.
-2. A 30-second pattern-recognition memo at the top of the write-up.
-3. A discussion of the box-index formula `(r // 3) * 3 + (c // 3)` — why it produces a unique index for each of the nine 3x3 boxes.
-4. The worst-case time complexity with derivation, and the actual runtime on the LC 37 sample puzzle (microseconds for the precomputed-set form).
-5. One mentioned variant — the most-constrained-cell heuristic, or Peter Norvig's constraint-propagation method — and its trade-off.
-
-**Acceptance.** The included self-test block passes. The LC 37 sample puzzle solves correctly. The board is mutated in place (the function returns `None`).
-
----
-
-## How to do the write-up
+### How to do the write-up
 
 For each problem, produce one Markdown file under `frame-writeups/c2-week-12/mini-project/`:
 
@@ -79,25 +78,352 @@ The recording is the single most useful artifact in the mini-project. A 10–15 
 
 ---
 
-## How this connects to the rest of the curriculum
+## Constraints
 
-Palindrome partitioning is the canonical **string-partition backtracking**. The state design (`(start_index, path)`) and the constraint-propagation prune (palindrome check) generalize to:
+- **Half one enumerates; half two satisfies.** Half one records a completion and
+  keeps going. Half two returns `True` up the stack and stops. Writing either one
+  in the other's shape is the most common structural mistake this week.
+- **Test the candidate before recursing**, in both halves. Testing inside the call
+  is correct and explores a whole level of dead branches.
+- **Compare the batch in place.** Slicing and reversing allocates a new tuple per
+  candidate, and there are a great many candidates.
+- **The empty run has exactly one split** — the empty one. That is the base case,
+  not a special case, and writing it as a special case is how the count comes out
+  wrong by one.
+- **`solve_glaze` must not modify its argument.** A solver that mutates the
+  caller's rack cannot be called twice, and the second call is where you find out.
 
-- Word break II (LC 140) — same state, dictionary lookup as the prune.
-- Restore IP addresses (LC 93, homework) — same state, value-and-length validation as the prune.
-- Split array largest sum (LC 410) — DP version of the same shape.
+## Expected output
 
-Sudoku is the canonical **constraint-satisfaction backtracking**. The state design (pruning sets per dimension) generalizes to:
+Real stdout from the shipped solution, captured on CPython 3.13.2:
 
-- N-Queens (LC 51, challenge) — three pruning sets per row, both diagonals.
-- Word search (LC 79, challenge) — visited set as the pruning set.
-- Solving any Latin-square or graph-coloring problem — pruning set per constraint dimension.
+```text
+$ python README-solution.py
+HALF ONE - the batch split
+    run: (940, 1010, 940, 780, 780, 1180)
+    splits: 4
+    fewest: [(940, 1010, 940), (780, 780), (1180,)]
 
-The two together — combinatorial enumeration plus constraint satisfaction — cover the two halves of the backtracking universe. By Sunday of Week 12 you have the template and the two largest applications in your write-up portfolio.
+HALF TWO - the glaze square
+    given
+        A . . D
+        . . A .
+        . C . .
+        B . . C
+    solved
+        A B C D
+        C D A B
+        D C B A
+        B A D C
 
----
+All checks passed.
+```
 
-## Acceptance for the week
+The firing run has **four** legal cuts, not one. `940 1010 940 | 780 780 | 1180`
+is the fewest at three batches, but cutting every pot separately is just as legal
+— a single temperature is trivially symmetric. If your enumeration returns one
+split, it is stopping at the first success, and you have written half two's shape
+by mistake.
+
+## Steps
+
+1. Read both harnesses in the solution file. They are the spec.
+2. Write both memos before any code. Name which half enumerates and which stops.
+3. Implement `_is_symmetric` in place, then `all_splits`. Check the run gives 4.
+4. Add `fewest_batches` and state the tie-break.
+5. Implement `_legal` for the glaze rack as a plain scan of row, column and
+   quadrant. Correct first.
+6. Implement `_fill`, returning `True` up the stack. Check the solved rack by eye
+   with `render` before trusting the assertions.
+7. Add the guards, then write both FRAME passes.
+
+## The Solution
+
+```python
+"""README-solution.py - the Week 12 mini-project, both halves worked.
+
+Two backtracking problems that look nothing alike and are the same shape
+underneath: choose, explore, undo.
+
+  Half one - the batch split. A kiln fires a run of pots at rising then falling
+  temperatures. A BATCH is a stretch of that run whose temperatures read the
+  same forwards and backwards, because the kiln ramps up and back down
+  symmetrically. Split the whole run into batches. Enumerate every split, then
+  report the one with fewest batches.
+
+  Half two - the glaze square. A 4x4 rack is divided into four 2x2 quadrants.
+  Every row, every column and every quadrant must hold each of the four glaze
+  codes exactly once. Some cells are already loaded. Fill the rest.
+
+The first enumerates and counts; the second satisfies and stops. Saying which
+of those two you are doing, out loud, before writing code, is the week's actual
+lesson - they prune differently and they terminate differently.
+
+Labels are printed in plain capitals rather than Markdown headings: this output
+is published inside a fenced block on the page, and a "##" line inside that fence
+reads as a new page section to anything splitting the page on headings.
+
+The self-checks at the bottom are the starter's, unchanged. When they all pass
+the file prints "All checks passed."
+"""
+
+# ---- Given data ----
+FIRING_RUN: tuple[int, ...] = (940, 1010, 940, 780, 780, 1180)
+
+GLAZE_CODES = "ABCD"
+GLAZE_RACK: list[list[str]] = [
+    ["A", ".", ".", "D"],
+    [".", ".", "A", "."],
+    [".", "C", ".", "."],
+    ["B", ".", ".", "C"],
+]
+
+
+# ---- Half one: the batch split ----
+def _is_symmetric(run: tuple[int, ...], lo: int, hi: int) -> bool:
+    """Does run[lo:hi] read the same both ways?
+
+    Compared in place rather than by slicing and reversing. The slice would
+    allocate a new tuple at every candidate, and there are a great many
+    candidates.
+
+    Args:
+        run: The whole firing run.
+        lo: Start of the stretch, inclusive.
+        hi: End of the stretch, exclusive.
+
+    Returns:
+        True when the stretch is symmetric. A stretch of one always is.
+    """
+    left, right = lo, hi - 1
+    while left < right:
+        if run[left] != run[right]:
+            return False
+        left += 1
+        right -= 1
+    return True
+
+
+def _split(
+    run: tuple[int, ...],
+    start: int,
+    current: list[tuple[int, ...]],
+    found: list[list[tuple[int, ...]]],
+) -> None:
+    """Enumerate every split of run[start:] into symmetric batches."""
+    if start == len(run):
+        found.append(list(current))
+        return
+    for end in range(start + 1, len(run) + 1):
+        # Test BEFORE recursing. Testing inside the call explores a whole level
+        # of splits whose first batch was never legal.
+        if not _is_symmetric(run, start, end):
+            continue
+        current.append(run[start:end])
+        _split(run, end, current, found)
+        current.pop()
+
+
+def all_splits(run: tuple[int, ...]) -> list[list[tuple[int, ...]]]:
+    """Every way to cut the run into symmetric batches.
+
+    Args:
+        run: The firing temperatures, in order.
+
+    Returns:
+        A list of splits, each a list of batches. An empty run has exactly one
+        split - the empty one - which is the base case, not a special case.
+    """
+    found: list[list[tuple[int, ...]]] = []
+    _split(run, 0, [], found)
+    return found
+
+
+def fewest_batches(run: tuple[int, ...]) -> list[tuple[int, ...]]:
+    """The split using the fewest batches; ties settled by reading order."""
+    return min(all_splits(run), key=lambda split: (len(split), split))
+
+
+# ---- Half two: the glaze square ----
+def _quadrant(row: int, col: int) -> tuple[int, int]:
+    """Which 2x2 quadrant a cell belongs to."""
+    return row // 2, col // 2
+
+
+def _legal(rack: list[list[str]], row: int, col: int, code: str) -> bool:
+    """May `code` go in this cell?
+
+    Args:
+        rack: The rack as it currently stands, "." for empty.
+        row: Cell row.
+        col: Cell column.
+        code: The glaze code being tried.
+
+    Returns:
+        True when the code appears nowhere in that row, column or quadrant.
+    """
+    for i in range(4):
+        if rack[row][i] == code or rack[i][col] == code:
+            return False
+    qrow, qcol = _quadrant(row, col)
+    for r in range(qrow * 2, qrow * 2 + 2):
+        for c in range(qcol * 2, qcol * 2 + 2):
+            if rack[r][c] == code:
+                return False
+    return True
+
+
+def _fill(rack: list[list[str]], cells: list[tuple[int, int]], at: int) -> bool:
+    """Fill the empty cells from `at` onwards; True when the rack is solved."""
+    if at == len(cells):
+        return True
+    row, col = cells[at]
+    for code in GLAZE_CODES:
+        if not _legal(rack, row, col, code):
+            continue
+        rack[row][col] = code
+        if _fill(rack, cells, at + 1):
+            # Stop at the first solution. This half SATISFIES; it does not
+            # enumerate, and returning True all the way up is what makes it
+            # stop rather than exploring the rest of a solved rack.
+            return True
+        rack[row][col] = "."
+    return False
+
+
+def solve_glaze(rack: list[list[str]]) -> list[list[str]] | None:
+    """Fill every empty cell, or report that the rack cannot be filled.
+
+    Args:
+        rack: A 4x4 grid of glaze codes and "." for empty. Not modified.
+
+    Returns:
+        A solved copy, or None when no filling exists.
+
+    Raises:
+        ValueError: If the rack is not 4x4, or holds a symbol that is neither a
+            glaze code nor ".".
+    """
+    if len(rack) != 4 or any(len(row) != 4 for row in rack):
+        raise ValueError("the rack must be 4x4")
+    for row in rack:
+        for cell in row:
+            if cell != "." and cell not in GLAZE_CODES:
+                raise ValueError(f"{cell!r} is not a glaze code")
+
+    work = [list(row) for row in rack]
+    empty = [(r, c) for r in range(4) for c in range(4) if work[r][c] == "."]
+    return work if _fill(work, empty, 0) else None
+
+
+def render(rack: list[list[str]]) -> str:
+    """Draw a rack, one row per line."""
+    return "\n".join(" ".join(row) for row in rack)
+
+
+# ---- Self-check ----
+if __name__ == "__main__":
+    print("HALF ONE - the batch split")
+    print(f"    run: {FIRING_RUN}")
+    splits = all_splits(FIRING_RUN)
+    print(f"    splits: {len(splits)}")
+    print(f"    fewest: {fewest_batches(FIRING_RUN)}")
+    print()
+
+    print("HALF TWO - the glaze square")
+    print("    given")
+    for line in render(GLAZE_RACK).splitlines():
+        print("        " + line)
+    solved = solve_glaze(GLAZE_RACK)
+    print("    solved")
+    for line in render(solved).splitlines():
+        print("        " + line)
+    print()
+
+    # ---- Half one.
+    # Every batch of every split must be symmetric, and the batches must
+    # reassemble into the original run. Those two facts are the definition.
+    for split in splits:
+        assert tuple(x for batch in split for x in batch) == FIRING_RUN
+        for batch in split:
+            assert _is_symmetric(batch, 0, len(batch))
+
+    # A run of distinct temperatures can only be cut into single pots.
+    assert all_splits((1, 2, 3)) == [[(1,), (2,), (3,)]]
+
+    # A run that is symmetric whole can also be cut every other way that works,
+    # so the count is more than one and the fewest is the whole run.
+    assert fewest_batches((5, 5, 5)) == [(5, 5, 5)]
+    assert len(all_splits((5, 5, 5))) == 4
+
+    # The empty run has exactly one split: no batches at all.
+    assert all_splits(()) == [[]]
+
+    # ---- Half two.
+    assert solved is not None
+    # The given cells are untouched, and the input was not modified.
+    for r in range(4):
+        for c in range(4):
+            if GLAZE_RACK[r][c] != ".":
+                assert solved[r][c] == GLAZE_RACK[r][c]
+    assert GLAZE_RACK[0][1] == "."
+
+    # Rows, columns and quadrants each hold all four codes exactly once.
+    for i in range(4):
+        assert sorted(solved[i]) == list(GLAZE_CODES)
+        assert sorted(solved[r][i] for r in range(4)) == list(GLAZE_CODES)
+    for qr in (0, 2):
+        for qc in (0, 2):
+            block = [solved[r][c] for r in (qr, qr + 1) for c in (qc, qc + 1)]
+            assert sorted(block) == list(GLAZE_CODES)
+
+    # An unsolvable rack reports None rather than a half-filled grid.
+    impossible = [["A", "A", ".", "."], [".", ".", ".", "."],
+                  [".", ".", ".", "."], [".", ".", ".", "."]]
+    assert solve_glaze(impossible) is None
+
+    # Malformed racks are refused.
+    for bad in ([["A"]], [["Z", ".", ".", "."], *[[".", ".", ".", "."]] * 3]):
+        try:
+            solve_glaze(bad)
+        except ValueError:
+            pass
+        else:
+            raise AssertionError(f"expected ValueError for {bad!r}")
+
+    print("All checks passed.")
+```
+
+The two halves sit in one file on purpose. Read the two recursive functions side
+by side: `_split` appends and returns nothing, `_fill` returns a bool and stops.
+That difference is the whole week.
+
+## Download and run
+
+Download the solution beside this page and run it:
+
+```bash
+python README-solution.py
+```
+
+No third-party packages, no arguments, no input. It prints both halves and then
+`All checks passed.`
+
+## Common bugs to catch
+
+- **Enumerating when you meant to stop.** Symptom: the glaze solver explores every
+  filling of an already-solved rack. Return `True` up the stack.
+- **Stopping when you meant to enumerate.** Symptom: the firing run reports one
+  split. Record and keep going.
+- **Forgetting the undo in half two.** Symptom: a rack that fills with codes
+  contradicting each other, because a failed branch left its guess behind.
+- **Mutating the caller's rack.** Symptom: correct once, wrong the second time it
+  is called. Copy before you fill.
+- **Slicing to test symmetry.** Symptom: correct, and slower the longer the run.
+  Compare in place.
+- **Treating the empty run as zero splits.** Symptom: every count one short.
+
+## Acceptance checklist
 
 The week's mini-project is complete when:
 
@@ -111,3 +437,32 @@ The retrospective is the artifact you re-read in Week 16 (before Mock #3) and in
 ---
 
 *If you find errors in this mini-project, please open an issue or send a PR. Future learners will thank you.*
+
+## Stretch
+
+- Report how the split count grows for runs of 1 to 12 identical temperatures. The
+  sequence is one you will recognise, and saying why is a good Examine (cost)
+  paragraph.
+- Make the glaze solver report **how many** fillings a rack has rather than one.
+  The change is two lines and it converts half two into half one — say which two.
+- Take a solved glaze rack, blank cells one at a time, and find the most you can
+  blank while the filling stays unique. That is how a puzzle setter works, and it
+  uses the counter from the previous stretch.
+
+## How this connects to the rest of the curriculum
+
+Palindrome partitioning is the canonical **string-partition backtracking**. The state design (`(start_index, path)`) and the constraint-propagation prune (palindrome check) generalize to:
+
+- the stripped manifest line, every split — same state, dictionary lookup as the prune.
+- the grid reference split — same state, value-and-length validation as the prune.
+- the signal mast spacing — DP version of the same shape.
+
+Sudoku is the canonical **constraint-satisfaction backtracking**. The state design (pruning sets per dimension) generalizes to:
+
+- the drying rack sensors — three pruning sets per row, both diagonals.
+- the kiln firing trail — visited set as the pruning set.
+- Solving any Latin-square or graph-coloring problem — pruning set per constraint dimension.
+
+The two together — combinatorial enumeration plus constraint satisfaction — cover the two halves of the backtracking universe. By Sunday of Week 12 you have the template and the two largest applications in your write-up portfolio.
+
+---

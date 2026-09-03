@@ -15,7 +15,7 @@ These three patterns plus the size-k template from Lecture 1 cover every Phase-2
 
 ## 1. The two-heap pattern — running median
 
-The canonical problem (LC 295): support `add_num(x)` and `find_median()` on a stream of integers. Both operations should be cheap (sub-linear). The intended solution is two heaps.
+The canonical problem: support `add_num(x)` and `find_median()` on a stream of integers. Both operations should be cheap (sub-linear). The intended solution is two heaps.
 
 ### The setup
 
@@ -44,7 +44,6 @@ flowchart LR
 ```python
 import heapq
 from typing import List
-
 
 class MedianFinder:
     """Running median of a stream of integers.
@@ -166,7 +165,7 @@ We will cover this in §4. The senior framing is that the two-heap pattern + laz
 
 ## 3. k-way merge
 
-The canonical problem (LC 23): merge `k` sorted lists into one sorted list. The Phase-2 framing: "merge `k` sorted streams."
+The canonical problem: merge `k` sorted lists into one sorted list. The Phase-2 framing: "merge `k` sorted streams."
 
 ### The setup
 
@@ -200,7 +199,6 @@ flowchart TD
 ```python
 import heapq
 from typing import Iterator, List, Tuple
-
 
 def k_way_merge(sources: List[List[int]]) -> Iterator[int]:
     """Merge k sorted lists into one sorted stream.
@@ -259,7 +257,7 @@ def k_way_merge_builtin(sources: List[List[int]]) -> Iterator[int]:
 
 `heapq.merge` does exactly the same algorithm internally and returns an iterator. Know it exists; the manual implementation is what interviews grade.
 
-### Variant — merge `k` sorted linked lists (LC 23)
+### Variant — merge `k` sorted linked lists
 
 The same algorithm with a different input shape. Each source is a linked list node `ListNode(val, next)`; the heap tuple is `(node.val, list_index, node)`. After popping, refill with `(popped_node.next.val, list_index, popped_node.next)` if `popped_node.next` is not `None`.
 
@@ -269,12 +267,10 @@ Watch out for the tiebreaker: when two nodes have equal `val`, the heap falls th
 import heapq
 from typing import List, Optional, Tuple
 
-
 class ListNode:
     def __init__(self, val: int = 0, nxt: Optional["ListNode"] = None) -> None:
         self.val = val
         self.next = nxt
-
 
 def merge_k_linked_lists(lists: List[Optional[ListNode]]) -> Optional[ListNode]:
     """Merge k sorted linked lists; return the head of the merged list."""
@@ -308,7 +304,6 @@ The trick: **do not remove eagerly**. Instead, mark the element as stale in an e
 ```python
 import heapq
 from typing import Dict, Iterable, List
-
 
 class LazyHeap:
     """Min-heap supporting amortized O(log n) arbitrary deletion.
@@ -391,7 +386,7 @@ The senior framing: "I would use lazy deletion via an external stale-counter and
 
 ## 5. The scheduler pattern — heap with cooldown
 
-A natural composition of the size-k template and lazy deletion. The canonical problem: LC 621, Task Scheduler.
+A natural composition of the size-k template and lazy deletion. The canonical problem: the dye vat rotation.
 
 **Spec.** Given a list of tasks (each a single character) and an integer `n` (the cooldown), return the minimum number of time units to complete all tasks. The same task cannot be run twice within `n` time units of itself; otherwise, the CPU runs idle.
 
@@ -405,7 +400,6 @@ A natural composition of the size-k template and lazy deletion. The canonical pr
 import heapq
 from collections import Counter, deque
 from typing import List, Tuple
-
 
 def least_interval(tasks: List[str], n: int) -> int:
     """Return the minimum time to complete all tasks with cooldown n."""
@@ -549,9 +543,5 @@ That is the bar. The exercises are next.
 - **`heapq.merge` — Python docs**: <https://docs.python.org/3/library/heapq.html#heapq.merge> — the built-in k-way merge.
 - **Wikipedia — k-way merge**: <https://en.wikipedia.org/wiki/K-way_merge_algorithm> — covers the heap approach and the alternative tournament tree.
 - **Wikipedia — Selection algorithm** (running median section): <https://en.wikipedia.org/wiki/Selection_algorithm> — covers the two-heap approach in the context of order statistics.
-- **LeetCode 295 (Find Median from Data Stream)**: the canonical two-heap problem; Exercise 3 covers this exactly.
-- **LeetCode 23 (Merge k Sorted Lists)**: the canonical k-way merge; Challenge 1.
-- **LeetCode 621 (Task Scheduler)**: the canonical scheduler; Challenge 2.
-- **LeetCode 480 (Sliding Window Median)**: the canonical two-heap + lazy deletion problem; mentioned in §4 as the Phase-3 extension.
 
 The lecture sequence is closed. Next: the exercises.

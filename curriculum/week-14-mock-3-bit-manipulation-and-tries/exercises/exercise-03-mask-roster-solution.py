@@ -1,0 +1,216 @@
+"""exercise-03-mask-roster-solution.py - a whole roster in one integer.
+
+A depot's night crew is drawn from a small pool. Rather than keeping a list of
+who is on, the rota holds ONE INTEGER per shift: bit 0 is the first name in the
+pool, bit 1 the second, and so on. A lit bit means that person is on.
+
+That turns every question about a shift into arithmetic. Who is on is a walk
+over the lit bits. How many are on is a bit count. Is this shift a subset of
+that one is a single AND. And enumerating every possible shift is counting from
+0 upwards.
+
+The point of the page is the correspondence, so every function comes in two
+forms - the mask form and the plain-set form - and the checks assert they
+agree. The mask version is not always shorter. It is always faster, and on a
+pool of twenty it is the difference between an integer and a set of strings.
+
+Note the limit that comes with it: one machine integer holds one bit per
+person, so this representation is for SMALL pools. Say that out loud rather
+than discovering it.
+
+Labels are printed in plain capitals rather than Markdown headings: this output
+is published inside a fenced block on the page, and a "##" line inside that
+fence reads as a new page section to anything splitting the page on headings.
+
+The self-checks at the bottom are the starter's, unchanged. When they all pass
+the file prints "All checks passed."
+"""
+
+from __future__ import annotations
+
+# ---- Given data ----
+POOL: tuple[str, ...] = ("Ash", "Bo", "Cass", "Dov")
+
+
+# ---- Your task ----
+def roster_of(mask: int, pool: tuple[str, ...]) -> list[str]:
+    """Return the people a mask puts on shift, in pool order.
+
+    Args:
+        mask: The shift, one bit per person.
+        pool: The names, in bit order.
+
+    Returns:
+        The names whose bit is lit.
+
+    Raises:
+        ValueError: If the mask lights a bit the pool has no name for, which
+            means the two have got out of step and every answer after it would
+            be quietly wrong.
+    """
+    if not 0 <= mask < (1 << len(pool)):
+        raise ValueError(f"mask {mask} does not fit a pool of {len(pool)}")
+    return [name for index, name in enumerate(pool) if mask >> index & 1]
+
+
+def mask_of(names: list[str], pool: tuple[str, ...]) -> int:
+    """Return the mask for a list of names.
+
+    Args:
+        names: The people on shift, in any order.
+        pool: The names, in bit order.
+
+    Returns:
+        The mask. Naming somebody twice is harmless - a bit is lit or it is
+        not - which is itself worth noticing about this representation.
+
+    Raises:
+        ValueError: If a name is not in the pool.
+    """
+    mask = 0
+    for name in names:
+        if name not in pool:
+            raise ValueError(f"{name!r} is not in the pool")
+        mask |= 1 << pool.index(name)
+    return mask
+
+
+def every_shift(pool: tuple[str, ...]) -> list[int]:
+    """Return every possible shift, as masks.
+
+    Args:
+        pool: The names, in bit order.
+
+    Returns:
+        Every mask from 0 to 2 ** len(pool) - 1. Enumerating subsets is
+        counting - which is the whole reason this representation is worth
+        knowing, and it is one line against a recursive walk.
+    """
+    return list(range(1 << len(pool)))
+
+
+def on_count(mask: int) -> int:
+    """Return how many people a mask puts on shift.
+
+    Args:
+        mask: The shift. Must not be negative.
+
+    Returns:
+        The number of lit bits, counted by clearing the lowest one each turn.
+
+    Raises:
+        ValueError: If `mask` is negative.
+    """
+    if mask < 0:
+        raise ValueError("a shift mask cannot be negative")
+    count = 0
+    while mask:
+        mask &= mask - 1
+        count += 1
+    return count
+
+
+def covers(bigger: int, smaller: int) -> bool:
+    """Say whether every person on the smaller shift is also on the bigger one.
+
+    Args:
+        bigger: The shift that might cover the other.
+        smaller: The shift that might be covered.
+
+    Returns:
+        True when `smaller` is a subset of `bigger`. The whole test is
+        `bigger & smaller == smaller`: ANDing keeps only the bits in both, so
+        if that is still all of `smaller`, nothing in it was missing.
+    """
+    return bigger & smaller == smaller
+
+
+def shifts_covering(mask: int, pool: tuple[str, ...]) -> list[int]:
+    """Return every shift that covers `mask`.
+
+    Args:
+        mask: The shift that must be covered.
+        pool: The names, in bit order.
+
+    Returns:
+        The masks of every shift including everybody in `mask`.
+
+    Raises:
+        ValueError: If the mask does not fit the pool.
+    """
+    roster_of(mask, pool)          # borrows its range check
+    return [shift for shift in every_shift(pool) if covers(shift, mask)]
+
+
+# ---- Self-check ----
+if __name__ == "__main__":
+    print(f"POOL  {list(POOL)}")
+    print("    " + "   ".join(f"bit {index}={name}" for index, name in enumerate(POOL)))
+    print()
+
+    print("EVERY SHIFT")
+    for shift in every_shift(POOL):
+        names = roster_of(shift, POOL)
+        shown = ", ".join(names) if names else "(nobody)"
+        print(f"    {shift:>2}  {shift:0{len(POOL)}b}  {on_count(shift)}  {shown}")
+    print()
+
+    night = mask_of(["Ash", "Cass"], POOL)
+    print(f"    Ash and Cass    : mask {night} ({night:0{len(POOL)}b})")
+    print(f"    shifts covering : {shifts_covering(night, POOL)}")
+    print()
+
+    # Sixteen shifts for four people, and that is 2 ** 4.
+    assert len(every_shift(POOL)) == 16
+
+    # The two representations round-trip, both ways, for every shift.
+    for shift in every_shift(POOL):
+        assert mask_of(roster_of(shift, POOL), POOL) == shift
+    for names in ([], ["Ash"], ["Bo", "Dov"], list(POOL)):
+        assert roster_of(mask_of(names, POOL), POOL) == [n for n in POOL if n in names]
+
+    # Bit 0 is the first name in the pool. Getting this backwards is the most
+    # common mistake and every answer still looks plausible.
+    assert roster_of(1, POOL) == ["Ash"]
+    assert roster_of(1 << 3, POOL) == ["Dov"]
+
+    # The count agrees with the roster length everywhere.
+    for shift in every_shift(POOL):
+        assert on_count(shift) == len(roster_of(shift, POOL))
+
+    # Naming somebody twice lights the same bit once.
+    assert mask_of(["Ash", "Ash"], POOL) == mask_of(["Ash"], POOL)
+
+    # Covering agrees with the set-based answer, on every pair of shifts.
+    for bigger in every_shift(POOL):
+        for smaller in every_shift(POOL):
+            by_set = set(roster_of(smaller, POOL)) <= set(roster_of(bigger, POOL))
+            assert covers(bigger, smaller) == by_set
+
+    # Nobody covers nobody, and everybody covers everybody.
+    assert covers(0, 0) and covers(15, 0) and covers(15, 15)
+    assert not covers(0, 1)
+
+    # Ash and Cass is bits 0 and 2, so mask 5, and four shifts cover it.
+    assert night == 0b0101
+    assert len(shifts_covering(night, POOL)) == 4
+
+    # A mask that does not fit the pool is refused rather than silently
+    # dropping the people it cannot name.
+    for bad in (16, -1):
+        try:
+            roster_of(bad, POOL)
+        except ValueError:
+            pass
+        else:
+            raise AssertionError(f"expected ValueError for mask {bad}")
+
+    # A name that is not in the pool is refused too.
+    try:
+        mask_of(["Ash", "Wren"], POOL)
+    except ValueError:
+        pass
+    else:
+        raise AssertionError("expected ValueError for a name not in the pool")
+
+    print("All checks passed.")

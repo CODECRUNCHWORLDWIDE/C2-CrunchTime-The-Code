@@ -36,7 +36,7 @@ If listening back makes you cringe, that's data. Write it down.
 
 ## Problem 3 — FRAME on an unfamiliar problem (90 min)
 
-Pick *one* problem you've never seen before from any free practice site (LeetCode "Easy" or "Medium" tagged "Two Pointers"). **Do not** read other people's solutions before solving.
+Pick *one* problem you have never seen before, from anywhere — a free practice site, a textbook, a colleague. Easy or medium, and ideally two-pointer flavoured. **Do not** read anybody's solution before solving it. The point of this problem is that nothing about it is familiar, which is the one thing the rest of the week cannot give you.
 
 **Acceptance:**
 

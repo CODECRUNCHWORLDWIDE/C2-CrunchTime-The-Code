@@ -1,526 +1,611 @@
-# Mini-Project — Top-k + Two-Heap, Fully FRAME-Narrated
+# Mini-Project — The Repair Café Desk
 
-> The week's deliverable: two compact portfolio artifacts that demonstrate fluency across the two highest-leverage Week-8 templates — the size-k top-k heap and the two-heap running-statistic pattern — with full FRAME narration end-to-end. The pair is the discriminating element — Mock #2 grades both templates separately, and shipping one of each forces you to articulate the structural differences out loud.
+> Topic: every Week 8 idiom in one working system · Lecture: [1](../lecture-notes/01-heapq-and-top-k.md), [2](../lecture-notes/02-heap-of-tuples-and-k-closest.md), [3](../lecture-notes/03-two-heap-and-k-way-merge.md) · Difficulty: Medium-Hard · Target time: 10 hours across Thursday to Saturday · Why this one: the exercises drilled the idioms one at a time; this is the page where they have to work together, and where the seams between them are the thing being graded.
 
-**Estimated time:** 10 hours, split across Thursday-Saturday.
+## The Brief
 
-This mini-project is *narration-heavy* rather than *content-heavy*. You will produce two FRAME write-ups, each fully delivered in all five sections, each anchored by a 30-second pattern-recognition memo at the top. The two write-ups must be navigable as a pair — cross-references between them are part of the rubric.
+A repair café opens for one afternoon. One bench, three ways for a job to arrive,
+and a queue that is emphatically **not** first-come-first-served.
 
----
+Every idiom the week taught appears here doing real work rather than being
+demonstrated:
 
-## Why this matters
+- the three intake channels are stitched into one arrival ledger by a **k-way
+  merge**, so the ledger is built without sorting anything;
+- the desk is a **heap of tuples** — `(urgency, ticket)` — so equal urgencies are
+  served in arrival order and two job records are never compared with each other;
+- a job whose owner takes it home again is marked withdrawn rather than hunted
+  for in the heap: **lazy deletion**;
+- the end-of-day "who waited longest" table is a **max-heap by negation**,
+  because `heapq` only ever hands back the smallest thing.
 
-Three reasons.
+The deliverable is the running system **and** two FRAME write-ups on the two
+idioms that carry it: the k-way merge that builds the ledger, and the two-part
+queue — heap-of-tuples plus lazy deletion — that runs the bench. Those two are
+what Mock #2 grades separately, and writing one of each forces you to say out
+loud where they differ.
 
-1. **Phase 2 is graded on Research constraints.** Phase 1 spent four weeks installing the FRAME habit; the Make step was the primary work. Phase 2 patterns are heavier and the Research constraints step matters more — recognition cost is no longer "30 seconds to name the pattern" but "60 seconds to name the algorithm choice (size-k / k-closest / two-heap / k-way merge / scheduler / lazy deletion), defend the size bound or balance invariant, and reject one wrong alternative." This mini-project is the third in C2 to grade two parallel write-ups as a *pair* (W6 BFS pair, W7 DFS pair, W8 heap pair).
+## Starter
 
-2. **Top-k and two-heap are the two structural shapes of every interview heap question.** Half of all FAANG heap problems are top-k variants; the other half are running-statistic variants. The pair forces you to articulate the differences: when is the heap bounded vs unbounded, when is one heap enough vs two, when does the size invariant matter vs the balance invariant. After two write-ups side-by-side, the disambiguation is reflexive.
+`README-solution.py` sits beside this page: the whole day, from doors open to
+doors shut, with its self-checks.
 
-3. **The full FRAME narration is the rubric.** Drills are graded on Research constraints + Make the solution; the mini-project adds Assess options, Examine (verify), Examine (cost), *and* cross-references. By Sunday you should be able to produce a full FRAME narration on a heap problem in 20-25 minutes, recorded, without rehearsal.
+```text
+opening minute    0
+closing minute  180
 
----
+walk-in    min   0  toaster         normal        25 min
+           min  35  table lamp      when you can  15 min
+           min  60  kettle          normal        20 min
+           min  95  radio           when you can  30 min
+phone      min  10  sewing machine  urgent        45 min
+           min  35  hairdryer       normal        20 min
+           min 110  fan heater      urgent        35 min
+web form   min   5  bicycle wheel   when you can  40 min
+           min  48  food mixer      normal        30 min
+           min  72  laptop fan      urgent        25 min
+           min 150  turntable       when you can  20 min
 
-## What you ship
+withdrawn  min  70  ticket 4        min 130  ticket 9
+```
 
-Three files: two problem write-ups plus a short overview.
+Two rules are the café's own and are not conventions. When two channels report
+the same minute, **the person standing in the room is written down first**, then
+the phone, then the web form. And the bench **finishes what it starts** — a job
+that runs past closing time is not interrupted, but a job that could not be
+started before closing is left for next week.
+
+## Requirements
+
+1. `stitch_arrivals(logs)` merges the three channels into one ledger in minute
+   order, assigning ticket numbers as it goes.
+2. `RepairDesk` offers `queue`, `withdraw`, `take_next`, `still_waiting`, and a
+   `len()` that counts only jobs really still waiting.
+3. `run_day(logs, withdrawals, opening, closing)` returns what was served, what
+   was withdrawn, and what was left queued at closing.
+4. `longest_waits(served, count)` returns the longest waits, longest first.
+5. `bench_minutes(served, opening, closing)` returns minutes worked and idle.
+6. Every job is accounted for: served plus withdrawn plus left queued equals the
+   ledger.
+
+### What you ship
+
+Three files under `frame-writeups/c2-week-08/mini-project/`:
 
 ```
 frame-writeups/c2-week-08/mini-project/
-├── README.md                                              ← short overview + index + reflection
-├── problem-01-topk-top-k-frequent-words.md                ← top-k + heap-of-tuples
-└── problem-02-twoheap-sliding-window-median.md            ← two-heap + lazy deletion
+├── README.md                        ← overview, index, and the reflection
+├── problem-01-arrival-ledger.md     ← the k-way merge write-up
+└── problem-02-repair-desk.md        ← heap-of-tuples plus lazy deletion
 ```
 
-Each write-up is the full FRAME format from Week 1, **plus a leading 30-second pattern-recognition memo at the top**.
+Each write-up is 100–200 lines: the five FRAME sections plus a five-line
+recognition memo at the top. The code belongs inside the Assemble section, not
+in a separate file.
 
-The two problems are chosen so that:
+### The recognition memo
 
-- **Problem 1 (top-k + heap-of-tuples):** the algorithm is a size-k heap with a *conflicting-direction* tiebreaker (count is max-first; word is min-first on ties). This forces you to write either a custom-comparator wrapper or a two-pass `sort-then-truncate` solution — and to defend the choice. A subtle variant that catches candidates who only practice plain top-k.
+Five lines at the top of each write-up, written to be read in thirty seconds:
 
-- **Problem 2 (two-heap + lazy deletion):** the algorithm is the two-heap running median *under a sliding window* — meaning expired elements must be removed from the heaps. The Research constraints move is recognizing that "running median under a sliding window" composes the two-heap pattern (Lecture 3 §1) with lazy deletion (Lecture 3 §4).
+1. **The shape.** k-way merge / bounded top-k / heap of tuples / lazy deletion /
+   two-heap statistic.
+2. **What is in the heap**, exactly, and how big it gets.
+3. **The invariant** — the size bound, the balance, or the tiebreaker.
+4. **The alternative you rejected**, and the one-sentence reason.
+5. **The cost**, both time and space, with the discriminator that decides it.
 
-The two problems together cover every Week-8 idiom: size-k bound, heap-of-tuples with custom tiebreakers, two-heap balance, lazy deletion. After this pair, the recognition for any heap problem should reduce to: *which of these idioms applies?*
+### Cross-references
 
----
+The two write-ups have to be navigable as a pair, and the rubric grades that:
 
-## The 30-second pattern-recognition memo (the signature element)
+- The merge write-up says why the heap holds **one row per channel** and not the
+  whole log, and points at the desk write-up for the case where the heap's
+  contents are the queue itself.
+- The desk write-up says why the tuple's middle element exists, and points back
+  at the merge for a heap where every entry is unique by construction and no
+  tiebreaker is needed.
+- Both name the same rejected alternative — sort everything — and say why it is
+  a different answer in each case.
 
-At the top of each write-up, immediately after the title, place a single bordered block.
+### Rubric
 
-### For Problem 1 (top-k)
+| Axis | What "great" looks like |
+|------|--------------------------|
+| Frame the problem | The memo names the shape and the invariant in five lines, without hedging. |
+| Reason about options | Four to six bullets of algorithm before any code, with the rejected alternative named. |
+| Assemble the solution | Idiomatic Python; `heapq` operations only; type hints throughout; the negation confined to the heap. |
+| Measure it | A hand trace of at least one minute of the day, and one bug named and prevented. |
+| Evaluate the cost | Time, space, best/average/worst, the trade-off, and the improvement — for both write-ups, and they must not be the same paragraph twice. |
 
-```markdown
-> **30-second pattern-recognition memo (top-k):**
-> This is a top-k problem because [k-largest / k-most-frequent / k-closest signal].
-> Sub-shape: [size-k min-heap / size-k max-heap by negation].
-> Tuple shape: [bare key / (priority, tiebreaker, payload)].
-> Tiebreaker: [counter / secondary key / unnecessary (numeric)].
-> Why not sort: [O(n log n) vs O(n log k); k << n].
-> Why not quickselect: [one sentence — expected vs worst-case, stream-friendliness].
+Twenty points per write-up, forty for the pair.
+
+## Constraints
+
+- **The heap never holds a `Job`.** `Job` is deliberately not orderable. The heap
+  holds `(urgency, ticket)`; the records live in a dict beside it. This is the
+  constraint the whole design turns on.
+- **Withdrawal must not touch the heap.** Finding one entry inside a heap means
+  looking at all of them, and removing it means rebuilding what is left. Write
+  the ticket down instead; pay one skipped pop later.
+- **`len()` must exclude withdrawn tickets**, even though they are still sitting
+  in the heap. A count that includes them is the classic lazy-deletion bug and it
+  is invisible until somebody reports it.
+- **The merge holds one row per channel**, never a whole log.
+- **Ties in the ledger break by channel precedence**, encoded, not assumed.
+- **The bench finishes what it starts.** A job begun at minute 150 that needs 40
+  minutes runs to 190, and the day's report says so.
+
+## Expected output
+
+Real stdout from the shipped solution, captured on CPython 3.13.2:
+
+```text
+$ python README-solution.py
+arrival ledger
+  ticket  1  min   0  walk-in    toaster         normal       25 min
+  ticket  2  min   5  web form   bicycle wheel   when you can 40 min
+  ticket  3  min  10  phone      sewing machine  urgent       45 min
+  ticket  4  min  35  walk-in    table lamp      when you can 15 min
+  ticket  5  min  35  phone      hairdryer       normal       20 min
+  ticket  6  min  48  web form   food mixer      normal       30 min
+  ticket  7  min  60  walk-in    kettle          normal       20 min
+  ticket  8  min  72  web form   laptop fan      urgent       25 min
+  ticket  9  min  95  walk-in    radio           when you can 30 min
+  ticket 10  min 110  phone      fan heater      urgent       35 min
+  ticket 11  min 150  web form   turntable       when you can 20 min
+
+bench log
+  min   0- 25  ticket  1  toaster         waited   0 min
+  min  25- 70  ticket  3  sewing machine  waited  15 min
+  min  70- 90  ticket  5  hairdryer       waited  35 min
+  min  90-115  ticket  8  laptop fan      waited  18 min
+  min 115-150  ticket 10  fan heater      waited   5 min
+  min 150-180  ticket  6  food mixer      waited 102 min
+
+longest waits
+  102 min  food mixer
+   35 min  hairdryer
+   18 min  laptop fan
+
+jobs in    : 11
+jobs fixed : 6
+withdrawn  : ['table lamp', 'radio']
+still queued at closing: ['kettle', 'bicycle wheel', 'turntable']
+bench worked 180 of 180 minutes, idle 0
+All checks passed.
 ```
 
-Six lines. Read aloud, ~25 seconds.
+The line to read is the food mixer: it waited **102 minutes** with an urgency of
+"normal", while the fan heater arrived at minute 110 and waited five. That is not
+a bug — it is the priority rule doing exactly what it was asked to do, and it is
+the number the café would argue about. A report that does not surface it is not
+telling the volunteers anything they can act on.
 
-### For Problem 2 (two-heap)
+## Steps
 
-```markdown
-> **30-second pattern-recognition memo (two-heap):**
-> This is a two-heap problem because [running median / running percentile / order statistic on a stream].
-> Heap shape: [max-heap of lower half (negated) + min-heap of upper half].
-> Balance invariant: [|lower| - |upper| in {0, 1}, lower bigger when they differ].
-> Median read: [O(1) — direct array reads on lower[0] and upper[0]].
-> Lazy deletion: [needed? yes/no — and why].
-> Why not sorted list: [O(n) per add vs O(log n)].
-```
+1. Read the self-checks in the shipped file. They are the spec.
+2. Write the two recognition memos **before** any code. If you cannot write them,
+   you do not yet know which structure you are building.
+3. Build `stitch_arrivals` and check the ledger by hand — eleven rows, tickets 1
+   to 11, and the minute-35 tie resolving walk-in before phone.
+4. Build `RepairDesk` with the tuple queue, then add withdrawal as lazy deletion.
+   Get `len()` right at this point, not later.
+5. Run the day. Check the accounting identity: served plus withdrawn plus
+   leftover equals eleven.
+6. Add `longest_waits` and `bench_minutes`.
+7. Write both FRAME passes and the cross-references between them.
 
-Six lines. Read aloud, ~25 seconds.
-
-Example for Problem 1 (Top K Frequent Words):
-
-> **30-second pattern-recognition memo (top-k):**
-> This is a top-k problem because we want the k most frequent words from a list, with a deterministic tiebreaker.
-> Sub-shape: size-k MIN-heap; the heap holds the k most-frequent seen so far; the min of the heap is the eviction bar.
-> Tuple shape: `(count, word)` — but with a TWIST: count is max-first (the heap keeps largest), word is min-first on ties (alphabetical, smaller wins).
-> Tiebreaker: conflict — count direction and word direction oppose. Cleanest fix: sort `Counter.items()` by `(-count, word)` and take the first `k`. Pure-heap version requires a custom `__lt__`.
-> Why not sort: for `n <= 10⁴`, sort-then-truncate is `O(n log n)`; heap is `O(n log k)`. Both fast enough; the heap is the template rep.
-> Why not quickselect: not stream-friendly; the prompt does not need stream support.
-
-Example for Problem 2 (Sliding Window Median):
-
-> **30-second pattern-recognition memo (two-heap):**
-> This is a two-heap problem because we maintain a median under a sliding window of size `k`.
-> Heap shape: max-heap `lower` (negated) of the smaller half of the current window; min-heap `upper` of the larger half.
-> Balance invariant: `|len(lower) - len(upper)| <= 1`; `lower` is larger when they differ.
-> Median read: `O(1)` — `-lower[0]` (odd k) or average of `-lower[0]` and `upper[0]` (even k).
-> Lazy deletion: needed — when the window slides, the leftmost element is expired but may sit deep in a heap. Mark it stale; clean the top on the next median query.
-> Why not sorted list with bisect: insert is `O(k)` (list-shift); the two-heap is `O(log k)`.
-
-Two write-ups, two memos. By the second, the cadence is automatic.
-
----
-
-## Per-problem rubric
-
-Each write-up's grade comes from five axes:
-
-| Axis | Weight | "Great" looks like |
-|------|------:|--------------------|
-| 30-second memo at the top | 25% | Six lines, all required elements named, hits cadence on read-aloud (≤30s) |
-| Research constraints section (expanded body) | 25% | Explicit comparison against the *other* template; one-paragraph "why this algorithm and not the other"; rejection of one wrong pattern (sort / quickselect / single-heap) |
-| Assess options + Make the solution | 20% | Clean code; the canonical template visible; the heap setup (initial seed, bound, invariant restore) is a single named function or block |
-| Examine · verify | 15% | Trace on at least two examples; one common bug called out and avoided |
-| Examine · cost (five-piece from W2) | 15% | Time / space / best-avg-worst / tradeoff / improvement, with the `O(n log k)` or `O(log n)` defense sentence and explicit rejection of one alternative |
-
-A grade of "great" on both write-ups is the bar. The cross-references between Problems 1 and 2 are graded separately as the navigation rubric — see below.
-
----
-
-## The two problems
-
-### Problem 1 — Top K Frequent Words (LeetCode 692) — TOP-K
-
-**Spec.** Given a list of words (lowercase strings; some words may repeat) and an integer `k`, return the `k` most frequent words.
-
-The answer should be sorted by frequency from highest to lowest. If two words have the same frequency, the lexicographically smaller word comes first.
-
-**Examples:**
-
-- Input: `words = ["i", "love", "leetcode", "i", "love", "coding"], k = 2` → Output: `["i", "love"]` (both appear twice; "i" < "love" alphabetically — but both are in the top-2 by frequency so both are output).
-- Input: `words = ["the", "day", "is", "sunny", "the", "the", "the", "sunny", "is", "is"], k = 4` → Output: `["the", "is", "sunny", "day"]`.
-
-**Constraints (LeetCode):**
-
-- `1 <= len(words) <= 500`.
-- `1 <= len(words[i]) <= 10`.
-- Words consist of lowercase English letters only.
-- `k` is in the valid range `[1, distinct(words)]`.
-
-**Why included.** The canonical "conflicting-direction tiebreaker" problem in the top-k family. Forces you to write:
-
-1. The frequency counter (`collections.Counter(words)`).
-2. The recognition that count and word have *opposite* tiebreaker directions — count wants max-first, word wants min-first.
-3. One of two valid implementations:
-   - **Implementation A:** Sort `counts.items()` by `(-count, word)`; take the first `k`. `O(n log n)` time, `O(n)` space.
-   - **Implementation B:** Size-k heap with a custom `__lt__` that handles the direction conflict. `O(n log k)`, more code, more cognitive load.
-4. The defense of the choice.
-
-The senior insight is that **for `n <= 500`, the asymptotic difference is invisible** — both algorithms run in microseconds. The choice is on code clarity, not on speed. Implementation A is the simpler answer; Implementation B is the template rep. Name both; defend one.
-
-### Full FRAME narration for Problem 1
-
-**[F — Frame]** (write 2-3 paragraphs)
-
-Restate the problem in your own words. Confirm:
-
-- The answer is sorted by frequency, descending.
-- Ties in frequency are broken by alphabetical order, ascending.
-- Words are lowercase strings; comparison is the default string `__lt__`.
-- `k` is guaranteed to be valid; no edge case for `k > distinct(words)`.
-
-Walk an example by hand. For `words = ["i", "love", "leetcode", "i", "love", "coding"], k = 2`: counts = `{"i": 2, "love": 2, "leetcode": 1, "coding": 1}`. Top 2 by count: `"i"` and `"love"` (both count 2). Order: count is the same, so alphabetical: `"i" < "love"`. Output: `["i", "love"]`.
-
-**[R — Research constraints]** (write 3-4 paragraphs)
-
-Top-k with a conflicting-direction tiebreaker. Restate the memo elements:
-
-- Sub-shape: size-k heap. But the *direction* conflict (count: max-first; word: min-first on ties) complicates the pure-heap version.
-- Two implementations: sort-and-truncate (`O(n log n)`) or size-k heap with custom comparator (`O(n log k)`).
-- For `n <= 500`, asymptotic difference is invisible; the choice is on clarity.
-- Why not quickselect: not stream-friendly; the prompt's input is in-memory; no benefit.
-
-Compare against Problem 2 (two-heap median). The structural parallel: both use a heap-based template; the differences are (a) bounded (Problem 1, size k) vs unbounded (Problem 2, full stream), (b) one heap vs two heaps, (c) the *invariant* — size bound (Problem 1) vs balance (Problem 2). Naming this parallel out loud is the senior signal.
-
-**[A — Assess options]** (write the algorithm in 4-6 bullets, no code yet)
-
-**Implementation A — sort and truncate (simpler):**
-
-1. Build `counts = collections.Counter(words)`.
-2. Sort `counts.items()` by the key `(-count, word)`.
-3. Take the first `k` entries; return their words.
-
-**Implementation B — size-k heap with custom comparator (template rep):**
-
-1. Build `counts`.
-2. Define a wrapper class with `__lt__` that reverses the count direction and preserves the word direction.
-3. Size-k heap by the wrapper; iterate; return the words in the final heap, sorted.
-
-Edge cases: `k == len(counts)` (return everything); all distinct words (each count is 1; alphabetical order).
-
-**[M — Make the solution]** (code with brief narration)
-
-Implementation A is the cleaner answer. Implementation B is the template rep.
+## The Solution
 
 ```python
+"""repair_desk.py — a repair cafe's priority desk, from doors open to doors shut.
+
+One bench, one afternoon, three ways for a job to arrive, and a queue that is
+not first-come-first-served. Every Week 8 idiom appears here doing real work:
+
+  * the three intake channels are stitched into one arrival ledger by a k-way
+    merge, so the ledger is built without sorting anything;
+  * the desk itself is a heap of (urgency, ticket) tuples, so equal urgencies
+    are served in the order they arrived and two job records are never
+    compared with each other;
+  * a job whose owner takes it home again is marked withdrawn rather than
+    hunted for in the heap — lazy deletion;
+  * the end-of-day "who waited longest" table is a max-heap, built by storing
+    minus the wait, because `heapq` only ever hands back the smallest thing.
+
+Run it with no arguments. It prints the day's report.
+"""
+
 import heapq
-from collections import Counter
-from typing import List
+from dataclasses import dataclass
+
+# ---- The day ----
+OPENING_MINUTE = 0
+CLOSING_MINUTE = 180
+
+# When two channels report the same minute, the person standing in the room is
+# written down first, then the phone, then the web form. It is the desk's own
+# rule and it is not alphabetical.
+CHANNEL_ORDER: tuple[str, ...] = ("walk-in", "phone", "web form")
+
+# (minute the job arrived, item, urgency 1 = most urgent, repair minutes)
+CHANNEL_LOGS: dict[str, list[tuple[int, str, int, int]]] = {
+    "walk-in": [
+        (0, "toaster", 2, 25),
+        (35, "table lamp", 3, 15),
+        (60, "kettle", 2, 20),
+        (95, "radio", 3, 30),
+    ],
+    "phone": [
+        (10, "sewing machine", 1, 45),
+        (35, "hairdryer", 2, 20),
+        (110, "fan heater", 1, 35),
+    ],
+    "web form": [
+        (5, "bicycle wheel", 3, 40),
+        (48, "food mixer", 2, 30),
+        (72, "laptop fan", 1, 25),
+        (150, "turntable", 3, 20),
+    ],
+}
+
+# (minute, ticket) — the owner came back for it before the bench got to it.
+WITHDRAWALS: list[tuple[int, int]] = [(70, 4), (130, 9)]
+
+URGENCY_WORD = {1: "urgent", 2: "normal", 3: "when you can"}
 
 
-def top_k_frequent_words_sort(words: List[str], k: int) -> List[str]:
-    """Implementation A: sort and truncate. O(n log n) time, O(n) space."""
-    counts = Counter(words)
-    # Sort by (-count, word) — descending count, ascending word on ties.
-    items = sorted(counts.items(), key=lambda kv: (-kv[1], kv[0]))
-    return [word for word, _ in items[:k]]
+@dataclass
+class Job:
+    """One thing to fix. Deliberately not orderable: the heap never sees it."""
+
+    ticket: int
+    minute: int
+    channel: str
+    item: str
+    urgency: int
+    repair_minutes: int
 
 
-# Implementation B (template rep): size-k heap with custom comparator.
+@dataclass
+class Served:
+    """One finished job, with the numbers the end-of-day report needs."""
 
-class Entry:
-    """Wrap (count, word) with reversed count comparison for max-heap-by-count
-    semantics in a min-heap-as-eviction-pool model.
+    job: Job
+    started: int
+    finished: int
 
-    The eviction pool is a size-k MIN-heap; the entry to evict is the LOWEST
-    by (count_asc, word_desc): low count is evicted, and on ties the LARGER
-    word is evicted (so the smaller word survives -- which is what the spec
-    wants for ties at the boundary).
+    @property
+    def waited(self) -> int:
+        """Return how long the job sat in the queue before the bench took it."""
+        return self.started - self.job.minute
+
+
+def stitch_arrivals(logs: dict[str, list[tuple[int, str, int, int]]]) -> list[Job]:
+    """Merge the channel logs into one arrival ledger and hand out tickets.
+
+    Each channel's log is already in minute order, so the merge holds one
+    pending arrival per channel — three entries — instead of sorting all
+    eleven. Tickets are handed out in ledger order, which is what makes them
+    a usable tiebreaker later.
+
+    Args:
+        logs: Channel name to (minute, item, urgency, repair minutes) rows,
+            each list ascending by minute.
+
+    Returns:
+        Jobs in arrival order, ticket 1 first. Arrivals sharing a minute are
+        ordered by CHANNEL_ORDER.
     """
+    pending: list[tuple[int, int, str, int]] = []
+    for rank, channel in enumerate(CHANNEL_ORDER):
+        rows = logs.get(channel, [])
+        if rows:
+            pending.append((rows[0][0], rank, channel, 0))
+    heapq.heapify(pending)
 
-    def __init__(self, count: int, word: str) -> None:
-        self.count = count
-        self.word = word
+    ledger: list[Job] = []
+    while pending:
+        minute, rank, channel, position = heapq.heappop(pending)
+        _, item, urgency, repair_minutes = logs[channel][position]
+        ledger.append(
+            Job(len(ledger) + 1, minute, channel, item, urgency, repair_minutes)
+        )
+        if position + 1 < len(logs[channel]):
+            following = logs[channel][position + 1][0]
+            heapq.heappush(pending, (following, rank, channel, position + 1))
+    return ledger
 
-    def __lt__(self, other: "Entry") -> bool:
-        if self.count != other.count:
-            return self.count < other.count       # min-heap by count
-        return self.word > other.word             # REVERSED on ties
 
-    def __eq__(self, other: object) -> bool:
-        return isinstance(other, Entry) and self.count == other.count and self.word == other.word
+class RepairDesk:
+    """The waiting queue: most urgent first, ties to whoever arrived first."""
+
+    def __init__(self) -> None:
+        """Start with an empty queue and nothing withdrawn."""
+        self._waiting: list[tuple[int, int]] = []
+        self._jobs: dict[int, Job] = {}
+        self._withdrawn: set[int] = set()
+
+    def __len__(self) -> int:
+        """Return how many jobs are really still waiting, stale ones excluded."""
+        return len(self._waiting) - sum(
+            1 for _, ticket in self._waiting if ticket in self._withdrawn
+        )
+
+    def queue(self, job: Job) -> None:
+        """Add a job to the queue.
+
+        Args:
+            job: The job to wait its turn. Only its urgency and ticket go into
+                the heap; the record itself is kept in a dict beside it.
+        """
+        self._jobs[job.ticket] = job
+        heapq.heappush(self._waiting, (job.urgency, job.ticket))
+
+    def withdraw(self, ticket: int) -> bool:
+        """Mark a waiting job as taken home, without touching the heap.
+
+        Finding one entry inside a heap means looking at all of them, and
+        removing it means rebuilding what is left. Writing the ticket down
+        instead costs nothing now and one skipped entry later.
+
+        Args:
+            ticket: The ticket to withdraw.
+
+        Returns:
+            True when the ticket was waiting, False when it was already served,
+            already withdrawn, or never existed.
+        """
+        if ticket not in self._jobs or ticket in self._withdrawn:
+            return False
+        self._withdrawn.add(ticket)
+        return True
+
+    def take_next(self) -> Job | None:
+        """Remove and return the job the bench should start next.
+
+        Withdrawn tickets are skipped here, which is where lazy deletion is
+        finally paid for: one pop each, once, and never more than once.
+
+        Returns:
+            The job, or None when nothing real is waiting.
+        """
+        while self._waiting:
+            _, ticket = heapq.heappop(self._waiting)
+            if ticket not in self._withdrawn:
+                return self._jobs[ticket]
+        return None
+
+    def still_waiting(self) -> list[Job]:
+        """Return the jobs that are still queued, in the order they would be taken.
+
+        Returns:
+            Jobs, most urgent first, ties by ticket. Withdrawn tickets are left
+            out.
+        """
+        live = [entry for entry in self._waiting if entry[1] not in self._withdrawn]
+        return [self._jobs[ticket] for _, ticket in sorted(live)]
 
 
-def top_k_frequent_words_heap(words: List[str], k: int) -> List[str]:
-    """Implementation B: size-k heap. O(n log k) time, O(k) space."""
-    counts = Counter(words)
-    h: List[Entry] = []
-    for word, count in counts.items():
-        entry = Entry(count, word)
-        if len(h) < k:
-            heapq.heappush(h, entry)
-        elif entry.count > h[0].count or (entry.count == h[0].count and entry.word < h[0].word):
-            heapq.heappushpop(h, entry)
-    # The heap holds the k most-frequent; sort the output by (-count, word).
-    return [e.word for e in sorted(h, key=lambda e: (-e.count, e.word))]
+def run_day(
+    logs: dict[str, list[tuple[int, str, int, int]]],
+    withdrawals: list[tuple[int, int]],
+    opening: int,
+    closing: int,
+) -> tuple[list[Served], list[Job], list[Job]]:
+    """Run the bench from opening to closing and report what happened.
+
+    Args:
+        logs: The channel logs.
+        withdrawals: (minute, ticket) pairs. A withdrawal for a ticket that is
+            already on the bench is ignored.
+        opening: The first minute the bench can start work.
+        closing: The last minute the bench can start work is `closing - 1`. A
+            job already under way runs past closing; it is not abandoned.
+
+    Returns:
+        (served jobs in the order they were finished, jobs withdrawn before
+        the bench reached them, jobs still queued when the doors shut).
+    """
+    ledger = stitch_arrivals(logs)
+    arriving: dict[int, list[Job]] = {}
+    for job in ledger:
+        arriving.setdefault(job.minute, []).append(job)
+    withdrawing: dict[int, list[int]] = {}
+    for minute, ticket in withdrawals:
+        withdrawing.setdefault(minute, []).append(ticket)
+
+    desk = RepairDesk()
+    served: list[Served] = []
+    withdrawn: list[Job] = []
+    by_ticket = {job.ticket: job for job in ledger}
+    free_at = opening
+
+    for minute in range(opening, closing):
+        for job in arriving.get(minute, []):
+            desk.queue(job)
+        for ticket in withdrawing.get(minute, []):
+            if desk.withdraw(ticket):
+                withdrawn.append(by_ticket[ticket])
+        if minute < free_at:
+            continue
+        job = desk.take_next()
+        if job is None:
+            continue
+        free_at = minute + job.repair_minutes
+        served.append(Served(job, minute, free_at))
+
+    return served, withdrawn, desk.still_waiting()
+
+
+def longest_waits(served: list[Served], count: int) -> list[tuple[int, str]]:
+    """Return the jobs whose owners waited longest, longest first.
+
+    `heapq` is a min-heap and there is no max-heap to reach for, so the wait is
+    stored negated and negated again on the way out.
+
+    Args:
+        served: The finished jobs.
+        count: How many rows the table should hold.
+
+    Returns:
+        (minutes waited, item) rows, longest wait first. Ties go to the lower
+        ticket, which is the earlier arrival.
+    """
+    if count <= 0:
+        return []
+    board = [(-record.waited, record.job.ticket, record.job.item) for record in served]
+    heapq.heapify(board)
+    table = []
+    while board and len(table) < count:
+        stored, _, item = heapq.heappop(board)
+        table.append((-stored, item))
+    return table
+
+
+def bench_minutes(served: list[Served], opening: int, closing: int) -> tuple[int, int]:
+    """Return how many minutes the bench worked and how many it stood idle.
+
+    Args:
+        served: The finished jobs.
+        opening: The minute the doors opened.
+        closing: The minute the doors shut.
+
+    Returns:
+        (minutes worked inside opening hours, minutes idle inside them).
+    """
+    worked = sum(
+        min(record.finished, closing) - record.started
+        for record in served
+        if record.started < closing
+    )
+    return worked, (closing - opening) - worked
+
+
+def main() -> None:
+    """Print the day's report."""
+    ledger = stitch_arrivals(CHANNEL_LOGS)
+    print("arrival ledger")
+    for job in ledger:
+        print(
+            f"  ticket {job.ticket:2d}  min {job.minute:3d}  {job.channel:<9}"
+            f"  {job.item:<15} {URGENCY_WORD[job.urgency]:<12} {job.repair_minutes} min"
+        )
+
+    served, withdrawn, leftover = run_day(
+        CHANNEL_LOGS, WITHDRAWALS, OPENING_MINUTE, CLOSING_MINUTE
+    )
+
+    print()
+    print("bench log")
+    for record in served:
+        print(
+            f"  min {record.started:3d}-{record.finished:3d}  ticket"
+            f" {record.job.ticket:2d}  {record.job.item:<15} waited {record.waited:3d} min"
+        )
+
+    print()
+    print("longest waits")
+    for waited, item in longest_waits(served, 3):
+        print(f"  {waited:3d} min  {item}")
+
+    print()
+    worked, idle = bench_minutes(served, OPENING_MINUTE, CLOSING_MINUTE)
+    print(f"jobs in    : {len(ledger)}")
+    print(f"jobs fixed : {len(served)}")
+    print(f"withdrawn  : {[job.item for job in withdrawn]}")
+    print(f"still queued at closing: {[job.item for job in leftover]}")
+    print(f"bench worked {worked} of {CLOSING_MINUTE - OPENING_MINUTE} minutes, idle {idle}")
+
+    assert len(ledger) == 11
+    assert [job.ticket for job in ledger] == list(range(1, 12))
+    assert ledger[3].item == "table lamp" and ledger[4].item == "hairdryer"
+    assert len(served) == 6
+    assert served[0].job.item == "toaster" and served[0].waited == 0
+    assert longest_waits(served, 3)[0] == (102, "food mixer")
+    assert longest_waits(served, 0) == []
+    assert [job.item for job in withdrawn] == ["table lamp", "radio"]
+    assert [job.item for job in leftover] == ["kettle", "bicycle wheel", "turntable"]
+    assert len(served) + len(withdrawn) + len(leftover) == len(ledger)
+    print("All checks passed.")
+
+
+if __name__ == "__main__":
+    main()
 ```
 
-The Implementation A version is six lines; B is closer to 25. The senior framing in the write-up: "I would write A in an interview; I am writing B here to demonstrate the template."
+The `Job` dataclass being unorderable is not an oversight to work around — it is
+the safety property. If the heap can never reach a `Job`, then no amount of
+ticket collision can produce the `TypeError` that
+[Exercise 4](../exercises/exercise-04-rescue-intake-queue.md) demonstrates, and
+the queue is correct by construction rather than by testing.
 
-**[E — Examine · verify]** (trace at least two examples)
+## Download and run
 
-Trace 1 — `words = ["i", "love", "leetcode", "i", "love", "coding"], k = 2`. counts = `{"i": 2, "love": 2, "leetcode": 1, "coding": 1}`. Sort by `(-count, word)`: `[("i", 2), ("love", 2), ("coding", 1), ("leetcode", 1)]`. Take first 2: `["i", "love"]`. Correct.
+Download the solution beside this page and run it:
 
-Trace 2 — `words = ["the", "day", "is", "sunny", "the", "the", "the", "sunny", "is", "is"], k = 4`. counts = `{"the": 4, "is": 3, "sunny": 2, "day": 1}`. Sort by `(-count, word)`: `[("the", 4), ("is", 3), ("sunny", 2), ("day", 1)]`. Take first 4: `["the", "is", "sunny", "day"]`. Correct.
-
-Common bug avoided: forgetting that the output must be *sorted* by frequency. The heap layout is not sorted; if you skip the final `sorted` step in Implementation B, the order is implementation-defined.
-
-**[E — Examine · cost]** (the five-piece)
-
-- **Time**:
-  - Implementation A: `O(n log n)` from the sort.
-  - Implementation B: `O(n log k)` from the heap.
-- **Space**:
-  - Both: `O(n)` for the `Counter`. The heap in B is bounded at `O(k)`.
-- **Best**: same as average.
-- **Worst**: same as average.
-- **Tradeoff**: Implementation A is shorter and reads cleaner; Implementation B is the template rep and is faster when `k << n`. For `n <= 500`, the difference is invisible.
-- **Improvement**: quickselect would give `O(n)` expected — but the *tiebreaker direction conflict* makes it hard to implement cleanly. Mention as a third path; not the right answer for this spec.
-
-Defense sentence:
-
-> "**Implementation A is `O(n log n)`** from the sort; **Implementation B is `O(n log k)`** from the heap. For `n <= 500`, both run in microseconds. The choice is on clarity: A is six lines and obvious; B is the template rep. The senior framing: name both, defend A for clarity. The interesting structural feature is the *direction conflict* in the tiebreaker — count wants max-first, word wants min-first; B handles it via a custom `__lt__`."
-
----
-
-### Problem 2 — Sliding Window Median (LeetCode 480) — TWO-HEAP + LAZY DELETION
-
-**Spec.** You are given an integer array `nums` and an integer `k`. There is a sliding window of size `k` moving from the leftmost element of `nums` to the rightmost. As the window slides, return the median of each window.
-
-The answer is a list of `len(nums) - k + 1` floats.
-
-**Examples:**
-
-- Input: `nums = [1, 3, -1, -3, 5, 3, 6, 7], k = 3`. Output: `[1, -1, -1, 3, 5, 6]` (the median of each window of size 3).
-- Input: `nums = [1, 2, 3, 4, 2, 3, 1, 4, 2], k = 3`. Output: `[2, 3, 3, 3, 2, 3, 2]`.
-
-**Constraints (LeetCode):**
-
-- `1 <= k <= len(nums) <= 10⁵`.
-- `-2³¹ <= nums[i] <= 2³¹ - 1`.
-
-**Why included.** The canonical composition of the two-heap pattern (Lecture 3 §1) with lazy deletion (Lecture 3 §4). Forces you to write:
-
-1. The two-heap median template (Exercise 3, exactly).
-2. The slide-and-expire logic — when the window moves, the leftmost element is no longer part of the current window and must be "removed" from whichever heap it sits in.
-3. Lazy deletion — mark the expired element stale in a `Counter` (handles duplicates); on each median query, clean the heap tops by skipping stale entries.
-4. The balance invariant — `|lower_active| - |upper_active| <= 1`, where "active" counts non-stale entries.
-
-The senior insight is that **eager deletion would be `O(k)` per slide** (linear scan to find and remove the element). **Lazy deletion makes each slide amortized `O(log k)`** — the stale element is marked in constant time and discarded only when it surfaces to the heap top.
-
-### Full FRAME narration for Problem 2
-
-(Use the same FRAME-section structure as Problem 1. Below is the abbreviated version; full write-up should match Problem 1's section depth.)
-
-**[F]** Restate. Sliding window of size `k`; report median after each slide. Edge case `k = 1`: the median of a single-element window is that element. Edge case `k = len(nums)`: only one window; one median.
-
-**[R]** Two-heap pattern + lazy deletion. Algorithm choice: the two-heap median from Exercise 3, plus a `Counter` of stale entries; clean the heap tops at the start of each median query. Compare against Problem 1: same heap *family* but different sub-pattern (size-k bounded vs unbounded; one heap vs two; size invariant vs balance invariant). The structural parallel: both rest on `heapq` operations; both have a clear invariant; both have a defense sentence. The differences are the discriminators graded on Mock #2.
-
-**[A]** Five bullets:
-
-1. Initialize `lower` (max-heap, negated), `upper` (min-heap), `stale = Counter()`, `result = []`.
-2. For each new element `nums[i]`: add to the appropriate heap (push-then-rebalance from Exercise 3).
-3. If `i >= k`: mark `nums[i - k]` stale (the expiring element) and decrement the active-size of its heap. The "active size" is the number of non-stale entries in each heap; track via two counters or compute on the fly.
-4. After each insertion (and stale-marking once the window is full), clean the tops of both heaps by popping any stale entries.
-5. If `i >= k - 1`: compute the median from the cleaned tops and append to `result`.
-
-**[M]**
-
-```python
-import heapq
-from collections import Counter
-from typing import List
-
-
-def median_sliding_window(nums: List[int], k: int) -> List[float]:
-    """Sliding window median via two-heap + lazy deletion."""
-    lower: List[int] = []     # max-heap (negated)
-    upper: List[int] = []     # min-heap
-    stale: Counter = Counter()
-    balance = 0               # active lower count - active upper count
-    result: List[float] = []
-
-    def prune(h: List[int], sign: int) -> None:
-        """Remove stale entries from the top of h. sign is +1 for upper, -1 for lower."""
-        while h and stale[sign * h[0]] > 0:
-            stale[sign * h[0]] -= 1
-            heapq.heappop(h)
-
-    for i, x in enumerate(nums):
-        # Step 1: insert.
-        if not lower or x <= -lower[0]:
-            heapq.heappush(lower, -x)
-            balance += 1
-        else:
-            heapq.heappush(upper, x)
-            balance -= 1
-
-        # Step 2: expire (once the window is full).
-        if i >= k:
-            old = nums[i - k]
-            stale[old] += 1
-            if old <= -lower[0] if lower else False:
-                balance -= 1
-            else:
-                balance += 1
-
-        # Step 3: rebalance.
-        if balance > 1:
-            heapq.heappush(upper, -heapq.heappop(lower))
-            balance -= 2
-        elif balance < 0:
-            heapq.heappush(lower, -heapq.heappop(upper))
-            balance += 2
-
-        # Step 4: prune stale tops.
-        prune(lower, -1)
-        prune(upper, +1)
-
-        # Step 5: emit median once the window is full.
-        if i >= k - 1:
-            if k % 2 == 1:
-                result.append(float(-lower[0]))
-            else:
-                result.append((-lower[0] + upper[0]) / 2.0)
-
-    return result
+```bash
+python README-solution.py
 ```
 
-About 45 lines. The bookkeeping (`balance`, `stale`, `prune`) is more involved than the bare two-heap from Exercise 3; that is the cost of the sliding-window composition.
+No third-party packages, no arguments, no input. It prints the arrival ledger,
+the bench log, the longest waits, the day's accounting, and then
+`All checks passed.`
 
-**[E · verify]** Trace on `nums = [1, 3, -1, -3, 5, 3, 6, 7], k = 3`. The trace is mechanical but useful to verify; do it in the write-up at least for the first three windows.
+## Common bugs to catch
 
-- i=0, x=1: lower=[-1] (negated). balance=1. i<k=3; no expire. balance=1; no rebalance needed (balance in {0,1}). prune (no stales). i < k-1; no emit.
-- i=1, x=3: 3 > 1; push to upper. upper=[3]. balance=0. No expire. balance=0; no rebalance. No emit.
-- i=2, x=-1: -1 <= 1; push to lower. lower=[-1, -1] (root -1). balance=1. No expire. balance=1; OK. Emit median: k odd; median = -lower[0] = 1.0. result=[1.0]. Correct.
-- i=3, x=-3: -3 <= 1; push to lower. balance=2. Expire nums[0] = 1; 1 <= -lower_root? Yes; balance -= 1 = 1. stale[1] = 1. Rebalance? balance=1; OK. Prune lower: lower_root is -1 (max of lower = 1); stale[1]=1; pop it; stale[1]=0. lower=[-3, -1]. Emit: k=3, odd; median = -lower[0] = 3? Wait — lower stores -1 and -(-3)=3; the root (min of negated) is -3, so max of lower = 3. Hmm — let me re-trace ... [the trace continues].
+- **Putting the `Job` in the heap.** Symptom: a `TypeError` between two `Job`
+  records, on the first minute where two jobs share an urgency.
+- **`len()` counting withdrawn tickets.** Symptom: a queue that reports three
+  waiting when one is waiting. Nothing crashes; the report is simply wrong.
+- **Removing withdrawn entries from the heap eagerly.** Symptom: correct output,
+  and an `O(n)` scan plus a rebuild for something that costs nothing to defer.
+- **Pushing all three channel logs into the merge heap.** Symptom: correct
+  ledger, `O(n)` space, and no k-way merge.
+- **Breaking a minute tie alphabetically.** Symptom: phone before walk-in at
+  minute 35, which is not the café's rule.
+- **Interrupting a job at closing.** Symptom: a bench log that ends exactly at
+  180 every time, which real benches do not.
+- **Losing a job in the accounting.** Symptom: served plus withdrawn plus
+  leftover is ten, not eleven. Assert the identity rather than eyeballing it.
 
-The point of the trace is to catch bookkeeping bugs — the `balance` tracking and the stale-counter discipline are the hardest parts. Do at least two example traces in Examine (verify).
+## Acceptance checklist
 
-Common bug avoided: forgetting that `stale[old] += 1` does *not* immediately remove `old` from the heap. It only marks it for deferred removal. Forgetting the `prune` call after each insert/expire is the most common bug.
+- [ ] Eleven jobs in the ledger, tickets 1 to 11, minute order.
+- [ ] Minute 35 resolves to the table lamp (walk-in) before the hairdryer (phone).
+- [ ] Six jobs served, two withdrawn, three still queued — and they sum to eleven.
+- [ ] The food mixer's 102-minute wait appears in the longest-waits table.
+- [ ] `withdraw` on an already-served or unknown ticket returns `False`.
+- [ ] `len()` on the desk excludes withdrawn tickets.
+- [ ] The file runs start to finish and prints `All checks passed.`
+- [ ] Both write-ups exist, both have memos, and they cross-reference each other.
 
-**[E · cost]** **Time `O(n log k)`** per slide amortized: each element is pushed at most once (`O(log k)`) and popped at most twice (real + stale; `O(log k)`). Total over `n` slides: `O(n log k)`. **Space `O(k)`** for the heaps and `O(k)` for the stale counter; total `O(k)`. **Tradeoff vs sorted-list with bisect**: `bisect.insort` is `O(k)` per add (list-shift cost); slow at `k = 10⁵`. The two-heap + lazy deletion is the canonical answer. **Tradeoff vs `sorted.SortedList` from the `sortedcontainers` library**: `O(log k)` per add and remove; cleaner code; allowed in some interviews but the `heapq` version is the "from-first-principles" answer interviewers grade.
+## Stretch
 
----
+- Add a second bench. The queue does not change; the day loop does — and saying
+  precisely which part changes is worth more than the code.
+- Let a waiting job's urgency be raised at a given minute. Lazy deletion is the
+  answer again; say why re-heaping is not.
+- Report the café's idle minutes against the wait times and say whether the bench
+  or the priority rule is the constraint. On this data one of them plainly is.
+- Replay the same day first-come-first-served and compare the longest wait under
+  each rule. That comparison is the argument for the priority queue, in numbers.
 
-## Cross-references rubric
+## Self-reflection
 
-The two write-ups are graded as a *pair*. At the bottom of each write-up, include a "Cross-references" section that points to:
+Close the mini-project README with four short paragraphs:
 
-- The relevant lecture section (Problem 1 → Lecture 1 §4 on top-k template + Lecture 2 §2 on tiebreakers; Problem 2 → Lecture 3 §1 on two-heap + §4 on lazy deletion).
-- The relevant exercise (Problem 1 → Exercise 1 on plain top-k; Problem 2 → Exercise 3 on two-heap median).
-- The *other* mini-project problem. Specifically, the cross-reference text should be a 1-2 sentence comparison: "*Problem 2 uses two heaps with a balance invariant; the structural parallel with Problem 1 is the heap-based template — the differences are (a) bounded vs unbounded heap, (b) one heap vs two, (c) size invariant vs balance invariant.*"
+1. **Which idiom was hardest**, and what specifically made it hard — not "heaps
+   are tricky" but the sentence you could not write until you understood it.
+2. **The bug you actually hit**, and how you found it. If you hit none, say what
+   you would have hit had the self-checks not been there.
+3. **The pair comparison.** In one paragraph: how the merge heap and the queue
+   heap differ in what they hold, how big they get, and what keeps them correct.
+4. **What you would do differently.** One concrete thing, not a resolution.
 
-The cross-references are what make the pair navigable as a portfolio artifact. A reviewer (or interviewer) should be able to read Problem 1, click through to Problem 2, and immediately see the structural relationship.
+## After the mini-project
 
----
-
-## File-level template
-
-Each problem write-up follows this skeleton. Save as `problem-NN-<slug>.md`.
-
-```markdown
-# Problem NN — <name> (<LC reference>)
-
-> **30-second pattern-recognition memo [top-k / two-heap]:**
-> [six lines as above]
-
-## Problem
-
-[Spec + 2-3 examples.]
-
-## Why this template
-
-[1 paragraph: what makes this template distinct from the other; one sentence comparing against the other mini-project problem.]
-
-## FRAME write-up
-
-### Frame
-### Research constraints
-[Expanded body — comparison against the other template, rejection of one wrong pattern.]
-### Assess options
-### Make the solution
-[Code with brief inline narration.]
-### Examine · verify
-[Trace on 2 examples + 1 common bug avoided.]
-### Examine · cost
-[5-piece from W2, with the time-defense sentence cleanly delivered.]
-
-## Cross-references
-
-- Lecture: [link to relevant section]
-- Exercise: [link to relevant exercise]
-- Sister mini-project problem: [link with 1-2 sentence comparison]
-
-## What I would do differently next time
-
-[Optional but recommended: 1-2 sentences.]
-```
-
----
-
-## Acceptance criteria
-
-- [ ] Both write-ups present in `frame-writeups/c2-week-08/mini-project/`.
-- [ ] Each write-up has a leading 30-second memo following the schema above.
-- [ ] **Problem 1 uses the top-k memo schema; Problem 2 uses the two-heap memo schema.**
-- [ ] Each write-up has all five FRAME sections (Frame · Research constraints · Assess options · Make the solution · Examine) fully written out (no "see exercise" placeholders).
-- [ ] Each write-up has a trace on at least two examples in the Examine (verify) section.
-- [ ] Each write-up has a Cross-references section linking to the other mini-project problem with a 1-2 sentence comparison.
-- [ ] Both `.py` solution files (extracted from the Make the solution sections) are present and pass their respective LeetCode test cases.
-
----
-
-## Suggested order of operations
-
-### Thursday — drafting (1.5h)
-
-1. Open the mini-project folder. Create three empty files (the two problem write-ups + this README).
-2. For each problem, write only the **30-second memo** at the top. Do not write the rest yet. Read each memo aloud; sharpen until it hits 25-30 seconds.
-3. Commit "Mini-project memos drafted."
-
-### Friday — Problem 1 (3h)
-
-4. Write up Problem 1 in full FRAME. Allow 3 hours — the in-depth Frame and Research constraints are the time-consuming parts. The "conflicting-direction tiebreaker" Research constraints move is the senior signal; spend the time getting that paragraph right.
-5. Trace at least two examples in Examine (verify).
-6. Code + commit.
-
-### Saturday — Problem 2 (3h)
-
-7. Write up Problem 2 in full FRAME. Cross-reference back to Problem 1 in the Research constraints section ("size-k bounded vs unbounded; one heap vs two; size invariant vs balance invariant" — the structural parallel).
-8. Trace at least two examples in Examine (verify).
-9. Code + commit.
-
-### Sunday — polish + push (0.5h)
-
-10. Add cross-references at the bottom of each write-up.
-11. Re-read both memos aloud one last time; sharpen anything that runs over 30 seconds.
-12. Score yourself against the per-problem rubric. If anything is "vague" or "missing the boundary defense," sharpen it.
-13. Push.
-
----
-
-## What "great" looks like (final rubric)
-
-A learner who has shipped this mini-project *well* has:
-
-- Both memos under 30 seconds when read aloud.
-- Research constraints sections that explicitly compare the two templates (top-k vs two-heap; bounded vs unbounded; one heap vs two).
-- Make the solution sections with the heap setup (initial seed, bound, invariant restore) clearly visible as a named function or labeled block.
-- Cross-references at the bottom of each write-up linking to the other.
-- Recordings ≥ 20 minutes each, with the full FRAME narration.
-
-A learner who has shipped this mini-project *poorly* has:
-
-- Memos that run 60+ seconds — too verbose, missing the cadence.
-- Research constraints sections that name "heap" but do not specify the sub-shape or invariant.
-- Make the solution sections without a clearly extracted size bound (Problem 1) or balance discipline (Problem 2).
-- No cross-references; each write-up reads as a stand-alone with no awareness of the other.
-
-If you catch yourself producing the "poorly" shape, the fix is to re-read [Lecture 1 §7](../lecture-notes/01-heapq-and-top-k.md) (the 30-second recognition signals) and [Lecture 3 §7](../lecture-notes/03-two-heap-and-k-way-merge.md) (the complete decision tree) and re-do whichever write-up is weaker.
-
----
-
-## Why one of each specifically
-
-Two reasons.
-
-1. **One top-k + one two-heap is the diet of a real heap interview.** Phase 2 onsites typically ask one heap problem; that problem is either a "find k-something" (50% of the time) or a "running statistic on a stream" (50% of the time). Shipping one of each guarantees you have practiced the at-bat for whichever you draw.
-
-2. **The syllabus mandates exactly this composition.** From the Week 8 line in `SYLLABUS.md`: *"Mini-project: A top-k problem (k-largest, k-frequent, k-closest family) and a two-heap problem (median, running statistic, sliding-window statistic). Both FRAME-narrated."* The composition is the contract.
-
-If you finish before Sunday with energy to spare, add a third write-up from the LeetCode Heap tag at your discretion — for example, "Find K Pairs with Smallest Sums" (LC 373) is a great stretch because the senior insight is that **a heap of pairs can be primed lazily** rather than enumerating all `n²` pairs upfront. The acceptance criterion is *two* — anything beyond is bonus.
-
----
-
-When done: push everything, then move on to [Week 9 — Mock Interview #2](../../week-09-mock-interview-2/).
-
-Phase 2's fourth week is closed. Your portfolio now contains two canonical heap write-ups; that section will be referenced again in Mock #2 (Week 9) and in the capstone (Week 15).
+Mock #2 is next week and grades both of these shapes separately. The write-ups
+are your revision notes for it: if you cannot reconstruct either memo from
+memory on Sunday evening, re-read the one you cannot, then write it again
+without looking.

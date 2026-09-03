@@ -1,7 +1,7 @@
 # Lecture 3 — KMP and the Z-Algorithm
 
 > **Duration:** ~2 hours.
-> **Outcome:** You can implement KMP's failure function and matcher for LC 28 (`strStr`) from a reference, defend the failure-function intuition out loud, recognize when an `O(n + m)` matcher beats the naive `O(nm)` scan, and name the Z-algorithm as the sibling with the same asymptotics and slightly different bookkeeping.
+> **Outcome:** You can implement KMP's failure function and matcher for (`strStr`) from a reference, defend the failure-function intuition out loud, recognize when an `O(n + m)` matcher beats the naive `O(nm)` scan, and name the Z-algorithm as the sibling with the same asymptotics and slightly different bookkeeping.
 
 Lectures 1 and 2 installed the trie — a structure for *prefix* queries. This lecture installs two algorithms for *exact-substring* queries: **KMP** (Knuth-Morris-Pratt) and the **Z-algorithm**. Both run in `O(n + m)` time and `O(m)` extra space. Both are linear-time alternatives to the naive `O(nm)` two-pointer scan. Both are honest interview material at the "name the algorithm and explain when it applies" level; full re-derivation from scratch is a Phase-3 stretch.
 
@@ -29,7 +29,7 @@ def naive_find(text: str, pattern: str) -> int:
 
 Six lines. Correct. Worst-case `O(nm)`: every starting position `i` may compare up to `m` characters before failing. The canonical pathological input is `text = "aaaaa...aaab"` (length `n`, all `a`'s ending in `b`) and `pattern = "aaab"` (length `m`). At each `i`, we compare `m - 1` matching `a`'s before the final `b` mismatches; we slide forward by one. Total: `(n - m + 1) * m ≈ nm` comparisons.
 
-For LeetCode-grade inputs (`n, m <= 10^4`), this is `10^8` comparisons — borderline acceptable. For `n = 10^6`, `m = 10^3`, it is `10^9` — too slow.
+At the sizes a practice problem uses (`n, m <= 10^4`), this is `10^8` comparisons — borderline acceptable. At `n = 10^6`, `m = 10^3` it is `10^9`, which is too slow anywhere.
 
 The key observation that KMP exploits: **after a mismatch, we know something about the text characters we already compared.** Specifically, we know they matched a prefix of the pattern. The naive scanner discards that information and starts fresh at `i + 1`; KMP uses it to skip ahead.
 
@@ -234,7 +234,7 @@ def z_search(text: str, pattern: str) -> int:
 
 Same `O(n + m)` time, same `O(n + m)` space (for the combined string and its Z-array). The implementation has slightly different bookkeeping — the "Z-box" `[l, r]` tracks the rightmost match-so-far against the prefix.
 
-For most LeetCode purposes, KMP and Z are interchangeable. KMP is the more famous; Z is more common in competitive programming and slightly simpler to derive from scratch (some find the Z-box bookkeeping easier than the failure-chain walk).
+For almost every problem you will be asked, the two are interchangeable. The failure function is the more famous; the Z array is more common in contest work and slightly simpler to derive from scratch (some find the Z-box bookkeeping easier than the failure-chain walk).
 
 The interview-grade recognition:
 
@@ -279,11 +279,11 @@ That answer turns a perceived weakness ("I'm reinventing the wheel") into a stre
 
 ---
 
-## 8. A worked `strStr` example (LC 28)
+## 8. A worked substring-search example
 
-LeetCode 28 — Find the Index of the First Occurrence in a String. Given `haystack` and `needle`, return the index of the first occurrence of `needle` in `haystack`, or `-1` if `needle` is not part of `haystack`.
+The classic contract, and the one every language's standard library exposes in some form. Given a `haystack` and a `needle`, return the index of the first occurrence of `needle` in `haystack`, or `-1` when it does not occur.
 
-**Research constraints.** This is exact-substring search. The naive `O(nm)` is the baseline. For LeetCode constraints (`n, m <= 10^4`), the naive is acceptable; for interview, mention KMP.
+**Reason about constraints.** This is exact-substring search. The naive `O(nm)` is the baseline. At the sizes a practice problem uses (`n, m <= 10^4`), the naive is acceptable; in an interview, name the failure function anyway.
 
 **Assess options.** Build the KMP failure function on `needle`; run the matcher on `haystack` with the failure array. Return `i - m + 1` at the first full match.
 
@@ -358,7 +358,7 @@ A typo, but a common one in transcribed code. The first index is `k`, the second
 
 ### Bug 3 — Skipping the empty-needle case
 
-LC 28 specifies "return 0 if needle is empty." Forgetting this returns `-1` (the matcher's empty-loop default). One-line fix: `if not needle: return 0`.
+ specifies "return 0 if needle is empty." Forgetting this returns `-1` (the matcher's empty-loop default). One-line fix: `if not needle: return 0`.
 
 ### Bug 4 — Returning `i` instead of `i - j + 1`
 
@@ -369,7 +369,7 @@ The match position is `i - j + 1` where `j == len(pattern)` at the match. Forget
 ## 10. What to do this week
 
 1. **Read the Wikipedia KMP article**, specifically the worked example on `ABCDABD`. About 15 minutes. The hand-walk is what makes the failure function click.
-2. **Implement `strStr` via KMP from memory.** Compare your output to the LC 28 test cases. Target 20 minutes including the build-failure helper.
+2. **Implement `strStr` via KMP from memory.** Compare your output to the test cases. Target 20 minutes including the build-failure helper.
 3. **Read the Codeforces Z-algorithm blog post.** About 10 minutes. You do not need to implement; you need to recognize the Z-array form.
 4. **Move to the exercises and the mini-project.** The KMP write-up in the mini-project is the deliverable form of this lecture.
 

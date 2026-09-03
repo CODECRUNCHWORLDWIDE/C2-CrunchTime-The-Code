@@ -85,7 +85,7 @@ flowchart LR
 
 ## 2. Bellman-Ford with a hop-count constraint
 
-The variant that shows up most in LeetCode interview prompts. The problem: find the cheapest path from `source` to `target` using **at most `K` intermediate stops** (i.e., at most `K + 1` edges).
+The variant that shows up most in interview prompts. The problem: find the cheapest path from `source` to `target` using **at most `K` intermediate stops** — that is, at most `K + 1` edges.
 
 Bellman-Ford handles this naturally. The `i`-th outer pass produces distances correct for paths of at most `i` edges. So **`K + 1` outer passes** give distances correct for paths of at most `K + 1` edges — exactly the constraint.
 
@@ -123,7 +123,7 @@ def cheapest_within_k_stops(
 
 The **snapshot** (`prev_dist = dist.copy()`) is the discriminating implementation detail. Without it, within a single pass an edge `u -> v` might be relaxed using a *just-updated* `dist[u]` value, which corresponds to a path of more edges than the pass-count allows. The snapshot freezes the per-pass starting state.
 
-This is the LC 787 (Cheapest Flights Within K Stops) shape, exactly. Exercise 2 and Challenge 1 both build on this template; the snapshot bug is the single most common reason a Bellman-Ford submission fails LC 787 with a wrong answer rather than a TLE.
+This is the hop-bounded shape, exactly. [Challenge 1](../challenges/challenge-01-reefer-transfer-budget.md) builds on this template; the snapshot bug is the single most common reason a hop-bounded relaxation gives an answer that is too cheap with a wrong answer rather than a TLE.
 
 The alternative — modified Dijkstra with state `(node, hops_used)` in the heap — is also correct and often runs faster on graphs where most paths terminate before the hop limit:
 
@@ -370,12 +370,11 @@ Two observations:
 
 The high-leverage Research-constraints skill for MST problems is recognizing the disguise. Some surface forms:
 
-- **"Minimum cost to connect all points"** (LC 1584) — MST on a complete graph where edge weights are Manhattan distances.
-- **"Optimize water distribution in a village"** (LC 1168) — MST on a graph with a virtual source vertex; well-construction costs become source-to-house edges.
-- **"Find the city with the smallest number of neighbors at a threshold distance"** (LC 1334) — *not* MST; it is all-pairs shortest paths (Floyd-Warshall).
-- **"Connect the ropes with minimum cost"** — *not* MST; it is the "greedy + heap" pattern from W8 (Huffman-like).
-- **"Connecting cities with minimum cost"** (LC 1135) — MST on the city graph.
-- **"Critical and pseudo-critical edges in MST"** (LC 1489) — MST with edge-by-edge analysis; the variant is to run MST with and without each edge.
+- **"The cheapest way to connect every point to every other"**, where the cost of a link is computed from the two points' positions rather than given — a complete graph in disguise. [Exercise 4](../exercises/exercise-04-greenhouse-pipe-run.md) is this shape with the cost given; computing it changes nothing about the algorithm.
+- **"Every site needs a supply, and a site can either have its own or be fed from a neighbour"** — a spanning tree on a graph with one extra virtual vertex, where a site's own-supply cost becomes an edge from that vertex.
+- **"Which site has the fewest neighbours within a distance"** — *not* a spanning tree. That is all-pairs shortest paths, and it is [Homework 5](../homework/README.md).
+- **"Join these lengths together at the least total cost"** — *not* a spanning tree either. That is the repeated-merge shape from Week 8's homework, and reaching for a spanning tree is the classic misrecognition.
+- **"Which single link, if it failed, would disconnect the network"** — a spanning tree run once per link, which is the variant worth naming rather than writing.
 
 The negative-space rejections — what is *not* MST — are equally important. Anything that asks for the *path between two specific vertices* is not MST; that is Dijkstra (or Bellman-Ford on negative weights). MST is about *connecting every vertex*, not about paths.
 

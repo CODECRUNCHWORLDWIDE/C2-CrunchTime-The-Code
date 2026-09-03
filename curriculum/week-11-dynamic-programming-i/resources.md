@@ -16,27 +16,16 @@ Every resource is **free** and **publicly accessible**.
 
 Dynamic programming appears in interview prompts under many surface forms. The recognition skill is mapping the surface form to the underlying state.
 
-- **"Count the number of ways to ..."** — counting DP. State is the thing being counted; recurrence sums contributions from preceding states. Examples: climbing stairs (LC 70), unique paths (LC 62), decode ways (LC 91).
-- **"Find the minimum / maximum ..."** — optimization DP. State is the index or pair of indices; recurrence is a min or max over choices. Examples: house robber (LC 198), edit distance (LC 72), minimum path sum (LC 64).
-- **"Is it possible to ..."** — boolean DP. State is a partial configuration; recurrence is an OR over preceding boolean states. Examples: word break (LC 139), partition equal subset sum (LC 416).
-- **"Find the longest / shortest ... that satisfies ..."** — optimization DP, often 2D. State is `(i, j)` where `i` and `j` are positions in two sequences (or two ends of one sequence). Examples: longest common subsequence (LC 1143), longest palindromic subsequence (LC 516).
-- **"Compute the cost to transform ..."** — distance / edit DP. State is `(i, j)`; recurrence is a min over three choices (delete, insert, replace). Example: edit distance (LC 72).
+- **"Count the number of ways to ..."** — counting DP. State is the thing being counted; recurrence sums contributions from preceding states. Examples: the ferry ramp manifests, the terrace route table, the ledger ribbon.
+- **"Find the minimum / maximum ..."** — optimization DP. State is the index or pair of indices; recurrence is a min or max over choices. Examples: the survey station walk, the timetable amendment, the kiln flue draw.
+- **"Is it possible to ..."** — boolean DP. State is a partial configuration; recurrence is an OR over preceding boolean states. Examples: the stripped manifest line, the batch split.
+- **"Find the longest / shortest ... that satisfies ..."** — optimization DP, often 2D. State is `(i, j)` where `i` and `j` are positions in two sequences (or two ends of one sequence). Examples: the paired manifest strike, the reversible rake.
+- **"Compute the cost to transform ..."** — distance / edit DP. State is `(i, j)`; recurrence is a min over three choices (delete, insert, replace). Example: the timetable amendment.
 
 If a prompt says "count" and the brute-force enumeration has overlapping branches — DP. If it says "min" or "max" and the optimum composes from sub-optima — DP. If it says "is it possible" and the partial answers can be cached — DP. If neither overlapping subproblems nor optimal substructure is present — not DP.
 
 ## Free practice platforms
 
-- **LeetCode — Dynamic Programming tag** (free): <https://leetcode.com/tag/dynamic-programming/>
-- **LeetCode — Memoization tag** (free): <https://leetcode.com/tag/memoization/>
-- **LeetCode — Climbing Stairs** (LC 70): <https://leetcode.com/problems/climbing-stairs/> — the canonical 1D DP warm-up; Exercise 1 exactly.
-- **LeetCode — Longest Common Subsequence** (LC 1143): <https://leetcode.com/problems/longest-common-subsequence/> — the canonical 2D subsequence DP; Exercise 2 exactly.
-- **LeetCode — Word Break** (LC 139): <https://leetcode.com/problems/word-break/> — 1D DP with a string-set check; Exercise 3.
-- **LeetCode — Edit Distance** (LC 72): <https://leetcode.com/problems/edit-distance/> — the three-way-min DP; Challenge 1.
-- **LeetCode — Longest Palindromic Subsequence** (LC 516): <https://leetcode.com/problems/longest-palindromic-subsequence/> — diagonal-fill 2D DP; Challenge 2.
-- **LeetCode — House Robber** (LC 198): <https://leetcode.com/problems/house-robber/> — the take-or-skip 1D DP; mini-project Problem 1.
-- **LeetCode — Unique Paths** (LC 62): <https://leetcode.com/problems/unique-paths/> — the canonical 2D counting DP; mini-project Problem 2.
-- **LeetCode — Decode Ways** (LC 91): <https://leetcode.com/problems/decode-ways/> — the conditional-transition 1D DP; homework.
-- **LeetCode — Minimum Path Sum** (LC 64): <https://leetcode.com/problems/minimum-path-sum/> — the optimization variant of unique paths; homework.
 - **HackerRank — DP domain**: <https://www.hackerrank.com/domains/algorithms?filters%5Bsubdomains%5D%5B%5D=dynamic-programming>
 - **CSES Problem Set — Dynamic Programming section**: <https://cses.fi/problemset/> — the canonical curated set; the first 19 problems are the DP foundations and are exactly the right Phase-2 reps.
 
@@ -64,14 +53,12 @@ from __future__ import annotations
 
 import functools
 
-
 # Step 1 — brute-force recursion. O(2^n) time, O(n) stack.
 def fib_naive(n: int) -> int:
     """Compute the n-th Fibonacci number by naive recursion."""
     if n < 2:
         return n
     return fib_naive(n - 1) + fib_naive(n - 2)
-
 
 # Step 2 — memoize. O(n) time, O(n) space.
 @functools.lru_cache(maxsize=None)
@@ -80,7 +67,6 @@ def fib_memo(n: int) -> int:
     if n < 2:
         return n
     return fib_memo(n - 1) + fib_memo(n - 2)
-
 
 # Step 3 — tabulate. O(n) time, O(n) space.
 def fib_table(n: int) -> int:
@@ -92,7 +78,6 @@ def fib_table(n: int) -> int:
     for i in range(2, n + 1):
         dp[i] = dp[i - 1] + dp[i - 2]
     return dp[n]
-
 
 # Step 4 — reduce. O(n) time, O(1) space.
 def fib_rolling(n: int) -> int:
@@ -148,7 +133,6 @@ Three observations:
 from __future__ import annotations
 
 from typing import List
-
 
 def longest_common_subsequence(s1: str, s2: str) -> int:
     """Length of the longest common subsequence of s1 and s2."""

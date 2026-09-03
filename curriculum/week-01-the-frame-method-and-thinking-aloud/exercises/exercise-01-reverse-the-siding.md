@@ -456,9 +456,6 @@ much better than having one.
 - [ ] You traced an odd-length run and an even-length run on paper and got the same swap count the program reports.
 - [ ] You narrated a full FRAME pass out loud with a recorder running, and it lasted at least eight minutes. If you finished in three, you skipped Examine.
 - [ ] Committed to Git with a message like `Add Week 1 exercise 1: reverse the siding`.
-
-**Practice elsewhere.** The same pattern appears as [LeetCode 344 · Reverse String](https://leetcode.com/problems/reverse-string/) if you want a judge to run against. The contract there is a different one — the whole sequence, no return value, no invalid input — so solve ours first.
-
 ## Stretch
 
 - **Refuse by raising instead of returning zero.** Some callers want a loud

@@ -18,7 +18,7 @@
 - **Reason about complexity** without hand-waving.
 - **Write clean code** a senior engineer would accept in a code review.
 - **Handle behavioral interviews**, system-design conversations, and live whiteboard rounds.
-- **Build engineering judgment**, not just "passed LeetCode."
+- **Build engineering judgment**, not just a count of problems solved.
 
 It is **not** "grind 500 problems and hope." It is a structured program with two formats — a 15-week intensive and a 1-year mastery pathway — that turns interview prep into a measurable skill.
 
@@ -90,7 +90,7 @@ If you can't do those, finish **C1 Weeks 1–7** first. C2 will not slow down to
 
 ## What this course is NOT
 
-- **Not a LeetCode replacement.** We use LeetCode (the free tier) and other free problem sites as the *training ground* — solving original problems on real platforms — but every explanation, every framework, every solution write-up is original and open-source.
+- **Every problem here is ours.** The drills, the challenges, the homework and their test cases were written for this course, so none of them can be looked up and recalled instead of solved. If you want a judge to run against once you have finished a week, use whatever you like — we do not send you anywhere, and nothing in the course depends on an outside site.
 - **Not vendor-locked.** No required paid subscriptions. No "must use Replit." Local Python, your editor, free practice sites.
 - **Not "the answer key."** We deliberately don't ship pre-written solutions for the problems we recommend. We teach the *method*; you produce the *answers*. That's how interview skill actually transfers.
 - **Not language wars.** We use Python because it reads close to pseudocode and that's an interview superpower. The patterns transfer to Java, JavaScript, C++, Go directly — Week 12 includes a "switch your interview language" appendix.
@@ -144,7 +144,7 @@ That portfolio is *the* artifact you point recruiters and hiring managers at.
 | **Discord or Zoom** | For peer mock interviews; both have free tiers |
 | **Pytest** | Unit testing your solutions |
 | **GitHub** | Hosting your portfolio repo |
-| **LeetCode (free tier)** | Optional. An online judge to run against; every problem you are assigned here is our own |
+| **An online judge** | Entirely optional. Every problem you are assigned here is our own and runs locally |
 | **HackerRank, Codeforces, AtCoder** | Other free practice grounds we point at |
 | **`/usr/bin/time` and `cProfile`** | When you need to actually measure complexity, not just guess |
 
@@ -174,7 +174,7 @@ That promise only holds because **every problem in this course is written for th
 
 Where a learner may want an online judge to run against, we link out by problem name and number only. That is all that crosses over.
 
-> **Not affiliated with, endorsed by, or sponsored by LeetCode, NeetCode, or CodePath.** Problem names and numbers are referenced for practice only; all problems, examples, constraints, and test cases in this course are original work, published under GPL-3.0. LeetCode is a trademark of LeetCode LLC; NeetCode and CodePath are trademarks of their respective owners.
+> **All problems, examples, constraints and test cases in this course are original work**, written for this course and published under GPL-3.0.
 
 ---
 
@@ -220,8 +220,8 @@ Each week ships a mini-project into your public `crunchtime-interview-prep-<hand
 | 06 | Graphs I — BFS | One grid-BFS and one node-BFS write-up |
 | 07 | Graphs II — DFS & Topological Sort | One DFS (cycle/connectivity) and one topological-sort write-up |
 | 08 | Heaps & Priority Queues | One top-K and one two-heap write-up |
-| 09 | Tries & Advanced Strings | One trie (Implement Trie) and one KMP `strStr` write-up |
-| 10 | Weighted Graphs & Union-Find | One Dijkstra (Network Delay Time) and one DSU (Redundant Connection) write-up |
+| 09 | Tries & Advanced Strings | One trie (the gate tag tree) and one KMP `strStr` write-up |
+| 10 | Weighted Graphs & Union-Find | One Dijkstra (the hut relay timing) and one DSU (the radiator loop check) write-up |
 | 11 | Dynamic Programming I | One 1D DP (house robber) and one 2D DP (unique paths) write-up |
 | 12 | Backtracking & Combinatorics | Palindrome partitioning and a sudoku solver, choose-explore-unchoose narrated |
 | 13 | Behavioral & Communication | Story bank of 12+ STAR anecdotes with a coverage matrix |
@@ -440,7 +440,7 @@ The course is independent of any one practice platform. Recommended grounds, all
 
 | Platform | Free tier | Good for |
 |----------|-----------|----------|
-| LeetCode | Free problems (~2000) | Most variety of medium-difficulty problems |
+| A large free problem archive | Thousands of problems | The most variety at medium difficulty, if you want volume after a week |
 | HackerRank | Fully free | Strong tutorials on specific topics |
 | Codeforces | Fully free | Contest culture, time pressure |
 | AtCoder | Fully free | Beginner-to-expert problem sets |

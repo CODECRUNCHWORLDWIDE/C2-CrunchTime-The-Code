@@ -568,7 +568,4 @@ well-tested mixing function. Canonicalise, then let the language hash.
   to break ties *downwards*. The scheduling value is real: the biggest twin
   group is the longest run of acts the manager can put back to back with no crew
   at all.
-
-**Practice elsewhere.** The same pattern appears as [LeetCode 49 · Group Anagrams](https://leetcode.com/problems/group-anagrams/) if you want a judge to run against. The contract there returns the strings in any order and keeps singleton groups, so it never forces the index mapping, the size filter, or a deterministic ordering — which is where three of this page's four ordering rules live.
-
 Next: [Exercise 4 — The On-Call Grid](./exercise-04-on-call-grid.md).

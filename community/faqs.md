@@ -22,7 +22,7 @@ Two pathways, same material. The **intensive** is about 36 hours a week for 15 w
 
 Take the intensive if you are between jobs or your interview cycle starts within about four months. Take the mastery pathway if you are working full-time, or if you want the pattern recognition to still be there next year. The mastery pathway is not the slow track — it is the one that produces durable intuition, because spacing is what makes recall stick.
 
-### I already grind LeetCode. Why do I need this?
+### I already grind problems on a practice site. Why do I need this?
 
 Because the failure mode this course fixes is not "couldn't solve it". It is "solved it and still got rejected" — no narration, no stated complexity, no recovery when the first approach was wrong. If you have solved two hundred problems and are still failing screens, the missing skill is [the FRAME Method](../README.md#the-frame-method), not more problems.
 

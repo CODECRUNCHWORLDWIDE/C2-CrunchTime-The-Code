@@ -10,7 +10,7 @@ All five problems below are **new** — none of them is a drill in a costume. Ev
 
 ---
 
-## Why this matters
+## The Brief
 
 Three reasons.
 
@@ -22,27 +22,17 @@ Three reasons.
 
 ---
 
-## What you ship
+## Starter
 
-Six files: five problem write-ups plus a short overview.
+`README-solution.py` sits beside this page and holds all five contracts,
+solved, with the page's own examples as its self-checks. It is the answer. Read
+it after your attempt, not before — and when you do, read the two-line comments
+above each guard rather than the loops, because the loops are the part you
+already know.
 
-```
-frame-writeups/c2-week-05/mini-project/
-├── README.md                              ← short overview + index
-├── problem-01-frequency-slot.md           ← variant 1: closed interval, nearest match
-├── problem-02-shift-start.md              ← rotated: locate the wrap point
-├── problem-03-waitlist-cursor.md          ← variant 2: lower bound / insertion point
-├── problem-04-sprinkler-reach.md          ← parametric: minimise a threshold
-└── problem-05-delivery-zones.md           ← parametric: maximise the minimum
-```
-
-Each write-up is the full FRAME format from Week 1, **plus a leading 30-second pattern-recognition memo at the top** — and for problems 4 and 5, the four-element parametric cadence (reframe, interval, predicate, return).
-
-Problems 1-3 share a *family* with Drills 1-3 but not a contract; you may lean on those write-ups for the boundary vocabulary, and you may not copy them. The mini-project rubric is stricter: it also demands an explicit comparison against another variant, which the drills do not.
-
----
-
-## The 30-second pattern-recognition memo (the signature element)
+What you start from is the memo template below. Fill it in from the prompt
+alone, before any code. A binary search you cannot describe in five lines is a
+binary search you will get wrong at the boundary.
 
 At the top of every write-up, immediately after the title, place a single bordered block.
 
@@ -96,7 +86,27 @@ Five write-ups, five memos. By the fifth, the cadence is automatic.
 
 ---
 
-## Per-problem rubric
+## Requirements
+
+Six files: five problem write-ups plus a short overview.
+
+```
+frame-writeups/c2-week-05/mini-project/
+├── README.md                              ← short overview + index
+├── problem-01-frequency-slot.md           ← variant 1: closed interval, nearest match
+├── problem-02-shift-start.md              ← rotated: locate the wrap point
+├── problem-03-waitlist-cursor.md          ← variant 2: lower bound / insertion point
+├── problem-04-sprinkler-reach.md          ← parametric: minimise a threshold
+└── problem-05-delivery-zones.md           ← parametric: maximise the minimum
+```
+
+Each write-up is the full FRAME format from Week 1, **plus a leading 30-second pattern-recognition memo at the top** — and for problems 4 and 5, the four-element parametric cadence (reframe, interval, predicate, return).
+
+Problems 1-3 share a *family* with Drills 1-3 but not a contract; you may lean on those write-ups for the boundary vocabulary, and you may not copy them. The mini-project rubric is stricter: it also demands an explicit comparison against another variant, which the drills do not.
+
+---
+
+### Per-problem rubric
 
 Each write-up's grade comes from five axes:
 
@@ -112,7 +122,7 @@ A grade of "great" on all five write-ups is the bar.
 
 ---
 
-## The five problems
+### The five problems
 
 ### Problem 1 — The Frequency Slot
 
@@ -302,7 +312,7 @@ def fairest_zone_split(houses: list[int], couriers: int) -> int | None:
 
 ---
 
-## File-level template
+### File-level template
 
 Each problem write-up follows this skeleton. Save as `problem-NN-<slug>.md`.
 
@@ -346,19 +356,40 @@ Each problem write-up follows this skeleton. Save as `problem-NN-<slug>.md`.
 
 ---
 
-## Acceptance criteria
+## Constraints
 
-- [ ] All five write-ups present in `frame-writeups/c2-week-05/mini-project/`.
-- [ ] Each write-up has a leading 30-second memo following the schema above.
-- [ ] **Problems 4 and 5 use the parametric memo schema** (four-element cadence), not the classic schema.
-- [ ] Problem 5 explicitly states which boundary template (lower-bound or upper-bound) and why.
-- [ ] Each write-up has a trace on at least two examples in the Examine (verify) section.
-- [ ] Each write-up cross-references at least one other write-up in this folder.
-- [ ] All five `.py` solution files are present and pass the example tables above, including every degenerate and no-solution row.
+- **Half-open interval, `[lo, hi)`, for every classic search.** The loop ends
+  with `lo == hi`, and at that point `lo` is the first index whose value is
+  `>= wanted`. Every answer in problems 1-3 is read off that one guarantee.
+- **Never index a bound before testing it.** `lo` can legally equal `len(seq)` —
+  that is the "past the end" cursor, and it is a real answer in problem 3.
+- **The rotated search compares `mid` against `hi`, never against `lo`.** On an
+  un-rotated roster every value exceeds `clock_ins[lo]`, so comparing against
+  `lo` walks right every time and returns the last row instead of the first.
+- **Zero is a legal answer** in problems 4 and 5. A search that starts at
+  `lo = 1` is wrong by one on the easiest input either problem has.
+- **The parametric predicate is named and callable.** Its monotonicity is the
+  claim your write-up makes; a claim you cannot call is a claim you cannot check.
 
----
+## Expected output
 
-## Suggested order of operations
+Real stdout from the shipped solution, captured on CPython 3.13.2:
+
+```text
+$ python README-solution.py
+1 nearest_channel(band, 898)        -> 1
+2 shift_start(roster)               -> (3, 22)
+3 seat_cursor(sold, 13)             -> (3, False)
+4 min_sprinkler_radius(row)         -> 8
+5 fairest_zone_split(street, 3)     -> 5
+All checks passed.
+```
+
+The three `covers` lines at the end are the monotonicity your Problem 4 write-up
+has to argue: false at 7, true at 8, and never false again above it. That is what
+makes the search legitimate rather than lucky.
+
+## Steps
 
 ### Thursday — drafting (1.5h)
 
@@ -386,6 +417,358 @@ Each problem write-up follows this skeleton. Save as `problem-NN-<slug>.md`.
 
 ---
 
+## The Solution
+
+```python
+"""binary_search_toolkit.py - the five Week 5 mini-project contracts, solved.
+
+Five problems, five binary-search shapes, one file:
+
+    1. nearest_channel       lower bound used as scaffolding for a nearest match
+    2. shift_start           the wrap point of a rotated sequence
+    3. seat_cursor           lower bound, returning the insertion point and a flag
+    4. min_sprinkler_radius  parametric: minimise a threshold
+    5. fairest_zone_split    parametric: maximise the minimum
+
+Run it with no arguments. It prints one report line per problem, then runs
+the acceptance tables from the mini-project brief and prints
+"All checks passed."
+"""
+
+# ---------------------------------------------------------------- problem 1
+
+
+def lower_bound(values: list[int], wanted: int) -> int:
+    """Return the first index whose value is >= `wanted`.
+
+    Args:
+        values: An ascending list.
+        wanted: The value to place.
+
+    Returns:
+        The index at which `wanted` would be inserted, which is len(values)
+        when every value is smaller. Shared by problems 1 and 3.
+    """
+    lo, hi = 0, len(values)
+    while lo < hi:
+        mid = lo + (hi - lo) // 2
+        if values[mid] < wanted:
+            lo = mid + 1
+        else:
+            hi = mid
+    return lo
+
+
+def nearest_channel(frequencies: list[int], wanted: int) -> int | None:
+    """Return the index of the channel closest to `wanted`, lower wins a tie.
+
+    Args:
+        frequencies: Channel frequencies in kHz, strictly ascending.
+        wanted: The frequency the user dialled.
+
+    Returns:
+        The index of the nearest channel, or None when the table is empty.
+    """
+    if not frequencies:
+        return None
+
+    cursor = lower_bound(frequencies, wanted)
+    if cursor == 0:
+        return 0
+    if cursor == len(frequencies):
+        return len(frequencies) - 1
+    below = wanted - frequencies[cursor - 1]
+    above = frequencies[cursor] - wanted
+    return cursor - 1 if below <= above else cursor
+
+
+# ---------------------------------------------------------------- problem 2
+
+
+def shift_start(clock_ins: list[int]) -> tuple[int, int] | None:
+    """Return the slot and minute of the earliest clock-in in a rotated roster.
+
+    Args:
+        clock_ins: A rotation of a strictly increasing list of minutes.
+
+    Returns:
+        (physical_index, minute) of the smallest entry, or None when empty.
+    """
+    if not clock_ins:
+        return None
+
+    lo, hi = 0, len(clock_ins) - 1
+    while lo < hi:
+        mid = lo + (hi - lo) // 2
+        if clock_ins[mid] > clock_ins[hi]:
+            lo = mid + 1  # the wrap is strictly right of mid
+        else:
+            hi = mid  # mid is still a candidate for the earliest row
+    return lo, clock_ins[lo]
+
+
+# ---------------------------------------------------------------- problem 3
+
+
+def seat_cursor(sold: list[int], wanted: int) -> tuple[int, bool]:
+    """Return where a seat sits, or would sit, and whether it is already sold.
+
+    Args:
+        sold: Sold seat numbers, strictly ascending.
+        wanted: The seat the patron asked for.
+
+    Returns:
+        (index, already_sold). The index is a legal insertion point even when
+        the seat is absent, and may equal len(sold).
+    """
+    cursor = lower_bound(sold, wanted)
+    return cursor, cursor < len(sold) and sold[cursor] == wanted
+
+
+# ---------------------------------------------------------------- problem 4
+
+
+def all_plants_reached(plants: list[int], hydrants: list[int], radius: int) -> bool:
+    """Return True when every plant sits within `radius` of some hydrant.
+
+    Args:
+        plants: Plant positions in metres, ascending.
+        hydrants: Hydrant positions in metres, ascending.
+        radius: The sprinkler reach being tested.
+
+    Returns:
+        Whether the whole row is watered. One merge pass, O(n + m).
+    """
+    reach = 0
+    for plant in plants:
+        while reach < len(hydrants) and hydrants[reach] + radius < plant:
+            reach += 1  # this hydrant cannot reach this plant or any later one
+        if reach == len(hydrants) or hydrants[reach] - radius > plant:
+            return False
+    return True
+
+
+def min_sprinkler_radius(plants: list[int], hydrants: list[int]) -> int | None:
+    """Return the smallest whole-metre sprinkler reach that waters every plant.
+
+    Args:
+        plants: Plant positions in metres, ascending.
+        hydrants: Hydrant positions in metres, ascending.
+
+    Returns:
+        The smallest radius that covers the row, 0 when there are no plants,
+        or None when there are plants and no hydrants at all.
+    """
+    if not plants:
+        return 0
+    if not hydrants:
+        return None
+
+    lo = 0
+    hi = max(abs(plants[0] - hydrants[0]), abs(plants[-1] - hydrants[0]))
+    while lo < hi:
+        mid = lo + (hi - lo) // 2
+        if all_plants_reached(plants, hydrants, mid):
+            hi = mid
+        else:
+            lo = mid + 1
+    return lo
+
+
+# ---------------------------------------------------------------- problem 5
+
+
+def zones_at_least(houses: list[int], target: int) -> int:
+    """Return how many zones the greedy sweep closes at a per-zone floor.
+
+    Args:
+        houses: Parcel counts in street order.
+        target: The per-zone total a courier must reach before the next zone
+            can start.
+
+    Returns:
+        The number of zones closed. Houses left over at the end belong to the
+        last zone, which only raises it, so they are not counted again.
+    """
+    zones = 0
+    carried = 0
+    for parcels in houses:
+        carried += parcels
+        if carried >= target:
+            zones += 1
+            carried = 0
+    return zones
+
+
+def fairest_zone_split(houses: list[int], couriers: int) -> int | None:
+    """Return the largest achievable value of the smallest zone total.
+
+    Args:
+        houses: Parcel counts in street order.
+        couriers: How many contiguous non-empty zones the street is cut into.
+
+    Returns:
+        The best-possible worst zone, 0 for an empty street with no couriers,
+        or None when the split cannot be made.
+    """
+    if not houses:
+        return 0 if couriers == 0 else None
+    if couriers < 1 or couriers > len(houses):
+        return None
+
+    lo, hi = 0, sum(houses)
+    while lo < hi:
+        mid = lo + (hi - lo + 1) // 2  # round up, or lo == mid spins forever
+        if zones_at_least(houses, mid) >= couriers:
+            lo = mid  # mid works, so the answer is mid or larger
+        else:
+            hi = mid - 1
+    return lo
+
+
+# ---------------------------------------------------------------- the report
+
+if __name__ == "__main__":
+    BAND = [881, 894, 902, 917, 940]
+    ROSTER = [1305, 1340, 1412, 22, 405, 640, 1150]
+    SOLD = [4, 9, 12, 20, 33]
+    PLANTS, HYDRANTS = [2, 9, 14, 20], [5, 12]
+    STREET = [4, 1, 7, 3, 6, 2]
+
+    print(f"1 nearest_channel(band, 898)        -> {nearest_channel(BAND, 898)}")
+    print(f"2 shift_start(roster)               -> {shift_start(ROSTER)}")
+    print(f"3 seat_cursor(sold, 13)             -> {seat_cursor(SOLD, 13)}")
+    print(f"4 min_sprinkler_radius(row)         -> {min_sprinkler_radius(PLANTS, HYDRANTS)}")
+    print(f"5 fairest_zone_split(street, 3)     -> {fairest_zone_split(STREET, 3)}")
+
+    # 1 - the frequency slot
+    assert nearest_channel(BAND, 917) == 3
+    assert nearest_channel(BAND, 910) == 3
+    assert nearest_channel(BAND, 909) == 2
+    assert nearest_channel(BAND, 898) == 1
+    assert nearest_channel(BAND, 700) == 0
+    assert nearest_channel(BAND, 1200) == 4
+    assert nearest_channel([1000], 1) == 0
+    assert nearest_channel([], 900) is None
+
+    # 2 - the shift start
+    assert shift_start(ROSTER) == (3, 22)
+    assert shift_start([22, 405, 640]) == (0, 22)
+    assert shift_start([640, 22]) == (1, 22)
+    assert shift_start([22, 640]) == (0, 22)
+    assert shift_start([500]) == (0, 500)
+    assert shift_start([]) is None
+
+    # 3 - the waitlist cursor
+    assert seat_cursor(SOLD, 12) == (2, True)
+    assert seat_cursor(SOLD, 13) == (3, False)
+    assert seat_cursor(SOLD, 4) == (0, True)
+    assert seat_cursor(SOLD, 33) == (4, True)
+    assert seat_cursor(SOLD, 1) == (0, False)
+    assert seat_cursor(SOLD, 40) == (5, False)
+    assert seat_cursor([], 7) == (0, False)
+
+    # 4 - the sprinkler reach
+    assert min_sprinkler_radius(PLANTS, HYDRANTS) == 8
+    assert min_sprinkler_radius(PLANTS, [5, 12, 19]) == 3
+    assert min_sprinkler_radius([1, 2, 3], [100]) == 99
+    assert min_sprinkler_radius([5], [5]) == 0
+    assert min_sprinkler_radius([], [5, 12]) == 0
+    assert min_sprinkler_radius([], []) == 0
+    assert min_sprinkler_radius([3], []) is None
+
+    # 5 - the delivery zones
+    assert fairest_zone_split(STREET, 3) == 5
+    assert fairest_zone_split(STREET, 2) == 11
+    assert fairest_zone_split(STREET, 4) == 3
+    assert fairest_zone_split(STREET, 6) == 1
+    assert fairest_zone_split(STREET, 1) == 23
+    assert fairest_zone_split(STREET, 7) is None
+    assert fairest_zone_split(STREET, 0) is None
+    assert fairest_zone_split([0, 0, 5], 3) == 0
+    assert fairest_zone_split([], 0) == 0
+    assert fairest_zone_split([], 1) is None
+
+    print("All checks passed.")
+```
+
+Five contracts in one file. The shared `lower_bound` is written out rather than
+imported, because the whole week is about being able to defend those three lines.
+
+## Download and run
+
+Download the solution beside this page and run it:
+
+```bash
+python README-solution.py
+```
+
+No third-party packages, no arguments, no input. It prints one block per problem
+and then `All checks passed.`
+
+Or open it in the browser IDE from the Run button on the block above, and change
+an example to probe a boundary you are unsure of — `wanted = 898` in problem 1
+and `couriers = 0` in problem 5 are the two most worth poking.
+
+## Common bugs to catch
+
+- **`lo = mid` with a midpoint that rounds down.** Symptom: the program hangs on
+  a two-element interval. Problem 5 moves `lo` up to `mid`, so its midpoint must
+  round up — `(lo + hi + 1) // 2`. Problems 1-3 move `lo` past `mid` and must
+  round down. Getting this backwards is the classic infinite loop.
+- **Indexing at the insertion point without testing it.** Symptom: `IndexError`
+  on the seat that sorts after everything sold, or on a frequency above the whole
+  band. Test `lo < len(seq)` first, then the value.
+- **A tie-break that is missing rather than wrong.** Symptom: problem 1 returns
+  the right *distance* and the wrong index at `wanted = 898`. Use `<=`, not `<`,
+  so the earlier index wins.
+- **Comparing against `lo` in the rotated search.** Symptom: an un-rotated roster
+  returns the last row. There is no "is it rotated?" branch to add — comparing
+  against `hi` removes the need for one.
+- **A leftward-only coverage check in problem 4.** Symptom: 4 instead of 3 on the
+  three-hydrant example, and no answer at all for a plant that has no hydrant to
+  its left. Each plant is measured against the hydrant before it *and* the one
+  after it.
+- **Starting the parametric search at `lo = 1`.** Symptom: `1` where the answer
+  is `0` — a plant sitting on a hydrant, or a street of empty houses.
+
+## Acceptance checklist
+
+- [ ] All five write-ups present in `frame-writeups/c2-week-05/mini-project/`.
+- [ ] Each write-up has a leading 30-second memo following the schema above.
+- [ ] **Problems 4 and 5 use the parametric memo schema** (four-element cadence), not the classic schema.
+- [ ] Problem 5 explicitly states which boundary template (lower-bound or upper-bound) and why.
+- [ ] Each write-up has a trace on at least two examples in the Examine (verify) section.
+- [ ] Each write-up cross-references at least one other write-up in this folder.
+- [ ] All five `.py` solution files are present and pass the example tables above, including every degenerate and no-solution row.
+
+---
+
+## Stretch
+
+Two reasons.
+
+1. **Three classic plus two parametric is the diet of a real binary-search interview.** A Phase-2 onsite typically asks one classic and one parametric variant. Five problems gives you five at-bats on the memo cadence and two at-bats on the parametric four-element form — enough for the muscle memory to install, not so many that the artifact bloats.
+
+2. **The syllabus mandates exactly this composition.** From the Week 5 line in `SYLLABUS.md`: *"Mini-project: Solve 5 binary-search problems including 2 'search on answer' variants."* The composition is the contract.
+
+If you finish before Sunday with energy to spare, the best sixth problem is one you write **yourself**: pick a system you actually use, find a monotone threshold inside it, and pose the problem in the format above. Authoring a problem is the strongest possible evidence that you own the pattern. The acceptance criterion is *five* — anything beyond is bonus.
+
+---
+
+When done: push everything, then move on to [Week 6 — Graphs Part 1: BFS](../../week-06-bfs/).
+
+Phase 2's first week is closed. Your portfolio now contains five binary-search write-ups spanning both the index family and the answer-space family; that section will be referenced again in Mock #2 (Week 9) and in the capstone (Week 15).
+
+Two more, if the five came easily:
+
+- Write problem 3 a second time using `bisect.bisect_left`, then say in one
+  sentence what the library did not do for you. The flag is still yours to write,
+  and that is the half the interview is actually asking about.
+- Take problem 4's predicate and break it deliberately — make it leftward-only —
+  then find the smallest input that exposes the break. Being able to construct
+  the counter-example is a stronger claim than being able to avoid the bug.
+
 ## What "great" looks like (final rubric)
 
 A learner who has shipped this mini-project *well* has:
@@ -407,19 +790,3 @@ A learner who has shipped this mini-project *poorly* has:
 If you catch yourself producing the "poorly" shape, the fix is to re-read [Lecture 2 §8](../lecture-notes/02-binary-search-on-the-answer.md) (the four parametric patterns) and re-do Problem 5 from scratch.
 
 ---
-
-## Why five problems specifically
-
-Two reasons.
-
-1. **Three classic plus two parametric is the diet of a real binary-search interview.** A Phase-2 onsite typically asks one classic and one parametric variant. Five problems gives you five at-bats on the memo cadence and two at-bats on the parametric four-element form — enough for the muscle memory to install, not so many that the artifact bloats.
-
-2. **The syllabus mandates exactly this composition.** From the Week 5 line in `SYLLABUS.md`: *"Mini-project: Solve 5 binary-search problems including 2 'search on answer' variants."* The composition is the contract.
-
-If you finish before Sunday with energy to spare, the best sixth problem is one you write **yourself**: pick a system you actually use, find a monotone threshold inside it, and pose the problem in the format above. Authoring a problem is the strongest possible evidence that you own the pattern. The acceptance criterion is *five* — anything beyond is bonus.
-
----
-
-When done: push everything, then move on to [Week 6 — Graphs Part 1: BFS](../../week-06-bfs/).
-
-Phase 2's first week is closed. Your portfolio now contains five binary-search write-ups spanning both the index family and the answer-space family; that section will be referenced again in Mock #2 (Week 9) and in the capstone (Week 15).

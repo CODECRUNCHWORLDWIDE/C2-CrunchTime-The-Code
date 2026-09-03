@@ -538,9 +538,6 @@ and reject it for a stated reason, rather than not mentioning it at all.
 - [ ] Your write-up explains why the natural traversal order already produces sorted output.
 - [ ] The function has type hints and a docstring.
 - [ ] Committed to Git with a message like `Add Week 1 challenge 1: settlement trio`.
-
-**Practice elsewhere.** The same pattern appears as [LeetCode 15 · 3Sum](https://leetcode.com/problems/3sum/) if you want a judge to run against. Theirs fixes the target at zero and accepts the triples in any order, so it exercises neither the arbitrary target nor the output ordering — solve ours first.
-
 ## Stretch
 
 - **Report how many ledger positions each explanation could be drawn from.**

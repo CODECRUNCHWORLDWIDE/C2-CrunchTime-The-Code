@@ -33,25 +33,25 @@ Answer key at the bottom.
 <details>
 <summary>Click after attempting all ten</summary>
 
-1. **Backtracking — combinatorial enumeration (subsets).** State: `(start_index, path)`. No pruning needed; record at every node (every node is a valid subset). 2^n subsets. LC 78; Exercise 1.
+1. **Backtracking — combinatorial enumeration (subsets).** State: `(start_index, path)`. No pruning needed; record at every node (every node is a valid subset). 2^n subsets.; Exercise 1.
 
 2. **DP — counting (not backtracking).** The prompt asks for the count, not the subsets themselves. State: `dp[i][s] = number of subsets of nums[:i] summing to s`. Subset-sum counting DP. Backtracking would enumerate 2^n subsets to count them — exponentially slower. The negative-space rejection.
 
-3. **Backtracking — combinatorial enumeration (combinations).** State: `(start_index, path)`. Pruning: `last = n - (k - len(path)) + 1` to skip subtrees that cannot reach length k. Record at leaves where `len(path) == k`. C(n, k) combinations. LC 77; homework.
+3. **Backtracking — combinatorial enumeration (combinations).** State: `(start_index, path)`. Pruning: `last = n - (k - len(path)) + 1` to skip subtrees that cannot reach length k. Record at leaves where `len(path) == k`. C(n, k) combinations.; homework.
 
-4. **Backtracking — string partitioning.** State: `(start_index, path)` where path is the list of palindromic pieces. Pruning: palindrome check on each candidate piece (constraint-propagation). Record at leaves where `start == n`. LC 131; mini-project Problem 1.
+4. **Backtracking — string partitioning.** State: `(start_index, path)` where path is the list of palindromic pieces. Pruning: palindrome check on each candidate piece (constraint-propagation). Record at leaves where `start == n`.; mini-project Problem 1.
 
-5. **Backtracking — 2D-grid feasibility (word search).** State: `(row, col, word_index)`. Pruning: bounds, visited set, character match. Return True on first success; the recursion unwinds. LC 79; Challenge 1.
+5. **Backtracking — 2D-grid feasibility (word search).** State: `(row, col, word_index)`. Pruning: bounds, visited set, character match. Return True on first success; the recursion unwinds.; Challenge 1.
 
-6. **Backtracking — constraint satisfaction (N-Queens).** State: `(row, cols, diag1, diag2, path)`. Pruning: three sets (column, two diagonals) for O(1) constraint checks. Record at leaves where `row == n`. LC 51; Challenge 2.
+6. **Backtracking — constraint satisfaction (N-Queens).** State: `(row, cols, diag1, diag2, path)`. Pruning: three sets (column, two diagonals) for O(1) constraint checks. Record at leaves where `row == n`.; Challenge 2.
 
-7. **Backtracking — constraint satisfaction (sudoku).** State: the board (mutated in place) plus three constraint sets per row, column, box. Pruning: three set membership checks per candidate digit. Return True on first complete board. LC 37; mini-project Problem 2.
+7. **Backtracking — constraint satisfaction (sudoku).** State: the board (mutated in place) plus three constraint sets per row, column, box. Pruning: three set membership checks per candidate digit. Return True on first complete board.; mini-project Problem 2.
 
-8. **Backtracking — combinatorial enumeration with reuse (combination sum).** State: `(start_index, remaining_target, path)`. Pruning: sort + break when `candidates[i] > remaining`. Reuse: recurse with `start = i` (not `i + 1`). Record when `remaining == 0`. LC 39; Exercise 3.
+8. **Backtracking — combinatorial enumeration with reuse (combination sum).** State: `(start_index, remaining_target, path)`. Pruning: sort + break when `candidates[i] > remaining`. Reuse: recurse with `start = i` (not `i + 1`). Record when `remaining == 0`.; Exercise 3.
 
 9. **DP — counting (not backtracking).** The prompt asks for the count, not the configurations. State: `dp[i] = number of ways to reach step i`. Recurrence: `dp[i] = dp[i-1] + dp[i-2]`. This is climbing stairs from W11; the negative-space rejection — every "count the number of ways" prompt should go to DP first.
 
-10. **Backtracking — combinatorial enumeration (Cartesian product).** State: `(digit_index, path)`. No pruning (every letter in the digit group is valid). Record at leaves where `digit_index == len(digits)`. LC 17; homework.
+10. **Backtracking — combinatorial enumeration (Cartesian product).** State: `(digit_index, path)`. No pruning (every letter in the digit group is valid). Record at leaves where `digit_index == len(digits)`.; homework.
 
 </details>
 

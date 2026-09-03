@@ -641,11 +641,4 @@ the second half, backwards, in place* — and it is worth naming it as one.
   [Challenge 1](../challenges/challenge-01-booklet-imposition.md) on top of it.
   Two problems, one primitive, and the diff between them is the third sub-step —
   which is the clearest possible demonstration that you saw the shared structure.
-
-**Practice elsewhere.** The same pattern appears as
-[LeetCode 234 · Palindrome Linked List](https://leetcode.com/problems/palindrome-linked-list/)
-if you want a judge to run against. That contract returns a boolean and treats
-restoring the list as an optional follow-up rather than a requirement, so it
-never exercises the two things this page grades. Solve this one first.
-
 Next: [Problem 4 — Behavioral Story #4](./problem-04-behavioral-story.md).

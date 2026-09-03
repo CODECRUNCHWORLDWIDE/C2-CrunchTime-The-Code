@@ -552,12 +552,5 @@ is not.
   ```text
   slots = 1000   worst seed 7, tail 5, rotation 6
   ```
-
-**Practice elsewhere.** The same pattern appears as
-[LeetCode 202 · Happy Number](https://leetcode.com/problems/happy-number/) and
-[LeetCode 287 · Find the Duplicate Number](https://leetcode.com/problems/find-the-duplicate-number/)
-if you want a judge to run against. Both ask a yes-or-no or single-value
-question, so neither forces you to run all three phases. Solve this one first.
-
 When the functional-graph insight comes out of your mouth without effort, move
 on to [Exercise 5 — The Relay Hop Budget](./exercise-05-relay-hop-budget.md).

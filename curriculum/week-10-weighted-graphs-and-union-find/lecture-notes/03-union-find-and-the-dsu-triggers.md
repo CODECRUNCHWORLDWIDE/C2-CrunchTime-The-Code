@@ -168,16 +168,16 @@ DSU shows up in four recognizable sub-shapes. Recognizing the sub-shape is more 
 mindmap
   Union-Find problems
     Components count
-      Number of Provinces
+      the mooring chain groups
       Network Connected
     Cycle detection
-      Redundant Connection
+      the radiator loop check
       Graph Valid Tree
     Account merge
-      Accounts Merge
+      the claim slip merge
       Similar Sentences
     Streaming islands
-      Number of Islands II
+      the streaming island count
       Bricks Falling
 ```
 *The four canonical DSU sub-shapes, each recognized by its own trigger vocabulary and canonical problems.*
@@ -199,9 +199,9 @@ Four lines. The `uf.components` counter (decremented on every successful `union`
 
 The canonical problems:
 
-- **Number of Provinces** (LC 547) — given an adjacency matrix, count components. Exercise 3 exactly.
-- **Friend Circles** (LC 547 alias) — same problem, older name.
-- **Number of Operations to Make Network Connected** (LC 1319) — count components, return `components - 1` (minus the spare edges, if any).
+- **"How many separate groups are there after these joins?"** — the plainest form, and [Exercise 3](../exercises/exercise-03-mooring-chain-groups.md) exactly.
+- **"Given an adjacency matrix, count the groups"** — the same question with the joins written as a grid rather than a list. Read the matrix, union each pair, count roots.
+- **"How many extra links are needed to connect everything?"** — count the groups and return one fewer, provided you have spare links to move. The spare links are the ones a join rejected.
 
 ### Sub-shape 2 — Cycle detection / redundant edge
 
@@ -211,19 +211,19 @@ Given an undirected graph that is one edge away from being a tree, find the redu
 def find_redundant_connection(edges: List[List[int]]) -> List[int]:
     """Find the redundant edge in a near-tree undirected graph."""
     n = len(edges)
-    uf = UnionFind(n + 1)  # vertices are 1-indexed per LC 684
+    uf = UnionFind(n + 1)  # vertices are 1-indexed in this contract
     for u, v in edges:
         if not uf.union(u, v):
             return [u, v]
     return []
 ```
 
-Five lines. The `union` returns `False` when `u` and `v` are already in the same set — which means adding this edge would create a cycle. By LC 684's spec, the *last* such edge in the input is the redundant one; since we process in order, the first `False` is the answer.
+Five lines. The `union` returns `False` when `u` and `v` are already in the same set — which means adding this edge would create a cycle. When a contract asks for the *last* such edge in the input, that is the redundant one; since we process in order, the first `False` is the answer.
 
 The canonical problems:
 
-- **Redundant Connection** (LC 684) — the DSU half of the mini-project.
-- **Graph Valid Tree** (LC 261) — given `n` vertices and edges, determine if it forms a tree. Two checks: `len(edges) == n - 1` *and* no cycles.
+- **"Which link closed a loop?"** — the join that was rejected. [Homework 4](../homework/README.md) reports every one of them, which is the actionable version.
+- **"Is this graph a tree?"** — two checks, and both are needed: `len(edges) == n - 1` *and* one group at the end. Either alone passes something broken, which is why Homework 4 names both faults separately rather than returning a boolean.
 
 ### Sub-shape 3 — Account merge / equivalence class
 
@@ -260,9 +260,9 @@ Twenty lines. The two-phase structure (union then enumerate) is the canonical DS
 
 The canonical problems:
 
-- **Accounts Merge** (LC 721) — the canonical statement; homework problem 1.
-- **Most Stones Removed With Same Row Or Column** (LC 947) — DSU over `(row, col)` keys; the result is `n - components`.
-- **Synonyms / Similar Sentences** (LC 737) — DSU over word strings.
+- **"Merge these records where they share any identifier"** — union over the *identifiers* rather than the records, which is [Homework 1](../homework/README.md) and is the sub-shape people most often get backwards.
+- **"How many of these can be removed, given each removal needs a surviving neighbour?"** — union over the coordinates; the answer is the count minus the number of groups.
+- **"These words mean the same thing; do these two sentences?"** — union over the words themselves. Nothing says the elements have to be integers.
 
 ### Sub-shape 4 — Streaming islands
 
@@ -270,7 +270,7 @@ The variant where new vertices arrive one at a time and we need the component co
 
 ```python
 def num_islands_2(m: int, n: int, positions: List[List[int]]) -> List[int]:
-    """LC 305: count islands after each cell is added."""
+    """Count the islands after each cell is added to the map."""
     uf = UnionFind(m * n)
     is_land: Set[int] = set()
     result: List[int] = []
@@ -296,8 +296,8 @@ Twenty lines. The pattern: each new cell is its own component (`count += 1`); ea
 
 The canonical problems:
 
-- **Number of Islands II** (LC 305) — the streaming variant of LC 200. Locked behind a LeetCode Premium subscription; the problem statement is widely mirrored on free platforms.
-- **Bricks Falling When Hit** (LC 803) — reverse-DSU: process in reverse, adding bricks instead of removing them.
+- **"Report the group count after each addition"** — the streaming form. The count is maintained rather than recomputed, which is what makes it cheap.
+- **"Report what stays standing after each removal"** — the same problem run backwards. Union-find cannot un-join, so process the removals in reverse and *add* instead. That inversion is the trick worth remembering, and it is the one place a one-way structure answers a two-way question.
 
 ---
 
@@ -356,7 +356,7 @@ The alternative — a DSU class with `dict` instead of `list` — is also correc
 
 ### Variant 2 — Weighted DSU (DSU with augmented edge weights)
 
-For problems like LC 399 (Evaluate Division), each edge carries a multiplicative weight (`a / b = 2.0`); the DSU must maintain the weight from each element to the root. Implementation outline:
+For problems where a join carries a *ratio* rather than just a fact — "a is twice b", and you are asked what a is in terms of c — each edge carries a multiplicative weight, and the structure must maintain the weight from each element to its root. Implementation outline:
 
 ```python
 class WeightedUF:
@@ -451,6 +451,6 @@ That cadence is the senior-grade defense. The implementation is the second part.
 
 ## What's next
 
-The three lectures are complete. The week's algorithms — Dijkstra, Bellman-Ford, Floyd-Warshall, Kruskal, Prim, Union-Find — are installed. The rest of the week is exercises (Network Delay Time, Cheapest Flights, Number of Provinces), the challenge (Cheapest Flights K Stops), the homework (six problems across the family), and the mini-project (one Dijkstra write-up, one DSU write-up, fully FRAME-narrated).
+The three lectures are complete. The week's algorithms — Dijkstra, Bellman-Ford, Floyd-Warshall, Kruskal, Prim, Union-Find — are installed. The rest of the week is exercises (the hut relay timing, Cheapest Flights, the mooring chain groups), the challenge (Cheapest Flights K Stops), the homework (six problems across the family), and the mini-project (one Dijkstra write-up, one DSU write-up, fully FRAME-narrated).
 
 Push hard on the *recognition* exercises — the quiz especially. The implementation patterns are short and quickly memorized; the Research-constraints recognition is what discriminates Phase 2 from Phase 3.

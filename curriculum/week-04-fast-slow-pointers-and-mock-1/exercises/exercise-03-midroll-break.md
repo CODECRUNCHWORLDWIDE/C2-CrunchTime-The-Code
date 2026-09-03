@@ -559,12 +559,5 @@ middle. Look ahead, land behind.
   Work out the guard yourself rather than looking it up; the reasoning is the
   same question — *how many segments must be in front of `fast` for another
   step to be legal?*
-
-**Practice elsewhere.** The same pattern appears as
-[LeetCode 876 · Middle of the Linked List](https://leetcode.com/problems/middle-of-the-linked-list/)
-if you want a judge to run against. That contract returns the upper middle and
-never asks for the offset, so carrying its loop over here fails every
-even-length case. Solve this one first.
-
 When both parities trace clean, move on to
 [Exercise 4 — The Wear-Level Rotation](./exercise-04-wear-level-rotation.md).

@@ -108,7 +108,7 @@ def dfs_iterative_preorder_matched(
 
 The discriminator is `reversed(list(neighbors_fn(node)))` on line 14. Without `reversed`, the iterative traversal *still visits every reachable node* — it just visits them in a different order than the recursive form.
 
-Whether the order matters depends on the problem. For pure connectivity (Exercise 1) — order is irrelevant; both forms answer the same question. For Word Ladder II (which counts all shortest paths) — order is irrelevant; the set of paths is the same. For problems where the *first* path found matters (e.g., the first valid topological order produced by Kahn's varies with tie-breaking) — order is relevant; choose deliberately.
+Whether the order matters depends on the problem. For pure connectivity (Exercise 1) — order is irrelevant; both forms answer the same question. For the widest-route survey (which counts all shortest paths) — order is irrelevant; the set of paths is the same. For problems where the *first* path found matters (e.g., the first valid topological order produced by Kahn's varies with tie-breaking) — order is relevant; choose deliberately.
 
 The interview-tell move: **if the problem cares about visit order, push children in reverse and state out loud that you are doing so**. *"Pushing children in reverse so the iterative pre-order matches the recursive — same visit order, no behavior change."*
 
@@ -306,7 +306,7 @@ def dfs(node, adj, visited):
             dfs(nbr, adj, visited)
 ```
 
-`setrecursionlimit(10000)` works for most LeetCode inputs but can crash if the input grows further. The right fix is to convert to iterative; setrecursionlimit is the temporary patch.
+`setrecursionlimit(10000)` gets you past most graded inputs and crashes when one grows further — and it crashes without a traceback, because the process is out of stack rather than out of frames. The right fix is to convert to iterative; raising the limit is the temporary patch.
 
 In interview: state "I will use recursive DFS; if `V` could exceed 1000 I would switch to iterative" — this is the senior signal. Setting the recursion limit silently is the junior signal.
 
@@ -328,7 +328,7 @@ The interview-tell move: when a Python type-checker would flag this, fix it befo
 
 ---
 
-## 7. Worked example: number of islands (LC 200), iterative
+## 7. Worked example: the scrap heaps, iterative
 
 Exercise 1 is the recursive version. The iterative version is a one-stack-deep change.
 
@@ -435,7 +435,7 @@ If you can answer all six without hesitation, proceed to [Lecture 3 — Topologi
 
 ## 11. Why this matters
 
-Iterative DFS is what production-grade graph traversal *looks like*. Every real system that walks a large graph — a build system computing the topological order of 100k build targets, a garbage collector marking 10M live objects, a route planner expanding 500k road-segment nodes — uses iterative DFS or BFS with an explicit work queue. Recursive DFS is a teaching tool and a LeetCode shortcut; iterative DFS is the artifact you would ship.
+Iterative DFS is what production-grade graph traversal *looks like*. Every real system that walks a large graph — a build system computing the topological order of 100k build targets, a garbage collector marking 10M live objects, a route planner expanding 500k road-segment nodes — uses iterative DFS or BFS with an explicit work queue. Recursive DFS is a teaching tool and a shortcut that survives small graded inputs; iterative DFS is the artifact you would ship.
 
 For interview purposes, the discriminator is whether you can write *both* fluently. If you can write the recursive version and state out loud that you would convert for production, the interviewer hears "this person understands the engineering trade-off." If you can also write the iterative version on demand, the interviewer hears "this person has shipped graph code."
 
@@ -447,6 +447,5 @@ The exercises and mini-project this week grade both. Exercise 1 is recursive; Ex
 
 - **Wikipedia — Depth-first search** (Pseudocode section): <https://en.wikipedia.org/wiki/Depth-first_search#Pseudocode> — both recursive and iterative pseudocode side-by-side.
 - **CSES Competitive Programmer's Handbook — Chapter 12**: <https://cses.fi/book/book.pdf> — twenty minutes.
-- **LeetCode 200, 695, 547, 1971** — the four problems that anchor iterative-DFS-on-grids. Homework Problem 1 covers one; the others are stretch.
 
 Next: [Lecture 3 — Topological Sort](./03-topological-sort.md). Topological sort is the canonical Phase-2 graph problem; Lecture 3 covers both the DFS post-order method and Kahn's BFS-shaped method, plus the three-color invariant for directed cycle detection.

@@ -616,9 +616,6 @@ this page.
 - [ ] You cross-checked against the two-array version on a few thousand random roads.
 - [ ] You narrated a full FRAME pass out loud, at least twenty minutes. The first time you solve this you will pause — pausing out loud with "let me think about why that's true" is worth more than pausing silently.
 - [ ] Committed to Git with a message like `Add Week 1 challenge 2: levee ponding`.
-
-**Practice elsewhere.** The same pattern appears as [LeetCode 42 · Trapping Rain Water](https://leetcode.com/problems/trapping-rain-water/) if you want a judge to run against. There is no per-section cap there, so every numeric answer differs and a remembered solution returns the uncapped total — solve ours first.
-
 ## Stretch
 
 - **Return the depth at every section, not just the total.**

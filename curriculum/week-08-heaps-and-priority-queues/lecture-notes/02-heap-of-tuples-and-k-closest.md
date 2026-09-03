@@ -5,7 +5,7 @@
 
 Lecture 1 installed the `heapq` API and the top-k template for plain integers. This lecture installs the **heap-of-tuples idiom** — the convention that lets a heap store `(priority, tiebreaker, payload)` triples so the payload can be anything (a string, a 2-D point, a custom object). Every real-world heap holds tuples, not bare integers. The discipline you install this lecture is the one most interview submissions get subtly wrong.
 
-The two applications we cover end-to-end: **k-closest-points-to-origin** (the canonical Phase-2 heap problem; LC 973) and a custom-priority **task queue** (the production-engineering framing). Both rest on the same idiom.
+The two applications we cover end-to-end: **k-closest-points-to-origin** (the canonical Phase-2 heap problem;) and a custom-priority **task queue** (the production-engineering framing). Both rest on the same idiom.
 
 ---
 
@@ -169,7 +169,7 @@ In interviews, the negation is the faster answer to write. Mention the wrapper a
 
 ## 4. The k-closest-points template
 
-The canonical Phase-2 heap problem. LC 973, Exercise 2.
+The canonical Phase-2 heap problem., Exercise 2.
 
 **Problem.** Given `n` points on a 2-D plane and an integer `k`, return the `k` points closest to the origin `(0, 0)`. Distance is Euclidean (but we use distance-*squared* to avoid `sqrt`).
 
@@ -352,7 +352,7 @@ The senior framing: store both the comparison key and the original value when th
 
 ## 6. A scheduler with priorities — the production framing
 
-The interview problem (LC 973) is one shape. The production application is another: a job scheduler that runs the next-highest-priority task. The same heap-of-tuples idiom powers both.
+The interview problem is one shape. The production application is another: a job scheduler that runs the next-highest-priority task. The same heap-of-tuples idiom powers both.
 
 ```python
 import heapq
@@ -399,7 +399,7 @@ This is the structural foundation of every priority-driven scheduler — operati
 
 ---
 
-## 7. Worked example end-to-end: K Closest Points (LC 973)
+## 7. Worked example end-to-end: K Closest Points
 
 We will work this in full FRAME, abbreviated. Exercise 2 is this exact problem.
 
@@ -491,7 +491,7 @@ If you can answer all six without hesitation, proceed to [Lecture 3 — Two-Heap
 
 ## 10. A small composition — k most frequent words
 
-A composition of the heap-of-tuples and top-k templates. LC 692.
+A composition of the heap-of-tuples and top-k templates..
 
 **Problem.** Given a list of words and an integer `k`, return the `k` most frequent words. If two words have the same frequency, the lexicographically smaller word ranks first.
 
@@ -501,7 +501,6 @@ A composition of the heap-of-tuples and top-k templates. LC 692.
 import heapq
 from collections import Counter
 from typing import List, Tuple
-
 
 def top_k_frequent(words: List[str], k: int) -> List[str]:
     """Return the k most frequent words; ties broken alphabetically (smaller first)."""
@@ -575,7 +574,5 @@ Four decisions, made in 30 seconds, every time.
 
 - **`heapq` examples — Python docs**: <https://docs.python.org/3/library/heapq.html#priority-queue-implementation-notes> — the "Priority Queue Implementation Notes" section is essentially this lecture in three paragraphs.
 - **`dataclasses` decorator — Python docs**: <https://docs.python.org/3/library/dataclasses.html> — the `order=True` parameter generates `__lt__` automatically; useful for the wrapper-class approach.
-- **LeetCode 973 (K Closest Points to Origin)**: the canonical k-closest problem; Exercise 2 covers this exactly.
-- **LeetCode 692 (Top K Frequent Words)**: the canonical heap-of-tuples problem with a tiebreaker direction conflict.
 
 Next: [Lecture 3 — Two-Heap, k-Way Merge, and Lazy Deletion](./03-two-heap-and-k-way-merge.md).

@@ -1,25 +1,41 @@
 # Week 8 — Challenges
 
-Two challenges. Do at least the first; the second is an optional stretch.
+Two challenges. Do at least the first; the second is a recommended stretch.
 
-| # | Challenge | Pattern | Difficulty | Target solve time |
-|---|-----------|---------|------------|------------------:|
-| 1 | [Merge k Sorted Lists](./challenge-01-merge-k-sorted-lists.md) (LC 23) | k-way merge with a heap of size k | Hard | 60 min |
-| 2 | [Task Scheduler](./challenge-02-task-scheduler.md) (LC 621) | Heap with cooldown queue | Medium / Hard | 60 min |
+| # | Challenge | Sub-shape | Difficulty | Target time |
+|---|-----------|-----------|------------|------------:|
+| 1 | [The Hut Roll Call](./challenge-01-hut-roll-call-stitch.md) | k-way merge, lazily — the merge as a generator | Medium-Hard | 70 min |
+| 2 | [The Dye Vat Rotation](./challenge-02-dye-vat-rotation.md) | Greedy scheduling with two heaps and a cooldown | Medium-Hard | 75 min |
 
-Challenge 1 is mandatory — it is the canonical k-way merge problem, the structural pair to the size-k top-k template from Exercise 1, and a fixture in the LeetCode "Top 100 Liked" list. Challenge 2 is optional but recommended; it is the canonical "heap + auxiliary structure" problem and the production-engineering framing of the heap pattern.
+Challenge 1 is mandatory. It is the structural pair to the bounded top-k heap
+from Exercise 2 — there the heap's *size* was the argument, here it is *how much
+of the input you read at all*. Challenge 2 is optional and recommended; it is the
+scheduler shape, where the greedy rule is easy to feel and hard to defend, which
+is exactly the kind of thing a mock asks you to defend.
 
-Each challenge document contains:
+Both have a runnable worked solution beside the page:
 
-- The problem spec with examples and edge cases.
-- A "Why this is the canonical X" framing paragraph.
-- A Research constraints memo for the template you would write.
-- Acceptance criteria — what counts as "done."
-- Hints (collapsible) and a worked solution sketch (also collapsible — read after attempting).
+```bash
+python challenge-01-hut-roll-call-stitch-solution.py
+```
+
+Each challenge page contains:
+
+- The brief, with the domain rule that is not a convention.
+- The requirements and the constraints, including the alternative to reject.
+- A real captured run, so the expected output is something you can check against
+  rather than something you have to trust.
+- The full solution, the bugs it is built to prevent, and an acceptance
+  checklist.
 
 The challenges differ from the exercises in two ways:
 
-1. **No starter file.** You design the function signature and the data shape yourself, defending each choice in the write-up.
-2. **Longer target solve time.** 60 minutes vs 20-30. The Research constraints step is harder; the Assess options step has multiple valid paths; the Make the solution step has more code.
+1. **You design the shape.** The function names are given; the data structures
+   inside them are yours to choose and yours to defend in the write-up.
+2. **Longer target time.** Seventy minutes against thirty. The reasoning step is
+   harder, there is more than one valid path, and there is more code.
 
-If a challenge takes more than 90 minutes, stop and read the hints. If it still takes more than 120 minutes, read the solution sketch and re-attempt cold the next day. The point is the rep, not the suffer.
+If a challenge takes more than 90 minutes, read the constraints again — the
+answer to whatever has you stuck is usually stated there in one line. If it still
+takes more than 120, read the solution, then re-attempt it cold the next day. The
+point is the repetition, not the suffering.

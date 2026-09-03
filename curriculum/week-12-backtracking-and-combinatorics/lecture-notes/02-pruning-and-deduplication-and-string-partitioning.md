@@ -9,15 +9,15 @@ The lecture covers four topics: combination sum with sum-based pruning; deduplic
 
 ---
 
-## 1. Combination Sum (LC 39) — sum-based pruning
+## 1. the clay weigh-out — sum-based pruning
 
 > *Given an array of distinct integers `candidates` and a target integer `target`, return a list of all unique combinations of `candidates` where the chosen numbers sum to `target`. You may return the combinations in any order. The same number may be chosen from `candidates` an unlimited number of times.*
 
-**Research constraints.** Combinatorial enumeration with **reuse allowed** (same number can be picked multiple times) and **sum constraint** (the path must sum to exactly `target`). State: `(start_index, remaining_target, path)`. The reuse rule is the discriminator from combinations (LC 77, no reuse) and subsets (LC 78, no reuse).
+**Research constraints.** Combinatorial enumeration with **reuse allowed** (same number can be picked multiple times) and **sum constraint** (the path must sum to exactly `target`). State: `(start_index, remaining_target, path)`. The reuse rule is the discriminator from the tasting panel and the glaze sample set.
 
 **State semantics.** `start_index` is the next eligible element (no reordering — `[2, 2, 3]` and `[3, 2, 2]` would be the same combination, so we enforce non-decreasing element selection); `remaining_target` is what is left to fill; `path` is the current combination.
 
-**Why reuse uses `start = i` and not `start = i + 1`.** When reuse is allowed, after choosing `nums[i]`, the next choice can be `nums[i]` again (or any later index). Recursive call: `backtrack(i, ...)`. When reuse is **not** allowed (LC 40, combination sum II), the next choice must be `nums[i + 1]` or later: `backtrack(i + 1, ...)`. The single-character difference is the discriminator.
+**Why reuse uses `start = i` and not `start = i + 1`.** When reuse is allowed, after choosing `nums[i]`, the next choice can be `nums[i]` again (or any later index). Recursive call: `backtrack(i, ...)`. When reuse is **not** allowed, the next choice must be `nums[i + 1]` or later: `backtrack(i + 1, ...)`. The single-character difference is the discriminator.
 
 **Implementation — the naive form (no prune).**
 
@@ -159,7 +159,7 @@ Same output, dramatically fewer recursive calls. The sort plus break is the cano
 
 When the input has duplicate elements and the output should have no duplicate solutions, we need a discipline that picks each distinct element **once per level**.
 
-Consider Subsets II (LC 90): `nums = [1, 2, 2]`. The expected output is `[[], [1], [1, 2], [1, 2, 2], [2], [2, 2]]` — six subsets, not eight (the naive subsets would produce `[1, 2]` twice because there are two 2s).
+Consider the repeat bin picks: `nums = [1, 2, 2]`. The expected output is `[[], [1], [1, 2], [1, 2, 2], [2], [2, 2]]` — six subsets, not eight (the naive subsets would produce `[1, 2]` twice because there are two 2s).
 
 The canonical idiom:
 
@@ -188,7 +188,7 @@ def subsets_with_dup(nums: List[int]) -> List[List[int]]:
     return result
 ```
 
-Fifteen lines. Two changes from the LC 78 subsets:
+Fifteen lines. Two changes from the subsets:
 
 1. **`nums.sort()`** at the start. Sorting puts duplicate elements adjacent, which makes "same as previous" a `O(1)` comparison.
 2. **`if i > start and nums[i] == nums[i - 1]: continue`** inside the loop. The discriminator is `i > start`, **not** `i > 0`. At the start of a recursive call (`i == start`), the first occurrence of a value is **always** valid. At positions `i > start`, the previous index `i - 1` was already chosen at this same level; choosing the same value again at this level produces a duplicate path.
@@ -249,7 +249,7 @@ flowchart LR
 ```
 *The dedup horizon: only the first occurrence of a value per level survives.*
 
-This idiom recurs in subsets II (LC 90), permutations II (LC 47), combination sum II (LC 40), 4Sum (LC 18), and many others. Memorize the two-line idiom — sort plus `if i > start and nums[i] == nums[i - 1]: continue`.
+This idiom recurs in the repeat bin picks, the firing order with repeats, the tare weight picks, 4Sum, and many others. Memorize the two-line idiom — sort plus `if i > start and nums[i] == nums[i - 1]: continue`.
 
 ---
 
@@ -324,7 +324,7 @@ The combination of constraint-propagation pruning and feasibility pruning is wha
 
 ---
 
-## 4. Palindrome Partitioning (LC 131)
+## 4. the batch split
 
 > *Given a string `s`, partition `s` such that every substring of the partition is a palindrome. Return all possible palindrome partitionings of `s`.*
 

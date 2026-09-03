@@ -64,15 +64,15 @@ By the end of this week, you will be able to:
 
 - **The choose-explore-unchoose template** — the three-line backtracking recurrence; the invariant that the state on entry equals the state on exit
 - **The leaf-copy discipline** — `result.append(path[:])` to deep-copy the path at each leaf; forgetting the copy produces an aliased result list
-- **Subsets (LC 78)** — the canonical backtracking warm-up; record the path at every node, not just leaves
-- **Permutations (LC 46)** — the canonical second backtracking; uses a `used` set to prevent re-selecting elements
-- **Combinations (LC 77)** — the canonical third; records at leaves where `len(path) == k`
-- **Combination sum (LC 39)** — backtracking with sum-based pruning; the prune is the senior signal
+- **the glaze sample set** — the canonical backtracking warm-up; record the path at every node, not just leaves
+- **the firing order** — the canonical second backtracking; uses a `used` set to prevent re-selecting elements
+- **the tasting panel** — the canonical third; records at leaves where `len(path) == k`
+- **the clay weigh-out** — backtracking with sum-based pruning; the prune is the senior signal
 - **Subsets II / permutations II / combination sum II** — deduplication by sorting plus index-skip; the canonical "skip duplicates at the same level" idiom
-- **Palindrome partitioning (LC 131)** — backtracking that splits a string into palindromic pieces; the per-level decision is the length of the next piece
-- **Word search (LC 79)** — 2D-grid backtracking with a `visited` set; the in-place character mutation is the space-optimal variant
-- **N-Queens (LC 51)** — backtracking with three pruning sets (column, two diagonals); placing one queen per row makes the row constraint implicit
-- **Sudoku solver (LC 37)** — backtracking on a 9×9 grid with three constraint checks per candidate digit
+- **the batch split** — backtracking that splits a string into palindromic pieces; the per-level decision is the length of the next piece
+- **the kiln firing trail** — 2D-grid backtracking with a `visited` set; the in-place character mutation is the space-optimal variant
+- **the drying rack sensors** — backtracking with three pruning sets (column, two diagonals); placing one queen per row makes the row constraint implicit
+- **the test tray fill** — backtracking on a 9×9 grid with three constraint checks per candidate digit
 - **Backtracking vs. DP — the recognition flowchart** — when caching helps (DP) versus when it does not (backtracking); the rule of thumb that "all solutions" or "one valid configuration" beats "the count" or "the optimum" almost always
 - **Pruning — the four families** — feasibility (current state cannot reach a valid leaf), optimality (current state cannot improve the best so far), symmetry (current state is equivalent to an already-explored state), constraint-propagation (current state violates a constraint)
 
@@ -107,13 +107,13 @@ By the end of this week, you will be able to:
 | [lecture-notes/02-pruning-and-deduplication-and-string-partitioning.md](./lecture-notes/02-pruning-and-deduplication-and-string-partitioning.md) | Combination sum, the four pruning families, deduplication by sorting plus index-skip, palindrome partitioning |
 | [lecture-notes/03-grid-backtracking-and-constraint-satisfaction.md](./lecture-notes/03-grid-backtracking-and-constraint-satisfaction.md) | Word search, N-Queens, sudoku solver, the backtracking-vs-DP recognition flowchart |
 | [exercises/README.md](./exercises/README.md) | Index of the three backtracking exercises and SOLUTIONS |
-| [exercises/exercise-01-subsets.py](./exercises/exercise-01-subsets.py) | LC 78 — the canonical backtracking warm-up |
-| [exercises/exercise-02-permutations.py](./exercises/exercise-02-permutations.py) | LC 46 — the canonical permutation backtracking |
-| [exercises/exercise-03-combination-sum.py](./exercises/exercise-03-combination-sum.py) | LC 39 — backtracking with sum-based pruning |
+| [exercises/exercise-01-subsets.py](./exercises/exercise-01-subsets.py) | — the canonical backtracking warm-up |
+| [exercises/exercise-02-permutations.py](./exercises/exercise-02-permutations.py) | — the canonical permutation backtracking |
+| [exercises/exercise-03-combination-sum.py](./exercises/exercise-03-combination-sum.py) | — backtracking with sum-based pruning |
 | [exercises/SOLUTIONS.md](./exercises/SOLUTIONS.md) | Worked solutions with FRAME narration; consult after attempting each exercise |
 | [challenges/README.md](./challenges/README.md) | Index of weekly challenges |
-| [challenges/challenge-01-word-search.md](./challenges/challenge-01-word-search.md) | LC 79 deep-dive — 2D-grid backtracking with the visited-set discipline |
-| [challenges/challenge-02-n-queens.md](./challenges/challenge-02-n-queens.md) | LC 51 — N-Queens with three pruning sets |
+| [challenges/challenge-01-word-search.md](./challenges/challenge-01-word-search.md) | deep-dive — 2D-grid backtracking with the visited-set discipline |
+| [challenges/challenge-02-n-queens.md](./challenges/challenge-02-n-queens.md) | — N-Queens with three pruning sets |
 | [quiz.md](./quiz.md) | 10 pattern-recognition questions |
 | [homework.md](./homework/README.md) | Six practice problems (~5 hrs) — three combinatorial, three constraint-satisfaction |
 | [mini-project/README.md](./mini-project/README.md) | **Palindrome partitioning + sudoku solver** — the week's deliverable |
@@ -122,7 +122,7 @@ By the end of this week, you will be able to:
 
 ## Stretch goals
 
-- **Read the LeetCode "Backtracking" tag** and skim 30 titles. For each, predict in 5 seconds: enumeration of all solutions, one valid configuration, or count-only (which would be DP)? Stretches the Research-constraints muscle harder than any exercise this week.
+- **Skim thirty problem titles from any practice set** and, for each, predict in five seconds: enumeration of all solutions, one valid configuration, or count-only (which would be DP)? Stretches the Research-constraints muscle harder than any exercise this week.
 - **Re-derive the three-line template** without re-reading Lecture 1. State the template aloud; if you cannot, you do not yet own it. Re-read and re-derive until you can.
 - **Read the Wikipedia "Backtracking" article** end-to-end (about 15 minutes). The "Description of the method" section is the canonical written defense of the choose-explore-unchoose template; the "Examples" section walks N-Queens and the eight queens puzzle.
 - **Implement N-Queens with bitmask pruning sets** instead of Python sets. Three integers (one per direction: column, diag1, diag2) replace the three sets; the bit at position `c` indicates "column `c` is used" or "diag with offset `c` is used." Faster in practice; the bit-twiddling is a Phase-3 stretch.
@@ -152,7 +152,7 @@ Week 12 is the *enumeration-week* — the second of the two recursion-heavy week
 
 If you find yourself ahead by Friday, the right stretch is **not** another exercise — it is re-implementing subsets three different ways (recursive with choose-explore-unchoose, recursive without explicit unchoose by passing `path + [nums[i]]`, iterative with bit enumeration over `2**n`) and comparing the code clarity and the produced output ordering. The three forms produce the same set of subsets in different orders; understanding why is the kind of meta-pattern that distinguishes senior candidates.
 
-If you find yourself *behind* by Wednesday, skip Exercise 3 (Combination Sum) for now and prioritize Exercise 1 (Subsets) and Exercise 2 (Permutations) — those are the two warm-ups that show up most often in Mock #2, and Combination Sum can be picked up in 30 minutes once the warm-up template is fluent.
+If you find yourself *behind* by Wednesday, skip Exercise 3 (the clay weigh-out) for now and prioritize Exercise 1 (Subsets) and Exercise 2 (Permutations) — those are the two warm-ups that show up most often in Mock #2, and the clay weigh-out can be picked up in 30 minutes once the warm-up template is fluent.
 
 ---
 

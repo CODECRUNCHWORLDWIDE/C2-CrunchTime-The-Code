@@ -600,10 +600,4 @@ problem is a simplification of, and it is why the constraint is written as
   `slow.next_scan`. Then write the two-pass version beside it and time both on a
   50,000-scan chain. The times will be indistinguishable, which is the finding:
   the single pass is not here for speed.
-
-**Practice elsewhere.** The same pattern appears as
-[LeetCode 19 · Remove Nth Node From End of List](https://leetcode.com/problems/remove-nth-node-from-end-of-list/)
-if you want a judge to run against. That contract guarantees `k` is in range, so
-it never exercises the no-op path or the `ValueError`. Solve this one first.
-
 Next: [Problem 3 — The Symmetric Die Sequence](./problem-03-symmetric-dies.md).

@@ -288,7 +288,7 @@ The interview-tell move: **mention `heapify` in Assess options** when the input 
 
 ---
 
-## 6. Worked example end-to-end: Kth Largest Element in an Array (LC 215)
+## 6. Worked example end-to-end: the crest watch shortlist
 
 We will work this in full FRAME, abbreviated. Exercise 1 is this exact problem.
 
@@ -491,6 +491,5 @@ The drill: Exercises 1-3 cover top-k, k-closest, and two-heap median. Homework p
 - **`heapq` module — Python docs**: <https://docs.python.org/3/library/heapq.html> — the canonical reference; the module docstring is the cleanest free source.
 - **Binary heap — Wikipedia**: <https://en.wikipedia.org/wiki/Binary_heap> — covers the array layout, sift operations, and the `O(n)` heapify proof.
 - **CPython `Lib/heapq.py`**: <https://github.com/python/cpython/blob/main/Lib/heapq.py> — read the first 240 lines; the sift functions are the heart of the module.
-- **LeetCode 215, 347, 692, 973, 295** — five problems that anchor the heap families. Exercises cover three of them; the others are stretch.
 
 Next: [Lecture 2 — Heap of Tuples and k-Closest](./02-heap-of-tuples-and-k-closest.md).

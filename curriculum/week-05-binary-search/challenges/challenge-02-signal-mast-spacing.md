@@ -570,13 +570,6 @@ windows so the tightest turnaround is as generous as possible. Sampling a large
 dataset so the closest pair of samples is as far apart as possible. In every
 one, the same two-part structure: a cheap yes/no test for a candidate answer,
 and a one-way relationship between the candidate and the test.
-
-**Practice elsewhere.** The same maximise-the-minimum shape appears as
-[LeetCode 1552 · Magnetic Force Between Two Balls](https://leetcode.com/problems/magnetic-force-between-two-balls/)
-if you want a judge to run against. Its contract differs from ours — it returns
-a bare number and never asks which positions were chosen, nor what happens with
-fewer than two balls.
-
 </details>
 
 ## Acceptance checklist

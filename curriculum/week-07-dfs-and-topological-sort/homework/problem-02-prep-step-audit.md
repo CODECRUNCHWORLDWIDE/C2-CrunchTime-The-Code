@@ -870,8 +870,5 @@ inner loop" are both good answers and "I did not think about it" is not.
   stack has to remember that itself, and an iterator is how. Popping when
   `next` runs dry is where black gets set — the exact moment the recursion would
   have returned.
-
-> **Practice elsewhere.** The same pattern appears as [LeetCode 207 · Course Schedule](https://leetcode.com/problems/course-schedule/) if you want a judge to run against. Ours names steps with strings rather than numbering them, defines the empty case explicitly, and rejects a rule naming an unknown step instead of trusting the input.
-
 When both routes agree, move on to
 [Problem 3 — Safe Forwarding](./problem-03-safe-forwarding.md).

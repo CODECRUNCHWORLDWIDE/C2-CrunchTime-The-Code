@@ -1,7 +1,7 @@
-# Lecture 2 — Word Break, Longest Common Prefix, and Aho-Corasick (read only)
+# Lecture 2 — the stripped manifest line, Longest Common Prefix, and Aho-Corasick (read only)
 
 > **Duration:** ~2 hours.
-> **Outcome:** You can solve word-break (LC 139) with memoization plus a trie for the dictionary, defend the asymptotic improvement over the hash-set baseline on inputs with overlapping prefixes; you can solve longest-common-prefix three ways and articulate when each wins; and you can read an Aho-Corasick description without panic and say in one sentence what the failure links do.
+> **Outcome:** You can solve word-break with memoization plus a trie for the dictionary, defend the asymptotic improvement over the hash-set baseline on inputs with overlapping prefixes; you can solve longest-common-prefix three ways and articulate when each wins; and you can read an Aho-Corasick description without panic and say in one sentence what the failure links do.
 
 Lecture 1 installed the trie itself — `insert`, `search`, `starts_with`, and the autocomplete walk. This lecture installs three compositions: **word-break** (trie + memoization), **longest-common-prefix** (the three classical solutions, one of which is the trie variant), and the **read-only introduction to Aho-Corasick** for multi-pattern substring matching.
 
@@ -11,7 +11,7 @@ The Aho-Corasick section is honest about its register: you will not implement Ah
 
 ## 1. Longest common prefix — three classical solutions
 
-LC 14 — Longest Common Prefix. Given a list of strings, return the longest string that is a prefix of every string in the list. Returns `""` for an empty list or for a list whose first character differs across entries.
+ — Longest Common Prefix. Given a list of strings, return the longest string that is a prefix of every string in the list. Returns `""` for an empty list or for a list whose first character differs across entries.
 
 This problem has three textbook solutions; the trie one is the third and least common, but instructive.
 
@@ -100,7 +100,7 @@ The trie solution is **slower in absolute terms** than the vertical scan for thi
 
 The interview senior signal:
 
-> "Vertical scan is the right answer when the inputs are fixed and the query is one-shot. The trie is the right answer when the dictionary is reused across many queries or grows over time. For LC 14 as stated, vertical scan is simpler; mention the trie as the alternative for the multi-query variant."
+> "Vertical scan is the right answer when the inputs are fixed and the query is one-shot. The trie is the right answer when the dictionary is reused across many queries or grows over time. For as stated, vertical scan is simpler; mention the trie as the alternative for the multi-query variant."
 
 The walk's stopping condition has two parts. `len(node) == 1` says "exactly one continuation"; `END not in node` says "and that continuation is not the end of a key." Forgetting the second part is the canonical off-by-one (Lecture 1, Bug 4): the LCP of `["car", "carry"]` is `"car"`, and the walk must stop at the `r` node because the `r` node is itself a terminal — even though it also has one child `y`.
 
@@ -108,7 +108,7 @@ The walk's stopping condition has two parts. `len(node) == 1` says "exactly one 
 
 ## 2. Word break — trie + memoization
 
-LC 139 — Word Break. Given a string `s` and a list of dictionary words, return True if `s` can be segmented into a space-separated sequence of one or more dictionary words.
+ — the stripped manifest line. Given a string `s` and a list of dictionary words, return True if `s` can be segmented into a space-separated sequence of one or more dictionary words.
 
 The simplest correct solution is DP over positions: let `dp[i] = True` if `s[:i]` can be segmented. Then `dp[i] = True` iff there exists `j < i` such that `dp[j] == True` and `s[j:i]` is in the dictionary. Time: `O(n²)` (or `O(n² * L)` with naive substring extraction). Space: `O(n)`.
 
@@ -158,7 +158,7 @@ The recursion at index `i` walks the trie from the root, advancing `j` one chara
 
 ### Walk-through
 
-Input: `s = "leetcode"`, `words = ["leet", "code"]`. Trie has paths `l -> e -> e -> t (END)` and `c -> o -> d -> e (END)`.
+Input: `s = "fishmeal"`, `words = ["fish", "meal"]`. Trie has paths `f -> i -> s -> h (END)` and `m -> e -> a -> l (END)`.
 
 1. `_can_break(s, 0, ...)`: walk trie from `l`. `l` is in `trie`; node = `trie["l"]`. `e`, `e`, `t` all advance; at `t`, `END in node`. Recurse on `i = 4`.
 2. `_can_break(s, 4, ...)`: walk trie from `c`. `c`, `o`, `d`, `e` all advance; at `e`, `END in node`. Recurse on `i = 8`.
@@ -187,7 +187,7 @@ Without the trie, the inner loop iterates over the dictionary at each starting p
 
 The crossover where the trie wins is when `W >> n` (large dictionary, short query) or when dictionary words share many prefixes (`["a", "ap", "app", "appl", "apple"]` — the trie has 5 nodes; the hash set has 5 entries but the per-position scan is 5x).
 
-For LeetCode-grade inputs (`n <= 300`, `W <= 1000`), both solutions pass. The trie is preferred in the write-up because it generalizes to "for each query, find all dictionary words starting at position `i` in `s`" — Word Break II (LC 140) — which the hash set version handles poorly.
+At the sizes a practice problem uses (`n <= 300`, `W <= 1000`), both solutions pass. The trie is preferred in the write-up because it generalizes to "for each query, find all dictionary words starting at position `i` in `s`" — the stripped manifest line, every split — which the hash set version handles poorly.
 
 ---
 
@@ -277,7 +277,7 @@ Memorize that paragraph at the *recognition* level — not the implementation le
 
 ## 4. The trie-on-grid composition
 
-A standalone topic that combines the trie with backtracking. Word Search II (LC 212) is the canonical instance — see Challenge 1 for the full treatment. The recognition cue is:
+A standalone topic that combines the trie with backtracking. the cold store aisle sweep is the canonical instance — see Challenge 1 for the full treatment. The recognition cue is:
 
 > "Given a 2-D grid of characters and a list of words, find every word from the list that can be formed by sequentially-adjacent cells (no cell reused)."
 
@@ -289,18 +289,18 @@ The Research-constraints recognition:
 
 > "Dictionary on a grid → trie. DFS over the grid in lockstep with descent in the trie. Mark visited cells, unmark on backtrack. Mark words as found to avoid duplicates. Stop the descent when the trie node has no matching child."
 
-Full code lives in Challenge 1. The pattern is one of the most heavily-graded Phase-2 trie problems on Mock #2.
+Full code lives in Challenge 1. The pattern is one of the most heavily graded Phase-2 trie shapes on Mock #2.
 
 ---
 
 ## 5. The longest-word-in-dictionary family
 
-A short family of LeetCode problems built on the same template. Recognition reps:
+A short family of problems built on the same template. Recognition reps:
 
-- **LC 720 — Longest Word in Dictionary.** Given a list of strings, find the longest string that can be built one character at a time by other words in the list. Sort + trie + DFS.
-- **LC 648 — Replace Words.** Given a dictionary of roots and a sentence, replace every word in the sentence by the shortest root that is a prefix. Trie of roots + per-word walk. (Challenge 2.)
-- **LC 211 — Design Add and Search Words Data Structure.** Trie + wildcard search. The wildcard recursion is the extension; the underlying structure is a plain trie.
-- **LC 642 — Design Search Autocomplete System.** Trie + heap. The trie answers "give me all keys with prefix `pre`"; the heap orders the results by frequency.
+- **The growable dock sign.** Given a register of codes, find the longest one that can be built a letter at a time, every stage being a registered code. Walk only through nodes marked as ends; the moment a stage is not itself a code, that branch is dead. [Homework 2](../homework/README.md).
+- **The berth ledger shorthand.** Given a list of registered stems and a line of names, rewrite each name as the *longest* stem that opens it. Trie of stems, one walk per name, remembering the deepest end passed. [Challenge 2](../challenges/challenge-02-berth-ledger-shorthand.md).
+- **The smudged stencil.** Trie plus a single-character wildcard. On a letter, descend one branch; on a `?`, descend them all. The wildcard is the extension; the structure underneath is a plain trie. [Homework 1](../homework/README.md).
+- **The ferry desk lookahead.** Trie plus a limit. The trie answers "every code starting with this prefix"; stopping at the limit *inside* the walk is what makes it cheap on every keystroke. [Exercise 2](../exercises/exercise-02-ferry-desk-lookahead.md).
 
 All four share the recognition cue *"given a fixed dictionary, query something about prefixes."* That phrase is the trigger. Internalize the trigger before the implementation details.
 
@@ -312,15 +312,15 @@ A short cheat sheet for Mock #2.
 
 | Prompt cue | Trie form | Why |
 |-----------|-----------|-----|
-| `Implement Trie` (LC 208) | dict-of-dict | Three methods; less code; mutates in place |
-| `Word Break` (LC 139) | dict-of-dict | Dictionary is read-only; no per-node state needed |
-| `Word Search II` (LC 212) | dict-of-dict, but stash the word at `END` | Need to emit words on match; storing `END: word` lets you emit without rebuilding the path |
-| `Replace Words` (LC 648) | dict-of-dict | Walk per query word; `END` flag is enough |
-| `Add and Search Word` (LC 211) | `TrieNode` class | The recursive wildcard search is cleaner with explicit nodes |
-| `Design Search Autocomplete` (LC 642) | `TrieNode` with per-node `(sentence, count)` list | Per-node payload is required; class form is mandatory |
+| `the gate tag tree` | dict-of-dict | Three methods; less code; mutates in place |
+| `the stripped manifest line` | dict-of-dict | Dictionary is read-only; no per-node state needed |
+| `the cold store aisle sweep` | dict-of-dict, but stash the word at `END` | Need to emit words on match; storing `END: word` lets you emit without rebuilding the path |
+| `the berth ledger shorthand` | dict-of-dict | Walk per query word; `END` flag is enough |
+| `Add and Search Word` | `TrieNode` class | The recursive wildcard search is cleaner with explicit nodes |
+| `Design Search Autocomplete` | `TrieNode` with per-node `(sentence, count)` list | Per-node payload is required; class form is mandatory |
 | Production trie for a long-running service | `TrieNode` with `__slots__` | Memory savings matter at scale |
 
-The dict-of-dict form covers about 80% of LeetCode trie problems. Default to it unless per-node metadata is required.
+The dict-of-dict form covers the large majority of trie problems you will meet. Default to it unless a node has to carry metadata of its own.
 
 ---
 
@@ -339,8 +339,8 @@ Four questions, ninety seconds. Asking them before writing code is the senior ha
 
 ## 8. What to do this week
 
-1. **Exercise 2 — Word Break (LC 139).** The trie + memo composition. Target 35 minutes including FRAME.
-2. **Exercise 3 — Longest Common Prefix (LC 14).** The three-solutions problem. Implement all three; write up which you would default to and why.
+1. **Exercise 2 — the stripped manifest line.** The trie + memo composition. Target 35 minutes including FRAME.
+2. **Exercise 3 — the callsign stub.** The three-solutions problem. Implement all three; write up which you would default to and why.
 3. **Read the Aho-Corasick Wikipedia article.** Aim for 20 minutes. The "Goto function" and "Failure function" sections are the focal points. You will not implement; you will read.
 4. **Move to Lecture 3** for KMP and the Z-algorithm.
 

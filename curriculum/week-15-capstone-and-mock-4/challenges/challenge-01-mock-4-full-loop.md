@@ -1,48 +1,32 @@
 # Challenge 1 — Mock #4, the Full Loop
 
-> **Format:** A recorded simulated onsite loop under full real-interview conditions. **Time:** ~2 hours for the loop (45-min coding + 45-min design + 20-min behavioral, with short breaks), plus ~2 hours of two-pass review and write-up. **Difficulty:** This is a loop, not a problem — the difficulty is the *conditions* and the *stamina*, not any single algorithm.
+> Topic: the whole loop at once — coding, system design, behavioural · Lecture: [2](../lecture-notes/02-mock-4-under-real-conditions-and-the-onsite-loop.md) · Difficulty: this is the dress rehearsal; the difficulty is the conditions · Target time: a 2.5-hour loop, plus about 3 hours of review · Why this one: Mocks #1 to #3 each graded one round. This one grades the transition between rounds, which is the part nobody practises and the part that decides real loops.
 
-This is the keystone of Week 15 and the close of the four-mock arc. Mock #1 (W4) was your first time on camera; Mock #2 (W9) raised it to a real unseen problem with a partner; Mock #3 (W14) raised it to near-real conditions. Mock #4 closes the gap entirely: **full real conditions, the full loop, no scaffolding.** The next mock after this one is a real interview.
+## The Brief
 
-The full protocol lives in [Lecture 2](../lecture-notes/02-mock-4-under-real-conditions-and-the-onsite-loop.md). This file is the deliverable framing: how to run the loop, what to record, how to review it, the fallback coding problem, and how to write the closing trajectory across all four mocks.
+This is the last mock of the programme and the closest thing to the real day.
 
----
+Mock #1 in Week 4 was your first time on camera. Mock #2 in Week 9 raised it to a
+real unseen problem. Mock #3 in Week 14 added near-real conditions. Mock #4 adds
+the thing all three were missing: **the loop**. Three rounds back to back, with
+the fatigue and the context-switching that come with them.
 
-## The conditions (full real — non-negotiable)
+The full protocol lives in
+[Lecture 2](../lecture-notes/02-mock-4-under-real-conditions-and-the-onsite-loop.md).
+This page is the deliverable framing — how to run it, what to record, how to
+review it in two passes, and how to write the closing arc across all four mocks.
 
-- **A stranger interviewer, ideally.** Book a real interviewing.io (<https://interviewing.io/blog>) or Pramp (<https://www.pramp.com/>) session if you can. The "stranger judging me" pressure is the one variable a peer or solo mock cannot reproduce — and it is the one that decides whether your prep holds.
-- **Dress as if real.** Wear what you would wear to the actual interview. Set up the rig — camera at eye level, quiet room, water — exactly as on the day.
-- **No notes. None.** No template file, no cheat sheet, no LeetCode tab. If you cannot recall a template, narrate the gap and code what you remember.
-- **A hard stop per round.** When a round's timer hits zero, you stop mid-line.
-- **The full loop, required.** A coding round, a system-design round, and a behavioral round — back to back. This is the first mock where all three are required.
+If you are running solo and have nobody to set you an unseen coding problem, the
+fallback is **the overnight leak survey**, and
+`challenge-01-mock-4-full-loop-solution.py` beside this page is its worked
+answer. Do not open that file until your clock has stopped.
 
----
+## Starter
 
-## The loop sequence
+The conditions are the starter and they are not negotiable — they are under
+Constraints below, with the loop sequence.
 
-| Round | Length | What happens |
-|-------|--------|--------------|
-| **Coding** | 45 min | One unseen Medium, full FRAME, the standard allocation. |
-| Break | 5 min | Stand up, reset — real loops have gaps. |
-| **System design** | 45 min | A junior-level prompt (use Challenge 2's framework; pick a prompt you have not written up). |
-| Break | 5 min | Reset again. |
-| **Behavioral** | 20 min | 2–3 questions across the eight Week-13 categories, answered in STAR from your bank. |
-
-If scheduling a stranger for all three rounds is impossible, the acceptable fallback is: the **coding round with a stranger** (Flavor B), and the **design + behavioral rounds solo** on the same day. The non-negotiable is that all three round types happen, recorded, in one sitting.
-
----
-
-## How to pick the coding problem
-
-**If running for real (recommended):** pick a *different* unseen Medium than the fallback below. Use a stranger (Pramp / interviewing.io) who selects it, or a peer who picks one you have not seen, or — last resort — a random unseen Medium from across the catalog's patterns (graph, DP, two-pointer, heap). Reading the fallback below disqualifies it for your real attempt.
-
-**If you have no other option (solo, need a problem now):** use the fallback below, but only if it is genuinely unseen for you.
-
----
-
-## Fallback coding problem (solo mode only, and only if genuinely unseen)
-
-### The Overnight Leak Survey
+### The fallback problem — the overnight leak survey
 
 > **Pattern:** Grid traversal, connected components (flood fill).
 > **Difficulty:** Medium — a clean graph representative for the final mock.
@@ -106,26 +90,220 @@ def survey_leak_zones(pressure: list[list[int]], threshold: int) -> tuple[int, i
 - `threshold = 5`, and `[[8, 8, 8, 8, 8, 8, 8], [8, 2, 8, 2, 8, 2, 8], [8, 8, 8, 8, 8, 8, 8]]` → `(3, 1)`. Three separate single-block zones, all interior. The count is 3 and the largest is 1 — a check that you are returning both numbers and not conflating them.
 
 - `pressure = []` → `(0, 0)`. Empty survey.
-
-**Practice elsewhere.** The underlying pattern also appears as [LeetCode 200 · Number of Islands](https://leetcode.com/problems/number-of-islands/), though the contract there differs from ours — theirs counts every component, permits mutating the grid, and returns a single integer.
-
 The intended shape: sweep every block once; when you meet a wet block you have not visited, walk its entire zone with an iterative BFS or DFS, counting its blocks and noticing whether any of them sits on the border; classify the zone only after the walk finishes. Time `O(rows·cols)` — each block is enqueued at most once. Space `O(rows·cols)` for the visited grid and, in the worst case, the frontier. The reference solve is below — **do not read it before the mock if you are using this as your problem.**
 
-<details>
-<summary>Reference solution (read only AFTER your mock)</summary>
+## Requirements
 
-> **30-second pattern-recognition memo (grid connected components):**
-> A rectangular grid, a per-cell predicate, and "group the touching ones" →
-> flood fill. Sweep every cell; each unvisited wet cell seeds one zone, and I
-> walk the whole zone before I classify it, because the border test is a
-> property of the zone and not of the seed. A separate `visited` grid rather
-> than overwriting readings, because the caller keeps the survey. Iterative,
-> because 1200×1200 makes recursion depth a real risk. Time O(rows·cols),
-> space O(rows·cols). Why not union-find: it also works, at O(rows·cols·α),
-> but it costs a second pass to recover per-root sizes and border flags — the
-> single BFS reads more directly.
+1. One recorded loop of three rounds, run back to back with the stated breaks.
+2. Immediate raw notes per round, written within five minutes of finishing it.
+3. A two-pass review across the whole recording.
+4. The self-feedback write-up, in the structure below.
+5. The Mock #1 to #4 trajectory reflection — the closing arc of the programme.
+
+### After the loop — the artifacts
+
+Immediately (5 minutes per round, while fresh): free-write raw observations into `mocks/mock-04/immediate-notes.md`, separated by round. Do not grade.
+
+Saturday (two passes, across all three rounds):
+
+1. **Pass 1 — 1.5×, whole recording, timestamp doc.** 15–20 timestamps of *patterns* across the loop, tagged by round. Save as `mocks/mock-04/timestamps.md`.
+2. **Pass 2 — 1.0×, flagged segments only.** For each, *what happened* + *what to do differently*.
+
+Then the self-feedback write-up at `frame-writeups/c2-week-15/mock-04-self-feedback.md`.
+
+---
+
+### The self-feedback structure
+
+```markdown
+# Mock #4 — Self-Feedback (Full Loop)
+
+**Date:** YYYY-MM-DD
+**Flavor:** A (peer) / B (platform/stranger) / C (solo)
+**Rounds:** coding / system design / behavioral
+**Outcome per round:** [solved / solved with bug / didn't finish | scoped / partial | strong / rambled]
+
+## What I felt during the loop
+[3–5 honest sentences. Note the stamina cost of back-to-back rounds.]
+
+## Coding round — graded
+[Research-constraints memo under 30s? Narration? Recovery? Complexity unprompted?]
+
+## System-design round — graded
+[Scoped requirements first? Capacity estimate? High-level design? Trade-offs named?]
+
+## Behavioral round — graded
+[STAR structure? Quantified result? First-person "I"? Self-aware?]
+
+## Trajectory across Mock #1 → #2 → #3 → #4
+[Pull the one behavior change named after each of #1, #2, #3. Did you make them?
+For each: gone / improved / still present in #4? This is the closing
+self-correction record — the most predictive artifact in the portfolio. Be
+honest: a weakness still present after four mocks is named, not hidden.]
+
+## The ONE weakness I carry into real interviews
+[One sentence. This seeds the weakness self-diagnosis in the personalized
+study plan (homework Part 1).]
+
+## What I'm not going to change
+[One or two things I noticed but am deliberately not over-correcting.]
+```
+
+---
+
+### The closing arc
+
+This is the last mock of the course, so the trajectory section is also a reflection on the whole arc. Three or four sentences answering:
+
+- What is the one habit that genuinely improved across the four mocks? (Name the Mock where it was a weakness and the Mock where it became reflexive.)
+- What is the one weakness that is *still* present, and what is the specific drill for it in your personalized plan?
+- If you watched Mock #1 and Mock #4 back to back, what would a stranger notice most?
+
+That reflection is the bridge from the course to the real search. It goes, near-verbatim, into the homework's final reflection and seeds the study plan's weakness diagnosis.
+
+---
+
+### Rubric
+
+Total possible: 100; passing: 70.
+
+| Dimension | Points | What "full credit" looks like |
+|-----------|-------:|-------------------------------|
+| Full conditions held | 15 | Stranger if obtainable, dressed as if real, no notes, hard stop — verifiable from the recording |
+| Full loop run | 15 | All three round types (coding + design + behavioral) recorded in one sitting |
+| Coding round | 20 | Research-constraints memo under 30s; narration; complexity unprompted; recovery audible if one occurred |
+| System-design round | 15 | Requirements scoped first; capacity estimate; a clear design; one trade-off named |
+| Behavioral round | 10 | STAR; quantified result; first-person "I" |
+| Two-pass review done | 10 | Pass-1 timestamps + pass-2 prescriptions both present, across all rounds |
+| Four-mock trajectory | 15 | Honest comparison across all four; prior behavior changes assessed; the carry-forward weakness named |
+
+A passing mock is one run under the real conditions and *watched honestly* — not one where every round went perfectly. An unfinished coding round plus an honest trajectory and a clear carry-forward weakness passes; three flawless rounds with a skipped trajectory section fails. The trajectory is the point.
+
+---
+
+## Constraints
+
+- **A stranger interviewer, ideally.** Book a real interviewing.io (<https://interviewing.io/blog>) or Pramp (<https://www.pramp.com/>) session if you can. The "stranger judging me" pressure is the one variable a peer or solo mock cannot reproduce — and it is the one that decides whether your prep holds.
+- **Dress as if real.** Wear what you would wear to the actual interview. Set up the rig — camera at eye level, quiet room, water — exactly as on the day.
+- **No notes. None.** No template file, no cheat sheet, no practice site open. If you cannot recall a template, narrate the gap and code what you remember.
+- **A hard stop per round.** When a round's timer hits zero, you stop mid-line.
+- **The full loop, required.** A coding round, a system-design round, and a behavioral round — back to back. This is the first mock where all three are required.
+
+---
+
+### The loop sequence
+
+| Round | Length | What happens |
+|-------|--------|--------------|
+| **Coding** | 45 min | One unseen Medium, full FRAME, the standard allocation. |
+| Break | 5 min | Stand up, reset — real loops have gaps. |
+| **System design** | 45 min | A junior-level prompt (use Challenge 2's framework; pick a prompt you have not written up). |
+| Break | 5 min | Reset again. |
+| **Behavioral** | 20 min | 2–3 questions across the eight Week-13 categories, answered in STAR from your bank. |
+
+If scheduling a stranger for all three rounds is impossible, the acceptable fallback is: the **coding round with a stranger** (Flavor B), and the **design + behavioral rounds solo** on the same day. The non-negotiable is that all three round types happen, recorded, in one sitting.
+
+---
+
+### Picking the coding problem
+
+**If running for real (recommended):** pick a *different* unseen Medium than the fallback below. Use a stranger (Pramp / interviewing.io) who selects it, or a peer who picks one you have not seen, or — last resort — a random unseen Medium from across the catalog's patterns (graph, DP, two-pointer, heap). Reading the fallback below disqualifies it for your real attempt.
+
+**If you have no other option (solo, need a problem now):** use the fallback below, but only if it is genuinely unseen for you.
+
+---
+
+### And for the other two rounds
+
+For the **system-design round**, pick a prompt from Challenge 2 (pastebin / rate limiter / news feed at small scale) that you have *not* already written up. For the **behavioral round**, have a peer or the platform ask 2–3 questions, or — solo — draw 2–3 of the eight Week-13 categories at random and answer to camera.
+
+---
+
+### For the fallback problem specifically
+
+The bounds are the constraint that decides the shape, so read them as a spec
+rather than as scenery:
+
+- The grid is rectangular and can reach 1200 by 1200 — 1,440,000 blocks. That
+  bound kills the obvious wrong shape: re-scanning the whole grid once per zone
+  is quadratic in the block count, about 2×10¹² operations, and will not finish.
+  One sweep that visits each block a constant number of times is the only thing
+  that fits.
+- The same bound rules out plain recursion. A single zone can snake through most
+  of the grid, hundreds of thousands of blocks deep, and Python's recursion limit
+  is 1000. Write the traversal iteratively and say in the round that the bound is
+  why.
+- **The caller's grid must come back untouched.** Marking visited blocks by
+  overwriting their readings is the cheap trick, and the utility replays the same
+  survey against several thresholds. Use a separate visited grid.
+- Wet is **strictly** below the threshold. A reading equal to it is dry.
+- Zones touch horizontally and vertically. Never diagonally.
+
+## Expected output
+
+Real stdout from the fallback problem's worked answer, captured on CPython 3.13.2:
+
+```text
+$ python challenge-01-mock-4-full-loop-solution.py
+All checks passed.
+```
+
+There is no output to read here beyond the checks passing, and that is itself
+worth noticing: this is a function that returns a pair, not a program that prints
+a report. The interesting artifact of this challenge is the recording, not the
+run.
+
+## Steps
+
+1. Block out the time properly. Two and a half hours uninterrupted, then leave the
+   recording alone until the next day.
+2. Set up the conditions in full. Every one of them is there because a previous
+   mock was too comfortable without it.
+3. Run the loop end to end. Do not stop between rounds for longer than the stated
+   break.
+4. Immediately after each round, five minutes of raw free-writing. Do not grade
+   yet — grading now produces a defence rather than an observation.
+5. Next day, pass one at 1.5× across the whole recording, collecting fifteen to
+   twenty timestamps of *patterns*, tagged by round.
+6. Pass two at normal speed, flagged segments only: what happened, and what to do
+   differently.
+7. Write the self-feedback, then the four-mock trajectory reflection.
+8. Only now read the worked answer below, if you used the fallback problem.
+
+## The Solution
 
 ```python
+"""challenge-01-mock-4-full-loop-solution.py - the overnight leak survey.
+
+The worked answer to the fallback coding problem inside Mock #4. Read it after
+your clock has stopped, not before.
+
+A water utility surveys a rectangular district overnight. Every street block
+carries a pressure sensor and the survey comes back as a grid of readings in
+kilopascals relative to nominal, so a reading can be negative. A block is wet
+when its reading is strictly below a threshold, and wet blocks touching
+horizontally or vertically form one leak zone.
+
+A zone with a block on the outer border of the survey may continue into streets
+nobody measured, so the crew cannot bound it and ignores it however large it is.
+Every other zone is interior and dispatchable. Report how many interior zones
+there are and how many blocks are in the largest.
+
+Two things carry the answer, and both are worth saying out loud in a round:
+
+  * mark a block on enqueue, not on pop - a block with two wet neighbours is
+    otherwise queued twice and its zone over-counted;
+  * the border flag belongs to the zone, not to the seed - accumulate it across
+    the whole walk, then test it once at the end.
+
+The traversal is iterative on purpose. A single zone can snake through most of a
+1200x1200 grid, which is hundreds of thousands of blocks deep, and Python's
+recursion limit is 1000.
+
+The self-checks at the bottom are the starter's, unchanged. When they all pass
+the file prints "All checks passed."
+"""
+
 from collections import deque
 
 
@@ -219,106 +397,77 @@ if __name__ == "__main__":
 
     assert survey_leak_zones([], 0) == (0, 0)
     assert survey_leak_zones([[]], 0) == (0, 0)
-    print("all tests passed")
+    print("All checks passed.")
 ```
 
-Two details worth narrating in a real round. **Mark on enqueue, not on pop** — if you only mark when a block comes off the frontier, a block with two wet neighbours gets queued twice and its zone is over-counted. And **the border flag belongs to the zone, not to the seed** — accumulate it across the walk, then test it once at the end.
+Two details are the whole problem, and both are worth narrating out loud in a
+real round.
 
-Union-find is the valid alternative to name: union adjacent wet blocks, then group by root to get sizes and OR the border flags per root. Same asymptotics, more bookkeeping. Say why you rejected it.
+**Mark on enqueue, not on pop.** If a block is only marked when it comes off the
+frontier, a block with two wet neighbours is queued twice and its zone is
+over-counted. The bug does not crash and the answer is merely wrong.
 
-</details>
+**The border flag belongs to the zone, not to the seed.** A zone is unbounded if
+*any* of its blocks touches the outer border, which is not knowable until the
+whole zone has been walked. Accumulate the flag across the walk and test it once
+at the end — deciding at the seed is the most common wrong shape here.
 
-For the **system-design round**, pick a prompt from Challenge 2 (pastebin / rate limiter / news feed at small scale) that you have *not* already written up. For the **behavioral round**, have a peer or the platform ask 2–3 questions, or — solo — draw 2–3 of the eight Week-13 categories at random and answer to camera.
+Union-find is the valid alternative to name: union adjacent wet blocks, then
+group by root to recover sizes and OR the border flags per root. Same
+asymptotics, more bookkeeping, and a second pass to read the answer out. Say why
+you rejected it.
 
----
+## Download and run
 
-## After the loop — the artifacts
+Download the worked answer beside this page and run it:
 
-Immediately (5 minutes per round, while fresh): free-write raw observations into `mocks/mock-04/immediate-notes.md`, separated by round. Do not grade.
-
-Saturday (two passes, across all three rounds):
-
-1. **Pass 1 — 1.5×, whole recording, timestamp doc.** 15–20 timestamps of *patterns* across the loop, tagged by round. Save as `mocks/mock-04/timestamps.md`.
-2. **Pass 2 — 1.0×, flagged segments only.** For each, *what happened* + *what to do differently*.
-
-Then the self-feedback write-up at `frame-writeups/c2-week-15/mock-04-self-feedback.md`.
-
----
-
-## The self-feedback structure
-
-```markdown
-# Mock #4 — Self-Feedback (Full Loop)
-
-**Date:** YYYY-MM-DD
-**Flavor:** A (peer) / B (platform/stranger) / C (solo)
-**Rounds:** coding / system design / behavioral
-**Outcome per round:** [solved / solved with bug / didn't finish | scoped / partial | strong / rambled]
-
-## What I felt during the loop
-[3–5 honest sentences. Note the stamina cost of back-to-back rounds.]
-
-## Coding round — graded
-[Research-constraints memo under 30s? Narration? Recovery? Complexity unprompted?]
-
-## System-design round — graded
-[Scoped requirements first? Capacity estimate? High-level design? Trade-offs named?]
-
-## Behavioral round — graded
-[STAR structure? Quantified result? First-person "I"? Self-aware?]
-
-## Trajectory across Mock #1 → #2 → #3 → #4
-[Pull the one behavior change named after each of #1, #2, #3. Did you make them?
-For each: gone / improved / still present in #4? This is the closing
-self-correction record — the most predictive artifact in the portfolio. Be
-honest: a weakness still present after four mocks is named, not hidden.]
-
-## The ONE weakness I carry into real interviews
-[One sentence. This seeds the weakness self-diagnosis in the personalized
-study plan (homework Part 1).]
-
-## What I'm not going to change
-[One or two things I noticed but am deliberately not over-correcting.]
+```bash
+python challenge-01-mock-4-full-loop-solution.py
 ```
 
----
+No third-party packages, no arguments, no input. It runs the self-checks and
+prints `All checks passed.`
 
-## Rubric
+Again: after the clock stops.
 
-Total possible: 100; passing: 70.
+## Common bugs to catch
 
-| Dimension | Points | What "full credit" looks like |
-|-----------|-------:|-------------------------------|
-| Full conditions held | 15 | Stranger if obtainable, dressed as if real, no notes, hard stop — verifiable from the recording |
-| Full loop run | 15 | All three round types (coding + design + behavioral) recorded in one sitting |
-| Coding round | 20 | Research-constraints memo under 30s; narration; complexity unprompted; recovery audible if one occurred |
-| System-design round | 15 | Requirements scoped first; capacity estimate; a clear design; one trade-off named |
-| Behavioral round | 10 | STAR; quantified result; first-person "I" |
-| Two-pass review done | 10 | Pass-1 timestamps + pass-2 prescriptions both present, across all rounds |
-| Four-mock trajectory | 15 | Honest comparison across all four; prior behavior changes assessed; the carry-forward weakness named |
+- **Marking visited by overwriting the readings.** Symptom: correct on the first
+  call and wrong on the second, because the utility replays the same grid.
+- **Marking on pop.** Symptom: zone sizes larger than the grid has blocks in
+  them, quietly.
+- **Deciding the border at the seed.** Symptom: zones classed as interior when
+  they reach the edge somewhere the seed did not.
+- **Recursion.** Symptom: it passes every test on this page and dies on a real
+  1200×1200 survey. The bound is in the spec for exactly this reason.
+- **Using `<=` for wet.** Symptom: a reading equal to the threshold counted as
+  wet. Strictly below.
+- **Counting diagonals as touching.** Symptom: two zones merged into one, and a
+  largest-zone size nobody can reproduce by eye.
+- **Returning `(0, None)` for an empty grid.** The contract says `(0, 0)`.
+- **Stopping the loop between rounds to regroup.** Symptom: a mock that measures
+  three separate rounds, which is the thing all three previous mocks already
+  measured.
 
-A passing mock is one run under the real conditions and *watched honestly* — not one where every round went perfectly. An unfinished coding round plus an honest trajectory and a clear carry-forward weakness passes; three flawless rounds with a skipped trajectory section fails. The trajectory is the point.
-
----
-
-## The Mock #1 → #4 reflection (the closing arc)
-
-This is the last mock of the course, so the trajectory section is also a reflection on the whole arc. Three or four sentences answering:
-
-- What is the one habit that genuinely improved across the four mocks? (Name the Mock where it was a weakness and the Mock where it became reflexive.)
-- What is the one weakness that is *still* present, and what is the specific drill for it in your personalized plan?
-- If you watched Mock #1 and Mock #4 back to back, what would a stranger notice most?
-
-That reflection is the bridge from the course to the real search. It goes, near-verbatim, into the homework's final reflection and seeds the study plan's weakness diagnosis.
-
----
-
-## Acceptance
+## Acceptance checklist
 
 Challenge 1 is complete when, under `mocks/mock-04/` and `frame-writeups/c2-week-15/`:
 
-- The recording link is committed (the video is too big to commit; commit the link).
-- The immediate notes, pass-1 timestamps, and self-feedback write-up are all present.
-- The self-feedback grades all three rounds, includes the four-mock trajectory, and names the one weakness carried forward.
+- [ ] The recording link is committed (the video is too big to commit; commit the link).
+- [ ] The immediate notes, pass-1 timestamps, and self-feedback write-up are all present.
+- [ ] The self-feedback grades all three rounds, includes the four-mock trajectory, and names the one weakness carried forward.
 
 Then move to [Challenge 2 — System-Design Mock](./challenge-02-system-design-mock.md) (or fold it into this loop's design round).
+- [ ] The fallback solution, if used, runs start to finish and prints `All checks passed.`
+
+## Stretch
+
+- Run the loop again in three weeks with different problems and compare the two
+  recordings. The trajectory across two Mock #4s is a different and sharper
+  measurement than the trajectory across #1 to #4.
+- Solve the leak survey a second way, with union-find, and time both on a
+  1200×1200 grid. The asymptotics agree; the constants do not, and knowing which
+  way is worth a sentence.
+- Extend the survey to report, for each interior zone, its bounding box. It is
+  the version the crew could actually dispatch against, and it is a two-line
+  change to the walk.

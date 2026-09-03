@@ -826,13 +826,6 @@ sentence is Q7 of this week's [quiz](../quiz.md).
   thousand frames was not holding a thousand *chutes* of pending work — it was
   holding one chute of work and 999 frames of bookkeeping. That is the clearest
   possible statement of what the explicit stack buys you.
-
-**Practice elsewhere.** The same walk appears as
-[LeetCode 1971 · Find if Path Exists in Graph](https://leetcode.com/problems/find-if-path-exists-in-graph/)
-if you want a judge to run against — though that contract asks only for a yes or
-no on an undirected graph, where ours is one-way, returns the whole set, and
-deliberately makes the start a question rather than a given.
-
 When your depot survives sixty thousand chutes, move on to
 [Exercise 3 — Batch Loop Audit](./exercise-03-batch-loop-audit.md), where the
 walk has to notice it has arrived somewhere it never left.

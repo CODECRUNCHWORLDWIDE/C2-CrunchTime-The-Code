@@ -451,9 +451,6 @@ solution can do.
 - [ ] The function has type hints and a docstring.
 - [ ] You narrated a full FRAME pass out loud with a recorder running, at least ten minutes.
 - [ ] Committed to Git with a message like `Add Week 1 exercise 2: mirror serial`.
-
-**Practice elsewhere.** The same pattern appears as [LeetCode 125 · Valid Palindrome](https://leetcode.com/problems/valid-palindrome/) if you want a judge to run against. Theirs returns a boolean, so it never forces you to keep the printed positions straight — solve ours first.
-
 ## Stretch
 
 - **Report every break, not just the first.** The technician wants to know

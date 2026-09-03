@@ -1,47 +1,64 @@
 # Week 14 — Exercises
 
-Three exercises, one per bit sub-shape. Each is FRAME-narrated, recorded, and graded against the test cases in the file itself. Worked solutions live in [`SOLUTIONS.md`](./SOLUTIONS.md) — consult only after attempting each exercise.
+Three exercises, in order. Each has a page with the brief, the constraints, the
+worked solution and the acceptance checklist, and a runnable file beside it that
+ends by printing `All checks passed.`
 
-| # | Exercise | Pattern | Difficulty | Target solve time |
-|---|----------|---------|------------|------------------:|
-| 1 | [Single Number](./exercise-01-single-number.py) (LC 136) | XOR fold | Easy | 15 min |
-| 2 | [Counting Bits](./exercise-02-counting-bits.py) (LC 338) | Bit DP — `dp[i] = dp[i >> 1] + (i & 1)` | Easy/Medium | 20 min |
-| 3 | [Maximum XOR of Two Numbers in an Array](./exercise-03-maximum-xor.py) (LC 421) | Binary trie (the bridge) | Medium | 40 min |
+Mock #3 is on Friday, so this week is deliberately light on exercises and heavy
+on the mock. Three is enough to install the three ideas the rest of the week
+uses.
 
-Do them in order. Exercise 1 cements the XOR fold and the four identities on the canonical problem. Exercise 2 forces the bit-DP recurrence — the recognition that an answer can be built from a strictly smaller subproblem in `O(1)`. Exercise 3 is the week's keystone: the binary trie that bridges bit manipulation to the Week 9 trie family, and the highest-yield single artifact of the week.
+| # | Exercise | Sub-shape | Difficulty | Target time |
+|---|----------|-----------|------------|------------:|
+| 1 | [The Relay Fold](./exercise-01-relay-fold.md) | XOR, and the three properties that make it work | Easy | 30 min |
+| 2 | [The Set-Bit Tally](./exercise-02-set-bit-tally.md) | A table where every answer is one step from a smaller one | Easy-Medium | 35 min |
+| 3 | [The Mask Roster](./exercise-03-mask-roster.md) | A whole set in one integer, and every set operation as arithmetic | Medium | 40 min |
 
-Each starter file contains:
+Do them in order.
 
-- The full problem statement with constraints and examples (real LC numbers)
-- The required function signature with type hints
-- An empty body marked `# TODO`
-- A FRAME checklist in the module docstring
-- A self-test block at the bottom using bare `assert`
+Exercise 1 is XOR with nothing on top, and it gets the honest part out of the way
+early: the fold alone cannot tell "one unpaired code" from "three", so the
+contract needs a count as well. [Homework 1](../homework/README.md) then makes
+the fold fail on purpose.
 
-Run a single exercise:
+Exercise 2 is the first bit problem whose answer is a *table*, and it introduces
+`n &= n - 1` — the single most useful idiom in the week, reused twice in the
+homework.
+
+Exercise 3 is the bridge back to Week 12. Enumerating every subset there was a
+recursive walk with a trail and an undo; here it is `range(1 << n)`, one line.
+Both are right, and saying which generalises and which is faster is the whole
+page.
+
+Run any of them directly:
 
 ```bash
-python3 exercises/exercise-01-single-number.py
+python exercise-01-relay-fold-solution.py
 ```
 
-Or run all under `pytest` if you prefer that harness:
-
-```bash
-pytest exercises/ -v
-```
-
-(Both forms work — the test block uses bare `assert` so plain `python3` execution is fine. The starters target Python 3.11; Exercise 2's self-test cross-checks against `int.bit_count()`, which requires Python 3.10+.)
+No packages, no arguments, no input.
 
 ## A note on what is being graded
 
-Phase 1 graded you mostly on *correctness*. By Phase 4, the axes are **Research constraints**, **the defense**, and **interview-readiness** — because this is a mock week. For every bit exercise, your write-up and your recording must:
+**Check with a property, not with examples.** Bit code is exactly the kind that
+passes six hand-picked cases and fails the seventh, and the failures are silent —
+no exception, just a number that is wrong. Every page this week leans on checks
+that need no known-good answer:
 
-- **Name the sub-shape out loud** — XOR fold / bitmask enumeration / bit DP / binary trie — within 30 seconds of reading the prompt.
-- **Defend the choice over the obvious alternative.** For Exercise 1, the alternative is a hash map (`O(n)` space); state that the constant-space constraint rules it out. For Exercise 2, the alternative is a per-element popcount (`O(n log n)`); state that the recurrence makes it `O(n)`. For Exercise 3, the alternative is the `O(n**2)` brute force over all pairs; state that the binary trie drops it to `O(n · 32)`.
-- **State the complexity bound before the interviewer asks.** This is the interview-readiness axis — in Mock #3 next, an unprompted complexity statement is a senior tell.
+- the two counting methods agree on **every** value up to the limit;
+- the mask and set versions of `covers` agree on **all 256 pairs** of shifts;
+- reversing twice gives back the original;
+- swapping pairs twice gives back the original.
 
-Defense is the difference between "the code works" and "the code is the *right* code, and I can prove it." Mock #3 grades the latter.
+Your write-ups should name the property you checked, not the examples you tried.
+
+**And say the width out loud.** Every function here has a register width behind
+it, and Python's unbounded integers will happily let you forget. A negative value
+has no finite binary width at all, which is why the clearing loop is guarded
+rather than trusted — and that guard is a good sentence for the Frame section.
 
 ---
 
-After all three exercises pass, move to [the challenges](../challenges/README.md) — the Mock #3 timed round, and the Sum of Two Integers (LC 371) full-FRAME write-up.
+After all three pass, move on to
+[Challenge 1 — Mock #3](../challenges/challenge-01-mock-3-timed-round.md). It is
+the week's keystone; the exercises are the warm-up for it.

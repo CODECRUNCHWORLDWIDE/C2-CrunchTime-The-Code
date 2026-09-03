@@ -645,7 +645,4 @@ of cells too, and here both collapse to a constant.
   Now the grid *can* grow, and `O(R · C)` is the only honest answer — which is
   the point. Try `block_rows=1` and watch the unit rule collapse into the ward
   rule, since every row becomes its own block.
-
-**Practice elsewhere.** The same pattern appears as [LeetCode 36 · Valid Sudoku](https://leetcode.com/problems/valid-sudoku/) if you want a judge to run against. The contract there uses a square grid, returns a boolean, and has no precedence rule, so it never forces you to carry *which* axis broke or *where* — which is most of the work on this page.
-
 Next: [Exercise 5 — The Longest Dock Run](./exercise-05-longest-dock-run.md).

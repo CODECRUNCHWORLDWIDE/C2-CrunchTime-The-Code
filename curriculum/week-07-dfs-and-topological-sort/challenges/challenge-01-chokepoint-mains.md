@@ -1010,12 +1010,5 @@ how far you get, not whether the cliff exists. Write the loop.
   Then assert `len(pieces_of(...)) == survey_chokepoints(...)[1]` over the
   seeded networks. Two ways of computing the same number, one of them
   arithmetic and one of them a walk, is a cheap and very effective test.
-
-**Practice elsewhere.** The same pattern appears as
-[LeetCode 1192 · Critical Connections in a Network](https://leetcode.com/problems/critical-connections-in-a-network/)
-if you want a judge to run against — ours differs in that it tolerates a pair
-listed twice, fixes the shape of the reported pairs instead of accepting any
-order, and also asks how many pieces the network falls into.
-
 When your survey is right, the optional stretch is
 [Challenge 2 — Consist Reconstruction](./challenge-02-consist-reconstruction.md).

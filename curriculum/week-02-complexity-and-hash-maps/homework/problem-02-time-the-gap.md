@@ -735,7 +735,4 @@ is a habit this week has been building since Exercise 1.
   claiming, on the axis this problem otherwise ignores — and it is the sentence
   that turns "the hash map is better" into "the hash map trades `O(n)` memory
   for a whole complexity class, and here is what that memory costs".
-
-**Practice elsewhere.** There is no judge for this one, because the deliverable is a measurement rather than an answer. The closest equivalent is any problem you have already solved: re-implement it two ways, count the operations, and see whether the constraint in the statement was telling you something you did not read.
-
 Next: [Homework Problem 3 — Re-narrate the Market Awning](./problem-03-renarrate-market-awning.md).

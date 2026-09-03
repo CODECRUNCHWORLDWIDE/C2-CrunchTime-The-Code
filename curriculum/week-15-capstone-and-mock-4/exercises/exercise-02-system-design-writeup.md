@@ -1,14 +1,25 @@
-# Exercise 2 — System-Design Write-Up (URL Shortener)
+# Exercise 2 — The System-Design Write-Up
 
-> **Type:** Capstone build step + the only new-content drill of the week. **Difficulty:** Junior-level design (matching the Week 12 design intro). **Target time:** 2.5 hours. **Why:** A junior onsite loop includes a system-design round. The capstone requires one written design artifact. This drill produces `system-design/url-shortener.md` — and it is the rehearsal for Challenge 2's design mock.
+> Topic: the junior design framework, worked end to end on a URL shortener · Lecture: [1](../lecture-notes/01-the-capstone-and-portfolio-polish.md) · Difficulty: junior-level design · Target time: 2.5 hours · Why this one: a junior loop includes a design round, the capstone requires one written design artifact, and this is the rehearsal for [Challenge 2](../challenges/challenge-02-system-design-mock.md).
 
-System design at the junior level is not about distributed-systems mastery. It is about a *framework*: scope the requirements, estimate the scale, propose an API and a data model, make one or two key design decisions explicitly, and reason about the read/write path. This drill walks the canonical junior prompt — a URL shortener at 10K QPS — and you write it up as a ~2–3 page artifact.
+<!-- deliverable-page: the answer is a written design artifact, not a program -->
 
-Attempt your own scoping first, from the framework below, *before* reading the worked brief. Then compare. The worked brief is your SOLUTIONS file — read it after, not instead of, your own attempt.
+## The Brief
 
----
+System design at the junior level is not distributed-systems mastery. It is a
+**framework**: scope the requirements, estimate the scale, propose an API and
+a data model, make one or two key decisions explicitly, and reason about the
+read and write paths.
 
-## The framework (the order you answer any design prompt)
+This exercise walks the canonical junior prompt — a URL shortener at ten
+thousand queries a second — and you write it up as a two-to-three page
+artifact at `system-design/url-shortener.md`.
+
+Attempt your own scoping from the framework below **before** reading the
+worked brief. The worked brief is the answer; reading it first replaces your
+reasoning with somebody else's and the artifact stops being yours.
+
+## Starter
 
 1. **Requirements** — functional (what it does) and non-functional (scale, latency, availability). Scope *before* you design.
 2. **Capacity estimation** — back-of-envelope: QPS, storage, bandwidth. Numbers, not vibes.
@@ -21,7 +32,67 @@ Attempt your own scoping first, from the framework below, *before* reading the w
 
 ---
 
-## The worked brief — URL Shortener at 10K QPS
+Work those eight in order, on the URL-shortener prompt, before scrolling
+down. Two hours of your own scoping is worth more than a careful reading of
+the worked version.
+
+## Requirements
+
+1. A two-to-three page write-up at `system-design/url-shortener.md`.
+2. All eight framework phases present, in order.
+3. Capacity estimation in **numbers** — queries a second, storage, bandwidth.
+4. The key decision — the ID scheme — argued, with the rejected option named.
+5. A traced write path and a traced read path, end to end.
+6. A trade-offs section: what breaks at ten times the scale.
+
+## Constraints
+
+- **Scope before you design.** Requirements first, always. The functional list
+  is short; the non-functional list is where the design actually comes from.
+- **Numbers, not adjectives.** Ten thousand queries a second is a number you
+  can divide. "High traffic" is not.
+- **State the read-to-write ratio explicitly.** It is the single number that
+  decides most of the rest of the design, and it is the one candidates most
+  often skip.
+- **One or two key decisions, argued properly.** Not eight decisions gestured
+  at. Depth on the ID scheme beats breadth across everything.
+- **Name what you rejected and why.** A choice with no alternative beside it
+  reads as the only option you knew.
+- **Two to three pages.** A ten-page design document is not a stronger
+  artifact; it is a longer one, and nobody reads it.
+
+## Expected output
+
+The shape of a finished artifact:
+
+```text
+length              2-3 pages
+phases              8, in order, none skipped
+estimation          QPS, storage/year, bandwidth - all as numbers
+key decision        1-2, each with the rejected option named
+paths traced        1 write, 1 read, end to end
+trade-offs          what breaks at 10x, and what changes
+
+committed at        system-design/url-shortener.md
+```
+
+The estimation section is the one to check hardest against the worked brief.
+It is where being off by an order of magnitude is normal and being vague is
+not, and the difference between those two is the whole skill.
+
+## Steps
+
+1. Read the eight-phase framework above. Close this page.
+2. Scope the requirements yourself. Functional, then non-functional. Cut   something out loud and say why.
+3. Estimate. Write the numbers down even when you are unsure of them.
+4. Propose the API and the data model.
+5. Make the ID-scheme decision and argue it.
+6. Trace one write and one read.
+7. Write the trade-offs at ten times the scale.
+8. **Now** read the worked brief below and compare — reasoning first, numbers
+   second. Where your numbers differ, work out which of you is wrong.
+
+## The Solution
 
 ### 1. Requirements
 
@@ -130,7 +201,40 @@ Stating "here is what I'd change at 10×" without over-building for it now is th
 
 ---
 
-## Acceptance criteria
+
+
+## How to deliver it
+
+The artifact is a markdown file in the portfolio repo, linked from the README's
+system-design section.
+
+- `system-design/url-shortener.md` — your write-up (your own scoping, refined against this brief).
+- Optionally a hand-drawn or ASCII high-level diagram (`client → app server → cache → store`); a diagram in the write-up is a strong recruiter-scan signal.
+
+If you finish early, draft a second design from Challenge 2's prompt list (pastebin, rate limiter, news feed at small scale) — a second design write-up signals the first was not a one-off.
+
+---
+
+Next: [Exercise 3 — Recruiter-Prep Pack](./exercise-03-recruiter-prep-pack.md) — resume, target list, and outreach templates.
+
+## Common bugs to catch
+
+- **Reading the worked brief first.** Symptom: an artifact that agrees with it
+  everywhere and taught you nothing. This is the one failure that cannot be
+  fixed afterwards.
+- **Naming a datastore before scoping.** Symptom: a design that answers a
+  question nobody asked.
+- **Estimation in adjectives.** Symptom: "a lot of storage". Divide something.
+- **No read-to-write ratio.** Symptom: a caching section with no argument
+  behind it, because the ratio is the argument.
+- **Eight shallow decisions.** Symptom: three pages that never commit to
+  anything. Pick the ID scheme and go deep.
+- **No rejected option.** Symptom: hash *or* counter, with no sign you knew
+  there were two.
+- **Skipping the traced paths.** Symptom: a design that looks right and has
+  never been walked. The trace is where the missing component shows up.
+
+## Acceptance checklist
 
 - [ ] `system-design/url-shortener.md` exists in the repo, ~2–3 pages.
 - [ ] All eight framework sections are present and in order.
@@ -142,13 +246,12 @@ Stating "here is what I'd change at 10×" without over-building for it now is th
 
 ---
 
-## What to commit
+## Stretch
 
-- `system-design/url-shortener.md` — your write-up (your own scoping, refined against this brief).
-- Optionally a hand-drawn or ASCII high-level diagram (`client → app server → cache → store`); a diagram in the write-up is a strong recruiter-scan signal.
-
-If you finish early, draft a second design from Challenge 2's prompt list (pastebin, rate limiter, news feed at small scale) — a second design write-up signals the first was not a one-off.
-
----
-
-Next: [Exercise 3 — Recruiter-Prep Pack](./exercise-03-recruiter-prep-pack.md) — resume, target list, and outreach templates.
+- Write the 10× version as its own short section: what breaks first, in order.
+- Do the same eight phases on the **pastebin** prompt without reading anything.
+  It is the closest cousin, and doing it cold is the honest test of whether
+  the framework transferred or only the URL-shortener answer did.
+- Take your artifact to [Challenge 2](../challenges/challenge-02-system-design-mock.md)
+  and run a timed round on a *different* prompt. The gap between the studied
+  artifact and the timed round is the thing worth measuring.

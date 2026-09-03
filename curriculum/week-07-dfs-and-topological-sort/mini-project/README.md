@@ -1062,12 +1062,5 @@ invariant makes it correct.
   everything but their sizes.
 
 ---
-
-**Practice elsewhere.** The topological half of this project drills the same
-pattern as [LeetCode 210 · Course Schedule II](https://leetcode.com/problems/course-schedule-ii/),
-if you want a judge to run against — though that contract asks for one order and
-accepts any of them, where this one pins the tie-break down, names the loop, and
-also has to produce the waves and the critical path.
-
 When both write-ups are pushed, Week 7 is closed. Next:
 [Week 8 — Heaps and Priority Queues](../../week-08-heaps-and-priority-queues/).

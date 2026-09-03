@@ -21,7 +21,6 @@ If a write-up calls "two pointers from each end" a "sliding window," it's using 
 
 ## Free practice platforms
 
-- **LeetCode — Sliding Window tag** (free): <https://leetcode.com/tag/sliding-window/>
 - **HackerRank — Interview Preparation Kit, Strings track**: <https://www.hackerrank.com/interview/interview-preparation-kit>
 - **Exercism — Python Track**: <https://exercism.org/tracks/python>
 - **Codeforces Educational** rounds: <https://codeforces.com/edu/courses>
@@ -35,7 +34,6 @@ If a write-up calls "two pointers from each end" a "sliding window," it's using 
 ## Videos on sliding window (free, no signup)
 
 - **MIT 6.006 (recurring) — Lecture on Hashing** (free OCW; the dictionary-with-window discussion at the end): <https://ocw.mit.edu/courses/6-006-introduction-to-algorithms-spring-2020/>
-- **NeetCode's free sliding-window walkthroughs** (YouTube — free): search "neetcode sliding window"; pick one and watch one.
 
 ## Glossary cheat sheet
 

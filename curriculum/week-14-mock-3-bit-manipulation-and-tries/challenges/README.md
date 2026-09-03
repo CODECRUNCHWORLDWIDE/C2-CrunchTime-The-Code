@@ -5,7 +5,7 @@ Two challenges. Both are required this week — Challenge 1 is the centerpiece o
 | # | Challenge | Pattern | Difficulty | Target solve time |
 |---|-----------|---------|------------|------------------:|
 | 1 | [Mock #3 — Timed Round](./challenge-01-mock-3-timed-round.md) | Full-loop mock under near-real conditions | — (a mock, not a problem) | 45 min hard clock + 90 min review |
-| 2 | [Sum of Two Integers](./challenge-02-sum-of-two-integers.md) (LC 371) | XOR (sum without carry) + carry; 32-bit masking | Medium | 50 min including FRAME write-up |
+| 2 | [The Ledger Adder](./challenge-02-ledger-adder.md) | Addition assembled from AND, XOR and shift, on a 16-bit board | Medium | 60 min including the FRAME write-up |
 
 Challenge 1 is the week. It is not an algorithm problem — it is the protocol for running Mock #3 as a recorded full loop under near-real conditions: video on, a hard 45-minute clock, no peeking. The deliverable is a recording, a two-pass self-feedback note, and the trajectory comparison across Mock #1 → #2 → #3.
 

@@ -545,12 +545,5 @@ of exactly that.
   That repair is the seed of this week's
   [second challenge](../challenges/challenge-02-feedline-weld.md), which ties a
   loop on purpose and then unties it.
-
-**Practice elsewhere.** The same pattern appears as
-[LeetCode 141 · Linked List Cycle](https://leetcode.com/problems/linked-list-cycle/)
-if you want a judge to run against. That contract only asks whether a loop
-exists, so it will not exercise the counting walk or the repeated-label trap.
-Solve this one first.
-
 When the sorter is measured, move on to
 [Exercise 2 — The Escalation Loop](./exercise-02-escalation-loop.md).

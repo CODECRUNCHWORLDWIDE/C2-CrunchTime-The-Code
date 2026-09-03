@@ -1,19 +1,47 @@
 # Week 11 — Exercises
 
-Three Python exercises drilling the W11 patterns. Solve each on your own before consulting [SOLUTIONS.md](./SOLUTIONS.md). Each file has a FRAME checklist embedded at the top and a self-test block that runs on `python3 exercise-XX-*.py`.
+Four exercises, in order. Each has a page with the brief, the constraints, the
+worked solution and the acceptance checklist, and a runnable file beside it that
+ends by printing `All checks passed.`
 
-| # | File | Pattern | LeetCode | Target time |
-|---|------|---------|----------|-------------|
-| 1 | [exercise-01-climbing-stairs.py](./exercise-01-climbing-stairs.py) | 1D DP — counting | LC 70 | 20 min |
-| 2 | [exercise-02-longest-common-subsequence.py](./exercise-02-longest-common-subsequence.py) | 2D DP — string-pair subsequence | LC 1143 | 35 min |
-| 3 | [exercise-03-word-break.py](./exercise-03-word-break.py) | 1D DP — boolean / segmentation | LC 139 | 30 min |
+| # | Exercise | Sub-shape | Difficulty | Target time |
+|---|----------|-----------|------------|------------:|
+| 1 | [Ferry Ramp Manifests](./exercise-01-ferry-ramp-manifests.md) | 1D counting, and the whole prefix table rather than one answer | Easy | 35 min |
+| 2 | [The Survey Station Walk](./exercise-02-survey-station-walk.md) | 1D optimisation with a stated tie-break | Medium | 40 min |
+| 3 | [The Stencil Line](./exercise-03-stencil-line-split.md) | 1D over a string, against a code book | Medium | 45 min |
+| 4 | [The Terrace Route Table](./exercise-04-terrace-route-table.md) | 2D counting with blocked cells | Medium | 40 min |
 
-**How to use:**
+Do them in order. Exercise 1 returns the whole table rather than a single number,
+which is the habit the rest of the week depends on — a dynamic-programming answer
+is a table, and reading it back is how you check yourself. Exercise 2 adds a
+tie-break, so "best" stops being a single comparison. Exercise 3 moves the same
+1D shape onto a string, where the transitions come from a dictionary rather than
+from arithmetic. Exercise 4 is the first two-dimensional table, and
+[Homework 2](../homework/README.md) is that same table with `min` where this one
+has `+`.
 
-1. Open the file. Read the docstring and the FRAME checklist.
-2. Close the lecture notes. Implement the function on your own.
-3. Run the file: `python3 exercise-01-climbing-stairs.py`. The self-test block prints `[OK]` for each passing case and `[FAIL]` for each failing case; assertions raise at the end if any failed.
-4. After all asserts pass, walk a FRAME write-up on the problem. Record audio if you can; 8–10 minutes is the target length.
-5. Read the corresponding section of [SOLUTIONS.md](./SOLUTIONS.md) and compare against your write-up. Note which FRAME sections you under-developed.
+Run any of them directly:
 
-Solve order: 1, 2, 3 (warm-up first, 2D second, segmentation last). The exercises increase in Research-constraints density; by Exercise 3 you should be recognizing the DP shape in 30 seconds.
+```bash
+python exercise-01-ferry-ramp-manifests-solution.py
+```
+
+No packages, no arguments, no input.
+
+## A note on what is being graded
+
+**Say what one table entry means, in a sentence, before writing a recurrence.**
+That sentence is the whole of the Frame step for this pattern, and a recurrence
+written without it is a guess that happens to work on the example. "Entry `k` is
+the number of distinct stint sequences that load exactly `k` vehicles" is the
+sentence; `dp[k] = dp[k-1] + dp[k-2] + dp[k-3]` is what follows from it.
+
+**Then say the fill order and why it is safe.** Every recurrence here reads
+entries that must already be written, and the argument for why they are is one
+line — usually that the index it reads is strictly smaller. It is also the first
+thing to check when a table comes out full of zeroes.
+
+---
+
+After all four pass, move on to
+[Challenge 1 — The Timetable Amendment Slip](../challenges/challenge-01-timetable-amendment.md).

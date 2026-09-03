@@ -468,7 +468,4 @@ If you can answer all seven, proceed to the [exercises](../exercises/README.md).
 ## Further reading
 
 - **CP-Algorithms — Two Pointers Technique** (the article conflates two-pointer and sliding window in places — read critically): <https://cp-algorithms.com/two_pointers/two_pointers.html>
-- **NeetCode's sliding-window playlist** (YouTube, free) — walks a canonical set of problems in vocabulary close to this lecture's.
-- **Practice elsewhere.** The covering-multiset shape from §7 also appears as [LeetCode 76 · Minimum Window Substring](https://leetcode.com/problems/minimum-window-substring/) if you want a judge to run against, though the contract there differs from Challenge 1's. Solve the challenge first, from the pattern — reading someone else's write-up before you have derived it yourself is how a pattern fails to stick.
-
 Next: the [exercises](../exercises/README.md). Five drills, in order. Recorder running.

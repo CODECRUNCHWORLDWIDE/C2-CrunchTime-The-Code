@@ -446,12 +446,6 @@ and the search is logarithmic in practice. That is precisely why the bound
 matters in the interview and rarely bites in production, and being able to
 separate "worst case" from "what actually happens" is a senior-level
 distinction.
-
-**Practice elsewhere.** The same duplicate-tolerant rotated search appears as
-[LeetCode 81 · Search in Rotated Sorted Array II](https://leetcode.com/problems/search-in-rotated-sorted-array-ii/)
-if you want a judge to run against. Its contract differs from ours — it returns
-a boolean and never asks which slot.
-
 </details>
 
 ## Acceptance checklist

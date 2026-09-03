@@ -540,7 +540,4 @@ louder.
   [Homework Problem 2](../homework/problem-02-time-the-gap.md), and it is the
   most valuable forty-five minutes of the week. Write both versions, count the
   comparisons, and watch the two columns come apart.
-
-**Practice elsewhere.** The same pattern appears as [LeetCode 1 · Two Sum](https://leetcode.com/problems/two-sum/) if you want a judge to run against. The contract there differs from ours — it guarantees a solution exists and says nothing about ties — so solve this one first; theirs will never exercise the empty case, the no-solution case or the tie-break.
-
 Next: [Exercise 2 — The Repeated Badge](./exercise-02-badge-rescan.md).

@@ -673,9 +673,6 @@ does.
   recursing, this one checks *after* popping, because the same mast can be
   pushed twice before either copy comes off. That difference is the whole
   subject of the next page.
-
-**Practice elsewhere.** The same pattern appears as [LeetCode 547 · Number of Provinces](https://leetcode.com/problems/number-of-provinces/) if you want a judge to run against — though our contract differs: theirs returns a bare count with a `1` diagonal, and ours names each cluster's leader and measures its size.
-
 When your survey is right, move on to
 [Exercise 2 — Conveyor Reachability](./exercise-02-conveyor-reachability.md),
 where the chains get long enough to break the recursion you just wrote.

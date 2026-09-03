@@ -1,7 +1,7 @@
 # Lecture 3 — The Mock Interview Protocol (Mock #3) and Tries Review
 
 > **Duration:** ~2 hours.
-> **Outcome:** You can set up Mock #3 under near-real conditions — video on, a hard 45-minute clock, no peeking — run it on an unseen Medium, record it, watch it back twice (1.5× then 1.0×), and write a self-feedback note that names exactly one behavior change versus Mock #1 and Mock #2. You can also re-derive the Week 9 trie templates and build the binary trie that solves Maximum XOR (LC 421) — the bridge between this week's two topics.
+> **Outcome:** You can set up Mock #3 under near-real conditions — video on, a hard 45-minute clock, no peeking — run it on an unseen Medium, record it, watch it back twice (1.5× then 1.0×), and write a self-feedback note that names exactly one behavior change versus Mock #1 and Mock #2. You can also re-derive the Week 9 trie templates and build the binary trie that solves the pairing register — the bridge between this week's two topics.
 
 This is the third recorded mock in C2. Mock #1 (Week 4) was your first time in front of a camera, solo-mode acceptable. Mock #2 (Week 9) raised the bar — a peer or platform partner, a real unseen problem. Mock #3 raises it again: **near-real conditions**. The simulation is now close enough to a real screen that the only difference an interviewer would notice is that it is not for a job. The protocol below is the closest you have come to the real thing.
 
@@ -15,7 +15,7 @@ Three constraints tighten:
 
 - **Video on, non-negotiable.** Screen + face + audio, all three. In Mock #1 the face track was optional; by Mock #3 it is required. Interviewers read your face — the moment of recognition, the flicker of doubt, the recovery. You need to see yours.
 - **A hard 45-minute clock, no extensions.** When the timer hits zero, you stop mid-line. No "let me just finish this function." Real interviews end on the clock; train for it.
-- **No peeking — at anything.** No LeetCode tab open. No notes. No re-reading the lecture. No "quick glance at the trie template." If you cannot recall the binary-trie shape from memory, that is *data* — narrate the gap and code what you remember. Peeking converts a diagnostic into theater.
+- **No peeking — at anything.** No practice site open. No notes. No re-reading the lecture. No "quick glance at the trie template." If you cannot recall the binary-trie shape from memory, that is *data* — narrate the gap and code what you remember. Peeking converts a diagnostic into theater.
 
 The reason the constraints tighten is that Mock #3 is the first **full-loop simulation**. A real onsite is not one 45-minute coding round; it is three or four, plus the behavioral round from Week 13. Mock #3 is where the coding round and the behavioral preparation meet under one clock for the first time — see §8 on the optional behavioral add-on.
 
@@ -35,7 +35,7 @@ You and another C2 learner interview each other. One is the interviewer, one the
 
 ### Flavor C — Solo (last resort by Mock #3)
 
-By Mock #3, solo is the *fallback*, not the default. If you have run two prior mocks and cannot find a partner for the third, solo is acceptable — but the bar is higher: camera on, recorder running, treat the lens as the interviewer, narrate everything, and absolutely no peeking. Use a random unseen Medium (a random-problem button on LeetCode, or the fallback problem in Challenge 1). If you have a partner available and choose solo anyway, you are leaving the most valuable rep on the table.
+By Mock #3, solo is the *fallback*, not the default. If you have run two prior mocks and cannot find a partner for the third, solo is acceptable — but the bar is higher: camera on, recorder running, treat the lens as the interviewer, narrate everything, and absolutely no peeking. Use a random unseen medium problem — a random-problem button on whatever archive you use, or the fallback problem in Challenge 1. If you have a partner available and choose solo anyway, you are leaving the most valuable rep on the table.
 
 ---
 
@@ -71,7 +71,7 @@ The three speech tells we have built since Week 4, now with a bit-manipulation f
 
 ### Tell 3 — the recovery move
 
-> *"Wait — my XOR fold returns `a ^ b` here, not a single value, because there are *two* singletons, not one. That's Single Number III, not Single Number. I need to partition on a differing bit. Let me back up and isolate the lowest set bit of `a ^ b`."*
+> *"Wait — my XOR fold returns `a ^ b` here, not a single value, because there are *two* singletons, not one. That's the odd tally, not the relay fold. I need to partition on a differing bit. Let me back up and isolate the lowest set bit of `a ^ b`."*
 
 The recovery is a *strength* signal, not a weakness. Interviewers grade it positively. Make it audible.
 
@@ -144,7 +144,6 @@ from typing import Any, Dict
 
 END = "$"   # terminal sentinel — any char outside the alphabet
 
-
 def insert(root: Dict[str, Any], word: str) -> None:
     node = root
     for ch in word:
@@ -156,7 +155,6 @@ def insert(root: Dict[str, Any], word: str) -> None:
 
 ```python
 from typing import Dict, Optional
-
 
 class TrieNode:
     def __init__(self) -> None:
@@ -174,9 +172,9 @@ Here is where the week's two topics meet. A **binary trie** is a trie whose alph
 
 Why MSB-first? Because the high-value bits dominate the magnitude of any XOR. To *maximize* `a ^ b`, you want the highest bits of the result to be `1` — and you commit to the high bits before the low ones. MSB-first insertion lets a greedy top-down walk make exactly that commitment.
 
-This is the structure behind **Maximum XOR of Two Numbers in an Array (LC 421)**, Exercise 3 and the bridge problem of the week.
+This is the structure behind the **largest-XOR pairing** — the mini-project's second half, and the bridge problem of the week.
 
-### Maximum XOR (LC 421)
+### The largest-XOR pairing
 
 Given an integer array `nums`, return the maximum value of `nums[i] ^ nums[j]` over all pairs `i, j`.
 
@@ -200,7 +198,6 @@ flowchart TD
 from typing import Any, Dict, List
 
 HIGH_BIT = 31   # 32-bit non-negative integers: bits 31..0
-
 
 def find_maximum_xor(nums: List[int]) -> int:
     """Maximum nums[i] ^ nums[j] via a binary trie. Time O(n * 32), space O(n * 32)."""
@@ -230,7 +227,7 @@ def find_maximum_xor(nums: List[int]) -> int:
     return best
 ```
 
-Trace the idea on `nums = [3, 10, 5, 25, 2, 8]` (the LC 421 example, answer `28 = 5 ^ 25`): the greedy walk for `5 = 0b00101`, at each high bit, reaches for the opposite of `25 = 0b11001`'s bits where available, and the trie — having `25` in it — lets the walk pick the differing bits that build `0b11100 = 28`. The full 32-bit trace is long; the *shape* is what matters: MSB-first insertion, opposite-bit greedy walk, accumulate the XOR.
+Trace the idea on `values = [3, 10, 5, 25, 2, 8]`, where the answer is `28 = 5 ^ 25`: the greedy walk for `5 = 0b00101`, at each high bit, reaches for the opposite of `25 = 0b11001`'s bits where available, and the trie — having `25` in it — lets the walk pick the differing bits that build `0b11100 = 28`. The full 32-bit trace is long; the *shape* is what matters: MSB-first insertion, opposite-bit greedy walk, accumulate the XOR.
 
 That is the bridge. Bit manipulation gives you the MSB-first bit extraction; the trie gives you the structure to find the best partner in `O(W)` per query instead of `O(n)`. Owning this one structure is the highest-yield artifact of the week — it is why Exercise 3 and the mini-project both center on it.
 
@@ -245,7 +242,7 @@ Without notes, answer:
 3. **What section does the Mock #3 self-feedback add that Mocks #1 and #2 did not?** (The trajectory across Mock #1 → #2 → #3 — did you make the prior behavior changes?)
 4. **Name three of the six anti-patterns.** (Silent coding; skipping Research constraints; coding without assessing options; not tracing in Examine (verify); skipping Examine (cost); defending broken code.)
 5. **Why is a binary trie inserted MSB-first?** (The high bits dominate the XOR magnitude; the greedy walk must commit high bits before low ones to maximize the result.)
-6. **What is the greedy rule when walking the binary trie for Maximum XOR?** (At each bit, prefer the child for the *opposite* bit — it contributes a 1 to that position of the XOR — falling back to the same-bit child if the opposite is absent.)
+6. **What is the greedy rule when walking the binary trie for the pairing register?** (At each bit, prefer the child for the *opposite* bit — it contributes a 1 to that position of the XOR — falling back to the same-bit child if the opposite is absent.)
 
 If you can answer all six, you are ready to run Mock #3 and to build the binary trie from memory. Set the rig up Thursday; run the mock Friday; watch Saturday; write the self-feedback Sunday.
 
@@ -255,6 +252,5 @@ If you can answer all six, you are ready to run Mock #3 and to build the binary 
 
 - **interviewing.io's free blog**: <https://interviewing.io/blog> — the "lessons from thousands of mock interviews" posts are gold. Read two before Friday.
 - **Sean Eron Anderson's "Bit Twiddling Hacks"**: <https://graphics.stanford.edu/~seander/bithacks.html> — the "Compute the lowest set bit" and bit-reversal sections directly support the binary-trie bit extraction.
-- **LeetCode Trie tag**: <https://leetcode.com/tag/trie/> — re-skim five titles to re-activate the Week 9 recognition before the binary-trie exercise.
 
 Next: [exercises/README.md](../exercises/README.md) to start the three bit exercises, or [challenges/challenge-01-mock-3-timed-round.md](../challenges/challenge-01-mock-3-timed-round.md) to scope Mock #3.

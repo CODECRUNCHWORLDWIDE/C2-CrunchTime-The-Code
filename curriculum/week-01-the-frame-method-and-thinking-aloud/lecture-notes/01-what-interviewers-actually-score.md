@@ -75,7 +75,7 @@ FRAME prevents this. Every one of the five steps *requires* you to speak.
 
 ---
 
-## 3. The "I just did LeetCode 200 times" failure mode
+## 3. The "I have solved two hundred problems" failure mode
 
 The opposite failure: candidates who have *memorized* solutions to the popular problems. The interview goes:
 

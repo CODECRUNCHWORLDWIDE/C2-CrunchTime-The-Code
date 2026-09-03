@@ -634,9 +634,6 @@ is there purely so you have to say it.
   so the bound has to come from the ID range, not from `n`. An argument that
   worked on one page and does not work on the next is worth ten minutes of your
   attention.
-
-**Practice elsewhere.** The same pattern appears as [LeetCode 128 · Longest Consecutive Sequence](https://leetcode.com/problems/longest-consecutive-sequence/) if you want a judge to run against. The contract there returns only the length, so it never forces you to carry the run's start or to define a tie-break — and the tie-break is what makes this page's answer deterministic.
-
 ---
 
 That is all five exercises. Next, take the [quiz](../quiz.md), then work the

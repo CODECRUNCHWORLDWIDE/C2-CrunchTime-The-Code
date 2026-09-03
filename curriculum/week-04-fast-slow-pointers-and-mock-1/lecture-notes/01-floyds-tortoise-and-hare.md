@@ -479,6 +479,4 @@ If you can answer all seven without hesitation, proceed to [Lecture 2 — The Mo
 
 - **Wikipedia — Cycle detection**: <https://en.wikipedia.org/wiki/Cycle_detection> — the formal treatment. Read Floyd's section; skim Brent's, which is faster in practice and almost never asked for.
 - **Wikipedia — Functional graph**: <https://en.wikipedia.org/wiki/Functional_graph> — one short article. The "tail plus rotation" shape from §6 is the whole content, stated formally.
-- **Practice elsewhere.** If you want a judge to run against, the patterns in this lecture appear as [LeetCode 141 · Linked List Cycle](https://leetcode.com/problems/linked-list-cycle/), [LeetCode 142 · Linked List Cycle II](https://leetcode.com/problems/linked-list-cycle-ii/), [LeetCode 876 · Middle of the Linked List](https://leetcode.com/problems/middle-of-the-linked-list/), [LeetCode 202 · Happy Number](https://leetcode.com/problems/happy-number/), and [LeetCode 287 · Find the Duplicate Number](https://leetcode.com/problems/find-the-duplicate-number/). The contracts there all differ from this week's — they return booleans or single values where ours return counts, shapes, and positions. Solve **ours** first; those will not exercise the degenerate cases the drills are built around.
-
 Next: [Lecture 2 — The Mock Interview Protocol](./02-the-mock-interview-protocol.md).

@@ -103,7 +103,7 @@ By the end of this week, you will be able to:
 
 ## Stretch goals
 
-- **Subscribe to the LeetCode "Sliding Window" tag and skim ten titles.** Pattern recognition compounds with exposure. Don't solve them yet — read the titles, predict fixed vs variable, then check the constraints to confirm.
+- **Skim ten sliding-window problem titles from any practice set.** Pattern recognition compounds with exposure. Do not solve them — read the titles, predict fixed or variable, then read the constraints to check yourself. Ten predictions is about four minutes and it is the cheapest recognition rep there is.
 - **Re-read Week 2's Lecture 2 (the hash-map pattern).** The window's auxiliary state is almost always a `Counter`. The two patterns compose more than they compete.
 - **Watch one Python `collections.deque` walkthrough.** We don't formally need it until Week 9 (top-K), but the "window maximum in O(1)" idiom is a sliding-window staple and previewing it now pays.
 

@@ -9,9 +9,6 @@ Six problems. ~5 hours total. Each commits to your portfolio repo.
 Pick *one* problem you've never seen before, tagged "Sliding Window" on any free practice site, and solve it cold. Difficulty: Easy or Medium. **Do not read other people's solutions before solving.**
 
 The point of this problem is that the prompt is *not written by us*. Every drill this week told you the tie-break, named the sentinel, and justified the bounds. A wild prompt will do none of that, and the missing pieces are exactly what you have to notice in Frame.
-
-**Practice elsewhere.** If you want a judge to run against, the sliding-window family is well represented on [LeetCode's Sliding Window tag](https://leetcode.com/tag/sliding-window/). Pick a title you do not recognize, read only the prompt, and start FRAME. The contracts there will differ from ours — that is the exercise.
-
 **Acceptance:**
 
 - Recording of your full FRAME solve, ≥15 minutes.

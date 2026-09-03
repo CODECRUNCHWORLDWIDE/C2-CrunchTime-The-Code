@@ -714,14 +714,6 @@ recognising by shape rather than by story.
   Solving it as "weld A and B, then weld that result with C" is the right
   decomposition, and working out *why* that is correct, using the one-way-out
   property, is the real exercise.
-
-**Practice elsewhere.** The same pattern appears as
-[LeetCode 160 · Intersection of Two Linked Lists](https://leetcode.com/problems/intersection-of-two-linked-lists/)
-if you want a judge to run against. That contract returns only the node, never
-asks for the two lead-in counts, and explicitly forbids modifying the lists —
-so the knot solution is not even legal there. Solve this one first, then go and
-give the restart-at-the-other-head answer over there.
-
 When both challenges pass, take the [quiz](../quiz.md), work the
 [homework](../homework/README.md), and then ship the
 [mini-project](../mini-project/README.md) — Mock Interview #1.

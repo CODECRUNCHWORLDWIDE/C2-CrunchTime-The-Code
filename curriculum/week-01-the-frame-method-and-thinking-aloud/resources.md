@@ -11,13 +11,10 @@ Every resource is **free** and **publicly accessible**.
 
 ## Free practice platforms
 
-**The problems in this course are written for this course.** You will not find the drills, the challenges, or their test cases on any of the sites below — that is deliberate, because a problem you can look up is a problem you can recall instead of solve.
+**The problems in this course are written for this course.** You will not find the drills, the challenges, or their test cases on any outside site — that is deliberate, because a problem you can look up is a problem you can recall instead of solve.
 
-What these platforms *are* good for is extra repetitions on the same **patterns**, and a judge to run against when you want instant pass/fail. Each drill ends with a "Practice elsewhere" line pointing at a problem in the same family, so use those as your entry points. Expect the contract to differ from ours; read theirs carefully rather than assuming.
+Outside platforms are good for one thing this course cannot give you: a problem you have never seen. Homework problem 3 sends you to find one, deliberately, and does not say where. The stretch section at the foot of every page is where to go for more repetitions on a pattern you have just learned — those extend our problem rather than pointing away from it.
 
-Homework problem 3 sends you to one of these deliberately, to solve something genuinely unfamiliar.
-
-- **LeetCode** — free tier is enough; filter by the "Two Pointers" tag: <https://leetcode.com/>
 - **HackerRank — Interview Preparation Kit**: <https://www.hackerrank.com/interview/interview-preparation-kit>
 - **Exercism — Python Track** (mentored, no judge pressure): <https://exercism.org/tracks/python>
 - **Codeforces Educational** (more contest-flavored): <https://codeforces.com/edu/courses>

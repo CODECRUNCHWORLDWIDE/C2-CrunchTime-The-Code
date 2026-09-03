@@ -7,9 +7,9 @@ Lecture 1 installed the four-step pipeline on the 1D-DP suite. This lecture inst
 
 By the end of this lecture you should be able to:
 
-- Walk the pipeline on **unique paths (LC 62)** — the canonical 2D grid DP.
-- Walk the pipeline on **longest common subsequence (LC 1143)** — the canonical 2D string-pair DP.
-- Walk the pipeline on **edit distance (LC 72)** — the three-way-min string-pair DP.
+- Walk the pipeline on **the terrace route table** — the canonical 2D grid DP.
+- Walk the pipeline on **the paired manifest strike** — the canonical 2D string-pair DP.
+- Walk the pipeline on **the timetable amendment** — the three-way-min string-pair DP.
 - Articulate the difference between **subsequence DP** and **substring DP** — the most-missed Phase-2 distinction.
 - Reduce a 2D DP to `O(min(m, n))` space when the recurrence only reads the previous row.
 
@@ -33,7 +33,7 @@ The 2D state is the **same shape** for all three problems. The state semantics d
 
 ---
 
-## 2. Unique paths (LC 62) — the canonical 2D grid DP
+## 2. the terrace route table — the canonical 2D grid DP
 
 > *A robot is located at the top-left corner of an `m x n` grid. The robot can only move either down or right at any point in time. How many possible unique paths are there to reach the bottom-right corner?*
 
@@ -110,7 +110,7 @@ Six lines. The trick: `dp[j]` on the right-hand side is the *previous-row* value
 
 ---
 
-## 3. Longest common subsequence (LC 1143) — the canonical 2D subsequence DP
+## 3. the paired manifest strike — the canonical 2D subsequence DP
 
 > *Given two strings `text1` and `text2`, return the length of their longest common subsequence. A subsequence of a string is a new string generated from the original string with some characters (possibly none) deleted without changing the order of the remaining characters.*
 
@@ -175,7 +175,7 @@ Answer: dp[5][3] = 3 (the LCS is "ace")
 
 ---
 
-## 4. Edit distance (LC 72) — the three-way-min DP
+## 4. the timetable amendment — the three-way-min DP
 
 > *Given two strings `word1` and `word2`, return the minimum number of operations required to convert `word1` to `word2`. You have the following three operations permitted: insert a character, delete a character, replace a character.*
 

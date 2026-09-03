@@ -453,9 +453,6 @@ version achieves it with three integers of state.
 - [ ] The function has type hints and a docstring.
 - [ ] You narrated a full FRAME pass out loud with a recorder running, at least ten minutes.
 - [ ] Committed to Git with a message like `Add Week 1 exercise 3: widest ballast pair`.
-
-**Practice elsewhere.** The same pattern appears as [LeetCode 167 · Two Sum II — Input Array Is Sorted](https://leetcode.com/problems/two-sum-ii-input-array-is-sorted/) if you want a judge to run against. Theirs is 1-indexed and guarantees exactly one solution, so it never asks you to choose between valid pairs — solve ours first.
-
 ## Stretch
 
 - **Return every valid pair, not just the widest.**

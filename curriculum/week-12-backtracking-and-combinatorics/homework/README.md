@@ -1,154 +1,316 @@
 # Week 12 — Homework
 
-Six practice problems plus the rubric. Allow ~5 hours total. Do the problems on your own with the lectures *closed*; consult the lecture or the resources only after a 15-minute stuck-period on a single problem.
+Six problems, all original, all with a runnable worked answer beside this page.
+Allow about five hours. Do each with the lectures closed; open the worked answer
+only after your own version runs, or after fifteen minutes stuck on one step.
 
-The problems are chosen to drill the six Week-12 sub-patterns: combinations (../k-of-n), Cartesian product (phone keypad), constraint-aware enumeration (generate parentheses), deduplication (subsets II), string-piece backtracking with constraints (restore IP addresses), and combination sum with deduplication (combination sum II). By Sunday, the recognition step on each should be reflexive.
+The six carry on from the exercises: a fixed-size choice, a fixed-depth product,
+a count-based prune, a fixed split with three prunes, both dedup rules at once,
+and the constraint-satisfaction shape.
 
-| # | Problem | Pattern | Source | Est. time |
-|---|---------|---------|--------|----------:|
-| 1 | Combinations | Backtracking — k-of-n with length prune | LeetCode 77 | 40 min |
-| 2 | Letter Combinations of a Phone Number | Backtracking — Cartesian product | LeetCode 17 | 40 min |
-| 3 | Generate Parentheses | Backtracking — constraint-aware enumeration | LeetCode 22 | 50 min |
-| 4 | Subsets II | Backtracking — deduplication by sort + index-skip | LeetCode 90 | 40 min |
-| 5 | Restore IP Addresses | Backtracking — string pieces with constraints | LeetCode 93 | 60 min |
-| 6 | Combination Sum II | Backtracking — sum-based prune + deduplication | LeetCode 40 | 50 min |
+| # | Problem | Sub-shape | Est. time |
+|---|---------|-----------|----------:|
+| 1 | [The Tasting Panel](#problem-1--the-tasting-panel) | Subsets of a fixed size, and the short-branch prune | 40 min |
+| 2 | [The Dial Board](#problem-2--the-dial-board) | One level per position, every option at each | 35 min |
+| 3 | [The Sluice Pairing](#problem-3--the-sluice-pairing) | Pruning on a count rather than a set | 50 min |
+| 4 | [The Grid Reference Split](#problem-4--the-grid-reference-split) | Fixed depth, variable width, three prunes | 55 min |
+| 5 | [The Tare Weight Picks](#problem-5--the-tare-weight-picks) | Both rules at once — each item once, and no duplicates | 55 min |
+| 6 | [The Test Tray Fill](#problem-6--the-test-tray-fill) | Constraint satisfaction, and where the check goes | 55 min |
 
-Problems 1, 2, and 4 are the high-yield warm-ups; problem 3 is the constraint-aware-enumeration rep; problem 5 is the string-piece rep; problem 6 combines the prune and the dedup.
+Every worked answer runs on its own with no arguments and no packages, and ends
+by printing `All checks passed.` Run one like this:
 
----
-
-## Problem 1 — Combinations (LC 77)
-
-**Spec.** Given two integers `n` and `k`, return all possible combinations of `k` numbers chosen from the range `[1, n]`.
-
-**Constraints.** `1 <= n <= 20`; `1 <= k <= n`.
-
-**Pattern.** Backtracking — k-of-n combinatorial enumeration with length prune (Lecture 1 §4).
-
-**Hint.** State: `(start_index, path)`. Record at leaves where `len(../path) == k`. The prune: `last = n - (k - len(../path)) + 1`; iterating beyond `last` cannot reach length `k`.
-
-**Acceptance.** Function signature `combine(n: int, k: int) -> List[List[int]]`. Time: `O(C(n, k) * k)`. Space: `O(../k)` recursion plus output.
-
-**Variant.** Bit-enumeration: iterate masks of `n` bits with exactly `k` set bits. Same asymptotic; the backtracking form is more interview-fluent.
+```bash
+python problem-01-tasting-panel-solution.py
+```
 
 ---
 
-## Problem 2 — Letter Combinations of a Phone Number (LC 17)
+## Problem 1 — The Tasting Panel
 
-**Spec.** Given a string of digits 2-9, return all possible letter combinations under the phone-keypad mapping (2 -> "abc", 3 -> "def", ..., 9 -> "wxyz").
+**The brief.** A pottery co-operative picks a tasting panel from its members.
+The panel holds exactly `size` people, and **who** is on it matters while the
+order does not.
 
-**Constraints.** `0 <= len(../digits) <= 4`; digits only contain '2'-'9'.
+**The data.** Six members — Ada, Bram, Cato, Devi, Enid, Fen — and a panel of
+three.
 
-**Pattern.** Backtracking — Cartesian product (Lecture 3 §5).
+**Constraints.** A panel of zero is one panel, the empty one. A panel bigger than
+the roster cannot be formed at all.
 
-**Hint.** State: `(digit_index, path)`. At each level, iterate every letter in the current digit's group; choose, recurse, unchoose. No pruning needed (every letter is valid). Record at leaves where `digit_index == len(../digits)`. Edge case: empty input returns `[]`, not `[""]`.
+**Answer.** [Exercise 1](../exercises/exercise-01-glaze-sample-set.md) with the
+size fixed, which changes two things. The recording moves from every node to the
+nodes where the trail is full. And a new prune becomes possible: **once there are
+not enough members left to fill the panel, the branch is dead however it
+continues**, so it can be abandoned before it is walked.
 
-**Acceptance.** Function signature `letter_combinations(digits: str) -> List[str]`. Time: `O(4^n * n)` where `n = len(../digits)` and 4 is the largest digit-group size (digits 7 and 9). Space: `O(../n)` recursion plus output.
+Six choose three is 20 panels. The prune does not change that; it changes the
+number of nodes, and the file prints both so the saving is a number.
 
-**Variant.** Iterative with `itertools.product`. Equivalent; the backtracking form is the template.
+**Signatures.** `panels(members, size)`, `panels_unpruned(members, size)`,
+`panels_with(members, size, member)`, `panel_count(members, size)`.
 
----
+**Watch for.** Recording at every node as in Exercise 1 — you get all 64 subsets
+rather than the 20 panels. Pruning with `<` where `<=` belongs, which drops the
+panels that use exactly the remaining members. Each member should sit on exactly
+10 of the 20, which is a check worth doing because it does not depend on your
+implementation.
 
-## Problem 3 — Generate Parentheses (LC 22)
+The sizes across the whole roster come out as 1, 6, 15, 20, 15, 6, 1 and sum to
+64 — Exercise 1's answer arrived at from the other direction.
 
-**Spec.** Given `n` pairs of parentheses, return all combinations of well-formed parentheses.
-
-**Constraints.** `1 <= n <= 8`.
-
-**Pattern.** Backtracking — constraint-aware enumeration.
-
-**Hint.** State: `(open_used, close_used, path)`. Two constraints: never use more than `n` of either; never use more `close` than `open`. At each level, two candidate choices: add an open paren if `open_used < n`; add a close paren if `close_used < open_used`. Record at leaves where `open_used == n and close_used == n`.
-
-**Acceptance.** Function signature `generate_parenthesis(n: int) -> List[str]`. Time: the count of well-formed strings is the `n`-th Catalan number `C_n = (1 / (n + 1)) * C(2n, n)`; each string is length `2n`. Space: `O(../n)` recursion plus output.
-
-**Variant.** DP (count only — not enumeration) using Catalan recurrence. The DP form counts but does not generate; this is the canonical "enumeration is backtracking, counting is DP" pair.
-
----
-
-## Problem 4 — Subsets II (LC 90)
-
-**Spec.** Given an integer array `nums` that may contain duplicates, return all possible subsets (the power set). The solution set must not contain duplicate subsets.
-
-**Constraints.** `1 <= len(../nums) <= 10`; `-10 <= nums[i] <= 10`.
-
-**Pattern.** Backtracking — deduplication by sort + index-skip (Lecture 2 §2).
-
-**Hint.** Sort `nums` first. State: `(start_index, path)`. The dedup: `if i > start and nums[i] == nums[i - 1]: continue`. The discriminator is `i > start`, **not** `i > 0`; the condition skips duplicates at the same level but allows the same value at different depths.
-
-**Acceptance.** Function signature `subsets_with_dup(nums: List[int]) -> List[List[int]]`. Time: `O(2^n * n)` worst case (when no duplicates). Space: `O(../n)` recursion plus output.
-
-**Variant.** Counting form: count subsets II in `O(../n)` using the recurrence on the multiplicity of each distinct value. Mention the trade.
+**Worked answer.** [`problem-01-tasting-panel-solution.py`](./problem-01-tasting-panel-solution.py)
 
 ---
 
-## Problem 5 — Restore IP Addresses (LC 93)
+## Problem 2 — The Dial Board
 
-**Spec.** A valid IP address consists of exactly four integers (each between 0 and 255, no leading zeros except '0' itself) separated by single dots. Given a string `s` containing only digits, return all possible valid IP addresses that can be formed by inserting three dots into `s`.
+**The brief.** An old works telephone has letters printed on its dial keys.
+Somebody remembers which **keys** they pressed for an extension but not which
+letter each press was meant to be. List every extension the presses could have
+meant.
 
-**Constraints.** `1 <= len(../s) <= 20`; `s` consists of digits only.
+**The data.** The dial, with keys 1 and 0 carrying no letters at all, and the
+presses `273`.
 
-**Pattern.** Backtracking — string pieces with validation constraints.
+**Constraints.** A key carrying no letters cannot contribute a character, so a
+press on 1 or 0 is refused rather than skipped — skipping it would silently
+shorten every answer. No presses means nobody dialled, so the answer is an empty
+list rather than a list holding the empty string. That is a decision, and the
+opposite convention would make the count 1 rather than 0.
 
-**Hint.** State: `(start_index, segments)`. At each level, try lengths 1, 2, and 3 for the next segment; validate (no leading zero except "0", value <= 255); choose, recurse, unchoose. Record at leaves where `len(../segments) == 4 and start == len(../s)`. Prune the subtree early if any segment is invalid.
+**Answer.** One level per press rather than one per item, and at each level try
+every letter on that key. Nothing is skipped and nothing is pruned — every branch
+runs to the bottom.
 
-**Acceptance.** Function signature `restore_ip_addresses(s: str) -> List[str]`. Time: `O(../1)` — the recursion has at most 4 levels and each level has at most 3 choices, so the total node count is constant (81 leaves maximum). Space: `O(../1)`.
+That makes this the cleanest place to see that the **shape of the tree comes
+from the problem**, not from the template. The three lines are the same three
+lines they have been all week.
 
-**Variant.** Iterative with three nested loops over the three dot positions. Same asymptotic; the backtracking form is more general.
+`273` gives 36 extensions: `3 × 4 × 3`, one factor per key.
 
----
+**Signatures.** `extensions(presses, dial)`, `extension_count(presses, dial)`,
+`extensions_matching(presses, dial, opening)`.
 
-## Problem 6 — Combination Sum II (LC 40)
+**Watch for.** Skipping a letterless key instead of refusing it. Treating the
+empty press string as one empty extension. The answers should come out in dial
+order without a sort — if you need to sort them, the loop is wrong.
 
-**Spec.** Given an integer array `candidates` and a target integer `target`, return all unique combinations of `candidates` summing to `target`. Each number in `candidates` may be used **only once** in each combination. The solution set must not contain duplicate combinations.
-
-**Constraints.** `1 <= len(../candidates) <= 100`; `1 <= candidates[i] <= 50`; `1 <= target <= 30`.
-
-**Pattern.** Backtracking — sum-based prune + deduplication.
-
-**Hint.** Sort `candidates` first. State: `(start_index, remaining_target, path)`. No-reuse rule: recurse with `start = i + 1` (not `i`). The dedup: `if i > start and candidates[i] == candidates[i - 1]: continue`. The combination of the two — no-reuse for individual elements, no-dup for combinations — is the discriminator from LC 39.
-
-**Acceptance.** Function signature `combination_sum2(candidates: List[int], target: int) -> List[List[int]]`. Time: bounded by the output size (the number of unique combinations) times the average path length. Space: `O(target / min_candidate)` recursion.
-
-**Variant.** Without the dedup, the output contains duplicates for inputs like `[1, 1, 2], target = 3`. The dedup-by-skip is the senior signal; the alternative (post-process the output to remove duplicates) is `O(output_size * path_length)` extra time and is the junior signal.
-
----
-
-## Rubric
-
-For each problem, your write-up is graded on five dimensions:
-
-| Dimension | Weight | What "yes" looks like |
-|-----------|-------:|----------------------|
-| Research constraints (pattern recognition) | 25% | 30-second memo at the top; pattern named (subsets / permutations / combinations / Cartesian / string-pieces / dedup); alternative rejected (DP, greedy, bit-enumeration) with reason |
-| Assess options | 15% | Numbered steps; state design (`(start, path)` or `(used, path)` etc.); pruning condition |
-| Make the solution (../correctness) | 25% | All LC sample cases pass; the deep-copy at the leaf (../`path[:]`); the choose-recurse-unchoose template intact |
-| Make the solution (../style) | 10% | Type hints everywhere; docstring on every function; PEP 8; idiomatic Python |
-| Examine (../defense) | 25% | Time + space bounds with derivation; one variant mentioned; trade against a non-backtracking alternative stated |
-
-The Research constraints weight is the highest for a reason. Phase 2 grades recognition heavily; you can have a working implementation and still lose the rep if you cannot defend "this is backtracking, not DP" with one sentence.
+**Worked answer.** [`problem-02-dial-board-solution.py`](./problem-02-dial-board-solution.py)
 
 ---
 
-## Suggested order
+## Problem 3 — The Sluice Pairing
 
-1. **Problem 1** first — Combinations is the highest-clarity warm-up. The length prune is the smallest non-trivial pruning rep.
-2. **Problem 2** second — Letter Combinations is the Cartesian-product rep. The "no pruning needed" form contrasts with later problems.
-3. **Problem 4** third — Subsets II installs the sort + index-skip dedup that recurs in problems 6 and beyond.
-4. **Problem 3** fourth — Generate Parentheses is the constraint-aware-enumeration rep. The two-counter state design is the work.
-5. **Problem 6** fifth — Combination Sum II combines the prune (from Exercise 3) and the dedup (from Problem 4). The combination is the senior-signal move.
-6. **Problem 5** last — Restore IP Addresses is the string-piece rep with multi-constraint validation. The constant-time bound is the elegant surprise.
+**The brief.** A drainage board runs a bank of sluices. Every gate **opened**
+must be **closed** before the run ends, and a gate can never be closed that was
+not opened — the linkage will not allow it. List every legal sequence of opens
+and closes.
 
-If time runs out, prioritize Problems 1, 2, and 4. They are the three patterns most likely to appear on Mock #2.
+**The data.** Three gates.
+
+**Constraints.** Zero gates is one run, the empty one.
+
+**Answer.** The interesting part is that the walk prunes on a **count** rather
+than a set. There is no list of which gates are open, because the gates are
+interchangeable — only how many are open matters. Two rules:
+
+```text
+open a gate     while any remain unopened
+close a gate    while more have been opened than closed
+```
+
+Between them, every branch the walk takes is legal, so nothing has to be checked
+at the end.
+
+The alternative — generate every sequence of opens and closes and filter — gets
+the same five answers for **127 nodes against 22**. The file prints both.
+
+Three gates give five runs, and the counts across gate numbers are 1, 1, 2, 5,
+14, 42, 132 — the Catalan numbers, which is worth naming because it tells you the
+answer grows fast but nothing like `2 ** 2n`.
+
+**Signatures.** `legal_runs(gates)`, `legal_runs_by_filter(gates)`,
+`is_legal(run)`, `deepest_standing(run)`.
+
+**Watch for.** Allowing a close when none is open — that is the whole constraint.
+Recording before the run is complete. `is_legal` is written independently of the
+generator on purpose: a verifier that shares the generator's assumptions verifies
+nothing.
+
+**Worked answer.** [`problem-03-sluice-pairing-solution.py`](./problem-03-sluice-pairing-solution.py)
 
 ---
 
-## Acceptance
+## Problem 4 — The Grid Reference Split
 
-The week's homework is complete when:
+**The brief.** A survey stamps grid references onto marker posts as four numbers
+separated by dots. On old posts the dots have worn away. Given the digits, list
+every reference the post could have been — **exactly four fields**, each from 0
+to 255, none with a leading zero.
 
-- All six problems have a committed implementation under `homework/c2-week-12/`.
-- All six problems have a FRAME write-up under `frame-writeups/c2-week-12/homework/`.
-- The quiz is taken and scored.
-- The score is in the retrospective: which sub-pattern needs the most reps before Mock #2.
+**The data.** Eight worn posts, including `25525511135`, `0000`, `010010` and a
+fourteen-digit run.
 
-The retrospective is the single most useful artifact this week. The pattern most candidates need more reps on after W12 is "the dedup discipline" — the recurrence is easy to write, but the discriminator between `i > start` (../correct) and `i > 0` (subtly wrong) separates the senior signal from the junior one. Drill the verbal Research-constraints step ("we sort, then skip duplicates at the same level") aloud until it is reflexive.
+**Constraints.** `0` is a field; `00` and `01` are not. `256` is not.
+
+**Answer.** Fixed depth — four — with one, two or three digits at each level.
+Three prunes, and **only one is an optimisation**:
+
+```text
+length prune   with `fields` left and `digits` left, dead unless
+               fields <= digits <= 3 * fields          ← optional
+value prune    a field over 255 is not a field         ← correctness
+zero prune     a multi-digit field cannot start with 0 ← correctness
+```
+
+Telling those apart is the exercise. The length prune is what makes the
+fourteen-digit post cost **1 node instead of 53**.
+
+`010010` is the post to check by hand: it reads **two** ways, `0.10.0.10` and
+`0.100.1.0`, and neither uses a leading zero. A solution that allows them finds
+several more.
+
+**Signatures.** `is_field(digits)`, `references(run)`, `references_unpruned(run)`,
+`readable(run)`.
+
+**Watch for.** Accepting `01` as 1. Forgetting that all four fields must be used
+**and** all the digits consumed — checking one without the other passes on most
+posts. Trying a fourth digit in a field.
+
+**Worked answer.** [`problem-04-grid-reference-split-solution.py`](./problem-04-grid-reference-split-solution.py)
+
+---
+
+## Problem 5 — The Tare Weight Picks
+
+**The brief.** A works store keeps a bag of tare weights, some of them
+identical — two 3lb weights are two separate lumps of iron, and either can go on
+the pan, but a pan holding one is the same pan as one holding the other. Pick
+weights summing to a target, using **each lump at most once**, and list the
+distinct pans.
+
+**The data.** A bag of nine weights with two 3s and two 1s, and a target of 8.
+
+**Constraints.** Every weight positive; a target of zero is made by the empty
+pan.
+
+**Answer.** [Exercise 3](../exercises/exercise-03-clay-weigh-out.md) and
+[Exercise 4](../exercises/exercise-04-repeat-bin-picks.md) in one problem, and
+the two rules pull in opposite directions:
+
+- from Exercise 3, the sum prune and a forwards-only walk — but recursing on
+  `index + 1` rather than `index`, because a lump is used once;
+- from Exercise 4, sort the bag and skip a repeat at the same level.
+
+**Those are two different bugs and they look alike.** The file ships both wrong
+walks: recursing on the same index invents `2+2+2+2` off a bag holding one 2,
+and dropping the dedup reports the same pan once per set of lumps. Seven distinct
+pans; the two wrong walks find 16 and 10.
+
+**Signatures.** `tare_pans(bag, target)`, `tare_pans_reusing(bag, target)`,
+`tare_pans_undeduped(bag, target)`, `fewest_lumps(bag, target)`.
+
+**Watch for.** Getting one of the two rules and not the other — each alone
+produces a plausible answer. The check that catches reuse is that no pan uses
+more lumps of a weight than the bag holds; the check that catches missing dedup
+is that every pan appears once. Two assertions, because they are two claims.
+
+**Worked answer.** [`problem-05-tare-weight-picks-solution.py`](./problem-05-tare-weight-picks-solution.py)
+
+---
+
+## Problem 6 — The Test Tray Fill
+
+**The brief.** A glaze test tray is a square grid of wells. Every **row** must
+hold each glaze exactly once, and so must every **column**. Some wells are
+already filled. Finish the tray, or say it cannot be finished.
+
+**The data.** A four-glaze tray part-filled from a previous session, and a
+spoiled tray with two `A`s already sharing a column.
+
+**Constraints.** The wells already filled are not moved. A tray that is already
+spoiled is reported as spoiled, which is a better answer than "no solution
+found".
+
+**Answer.** This differs from every other walk of the week in one way: it does
+not choose **which** well to fill. It fills them in a fixed order and chooses
+only what goes in them. That keeps the state small — one set per row and one per
+column — and makes the legality test a lookup rather than a scan.
+
+The prune **is** the legality test, applied before descending rather than after.
+
+That one decision is worth more here than anywhere else in the course:
+
+```text
+wells filled, pruning early :          25
+wells filled, checking late :  15,836,737
+```
+
+Same tray, same answer, six orders of magnitude. If you write one sentence about
+pruning all week, write it about this.
+
+**Signatures.** `check_tray(tray, glazes)`, `already_spoiled(tray, glazes)`,
+`fill_tray(tray, glazes)`, `fill_tray_late_check(tray, glazes)`.
+
+**Watch for.** Undoing two of the three things you changed — the well, the row
+set and the column set all have to go back. Scanning the row and column to test
+legality instead of keeping sets, which is correct and turns a lookup into a
+scan. Reporting "no solution" for a tray that was spoiled before the walk began.
+
+**Worked answer.** [`problem-06-test-tray-fill-solution.py`](./problem-06-test-tray-fill-solution.py)
+
+---
+
+## Rubric (5 axes, 4 points each)
+
+| Axis | What "great" looks like |
+|------|--------------------------|
+| Frame the problem | The memo names what one node of the tree is, where the answer is recorded, and how many answers there could be — before any code. |
+| Reason about options | Four to six bullets before coding, separating the prunes that are optimisations from the prunes that are correctness rules. |
+| Assemble the solution | Choose, explore, undo, with the undo restoring *everything* the choose changed; type hints throughout. |
+| Measure it | A trace on at least two inputs, one degenerate — and for the pages that count nodes, the number quoted rather than described. |
+| Evaluate the cost | Time, space, best/average/worst, the trade-off and the improvement. Say what the walk costs *before* pruning and what the prune actually buys. |
+
+Twenty points per problem, 120 for the set. Score yourself honestly; the number
+is only useful if it is true.
+
+---
+
+## How to submit
+
+Commit your write-ups under `frame-writeups/c2-week-12/homework/`, one file per
+problem:
+
+```
+frame-writeups/c2-week-12/homework/
+├── problem-1-tasting-panel.md
+├── problem-2-dial-board.md
+├── problem-3-sluice-pairing.md
+├── problem-4-grid-reference-split.md
+├── problem-5-tare-weight-picks.md
+└── problem-6-test-tray-fill.md
+```
+
+Each file is 100–200 lines: the five FRAME sections plus a five-line memo at the
+top. The code is part of the Assemble section, not a separate file.
+
+When the set is done, push and move on to the
+[mini-project](../mini-project/README.md).
+
+---
+
+## Time budget
+
+| Problem | Solve | Write-up | Total |
+|---------|------:|---------:|------:|
+| 1 — Tasting Panel | 25 min | 15 min | 40 min |
+| 2 — Dial Board | 20 min | 15 min | 35 min |
+| 3 — Sluice Pairing | 35 min | 15 min | 50 min |
+| 4 — Grid Reference Split | 40 min | 15 min | 55 min |
+| 5 — Tare Weight Picks | 40 min | 15 min | 55 min |
+| 6 — Test Tray Fill | 40 min | 15 min | 55 min |
+
+About five hours. Problems 5 and 6 are the two that pay off most: 5 because two
+rules that look alike are two different bugs, and 6 because it is the clearest
+demonstration in the whole course of what pruning at the right moment is worth.

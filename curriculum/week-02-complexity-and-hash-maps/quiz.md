@@ -2,7 +2,6 @@
 
 Ten short prompts. **Do not solve them.** For each, state the *time complexity* (and *space*, where asked). Lectures closed. Time yourself — 60 seconds per question is the target.
 
-Answer key at the bottom.
 
 ---
 
@@ -15,6 +14,13 @@ def f(arr):
             print(x, y)
 ```
 
+<details>
+<summary>Answer</summary>
+
+**O(n²).** Both loops are over `arr`; n × n iterations. Body is O(1) (a `print`). Total O(n²).
+
+</details>
+
 **Q2.** What is the time complexity of the following?
 
 ```python
@@ -23,6 +29,13 @@ def f(arr):
     for x in arr:
         print(x)
 ```
+
+<details>
+<summary>Answer</summary>
+
+**O(n log n).** The sort dominates the linear scan: `O(n log n) + O(n) = O(n log n)`. Take the max of the terms.
+
+</details>
 
 **Q3.** What is the time complexity (average) of the following?
 
@@ -38,9 +51,23 @@ def f(charges, refund_total):
 
 State both **time** and **space**.
 
+<details>
+<summary>Answer</summary>
+
+**O(n) average time, O(n) space.** Single pass through `charges`; each iteration does one O(1) average set lookup and one O(1) average insert. Worst-case O(n²) in pathological hash collisions, but with Python's randomized hash we say O(n) average. Note what this function is *not*: it returns a boolean, so it is the weaker cousin of [Exercise 1](exercises/exercise-01-refund-pair.md), which must carry positions and therefore needs a `dict`, not a `set`.
+
+</details>
+
 **Q4.** Given a constraint of `n ≤ 10⁶`, which of these complexity classes will finish within a typical interview's "time limit" of ~1 second on modern hardware?
 
 A. O(n²)   B. O(n log n)   C. O(n)   D. O(n²) with a constant factor of 1/100
+
+<details>
+<summary>Answer</summary>
+
+**B and C.** O(n) and O(n log n) both finish in well under a second at n = 10⁶ (one million and ~20 million ops respectively). O(n²) is 10¹² ops — hours. Even with a 1/100 constant factor, O(n²) at n = 10⁶ is 10¹⁰ ops — still too slow.
+
+</details>
 
 **Q5.** What is the time complexity of the following?
 
@@ -52,9 +79,30 @@ def f(arr):
         i *= 2
 ```
 
+<details>
+<summary>Answer</summary>
+
+**O(log n).** `i` doubles each iteration; exits when `i ≥ n`; that's `log₂ n` iterations.
+
+</details>
+
 **Q6.** True or false: `list.append(x)` is **always** O(1).
 
+<details>
+<summary>Answer</summary>
+
+**False.** It is **O(1) amortized**. Individual appends are O(n) when the underlying buffer resizes. Over a long sequence of appends, total work is O(n), so amortized O(1) per call. In an interview answer, "O(1) amortized" is the precise answer.
+
+</details>
+
 **Q7.** What is the worst-case time complexity of looking up a key in a Python `dict`?
+
+<details>
+<summary>Answer</summary>
+
+**O(n) worst case.** Every key collides into the same probe chain. Practically unreachable with Python's randomized hash seed on normal inputs, but it's the correct *worst-case* answer. **Average is O(1).** State both in interviews.
+
+</details>
 
 **Q8.** What is the time complexity of the following?
 
@@ -67,40 +115,35 @@ def f(arr):
                 print(arr[i], arr[j], arr[k])
 ```
 
+<details>
+<summary>Answer</summary>
+
+**O(n³).** Three nested loops; even though their bounds shrink (`i, j, k` are non-decreasing), the total iteration count is `Σ_{i,j,k with i≤j≤k} 1 = C(n+2, 3) ≈ n³/6`. Constant factor 1/6 drops; O(n³).
+
+</details>
+
 **Q9.** You have an O(n²) algorithm that uses O(1) space, and an O(n) algorithm that uses O(n) space. Which do you choose for `n = 10⁹`, and why?
+
+<details>
+<summary>Answer</summary>
+
+**Depends on memory and time constraints.** Naive answer: at n = 10⁹, **O(n²) is 10¹⁸ ops — completely unfeasible**, so O(n) is the only choice for time. But: O(n) space at n = 10⁹ might be 8 GB or more depending on element size — also potentially unfeasible. The real engineering answer: "neither fits on a single machine; we need an external-memory algorithm or distribution." In an interview, naming that tension wins the engineering-judgment point.
+
+</details>
 
 **Q10.** What is the time complexity of `set(badge_ids)` for a list of length `n`?
 
 ---
 
-## Answer key
-
 <details>
-<summary>Click after attempting all ten</summary>
+<summary>Answer</summary>
 
-1. **O(n²).** Both loops are over `arr`; n × n iterations. Body is O(1) (a `print`). Total O(n²).
+**O(n).** Constructing a set hashes each of the n elements and inserts it — n × O(1) average = O(n). (Worst case O(n²) in pathological collisions, but for normal inputs O(n) is right.)
 
-2. **O(n log n).** The sort dominates the linear scan: `O(n log n) + O(n) = O(n log n)`. Take the max of the terms.
-
-3. **O(n) average time, O(n) space.** Single pass through `charges`; each iteration does one O(1) average set lookup and one O(1) average insert. Worst-case O(n²) in pathological hash collisions, but with Python's randomized hash we say O(n) average. Note what this function is *not*: it returns a boolean, so it is the weaker cousin of [Exercise 1](exercises/exercise-01-refund-pair.md), which must carry positions and therefore needs a `dict`, not a `set`.
-
-4. **B and C.** O(n) and O(n log n) both finish in well under a second at n = 10⁶ (one million and ~20 million ops respectively). O(n²) is 10¹² ops — hours. Even with a 1/100 constant factor, O(n²) at n = 10⁶ is 10¹⁰ ops — still too slow.
-
-5. **O(log n).** `i` doubles each iteration; exits when `i ≥ n`; that's `log₂ n` iterations.
-
-6. **False.** It is **O(1) amortized**. Individual appends are O(n) when the underlying buffer resizes. Over a long sequence of appends, total work is O(n), so amortized O(1) per call. In an interview answer, "O(1) amortized" is the precise answer.
-
-7. **O(n) worst case.** Every key collides into the same probe chain. Practically unreachable with Python's randomized hash seed on normal inputs, but it's the correct *worst-case* answer. **Average is O(1).** State both in interviews.
-
-8. **O(n³).** Three nested loops; even though their bounds shrink (`i, j, k` are non-decreasing), the total iteration count is `Σ_{i,j,k with i≤j≤k} 1 = C(n+2, 3) ≈ n³/6`. Constant factor 1/6 drops; O(n³).
-
-9. **Depends on memory and time constraints.** Naive answer: at n = 10⁹, **O(n²) is 10¹⁸ ops — completely unfeasible**, so O(n) is the only choice for time. But: O(n) space at n = 10⁹ might be 8 GB or more depending on element size — also potentially unfeasible. The real engineering answer: "neither fits on a single machine; we need an external-memory algorithm or distribution." In an interview, naming that tension wins the engineering-judgment point.
-
-10. **O(n).** Constructing a set hashes each of the n elements and inserts it — n × O(1) average = O(n). (Worst case O(n²) in pathological collisions, but for normal inputs O(n) is right.)
-
-</details>
 
 ---
+
+</details>
 
 ## How to score
 

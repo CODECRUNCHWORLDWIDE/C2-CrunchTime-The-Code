@@ -162,12 +162,59 @@ The candidates who get hired are not the ones who never hear "no." They are the 
 
 Without notes, answer:
 
-1. **Name the four stages of a full onsite loop, in order.** (Recruiter screen; phone/technical screen; the virtual onsite; debrief/decision.)
-2. **Name the four round types inside a virtual onsite.** (Coding; system design; behavioral; hiring-manager chat.)
-3. **What five conditions make Mock #4 "full real"?** (Stranger interviewer if obtainable; dress as if real; no notes; a hard stop; the full loop with system-design + behavioral required.)
-4. **What does the Mock #4 trajectory section span that Mock #3's did not?** (All four mocks — #1 → #2 → #3 → #4 — and it closes with the one weakness you carry into real interviews.)
-5. **Why does narrating complexity and naming the pattern out loud matter to the grading?** (Each interviewer writes a structured rubric score; narrated signals are the things they can write down as evidence in your favor.)
-6. **What are the four moves for converting a "no" into data?** (Ask for feedback once graciously; write your own debrief within 24 hours; find the pattern across loops; mind the funnel rate, not the single result.)
+**1.** Name the four stages of a full onsite loop, in order.
+
+<details>
+<summary>Answer</summary>
+
+Recruiter screen; phone/technical screen; the virtual onsite; debrief/decision.
+
+</details>
+
+**2.** Name the four round types inside a virtual onsite.
+
+<details>
+<summary>Answer</summary>
+
+Coding; system design; behavioral; hiring-manager chat.
+
+</details>
+
+**3.** What five conditions make Mock #4 "full real"?
+
+<details>
+<summary>Answer</summary>
+
+Stranger interviewer if obtainable; dress as if real; no notes; a hard stop; the full loop with system-design + behavioral required.
+
+</details>
+
+**4.** What does the Mock #4 trajectory section span that Mock #3's did not?
+
+<details>
+<summary>Answer</summary>
+
+All four mocks — #1 → #2 → #3 → #4 — and it closes with the one weakness you carry into real interviews.
+
+</details>
+
+**5.** Why does narrating complexity and naming the pattern out loud matter to the grading?
+
+<details>
+<summary>Answer</summary>
+
+Each interviewer writes a structured rubric score; narrated signals are the things they can write down as evidence in your favor.
+
+</details>
+
+**6.** What are the four moves for converting a "no" into data?
+
+<details>
+<summary>Answer</summary>
+
+Ask for feedback once graciously; write your own debrief within 24 hours; find the pattern across loops; mind the funnel rate, not the single result.
+
+</details>
 
 If you can answer all six, you are ready to set up Mock #4 and run it as a full loop. Set the rig up Thursday; run the loop Friday; watch Saturday; write the self-feedback and seed the study plan Sunday.
 

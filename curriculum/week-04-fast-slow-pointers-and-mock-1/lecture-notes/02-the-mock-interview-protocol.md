@@ -365,12 +365,59 @@ That tree is Phase 1's deliverable. If it's there and clean, you have proven you
 
 Without notes, answer:
 
-1. **What are the three flavors of Mock #1, in descending fidelity order?** (Peer-to-peer, platform like Pramp, solo against a camera.)
-2. **What's the recommended time allocation for the 45 minutes?** (Roughly: 3 F, 2 R, 5 A, 15 M, 10 E-verify, 8 E-cost, 2 wrap. Adjust as needed.)
-3. **What's the two-pass watching protocol?** (Pass 1: full recording at 1.5× with timestamps. Pass 2: only flagged timestamps at 1.0× with prescriptions.)
-4. **What's the one-behavior-change rule?** (Pick exactly one specific, testable behavior to change for Mock #2. Don't try to fix everything.)
-5. **Name three of the six anti-patterns.** (Silent coding, skipping Research constraints, writing code without a plan, not tracing in Examine (verify), skipping Examine (cost), defending broken code.)
-6. **What's the 5-minute post-mock window for?** (Capturing raw observations while they're fresh, *before* the analytical work of Saturday.)
+**1.** What are the three flavors of Mock #1, in descending fidelity order?
+
+<details>
+<summary>Answer</summary>
+
+Peer-to-peer, platform like Pramp, solo against a camera.
+
+</details>
+
+**2.** What's the recommended time allocation for the 45 minutes?
+
+<details>
+<summary>Answer</summary>
+
+Roughly: 3 F, 2 R, 5 A, 15 M, 10 E-verify, 8 E-cost, 2 wrap. Adjust as needed.
+
+</details>
+
+**3.** What's the two-pass watching protocol?
+
+<details>
+<summary>Answer</summary>
+
+Pass 1: full recording at 1.5× with timestamps. Pass 2: only flagged timestamps at 1.0× with prescriptions.
+
+</details>
+
+**4.** What's the one-behavior-change rule?
+
+<details>
+<summary>Answer</summary>
+
+Pick exactly one specific, testable behavior to change for Mock #2. Don't try to fix everything.
+
+</details>
+
+**5.** Name three of the six anti-patterns.
+
+<details>
+<summary>Answer</summary>
+
+Silent coding, skipping Research constraints, writing code without a plan, not tracing in Examine (verify), skipping Examine (cost), defending broken code.
+
+</details>
+
+**6.** What's the 5-minute post-mock window for?
+
+<details>
+<summary>Answer</summary>
+
+Capturing raw observations while they're fresh, *before* the analytical work of Saturday.
+
+</details>
 
 If you can answer all six without hesitation, you are ready for Mock #1. Set up the recording rig Monday. Schedule the slot Friday. Watch Saturday. Write Sunday.
 

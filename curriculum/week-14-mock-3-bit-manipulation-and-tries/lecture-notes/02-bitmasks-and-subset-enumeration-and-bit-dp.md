@@ -229,12 +229,59 @@ This is the "think about what the bits *have to* do across the range" muscle. It
 
 Without notes, answer:
 
-1. **How do you enumerate every subset of `n` items?** (Loop `mask` over `range(1 << n)`; bit `i` of `mask` means item `i` is in the subset.)
-2. **What is `(1 << n) - 1`, and why does it recur?** (The all-ones mask of width `n` — the full set / universe.)
-3. **State the set-bit tally recurrence and explain each term.** (`dp[i] = dp[i >> 1] + (i & 1)`: `i >> 1` strips the low bit so its count is already known; `i & 1` adds the dropped bit back.)
-4. **What is the recognition cue that bitmask enumeration is on the table?** (`n` is small — roughly `n ≤ 20`, because `2**20` is about a million.)
-5. **What is the honest interview register of bitmask DP?** (Recognition-grade: recognize "state is which subset I've used," name TSP / assignment as archetypes; full implementation is a Phase-4 stretch, not an interview-cold expectation.)
-6. **What does `(sub - 1) & m` do in submask iteration?** (Steps to the next-lower submask of `m`.)
+**1.** How do you enumerate every subset of `n` items?
+
+<details>
+<summary>Answer</summary>
+
+Loop `mask` over `range(1 << n)`; bit `i` of `mask` means item `i` is in the subset.
+
+</details>
+
+**2.** What is `(1 << n) - 1`, and why does it recur?
+
+<details>
+<summary>Answer</summary>
+
+The all-ones mask of width `n` — the full set / universe.
+
+</details>
+
+**3.** State the set-bit tally recurrence and explain each term.
+
+<details>
+<summary>Answer</summary>
+
+`dp[i] = dp[i >> 1] + (i & 1)`: `i >> 1` strips the low bit so its count is already known; `i & 1` adds the dropped bit back.
+
+</details>
+
+**4.** What is the recognition cue that bitmask enumeration is on the table?
+
+<details>
+<summary>Answer</summary>
+
+`n` is small — roughly `n ≤ 20`, because `2**20` is about a million.
+
+</details>
+
+**5.** What is the honest interview register of bitmask DP?
+
+<details>
+<summary>Answer</summary>
+
+Recognition-grade: recognize "state is which subset I've used," name TSP / assignment as archetypes; full implementation is a Phase-4 stretch, not an interview-cold expectation.
+
+</details>
+
+**6.** What does `(sub - 1) & m` do in submask iteration?
+
+<details>
+<summary>Answer</summary>
+
+Steps to the next-lower submask of `m`.
+
+</details>
 
 If you can answer all six, the bitmask and bit-DP families are recognition-ready. Next we close the loop: Mock #3, and the tries review that bridges bits to the binary trie.
 

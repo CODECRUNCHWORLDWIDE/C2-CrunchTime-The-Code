@@ -423,12 +423,59 @@ Recognizing the *negative space* of the pattern matters as much as the positive 
 
 Without notes, answer:
 
-1. **What data structure does recursive DFS use, and why?** (The Python call stack. The LIFO discipline of the stack is what produces depth-first order — the most recently entered node is the next one explored.)
-2. **When do you add a node to the visited set?** (At function entry, immediately. This generalizes to the gray-state in the three-color invariant from Lecture 3.)
-3. **What is the time and space complexity, with defense sentence?** (`O(V + E)` time because every node enters DFS once and every edge is examined at most twice; `O(V)` space for the visited set and recursion stack — the depth is bounded by the longest path from the source.)
-4. **Name the two processing times and when to use each.** (Pre-order — process before recursion; use when the work does not depend on descendants. Post-order — process after recursion; use when the work aggregates descendants, e.g., topological sort, tree-DP.)
-5. **Why does DFS *not* find shortest paths?** (The visit order is path-dependent — the first time DFS visits a node may be via a long detour. BFS is level-monotonic; DFS is not.)
-6. **What is the cycle-detection technique for an undirected graph? For a directed graph?** (Undirected: DFS with a parent pointer — a back-edge to a non-parent is a cycle. Directed: DFS with the three-color invariant — a back-edge to a gray node is a cycle. Mixing the two is the most common cycle-detection bug.)
+**1.** What data structure does recursive DFS use, and why?
+
+<details>
+<summary>Answer</summary>
+
+The Python call stack. The LIFO discipline of the stack is what produces depth-first order — the most recently entered node is the next one explored.
+
+</details>
+
+**2.** When do you add a node to the visited set?
+
+<details>
+<summary>Answer</summary>
+
+At function entry, immediately. This generalizes to the gray-state in the three-color invariant from Lecture 3.
+
+</details>
+
+**3.** What is the time and space complexity, with defense sentence?
+
+<details>
+<summary>Answer</summary>
+
+`O(V + E)` time because every node enters DFS once and every edge is examined at most twice; `O(V)` space for the visited set and recursion stack — the depth is bounded by the longest path from the source.
+
+</details>
+
+**4.** Name the two processing times and when to use each.
+
+<details>
+<summary>Answer</summary>
+
+Pre-order — process before recursion; use when the work does not depend on descendants. Post-order — process after recursion; use when the work aggregates descendants, e.g., topological sort, tree-DP.
+
+</details>
+
+**5.** Why does DFS *not* find shortest paths?
+
+<details>
+<summary>Answer</summary>
+
+The visit order is path-dependent — the first time DFS visits a node may be via a long detour. BFS is level-monotonic; DFS is not.
+
+</details>
+
+**6.** What is the cycle-detection technique for an undirected graph? For a directed graph?
+
+<details>
+<summary>Answer</summary>
+
+Undirected: DFS with a parent pointer — a back-edge to a non-parent is a cycle. Directed: DFS with the three-color invariant — a back-edge to a gray node is a cycle. Mixing the two is the most common cycle-detection bug.
+
+</details>
 
 If you can answer all six without hesitation, proceed to [Lecture 2 — Iterative DFS](./02-iterative-dfs.md).
 

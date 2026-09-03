@@ -463,13 +463,68 @@ Get in the habit. `is` for nodes, `==` for values.
 
 Without notes, answer:
 
-1. **What's a fast pointer?** (One that advances more than one node per step — almost always exactly two.)
-2. **What's the loop guard for Floyd's?** (`while fast is not None and fast.next is not None`.)
-3. **State the `2k = k + nC` lemma.** (When slow and fast first meet, slow has walked `k` steps and fast `2k`. The difference `k` is some whole number of cycle laps. Starting a third pointer at head and walking both at speed 1 will land both at the cycle entrance after `T` more steps.)
-4. **Why is Floyd's preferred over the hash-set approach?** (Same `O(n)` time, but `O(1)` space instead of `O(n)`. The space efficiency is the interview tell.)
-5. **What does the midpoint loop return for a chain of length 4?** (The third node — the "upper middle." For the lower middle, shift the guard one position forward to `fast.next and fast.next.next`, and handle the empty case before the loop because that guard dereferences.)
-6. **Why does fast/slow apply to a rule like `s → (s² + 1) % m`?** (Because it gives every state exactly one successor, which is a functional graph. Floyd's works on any functional graph, and the state being an integer rather than an object changes only the comparison operator: `==`, not `is`.)
-7. **When you have found a cycle, how do you measure it?** (Walk from the meeting point — which is guaranteed to be inside the cycle — until you return to it, counting. Take the first step *before* the first comparison, or a self-loop reports zero.)
+**1.** What's a fast pointer?
+
+<details>
+<summary>Answer</summary>
+
+One that advances more than one node per step — almost always exactly two.
+
+</details>
+
+**2.** What's the loop guard for Floyd's?
+
+<details>
+<summary>Answer</summary>
+
+`while fast is not None and fast.next is not None`.
+
+</details>
+
+**3.** State the `2k = k + nC` lemma.
+
+<details>
+<summary>Answer</summary>
+
+When slow and fast first meet, slow has walked `k` steps and fast `2k`. The difference `k` is some whole number of cycle laps. Starting a third pointer at head and walking both at speed 1 will land both at the cycle entrance after `T` more steps.
+
+</details>
+
+**4.** Why is Floyd's preferred over the hash-set approach?
+
+<details>
+<summary>Answer</summary>
+
+Same `O(n)` time, but `O(1)` space instead of `O(n)`. The space efficiency is the interview tell.
+
+</details>
+
+**5.** What does the midpoint loop return for a chain of length 4?
+
+<details>
+<summary>Answer</summary>
+
+The third node — the "upper middle." For the lower middle, shift the guard one position forward to `fast.next and fast.next.next`, and handle the empty case before the loop because that guard dereferences.
+
+</details>
+
+**6.** Why does fast/slow apply to a rule like `s → (s² + 1) % m`?
+
+<details>
+<summary>Answer</summary>
+
+Because it gives every state exactly one successor, which is a functional graph. Floyd's works on any functional graph, and the state being an integer rather than an object changes only the comparison operator: `==`, not `is`.
+
+</details>
+
+**7.** When you have found a cycle, how do you measure it?
+
+<details>
+<summary>Answer</summary>
+
+Walk from the meeting point — which is guaranteed to be inside the cycle — until you return to it, counting. Take the first step *before* the first comparison, or a self-loop reports zero.
+
+</details>
 
 If you can answer all seven without hesitation, proceed to [Lecture 2 — The Mock Interview Protocol](./02-the-mock-interview-protocol.md).
 

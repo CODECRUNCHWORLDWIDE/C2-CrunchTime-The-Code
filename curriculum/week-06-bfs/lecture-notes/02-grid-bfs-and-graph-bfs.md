@@ -541,12 +541,59 @@ That sentence is roughly 20-25 seconds spoken aloud. Practice it.
 
 Without notes, answer:
 
-1. **State the two sub-shapes of BFS and one representative problem each.** (Grid-BFS — shortest path in a binary matrix. Node-BFS — the cable pull. Both use the same algorithm with different `neighbors_fn`.)
-2. **Write the multi-source BFS seed in one line.** (`queue = deque(sources); visited = set(sources); dist = {s: 0 for s in sources}`.)
-3. **What is the complexity of multi-source BFS?** (`O(V + E)` time, same as single-source — multi-source visits each node exactly once.)
-4. **State the bidirectional BFS termination condition.** (When the smaller frontier produces a neighbor that is already in the larger frontier — the two searches have met. The combined level is the answer.)
-5. **When does bidirectional BFS apply?** (Both endpoints known; graph undirected or with cheap predecessor function; graph finite or bounded.)
-6. **When does BFS not find shortest paths?** (When edges are not unit-cost. Use Dijkstra for non-negative weights.)
+**1.** State the two sub-shapes of BFS and one representative problem each.
+
+<details>
+<summary>Answer</summary>
+
+Grid-BFS — shortest path in a binary matrix. Node-BFS — the cable pull. Both use the same algorithm with different `neighbors_fn`.
+
+</details>
+
+**2.** Write the multi-source BFS seed in one line.
+
+<details>
+<summary>Answer</summary>
+
+`queue = deque(sources); visited = set(sources); dist = {s: 0 for s in sources}`.
+
+</details>
+
+**3.** What is the complexity of multi-source BFS?
+
+<details>
+<summary>Answer</summary>
+
+`O(V + E)` time, same as single-source — multi-source visits each node exactly once.
+
+</details>
+
+**4.** State the bidirectional BFS termination condition.
+
+<details>
+<summary>Answer</summary>
+
+When the smaller frontier produces a neighbor that is already in the larger frontier — the two searches have met. The combined level is the answer.
+
+</details>
+
+**5.** When does bidirectional BFS apply?
+
+<details>
+<summary>Answer</summary>
+
+Both endpoints known; graph undirected or with cheap predecessor function; graph finite or bounded.
+
+</details>
+
+**6.** When does BFS not find shortest paths?
+
+<details>
+<summary>Answer</summary>
+
+When edges are not unit-cost. Use Dijkstra for non-negative weights.
+
+</details>
 
 If you can answer all six without hesitation, proceed to the drills.
 

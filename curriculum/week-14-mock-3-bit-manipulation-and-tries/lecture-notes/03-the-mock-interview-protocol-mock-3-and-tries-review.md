@@ -237,12 +237,59 @@ That is the bridge. Bit manipulation gives you the MSB-first bit extraction; the
 
 Without notes, answer:
 
-1. **What three constraints make Mock #3 "near-real"?** (Video on; hard 45-minute clock; no peeking at anything.)
-2. **What is the two-pass watching protocol?** (Pass 1: full recording at 1.5× with timestamps. Pass 2: only flagged segments at 1.0× with prescriptions.)
-3. **What section does the Mock #3 self-feedback add that Mocks #1 and #2 did not?** (The trajectory across Mock #1 → #2 → #3 — did you make the prior behavior changes?)
-4. **Name three of the six anti-patterns.** (Silent coding; skipping Research constraints; coding without assessing options; not tracing in Examine (verify); skipping Examine (cost); defending broken code.)
-5. **Why is a binary trie inserted MSB-first?** (The high bits dominate the XOR magnitude; the greedy walk must commit high bits before low ones to maximize the result.)
-6. **What is the greedy rule when walking the binary trie for the pairing register?** (At each bit, prefer the child for the *opposite* bit — it contributes a 1 to that position of the XOR — falling back to the same-bit child if the opposite is absent.)
+**1.** What three constraints make Mock #3 "near-real"?
+
+<details>
+<summary>Answer</summary>
+
+Video on; hard 45-minute clock; no peeking at anything.
+
+</details>
+
+**2.** What is the two-pass watching protocol?
+
+<details>
+<summary>Answer</summary>
+
+Pass 1: full recording at 1.5× with timestamps. Pass 2: only flagged segments at 1.0× with prescriptions.
+
+</details>
+
+**3.** What section does the Mock #3 self-feedback add that Mocks #1 and #2 did not?
+
+<details>
+<summary>Answer</summary>
+
+The trajectory across Mock #1 → #2 → #3 — did you make the prior behavior changes?
+
+</details>
+
+**4.** Name three of the six anti-patterns.
+
+<details>
+<summary>Answer</summary>
+
+Silent coding; skipping Research constraints; coding without assessing options; not tracing in Examine (verify); skipping Examine (cost); defending broken code.
+
+</details>
+
+**5.** Why is a binary trie inserted MSB-first?
+
+<details>
+<summary>Answer</summary>
+
+The high bits dominate the XOR magnitude; the greedy walk must commit high bits before low ones to maximize the result.
+
+</details>
+
+**6.** What is the greedy rule when walking the binary trie for the pairing register?
+
+<details>
+<summary>Answer</summary>
+
+At each bit, prefer the child for the *opposite* bit — it contributes a 1 to that position of the XOR — falling back to the same-bit child if the opposite is absent.
+
+</details>
 
 If you can answer all six, you are ready to run Mock #3 and to build the binary trie from memory. Set the rig up Thursday; run the mock Friday; watch Saturday; write the self-feedback Sunday.
 

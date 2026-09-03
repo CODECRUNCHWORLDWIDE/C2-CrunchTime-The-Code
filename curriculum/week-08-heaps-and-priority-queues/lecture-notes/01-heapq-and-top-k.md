@@ -410,12 +410,59 @@ Recognizing the *negative space* of the pattern matters as much as the positive 
 
 Without notes, answer:
 
-1. **What is the heap invariant?** (For a min-heap: `h[i] <= h[2i+1]` and `h[i] <= h[2i+2]` whenever the children exist. Equivalently, every parent is `<=` its children. The root is the global minimum.)
-2. **What is the time complexity of `heappush`, `heappop`, and `heapify`?** (`heappush`: `O(log n)`. `heappop`: `O(log n)`. `heapify`: `O(n)` by Floyd's bottom-up argument — not `O(n log n)`.)
-3. **Why is `heappushpop` cheaper than `heappush` followed by `heappop`?** (One heap pass instead of two. The fused operation pushes the new element only if it would not immediately be popped — saving a sift-up that would be undone by the subsequent sift-down.)
-4. **What is the top-k template's complexity, and why?** (`O(n log k)`. The heap is bounded at size `k`; each of `n` elements does at most `O(log k)` work.)
-5. **When does `O(n log k)` lose its advantage over `O(n log n)`?** (When `k` is close to `n`. At `k = n/2` the two are roughly tied. At `k = n` sorting is simpler. The heap shines when `k << n`.)
-6. **How do you simulate a max-heap with `heapq`?** (Negate keys on push, negate again on pop. Or wrap items in a class with `__lt__` reversed. The negation is more idiomatic in Python.)
+**1.** What is the heap invariant?
+
+<details>
+<summary>Answer</summary>
+
+For a min-heap: `h[i] <= h[2i+1]` and `h[i] <= h[2i+2]` whenever the children exist. Equivalently, every parent is `<=` its children. The root is the global minimum.
+
+</details>
+
+**2.** What is the time complexity of `heappush`, `heappop`, and `heapify`?
+
+<details>
+<summary>Answer</summary>
+
+`heappush`: `O(log n)`. `heappop`: `O(log n)`. `heapify`: `O(n)` by Floyd's bottom-up argument — not `O(n log n)`.
+
+</details>
+
+**3.** Why is `heappushpop` cheaper than `heappush` followed by `heappop`?
+
+<details>
+<summary>Answer</summary>
+
+One heap pass instead of two. The fused operation pushes the new element only if it would not immediately be popped — saving a sift-up that would be undone by the subsequent sift-down.
+
+</details>
+
+**4.** What is the top-k template's complexity, and why?
+
+<details>
+<summary>Answer</summary>
+
+`O(n log k)`. The heap is bounded at size `k`; each of `n` elements does at most `O(log k)` work.
+
+</details>
+
+**5.** When does `O(n log k)` lose its advantage over `O(n log n)`?
+
+<details>
+<summary>Answer</summary>
+
+When `k` is close to `n`. At `k = n/2` the two are roughly tied. At `k = n` sorting is simpler. The heap shines when `k << n`.
+
+</details>
+
+**6.** How do you simulate a max-heap with `heapq`?
+
+<details>
+<summary>Answer</summary>
+
+Negate keys on push, negate again on pop. Or wrap items in a class with `__lt__` reversed. The negation is more idiomatic in Python.
+
+</details>
 
 If you can answer all six without hesitation, proceed to [Lecture 2 — Heap of Tuples and k-Closest](./02-heap-of-tuples-and-k-closest.md).
 

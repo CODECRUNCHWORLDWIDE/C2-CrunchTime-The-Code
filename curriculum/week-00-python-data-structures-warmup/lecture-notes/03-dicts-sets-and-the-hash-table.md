@@ -283,16 +283,95 @@ That is what a complete Examine looks like. It states both complexities, names t
 
 ## 10. Check yourself
 
-1. Why is dict lookup `O(1)` average and `O(n)` worst? Say both sentences.
-2. When did insertion order become a *guarantee*, and may you rely on it?
-3. `d.get(k, []).append(x)` — what does it do, and why is it a bug?
-4. `defaultdict(int)` — how can merely reading a key change `len(d)`?
-5. `counts.most_common(k)` — `O(n log k)` or `O(n log n)`? Why?
-6. `Counter(a) == Counter(b)` vs `sorted(a) == sorted(b)` for anagrams — costs, and when you must use the second.
-7. Why is `s & t` cheaper than `s | t`?
-8. `hash((1, [2]))` raises. The tuple is immutable. Explain precisely.
-9. Rewrite `[x for x in a if x in b]` to be linear, and state the trade in one sentence.
-10. Name the three hash-map shapes and the space each one costs.
+**1.** Why is dict lookup `O(1)` average and `O(n)` worst? Say both sentences.
+
+<details>
+<summary>Answer</summary>
+
+"`O(1)` average. Worst case `O(n)` if every key collides, which requires adversarial input or a pathological hash — not a concern here." Both halves, in that order: the average is the honest working answer, and naming the worst case unprompted is what shows you know why it is only average.
+
+</details>
+
+**2.** When did insertion order become a *guarantee*, and may you rely on it?
+
+<details>
+<summary>Answer</summary>
+
+Python **3.7**. CPython 3.6 had it as an implementation accident, and 3.7 made it a language guarantee — so yes, you may rely on it, and you may say so in an interview without hedging.
+
+</details>
+
+**3.** `d.get(k, []).append(x)` — what does it do, and why is it a bug?
+
+<details>
+<summary>Answer</summary>
+
+It appends `x` to a brand-new list that nothing holds a reference to, then throws that list away. `d` is never modified, and no error is raised, so the bug is silent. `.get` **returns** a default; it does not store one. Use `d.setdefault(k, []).append(x)`, or a `defaultdict(list)`.
+
+</details>
+
+**4.** `defaultdict(int)` — how can merely reading a key change `len(d)`?
+
+<details>
+<summary>Answer</summary>
+
+Reading a missing key on a `defaultdict` **inserts** it. `d[k]` calls the factory, stores the result, and returns it — so `if d[k] == 0:` on an absent key grows the dict. That is the one real trap in `defaultdict`: use `k in d` or `d.get(k, 0)` when you only mean to look.
+
+</details>
+
+**5.** `counts.most_common(k)` — `O(n log k)` or `O(n log n)`? Why?
+
+<details>
+<summary>Answer</summary>
+
+`O(n log k)`. It keeps a heap of size `k` while scanning all `n` counts, rather than sorting everything — the win is real when `k << n`. With **no** argument, `most_common()` sorts the lot and is `O(n log n)`.
+
+</details>
+
+**6.** `Counter(a) == Counter(b)` vs `sorted(a) == sorted(b)` for anagrams — costs, and when you must use the second.
+
+<details>
+<summary>Answer</summary>
+
+`Counter(a) == Counter(b)` is `O(n)`: build two frequency tables in one pass each, then compare. `sorted(a) == sorted(b)` is `O(n log n)`. The counter is the better answer for the anagram question — but you must fall back to sorting when the elements are not hashable, since a `Counter` needs to hash its keys.
+
+</details>
+
+**7.** Why is `s & t` cheaper than `s | t`?
+
+<details>
+<summary>Answer</summary>
+
+Intersection iterates the **smaller** set and probes the larger, so it is `O(min(len(s), len(t)))`. Union has to touch every element of both to produce its result: `O(len(s) + len(t))`. The asymmetry is worth remembering because it makes the order of a chain of set operations matter.
+
+</details>
+
+**8.** `hash((1, [2]))` raises. The tuple is immutable. Explain precisely.
+
+<details>
+<summary>Answer</summary>
+
+Hashable means immutable **all the way down**. The tuple is immutable at the top level, but hashing it hashes each element in turn, and the inner list is unhashable — so the hash of the tuple cannot be computed. It is the precise reason a list can never be a dict key or a set member.
+
+</details>
+
+**9.** Rewrite `[x for x in a if x in b]` to be linear, and state the trade in one sentence.
+
+<details>
+<summary>Answer</summary>
+
+`b_set = set(b)` then `[x for x in a if x in b_set]`. The trade: membership on a list is `O(n)`, making the original `O(n·m)`; building the set costs `O(m)` time and `O(m)` space once, after which each test is `O(1)` average — so the whole thing becomes `O(n + m)` time for `O(m)` space. Naming the space you spent is the half that scores.
+
+</details>
+
+**10.** Name the three hash-map shapes and the space each one costs.
+
+<details>
+<summary>Answer</summary>
+
+Complement lookup — a dict from value to position, `O(n)` space. Frequency / counting — a dict from value to count, `O(k)` space for `k` distinct values, which is `O(n)` in the worst case and much less when the alphabet is small. Set membership — a set of what you have seen, `O(n)` space. All three buy a linear pass with linear memory, and the memory is the part to say out loud.
+
+</details>
 
 ---
 

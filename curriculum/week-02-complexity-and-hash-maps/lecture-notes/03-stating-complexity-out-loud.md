@@ -227,12 +227,59 @@ You don't need to *solve* the harder problem in the interview — you need to *g
 
 You should be able to do all of these without notes.
 
-1. **Recite the five-piece Examine (cost) structure.** (Time; space; best/average/worst if relevant; tradeoffs; improvement.)
-2. **State the time complexity of the Refund Pair drill** in the *standard sentence form.* ("Each iteration is O(1) average on the hash map; n iterations → O(n) time.")
-3. **Defend hash map over sort-then-two-pointer** on unsorted input where indices matter. (Sorting scrambles indices; we need them; hash map preserves them in O(n).)
-4. **What's the standard phrasing for "O(n) is optimal for this problem"?** ("No improvement obvious; we're at the lower bound for any algorithm that must read the entire input.")
-5. **Reframe the hedge-y answer "I think it's O(n log n)?"** into a confident reasoning chain. (e.g., "Let me reason: outer loop n times, inner sort log n — that's n log n; confident.")
-6. **What two questions do you ask to decide hash-map versus two-pointer?** (Is the input sorted? Do indices matter?)
+**1.** Recite the five-piece Examine (cost) structure.
+
+<details>
+<summary>Answer</summary>
+
+Time; space; best/average/worst if relevant; tradeoffs; improvement.
+
+</details>
+
+**2.** **State the time complexity of the Refund Pair drill** in the *standard sentence form.*
+
+<details>
+<summary>Answer</summary>
+
+"Each iteration is O(1) average on the hash map; n iterations → O(n) time."
+
+</details>
+
+**3.** **Defend hash map over sort-then-two-pointer** on unsorted input where indices matter.
+
+<details>
+<summary>Answer</summary>
+
+Sorting scrambles indices; we need them; hash map preserves them in O(n).
+
+</details>
+
+**4.** What's the standard phrasing for "O(n) is optimal for this problem"?
+
+<details>
+<summary>Answer</summary>
+
+"No improvement obvious; we're at the lower bound for any algorithm that must read the entire input."
+
+</details>
+
+**5.** **Reframe the hedge-y answer "I think it's O(n log n)?"** into a confident reasoning chain.
+
+<details>
+<summary>Answer</summary>
+
+e.g., "Let me reason: outer loop n times, inner sort log n — that's n log n; confident."
+
+</details>
+
+**6.** What two questions do you ask to decide hash-map versus two-pointer?
+
+<details>
+<summary>Answer</summary>
+
+Is the input sorted? Do indices matter?
+
+</details>
 
 If you can answer all six without hesitation, your Examine (cost) discipline is Week-2-ready.
 

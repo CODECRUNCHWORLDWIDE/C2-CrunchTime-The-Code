@@ -235,11 +235,50 @@ Net: **strong hire.** Same code; different outcome.
 
 You should be able to answer all of these without looking back:
 
-1. What are the four dimensions an interviewer is grading?
-2. Why is "silently solving the problem correctly" often not enough?
-3. Why is it bad to have a memorized solution to a problem the interviewer asks?
-4. Name three concrete habits that map to the *Communication* dimension.
-5. Reframe the interviewer in non-adversarial terms — what role are they playing?
+**1.** What are the four dimensions an interviewer is grading?
+
+<details>
+<summary>Answer</summary>
+
+Problem-solving (~30%), coding (~30%), communication (~25%) and engineering judgment (~15%). Exact weights move with the company and the level — senior loops shift toward communication and judgment, junior loops toward coding and problem-solving — but the four dimensions stay.
+
+</details>
+
+**2.** Why is "silently solving the problem correctly" often not enough?
+
+<details>
+<summary>Answer</summary>
+
+Because three of the four dimensions are graded on what the interviewer can *observe*. Silent work forfeits communication outright, and it leaves judgment unevidenced: nobody saw you weigh the hash map against the list, or reason about the bound, so nothing gets scored for it. The corollary is the encouraging half — a candidate whose code does not finish can still pass on the strength of the approach they narrated, the names they chose and the bug they caught themselves.
+
+</details>
+
+**3.** Why is it bad to have a memorized solution to a problem the interviewer asks?
+
+<details>
+<summary>Answer</summary>
+
+Because it removes the very thing being measured. The rubric grades *how you arrive*, and a recalled answer has no arrival to grade — the structured reasoning, the constraints, the comparison of options never happen out loud. It also fails badly under pressure: an interviewer who varies one condition leaves you with a memorized shape that no longer fits and no method for adapting it. Recognizing a problem you have seen is fine; say so and then reason it through anyway.
+
+</details>
+
+**4.** Name three concrete habits that map to the *Communication* dimension.
+
+<details>
+<summary>Answer</summary>
+
+Narrating every action, with no silent stretch longer than about ten seconds. Stating assumptions out loud rather than adopting them quietly — "I am assuming the input is non-empty; is that fair?". And taking a hint gracefully: acknowledge it, say what it changes, and fold it in rather than defending the previous plan.
+
+</details>
+
+**5.** Reframe the interviewer in non-adversarial terms — what role are they playing?
+
+<details>
+<summary>Answer</summary>
+
+They are the most senior colleague you have ever had, helping you scope a small project in forty-five minutes — not an examiner hunting for a reason to fail you. Factually, they are usually the engineer you would actually work with, and a strong candidate failing means more interviews for them. Tactically it matters more: the adversarial frame is what stops candidates asking clarifying questions, asking for hints, or pushing back on a hint they think is wrong — all three of which score.
+
+</details>
 
 If those are clear, move on to Lecture 2.
 

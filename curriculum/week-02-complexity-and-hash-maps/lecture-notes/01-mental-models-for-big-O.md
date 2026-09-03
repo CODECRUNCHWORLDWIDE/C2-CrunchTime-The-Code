@@ -379,13 +379,79 @@ That table is the engineering judgment table. When the interviewer says "can you
 
 You should be able to do all of these without notes.
 
-1. **Recite the six common complexity classes**, smallest to largest.
-2. **State the n-vs-runtime table** for n = 10, 100, 1,000, 10⁶ for each class.
-3. **Given a constraint `n ≤ 10⁵`, what classes are acceptable?** (O(n log n) yes; O(n²) borderline / depends on constant factor; O(2ⁿ) absolutely not.)
-4. **What is the time/space complexity of `dict[k] = v`?** ("O(1) amortized average; O(n) worst-case if every key collides into one chain.")
-5. **Why is `list.append` O(1) amortized?** (Resize is rare and the cost is spread over n appends.)
-6. **You're shown code with two nested loops over `arr` of length `n` and an `arr.sort()` at the top — what's the class?** (O(n log n) + O(n²) = O(n²).)
-7. **Why is space complexity worth stating separately?** (Time / space tradeoff is half the interview; saying only time is half the answer.)
+**1.** **Recite the six common complexity classes**, smallest to largest.
+
+<details>
+<summary>Answer</summary>
+
+`O(1)`, `O(log n)`, `O(n)`, `O(n log n)`, `O(n²)`, `O(2ⁿ)`.
+
+</details>
+
+**2.** **State the n-vs-runtime table** for n = 10, 100, 1,000, 10⁶ for each class.
+
+<details>
+<summary>Answer</summary>
+
+The table from §2, which is the one worth carrying in your head:
+
+| Class | n = 10 | n = 100 | n = 1,000 | n = 1,000,000 |
+|-------------|-------|--------|--------------|-------------------|
+| `O(1)`      | 1     | 1      | 1            | 1                 |
+| `O(log n)`  | ~3    | ~7     | ~10          | ~20               |
+| `O(n)`      | 10    | 100    | 1,000        | 1,000,000         |
+| `O(n log n)`| ~33   | ~664   | ~10,000      | ~20,000,000       |
+| `O(n²)`     | 100   | 10,000 | 1,000,000    | 10¹²              |
+| `O(2ⁿ)`     | 1,024 | huge   | astronomical | beyond cosmology  |
+
+The row that decides interviews is `O(n²)` at a million: 10¹² operations is not slow, it is *never finishing*. That is the gap between a quadratic answer and a linear one, and being able to say the number is what makes the trade concrete rather than a preference.
+
+</details>
+
+**3.** Given a constraint `n ≤ 10⁵`, what classes are acceptable?
+
+<details>
+<summary>Answer</summary>
+
+O(n log n) yes; O(n²) borderline / depends on constant factor; O(2ⁿ) absolutely not.
+
+</details>
+
+**4.** What is the time/space complexity of `dict[k] = v`?
+
+<details>
+<summary>Answer</summary>
+
+"O(1) amortized average; O(n) worst-case if every key collides into one chain."
+
+</details>
+
+**5.** Why is `list.append` O(1) amortized?
+
+<details>
+<summary>Answer</summary>
+
+Resize is rare and the cost is spread over n appends.
+
+</details>
+
+**6.** You're shown code with two nested loops over `arr` of length `n` and an `arr.sort()` at the top — what's the class?
+
+<details>
+<summary>Answer</summary>
+
+O(n log n) + O(n²) = O(n²).
+
+</details>
+
+**7.** Why is space complexity worth stating separately?
+
+<details>
+<summary>Answer</summary>
+
+Time / space tradeoff is half the interview; saying only time is half the answer.
+
+</details>
 
 If you can answer all seven without hesitation, proceed to [Lecture 2 — The Hash Map Pattern](./02-the-hash-map-pattern.md).
 

@@ -453,13 +453,68 @@ The invariant: `matched == distinct_wanted` if and only if every required item i
 
 Without notes, answer:
 
-1. **What's the four-piece anatomy of a variable-size sliding-window loop?** (Add, shrink-condition, record — in either shape A's or shape B's order.)
-2. **What's the difference between shape A and shape B?** (Shape A shrinks while invariant broken, records after; shape B shrinks while property holds, records inside.)
-3. **Why is sliding window O(n) and not O(n²) despite the nested for/while?** (Amortized argument: each index advances at most n times in total across the whole algorithm.)
-4. **What's the canonical bug in shape A's shrink loop?** (Forgetting to remove the element at `left` before advancing, leaving stale state.)
-5. **Why does the sliding-window approach to "subarray sum at least K" require positive numbers?** (Shrinking from the left must monotonically decrease the sum; negatives break that monotonicity.)
-6. **Trace the at-most-2-distinct window over the glaze log `["ash", "iron", "iron", "ash", "cobalt", "iron", "iron"]`.** (Longest valid run is indices 0–3, `ash iron iron ash`, length 4. Adding `cobalt` at index 4 forces the shrink; the run 4–6 that follows is only length 3. Answer: 4.)
-7. **What's the auxiliary state for Challenge 1, The Shortest Kit Span?** (A `Counter` of the bill's frequencies, a `dict` of the window's frequencies, and two integers: how many distinct part codes the bill needs, and how many are currently matched.)
+**1.** What's the four-piece anatomy of a variable-size sliding-window loop?
+
+<details>
+<summary>Answer</summary>
+
+Add, shrink-condition, record — in either shape A's or shape B's order.
+
+</details>
+
+**2.** What's the difference between shape A and shape B?
+
+<details>
+<summary>Answer</summary>
+
+Shape A shrinks while invariant broken, records after; shape B shrinks while property holds, records inside.
+
+</details>
+
+**3.** Why is sliding window O(n) and not O(n²) despite the nested for/while?
+
+<details>
+<summary>Answer</summary>
+
+Amortized argument: each index advances at most n times in total across the whole algorithm.
+
+</details>
+
+**4.** What's the canonical bug in shape A's shrink loop?
+
+<details>
+<summary>Answer</summary>
+
+Forgetting to remove the element at `left` before advancing, leaving stale state.
+
+</details>
+
+**5.** Why does the sliding-window approach to "subarray sum at least K" require positive numbers?
+
+<details>
+<summary>Answer</summary>
+
+Shrinking from the left must monotonically decrease the sum; negatives break that monotonicity.
+
+</details>
+
+**6.** Trace the at-most-2-distinct window over the glaze log `["ash", "iron", "iron", "ash", "cobalt", "iron", "iron"]`.
+
+<details>
+<summary>Answer</summary>
+
+Longest valid run is indices 0–3, `ash iron iron ash`, length 4. Adding `cobalt` at index 4 forces the shrink; the run 4–6 that follows is only length 3. Answer: 4.
+
+</details>
+
+**7.** What's the auxiliary state for Challenge 1, The Shortest Kit Span?
+
+<details>
+<summary>Answer</summary>
+
+A `Counter` of the bill's frequencies, a `dict` of the window's frequencies, and two integers: how many distinct part codes the bill needs, and how many are currently matched.
+
+</details>
 
 If you can answer all seven, proceed to the [exercises](../exercises/README.md). If you can't, re-read sections 3–7 before starting Exercise 1.
 

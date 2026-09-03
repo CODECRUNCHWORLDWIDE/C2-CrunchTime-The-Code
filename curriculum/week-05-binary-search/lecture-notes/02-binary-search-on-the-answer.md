@@ -504,12 +504,59 @@ That paragraph is about 25 seconds spoken aloud. Practice it until it comes out 
 
 Without notes, answer:
 
-1. **What are the two preconditions for binary search on the answer?** (Bounded integer answer space and a monotone predicate.)
-2. **State the canonical template for "find smallest k with `feasible(k) = True`."** (Half-open: `lo, hi = ...; while lo < hi: mid = lo + (hi-lo)//2; if feasible(mid): hi = mid else: lo = mid + 1; return lo`.)
-3. **How do you choose `hi`?** (Pick a value such that `feasible(hi)` is True by construction — the trivial upper bound. Pick `lo` as the smallest meaningful answer.)
-4. **What is the total complexity of parametric search?** (`O(P · log M)` where `P` is the predicate cost and `M` is the answer-space width.)
-5. **State the monotonicity claim for the paving problem.** (A larger reach never increases the nights required for any one section; therefore the total is non-increasing in `w`; therefore the predicate `total <= nights` flips from False to True at most once across `[1, max(sections)]`.)
-6. **When does parametric search not apply?** (When the predicate is not monotone, or when the answer space has no integer bounds, or when there is no `feasible` you can compute polynomially.)
+**1.** What are the two preconditions for binary search on the answer?
+
+<details>
+<summary>Answer</summary>
+
+Bounded integer answer space and a monotone predicate.
+
+</details>
+
+**2.** State the canonical template for "find smallest k with `feasible(k) = True`."
+
+<details>
+<summary>Answer</summary>
+
+Half-open: `lo, hi = ...; while lo < hi: mid = lo + (hi-lo)//2; if feasible(mid): hi = mid else: lo = mid + 1; return lo`.
+
+</details>
+
+**3.** How do you choose `hi`?
+
+<details>
+<summary>Answer</summary>
+
+Pick a value such that `feasible(hi)` is True by construction — the trivial upper bound. Pick `lo` as the smallest meaningful answer.
+
+</details>
+
+**4.** What is the total complexity of parametric search?
+
+<details>
+<summary>Answer</summary>
+
+`O(P · log M)` where `P` is the predicate cost and `M` is the answer-space width.
+
+</details>
+
+**5.** State the monotonicity claim for the paving problem.
+
+<details>
+<summary>Answer</summary>
+
+A larger reach never increases the nights required for any one section; therefore the total is non-increasing in `w`; therefore the predicate `total <= nights` flips from False to True at most once across `[1, max(sections)]`.
+
+</details>
+
+**6.** When does parametric search not apply?
+
+<details>
+<summary>Answer</summary>
+
+When the predicate is not monotone, or when the answer space has no integer bounds, or when there is no `feasible` you can compute polynomially.
+
+</details>
 
 If you can answer all six without hesitation, proceed to the drills.
 

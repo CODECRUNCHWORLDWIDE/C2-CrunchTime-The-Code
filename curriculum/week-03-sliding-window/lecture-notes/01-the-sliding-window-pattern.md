@@ -426,12 +426,59 @@ That is FRAME on a textbook sliding-window problem, end to end, in about ten min
 
 Without notes, answer:
 
-1. **What's a window?** (A contiguous slice `s[left..right]` of the input.)
-2. **What's the difference between sliding window and two-pointer converging?** (Sliding window's indices move only forward and define a contiguous region; two-pointer converging may move either direction and doesn't necessarily define a region.)
-3. **For each sub-shape (fixed / variable), name a problem from this week and its time complexity.** (Fixed: the wettest `k` consecutive hours, `O(n)`. Variable: the longest clean badge stretch, `O(n)`.)
-4. **State the amortized O(n) argument.** (Each index moves at most n times total; the nested `for/while` does at most 2n iterations summed across the algorithm.)
-5. **When does sliding window not fit?** (Negative numbers + "sum at most K"; non-contiguous subsequences; "window over a graph" — those are BFS/DFS.)
-6. **What's the auxiliary state for "the longest run with at most K distinct values"?** (A frequency table — `Counter` or `defaultdict(int)` — with keys deleted the moment their count reaches zero.)
+**1.** What's a window?
+
+<details>
+<summary>Answer</summary>
+
+A contiguous slice `s[left..right]` of the input.
+
+</details>
+
+**2.** What's the difference between sliding window and two-pointer converging?
+
+<details>
+<summary>Answer</summary>
+
+Sliding window's indices move only forward and define a contiguous region; two-pointer converging may move either direction and doesn't necessarily define a region.
+
+</details>
+
+**3.** For each sub-shape (fixed / variable), name a problem from this week and its time complexity.
+
+<details>
+<summary>Answer</summary>
+
+Fixed: the wettest `k` consecutive hours, `O(n)`. Variable: the longest clean badge stretch, `O(n)`.
+
+</details>
+
+**4.** State the amortized O(n) argument.
+
+<details>
+<summary>Answer</summary>
+
+Each index moves at most n times total; the nested `for/while` does at most 2n iterations summed across the algorithm.
+
+</details>
+
+**5.** When does sliding window not fit?
+
+<details>
+<summary>Answer</summary>
+
+Negative numbers + "sum at most K"; non-contiguous subsequences; "window over a graph" — those are BFS/DFS.
+
+</details>
+
+**6.** What's the auxiliary state for "the longest run with at most K distinct values"?
+
+<details>
+<summary>Answer</summary>
+
+A frequency table — `Counter` or `defaultdict(int)` — with keys deleted the moment their count reaches zero.
+
+</details>
 
 If you can answer all six without hesitation, proceed to [Lecture 2 — The Shrinking and Growing Mechanics](./02-the-shrinking-and-growing-mechanics.md).
 

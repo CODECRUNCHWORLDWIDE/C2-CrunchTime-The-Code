@@ -498,12 +498,59 @@ Memorize all six. They are the spoken outputs of the Research constraints step.
 
 Without notes, answer:
 
-1. **Why does the two-heap median template use a *max*-heap for the lower half?** (To peek the maximum of the lower half in `O(1)`; combined with the min-heap of the upper half's `O(1)` minimum peek, the median is `O(1)` to compute.)
-2. **What is the two-heap rebalance discipline?** (After pushing to `lower`, move `lower`'s max to `upper`. If `upper`'s size now exceeds `lower`'s, move one back. Convention: when sizes differ, `lower` is the larger heap.)
-3. **What is the time complexity of k-way merge, and why?** (`O(N log k)` where `N` is the total element count. The heap holds at most `k` elements at any time; each `heappush` and `heappop` is `O(log k)`; there are `N` total emissions.)
-4. **Why is `O(N log k)` better than `O(N log N)` for k-way merge?** (We only need to maintain partial order over `k` candidates at a time, not `N`. The heap's height is `log k`, not `log N`. For `k << N`, the saving is meaningful.)
-5. **What is lazy deletion's amortized complexity, and why?** (Amortized `O(log n)` per operation. Each element is pushed at most once and popped at most twice (once for real, once when the cleanup loop discards a stale entry). The amortized work per element is constant in terms of heap-operation count.)
-6. **When is lazy deletion the wrong choice?** (When stale entries accumulate faster than they are popped — for example, in a long-running heap where `remove` is called much more often than `pop`. The heap can grow unbounded with stale entries. The fix is periodic compaction (rebuild the heap) or an indexed-heap with eager removal.)
+**1.** Why does the two-heap median template use a *max*-heap for the lower half?
+
+<details>
+<summary>Answer</summary>
+
+To peek the maximum of the lower half in `O(1)`; combined with the min-heap of the upper half's `O(1)` minimum peek, the median is `O(1)` to compute.
+
+</details>
+
+**2.** What is the two-heap rebalance discipline?
+
+<details>
+<summary>Answer</summary>
+
+After pushing to `lower`, move `lower`'s max to `upper`. If `upper`'s size now exceeds `lower`'s, move one back. Convention: when sizes differ, `lower` is the larger heap.
+
+</details>
+
+**3.** What is the time complexity of k-way merge, and why?
+
+<details>
+<summary>Answer</summary>
+
+`O(N log k)` where `N` is the total element count. The heap holds at most `k` elements at any time; each `heappush` and `heappop` is `O(log k)`; there are `N` total emissions.
+
+</details>
+
+**4.** Why is `O(N log k)` better than `O(N log N)` for k-way merge?
+
+<details>
+<summary>Answer</summary>
+
+We only need to maintain partial order over `k` candidates at a time, not `N`. The heap's height is `log k`, not `log N`. For `k << N`, the saving is meaningful.
+
+</details>
+
+**5.** What is lazy deletion's amortized complexity, and why?
+
+<details>
+<summary>Answer</summary>
+
+Amortized `O(log n)` per operation. Each element is pushed at most once and popped at most twice (once for real, once when the cleanup loop discards a stale entry). The amortized work per element is constant in terms of heap-operation count.
+
+</details>
+
+**6.** When is lazy deletion the wrong choice?
+
+<details>
+<summary>Answer</summary>
+
+When stale entries accumulate faster than they are popped — for example, in a long-running heap where `remove` is called much more often than `pop`. The heap can grow unbounded with stale entries. The fix is periodic compaction (rebuild the heap) or an indexed-heap with eager removal.
+
+</details>
 
 If you can answer all six without hesitation, the lecture sequence is closed. Proceed to the exercises.
 

@@ -478,12 +478,59 @@ prompt mentions "k closest" / "k nearest"?
 
 Without notes, answer:
 
-1. **Why is the tiebreaker mandatory in a heap of `(priority, payload)` tuples?** (When two items share a priority, the heap falls through to comparing payloads. If payloads do not implement `__lt__`, Python raises `TypeError`. The tiebreaker is a unique, comparable slot that prevents the fall-through.)
-2. **What is the canonical tiebreaker, and why?** (A monotonically increasing integer counter. Unique (counter never repeats), comparable (`int`), and gives FIFO order among equal priorities — which is usually what the spec wants.)
-3. **What are the two ways to simulate a max-heap?** (Negate keys on push and pop; or wrap items in a class with `__lt__` reversed. Negation is more idiomatic in Python; the wrapper is more readable for complex multi-field keys.)
-4. **What is the time complexity of the k-closest-points size-k max-heap solution?** (`O(n log k)` time, `O(k)` space. n points, each does at most `O(log k)` work.)
-5. **When is `heapify + nsmallest` better than the size-k max-heap?** (When `k` is close to `n`. `heapify` is `O(n)`; `nsmallest(k)` adds `O(k log n)`. For `k = n`, total `O(n + n log n) = O(n log n)` — same as sorting. The size-k heap shines when `k << n`.)
-6. **Why do we use distance-*squared* instead of distance?** (Distance squared is monotone with distance: `d1² < d2² ⟺ d1 < d2`. Skipping `sqrt` avoids floating-point error and is faster. The priority order is identical.)
+**1.** Why is the tiebreaker mandatory in a heap of `(priority, payload)` tuples?
+
+<details>
+<summary>Answer</summary>
+
+When two items share a priority, the heap falls through to comparing payloads. If payloads do not implement `__lt__`, Python raises `TypeError`. The tiebreaker is a unique, comparable slot that prevents the fall-through.
+
+</details>
+
+**2.** What is the canonical tiebreaker, and why?
+
+<details>
+<summary>Answer</summary>
+
+A monotonically increasing integer counter. Unique (counter never repeats), comparable (`int`), and gives FIFO order among equal priorities — which is usually what the spec wants.
+
+</details>
+
+**3.** What are the two ways to simulate a max-heap?
+
+<details>
+<summary>Answer</summary>
+
+Negate keys on push and pop; or wrap items in a class with `__lt__` reversed. Negation is more idiomatic in Python; the wrapper is more readable for complex multi-field keys.
+
+</details>
+
+**4.** What is the time complexity of the k-closest-points size-k max-heap solution?
+
+<details>
+<summary>Answer</summary>
+
+`O(n log k)` time, `O(k)` space. n points, each does at most `O(log k)` work.
+
+</details>
+
+**5.** When is `heapify + nsmallest` better than the size-k max-heap?
+
+<details>
+<summary>Answer</summary>
+
+When `k` is close to `n`. `heapify` is `O(n)`; `nsmallest(k)` adds `O(k log n)`. For `k = n`, total `O(n + n log n) = O(n log n)` — same as sorting. The size-k heap shines when `k << n`.
+
+</details>
+
+**6.** Why do we use distance-*squared* instead of distance?
+
+<details>
+<summary>Answer</summary>
+
+Distance squared is monotone with distance: `d1² < d2² ⟺ d1 < d2`. Skipping `sqrt` avoids floating-point error and is faster. The priority order is identical.
+
+</details>
 
 If you can answer all six without hesitation, proceed to [Lecture 3 — Two-Heap, k-Way Merge, and Lazy Deletion](./03-two-heap-and-k-way-merge.md).
 

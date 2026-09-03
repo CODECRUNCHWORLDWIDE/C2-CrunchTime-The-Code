@@ -478,12 +478,59 @@ while queue:
 
 Without notes, answer:
 
-1. **State the three-color invariant.** (White = unvisited; gray = on the current DFS path; black = finished. A node is gray if and only if it is on the current recursion stack.)
-2. **What is the cycle test in the three-color invariant?** (A directed edge from any node to a gray node is a back-edge — a cycle. A directed edge to a black node is a cross-edge — not a cycle.)
-3. **Why does reverse post-order produce a topological order?** (A node finishes after all descendants finish; reversing the finish order puts the node *before* its descendants, which respects edge direction in a DAG.)
-4. **State Kahn's algorithm in one sentence.** (Repeatedly remove a zero-in-degree node, append it to the order, and decrement the in-degrees of its outgoing neighbors; queue any neighbor that drops to zero in-degree.)
-5. **How does Kahn detect a cycle?** (By exhaustion: if the output has fewer than `V` entries after the queue empties, some nodes never reached zero in-degree because they participate in a cycle.)
-6. **When should you choose Kahn over DFS post-order?** (When `V > 1000` and recursion-limit is a risk; when you anticipate "enumerate all valid orders" as a follow-up; when the graph is streaming and edges arrive over time.)
+**1.** State the three-color invariant.
+
+<details>
+<summary>Answer</summary>
+
+White = unvisited; gray = on the current DFS path; black = finished. A node is gray if and only if it is on the current recursion stack.
+
+</details>
+
+**2.** What is the cycle test in the three-color invariant?
+
+<details>
+<summary>Answer</summary>
+
+A directed edge from any node to a gray node is a back-edge — a cycle. A directed edge to a black node is a cross-edge — not a cycle.
+
+</details>
+
+**3.** Why does reverse post-order produce a topological order?
+
+<details>
+<summary>Answer</summary>
+
+A node finishes after all descendants finish; reversing the finish order puts the node *before* its descendants, which respects edge direction in a DAG.
+
+</details>
+
+**4.** State Kahn's algorithm in one sentence.
+
+<details>
+<summary>Answer</summary>
+
+Repeatedly remove a zero-in-degree node, append it to the order, and decrement the in-degrees of its outgoing neighbors; queue any neighbor that drops to zero in-degree.
+
+</details>
+
+**5.** How does Kahn detect a cycle?
+
+<details>
+<summary>Answer</summary>
+
+By exhaustion: if the output has fewer than `V` entries after the queue empties, some nodes never reached zero in-degree because they participate in a cycle.
+
+</details>
+
+**6.** When should you choose Kahn over DFS post-order?
+
+<details>
+<summary>Answer</summary>
+
+When `V > 1000` and recursion-limit is a risk; when you anticipate "enumerate all valid orders" as a follow-up; when the graph is streaming and edges arrive over time.
+
+</details>
 
 If you can answer all six without hesitation, proceed to the [exercises](../exercises/README.md).
 

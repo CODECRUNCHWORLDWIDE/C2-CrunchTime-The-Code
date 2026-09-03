@@ -198,12 +198,59 @@ It lives at `study-plan/pre-onsite-4-weeks.md` (the four-week template) plus a `
 
 Without notes, answer:
 
-1. **What two sources feed the weakness self-diagnosis?** (Your write-up history and your four mock self-feedback notes.)
-2. **What are the three tiers of the spaced-repetition schedule, and how often is each reviewed?** (Hot/weak: every 3–4 days; warm: weekly; cold/reflexive: every 2–3 weeks.)
-3. **Roughly how many applications can one offer require?** (~50–100; the funnel converts a minority at every stage.)
-4. **Why apply continuously rather than batch-and-wait?** (Batching empties the funnel; by the time rejections return you have to rebuild momentum from zero.)
-5. **Why does the pre-onsite plan taper in the final week?** (Cramming makes you tired and anxious — worse, not better; the last week is for keeping warm, logistics, and sleep.)
-6. **What is the maintenance floor between offers?** (Three problems a week rotating the cold tier, plus one mock a month, plus keeping the portfolio living.)
+**1.** What two sources feed the weakness self-diagnosis?
+
+<details>
+<summary>Answer</summary>
+
+Your write-up history and your four mock self-feedback notes.
+
+</details>
+
+**2.** What are the three tiers of the spaced-repetition schedule, and how often is each reviewed?
+
+<details>
+<summary>Answer</summary>
+
+Hot/weak: every 3–4 days; warm: weekly; cold/reflexive: every 2–3 weeks.
+
+</details>
+
+**3.** Roughly how many applications can one offer require?
+
+<details>
+<summary>Answer</summary>
+
+~50–100; the funnel converts a minority at every stage.
+
+</details>
+
+**4.** Why apply continuously rather than batch-and-wait?
+
+<details>
+<summary>Answer</summary>
+
+Batching empties the funnel; by the time rejections return you have to rebuild momentum from zero.
+
+</details>
+
+**5.** Why does the pre-onsite plan taper in the final week?
+
+<details>
+<summary>Answer</summary>
+
+Cramming makes you tired and anxious — worse, not better; the last week is for keeping warm, logistics, and sleep.
+
+</details>
+
+**6.** What is the maintenance floor between offers?
+
+<details>
+<summary>Answer</summary>
+
+Three problems a week rotating the cold tier, plus one mock a month, plus keeping the portfolio living.
+
+</details>
 
 If you can answer all six, you can build your personalized plan. It is the homework — and the last thing you write before you go interview.
 

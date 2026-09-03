@@ -524,12 +524,59 @@ Get in the habit: write the convention name at the top of your variable initiali
 
 Without notes, answer:
 
-1. **What is the canonical loop guard for the closed-interval template?** (`while lo <= hi`.)
-2. **What is the mid formula and why is it written that way?** (`mid = lo + (hi - lo) // 2`. Equivalent to `(lo + hi) // 2` in Python but overflow-safe in C / Java / Rust; habit transfers.)
-3. **Why do you write `hi = mid - 1` in the closed convention but `hi = mid` in the half-open?** (Closed: every index in `[lo, hi]` is a candidate; we just tested `mid`, so we exclude it. Half-open: every index in `[lo, hi)` is a candidate; `hi` is exclusive, so writing `hi = mid` keeps the contract.)
-4. **For the upper-bound variant (find last), why does `mid` round up?** (To avoid `mid = lo` when `lo == hi - 1`, which combined with `lo = mid` produces an infinite loop. Rounding up forces progress.)
-5. **In a rotated sorted array, what is the discriminator at each midpoint?** (`arr[lo] <= arr[mid]` — if True, the left half is sorted; if False, the right half is.)
-6. **What is the time and space complexity, with defense sentence?** (`O(log n)` time because each iteration halves the search space; `O(1)` space — three pointers, no recursion. Defense: linear scan is `O(n)`/`O(1)`; binary search trades the same space for `O(log n)` time *if* the array is sorted.)
+**1.** What is the canonical loop guard for the closed-interval template?
+
+<details>
+<summary>Answer</summary>
+
+`while lo <= hi`.
+
+</details>
+
+**2.** What is the mid formula and why is it written that way?
+
+<details>
+<summary>Answer</summary>
+
+`mid = lo + (hi - lo) // 2`. Equivalent to `(lo + hi) // 2` in Python but overflow-safe in C / Java / Rust; habit transfers.
+
+</details>
+
+**3.** Why do you write `hi = mid - 1` in the closed convention but `hi = mid` in the half-open?
+
+<details>
+<summary>Answer</summary>
+
+Closed: every index in `[lo, hi]` is a candidate; we have just tested `mid` and ruled it out, so it must be excluded — `hi = mid - 1`. Half-open: every index in `[lo, hi)` is a candidate and `hi` is already exclusive, so `hi = mid` drops `mid` from the range while keeping the contract. Mixing the two is the classic infinite loop: `hi = mid` in the closed convention never shrinks the range when `hi == lo + 1`.
+
+</details>
+
+**4.** For the upper-bound variant (find last), why does `mid` round up?
+
+<details>
+<summary>Answer</summary>
+
+To avoid `mid = lo` when `lo == hi - 1`, which combined with `lo = mid` produces an infinite loop. Rounding up forces progress.
+
+</details>
+
+**5.** In a rotated sorted array, what is the discriminator at each midpoint?
+
+<details>
+<summary>Answer</summary>
+
+`arr[lo] <= arr[mid]` — if True, the left half is sorted; if False, the right half is.
+
+</details>
+
+**6.** What is the time and space complexity, with defense sentence?
+
+<details>
+<summary>Answer</summary>
+
+`O(log n)` time because each iteration halves the search space; `O(1)` space — three pointers, no recursion. Defense: linear scan is `O(n)`/`O(1)`; binary search trades the same space for `O(log n)` time *if* the array is sorted.
+
+</details>
 
 If you can answer all six without hesitation, proceed to [Lecture 2 — Binary Search on the Answer](./02-binary-search-on-the-answer.md).
 

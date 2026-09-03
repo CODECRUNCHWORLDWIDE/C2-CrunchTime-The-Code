@@ -532,12 +532,59 @@ That is FRAME on shortest-path-in-grid, end-to-end, in about 7 minutes. The dril
 
 Without notes, answer:
 
-1. **What data structure does BFS use, and why?** (FIFO queue. `deque.popleft()` is `O(1)`; the FIFO order guarantees nodes are processed in non-decreasing distance from the source.)
-2. **When do you add a node to the visited set?** (At enqueue time, immediately after the membership check. Adding at dequeue time silently degrades complexity to `O(V × E)`.)
-3. **What is the time and space complexity, with defense sentence?** (`O(V + E)` time because every node enters the queue once and every edge is examined at most twice; `O(V)` space for the visited set and queue. Trade against DFS: same asymptotic; BFS for shortest path on unweighted, DFS for cycle detection / topological sort.)
-4. **Name the two distance-tracking idioms and when to use each.** (Per-node distance dict — for "shortest path to a specific target." Level tracking with outer `for _ in range(len(queue))` — for "by level" outputs and early-return-at-level idioms.)
-5. **Why does BFS find shortest paths on unweighted graphs?** (Because the queue stores nodes in non-decreasing order of distance; the first visit to any node is therefore the shortest. Use the invariant from §3.)
-6. **When does BFS *not* find shortest paths?** (When edges have non-unit weights. Use Dijkstra for non-negative weights, Bellman-Ford for graphs with negative weights, 0-1 BFS for `{0, 1}`-weighted graphs.)
+**1.** What data structure does BFS use, and why?
+
+<details>
+<summary>Answer</summary>
+
+FIFO queue. `deque.popleft()` is `O(1)`; the FIFO order guarantees nodes are processed in non-decreasing distance from the source.
+
+</details>
+
+**2.** When do you add a node to the visited set?
+
+<details>
+<summary>Answer</summary>
+
+At enqueue time, immediately after the membership check. Adding at dequeue time silently degrades complexity to `O(V × E)`.
+
+</details>
+
+**3.** What is the time and space complexity, with defense sentence?
+
+<details>
+<summary>Answer</summary>
+
+`O(V + E)` time because every node enters the queue once and every edge is examined at most twice; `O(V)` space for the visited set and queue. Trade against DFS: same asymptotic; BFS for shortest path on unweighted, DFS for cycle detection / topological sort.
+
+</details>
+
+**4.** Name the two distance-tracking idioms and when to use each.
+
+<details>
+<summary>Answer</summary>
+
+Per-node distance dict — for "shortest path to a specific target." Level tracking with outer `for _ in range(len(queue))` — for "by level" outputs and early-return-at-level idioms.
+
+</details>
+
+**5.** Why does BFS find shortest paths on unweighted graphs?
+
+<details>
+<summary>Answer</summary>
+
+Because the queue stores nodes in non-decreasing order of distance; the first visit to any node is therefore the shortest. Use the invariant from §3.
+
+</details>
+
+**6.** When does BFS *not* find shortest paths?
+
+<details>
+<summary>Answer</summary>
+
+When edges have non-unit weights. Use Dijkstra for non-negative weights, Bellman-Ford for graphs with negative weights, 0-1 BFS for `{0, 1}`-weighted graphs.
+
+</details>
 
 If you can answer all six without hesitation, proceed to [Lecture 2 — Grid BFS and Graph BFS](./02-grid-bfs-and-graph-bfs.md).
 

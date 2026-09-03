@@ -304,16 +304,95 @@ The Research constraints step of FRAME is partly this table. "I need to test mem
 
 ## 11. Check yourself
 
-1. Derive amortized `O(1)` append from geometric growth. Say it in two sentences.
-2. Why is `L.pop()` `O(1)` but `L.pop(0)` `O(n)`?
-3. What does `[[0] * 3] * 2` build? Why? What do you write instead?
-4. `L[:]` on a list of lists — what is shared, what is not?
-5. You need a FIFO queue. Which container, and what happens if you pick the other one?
-6. Sort by score descending, then name ascending, in one call. Write it.
-7. You call `sorted(L)` and claim `O(1)` space. What is wrong?
-8. `[x * x for x in nums]` vs `(x * x for x in nums)` — same time, different what?
-9. Why can `(row, col)` be a set member but `[row, col]` cannot?
-10. `L.sort()` on an already-sorted list of `n` elements. What does Timsort cost?
+**1.** Derive amortized `O(1)` append from geometric growth. Say it in two sentences.
+
+<details>
+<summary>Answer</summary>
+
+A single append is `O(n)` when the backing array is full and has to be reallocated and copied. But capacity grows **geometrically**, so the resizes are geometrically spaced and their total copying cost across `n` appends sums to `O(n)` — `O(1)` each, amortized.
+
+</details>
+
+**2.** Why is `L.pop()` `O(1)` but `L.pop(0)` `O(n)`?
+
+<details>
+<summary>Answer</summary>
+
+A list is a contiguous array. `pop()` removes the last element and nothing moves. `pop(0)` removes the first, and every remaining element shifts left one slot.
+
+</details>
+
+**3.** What does `[[0] * 3] * 2` build? Why? What do you write instead?
+
+<details>
+<summary>Answer</summary>
+
+Two rows that are the **same list object**. `*` copies the pointer, not the list, so after `grid[0][0] = 9` the value is `[[9, 0, 0], [9, 0, 0]]`. Write `[[0] * 3 for _ in range(2)]`, which evaluates the inner list once per row.
+
+</details>
+
+**4.** `L[:]` on a list of lists — what is shared, what is not?
+
+<details>
+<summary>Answer</summary>
+
+The outer list is new; the inner lists are the **same objects**. Appending to the copy leaves the original alone, but mutating `copy[0]` mutates `original[0]` too — a slice is a shallow copy. `copy.deepcopy` is what makes the whole structure independent, and it costs a full traversal.
+
+</details>
+
+**5.** You need a FIFO queue. Which container, and what happens if you pick the other one?
+
+<details>
+<summary>Answer</summary>
+
+`collections.deque`, dequeuing with `popleft()` — `O(1)`. With a plain list and `pop(0)`, each dequeue shifts every remaining element, so each is `O(n)` and a full traversal becomes `O(n²)`.
+
+</details>
+
+**6.** Sort by score descending, then name ascending, in one call. Write it.
+
+<details>
+<summary>Answer</summary>
+
+`records.sort(key=lambda r: (-r.score, r.name))`. Negating reverses one numeric component of a tuple key while the rest stay ascending. (Two stable passes — secondary key first — also works, and is the answer when the descending component is a string, which cannot be negated.)
+
+</details>
+
+**7.** You call `sorted(L)` and claim `O(1)` space. What is wrong?
+
+<details>
+<summary>Answer</summary>
+
+`sorted()` returns a **new list**, so it is `O(n)` space by definition. Even in-place `L.sort()` uses `O(n)` auxiliary space in the worst case for Timsort's merge buffer. If a problem demands `O(1)` space, sorting is off the table.
+
+</details>
+
+**8.** `[x * x for x in nums]` vs `(x * x for x in nums)` — same time, different what?
+
+<details>
+<summary>Answer</summary>
+
+Space. The list comprehension materializes all `n` results at once: `O(n)`. The generator expression yields them one at a time: `O(1)`, provided the consumer does not store them.
+
+</details>
+
+**9.** Why can `(row, col)` be a set member but `[row, col]` cannot?
+
+<details>
+<summary>Answer</summary>
+
+Hashable means immutable **all the way down**. A tuple is immutable at the top level, and hashing it hashes each element in turn — which works for `(row, col)` and fails on a list, because a list is unhashable. It is the same reason a list can never be a dict key.
+
+</details>
+
+**10.** `L.sort()` on an already-sorted list of `n` elements. What does Timsort cost?
+
+<details>
+<summary>Answer</summary>
+
+`O(n)`. Timsort finds the existing ascending run in its first pass and has nothing left to merge. Best case on already-sorted or reverse-sorted input is linear; the `O(n log n)` bound is the worst case, not the cost of every call.
+
+</details>
 
 ---
 

@@ -372,14 +372,96 @@ The rule of thumb: **`set` for presence; `dict` for presence + payload.** When t
 
 Without notes, answer:
 
-1. **Name the three sub-shapes of the hash-map pattern.** (Complement lookup; frequency / counting; set membership.)
-2. **For each, name a canonical problem and its time / space complexity.**
-3. **What's the difference between when you reach for two-pointer and when you reach for a hash map?** (Sorted → two-pointer; unsorted and you need O(n) time → hash map; willing to trade O(1) space for two-pointer's lower memory.)
-4. **Why is `dict.get(k, 0)` preferable to `d[k]` when `k` may not exist?**
-5. **What's the time complexity of `for k, v in d.items()`?** (O(n).)
-6. **Trace `find_refund_pair([180, 220, 380], 600)` step by step.** (Position 0: complement 420, not seen, cache `180 → 0`. Position 1: complement 380, not seen, cache `220 → 1`. Position 2: complement 220, found at position 1, return `(1, 2)`.)
-7. **When does set membership lose to two-pointer?** (When the problem requires O(1) space *and* offers sorted input.)
-8. **Why does the frequency map in §8 add a count rather than incrementing by one?** (Several earlier prefixes can carry the same value; each closes a distinct window, so all of them land in one step. That is what keeps it linear.)
+**1.** Name the three sub-shapes of the hash-map pattern.
+
+<details>
+<summary>Answer</summary>
+
+Complement lookup; frequency / counting; set membership.
+
+</details>
+
+**2.** For each, name a canonical problem and its time / space complexity.
+
+<details>
+<summary>Answer</summary>
+
+Complement lookup — the refund pair of §4 and Exercise 1: `O(n)` time, `O(n)`
+space. Frequency / counting — the multiset-equality family of §5: `O(n)` time,
+`O(k)` space for `k` distinct values. Set membership — the first repeat of §6
+and Exercise 2: `O(n)` time, `O(n)` space in the worst case, where nothing
+repeats and every value is stored.
+
+All three are one pass, so all three are linear in time. The space is what you
+are buying that pass with, and it is the half candidates leave out.
+
+</details>
+
+**3.** What's the difference between when you reach for two-pointer and when you reach for a hash map?
+
+<details>
+<summary>Answer</summary>
+
+Sorted → two-pointer; unsorted and you need `O(n)` time → hash map; willing to
+trade `O(1)` space for two-pointer's lower memory.
+
+</details>
+
+**4.** Why is `dict.get(k, 0)` preferable to `d[k]` when `k` may not exist?
+
+<details>
+<summary>Answer</summary>
+
+`d[k]` raises `KeyError` on a key that is not there; `.get(k, 0)` returns the
+default instead, so the counting idiom
+`counts[item] = counts.get(item, 0) + 1` handles the first sighting of a value
+and every later one with the same line — no branch on whether the key exists.
+
+The default is returned, not stored. That is the half that trips people:
+`d.get(k, []).append(x)` appends to a throwaway list and leaves `d` untouched.
+When you want the default written back, use `d.setdefault(k, []).append(x)` or
+a `defaultdict(list)`, as §5 does.
+
+</details>
+
+**5.** What's the time complexity of `for k, v in d.items()`?
+
+<details>
+<summary>Answer</summary>
+
+`O(n)`.
+
+</details>
+
+**6.** Trace `find_refund_pair([180, 220, 380], 600)` step by step.
+
+<details>
+<summary>Answer</summary>
+
+Position 0: complement 420, not seen, cache `180 → 0`. Position 1: complement
+380, not seen, cache `220 → 1`. Position 2: complement 220, found at position 1,
+return `(1, 2)`.
+
+</details>
+
+**7.** When does set membership lose to two-pointer?
+
+<details>
+<summary>Answer</summary>
+
+When the problem requires `O(1)` space *and* offers sorted input.
+
+</details>
+
+**8.** Why does the frequency map in §8 add a count rather than incrementing by one?
+
+<details>
+<summary>Answer</summary>
+
+Several earlier prefixes can carry the same value; each closes a distinct
+window, so all of them land in one step. That is what keeps it linear.
+
+</details>
 
 If you can answer all eight, proceed to [Lecture 3 — Stating Complexity Out Loud](./03-stating-complexity-out-loud.md).
 

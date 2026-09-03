@@ -204,12 +204,59 @@ The audit is not glamorous, but it is the work that turns "fifty files" into "a 
 
 Without notes, answer:
 
-1. **How long does a recruiter give your repo before deciding to keep scrolling?** (About ninety seconds.)
-2. **What three questions is the recruiter answering in those ninety seconds?** (Is this person serious; can they communicate; is there proof, not just claims.)
-3. **Name the five things the README cover must do, in order.** (One-line pitch; progress dashboard; pattern × write-up index; the four mocks linked; a "start here" line.)
-4. **Why does commit history matter, and what is the anti-pattern?** (It is months of evidence of sustained, deliberate effort; the anti-pattern is committing fifty files in a single "initial commit," which says the opposite.)
-5. **Name three of the six points in the write-up quality bar.** (30-second Research-constraints memo; all five FRAME sections; code runs and is tested; complexity stated with a derivation; a variant or trade-off named; a trace on two inputs.)
-6. **What is the integrity rule for the badges?** (Only claim a badge you actually earned; the criteria are written into the JSON so the claim is verifiable.)
+**1.** How long does a recruiter give your repo before deciding to keep scrolling?
+
+<details>
+<summary>Answer</summary>
+
+About ninety seconds.
+
+</details>
+
+**2.** What three questions is the recruiter answering in those ninety seconds?
+
+<details>
+<summary>Answer</summary>
+
+Is this person serious; can they communicate; is there proof, not just claims.
+
+</details>
+
+**3.** Name the five things the README cover must do, in order.
+
+<details>
+<summary>Answer</summary>
+
+One-line pitch; progress dashboard; pattern × write-up index; the four mocks linked; a "start here" line.
+
+</details>
+
+**4.** Why does commit history matter, and what is the anti-pattern?
+
+<details>
+<summary>Answer</summary>
+
+It is months of evidence of sustained, deliberate effort; the anti-pattern is committing fifty files in a single "initial commit," which says the opposite.
+
+</details>
+
+**5.** Name three of the six points in the write-up quality bar.
+
+<details>
+<summary>Answer</summary>
+
+30-second Research-constraints memo; all five FRAME sections; code runs and is tested; complexity stated with a derivation; a variant or trade-off named; a trace on two inputs.
+
+</details>
+
+**6.** What is the integrity rule for the badges?
+
+<details>
+<summary>Answer</summary>
+
+Only claim a badge you actually earned; the criteria are written into the JSON so the claim is verifiable.
+
+</details>
 
 If you can answer all six, you can polish the portfolio to the capstone bar. Run Exercise 1 (the audit) on Monday; the polish continues across the week and finishes on Sunday's publish.
 

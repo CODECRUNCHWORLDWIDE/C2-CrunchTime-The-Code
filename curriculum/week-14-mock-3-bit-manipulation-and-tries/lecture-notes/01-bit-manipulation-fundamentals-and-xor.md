@@ -340,12 +340,59 @@ The `b = xor_all ^ a` step is the elegant finish — once you have `a` and `a ^ 
 
 Without notes, answer:
 
-1. **Write the four single-bit masks** (set / clear / toggle / test bit `i`). (`x | (1 << i)`, `x & ~(1 << i)`, `x ^ (1 << i)`, `(x >> i) & 1`.)
-2. **What does `x & -x` compute, and what does `x & (x - 1)` compute?** (Isolate the lowest set bit; clear the lowest set bit.)
-3. **State the four XOR identities.** (`a ^ a == 0`; `a ^ 0 == a`; commutative; associative.)
-4. **Why does folding an array by XOR return the unpaired element?** (Pairs cancel to 0 by self-cancellation; order/grouping irrelevant by commutativity/associativity; the survivor remains by identity.)
-5. **In the odd tally, why does isolating a differing bit work?** (`a ^ b` is 1 exactly where `a` and `b` differ; any such bit separates `a` from `b` while keeping every paired value together.)
-6. **Name three ways to count set bits and which one you say first in an interview.** (`x.bit_count()`, `bin(x).count("1")`, the Kernighan loop; say `bit_count()` first, then the Kernighan loop as the from-scratch defense.)
+**1.** **Write the four single-bit masks** (set / clear / toggle / test bit `i`).
+
+<details>
+<summary>Answer</summary>
+
+`x | (1 << i)`, `x & ~(1 << i)`, `x ^ (1 << i)`, `(x >> i) & 1`.
+
+</details>
+
+**2.** What does `x & -x` compute, and what does `x & (x - 1)` compute?
+
+<details>
+<summary>Answer</summary>
+
+Isolate the lowest set bit; clear the lowest set bit.
+
+</details>
+
+**3.** State the four XOR identities.
+
+<details>
+<summary>Answer</summary>
+
+`a ^ a == 0`; `a ^ 0 == a`; commutative; associative.
+
+</details>
+
+**4.** Why does folding an array by XOR return the unpaired element?
+
+<details>
+<summary>Answer</summary>
+
+Pairs cancel to 0 by self-cancellation; order/grouping irrelevant by commutativity/associativity; the survivor remains by identity.
+
+</details>
+
+**5.** In the odd tally, why does isolating a differing bit work?
+
+<details>
+<summary>Answer</summary>
+
+`a ^ b` is 1 exactly where `a` and `b` differ; any such bit separates `a` from `b` while keeping every paired value together.
+
+</details>
+
+**6.** Name three ways to count set bits and which one you say first in an interview.
+
+<details>
+<summary>Answer</summary>
+
+`x.bit_count()`, `bin(x).count("1")`, the Kernighan loop; say `bit_count()` first, then the Kernighan loop as the from-scratch defense.
+
+</details>
 
 If you can answer all six without hesitation, the XOR family is in your hands. The bitmask and bit-DP families are next.
 

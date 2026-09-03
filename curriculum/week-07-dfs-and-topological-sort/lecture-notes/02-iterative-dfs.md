@@ -422,12 +422,59 @@ If the input bound is unclear, ask in Frame: *"What is the maximum size of `V`?"
 
 Without notes, answer:
 
-1. **Why does iterative DFS use `list.pop()` (not `list.pop(0)`)?** (`pop()` is `O(1)` and produces LIFO order, which is DFS. `pop(0)` is `O(n)` and produces FIFO order, which would be BFS — and slow BFS at that.)
-2. **What does "push children in reverse" achieve?** (It makes iterative pre-order match the recursive pre-order visit order. Without it, children are visited right-to-left instead of left-to-right.)
-3. **Why do we need a pop-time visited check?** (Because a node can be pushed multiple times from different predecessors before any copy is popped. The push-time check alone misses these duplicates.)
-4. **Name the three iterative post-order patterns.** (Two-stack reverse; state-tag single stack; Morris traversal for binary trees.)
-5. **When should you choose iterative over recursive?** (When `V > 1000` or the graph could contain a chain longer than ~990 nodes; when you need to interrupt or serialize the traversal state.)
-6. **What is the space complexity of iterative vs recursive DFS?** (Both `O(V)`. Recursive uses the call stack; iterative uses heap-allocated stack entries. Per-entry constant is smaller for iterative.)
+**1.** Why does iterative DFS use `list.pop()` (not `list.pop(0)`)?
+
+<details>
+<summary>Answer</summary>
+
+`pop()` is `O(1)` and produces LIFO order, which is DFS. `pop(0)` is `O(n)` and produces FIFO order, which would be BFS — and slow BFS at that.
+
+</details>
+
+**2.** What does "push children in reverse" achieve?
+
+<details>
+<summary>Answer</summary>
+
+It makes iterative pre-order match the recursive pre-order visit order. Without it, children are visited right-to-left instead of left-to-right.
+
+</details>
+
+**3.** Why do we need a pop-time visited check?
+
+<details>
+<summary>Answer</summary>
+
+Because a node can be pushed multiple times from different predecessors before any copy is popped. The push-time check alone misses these duplicates.
+
+</details>
+
+**4.** Name the three iterative post-order patterns.
+
+<details>
+<summary>Answer</summary>
+
+Two-stack reverse; state-tag single stack; Morris traversal for binary trees.
+
+</details>
+
+**5.** When should you choose iterative over recursive?
+
+<details>
+<summary>Answer</summary>
+
+When `V > 1000` or the graph could contain a chain longer than ~990 nodes; when you need to interrupt or serialize the traversal state.
+
+</details>
+
+**6.** What is the space complexity of iterative vs recursive DFS?
+
+<details>
+<summary>Answer</summary>
+
+Both `O(V)`. Recursive uses the call stack; iterative uses heap-allocated stack entries. Per-entry constant is smaller for iterative.
+
+</details>
 
 If you can answer all six without hesitation, proceed to [Lecture 3 — Topological Sort](./03-topological-sort.md).
 

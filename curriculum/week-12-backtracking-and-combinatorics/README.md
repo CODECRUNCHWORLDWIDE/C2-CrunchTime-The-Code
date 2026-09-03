@@ -48,6 +48,14 @@ By the end of this week, you will be able to:
 - **Implement the sudoku solver** as a backtracking that finds the next empty cell and tries digits 1–9. State: `(board)`. Recurrence: find next empty cell; for each digit 1–9, if it does not violate row, column, or box constraints, place the digit, recurse, undo. Return True on the first successful completion.
 - **Articulate when backtracking is the only path.** Three cases: (1) the prompt asks for **all** solutions (DP cannot enumerate, only count); (2) the prompt asks for **one** valid configuration in a constraint-satisfaction problem (N-Queens, sudoku — no greedy structure, no overlapping subproblems); (3) the state space is too large for full enumeration but constraints prune aggressively (word search on a 10×10 grid). When any of the three signals fires, reach for backtracking.
 
+## Standards this week meets
+
+| Bar | What this week is measured against |
+| --- | --- |
+| University | `CS 4820` — Exhaustive search with pruning, and counting the size of a search space before entering it. |
+| Industry | Write the search a product actually needs — every legal configuration of a set of options — and cut the branches that cannot reach a legal one, so the run finishes on real input instead of hanging. |
+| Beyond the bar | The week's quiz forbids solving anything and asks only for the shape, so two of its ten prompts are answered correctly by refusing the week's own method and naming the counting recurrence instead — `quiz.md` |
+
 ---
 
 ## Prerequisites
@@ -106,17 +114,17 @@ By the end of this week, you will be able to:
 | [lecture-notes/01-the-backtracking-template-and-the-three-warmups.md](./lecture-notes/01-the-backtracking-template-and-the-three-warmups.md) | The choose-explore-unchoose template, subsets, permutations, combinations, the leaf-copy discipline |
 | [lecture-notes/02-pruning-and-deduplication-and-string-partitioning.md](./lecture-notes/02-pruning-and-deduplication-and-string-partitioning.md) | Combination sum, the four pruning families, deduplication by sorting plus index-skip, palindrome partitioning |
 | [lecture-notes/03-grid-backtracking-and-constraint-satisfaction.md](./lecture-notes/03-grid-backtracking-and-constraint-satisfaction.md) | Word search, N-Queens, sudoku solver, the backtracking-vs-DP recognition flowchart |
-| [exercises/README.md](./exercises/README.md) | Index of the three backtracking exercises and SOLUTIONS |
-| [exercises/exercise-01-subsets.py](./exercises/exercise-01-subsets.py) | — the canonical backtracking warm-up |
-| [exercises/exercise-02-permutations.py](./exercises/exercise-02-permutations.py) | — the canonical permutation backtracking |
-| [exercises/exercise-03-combination-sum.py](./exercises/exercise-03-combination-sum.py) | — backtracking with sum-based pruning |
-| [exercises/SOLUTIONS.md](./exercises/SOLUTIONS.md) | Worked solutions with FRAME narration; consult after attempting each exercise |
+| [exercises/README.md](./exercises/README.md) | Index of the four backtracking exercises |
+| [exercises/exercise-01-glaze-sample-set.md](./exercises/exercise-01-glaze-sample-set.md) | The glaze sample set — choose, explore, undo, with the recording taken at every node |
+| [exercises/exercise-02-firing-order.md](./exercises/exercise-02-firing-order.md) | The firing order — when an index is not enough, and the undo grows a second half |
+| [exercises/exercise-03-clay-weigh-out.md](./exercises/exercise-03-clay-weigh-out.md) | The clay weigh-out — two prunes, one that saves work and one that fixes the answer |
+| [exercises/exercise-04-repeat-bin-picks.md](./exercises/exercise-04-repeat-bin-picks.md) | The repeat bin picks — deduplication, and the plausible wrong fix |
 | [challenges/README.md](./challenges/README.md) | Index of weekly challenges |
-| [challenges/challenge-01-word-search.md](./challenges/challenge-01-word-search.md) | deep-dive — 2D-grid backtracking with the visited-set discipline |
-| [challenges/challenge-02-n-queens.md](./challenges/challenge-02-n-queens.md) | — N-Queens with three pruning sets |
+| [challenges/challenge-01-kiln-firing-trail.md](./challenges/challenge-01-kiln-firing-trail.md) | The kiln firing trail — grid backtracking with a visited set that has to be undone |
+| [challenges/challenge-02-drying-rack-sensors.md](./challenges/challenge-02-drying-rack-sensors.md) | The warped drying rack — constraint satisfaction with three pruning sets |
 | [quiz.md](./quiz.md) | 10 pattern-recognition questions |
 | [homework.md](./homework/README.md) | Six practice problems (~5 hrs) — three combinatorial, three constraint-satisfaction |
-| [mini-project/README.md](./mini-project/README.md) | **Palindrome partitioning + sudoku solver** — the week's deliverable |
+| [mini-project/README.md](./mini-project/README.md) | **The batch split + the glaze square** — the week's deliverable |
 
 ---
 

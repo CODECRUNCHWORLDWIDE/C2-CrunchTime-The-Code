@@ -278,7 +278,7 @@ stage up until you have finished everything under it.
 
 - **Plan sizes to expect: at most 20,000 stages and 60,000 dependencies.** That
   is the size of a real build graph, which is this same problem wearing overalls
-  — see [Homework Problem 6](../homework/problem-06-build-scheduler-memo.md).
+  — see [Homework Problem 6](../homework/README.md#problem-6--system-design-warm-up-7).
   At that size only `O(V + E)` finishes: one look at every stage and one look at
   every dependency, and then it is done. The tempting alternative — for each
   stage, walk everything below it to find out what is holding it up — is

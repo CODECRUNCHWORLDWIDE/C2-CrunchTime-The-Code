@@ -568,4 +568,4 @@ rather than a technical one is the point.
   `resolve(code)`. Then answer, in your notes: what happens when the same URL
   is shortened twice, and is that the behaviour you want?
 
-Next: [Problem 6 — Week Reflection](./problem-06-week-reflection.md).
+Next: [Problem 6 — Week 1 Reflection](./README.md#problem-6--week-1-reflection-45-min).

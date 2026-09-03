@@ -1,6 +1,6 @@
 # Challenge 1 — The Reefer Transfer Budget
 
-> Topic: shortest path under a hop constraint · Lecture: [1](../lecture-notes/01-dijkstra-and-the-weighted-frontier.md) · Difficulty: Medium-Hard · Target time: 75 minutes including the FRAME write-up · Why this one: it is the cleanest problem in the course for defending an algorithm *choice*, which is the senior signal on weighted graphs.
+> Topic: shortest path under a hop constraint · Lecture: [1](../lecture-notes/01-dijkstra-and-the-shortest-path-picker.md) · Difficulty: Medium-Hard · Target time: 75 minutes including the FRAME write-up · Why this one: it is the cleanest problem in the course for defending an algorithm *choice*, which is the senior signal on weighted graphs.
 
 ## The Brief
 

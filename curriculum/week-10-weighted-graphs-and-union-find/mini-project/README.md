@@ -695,4 +695,4 @@ The reflection is the portfolio-grade artifact. Future you will thank present yo
 
 ## After the mini-project
 
-Move on to [Week 11 — Dynamic Programming Foundations](../../week-11-dp-foundations/). The Dijkstra and DSU intuition stay with you through the rest of Phase 2; you will use them again in the W12 retrospective and (for the systems-team interviews) in Mock #3.
+Move on to [Week 11 — Dynamic Programming I](../../week-11-dynamic-programming-i/). The Dijkstra and DSU intuition stay with you through the rest of Phase 2; you will use them again in the W12 retrospective and (for the systems-team interviews) in Mock #3.

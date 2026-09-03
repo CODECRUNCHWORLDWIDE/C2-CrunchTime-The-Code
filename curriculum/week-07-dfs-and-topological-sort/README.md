@@ -74,6 +74,14 @@ By the end of this week, you will be able to:
   loops and the visited set disappears, because a tree has exactly one way in
   to every node.
 
+## Standards this week meets
+
+| Bar | What this week is measured against |
+| --- | --- |
+| University | `CS 1332` — Depth-first traversal, cycle detection, and topological ordering of a dependency graph. |
+| Industry | Say whether a plan can be run at all before anybody starts it: build the dependency graph out of what you were handed, give the order the stages may be switched on and which of them can go at once, and when the requirements are circular report the chain itself rather than a bare failure. |
+| Beyond the bar | Two homework problems ship the plausible wrong answer beside the correct one and make the learner run it — the recursive walk that raises `RecursionError` on the largest input the constraints allow, and the parent-only check that gives a broken index a clean bill of health — because neither failure announces itself — `homework/README.md` |
+
 ---
 
 ## Prerequisites

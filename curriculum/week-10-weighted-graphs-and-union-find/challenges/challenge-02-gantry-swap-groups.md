@@ -1,6 +1,6 @@
 # Challenge 2 — The Gantry Swap Groups
 
-> Topic: disjoint set union · Lecture: [2](../lecture-notes/02-union-find-and-connectivity.md) · Difficulty: Medium · Target time: 60 minutes including the FRAME write-up · Why this one: it is the problem where union-find stops being a connectivity trick and becomes a way of deciding what is *permitted*.
+> Topic: disjoint set union · Lecture: [3](../lecture-notes/03-union-find-and-the-dsu-triggers.md) · Difficulty: Medium · Target time: 60 minutes including the FRAME write-up · Why this one: it is the problem where union-find stops being a connectivity trick and becomes a way of deciding what is *permitted*.
 
 ## The Brief
 

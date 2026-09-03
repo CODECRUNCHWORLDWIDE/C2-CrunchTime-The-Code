@@ -396,7 +396,7 @@ Challenge 1 is complete when, under `mocks/mock-03/` and `frame-writeups/c2-week
 - The immediate notes, pass-1 timestamps, and self-feedback write-up are all present.
 - The self-feedback includes the trajectory section and names one behavior change for Mock #4.
 
-Then move to [Challenge 2 — the ledger adder](./challenge-02-sum-of-two-integers.md).
+Then move to [Challenge 2 — the ledger adder](./challenge-02-ledger-adder.md).
 
 ## Stretch
 

@@ -43,6 +43,16 @@ By the end of this week, you will be able to:
 
 ---
 
+## Standards this week meets
+
+| Bar | What this week is measured against |
+| --- | --- |
+| University | `COP 3530` — Heaps and priority queues, and the operations they make cheap that a sorted list does not. |
+| Industry | Run a work queue that is not first-come-first-served: order jobs by urgency with arrival order as the tiebreak, cancel a queued job without scanning the queue for it, and stitch several already-sorted intake feeds into one ledger without holding any feed whole. |
+| Beyond the bar | The k-way merge is written as a generator, so how much of the input gets read at all becomes part of the answer — the captured run stops after ten rows, reports the minute coverage was reached, and still works when one source's log never ends — `challenges/challenge-01-hut-roll-call-stitch.md` |
+
+---
+
 ## Prerequisites
 
 - **Weeks 1-7 complete.** You have shipped two DFS write-ups; you can deliver FRAME without notes on a graph-traversal problem.
@@ -147,7 +157,7 @@ If you find yourself *behind* by Wednesday, skip Exercise 3 (two-heap median) fo
 
 ## Up next
 
-[Week 9 — Mock Interview #2](../week-09-mock-interview-2/) — once your three heap write-ups are pushed, your top-k template is reflexive, and you can write the two-heap median from memory without consulting the lecture.
+[Week 9 — Tries and Advanced Strings](../week-09-tries-and-advanced-strings/) — once your three heap write-ups are pushed, your top-k template is reflexive, and you can write the two-heap median from memory without consulting the lecture.
 
 ---
 

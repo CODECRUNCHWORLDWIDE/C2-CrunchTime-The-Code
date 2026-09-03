@@ -1,6 +1,6 @@
 # Challenge 1 — The Timetable Amendment Slip
 
-> Topic: two-sequence DP with a reconstructed answer · Lecture: [3](../lecture-notes/03-two-sequence-dp-and-the-edit-family.md) · Difficulty: Medium-Hard · Target time: 75 minutes including the FRAME write-up · Why this one: the costs are unequal and the answer is a list, so neither counting edits nor keeping a running total will do.
+> Topic: two-sequence DP with a reconstructed answer · Lecture: [2](../lecture-notes/02-2d-dp-and-the-grid-and-string-shapes.md) · Difficulty: Medium-Hard · Target time: 75 minutes including the FRAME write-up · Why this one: the costs are unequal and the answer is a list, so neither counting edits nor keeping a running total will do.
 
 ## The Brief
 

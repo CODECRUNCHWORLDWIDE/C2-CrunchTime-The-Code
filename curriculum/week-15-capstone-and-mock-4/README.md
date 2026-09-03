@@ -37,6 +37,14 @@ By the end of this week, you will be able to:
 - **Produce** the personalized go-forward study plan — a spaced-repetition schedule for the fourteen patterns, an application cadence with funnel math, a four-week pre-onsite template, and a maintenance plan for the gaps between offers.
 - **Publish** the capstone — the complete public portfolio repo, pushed, README cover great, every claim provable, starred by a peer.
 
+## Standards this week meets
+
+| Bar | What this week is measured against |
+| --- | --- |
+| University | `COMPSCI 243` — A full interview loop under time pressure, and a defence of the choices made in it. |
+| Industry | Sit a full hiring loop end to end — a coding round, a system-design round and a behavioural round, recorded and watched back — and hand over a public repository a stranger can read in ninety seconds and check every claim in it. |
+| Beyond the bar | The week does not stop at the last day: it ships a written plan for the months after the course, covering the spaced-repetition schedule across the fourteen patterns, the application cadence and its funnel maths, and how to keep the work warm between offers — `lecture-notes/03-the-personalized-go-forward-study-plan.md` |
+
 ---
 
 ## Prerequisites
@@ -199,9 +207,9 @@ Here is where you go from here:
 
 2. **You go interview.** Send the first batch of applications this week — do not wait. Use the [recruiter-prep pack](./exercises/exercise-03-recruiter-prep-pack.md) you built: the tiered target list, the outreach template, the follow-up template. The funnel only starts converting once you put real applications into it.
 
-3. **For compensation, offer mechanics, and negotiation** — C2 deliberately stops at the offer. The moment a recruiter says "we'd like to extend an offer," go to **[C13 · Hack the Interview](../../C13-HACK-THE-INTERVIEW/)** for the negotiation playbook, leveling, and offer comparison. You will leave money on the table if you negotiate without it.
+3. **For compensation, offer mechanics, and negotiation** — C2 deliberately stops at the offer. The moment a recruiter says "we'd like to extend an offer," go to **[C13 · Hack the Interview](../../../C13-HACK-THE-INTERVIEW/)** for the negotiation playbook, leveling, and offer comparison. You will leave money on the table if you negotiate without it.
 
-4. **To build a portfolio of *projects* — not just problem write-ups** — go to **[C3 · Crunch Labs Portfolio](../../C3-CRUNCH-LABS-PORTFOLIO/)**. Your interview-prep repo proves you can think; a project portfolio proves you can ship. The two together are the strongest possible candidate profile.
+4. **To build a portfolio of *projects* — not just problem write-ups** — go to **[C3 · Crunch Labs Portfolio](../../../C3-CRUNCH-LABS-PORTFOLIO/)**. Your interview-prep repo proves you can think; a project portfolio proves you can ship. The two together are the strongest possible candidate profile.
 
 5. **Keep the practice alive.** The maintenance plan in your homework tells you how. Three problems a week and one mock a month keeps all fourteen patterns warm between offers. The portfolio is a living artifact — keep committing to it.
 

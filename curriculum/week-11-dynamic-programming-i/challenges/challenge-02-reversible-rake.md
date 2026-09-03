@@ -1,6 +1,6 @@
 # Challenge 2 — The Reversible Rake
 
-> Topic: interval DP, filled by span · Lecture: [3](../lecture-notes/03-two-sequence-dp-and-the-edit-family.md) · Difficulty: Medium-Hard · Target time: 70 minutes including the FRAME write-up · Why this one: it is the first table in the course that cannot be filled row by row, and finding that out by getting it wrong is the lesson.
+> Topic: interval DP, filled by span · Lecture: [3](../lecture-notes/03-state-space-reduction-and-recognition.md) · Difficulty: Medium-Hard · Target time: 70 minutes including the FRAME write-up · Why this one: it is the first table in the course that cannot be filled row by row, and finding that out by getting it wrong is the lesson.
 
 ## The Brief
 

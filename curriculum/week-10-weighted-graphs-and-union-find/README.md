@@ -46,6 +46,16 @@ By the end of this week, you will be able to:
 
 ---
 
+## Standards this week meets
+
+| Bar | What this week is measured against |
+| --- | --- |
+| University | `CS 4820` — Weighted shortest paths, minimum spanning trees, and disjoint-set structures. |
+| Industry | Answer routing and connectivity questions on a network whose links cost different amounts: the cheapest route under a hop budget, the cheapest set of links that still connects every site, and whether two records already sit in the same group after a stream of merges. |
+| Beyond the bar | The same shortest-path search runs twice on the same data, once with the settled set and once without, and prints the two distance tables side by side with the single row that comes out wrong marked `<- wrong`, so the invariant is something the learner watches fail rather than something stated — `exercises/exercise-02-sluice-gate-settling.md` |
+
+---
+
 ## Prerequisites
 
 - **Weeks 1-9 complete.** You have shipped FRAME write-ups for the BFS pair (W6) and the heap pair (W8). You can write a `heapq`-based priority queue in under five minutes without looking at the docs.
@@ -102,13 +112,12 @@ By the end of this week, you will be able to:
 | [lecture-notes/01-dijkstra-and-the-shortest-path-picker.md](./lecture-notes/01-dijkstra-and-the-shortest-path-picker.md) | Heap-Dijkstra, the "settle once" invariant, when it fails, the constraint-signal flowchart |
 | [lecture-notes/02-bellman-ford-floyd-warshall-and-mst.md](./lecture-notes/02-bellman-ford-floyd-warshall-and-mst.md) | Bellman-Ford with negative-cycle detection, Floyd-Warshall, Kruskal and Prim |
 | [lecture-notes/03-union-find-and-the-dsu-triggers.md](./lecture-notes/03-union-find-and-the-dsu-triggers.md) | DSU with path compression + union by rank, the amortized `alpha(n)` defense, the trigger taxonomy |
-| [exercises/README.md](./exercises/README.md) | Index of the three weighted-graph / DSU exercises and SOLUTIONS |
+| [exercises/README.md](./exercises/README.md) | Index of the five weighted-graph and DSU exercises |
 | [exercises/exercise-01-hut-relay-timing.md](./exercises/exercise-01-hut-relay-timing.md) | The hut relay timing — the shortest-path picker at its plainest, on one-way links |
 | [exercises/exercise-02-sluice-gate-settling.md](./exercises/exercise-02-sluice-gate-settling.md) | The sluice gate settling — what the settled set is for, shown by removing it |
 | [exercises/exercise-03-mooring-chain-groups.md](./exercises/exercise-03-mooring-chain-groups.md) | The mooring chain groups — union-find, with path compression printed |
 | [exercises/exercise-04-greenhouse-pipe-run.md](./exercises/exercise-04-greenhouse-pipe-run.md) | The greenhouse pipe run — the spanning tree, with union-find deciding what to accept |
 | [exercises/exercise-05-shunting-rebate-legs.md](./exercises/exercise-05-shunting-rebate-legs.md) | The shunting rebate legs — why the settled set stops being safe on a negative cost |
-| [exercises/SOLUTIONS.md](./exercises/SOLUTIONS.md) | Worked solutions with FRAME narration; consult after attempting each exercise |
 | [challenges/README.md](./challenges/README.md) | Index of weekly challenges |
 | [challenges/challenge-01-reefer-transfer-budget.md](./challenges/challenge-01-reefer-transfer-budget.md) | The reefer transfer budget — a bounded number of hops, and what that does to the state |
 | [challenges/challenge-02-gantry-swap-groups.md](./challenges/challenge-02-gantry-swap-groups.md) | The gantry swap groups — union-find composed with a sort |
@@ -155,7 +164,7 @@ If you find yourself *behind* by Wednesday, skip Exercise 2 (Cheapest Flights �
 
 ## Up next
 
-[Week 11 — Dynamic Programming Foundations](../week-11-dp-foundations/) — once your three graph write-ups are pushed, your Dijkstra-vs-Bellman-Ford discriminator is articulate, and you can write a DSU with path compression from memory without consulting the lecture.
+[Week 11 — Dynamic Programming I](../week-11-dynamic-programming-i/) — once your three graph write-ups are pushed, your Dijkstra-vs-Bellman-Ford discriminator is articulate, and you can write a DSU with path compression from memory without consulting the lecture.
 
 ---
 

@@ -46,6 +46,16 @@ By the end of this week, you will be able to:
 
 ---
 
+## Standards this week meets
+
+| Bar | What this week is measured against |
+| --- | --- |
+| University | `CS 2110` — Trees specialised for strings, and the space traded away to make lookup cheap. |
+| Industry | Answer prefix queries over a fixed vocabulary fast enough to run on every keystroke, and find a pattern in text in a single pass that never sends the scan back over characters it has already read. |
+| Beyond the bar | The pruned grid sweep ships beside the code-by-code sweep and prints both step counts — `39` against `62` — so what the prefix tree buys is a number the learner reads off a real run rather than a claim to take on trust — `challenges/challenge-01-cold-store-aisle-sweep.md` |
+
+---
+
 ## Prerequisites
 
 - **Weeks 1-8 complete.** You have shipped four DFS / heap write-ups; you can deliver FRAME without notes on a graph-traversal or top-k problem.
@@ -153,7 +163,7 @@ If you find yourself *behind* by Wednesday, skip Exercise 3 (longest-common-pref
 
 ## Up next
 
-[Week 10 — Graph Shortest Paths](../week-10-graph-shortest-paths/) — once your three trie write-ups are pushed, your KMP intuition is articulate, and you can write a dict-of-dict trie from memory without consulting the lecture.
+[Week 10 — Weighted Graphs and Union-Find](../week-10-weighted-graphs-and-union-find/) — once your three trie write-ups are pushed, your KMP intuition is articulate, and you can write a dict-of-dict trie from memory without consulting the lecture.
 
 ---
 

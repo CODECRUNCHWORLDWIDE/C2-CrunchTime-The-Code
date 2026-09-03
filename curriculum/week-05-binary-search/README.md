@@ -36,6 +36,14 @@ By the end of this week, you will be able to:
 - **Convert** an optimization problem into a binary search on the answer: pick the search interval `[lo, hi]`, write the monotone `feasible(k)` predicate, run binary search, return the boundary value. This is the highest-yield interview skill of the week.
 - **Defend** `O(log n)` time and `O(1)` space out loud — and recognize when the predicate's cost makes the total `O(n log M)` instead of `O(log n)`.
 
+## Standards this week meets
+
+| Bar | What this week is measured against |
+| --- | --- |
+| University | `COP 3530` — Divide and conquer over an ordered structure, and the invariant that makes it correct. |
+| Industry | Size a limit before you commit to it — the smallest capacity, split or deadline that still meets the requirement — by writing the feasibility check first, showing it only ever flips one way, and halving the range of candidate answers instead of trying them in turn. |
+| Beyond the bar | Every drill is graded on a second axis no correctness test can see: the write-up has to name the boundary convention it chose and justify each shrink rule in one sentence, so a loop that passes but cannot be defended out loud does not count as finished — `exercises/README.md` |
+
 ---
 
 ## Prerequisites

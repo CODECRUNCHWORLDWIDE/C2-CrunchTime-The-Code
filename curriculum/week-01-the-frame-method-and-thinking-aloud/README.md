@@ -29,6 +29,14 @@ By the end of this week, you will be able to:
 - **Examine** your own work: trace the code on a small input to find bugs before an interviewer would, walk the edge cases, and state time and space complexity in big-O.
 - **Write** a portfolio-quality FRAME write-up in Markdown that another engineer could read and learn from.
 
+## Standards this week meets
+
+| Bar | What this week is measured against |
+| --- | --- |
+| University | `CS 9` — Work a problem out loud in front of somebody, so your reasoning is visible while you are still wrong. |
+| Industry | Talk a colleague through a problem you have not solved yet — the inputs, the questions you still have, the approach you are pricing and the one you dropped — so the wrong turn is caught while it is still cheap to take back. |
+| Beyond the bar | Homework has you record your own narration, play it back, and count your filler words with a program you write, because an ear stops noticing them after the third one and a rate per minute does not — `homework/problem-02-narration-review.md` |
+
 ---
 
 ## Prerequisites

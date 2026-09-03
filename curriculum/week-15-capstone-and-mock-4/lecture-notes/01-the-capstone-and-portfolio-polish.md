@@ -43,7 +43,7 @@ The repo's `README.md` is the cover of the book. It is the only file you can be 
 2. **A progress dashboard.** A small table or badge row that surfaces the headline numbers — write-up count, patterns covered, mocks recorded — so the recruiter does not have to count.
 3. **A pattern × write-up index.** A table mapping each of the fourteen patterns to the write-ups that demonstrate it, with links. This is the "can this person communicate / is there proof" answer, made scannable.
 4. **The four mocks, linked.** A small section linking the four mock self-feedback notes, ideally with the one-line trajectory across them. This is the highest-signal content; do not bury it.
-5. **A "how to read this repo" line.** One sentence telling the visitor where to start — e.g., *"Start with `frame-writeups/01-two-sum.md` for the format, or `mocks/mock-04-week-15.md` to see me solve a problem out loud."*
+5. **A "how to read this repo" line.** One sentence telling the visitor where to start — e.g., *"Start with `frame-writeups/01-widest-ballast-pair.md` for the format, or `mocks/mock-04-week-15.md` to see me solve a problem out loud."*
 
 Here is a concrete cover skeleton. Adapt the numbers to your real repo:
 
@@ -67,11 +67,11 @@ Here is a concrete cover skeleton. Adapt the numbers to your real repo:
 
 | Pattern | Write-ups |
 |---------|-----------|
-| Arrays & two pointers | [Two Sum](frame-writeups/01-two-sum.md), [3Sum](frame-writeups/07-3sum.md), … |
-| Hash maps | [Group Anagrams](frame-writeups/05-group-anagrams.md), … |
+| Arrays & two pointers | [The Widest Ballast Pair](frame-writeups/01-widest-ballast-pair.md), [The Settlement Trio](frame-writeups/07-settlement-trio.md), … |
+| Hash maps | [The Stage Twins](frame-writeups/05-stage-twins.md), … |
 | Sliding window | … |
 | … | … |
-| Bit manipulation | [the relay fold](frame-writeups/58-single-number.md), [the pairing register](frame-writeups/60-maximum-xor.md) |
+| Bit manipulation | [the relay fold](frame-writeups/58-relay-fold.md), [the paired ribbon swap](frame-writeups/60-paired-ribbon-swap.md) |
 
 ## Mocks
 
@@ -82,7 +82,7 @@ Here is a concrete cover skeleton. Adapt the numbers to your real repo:
 
 ## Start here
 
-New here? Read [`frame-writeups/01-two-sum.md`](frame-writeups/01-two-sum.md)
+New here? Read [`frame-writeups/01-widest-ballast-pair.md`](frame-writeups/01-widest-ballast-pair.md)
 for the write-up format, or watch [Mock #4](mocks/mock-04-week-15.md) to see me
 solve a problem out loud.
 ```

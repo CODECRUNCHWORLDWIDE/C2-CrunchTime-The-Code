@@ -42,6 +42,14 @@ By the end of this week, you will be able to:
 - **Handle the hard questions.** The weakness question (name a real one plus the system you built to manage it), the why-leaving question (forward-looking, never bitter), the failure-with-a-twist ("what if you'd had more time"), the illegal/inappropriate question (deflect to the job, do not litigate), and the curveball ("sell me this pen," "how many golf balls fit in a bus") — each has a move, and we drill the moves.
 - **Write the follow-up email.** A short, specific, same-day note that references one concrete thing from the conversation. The lowest-effort, highest-leverage move in the entire loop, and the one most candidates skip.
 
+## Standards this week meets
+
+| Bar | What this week is measured against |
+| --- | --- |
+| University | `CMSC 389O` — The behavioural round: answering a question about your own work as a structured story. |
+| Industry | Give a spoken, first-person account of work you owned — the situation, what you did, and the measured result — to people who were not there, and hold your composure when they push back on it. |
+| Beyond the bar | A second recorded round drills the eight questions no prepared story answers, including the one that should not have been asked at all, and requires a deliberate mid-answer reset left on the tape rather than edited out — `challenges/challenge-02-hostile-and-curveball-round.md` |
+
 ---
 
 ## Prerequisites

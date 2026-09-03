@@ -184,7 +184,7 @@ problem is graded on. Copy this shape into
 ```markdown
 # Wild problem 1 — <your one-sentence restatement>
 
-> **Source:** [<Site> <number> · <Title>](<link>)
+> **Source:** [<Site> <number> · <Title>](<the problem URL>)
 > **Attempted:** <date> · **Solve time:** <minutes> · **Recording:** <where it lives>
 
 ## F — Frame

@@ -24,6 +24,83 @@ It is **not** "grind 500 problems and hope." It is a structured program with two
 
 ---
 
+## Standards & equivalency
+
+> C2 stands in for a university's data-structures and algorithms sequence, and for its technical-interview course.
+
+**University equivalent.** Four of them, not one. **Data Structures** — `COP 3530`, `CS 1332`, `CS 61B`, `CS 2110`. **Design and Analysis of Algorithms** — `COP 4534`, `CS 4820`, `CS 3210`, `6.006`. **Scalable Systems Design** — `CS 4750`, `CIS 4930`, `6.5840`, `15-440`, `CSE 452`. **Technical Interview Preparation** — `CIS 4930`, `CS 9`, `CMSC 389O`, `COMPSCI 243`.
+
+Coverage: **full** against Technical Interview Preparation, **partial** against the other three. Partial has a precise meaning here, and it is not "most of it". It means the topic list is taught and assessed while a named part of the university treatment is not. C2 teaches the structures and the algorithms as things you must recognise, implement, cost and defend out loud under a clock — it does not ask you to prove them, and the three places where a university section proves what C2 only states are the rows marked `lighter` below, declared again at the end of this section. Against Scalable Systems Design, partial is a matter of scope rather than depth: C2 covers the junior design round an interview loop actually contains — estimate the load, choose a data model, name the bottleneck, defend the trade-off — and not a term of distributed systems.
+
+C2 carries no credit, no transcript entry, no accreditation and no proctored exam. The equivalence is one of **content and skill**: the outcomes below are taught here at the same depth or deeper except where a row says otherwise, and every one of them is assessed. What a registrar records is not something an open repository can give you.
+
+| University outcome | Where this course teaches it | Depth |
+| --- | --- | --- |
+| **Data Structures** — arrays, strings and the dynamic array, with the cost of every operation on them | [Week 00](curriculum/week-00-python-data-structures-warmup/) | same |
+| **Data Structures** — hash tables: what hashing buys, what a collision costs, and when the map is the answer | [Week 02](curriculum/week-02-complexity-and-hash-maps/) | deeper |
+| **Data Structures** — linked lists, and the pointer techniques that traverse one in constant extra space | [Week 04](curriculum/week-04-fast-slow-pointers-and-mock-1/) | same |
+| **Data Structures** — queues and stacks, including replacing recursion with an explicit stack | [Week 07](curriculum/week-07-dfs-and-topological-sort/) | same |
+| **Data Structures** — trees and their traversals, recursive and iterative | [Week 07](curriculum/week-07-dfs-and-topological-sort/) | same |
+| **Data Structures** — heaps and priority queues, and the bounded top-K structure built on one | [Week 08](curriculum/week-08-heaps-and-priority-queues/) | deeper |
+| **Data Structures** — tries and the prefix walk, a node class weighed against dict-of-dicts | [Week 09](curriculum/week-09-tries-and-advanced-strings/) | deeper |
+| **Data Structures** — graphs, their representations, and traversal over both grids and adjacency lists | [Week 06](curriculum/week-06-bfs/) | same |
+| **Data Structures** — disjoint-set union with path compression and union by rank | [Week 10](curriculum/week-10-weighted-graphs-and-union-find/) | deeper |
+| **Data Structures** — state the time and space cost of every structure you choose, and justify the choice | [Week 02](curriculum/week-02-complexity-and-hash-maps/) | same |
+| **Data Structures** — amortised analysis: the doubling argument behind the dynamic array, the inverse-Ackermann bound on union-find | [Week 10](curriculum/week-10-weighted-graphs-and-union-find/) | lighter |
+| **Algorithms** — asymptotic analysis, and comparing algorithms by growth rather than by clock | [Week 02](curriculum/week-02-complexity-and-hash-maps/) | same |
+| **Algorithms** — divide and conquer, and binary search including search over a monotone answer space | [Week 05](curriculum/week-05-binary-search/) | deeper |
+| **Algorithms** — breadth-first and depth-first search, cycle detection, connected components and topological sort | [Week 07](curriculum/week-07-dfs-and-topological-sort/) | same |
+| **Algorithms** — greedy methods, and the shortest-path and minimum-spanning-tree algorithms built on them | [Week 10](curriculum/week-10-weighted-graphs-and-union-find/) | same |
+| **Algorithms** — dynamic programming: state, transition, base case, evaluation order, and space reduction | [Week 11](curriculum/week-11-dynamic-programming-i/) | same |
+| **Algorithms** — exhaustive search with pruning: backtracking over subsets, permutations, partitions and grids | [Week 12](curriculum/week-12-backtracking-and-combinatorics/) | deeper |
+| **Algorithms** — string algorithms: the KMP failure function, the Z-algorithm, Aho-Corasick | [Week 09](curriculum/week-09-tries-and-advanced-strings/) | deeper |
+| **Algorithms** — bit-level algorithms: XOR identities, masks, and subset enumeration | [Week 14](curriculum/week-14-mock-3-bit-manipulation-and-tries/) | same |
+| **Algorithms** — proof technique: induction, exchange arguments, and loop invariants proven rather than stated | [Week 11](curriculum/week-11-dynamic-programming-i/) | lighter |
+| **Algorithms** — the complexity-theory half: NP-completeness, reductions, and what intractability means | [Week 12](curriculum/week-12-backtracking-and-combinatorics/) | lighter |
+| **Scalable Systems** — back-of-envelope capacity estimation: requests per second, storage, bandwidth | [Week 15](curriculum/week-15-capstone-and-mock-4/) | same |
+| **Scalable Systems** — choose a data model and a storage shape for a service, and defend the choice | [Week 15](curriculum/week-15-capstone-and-mock-4/) | same |
+| **Scalable Systems** — find the bottleneck on a read path, and pick the index or cache that removes it | [Week 05](curriculum/week-05-binary-search/) | same |
+| **Scalable Systems** — counting and aggregation workloads at scale, and what the naive version costs | [Week 02](curriculum/week-02-complexity-and-hash-maps/) | same |
+| **Scalable Systems** — hold the design conversation itself: scope down out loud, state the trade-off, say what you deferred | [Week 15](curriculum/week-15-capstone-and-mock-4/) | deeper |
+| **Technical Interview** — a repeatable method for an unseen problem, executed out loud | [Week 01](curriculum/week-01-the-frame-method-and-thinking-aloud/) | deeper |
+| **Technical Interview** — recognise which pattern a prompt wants inside the first minute of reading it | [Week 03](curriculum/week-03-sliding-window/) | deeper |
+| **Technical Interview** — write correct code under a clock, on a shared screen, without an editor helping | [Week 14](curriculum/week-14-mock-3-bit-manipulation-and-tries/) | deeper |
+| **Technical Interview** — the behavioural round: the eight categories, STAR answers, and a rehearsed story bank | [Week 13](curriculum/week-13-behavioral-and-communication/) | deeper |
+| **Technical Interview** — mock interviews with structured feedback and a measurable trajectory across them | [Week 04](curriculum/week-04-fast-slow-pointers-and-mock-1/) | deeper |
+| **Technical Interview** — the mechanics around the loop: resume, target list, outreach, follow-up | [Week 15](curriculum/week-15-capstone-and-mock-4/) | deeper |
+
+Every row above points at a week that **assigns work** on that outcome — a drill, a challenge, homework, a quiz item, a mini-project or the capstone — not merely a week that mentions it.
+
+**The industry bar.** What an employer expects of somebody paid to do this work, and where this course makes the learner do it. Several of C2's deliverables are not programs — a behavioural story bank, a recorded mock, a written design — so where the practice is not code, the row says what the equivalent practice is in the medium the deliverable actually uses.
+
+| What the job expects | Where this course does it |
+| --- | --- |
+| Work lands as a commit in a repository you own, not a file on your desktop | [`resources/git-github-workflow.md`](resources/git-github-workflow.md), and the portfolio repository is created in Week 01 at [`curriculum/week-01-the-frame-method-and-thinking-aloud/homework/problem-01-portfolio-setup.md`](curriculum/week-01-the-frame-method-and-thinking-aloud/homework/problem-01-portfolio-setup.md) |
+| You read code you did not write and form a judgement on it | [`curriculum/week-04-fast-slow-pointers-and-mock-1/lecture-notes/02-the-mock-interview-protocol.md`](curriculum/week-04-fast-slow-pointers-and-mock-1/lecture-notes/02-the-mock-interview-protocol.md) — you take the interviewer's chair for a peer on a problem they have not seen, read what they write as they write it, and grade it against the rubric |
+| Tests exist, and the command to run them is written down | [`curriculum/week-01-the-frame-method-and-thinking-aloud/exercises/timed_runner.py`](curriculum/week-01-the-frame-method-and-thinking-aloud/exercises/timed_runner.py) — a pytest harness you point at your own module and run with `pytest timed_runner.py -v`; every published answer file also carries its own case list and asserts it |
+| You read a real traceback instead of guessing | the `Common bugs to catch` section carried by every problem page, quoting output captured from a real run |
+| Dependencies are isolated per project | [`resources/setup-guides/`](resources/setup-guides/) |
+| Tooling used the way a team uses it — a formatter, a linter, a type checker and a test runner, configured once and run over everything | [`resources/coding-standards.md`](resources/coding-standards.md). C2's capstone is write-ups and recordings rather than a running service, so the tool run is local and covers every file, not a build gate in front of a deployment |
+| Code that reads the way the rest of the codebase reads | [`resources/coding-standards.md`](resources/coding-standards.md), applied to every published answer file in the tree |
+| Work that is not code is still held to a standard and still reviewed | the behavioural artifacts at [`curriculum/week-13-behavioral-and-communication/exercises/star_template.md`](curriculum/week-13-behavioral-and-communication/exercises/star_template.md) and the written design at [`curriculum/week-15-capstone-and-mock-4/exercises/exercise-02-system-design-writeup.md`](curriculum/week-15-capstone-and-mock-4/exercises/exercise-02-system-design-writeup.md), each graded against a published rubric rather than left to taste |
+| The output is portfolio-grade: a stranger can read it and know what you can do | [`projects/capstone/README.md`](projects/capstone/README.md) |
+
+**Beyond both bars.** Clearing the two floors is entry, not success. Open any of these and check it in under a minute.
+
+| What we add | Which bar it beats | Where it lives |
+| --- | --- | --- |
+| Every assigned problem publishes its worked answer on its own page, visible, with a runnable file beside it — no answer key held back until a deadline | both | [`curriculum/week-02-complexity-and-hash-maps/exercises/`](curriculum/week-02-complexity-and-hash-maps/exercises/) |
+| `Under the hood` blocks carry the internals a lecture stops short of, folded so a learner may skip every one and still finish the week | university | [`curriculum/week-05-binary-search/exercises/exercise-02-scan-window.md`](curriculum/week-05-binary-search/exercises/exercise-02-scan-window.md) |
+| The learner finishes holding a public repository somebody can clone and read, not a grade only a registrar can see | both | [`projects/capstone/`](projects/capstone/) |
+| Four recorded mock interviews graded against a published rubric, with the Mock #1 to Mock #4 trajectory as a deliverable in its own right — a section grades the answer, this grades the improvement | industry | [`curriculum/week-14-mock-3-bit-manipulation-and-tries/challenges/challenge-01-mock-3-timed-round.md`](curriculum/week-14-mock-3-bit-manipulation-and-tries/challenges/challenge-01-mock-3-timed-round.md) |
+| A behavioural story bank — twelve rehearsed stories against the eight question categories, with a coverage matrix — which no data-structures or algorithms section teaches and every hiring loop tests | industry | [`curriculum/week-13-behavioral-and-communication/exercises/`](curriculum/week-13-behavioral-and-communication/exercises/) |
+| A pattern-recognition quiz every week, timed at thirty seconds a question, with its answer key published in the same file | university | [`curriculum/week-03-sliding-window/quiz.md`](curriculum/week-03-sliding-window/quiz.md) |
+| The same material at two paces — a fifteen-week run or a year at a working professional's hours — because we are not bound to a term | university | [`curriculum/study-plans/mastery-1-year.md`](curriculum/study-plans/mastery-1-year.md) |
+
+**Gaps we declare.** Three, and they are the three the ledger records: C2 does not teach proof technique — induction, exchange arguments, and loop invariants proven rather than stated; it states amortised bounds where they matter, such as the dynamic array's doubling and union-find's inverse-Ackermann bound, without deriving them; and it does not teach the complexity-theory half of an algorithms course — NP-completeness, reductions and intractability. Separately, the Scalable Systems Design claim is scoped to the junior design round described above, not to distributed systems.
+
+---
+
 ## Pick your pathway
 
 | | **Intensive** | **Mastery** |

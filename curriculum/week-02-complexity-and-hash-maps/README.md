@@ -36,6 +36,14 @@ By the end of this week, you will be able to:
 - **Write** a FRAME *Examine (cost)* section that another engineer would read and learn from — not a one-liner, a structured tradeoff.
 - **Re-do** your five Week 1 write-ups with the new Examine (cost) discipline; the upgrade is visible.
 
+## Standards this week meets
+
+| Bar | What this week is measured against |
+| --- | --- |
+| University | `COP 3530` — Analyse the running time of an algorithm, and choose a data structure on the strength of that analysis. |
+| Industry | Defend a data-structure choice in review by naming what the alternative costs and where it gets the wrong answer, in terms a reviewer can check rather than take on trust. |
+| Beyond the bar | The mini-project sends you back to five write-ups you already finished and makes you run the alternative you dismissed beside the one you shipped until you hold the small input on which they disagree — and four of the five turn out to be wrong rather than merely slower — `mini-project/README.md` |
+
 ---
 
 ## Prerequisites

@@ -1,6 +1,6 @@
 # Mini-Project — The Orchard Row and the Dye Batch Log
 
-> Topic: 1D optimisation and 2D counting · Lecture: [1](../lecture-notes/01-memoisation-and-the-1d-family.md), [2](../lecture-notes/02-tabulation-and-the-grid-family.md) · Difficulty: Medium-Hard · Target time: 10 hours across Thursday–Saturday · Why this one: the two families grade separately, and shipping one of each forces you to say the structural difference out loud.
+> Topic: 1D optimisation and 2D counting · Lecture: [1](../lecture-notes/01-the-dp-pipeline-and-1d-states.md), [2](../lecture-notes/02-2d-dp-and-the-grid-and-string-shapes.md) · Difficulty: Medium-Hard · Target time: 10 hours across Thursday–Saturday · Why this one: the two families grade separately, and shipping one of each forces you to say the structural difference out loud.
 
 ## The Brief
 

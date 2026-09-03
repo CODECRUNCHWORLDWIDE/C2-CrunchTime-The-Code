@@ -1,6 +1,6 @@
 # Exercise 4 — The Terrace Route Table
 
-> Topic: counting paths on a grid, three ways · Lecture: [2](../lecture-notes/02-tabulation-and-the-grid-family.md) · Difficulty: Beginner-Medium · Target time: 35 minutes · Why this one: it is the exercise where memoisation stops being a slogan and becomes a number you can read.
+> Topic: counting paths on a grid, three ways · Lecture: [2](../lecture-notes/02-2d-dp-and-the-grid-and-string-shapes.md) · Difficulty: Beginner-Medium · Target time: 35 minutes · Why this one: it is the exercise where memoisation stops being a slogan and becomes a number you can read.
 
 ## The Brief
 

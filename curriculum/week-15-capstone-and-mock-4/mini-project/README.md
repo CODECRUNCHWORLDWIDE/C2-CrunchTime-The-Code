@@ -264,7 +264,7 @@ practice can really prove.
 
 | Pattern | Write-ups |
 |---|---|
-| Arrays and hashing | [01](frame-writeups/01-...), [02](...), [04](...) … |
+| Arrays and hashing | [01](frame-writeups/01-refund-pair.md), [02](frame-writeups/02-badge-rescan.md), [04](frame-writeups/04-stage-twins.md) … |
 | Two pointers | … |
 | … | … |
 
@@ -363,7 +363,7 @@ The capstone is complete when **all** of the following are true and the repo is 
 
 When this repo is public, pushed, and clears the rubric, **C2 is complete.** Stop and take the measure of it: a public repository with 60+ problem write-ups, four recorded mocks you watched without flinching, a system-design write-up, a twelve-story behavioral bank, a recruiter pack, and a written plan for the next four weeks and beyond. That is not a completion certificate. That is a *portfolio* — and it is the thing you point a hiring manager at when they ask "show me how you think."
 
-Then do the thing the portfolio is for. Open your [personalized go-forward study plan](../homework/README.md), send the first batch of applications this week using the [recruiter-prep pack](../exercises/exercise-03-recruiter-prep-pack.md) you built, and — when an offer comes — go to [C13 · Hack the Interview](../../../C13-HACK-THE-INTERVIEW/) for negotiation and to [C3 · Crunch Labs Portfolio](../../../C3-CRUNCH-LABS-PORTFOLIO/) to build a project portfolio alongside this one.
+Then do the thing the portfolio is for. Open your [personalized go-forward study plan](../homework/README.md), send the first batch of applications this week using the [recruiter-prep pack](../exercises/exercise-03-recruiter-prep-pack.md) you built, and — when an offer comes — go to [C13 · Hack the Interview](../../../../C13-HACK-THE-INTERVIEW/) for negotiation and to [C3 · Crunch Labs Portfolio](../../../../C3-CRUNCH-LABS-PORTFOLIO/) to build a project portfolio alongside this one.
 
 You have done the work. The next mock is a real one, for a real job. Go get the offer.
 

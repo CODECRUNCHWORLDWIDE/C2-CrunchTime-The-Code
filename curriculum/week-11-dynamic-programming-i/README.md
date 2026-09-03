@@ -48,6 +48,16 @@ By the end of this week, you will be able to:
 
 ---
 
+## Standards this week meets
+
+| Bar | What this week is measured against |
+| --- | --- |
+| University | `6.006` — Dynamic programming: overlapping subproblems, optimal substructure, and the move from memo to table. |
+| Industry | Turn a recomputation that will not finish into one that will: name the call being made over and over with the same arguments, cache it, rewrite the cache as a table whose size and fill order you can state, and hand back the choice that produced the answer rather than only its value. |
+| Beyond the bar | The deliverable is not allowed to stop at the number — the orchard half must report which trees were picked, ties settled in favour of the earlier tree, so the table has to be walked back to recover the choice behind the optimum — `mini-project/README.md` |
+
+---
+
 ## Prerequisites
 
 - **Weeks 1–10 complete.** You have shipped FRAME write-ups for the heap pair (W8), the trie pair (W9), and the graph pair (W10). You can write a recursion with a memoization decorator from memory.
@@ -106,17 +116,17 @@ By the end of this week, you will be able to:
 | [lecture-notes/01-the-dp-pipeline-and-1d-states.md](./lecture-notes/01-the-dp-pipeline-and-1d-states.md) | The two triggers, the four-step pipeline, the 1D suite (Fibonacci, climbing stairs, house robber, decode ways, word break) |
 | [lecture-notes/02-2d-dp-and-the-grid-and-string-shapes.md](./lecture-notes/02-2d-dp-and-the-grid-and-string-shapes.md) | Unique paths, LCS, edit distance; the subsequence-vs-substring distinction |
 | [lecture-notes/03-state-space-reduction-and-recognition.md](./lecture-notes/03-state-space-reduction-and-recognition.md) | Rolling-array reductions, longest palindromic subsequence and diagonal iteration, the recognition flowchart |
-| [exercises/README.md](./exercises/README.md) | Index of the three DP exercises and SOLUTIONS |
-| [exercises/exercise-01-climbing-stairs.py](./exercises/exercise-01-climbing-stairs.py) | — the canonical 1D DP warm-up |
-| [exercises/exercise-02-longest-common-subsequence.py](./exercises/exercise-02-longest-common-subsequence.py) | — the canonical 2D subsequence DP |
-| [exercises/exercise-03-word-break.py](./exercises/exercise-03-word-break.py) | — 1D DP with a string-set check |
-| [exercises/SOLUTIONS.md](./exercises/SOLUTIONS.md) | Worked solutions with FRAME narration; consult after attempting each exercise |
+| [exercises/README.md](./exercises/README.md) | Index of the four DP exercises |
+| [exercises/exercise-01-ferry-ramp-manifests.md](./exercises/exercise-01-ferry-ramp-manifests.md) | The ferry ramp manifests — 1D counting, returning the whole prefix table rather than one number |
+| [exercises/exercise-02-survey-station-walk.md](./exercises/exercise-02-survey-station-walk.md) | The survey station walk — 1D optimisation with a stated tie-break |
+| [exercises/exercise-03-stencil-line-split.md](./exercises/exercise-03-stencil-line-split.md) | The stencil line — the same 1D shape over a string, against a code book |
+| [exercises/exercise-04-terrace-route-table.md](./exercises/exercise-04-terrace-route-table.md) | The terrace route table — the first 2D table, counting paths past blocked cells |
 | [challenges/README.md](./challenges/README.md) | Index of weekly challenges |
-| [challenges/challenge-01-edit-distance.md](./challenges/challenge-01-edit-distance.md) | deep-dive — the three-way-min recurrence and the rolling-array reduction |
-| [challenges/challenge-02-longest-palindromic-subsequence.md](./challenges/challenge-02-longest-palindromic-subsequence.md) | — the diagonal-fill DP and the subsequence/substring rejection |
+| [challenges/challenge-01-timetable-amendment.md](./challenges/challenge-01-timetable-amendment.md) | The timetable amendment slip — 2D over two sequences, a three-way choice at unequal costs, answer reconstructed |
+| [challenges/challenge-02-reversible-rake.md](./challenges/challenge-02-reversible-rake.md) | The reversible rake — one sequence read from both ends, filled along the diagonal |
 | [quiz.md](./quiz.md) | 10 pattern-recognition questions |
 | [homework.md](./homework/README.md) | Six practice problems (~5 hrs) — three 1D, three 2D |
-| [mini-project/README.md](./mini-project/README.md) | **One 1D DP write-up (house robber) + one 2D DP write-up (unique paths)** — the week's deliverable |
+| [mini-project/README.md](./mini-project/README.md) | **One 1D optimisation write-up (the orchard row) + one 2D counting write-up (the dye batch log)** — the week's deliverable |
 
 ---
 
@@ -157,7 +167,7 @@ If you find yourself *behind* by Wednesday, skip Exercise 3 (the stripped manife
 
 ## Up next
 
-[Week 12 — Dynamic Programming II](../week-12-dp-knapsack-lis-and-capstone/) — once your three DP write-ups are pushed, your four-step pipeline is articulate, and you can convert any top-down recursion to bottom-up from memory without consulting the lecture.
+[Week 12 — Backtracking and Combinatorics](../week-12-backtracking-and-combinatorics/) — once your two DP write-ups are pushed, your four-step pipeline is articulate, and you can convert any top-down recursion to bottom-up from memory without consulting the lecture.
 
 ---
 

@@ -540,4 +540,4 @@ The reflection is the portfolio-grade artifact. Future you will thank present yo
 
 ## After the mini-project
 
-Move on to [Week 10 — Graph Shortest Paths](../../week-10-graph-shortest-paths/). The trie and KMP intuition stay with you through the rest of Phase 2; you will use them again in the W12 retrospective and (for the strings-team interviews) in Mock #3.
+Move on to [Week 10 — Weighted Graphs and Union-Find](../../week-10-weighted-graphs-and-union-find/). The trie and KMP intuition stay with you through the rest of Phase 2; you will use them again in the W12 retrospective and (for the strings-team interviews) in Mock #3.

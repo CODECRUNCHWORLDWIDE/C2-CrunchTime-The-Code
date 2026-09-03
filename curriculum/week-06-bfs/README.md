@@ -37,6 +37,14 @@ By the end of this week, you will be able to:
 - **Recognize** when BFS does *not* apply — weighted graphs (use Dijkstra), graphs with no monotone-cost structure (use DFS / iterative deepening), problems where the answer is not a distance (use DFS, backtracking, or DP).
 - **Apply bidirectional BFS** as the high-end optimization for "shortest path between two known endpoints in a large graph" — the technique that turns the cable pull from `O(N · L²)` into roughly `O(sqrt) · N · L²)`.
 
+## Standards this week meets
+
+| Bar | What this week is measured against |
+| --- | --- |
+| University | `CS 61B` — Graph traversal breadth first, and shortest paths in an unweighted graph. |
+| Industry | Answer reach questions about a real network from one walk rather than one walk per source: which nodes a call reaches and on which hop, which of them never hear it, and how long the worst-served point waits once every source is firing at the same time. |
+| Beyond the bar | The tide-gate challenge ships the wrong search beside the right one and makes the learner run both, so a visited set keyed on the square instead of the square-and-remaining-budget is seen returning a wrong answer with no error and no warning — `challenges/challenge-02-tide-gate.md` |
+
 ---
 
 ## Prerequisites
@@ -44,7 +52,7 @@ By the end of this week, you will be able to:
 - **Weeks 1-5 complete.** You have shipped five binary-search write-ups; you can deliver FRAME without notes on a parametric problem.
 - **Comfortable with `collections.deque`.** BFS uses `deque` because `popleft()` is `O(1)` and `pop()` on a `list` is `O(n)`. If you have never used `deque`, run `python -c "from collections import deque; help(deque)"` once before Exercise 1.
 - **Comfortable with hash sets.** The visited set is a `set[Hashable]` — node identities must be hashable. Tuples are hashable; lists are not. Plan accordingly when grid cells are coordinates.
-- **A working pytest setup.** Drills are graded by [`timed_runner.py`](exercises/timed_runner.py).
+- **A working Python 3.10+ setup.** Every drill ships a runnable worked answer beside it that ends by printing `All checks passed.` — see the [exercises index](exercises/README.md).
 
 ---
 

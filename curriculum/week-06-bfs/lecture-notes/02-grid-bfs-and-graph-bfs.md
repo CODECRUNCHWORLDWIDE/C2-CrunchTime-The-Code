@@ -571,4 +571,4 @@ The drill: Drills 1-5 cover both sub-shapes, plus level tracking and multi-sourc
 - **CSES Competitive Programmer's Handbook — Chapter 12 ("Graph traversal")**: <https://cses.fi/book/book.pdf>
 - **GeeksforGeeks — "Bidirectional Search"**: a single-page explainer with code; the complexity-halving argument is laid out cleanly.
 
-Next: the [drills](../exercises/README.md). Exercise 3 (siren reach) is the canonical multi-source problem of the week — do not skip it. Exercise 4 (the cable pull) is the canonical node-BFS problem. Then the [challenge](../challenges/challenge-01-minimum-knight-moves.md) — Minimum Knight Moves on an infinite board, the hardest BFS application in the standard repertoire.
+Next: the [drills](../exercises/README.md). Exercise 3 (siren reach) is the canonical multi-source problem of the week — do not skip it. Exercise 4 (the cable pull) is the canonical node-BFS problem. Then the [challenge](../challenges/challenge-01-trunk-splice.md) — the trunk splice, where one search from each end answers what a single search cannot, and the hardest BFS application of the week.

@@ -33,6 +33,14 @@ By the end of this week, you will be able to:
 - **Watch** your own recording at 1.0× and 1.5× and extract three specific behavior changes for Mock #2 (Week 9).
 - **Defend** the `O(n)` time and `O(1)` space claims out loud — Floyd's is the canonical "no auxiliary data structure" cycle algorithm, and the constant-space defense is the interview tell.
 
+## Standards this week meets
+
+| Bar | What this week is measured against |
+| --- | --- |
+| University | `CS 1332` — Linked structures, and the pointer techniques that walk them without a second pass. |
+| Industry | Diagnose a chain of handoffs that has started repeating itself: prove the loop is there with two walkers and no extra memory, name the step where it enters, and leave the wiring exactly as you found it on every path out of the function. |
+| Beyond the bar | The week's deliverable is not code at all — a forty-five-minute recording of the learner solving an unseen problem on a hard clock, then watched back against a rubric until it yields one named behaviour change for the next mock — `mini-project/README.md` |
+
 ---
 
 ## Prerequisites

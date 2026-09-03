@@ -36,6 +36,14 @@ By the end of this week, you will be able to:
 - **Reject** the pattern when it doesn't fit: negative numbers in a "sum at most k" problem, non-contiguous subsequences, problems that need a hash-map prefix-sum reformulation instead.
 - **Write** a FRAME write-up whose Research constraints section delivers the 30-second pattern-recognition memo cleanly.
 
+## Standards this week meets
+
+| Bar | What this week is measured against |
+| --- | --- |
+| University | `6.006` — Design an algorithm that narrows the work it does, and argue the bound it achieves. |
+| Industry | Turn a one-sentence request from somebody who does not write code into a contract you can build against — the window size, the tie-break, what counts as no answer — and then hold the implementation to it. |
+| Beyond the bar | Homework has you build the wrong pattern on purpose beside the right one, run both, and print the log line where they part company, so a rejected pattern is something you can point at instead of a claim a reader takes on trust — `homework/problem-03-when-the-window-fails.md` |
+
 ---
 
 ## Prerequisites

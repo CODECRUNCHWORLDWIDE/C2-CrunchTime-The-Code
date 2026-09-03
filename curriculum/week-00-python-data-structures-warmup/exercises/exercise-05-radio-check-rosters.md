@@ -568,4 +568,4 @@ argument. "Use a set" is a very good default and it is not a law.
   decides which one belongs in your loop.
 
 When your net report is right, the exercises are done. Move on to
-[the challenges](../challenges/README.md).
+[Challenge 1 — The Tide Board Digest](../challenges/challenge-01-tide-board-digest.md).

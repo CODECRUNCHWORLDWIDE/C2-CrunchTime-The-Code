@@ -32,6 +32,14 @@ By the end of this week, you will be able to:
 - **Detect** the aliasing traps: `[[0] * n] * m`, shallow copy, and mutable default arguments.
 - **Rewrite** an accidentally-quadratic warm-up solution as a linear one, and quantify the improvement.
 
+## Standards this week meets
+
+| Bar | What this week is measured against |
+| --- | --- |
+| University | `CS 61B` — The built-in collections and what each one costs, which a second course assumes you already have. |
+| Industry | Find the operation inside working code that costs more than it looks — a slice, a membership test against a list, a concatenation in a loop — and justify the replacement in review with the growth you measured rather than the complexity you remember. |
+| Beyond the bar | The week ships a harness that counts the work itself — elements copied, elements shifted, comparisons, hash probes — instead of timing it, so the cost table you publish reproduces exactly on somebody else's laptop under load — `mini-project/growth_lab.py` |
+
 ---
 
 ## Prerequisites

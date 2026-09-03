@@ -57,7 +57,7 @@ mkdir -p mocks/mock-01
 cat > mocks/mock-01/recording-link.md <<'EOF'
 # Mock #1 recording
 
-[Video — 45 min](TODO) (private link, view-only)
+[Video — 45 min](<your private view-only link>)
 
 Problem: TODO — name and link
 Flavor: TODO — A (peer) / B (platform) / C (solo)

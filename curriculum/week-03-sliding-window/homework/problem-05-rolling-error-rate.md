@@ -766,4 +766,4 @@ faster?" and it costs nothing to remember.
   which of the three fixes from *Under the hood* you would pick and why. The
   decision is the deliverable, not the code.
 
-Next: [Problem 6 — Week 3 Reflection](./problem-06-week-03-reflection.md).
+Next: [Problem 6 — Week 3 Reflection](./README.md#problem-6--week-3-reflection-45-min).

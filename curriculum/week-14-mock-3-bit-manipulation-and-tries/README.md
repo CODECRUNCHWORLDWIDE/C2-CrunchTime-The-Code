@@ -42,6 +42,14 @@ By the end of this week, you will be able to:
 - **Build** a binary trie for the largest-XOR query: insert each number MSB-first as a fixed-width path; for each query number, walk the trie greedily choosing the *opposite* bit when a child exists to maximize the running XOR. State the `O(n · 32)` bound.
 - **Run** Mock #3 as a near-real full loop: 45-minute hard clock, video on, an unseen Medium, no peeking; record screen + face + audio; watch back at 1.5× then 1.0×; produce a self-feedback note with exactly one testable behavior change versus your two prior mocks.
 
+## Standards this week meets
+
+| Bar | What this week is measured against |
+| --- | --- |
+| University | `CIS 4930` — Bitwise operations, and the problems they make cheap, worked under time pressure. |
+| Industry | Read and write the bit-level code that packs state into a single integer — set, clear, test and count bits, recover the value that has no pair — and defend the constant-space version against the hash-map one on a clock. |
+| Beyond the bar | The recorded round is watched back twice, at one-and-a-half speed and then at full speed, scanned against six named anti-patterns, and closed with exactly one behaviour change measured against the two earlier recordings — `lecture-notes/03-the-mock-interview-protocol-mock-3-and-tries-review.md` |
+
 ---
 
 ## Prerequisites
@@ -101,11 +109,10 @@ By the end of this week, you will be able to:
 | [lecture-notes/01-bit-manipulation-fundamentals-and-xor.md](./lecture-notes/01-bit-manipulation-fundamentals-and-xor.md) | Binary + two's complement, the operators, single-bit ops, low-bit idioms, popcount, the XOR family, full worked FRAME on the relay fold |
 | [lecture-notes/02-bitmasks-and-subset-enumeration-and-bit-dp.md](./lecture-notes/02-bitmasks-and-subset-enumeration-and-bit-dp.md) | Bitmask-as-set, subset enumeration (see Exercise 3), submask iteration, bit-DP intro, full worked FRAME on the set-bit tally |
 | [lecture-notes/03-the-mock-interview-protocol-mock-3-and-tries-review.md](./lecture-notes/03-the-mock-interview-protocol-mock-3-and-tries-review.md) | The Mock #3 near-real protocol, the two-pass watching protocol, the six anti-patterns, and the tries review with the binary-trie bridge to |
-| [exercises/README.md](./exercises/README.md) | Index of the three bit exercises and SOLUTIONS |
+| [exercises/README.md](./exercises/README.md) | Index of the three bit exercises |
 | [exercises/exercise-01-relay-fold.md](./exercises/exercise-01-relay-fold.md) | The relay fold — XOR, and the three properties that make it work |
 | [exercises/exercise-02-set-bit-tally.md](./exercises/exercise-02-set-bit-tally.md) | The set-bit tally — a table where each answer is one step from a smaller one |
 | [exercises/exercise-03-mask-roster.md](./exercises/exercise-03-mask-roster.md) | The mask roster — a whole set in one integer, and set operations as arithmetic |
-| [exercises/SOLUTIONS.md](./exercises/SOLUTIONS.md) | Worked solutions with FRAME narration; consult after attempting each exercise |
 | [challenges/README.md](./challenges/README.md) | Index of the two challenges |
 | [challenges/challenge-01-mock-3-timed-round.md](./challenges/challenge-01-mock-3-timed-round.md) | The Mock #3 deliverable — 45-min hard clock, record, two-pass self-feedback, trajectory vs Mock #1 / #2 |
 | [challenges/challenge-02-ledger-adder.md](./challenges/challenge-02-ledger-adder.md) | The ledger adder — addition from AND, XOR and shift, and why the mask makes the loop stop |

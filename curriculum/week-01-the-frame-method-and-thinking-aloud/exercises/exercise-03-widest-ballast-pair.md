@@ -137,7 +137,7 @@ if __name__ == "__main__":
 Real stdout from the shipped file, captured on CPython 3.13:
 
 ```text
-$ python exercise-03-widest-ballast-pair-solution.py
+$ python exercise-03-widest-ballast-pair.py
 correction  1000  pair (0, 4) span 4  [120, 340, 500, 660, 880]
 correction     0  pair (1, 3) span 2  [-400, -100, 0, 100, 300]
 correction   200  pair (0, 3) span 3  [100, 100, 100, 100]
@@ -299,14 +299,12 @@ same story. That is correct **by construction**, not by luck — and saying
 which of the two it is, out loud, is the difference between judgement and
 getting away with it.
 
-## Download and run
+## Run it
 
-Download
-[exercise-03-widest-ballast-pair-solution.py](./exercise-03-widest-ballast-pair-solution.py)
-and run it:
+Copy the worked answer on this page into `exercise-03-widest-ballast-pair.py` and run it:
 
 ```bash
-python exercise-03-widest-ballast-pair-solution.py
+python exercise-03-widest-ballast-pair.py
 ```
 
 It is the same program you are writing, under a name that will not collide

@@ -146,7 +146,7 @@ if __name__ == "__main__":
 Real stdout from the shipped file, captured on CPython 3.13:
 
 ```text
-$ python problem-05-system-design-warmup-solution.py
+$ python problem-05-system-design-warmup.py
 row           0  ->  0        ->  row 0
 row           1  ->  1        ->  row 1
 row          61  ->  z        ->  row 61
@@ -373,14 +373,12 @@ invertible function cannot collide — and it is worth asserting anyway, because
 "no collisions" is the claim you will be asked to defend and a test that
 states it directly is a test somebody can read.
 
-## Download and run
+## Run it
 
-Download
-[problem-05-system-design-warmup-solution.py](./problem-05-system-design-warmup-solution.py)
-and run it:
+Copy the worked answer on this page into `problem-05-system-design-warmup.py` and run it:
 
 ```bash
-python problem-05-system-design-warmup-solution.py
+python problem-05-system-design-warmup.py
 ```
 
 ## Common bugs to catch

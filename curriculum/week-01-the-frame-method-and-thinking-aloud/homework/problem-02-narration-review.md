@@ -139,7 +139,7 @@ if __name__ == "__main__":
 Real stdout from the shipped file, captured on CPython 3.13:
 
 ```text
-$ python problem-02-narration-review-solution.py
+$ python problem-02-narration-review.py
  2  right
  2  uh
  2  um
@@ -339,14 +339,12 @@ say first — so the same transcript would give the same numbers in a different
 order, and you could not diff two reports. This is the same tuple-key trick as
 C1's leaderboard, and it is worth recognising as the same trick.
 
-## Download and run
+## Run it
 
-Download
-[problem-02-narration-review-solution.py](./problem-02-narration-review-solution.py)
-and run it:
+Copy the worked answer on this page into `problem-02-narration-review.py` and run it:
 
 ```bash
-python problem-02-narration-review-solution.py
+python problem-02-narration-review.py
 ```
 
 Replace `TRANSCRIPT` and `SECONDS` with your own and run it again.

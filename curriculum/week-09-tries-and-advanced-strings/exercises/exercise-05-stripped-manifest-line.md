@@ -56,7 +56,7 @@ answers, and the rule picks the shortest. Two pieces beats three.
 Real stdout from the shipped solution, captured on CPython 3.13.2:
 
 ```text
-$ python exercise-05-stripped-manifest-line-solution.py
+$ python exercise-05-stripped-manifest-line.py
 FISHMEALCAKE      2  FISH MEALCAKE
 OILSEEDCAKE       2  OILSEED CAKE
 FISHOIL           2  FISH OIL
@@ -226,12 +226,12 @@ The memo is keyed on the position, not on the remaining string. Both work; the
 position is a small integer and the string is a copy, and on a long manifest line
 that difference is the whole memory profile.
 
-## Download and run
+## Run it
 
 Download the solution beside this page and run it:
 
 ```bash
-python exercise-05-stripped-manifest-line-solution.py
+python exercise-05-stripped-manifest-line.py
 ```
 
 No third-party packages, no arguments, no input. It prints each line with its

@@ -424,14 +424,12 @@ grow with the log at all. `hives_with` is `O(n)` to build the set and
 over the distinct findings, not the log" is the difference between quoting a
 complexity and understanding one.
 
-## Download and run
+## Run it
 
-Download
-[problem-05-hive-inspection-log-solution.py](./problem-05-hive-inspection-log-solution.py)
-and run it:
+Copy the worked answer on this page into `problem-05-hive-inspection-log.py` and run it:
 
 ```bash
-python problem-05-hive-inspection-log-solution.py
+python problem-05-hive-inspection-log.py
 ```
 
 It is the same program you are writing, under a name that will not collide with

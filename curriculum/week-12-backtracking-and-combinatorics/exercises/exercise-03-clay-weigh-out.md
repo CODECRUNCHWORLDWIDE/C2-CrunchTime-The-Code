@@ -16,8 +16,7 @@ List every way to make up a target weight.
 
 ## Starter
 
-`exercise-03-clay-weigh-out-solution.py` sits beside this page with the weights
-and the self-checks.
+The worked answer on this page carries the weights and the self-checks.
 
 ```text
 counterweights   2   3   5
@@ -61,7 +60,7 @@ tells you whether your answer later is short or complete.
 Real stdout from the shipped solution, captured on CPython 3.13.2:
 
 ```text
-$ python exercise-03-clay-weigh-out-solution.py
+$ python exercise-03-clay-weigh-out.py
 COUNTERWEIGHTS  [2, 3, 5]     TARGET  8
 
 EVERY WEIGH-OUT
@@ -356,12 +355,12 @@ Both wrong versions are shipped, and the file asserts what each one gets wrong â
 that the unpruned walk agrees on the answer and disagrees on the work, and that
 the index-free walk disagrees on the answer. Two exhibits, two different claims.
 
-## Download and run
+## Run it
 
 Download the solution beside this page and run it:
 
 ```bash
-python exercise-03-clay-weigh-out-solution.py
+python exercise-03-clay-weigh-out.py
 ```
 
 No third-party packages, no arguments, no input. It prints the combinations, the

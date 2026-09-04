@@ -376,14 +376,12 @@ case. The relationship to hold in your head is
 `cheaper < k <= count_at_most(quote)`: the rank sits inside the block of equal
 prices, and `cheaper` sits below the whole block.
 
-## Download and run
+## Run it
 
-Download
-[exercise-04-quote-rank-solution.py](./exercise-04-quote-rank-solution.py)
-and run it:
+Copy the worked answer on this page into `exercise-04-quote-rank.py` and run it:
 
 ```bash
-python exercise-04-quote-rank-solution.py
+python exercise-04-quote-rank.py
 ```
 
 It is the same program you are writing, under a name that will not collide

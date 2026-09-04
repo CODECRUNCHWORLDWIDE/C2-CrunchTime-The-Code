@@ -22,8 +22,7 @@ edits — not a number.
 
 ## Starter
 
-`challenge-01-timetable-amendment-solution.py` sits beside this page with the
-timetables and the self-checks.
+The worked answer on this page carries the timetables and the self-checks.
 
 ```text
 old:  BRY  CRB  DNM  ELV  FNW
@@ -64,7 +63,7 @@ costs, sometimes.
 Real stdout from the shipped solution, captured on CPython 3.13.2:
 
 ```text
-$ python challenge-01-timetable-amendment-solution.py
+$ python challenge-01-timetable-amendment.py
 amendment slips
     BRY CRB DNM ELV FNW  ->  BRY DNM GRV ELV FNW
         cost 5
@@ -305,12 +304,12 @@ which is why the table has to survive past the cost calculation. A version that
 keeps only the running minimum is shorter, correct for the number, and cannot
 produce the slip at all — that trade is worth a paragraph in Examine (cost).
 
-## Download and run
+## Run it
 
 Download the solution beside this page and run it:
 
 ```bash
-python challenge-01-timetable-amendment-solution.py
+python challenge-01-timetable-amendment.py
 ```
 
 No third-party packages, no arguments, no input. It prints four slips and then

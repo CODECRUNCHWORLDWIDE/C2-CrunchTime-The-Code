@@ -366,14 +366,12 @@ worth knowing: when the answer is "which things are connected", breadth-first
 and depth-first are interchangeable, and you should pick on other grounds.
 Next week's page picks the other one.
 
-## Download and run
+## Run it
 
-Download
-[problem-01-scrap-heaps-solution.py](./problem-01-scrap-heaps-solution.py)
-and run it:
+Copy the worked answer on this page into `problem-01-scrap-heaps.py` and run it:
 
 ```bash
-python problem-01-scrap-heaps-solution.py
+python problem-01-scrap-heaps.py
 ```
 
 It is the same program you are writing, under a name that will not collide

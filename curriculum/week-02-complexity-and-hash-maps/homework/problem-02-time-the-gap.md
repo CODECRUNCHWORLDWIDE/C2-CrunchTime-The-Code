@@ -226,7 +226,7 @@ crashed — stderr is simply the channel for everything that is not the output.
 Real stdout from the shipped file, captured on CPython 3.13.2:
 
 ```text
-$ python problem-02-time-the-gap-solution.py
+$ python problem-02-time-the-gap.py
 n            nested comparisons   hashed lookups     ratio
      250                31125              250     124.5
     1000               499500             1000     499.5
@@ -497,20 +497,18 @@ itself*: dominated by the nested version, so roughly `O(n^2)` overall, which is
 why the sizes stop at 4,000. *Improvement*: `O(n)` is the floor for the problem,
 since every charge must be read.
 
-## Download and run
+## Run it
 
-Download
-[problem-02-time-the-gap-solution.py](./problem-02-time-the-gap-solution.py)
-and run it:
+Copy the worked answer on this page into `problem-02-time-the-gap.py` and run it:
 
 ```bash
-python problem-02-time-the-gap-solution.py
+python problem-02-time-the-gap.py
 ```
 
 Then run it again with stdout redirected, and watch the two streams separate:
 
 ```bash
-python problem-02-time-the-gap-solution.py > counts.txt
+python problem-02-time-the-gap.py > counts.txt
 ```
 
 The table goes into `counts.txt`; the three timing lines stay on your terminal.

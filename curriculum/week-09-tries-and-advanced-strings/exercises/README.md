@@ -25,7 +25,7 @@ towards, and it is the direct preparation for
 Run any of them directly:
 
 ```bash
-python exercise-01-gate-tag-tree-solution.py
+python exercise-01-gate-tag-tree.py
 ```
 
 No packages, no arguments, no input.

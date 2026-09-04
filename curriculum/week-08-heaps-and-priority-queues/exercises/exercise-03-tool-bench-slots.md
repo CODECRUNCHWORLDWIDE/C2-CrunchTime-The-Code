@@ -68,7 +68,7 @@ the tie is the first thing your heap will hit.
 Real stdout from the shipped solution, captured on CPython 3.13.2:
 
 ```text
-$ python exercise-03-tool-bench-slots-solution.py
+$ python exercise-03-tool-bench-slots.py
 front of the bench: ('bandsaw', 70)
 raw entry at the front: (-70, 'bandsaw')
 slot log:
@@ -270,12 +270,12 @@ if __name__ == "__main__":
 in one function: the negation is a storage decision, and no caller should have
 to know about it.
 
-## Download and run
+## Run it
 
 Download the solution beside this page and run it:
 
 ```bash
-python exercise-03-tool-bench-slots-solution.py
+python exercise-03-tool-bench-slots.py
 ```
 
 No third-party packages, no arguments, no input. It prints the front of the

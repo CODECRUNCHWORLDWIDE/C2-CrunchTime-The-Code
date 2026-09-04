@@ -589,14 +589,12 @@ answer depends on distances to cabinets the meeting-in-the-middle version
 never settles. Two complete searches cost more and tell you more. Being able
 to say which of those you need is the senior half of this problem.
 
-## Download and run
+## Run it
 
-Download
-[challenge-01-trunk-splice-solution.py](./challenge-01-trunk-splice-solution.py)
-and run it:
+Copy the worked answer on this page into `challenge-01-trunk-splice.py` and run it:
 
 ```bash
-python challenge-01-trunk-splice-solution.py
+python challenge-01-trunk-splice.py
 ```
 
 It is the same program you are writing, under a name that will not collide

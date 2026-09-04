@@ -204,7 +204,7 @@ if __name__ == "__main__":
 Real stdout from the shipped file, captured on CPython 3.13.2:
 
 ```text
-$ python problem-02-trim-scan-solution.py
+$ python problem-02-trim-scan.py
 ['ARV', 'SRT', 'OFD', 'DLV']       k=1  ->  ['ARV', 'SRT', 'OFD']
 ['ARV', 'SRT', 'OFD', 'DLV']       k=4  ->  ['SRT', 'OFD', 'DLV']
 ['ARV', 'SRT', 'OFD', 'DLV']       k=5  ->  ['ARV', 'SRT', 'OFD', 'DLV']
@@ -442,14 +442,12 @@ on this page, you have brought the wrong variant.
 **Nothing here grows with the parcel.** Two pointers and one throwaway scan.
 The handheld's frame budget is honoured.
 
-## Download and run
+## Run it
 
-Download
-[problem-02-trim-scan-solution.py](./problem-02-trim-scan-solution.py)
-and run it:
+Copy the worked answer on this page into `problem-02-trim-scan.py` and run it:
 
 ```bash
-python problem-02-trim-scan-solution.py
+python problem-02-trim-scan.py
 ```
 
 It is the same program you are writing, under a name that will not collide with

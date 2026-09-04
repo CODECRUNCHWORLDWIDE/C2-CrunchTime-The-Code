@@ -341,14 +341,12 @@ station could record. The infinity is smaller than every one of them, by
 definition, and it is why `[-120, -45, -300]` — an entirely below-sea-level
 line — comes out right.
 
-## Download and run
+## Run it
 
-Download
-[problem-03-ridge-line-solution.py](./problem-03-ridge-line-solution.py)
-and run it:
+Copy the worked answer on this page into `problem-03-ridge-line.py` and run it:
 
 ```bash
-python problem-03-ridge-line-solution.py
+python problem-03-ridge-line.py
 ```
 
 It is the same program you are writing, under a name that will not collide

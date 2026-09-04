@@ -19,8 +19,7 @@ the slope printed beside it.
 
 ## Starter
 
-`exercise-04-terrace-route-table-solution.py` sits beside this page with the
-slope and the self-checks.
+The worked answer on this page carries the slope and the self-checks.
 
 ```text
 .......
@@ -62,7 +61,7 @@ it will tell you immediately whether you have the recurrence the right way round
 Real stdout from the shipped solution, captured on CPython 3.13.2:
 
 ```text
-$ python exercise-04-terrace-route-table-solution.py
+$ python exercise-04-terrace-route-table.py
 slope     route counts
 .......     1    1    1    1    1    1    1
 ..#....     1    2    0    1    2    3    4
@@ -306,12 +305,12 @@ The counting decorator is deliberately crude: it wraps the function and bumps an
 attribute. A cleverer instrument would measure the instrument. The point is the
 ratio between three numbers, and the ratio survives a crude counter.
 
-## Download and run
+## Run it
 
 Download the solution beside this page and run it:
 
 ```bash
-python exercise-04-terrace-route-table-solution.py
+python exercise-04-terrace-route-table.py
 ```
 
 No third-party packages, no arguments, no input. It prints the slope with its

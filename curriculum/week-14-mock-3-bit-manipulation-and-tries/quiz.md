@@ -36,7 +36,7 @@ One-line justification per answer. Lectures closed. Time yourself — 45 seconds
 <details>
 <summary>Answer</summary>
 
-**bitmask-subset-enumeration (the glaze sample set.** "All subsets" + small `n` (`16`, so `2**16 = 65536` masks) is the enumeration signal. Loop `mask` over `range(1 << n)`; bit `i` means item `i` is included. Lecture 2 §2.
+**Bitmask subset enumeration** (the glaze sample set). "All subsets" + small `n` (`16`, so `2**16 = 65536` masks) is the enumeration signal. Loop `mask` over `range(1 << n)`; bit `i` means item `i` is included. Lecture 2 §2.
 
 </details>
 
@@ -45,7 +45,7 @@ One-line justification per answer. Lectures closed. Time yourself — 45 seconds
 <details>
 <summary>Answer</summary>
 
-**binary-trie (the pairing register,).** "Maximize the XOR over all pairs" with the `O(n**2)` brute force too slow → insert MSB-first into a binary trie, greedy opposite-bit walk, `O(n · 32)`. Exercise 3 — the bridge problem.
+**Binary trie** (the pairing register). "Maximize the XOR over all pairs" with the `O(n**2)` brute force too slow → insert MSB-first into a binary trie, greedy opposite-bit walk, `O(n · 32)`. Exercise 3 — the bridge problem.
 
 </details>
 

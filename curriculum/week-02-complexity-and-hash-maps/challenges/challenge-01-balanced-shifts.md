@@ -210,7 +210,7 @@ windows at once.
 Real stdout from the shipped file, captured on CPython 3.13.2:
 
 ```text
-$ python challenge-01-balanced-shifts-solution.py
+$ python challenge-01-balanced-shifts.py
 target   3  ->   5 balanced, first   0..0   [3, -1, 4, -3, 1, 2]
 target   3  ->   2 balanced, first   2..2   [2, 0, 3]
 target   0  ->   6 balanced, first   0..0   [0, 0, 0]
@@ -459,14 +459,12 @@ Look at what happened at `b = 2`. Prefix value 2 was already in the map from
 line. Had you kept the earliest index, step 3 would have reported `(1, 2)` — a
 balanced window, correctly counted, and the wrong one to return.
 
-## Download and run
+## Run it
 
-Download
-[challenge-01-balanced-shifts-solution.py](./challenge-01-balanced-shifts-solution.py)
-and run it:
+Copy the worked answer on this page into `challenge-01-balanced-shifts.py` and run it:
 
 ```bash
-python challenge-01-balanced-shifts-solution.py
+python challenge-01-balanced-shifts.py
 ```
 
 It is the same program you are writing, under a name that will not collide with

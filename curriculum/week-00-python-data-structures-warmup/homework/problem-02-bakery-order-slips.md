@@ -383,14 +383,12 @@ a list of records and pass that around. Being able to say *why* the cheap
 version is fine here, and what you would change if it were not, is the Examine
 step of FRAME.
 
-## Download and run
+## Run it
 
-Download
-[problem-02-bakery-order-slips-solution.py](./problem-02-bakery-order-slips-solution.py)
-and run it:
+Copy the worked answer on this page into `problem-02-bakery-order-slips.py` and run it:
 
 ```bash
-python problem-02-bakery-order-slips-solution.py
+python problem-02-bakery-order-slips.py
 ```
 
 It is the same program you are writing, under a name that will not collide with

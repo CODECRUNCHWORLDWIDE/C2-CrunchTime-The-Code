@@ -24,8 +24,8 @@ is what makes you articulate the difference.
 
 ## Starter
 
-`README-solution.py` sits beside this page with both halves solved and the
-self-checks you must satisfy.
+The worked answer on this page has both halves solved and the self-checks you
+must satisfy.
 
 ```text
 orchard row:  7  12  5  9  14  3  11      (kg per tree, from the gate)
@@ -167,7 +167,7 @@ The cross-reference weight is the new element this mini-project. Sentences like 
 Real stdout from the shipped solution, captured on CPython 3.13.2:
 
 ```text
-$ python README-solution.py
+$ python README.py
 HALF ONE - the orchard row
     yields:  (7, 12, 5, 9, 14, 3, 11)
     best:    37 kg
@@ -439,12 +439,12 @@ carries two integers; `recipe_ways` carries one row. Neither keeps more than it
 needs — and `picked_trees` keeps the table precisely because it needs more, which
 is the trade the write-up has to defend.
 
-## Download and run
+## Run it
 
 Download the solution beside this page and run it:
 
 ```bash
-python README-solution.py
+python README.py
 ```
 
 No third-party packages, no arguments, no input. It prints both halves, the full

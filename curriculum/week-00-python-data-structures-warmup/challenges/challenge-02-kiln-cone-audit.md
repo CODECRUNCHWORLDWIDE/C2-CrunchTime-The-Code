@@ -482,14 +482,12 @@ one pass over the log plus one sort of the kilns, and the thing it avoids is
 the `O(k²)` all-pairs comparison. Say that as one sentence and you have the
 Examine step of FRAME for this problem.
 
-## Download and run
+## Run it
 
-Download
-[challenge-02-kiln-cone-audit-solution.py](./challenge-02-kiln-cone-audit-solution.py)
-and run it:
+Copy the worked answer on this page into `challenge-02-kiln-cone-audit.py` and run it:
 
 ```bash
-python challenge-02-kiln-cone-audit-solution.py
+python challenge-02-kiln-cone-audit.py
 ```
 
 It is the same program you are writing, under a name that will not collide with

@@ -18,7 +18,7 @@ computes slowly, and that is worth knowing.
 
 ## Starter
 
-`challenge-02-ledger-adder-solution.py` sits beside this page with the self-checks.
+The worked answer on this page carries the self-checks.
 
 The board is **16-bit and signed**. That is not decoration: Python's integers are
 unbounded, and a negative one behaves as though it has infinitely many leading
@@ -55,7 +55,7 @@ to 16 bits is what makes the loop stop, and it is what the relays actually do.
 Real stdout from the shipped solution, captured on CPython 3.13.2:
 
 ```text
-$ python challenge-02-ledger-adder-solution.py
+$ python challenge-02-ledger-adder.py
 ledger additions
           0 +       0 =       0   rounds  0   ok 
           5 +       3 =       8   rounds  4   ok 
@@ -233,12 +233,12 @@ The exhaustive check across every pair from −40 to 40 is deliberate. Bit
 arithmetic is exactly the kind of code that passes six hand-picked examples and
 fails a seventh, and 6,561 pairs cost nothing to verify.
 
-## Download and run
+## Run it
 
 Download the solution beside this page and run it:
 
 ```bash
-python challenge-02-ledger-adder-solution.py
+python challenge-02-ledger-adder.py
 ```
 
 No third-party packages, no arguments, no input. It prints eight additions with

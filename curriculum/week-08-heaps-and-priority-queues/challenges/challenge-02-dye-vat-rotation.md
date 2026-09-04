@@ -66,7 +66,7 @@ code — the arithmetic is the Assess-options step, and it is short.
 Real stdout from the shipped solution, captured on CPython 3.13.2:
 
 ```text
-$ python challenge-02-dye-vat-rotation-solution.py
+$ python challenge-02-dye-vat-rotation.py
 slots needed: 16
 rotation:
   slot  1  indigo
@@ -282,12 +282,12 @@ The idle slot is an entry in the plan rather than a gap in it. That is what make
 `rest_respected` a straight walk over the list, and what makes the day's length
 fall out of the plan rather than needing to be computed separately.
 
-## Download and run
+## Run it
 
 Download the solution beside this page and run it:
 
 ```bash
-python challenge-02-dye-vat-rotation-solution.py
+python challenge-02-dye-vat-rotation.py
 ```
 
 No third-party packages, no arguments, no input. It prints the rotation, the

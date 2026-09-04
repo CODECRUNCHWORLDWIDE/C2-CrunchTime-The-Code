@@ -434,14 +434,12 @@ and `O(1)` space; the size bound rejects it. `neighbouring_pair` is `O(n)` and
 answers a different question, which is a useful reminder that being fast is not
 the same as being right.
 
-## Download and run
+## Run it
 
-Download
-[problem-03-when-the-window-fails-solution.py](./problem-03-when-the-window-fails-solution.py)
-and run it:
+Copy the worked answer on this page into `problem-03-when-the-window-fails.py` and run it:
 
 ```bash
-python problem-03-when-the-window-fails-solution.py
+python problem-03-when-the-window-fails.py
 ```
 
 It is the same program you are writing, under a name that will not collide with

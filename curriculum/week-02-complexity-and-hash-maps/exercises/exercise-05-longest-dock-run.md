@@ -169,7 +169,7 @@ work and most do none at all, and the total is still bounded by `n`.
 Real stdout from the shipped file, captured on CPython 3.13.2:
 
 ```text
-$ python exercise-05-longest-dock-run-solution.py
+$ python exercise-05-longest-dock-run.py
 6 reported   ->  3 docks from 4019
 4 reported   ->  2 docks from 12
 4 reported   ->  2 docks from 50
@@ -369,14 +369,12 @@ here on time. A `Counter` buys nothing at all: the question is membership, not
 multiplicity. *Improvement*: none. Every ID must be read, so `O(n)` is the
 floor.
 
-## Download and run
+## Run it
 
-Download
-[exercise-05-longest-dock-run-solution.py](./exercise-05-longest-dock-run-solution.py)
-and run it:
+Copy the worked answer on this page into `exercise-05-longest-dock-run.py` and run it:
 
 ```bash
-python exercise-05-longest-dock-run-solution.py
+python exercise-05-longest-dock-run.py
 ```
 
 It is the same program you are writing, under a name that will not collide with

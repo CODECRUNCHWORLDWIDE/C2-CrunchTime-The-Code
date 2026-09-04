@@ -152,7 +152,7 @@ if __name__ == "__main__":
 Real stdout from the shipped file, captured on CPython 3.13.2:
 
 ```text
-$ python problem-01-loopback-self-test-solution.py
+$ python problem-01-loopback-self-test.py
 [1, 2, 3, 0]           healthy
 [2, 3, 1, 0]           healthy
 [0]                    healthy
@@ -350,14 +350,12 @@ fabric is as broken as it can be.
 one counter. That is the bootloader honoured — not because the numbers are
 small, but because there are a fixed number of them.
 
-## Download and run
+## Run it
 
-Download
-[problem-01-loopback-self-test-solution.py](./problem-01-loopback-self-test-solution.py)
-and run it:
+Copy the worked answer on this page into `problem-01-loopback-self-test.py` and run it:
 
 ```bash
-python problem-01-loopback-self-test-solution.py
+python problem-01-loopback-self-test.py
 ```
 
 It is the same program you are writing, under a name that will not collide with

@@ -347,14 +347,12 @@ branch that cannot be wrong.
 and reads all quarter of a million rows to do it, which is the cost you came
 here to avoid, multiplied by forty thousand probes per refresh.
 
-## Download and run
+## Run it
 
-Download
-[exercise-03-ring-buffer-probe-solution.py](./exercise-03-ring-buffer-probe-solution.py)
-and run it:
+Copy the worked answer on this page into `exercise-03-ring-buffer-probe.py` and run it:
 
 ```bash
-python exercise-03-ring-buffer-probe-solution.py
+python exercise-03-ring-buffer-probe.py
 ```
 
 It is the same program you are writing, under a name that will not collide

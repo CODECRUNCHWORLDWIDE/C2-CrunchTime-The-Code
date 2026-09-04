@@ -16,10 +16,9 @@ The full protocol lives in
 This page is the deliverable framing — how to run it, what to record, how to
 review it in two passes, and how to write the closing arc across all four mocks.
 
-If you are running solo and have nobody to set you an unseen coding problem, the
-fallback is **the overnight leak survey**, and
-`challenge-01-mock-4-full-loop-solution.py` beside this page is its worked
-answer. Do not open that file until your clock has stopped.
+If you are running solo and have nobody to set you an unseen coding problem,
+the fallback is **the overnight leak survey**, and the worked answer on this
+page solves it. Do not read it until your clock has stopped.
 
 ## Starter
 
@@ -244,7 +243,7 @@ rather than as scenery:
 Real stdout from the fallback problem's worked answer, captured on CPython 3.13.2:
 
 ```text
-$ python challenge-01-mock-4-full-loop-solution.py
+$ python challenge-01-mock-4-full-loop.py
 All checks passed.
 ```
 
@@ -417,12 +416,12 @@ group by root to recover sizes and OR the border flags per root. Same
 asymptotics, more bookkeeping, and a second pass to read the answer out. Say why
 you rejected it.
 
-## Download and run
+## Run it
 
 Download the worked answer beside this page and run it:
 
 ```bash
-python challenge-01-mock-4-full-loop-solution.py
+python challenge-01-mock-4-full-loop.py
 ```
 
 No third-party packages, no arguments, no input. It runs the self-checks and

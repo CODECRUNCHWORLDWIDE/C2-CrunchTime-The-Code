@@ -25,7 +25,7 @@ plausible wrong fix returns exactly as many answers as the right one.
 Run any of them directly:
 
 ```bash
-python exercise-01-glaze-sample-set-solution.py
+python exercise-01-glaze-sample-set.py
 ```
 
 No packages, no arguments, no input.

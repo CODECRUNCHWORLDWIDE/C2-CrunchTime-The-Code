@@ -217,7 +217,7 @@ nothing.
 Real stdout from the shipped file, captured on CPython 3.13.2:
 
 ```text
-$ python problem-01-hose-clusters-solution.py
+$ python problem-01-hose-clusters.py
 bench: 9 valves, 7 hoses logged
   clusters        : 4
   largest cluster : 3
@@ -438,14 +438,12 @@ Space is `O(V + E)` too: `V` neighbour lists holding `2E` entries between them,
 plus a visited set of at most `V`, plus a recursion stack at most as deep as the
 longest chain.
 
-## Download and run
+## Run it
 
-Download
-[problem-01-hose-clusters-solution.py](./problem-01-hose-clusters-solution.py)
-and run it:
+Copy the worked answer on this page into `problem-01-hose-clusters.py` and run it:
 
 ```bash
-python problem-01-hose-clusters-solution.py
+python problem-01-hose-clusters.py
 ```
 
 It is the same program you are writing, under a name that will not collide with

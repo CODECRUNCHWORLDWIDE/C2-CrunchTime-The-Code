@@ -21,7 +21,7 @@ run, the full solution and the bugs it is built to prevent. Run any worked answe
 directly:
 
 ```bash
-python problem-01-scrap-heaps-solution.py
+python problem-01-scrap-heaps.py
 ```
 
 Problems 1 and 2 are the grid pair — one counts components, the other measures

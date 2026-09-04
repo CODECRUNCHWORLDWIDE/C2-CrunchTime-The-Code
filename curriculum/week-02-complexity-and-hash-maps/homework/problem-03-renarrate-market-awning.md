@@ -249,7 +249,7 @@ not a shrug. It says you considered whether a better algorithm exists and
 established that one cannot. That is a different and much better answer than
 leaving the improvement piece blank.
 
-## Download and run
+## Run it
 
 There is no file to download. The deliverable is prose in your own repository,
 and the algorithm it discusses was shipped in Week 1.

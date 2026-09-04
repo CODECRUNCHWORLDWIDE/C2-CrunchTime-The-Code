@@ -289,14 +289,12 @@ starts, the guard is false, and the function returns `None` without reading
 anything. When a contract's degenerate case falls out of the invariant for
 free, that is a sign the invariant is the right one.
 
-## Download and run
+## Run it
 
-Download
-[exercise-01-ladder-seat-solution.py](./exercise-01-ladder-seat-solution.py)
-and run it:
+Copy the worked answer on this page into `exercise-01-ladder-seat.py` and run it:
 
 ```bash
-python exercise-01-ladder-seat-solution.py
+python exercise-01-ladder-seat.py
 ```
 
 It is the same program you are writing, under a name that will not collide

@@ -26,7 +26,7 @@ one node in one tier, however many times it is mentioned.
 Run any of them directly:
 
 ```bash
-python exercise-01-relay-roster-solution.py
+python exercise-01-relay-roster.py
 ```
 
 No packages, no arguments, no input.

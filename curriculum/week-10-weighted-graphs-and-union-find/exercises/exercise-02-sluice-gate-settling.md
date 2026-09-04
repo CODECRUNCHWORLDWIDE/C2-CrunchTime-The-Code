@@ -18,8 +18,7 @@ Then run the identical algorithm **with the settled set removed** and compare.
 
 ## Starter
 
-`exercise-02-sluice-gate-settling-solution.py` sits beside this page with the
-channels and the self-checks.
+The worked answer on this page carries the channels and the self-checks.
 
 ```text
 Head Gate  -> Bywash       1 min      Cut Sluice -> Tail Weir   1 min
@@ -59,7 +58,7 @@ exercise.
 Real stdout from the shipped solution, captured on CPython 3.13.2:
 
 ```text
-$ python exercise-02-sluice-gate-settling-solution.py
+$ python exercise-02-sluice-gate-settling.py
 Settling order from Head Gate
   1. Head Gate at 0 min
   2. Bywash at 1 min
@@ -302,12 +301,12 @@ An invariant you have only read about is a thing you will drop under time
 pressure; an invariant you have watched fail on a five-gate district is one you
 remember.
 
-## Download and run
+## Run it
 
 Download the solution beside this page and run it:
 
 ```bash
-python exercise-02-sluice-gate-settling-solution.py
+python exercise-02-sluice-gate-settling.py
 ```
 
 No third-party packages, no arguments, no input. It prints the settling order,

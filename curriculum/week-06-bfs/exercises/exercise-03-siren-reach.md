@@ -469,14 +469,12 @@ the columns stop lining up the moment a distance reaches ten, and a map you
 cannot read by eye is a map you cannot check by eye. The whole point of
 printing it is to be able to see the meeting line.
 
-## Download and run
+## Run it
 
-Download
-[exercise-03-siren-reach-solution.py](./exercise-03-siren-reach-solution.py)
-and run it:
+Copy the worked answer on this page into `exercise-03-siren-reach.py` and run it:
 
 ```bash
-python exercise-03-siren-reach-solution.py
+python exercise-03-siren-reach.py
 ```
 
 It is the same program you are writing, under a name that will not collide

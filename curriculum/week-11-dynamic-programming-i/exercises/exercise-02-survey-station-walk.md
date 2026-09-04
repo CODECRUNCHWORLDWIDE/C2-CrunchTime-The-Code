@@ -190,7 +190,7 @@ variables are enough.
 Real stdout from the shipped file, captured on CPython 3.13:
 
 ```text
-$ python exercise-02-survey-station-walk-solution.py
+$ python exercise-02-survey-station-walk.py
 pools considered  best plan (species, pools)
                0  (0, 0)
                1  (4, 1)
@@ -431,14 +431,12 @@ of work, so time is `O(n)` — linear in the number of pools. `best_survey` uses
 `O(1)` extra space; `survey_table` uses `O(n)`, and it uses it on purpose,
 because its whole job is to hand back the walkthrough.
 
-## Download and run
+## Run it
 
-Download
-[exercise-02-survey-station-walk-solution.py](./exercise-02-survey-station-walk-solution.py)
-and run it:
+Copy the worked answer on this page into `exercise-02-survey-station-walk.py` and run it:
 
 ```bash
-python exercise-02-survey-station-walk-solution.py
+python exercise-02-survey-station-walk.py
 ```
 
 It is the same program you are writing, under a name that will not collide with

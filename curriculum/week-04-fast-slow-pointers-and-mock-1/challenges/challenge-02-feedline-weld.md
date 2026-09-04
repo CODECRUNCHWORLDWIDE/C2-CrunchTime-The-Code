@@ -229,7 +229,7 @@ if __name__ == "__main__":
 Real stdout from the shipped file, captured on CPython 3.13.2:
 
 ```text
-$ python challenge-02-feedline-weld-solution.py
+$ python challenge-02-feedline-weld.py
 A:2 B:3 shared:2     weld w1, lead-ins 2 and 3
 A:0 B:2 shared:1     weld w1, lead-ins 0 and 2
 A:1 B:0 shared:3     weld w1, lead-ins 1 and 0
@@ -521,14 +521,12 @@ how the next person finds out.
 `_ring_entrance` holds, plus two counters. The controller's few kilobytes are
 honoured.
 
-## Download and run
+## Run it
 
-Download
-[challenge-02-feedline-weld-solution.py](./challenge-02-feedline-weld-solution.py)
-and run it:
+Copy the worked answer on this page into `challenge-02-feedline-weld.py` and run it:
 
 ```bash
-python challenge-02-feedline-weld-solution.py
+python challenge-02-feedline-weld.py
 ```
 
 It is the same program you are writing, under a name that will not collide with

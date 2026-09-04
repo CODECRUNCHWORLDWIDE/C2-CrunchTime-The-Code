@@ -432,14 +432,12 @@ for a legal `k` is also 0. One candidate, `taken = 0`, both short-side reads
 fall off their ends into infinities, and the answer comes straight from the
 long list. No `if either list is empty` anywhere.
 
-## Download and run
+## Run it
 
-Download
-[challenge-01-order-book-boundary-solution.py](./challenge-01-order-book-boundary-solution.py)
-and run it:
+Copy the worked answer on this page into `challenge-01-order-book-boundary.py` and run it:
 
 ```bash
-python challenge-01-order-book-boundary-solution.py
+python challenge-01-order-book-boundary.py
 ```
 
 It is the same program you are writing, under a name that will not collide

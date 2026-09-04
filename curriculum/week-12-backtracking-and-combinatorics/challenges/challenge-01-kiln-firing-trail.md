@@ -20,8 +20,8 @@ them all cannot.
 
 ## Starter
 
-`challenge-01-kiln-firing-trail-solution.py` sits beside this page with the rack
-and the self-checks you must satisfy.
+The worked answer on this page carries the rack and the self-checks you must
+satisfy.
 
 ```text
 A B C E
@@ -63,7 +63,7 @@ understand what the counting is for.
 Real stdout from the shipped solution, captured on CPython 3.13.2:
 
 ```text
-$ python challenge-01-kiln-firing-trail-solution.py
+$ python challenge-01-kiln-firing-trail.py
 the rack
     A B C E
     S F E S
@@ -298,12 +298,12 @@ The mark and the undo sit either side of the recursive call, four lines apart,
 on purpose. The single most common backtracking bug is an undo that is skipped on
 one branch, and the way to not write it is to never let the two drift apart.
 
-## Download and run
+## Run it
 
 Download the solution beside this page and run it:
 
 ```bash
-python challenge-01-kiln-firing-trail-solution.py
+python challenge-01-kiln-firing-trail.py
 ```
 
 No third-party packages, no arguments, no input. It prints the rack, the report,

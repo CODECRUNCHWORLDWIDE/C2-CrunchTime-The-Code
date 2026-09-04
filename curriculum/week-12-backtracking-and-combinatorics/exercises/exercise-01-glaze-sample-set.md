@@ -20,8 +20,7 @@ at all of them.
 
 ## Starter
 
-`exercise-01-glaze-sample-set-solution.py` sits beside this page with the shelf
-and the self-checks.
+The worked answer on this page carries the shelf and the self-checks.
 
 ```text
 ash   celadon   tenmoku   shino
@@ -60,7 +59,7 @@ never be made fast.
 Real stdout from the shipped solution, captured on CPython 3.13.2:
 
 ```text
-$ python exercise-01-glaze-sample-set-solution.py
+$ python exercise-01-glaze-sample-set.py
 GLAZES  ['ash', 'celadon', 'tenmoku', 'shino']
 
 EVERY SAMPLE SET, IN WALK ORDER
@@ -299,12 +298,12 @@ if __name__ == "__main__":
 it is wrong rather than merely printing it. An exhibit nothing asserts stops
 being an exhibit the first time somebody tidies the file.
 
-## Download and run
+## Run it
 
 Download the solution beside this page and run it:
 
 ```bash
-python exercise-01-glaze-sample-set-solution.py
+python exercise-01-glaze-sample-set.py
 ```
 
 No third-party packages, no arguments, no input. It prints every subset, the

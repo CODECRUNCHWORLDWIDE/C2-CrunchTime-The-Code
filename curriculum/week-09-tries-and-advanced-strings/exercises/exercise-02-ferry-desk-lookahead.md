@@ -55,7 +55,7 @@ a number you can read rather than a claim you have to trust.
 Real stdout from the shipped solution, captured on CPython 3.13.2:
 
 ```text
-$ python exercise-02-ferry-desk-lookahead-solution.py
+$ python exercise-02-ferry-desk-lookahead.py
 BR       limit 3   nodes  16  ['BRIDGEND', 'BRIDGEPORT', 'BRIDGEWATER']
 BR       limit 99  nodes  29  ['BRIDGEND', 'BRIDGEPORT', 'BRIDGEWATER', 'BRINE', 'BROADSANDS', 'BROADWAY']
 BRIDGE   limit 2   nodes   7  ['BRIDGEND', 'BRIDGEPORT']
@@ -229,12 +229,12 @@ stays pure and the self-checks can assert on it. A claim about early stopping
 that nothing asserts is a claim that stops being true the first time somebody
 edits the walk.
 
-## Download and run
+## Run it
 
 Download the solution beside this page and run it:
 
 ```bash
-python exercise-02-ferry-desk-lookahead-solution.py
+python exercise-02-ferry-desk-lookahead.py
 ```
 
 No third-party packages, no arguments, no input. It prints each lookahead with

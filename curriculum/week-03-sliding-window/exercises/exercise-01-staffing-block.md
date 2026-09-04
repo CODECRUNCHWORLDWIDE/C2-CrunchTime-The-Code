@@ -479,14 +479,12 @@ and then two operations for each of the `n - k` slides. Counting operations
 rather than timing them means the numbers come out the same on every machine,
 which is what makes them worth quoting.
 
-## Download and run
+## Run it
 
-Download
-[exercise-01-staffing-block-solution.py](./exercise-01-staffing-block-solution.py)
-and run it:
+Copy the worked answer on this page into `exercise-01-staffing-block.py` and run it:
 
 ```bash
-python exercise-01-staffing-block-solution.py
+python exercise-01-staffing-block.py
 ```
 
 It is the same program you are writing, under a name that will not collide with

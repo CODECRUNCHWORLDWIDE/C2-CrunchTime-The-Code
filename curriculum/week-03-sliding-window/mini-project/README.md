@@ -351,7 +351,7 @@ one problem, run against the examples stated in its section above — use it to
 check your own implementation before you write the memo about it:
 
 ```text
-$ python README-solution.py
+$ python README.py
 1 - the quietest maintenance window
     k=2  [80, 20, 30, 90, 10] -> 50
     k=2  [3, 4, 5]            -> 7
@@ -751,12 +751,12 @@ Six implementations, one per problem, each with the examples from its section
 above. Read the sentinels: `None`, `0`, `[]` and a length all appear, and each
 one is the contract its problem states rather than a house convention.
 
-## Download and run
+## Run it
 
 Download the solution beside this page and run it:
 
 ```bash
-python README-solution.py
+python README.py
 ```
 
 No third-party packages, no arguments, no input. It prints the six blocks above.

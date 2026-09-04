@@ -202,7 +202,7 @@ if __name__ == "__main__":
 Real stdout from the shipped file, captured on CPython 3.13.2:
 
 ```text
-$ python problem-03-symmetric-dies-solution.py
+$ python problem-03-symmetric-dies.py
 ['A', 'B', 'B', 'A']                 symmetric
 ['A', 'B', 'C', 'B', 'A']            symmetric
 ['A']                                symmetric
@@ -474,14 +474,12 @@ runs — but it says the intent plainly and costs nothing.
 `front_walk`, `back_walk`, and two integers. The controller's frame budget is
 honoured.
 
-## Download and run
+## Run it
 
-Download
-[problem-03-symmetric-dies-solution.py](./problem-03-symmetric-dies-solution.py)
-and run it:
+Copy the worked answer on this page into `problem-03-symmetric-dies.py` and run it:
 
 ```bash
-python problem-03-symmetric-dies-solution.py
+python problem-03-symmetric-dies.py
 ```
 
 It is the same program you are writing, under a name that will not collide with

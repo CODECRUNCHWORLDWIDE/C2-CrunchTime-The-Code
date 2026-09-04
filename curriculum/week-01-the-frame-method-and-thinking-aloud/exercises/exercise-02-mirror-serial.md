@@ -141,7 +141,7 @@ if __name__ == "__main__":
 Real stdout from the shipped file, captured on CPython 3.13:
 
 ```text
-$ python exercise-02-mirror-serial-solution.py
+$ python exercise-02-mirror-serial.py
   'RT7-e77-E7tr'  mirrors
   'RT7-e77-E8tr'  breaks at index 2
        '8a-b-c8'  breaks at index 1
@@ -300,14 +300,12 @@ skip loops do not turn it into anything worse even though they are nested
 inside the outer loop. Being able to say *why* nested loops are still linear
 here is worth more in an interview than the code is.
 
-## Download and run
+## Run it
 
-Download
-[exercise-02-mirror-serial-solution.py](./exercise-02-mirror-serial-solution.py)
-and run it:
+Copy the worked answer on this page into `exercise-02-mirror-serial.py` and run it:
 
 ```bash
-python exercise-02-mirror-serial-solution.py
+python exercise-02-mirror-serial.py
 ```
 
 It is the same program you are writing, under a name that will not collide

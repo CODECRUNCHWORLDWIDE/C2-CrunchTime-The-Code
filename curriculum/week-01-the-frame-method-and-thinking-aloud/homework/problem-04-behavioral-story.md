@@ -139,7 +139,7 @@ if __name__ == "__main__":
 Real stdout from the shipped file, captured on CPython 3.13:
 
 ```text
-$ python problem-04-behavioral-story-solution.py
+$ python problem-04-behavioral-story.py
 pass  four headings present     all four
 pass  headings in STAR order    Situation then Task then Action then Result
 pass  no empty section          all four have text
@@ -350,14 +350,12 @@ there is exactly one definition in the program of what a section is. When two
 functions both claim to know how to parse a file, one of them is eventually
 wrong.
 
-## Download and run
+## Run it
 
-Download
-[problem-04-behavioral-story-solution.py](./problem-04-behavioral-story-solution.py)
-and run it:
+Copy the worked answer on this page into `problem-04-behavioral-story.py` and run it:
 
 ```bash
-python problem-04-behavioral-story-solution.py
+python problem-04-behavioral-story.py
 ```
 
 To check your own story, read the file in and pass the text to `check_story`:

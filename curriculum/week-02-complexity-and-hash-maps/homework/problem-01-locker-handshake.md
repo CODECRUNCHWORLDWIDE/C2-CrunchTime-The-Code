@@ -159,7 +159,7 @@ one, and the sixth self-check is there to make that cost you if you forget.
 Real stdout from the shipped file, captured on CPython 3.13.2:
 
 ```text
-$ python problem-01-locker-handshake-solution.py
+$ python problem-01-locker-handshake.py
 consistent            QRT->14 BLM->9 QRT->14
 route break at 1      QRT->14 QRT->21
 locker break at 1     QRT->14 BLM->14
@@ -356,14 +356,12 @@ is two maps wearing a costume. Sorting is not merely slower here but wrong: it
 renumbers the entries, and the answer is an entry number. *Improvement*: none;
 every entry must be read in the worst case, so `O(n)` is the floor.
 
-## Download and run
+## Run it
 
-Download
-[problem-01-locker-handshake-solution.py](./problem-01-locker-handshake-solution.py)
-and run it:
+Copy the worked answer on this page into `problem-01-locker-handshake.py` and run it:
 
 ```bash
-python problem-01-locker-handshake-solution.py
+python problem-01-locker-handshake.py
 ```
 
 It is the same program you are writing, under a name that will not collide with

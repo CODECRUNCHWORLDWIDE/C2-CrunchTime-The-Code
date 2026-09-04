@@ -260,7 +260,7 @@ It is how "take the alphabetically smallest ready wagon" costs almost nothing.
 Real stdout from the shipped file, captured on CPython 3.13.2:
 
 ```text
-$ python challenge-02-consist-reconstruction-solution.py
+$ python challenge-02-consist-reconstruction.py
 sightings            verdict     order
 nothing filed        unique      []
 two blank sightings  unique      []
@@ -620,14 +620,12 @@ are no wagons, the heap starts empty, the loop never runs, `forced` is still
 `([], "unique")` by the general rule, which is the right answer: there is
 exactly one way to arrange nothing.
 
-## Download and run
+## Run it
 
-Download
-[challenge-02-consist-reconstruction-solution.py](./challenge-02-consist-reconstruction-solution.py)
-and run it:
+Copy the worked answer on this page into `challenge-02-consist-reconstruction.py` and run it:
 
 ```bash
-python challenge-02-consist-reconstruction-solution.py
+python challenge-02-consist-reconstruction.py
 ```
 
 It is the same program you are writing, under a name that will not collide

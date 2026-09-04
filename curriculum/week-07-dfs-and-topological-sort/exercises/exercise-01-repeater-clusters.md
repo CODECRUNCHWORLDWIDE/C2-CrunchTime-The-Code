@@ -220,7 +220,7 @@ reached at all.
 Real stdout from the shipped file, captured on CPython 3.13.2:
 
 ```text
-$ python exercise-01-repeater-clusters-solution.py
+$ python exercise-01-repeater-clusters.py
 no masts at all   : []
 one lonely mast   : [(0, 1)]
 pair and a loner  : [(0, 2), (2, 1)]
@@ -426,14 +426,12 @@ as the longest chain of masts, which is `n` in the worst case. That worst case
 is exactly what the 900-mast check exercises, and 900 frames is why the bound
 is 900 and not 9,000.
 
-## Download and run
+## Run it
 
-Download
-[exercise-01-repeater-clusters-solution.py](./exercise-01-repeater-clusters-solution.py)
-and run it:
+Copy the worked answer on this page into `exercise-01-repeater-clusters.py` and run it:
 
 ```bash
-python exercise-01-repeater-clusters-solution.py
+python exercise-01-repeater-clusters.py
 ```
 
 It is the same program you are writing, under a name that will not collide with

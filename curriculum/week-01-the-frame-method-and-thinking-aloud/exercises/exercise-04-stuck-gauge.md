@@ -135,7 +135,7 @@ if __name__ == "__main__":
 Real stdout from the shipped file, captured on CPython 3.13:
 
 ```text
-$ python exercise-04-stuck-gauge-solution.py
+$ python exercise-04-stuck-gauge.py
 dropped 3  kept [412, 415, 409]  whole list [412, 415, 409, 415, 415, 409]  was [412, 412, 412, 415, 415, 409]
 dropped 1  kept [300, 305, 300]  whole list [300, 305, 300, 300]  was [300, 300, 305, 300]
 dropped 3  kept [777]  whole list [777, 777, 777, 777]  was [777, 777, 777, 777]
@@ -312,14 +312,12 @@ know whether the last sample is a repeat without looking at it. The state is
 two integers regardless of whether the archive holds seven samples or two
 million.
 
-## Download and run
+## Run it
 
-Download
-[exercise-04-stuck-gauge-solution.py](./exercise-04-stuck-gauge-solution.py)
-and run it:
+Copy the worked answer on this page into `exercise-04-stuck-gauge.py` and run it:
 
 ```bash
-python exercise-04-stuck-gauge-solution.py
+python exercise-04-stuck-gauge.py
 ```
 
 It is the same program you are writing, under a name that will not collide

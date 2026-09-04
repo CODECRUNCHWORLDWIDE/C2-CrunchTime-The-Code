@@ -171,7 +171,7 @@ here yet?" branch. It is `from collections import defaultdict`.
 Real stdout from the shipped file, captured on CPython 3.13.2:
 
 ```text
-$ python exercise-03-stage-twins-solution.py
+$ python exercise-03-stage-twins.py
 5 acts  ->  [[0, 1], [2, 4]]
 2 acts  ->  []
 3 acts  ->  [[0, 1, 2]]
@@ -338,14 +338,12 @@ wins only when items repeat heavily, and at `k <= 40` is invisible. *Improvement
 none meaningful. Every item of every load-out has to be read, so `O(n * k)` is
 the floor, and the sort's log factor is the only thing above it.
 
-## Download and run
+## Run it
 
-Download
-[exercise-03-stage-twins-solution.py](./exercise-03-stage-twins-solution.py)
-and run it:
+Copy the worked answer on this page into `exercise-03-stage-twins.py` and run it:
 
 ```bash
-python exercise-03-stage-twins-solution.py
+python exercise-03-stage-twins.py
 ```
 
 It is the same program you are writing, under a name that will not collide with

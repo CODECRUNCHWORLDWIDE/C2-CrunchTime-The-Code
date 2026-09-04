@@ -65,7 +65,7 @@ stays as it is; `DRYDOCK` is a stem and stays; `DRYDOCKING` shortens to
 Real stdout from the shipped solution, captured on CPython 3.13.2:
 
 ```text
-$ python challenge-02-berth-ledger-shorthand-solution.py
+$ python challenge-02-berth-ledger-shorthand.py
 in   NORTHGATE QUAYSIDEWEST DRYDOCKTWO LAYBY GRAINSILO QUAY
 out  NORTH QUAYSIDE DRYDOCK LAY GRAINSILO QUAY
      shortened 4, unmatched ['GRAINSILO']
@@ -264,12 +264,12 @@ The walk carries the best stem seen so far rather than returning at the first
 one — one extra variable, and it is the difference between the right answer and a
 plausible wrong one. That variable is what the whole write-up should be about.
 
-## Download and run
+## Run it
 
 Download the solution beside this page and run it:
 
 ```bash
-python challenge-02-berth-ledger-shorthand-solution.py
+python challenge-02-berth-ledger-shorthand.py
 ```
 
 No third-party packages, no arguments, no input. It prints each ledger line in

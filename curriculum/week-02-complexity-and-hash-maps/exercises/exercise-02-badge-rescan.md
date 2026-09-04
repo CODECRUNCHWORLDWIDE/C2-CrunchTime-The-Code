@@ -142,7 +142,7 @@ being `O(n)`, and this page grades you on being able to say which.
 Real stdout from the shipped file, captured on CPython 3.13.2:
 
 ```text
-$ python exercise-02-badge-rescan-solution.py
+$ python exercise-02-badge-rescan.py
 4 taps  ->  review from tap 2     [4820, 1173, 4820, 9002]
 3 taps  ->  clean                 [4820, 1173, 9002]
 0 taps  ->  clean                 []
@@ -303,14 +303,12 @@ the flag array is `O(1)` per check and wastes ten million slots.
 *Improvement*: none. The answer may be the very last tap, so every tap may have
 to be read, and `O(n)` is the floor.
 
-## Download and run
+## Run it
 
-Download
-[exercise-02-badge-rescan-solution.py](./exercise-02-badge-rescan-solution.py)
-and run it:
+Copy the worked answer on this page into `exercise-02-badge-rescan.py` and run it:
 
 ```bash
-python exercise-02-badge-rescan-solution.py
+python exercise-02-badge-rescan.py
 ```
 
 It is the same program you are writing, under a name that will not collide with

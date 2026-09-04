@@ -260,7 +260,7 @@ order, and in a real manifest they are usually the ones with no key at all.
 Real stdout from the shipped file, captured on CPython 3.13.2:
 
 ```text
-$ python exercise-05-firmware-install-order-solution.py
+$ python exercise-05-firmware-install-order.py
 empty manifest : []
 one package    : ['bus-driver']
 rack order     : ['alarm-led', 'render-gl', 'chart-widgets', 'bus-driver', 'calibration-tables', 'measure-core', 'analyzer-ui', 'storage-fs', 'logger']
@@ -491,14 +491,12 @@ arranged a dozen deep costs a dozen frames. That is why this page can use
 recursion honestly where the rest of the week does not — and why the constraint
 above states the depth bound rather than a size bound.
 
-## Download and run
+## Run it
 
-Download
-[exercise-05-firmware-install-order-solution.py](./exercise-05-firmware-install-order-solution.py)
-and run it:
+Copy the worked answer on this page into `exercise-05-firmware-install-order.py` and run it:
 
 ```bash
-python exercise-05-firmware-install-order-solution.py
+python exercise-05-firmware-install-order.py
 ```
 
 It is the same program you are writing, under a name that will not collide with

@@ -312,7 +312,7 @@ four-pole rows" is a different sentence.
 Real stdout from the shipped file, captured on CPython 3.13.2:
 
 ```text
-$ python complexity-audit-solution.py
+$ python complexity-audit.py
 Drill                   Rejected alternative      Verdict
 ------------------------------------------------------------------------
 1 Reverse the Siding    slice-assign reversal     WRONG on 3 input(s)
@@ -768,13 +768,12 @@ space at all"* — rather than reporting feelings. It is for you, and it is also
 for a hiring manager, who sees an engineer who reviews their own output. That
 signal is rare.
 
-## Download and run
+## Run it
 
-Download
-[complexity-audit-solution.py](./complexity-audit-solution.py) and run it:
+Copy the worked answer on this page into `complexity-audit.py` and run it:
 
 ```bash
-python complexity-audit-solution.py
+python complexity-audit.py
 ```
 
 It is the same program you are writing, under a name that will not collide with

@@ -495,14 +495,12 @@ function that returns two unrelated numbers. If the log were fifteen years long
 and this were in a loop, you would parse once and pass the result around, and
 you should be able to say that before anyone asks.
 
-## Download and run
+## Run it
 
-Download
-[challenge-01-tide-board-digest-solution.py](./challenge-01-tide-board-digest-solution.py)
-and run it:
+Copy the worked answer on this page into `challenge-01-tide-board-digest.py` and run it:
 
 ```bash
-python challenge-01-tide-board-digest-solution.py
+python challenge-01-tide-board-digest.py
 ```
 
 It is the same program you are writing, under a name that will not collide with

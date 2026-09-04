@@ -28,8 +28,8 @@ explore, undo.
 
 ## Starter
 
-`README-solution.py` sits beside this page with both halves solved and the
-self-checks you must satisfy. Read the checks; then look away.
+The worked answer on this page has both halves solved and the self-checks you
+must satisfy. Read the checks; then look away.
 
 The given data:
 
@@ -98,7 +98,7 @@ The recording is the single most useful artifact in the mini-project. A 10–15 
 Real stdout from the shipped solution, captured on CPython 3.13.2:
 
 ```text
-$ python README-solution.py
+$ python README.py
 HALF ONE - the batch split
     run: (940, 1010, 940, 780, 780, 1180)
     splits: 4
@@ -398,12 +398,12 @@ The two halves sit in one file on purpose. Read the two recursive functions side
 by side: `_split` appends and returns nothing, `_fill` returns a bool and stops.
 That difference is the whole week.
 
-## Download and run
+## Run it
 
 Download the solution beside this page and run it:
 
 ```bash
-python README-solution.py
+python README.py
 ```
 
 No third-party packages, no arguments, no input. It prints both halves and then

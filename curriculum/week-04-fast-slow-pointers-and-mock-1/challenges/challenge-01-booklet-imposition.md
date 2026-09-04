@@ -240,7 +240,7 @@ if __name__ == "__main__":
 Real stdout from the shipped file, captured on CPython 3.13.2:
 
 ```text
-$ python challenge-01-booklet-imposition-solution.py
+$ python challenge-01-booklet-imposition.py
 []                       feeds as []
 [7]                      feeds as [7]
 [1, 2]                   feeds as [2, 1]
@@ -557,14 +557,12 @@ rather than one inside another, so the total is still fixed. That is worth
 saying out loud, because "each part is O(1) so the whole is O(1)" is not
 automatically true — it is true here because nothing accumulates between them.
 
-## Download and run
+## Run it
 
-Download
-[challenge-01-booklet-imposition-solution.py](./challenge-01-booklet-imposition-solution.py)
-and run it:
+Copy the worked answer on this page into `challenge-01-booklet-imposition.py` and run it:
 
 ```bash
-python challenge-01-booklet-imposition-solution.py
+python challenge-01-booklet-imposition.py
 ```
 
 It is the same program you are writing, under a name that will not collide with

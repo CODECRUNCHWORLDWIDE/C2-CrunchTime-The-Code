@@ -22,9 +22,8 @@ between them.
 
 ## Starter
 
-`challenge-01-reefer-transfer-budget-solution.py` sits beside this page. It
-carries the booked legs as given data and the self-checks you must satisfy — read
-those first, then look away and implement.
+The worked answer on this page carries the booked legs as given data and the
+self-checks you must satisfy — read those first, then look away and implement.
 
 The depot network is fixed:
 
@@ -87,7 +86,7 @@ augmentation is the whole trick.
 Real stdout from the shipped solution, captured on CPython 3.13.2:
 
 ```text
-$ python challenge-01-reefer-transfer-budget-solution.py
+$ python challenge-01-reefer-transfer-budget.py
 Aveley -> Dunmore
   budget 0 transfers:  500 via Aveley -> Dunmore
   budget 1 transfers:  300 via Aveley -> Elvington -> Dunmore
@@ -287,12 +286,12 @@ The layered form is the one shipped. The snapshot that approach A needs is not a
 the bug impossible rather than merely avoided, which is worth a sentence in your
 write-up.
 
-## Download and run
+## Run it
 
 Download the solution beside this page and run it:
 
 ```bash
-python challenge-01-reefer-transfer-budget-solution.py
+python challenge-01-reefer-transfer-budget.py
 ```
 
 No third-party packages, no arguments, no input. It prints both budget tables and

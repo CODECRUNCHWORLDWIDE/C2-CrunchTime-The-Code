@@ -301,7 +301,7 @@ has at least one; a graph with a circle has none at all.
 Real stdout from the shipped file, captured on CPython 3.13.2:
 
 ```text
-$ python exercise-04-refit-order-solution.py
+$ python exercise-04-refit-order.py
 refit order   : ['dock-in', 'bilge-clean', 'hull-survey', 'blast', 'prop-shaft', 'anode-swap', 'weld', 'paint', 'float-out', 'sea-trial']
 refit blocked : []
 valve order   : []
@@ -561,14 +561,12 @@ ready pile is empty, the loop does not run, and `sorted(set() - set())` is
 `[]`. Code that handles the empty case by not being surprised by it is better
 than code that handles it with an `if`.
 
-## Download and run
+## Run it
 
-Download
-[exercise-04-refit-order-solution.py](./exercise-04-refit-order-solution.py)
-and run it:
+Copy the worked answer on this page into `exercise-04-refit-order.py` and run it:
 
 ```bash
-python exercise-04-refit-order-solution.py
+python exercise-04-refit-order.py
 ```
 
 It is the same program you are writing, under a name that will not collide with

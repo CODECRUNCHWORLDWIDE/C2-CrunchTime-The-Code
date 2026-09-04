@@ -304,7 +304,7 @@ other cannot. The joint is the important bit: here, the map's value is a
 Real stdout from the shipped file, captured on CPython 3.13.2:
 
 ```text
-$ python challenge-02-residency-board-solution.py
+$ python challenge-02-residency-board.py
 ok  peek_does_not_protect
 ok  touch_does_protect
 ok  repin_uses_but_never_evicts
@@ -757,14 +757,12 @@ access. Expect "now without `OrderedDict`" as the immediate follow-up, and
 expect it to be fair — the point of the question is whether you can build the
 composition, not whether you can name the module that ships one.
 
-## Download and run
+## Run it
 
-Download
-[challenge-02-residency-board-solution.py](./challenge-02-residency-board-solution.py)
-and run it:
+Copy the worked answer on this page into `challenge-02-residency-board.py` and run it:
 
 ```bash
-python challenge-02-residency-board-solution.py
+python challenge-02-residency-board.py
 ```
 
 It is the same program you are writing, under a name that will not collide with

@@ -561,14 +561,12 @@ Being able to say that in an interview — *"it is the same two rules, but the
 axis is time and the data is unbounded, so the state has to live somewhere that
 outlives a loop"* — is what the question is really asking.
 
-## Download and run
+## Run it
 
-Download
-[problem-05-rolling-error-rate-solution.py](./problem-05-rolling-error-rate-solution.py)
-and run it:
+Copy the worked answer on this page into `problem-05-rolling-error-rate.py` and run it:
 
 ```bash
-python problem-05-rolling-error-rate-solution.py
+python problem-05-rolling-error-rate.py
 ```
 
 It is the same program you are writing, under a name that will not collide with

@@ -20,10 +20,9 @@ The conditions are the starter, and they are not negotiable. They are listed in
 full below.
 
 If you are running solo and have nobody to set you an unseen problem, the
-fallback is **the fault register pair**, and
-`challenge-01-mock-3-timed-round-solution.py` beside this page is its worked
-answer. Do not open that file until your clock has stopped — reading it first
-does not make the mock easier, it makes it pointless.
+fallback is **the fault register pair**, and the worked answer on this page
+solves it. Do not read it until your clock has stopped — reading it first does
+not make the mock easier, it makes it pointless.
 
 ### The fallback problem — the fault register pair
 
@@ -148,7 +147,7 @@ And for the fallback problem:
 Real stdout from the fallback problem's worked answer, captured on CPython 3.13.2:
 
 ```text
-$ python challenge-01-mock-3-timed-round-solution.py
+$ python challenge-01-mock-3-timed-round.py
 fault registers
     cycle 0  1000000000000000
     cycle 1  0000000000000001
@@ -359,12 +358,12 @@ The two assertions that matter are together near the top: the reported count is
 the count for the reported pair, **and** no pair beats it. Either alone passes
 for a solution that is wrong in a way that looks right.
 
-## Download and run
+## Run it
 
 Download the worked answer beside this page and run it:
 
 ```bash
-python challenge-01-mock-3-timed-round-solution.py
+python challenge-01-mock-3-timed-round.py
 ```
 
 No third-party packages, no arguments, no input. It prints the registers, the

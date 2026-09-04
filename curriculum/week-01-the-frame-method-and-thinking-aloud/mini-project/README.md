@@ -6,7 +6,7 @@
 > **Target time:** 5–7 hours, spread across Thursday to Saturday
 > **Why this one:** it is the only mini-project in the course that produces infrastructure rather than content, and every later week adds to it. By Week 15 it is the artifact you point a hiring manager at — a commit history showing that you sustained a practice for months. That single piece of evidence outweighs almost anything else on a junior or career-switcher resume.
 
-<!-- no-runnable-file: what you hand in is a repository on GitHub with your own writing in it, which no test can run. The runnable answer is portfolio-scaffold-solution.py, which ships beside this page, is linked from Download and run, and is shown in full under The Solution. It is named after the project rather than after the page because a file called README.py would be a strange thing to ask anybody to download. -->
+<!-- no-runnable-file: what you hand in is a repository on GitHub with your own writing in it, which no test can run. The runnable answer is shown in full under The Solution on this page. -->
 
 ## The Brief
 
@@ -191,7 +191,7 @@ if __name__ == "__main__":
 Real stdout from the shipped file, captured on CPython 3.13:
 
 ```text
-$ python portfolio-scaffold-solution.py
+$ python portfolio-scaffold.py
 Rehearsing in a temporary folder. Nothing is written to your disk.
 Repository name: crunchtime-interview-prep-<yourhandle>
 
@@ -504,14 +504,12 @@ from a shell script or a Git hook later — `python portfolio_scaffold.py --into
 — without any changes. Programs that report success through their exit status
 compose; programs that only print do not.
 
-## Download and run
+## Run it
 
-Download
-[portfolio-scaffold-solution.py](./portfolio-scaffold-solution.py)
-and run it:
+Copy the worked answer on this page into `portfolio-scaffold.py` and run it:
 
 ```bash
-python portfolio-scaffold-solution.py
+python portfolio-scaffold.py
 ```
 
 That is the rehearsal: it builds the layout in a temporary folder, audits it,
@@ -519,7 +517,7 @@ prints the report, and cleans up. To build your real repository, give it a
 path:
 
 ```bash
-python portfolio-scaffold-solution.py --into ~/code/crunchtime-interview-prep-yourhandle
+python portfolio-scaffold.py --into ~/code/crunchtime-interview-prep-yourhandle
 ```
 
 It is the same program you are writing, under a name that will not collide

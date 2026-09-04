@@ -19,8 +19,8 @@ an arrangement the gantries cannot physically build.
 
 ## Starter
 
-`challenge-02-gantry-swap-groups-solution.py` sits beside this page with the
-blocks, the gantry pairs, and the self-checks you must satisfy.
+The worked answer on this page carries the blocks, the gantry pairs, and the
+self-checks you must satisfy.
 
 ```text
 slot   0        1         2       3         4       5       6       7
@@ -64,7 +64,7 @@ a slot to itself must not change the group count.
 Real stdout from the shipped solution, captured on CPython 3.13.2:
 
 ```text
-$ python challenge-02-gantry-swap-groups-solution.py
+$ python challenge-02-gantry-swap-groups.py
 gantry groups
   [0, 2, 3, 5]
   [1, 4, 6]
@@ -313,12 +313,12 @@ why the loop reassigns `self.parent[slot]` and `slot` together. Read that line
 slowly; it is the shortest correct path compression and the most commonly
 mangled one.
 
-## Download and run
+## Run it
 
 Download the solution beside this page and run it:
 
 ```bash
-python challenge-02-gantry-swap-groups-solution.py
+python challenge-02-gantry-swap-groups.py
 ```
 
 No third-party packages, no arguments, no input. It prints the slot-by-slot

@@ -175,7 +175,7 @@ if __name__ == "__main__":
 Real stdout from the shipped file, captured on CPython 3.13.2:
 
 ```text
-$ python exercise-04-wear-level-rotation-solution.py
+$ python exercise-04-wear-level-rotation.py
 seed 0, 12 slots         tail  2, rotation 2
 seed 5, 12 slots         tail  0, rotation 2
 seed 4, 12 slots         tail  1, rotation 2
@@ -381,14 +381,12 @@ or *values, so `==`*.
 **Nothing here grows with the part.** Five integers: `slow`, `fast`, `finder`,
 `walker`, and one counter at a time. That is the 32 KB budget honoured.
 
-## Download and run
+## Run it
 
-Download
-[exercise-04-wear-level-rotation-solution.py](./exercise-04-wear-level-rotation-solution.py)
-and run it:
+Copy the worked answer on this page into `exercise-04-wear-level-rotation.py` and run it:
 
 ```bash
-python exercise-04-wear-level-rotation-solution.py
+python exercise-04-wear-level-rotation.py
 ```
 
 It is the same program you are writing, under a name that will not collide with

@@ -21,8 +21,7 @@ comparison, and a printer that puts the two side by side.
 
 ## Starter
 
-`exercise-05-shunting-rebate-legs-solution.py` sits beside this page with the
-legs and the self-checks.
+The worked answer on this page carries the legs and the self-checks.
 
 ```text
 Ash Sidings -> Bar Road      3        Coal Drop -> Dock Spur     6
@@ -72,7 +71,7 @@ is a real result.
 Real stdout from the shipped solution, captured on CPython 3.13.2:
 
 ```text
-$ python exercise-05-shunting-rebate-legs-solution.py
+$ python exercise-05-shunting-rebate-legs.py
 siding       sweeps  Dijkstra
 Ash Sidings       0         0
 Bar Road          2         2
@@ -346,12 +345,12 @@ if __name__ == "__main__":
 asserts that it is wrong — the two rows are checked, not just printed. An
 exhibit nothing asserts stops being an exhibit the first time somebody tidies it.
 
-## Download and run
+## Run it
 
 Download the solution beside this page and run it:
 
 ```bash
-python exercise-05-shunting-rebate-legs-solution.py
+python exercise-05-shunting-rebate-legs.py
 ```
 
 No third-party packages, no arguments, no input. It prints the two tables with

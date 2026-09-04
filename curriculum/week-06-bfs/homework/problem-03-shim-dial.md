@@ -67,7 +67,7 @@ you have quietly given the machine a move it does not have.
 Real stdout from the shipped solution, captured on CPython 3.13.2:
 
 ```text
-$ python problem-03-shim-dial-solution.py
+$ python problem-03-shim-dial.py
 0000 -> 0000: 0
 0000 -> 0009: 9
 0000 -> 9000: 9
@@ -256,12 +256,12 @@ could filter them, and deliberately does not: the visited set already rejects a
 setting the search has seen, and giving the generator a second reason to drop
 things is how the two disagree later. One place decides what has been visited.
 
-## Download and run
+## Run it
 
 Download the solution beside this page and run it:
 
 ```bash
-python problem-03-shim-dial-solution.py
+python problem-03-shim-dial.py
 ```
 
 No third-party packages, no arguments, no input. It prints the five cases and

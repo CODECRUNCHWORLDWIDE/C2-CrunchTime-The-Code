@@ -16,7 +16,7 @@ is exactly the kind of thing a mock asks you to defend.
 Both have a runnable worked solution beside the page:
 
 ```bash
-python challenge-01-hut-roll-call-stitch-solution.py
+python challenge-01-hut-roll-call-stitch.py
 ```
 
 Each challenge page contains:

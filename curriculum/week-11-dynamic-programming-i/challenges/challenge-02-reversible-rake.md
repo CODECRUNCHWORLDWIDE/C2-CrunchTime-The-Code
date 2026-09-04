@@ -17,8 +17,7 @@ of positions to detach, because that is the work a shunter actually does.
 
 ## Starter
 
-`challenge-02-reversible-rake-solution.py` sits beside this page with the line
-and the self-checks.
+The worked answer on this page carries the line and the self-checks.
 
 ```text
 O X B V A N B X O
@@ -59,7 +58,7 @@ table easy to check and hard to fool yourself about.
 Real stdout from the shipped solution, captured on CPython 3.13.2:
 
 ```text
-$ python challenge-02-reversible-rake-solution.py
+$ python challenge-02-reversible-rake.py
 standing lines
     OXBVANBXO    rake OXBVBXO    detach [4, 5]
     BOX          rake B          detach [1, 2]
@@ -278,12 +277,12 @@ The reconstruction builds a front and a back and joins them, rather than
 inserting into the middle of one list. Inserting at the middle is `O(n)` per
 wagon and reads worse; two lists and a reverse is `O(n)` once.
 
-## Download and run
+## Run it
 
 Download the solution beside this page and run it:
 
 ```bash
-python challenge-02-reversible-rake-solution.py
+python challenge-02-reversible-rake.py
 ```
 
 No third-party packages, no arguments, no input. It prints the report for seven

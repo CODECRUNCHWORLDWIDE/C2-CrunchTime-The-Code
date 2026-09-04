@@ -17,8 +17,7 @@ answer worth writing up notices the work has already been done.
 
 ## Starter
 
-`exercise-02-set-bit-tally-solution.py` sits beside this page with the limits
-and the self-checks.
+The worked answer on this page carries the limits and the self-checks.
 
 Write out the counts for 0 to 7 by hand first:
 
@@ -62,7 +61,7 @@ any code is.
 Real stdout from the shipped solution, captured on CPython 3.13.2:
 
 ```text
-$ python exercise-02-set-bit-tally-solution.py
+$ python exercise-02-set-bit-tally.py
 LAMPS LIT, 0 TO 16
       0      0   0
       1      1   1
@@ -320,12 +319,12 @@ bit-by-bit shift, and the clear-lowest loop — and they agree on every value fr
 0 to the limit. That agreement is asserted rather than assumed, because three
 implementations of the same thing is exactly where a quiet disagreement hides.
 
-## Download and run
+## Run it
 
 Download the solution beside this page and run it:
 
 ```bash
-python exercise-02-set-bit-tally-solution.py
+python exercise-02-set-bit-tally.py
 ```
 
 No third-party packages, no arguments, no input. It prints the table, the two

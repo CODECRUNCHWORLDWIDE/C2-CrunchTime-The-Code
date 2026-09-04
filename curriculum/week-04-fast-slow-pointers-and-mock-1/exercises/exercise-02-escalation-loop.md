@@ -184,7 +184,7 @@ if __name__ == "__main__":
 Real stdout from the shipped file, captured on CPython 3.13.2:
 
 ```text
-$ python exercise-02-escalation-loop-solution.py
+$ python exercise-02-escalation-loop.py
 L1 -> L2 -> L3 -> L4 -> L2   entrance L2, 1 hop(s) in front
 L1 -> ... -> L6 -> L3        entrance L3, 2 hop(s) in front
 A -> A                       entrance A, 0 hop(s) in front
@@ -396,14 +396,12 @@ its guard, `slow` is not on any loop and the second walk marches off the end of
 the rota and crashes. The `else` returning `None` is what prevents it, and it
 is placed before phase two rather than after it for that reason.
 
-## Download and run
+## Run it
 
-Download
-[exercise-02-escalation-loop-solution.py](./exercise-02-escalation-loop-solution.py)
-and run it:
+Copy the worked answer on this page into `exercise-02-escalation-loop.py` and run it:
 
 ```bash
-python exercise-02-escalation-loop-solution.py
+python exercise-02-escalation-loop.py
 ```
 
 It is the same program you are writing, under a name that will not collide with

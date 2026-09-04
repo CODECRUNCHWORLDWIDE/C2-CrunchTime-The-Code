@@ -64,7 +64,7 @@ arrivals 8 patients, admission numbers in arrival order
 Real stdout from the shipped solution, captured on CPython 3.13.2:
 
 ```text
-$ python exercise-04-rescue-intake-queue-solution.py
+$ python exercise-04-rescue-intake-queue.py
 waiting: 8
 queue order: ['Bramble', 'Rook', 'Wisp', 'Marram', 'Pip', 'Fennel', 'Thistle', 'Clover']
 front urgency: 1
@@ -278,12 +278,12 @@ The counter lives on the queue rather than in the caller because that is the
 only way to guarantee it is unique — and uniqueness is the entire safety
 property here, not a nicety.
 
-## Download and run
+## Run it
 
 Download the solution beside this page and run it:
 
 ```bash
-python exercise-04-rescue-intake-queue-solution.py
+python exercise-04-rescue-intake-queue.py
 ```
 
 No third-party packages, no arguments, no input. It prints the waiting count,

@@ -72,7 +72,7 @@ rather than assumed.
 Real stdout from the shipped solution, captured on CPython 3.13.2:
 
 ```text
-$ python exercise-05-tide-log-stitch-solution.py
+$ python exercise-05-tide-log-stitch.py
 rows stitched : 14
 peak heap size: 3
 ledger:
@@ -285,12 +285,12 @@ if __name__ == "__main__":
 deliberate: the ledger records what was reported, and interpolating between rows
 is a different question the harbour office did not ask.
 
-## Download and run
+## Run it
 
 Download the solution beside this page and run it:
 
 ```bash
-python exercise-05-tide-log-stitch-solution.py
+python exercise-05-tide-log-stitch.py
 ```
 
 No third-party packages, no arguments, no input. It prints the row count, the

@@ -395,14 +395,12 @@ dictionary updates and one table comparison. That comparison touches at most 12
 keys by the vocabulary bound, and 12 is a constant, so the whole loop is
 linear. State the bound before you make the claim; the claim depends on it.
 
-## Download and run
+## Run it
 
-Download
-[exercise-03-rota-window-solution.py](./exercise-03-rota-window-solution.py)
-and run it:
+Copy the worked answer on this page into `exercise-03-rota-window.py` and run it:
 
 ```bash
-python exercise-03-rota-window-solution.py
+python exercise-03-rota-window.py
 ```
 
 It is the same program you are writing, under a name that will not collide with

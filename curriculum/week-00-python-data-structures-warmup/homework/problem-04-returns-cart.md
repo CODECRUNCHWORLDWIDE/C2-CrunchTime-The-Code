@@ -390,14 +390,12 @@ list. `worst_offender` is `O(n)` time and `O(1)` space. `total_days_late` is
 to say out loud: *I used `min` rather than sorting, because I need one book and
 not an ordering.*
 
-## Download and run
+## Run it
 
-Download
-[problem-04-returns-cart-solution.py](./problem-04-returns-cart-solution.py)
-and run it:
+Copy the worked answer on this page into `problem-04-returns-cart.py` and run it:
 
 ```bash
-python problem-04-returns-cart-solution.py
+python problem-04-returns-cart.py
 ```
 
 It is the same program you are writing, under a name that will not collide with

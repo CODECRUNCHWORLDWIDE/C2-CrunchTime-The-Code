@@ -18,8 +18,7 @@ what has already been used.
 
 ## Starter
 
-`exercise-02-firing-order-solution.py` sits beside this page with the pots and
-the self-checks.
+The worked answer on this page carries the pots and the self-checks.
 
 ```text
 jug   bowl   vase
@@ -59,7 +58,7 @@ shape of that row is the constraint.
 Real stdout from the shipped solution, captured on CPython 3.13.2:
 
 ```text
-$ python exercise-02-firing-order-solution.py
+$ python exercise-02-firing-order.py
 POTS  ['jug', 'bowl', 'vase']
 
 EVERY FIRING ORDER
@@ -298,12 +297,12 @@ rather than numbered. On numbered items a list indexed by position is faster and
 says the same thing; noting which you would use and why is a reasonable sentence
 for the write-up.
 
-## Download and run
+## Run it
 
 Download the solution beside this page and run it:
 
 ```bash
-python exercise-02-firing-order-solution.py
+python exercise-02-firing-order.py
 ```
 
 No third-party packages, no arguments, no input. It prints every order, the

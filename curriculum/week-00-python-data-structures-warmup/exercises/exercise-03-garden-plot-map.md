@@ -395,14 +395,12 @@ strange garden but a coherent answer. Neither needed a guard, and both are in
 the asserts because a version built with a `while` loop and a counter usually
 gets one of them wrong.
 
-## Download and run
+## Run it
 
-Download
-[exercise-03-garden-plot-map-solution.py](./exercise-03-garden-plot-map-solution.py)
-and run it:
+Copy the worked answer on this page into `exercise-03-garden-plot-map.py` and run it:
 
 ```bash
-python exercise-03-garden-plot-map-solution.py
+python exercise-03-garden-plot-map.py
 ```
 
 It is the same program you are writing, under a name that will not collide with

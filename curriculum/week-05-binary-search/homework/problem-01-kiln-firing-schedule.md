@@ -353,14 +353,12 @@ loop, `lo * 5` is the volume; `firings_needed` at that volume is what it
 really uses. With a generous budget the two differ, and the difference is the
 studio's actual schedule.
 
-## Download and run
+## Run it
 
-Download
-[problem-01-kiln-firing-schedule-solution.py](./problem-01-kiln-firing-schedule-solution.py)
-and run it:
+Copy the worked answer on this page into `problem-01-kiln-firing-schedule.py` and run it:
 
 ```bash
-python problem-01-kiln-firing-schedule-solution.py
+python problem-01-kiln-firing-schedule.py
 ```
 
 It is the same program you are writing, under a name that will not collide

@@ -197,7 +197,7 @@ in an interview.
 Real stdout from the shipped file, captured on CPython 3.13:
 
 ```text
-$ python exercise-03-stencil-line-split-solution.py
+$ python exercise-03-stencil-line-split.py
 walking 'NUTXHEX'
 prefix        covered
               0
@@ -438,14 +438,12 @@ trick from Exercise 2 does **not** apply cleanly: the recurrence can reach 12
 entries back, so you would have to keep 12 — which is a real reduction, just
 not a dramatic one.
 
-## Download and run
+## Run it
 
-Download
-[exercise-03-stencil-line-split-solution.py](./exercise-03-stencil-line-split-solution.py)
-and run it:
+Copy the worked answer on this page into `exercise-03-stencil-line-split.py` and run it:
 
 ```bash
-python exercise-03-stencil-line-split-solution.py
+python exercise-03-stencil-line-split.py
 ```
 
 It is the same program you are writing, under a name that will not collide with

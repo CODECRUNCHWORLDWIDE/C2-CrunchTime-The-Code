@@ -376,7 +376,7 @@ Each problem write-up follows this skeleton. Save as `problem-NN-<slug>.md`.
 Real stdout from the shipped solution, captured on CPython 3.13.2:
 
 ```text
-$ python README-solution.py
+$ python README.py
 1 nearest_channel(band, 898)        -> 1
 2 shift_start(roster)               -> (3, 22)
 3 seat_cursor(sold, 13)             -> (3, False)
@@ -695,12 +695,12 @@ if __name__ == "__main__":
 Five contracts in one file. The shared `lower_bound` is written out rather than
 imported, because the whole week is about being able to defend those three lines.
 
-## Download and run
+## Run it
 
 Download the solution beside this page and run it:
 
 ```bash
-python README-solution.py
+python README.py
 ```
 
 No third-party packages, no arguments, no input. It prints one block per problem

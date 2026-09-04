@@ -482,14 +482,12 @@ round and the last turn of the loop raises `IndexError: list index out of
 range` — on the run where every single gate was under the limit, which is
 exactly the run a hurried tester does not try.
 
-## Download and run
+## Run it
 
-Download
-[exercise-01-sluice-gate-order-solution.py](./exercise-01-sluice-gate-order-solution.py)
-and run it:
+Copy the worked answer on this page into `exercise-01-sluice-gate-order.py` and run it:
 
 ```bash
-python exercise-01-sluice-gate-order-solution.py
+python exercise-01-sluice-gate-order.py
 ```
 
 It is the same program you are writing, under a name that will not collide

@@ -603,14 +603,12 @@ order are the same thing. That padding is not decoration; without it
 silently shift everything after it. It is also self-documenting at the point
 of use, which matters more the more numbers a function hands back.
 
-## Download and run
+## Run it
 
-Download
-[exercise-04-cable-pull-solution.py](./exercise-04-cable-pull-solution.py)
-and run it:
+Copy the worked answer on this page into `exercise-04-cable-pull.py` and run it:
 
 ```bash
-python exercise-04-cable-pull-solution.py
+python exercise-04-cable-pull.py
 ```
 
 It is the same program you are writing, under a name that will not collide

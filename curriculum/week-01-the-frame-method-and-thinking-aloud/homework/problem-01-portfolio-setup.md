@@ -141,7 +141,7 @@ if __name__ == "__main__":
 Real stdout from the shipped file, captured on CPython 3.13:
 
 ```text
-$ python problem-01-portfolio-setup-solution.py
+$ python problem-01-portfolio-setup.py
 BAD  Initial commit                                        too short
 ok   Add .gitignore and CC-BY-4.0 licence                  ok
 BAD  wip                                                   says nothing
@@ -320,14 +320,12 @@ raises `ZeroDivisionError` on an empty log, and the guard both prevents that
 and states the more interesting fact: an empty log deserves `0.0`, not an
 error and not `100.0`.
 
-## Download and run
+## Run it
 
-Download
-[problem-01-portfolio-setup-solution.py](./problem-01-portfolio-setup-solution.py)
-and run it:
+Copy the worked answer on this page into `problem-01-portfolio-setup.py` and run it:
 
 ```bash
-python problem-01-portfolio-setup-solution.py
+python problem-01-portfolio-setup.py
 ```
 
 To point it at your own repository, feed it the real log:

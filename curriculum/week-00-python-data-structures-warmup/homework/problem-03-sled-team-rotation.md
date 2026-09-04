@@ -335,14 +335,12 @@ of it?* — and the answer changes what your solution costs by a whole factor of
 `[]` and `None`, which are the honest answers: an empty team has an empty
 running order and has nobody at the front.
 
-## Download and run
+## Run it
 
-Download
-[problem-03-sled-team-rotation-solution.py](./problem-03-sled-team-rotation-solution.py)
-and run it:
+Copy the worked answer on this page into `problem-03-sled-team-rotation.py` and run it:
 
 ```bash
-python problem-03-sled-team-rotation-solution.py
+python problem-03-sled-team-rotation.py
 ```
 
 It is the same program you are writing, under a name that will not collide with

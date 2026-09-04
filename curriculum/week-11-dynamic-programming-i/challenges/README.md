@@ -20,7 +20,7 @@ is most of the work.
 Both have a runnable worked solution beside the page:
 
 ```bash
-python challenge-01-timetable-amendment-solution.py
+python challenge-01-timetable-amendment.py
 ```
 
 **How these differ from the exercises.** The reasoning step is harder: there is

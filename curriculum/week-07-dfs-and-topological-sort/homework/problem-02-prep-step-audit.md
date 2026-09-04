@@ -243,7 +243,7 @@ step lowers the count of everything it unblocks. That is Kahn's, in two sentence
 Real stdout from the shipped file, captured on CPython 3.13.2:
 
 ```text
-$ python problem-02-prep-step-audit-solution.py
+$ python problem-02-prep-step-audit.py
 biscuit line             -> True
 two branches that meet   -> True
 rules in a circle        -> False
@@ -606,14 +606,12 @@ and the function falls through to `return (True, entered)`. Nothing to schedule
 is schedulable. It costs no code, and stating it in the contract is what stops a
 caller wondering.
 
-## Download and run
+## Run it
 
-Download
-[problem-02-prep-step-audit-solution.py](./problem-02-prep-step-audit-solution.py)
-and run it:
+Copy the worked answer on this page into `problem-02-prep-step-audit.py` and run it:
 
 ```bash
-python problem-02-prep-step-audit-solution.py
+python problem-02-prep-step-audit.py
 ```
 
 It is the same program you are writing, under a name that will not collide with

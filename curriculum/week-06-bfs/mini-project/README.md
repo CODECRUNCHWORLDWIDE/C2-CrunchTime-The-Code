@@ -154,7 +154,7 @@ Twenty points per write-up, forty for the pair.
 Real stdout from the shipped solution, captured on CPython 3.13.2:
 
 ```text
-$ python README-solution.py
+$ python README.py
 MUSTER REPORT
 =============
 
@@ -495,12 +495,12 @@ writing them out separately is what lets you see that the queue, the seen-set an
 the loop body really are identical, which reading a parameterised version would
 hide.
 
-## Download and run
+## Run it
 
 Download the solution beside this page and run it:
 
 ```bash
-python README-solution.py
+python README.py
 ```
 
 No third-party packages, no arguments, no input. It prints the three-part muster

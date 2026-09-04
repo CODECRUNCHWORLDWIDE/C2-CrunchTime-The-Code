@@ -380,14 +380,12 @@ one walk of one sheet to build the set, one walk of the other to answer — and
 `seen` and the answer. The list version is `O(n × m)` time and `O(n)` space.
 You bought time with memory. Say both halves.
 
-## Download and run
+## Run it
 
-Download
-[exercise-05-radio-check-rosters-solution.py](./exercise-05-radio-check-rosters-solution.py)
-and run it:
+Copy the worked answer on this page into `exercise-05-radio-check-rosters.py` and run it:
 
 ```bash
-python exercise-05-radio-check-rosters-solution.py
+python exercise-05-radio-check-rosters.py
 ```
 
 It is the same program you are writing, under a name that will not collide with

@@ -141,7 +141,7 @@ if __name__ == "__main__":
 Real stdout from the shipped file, captured on CPython 3.13:
 
 ```text
-$ python exercise-05-market-awning-solution.py
+$ python exercise-05-market-awning.py
 best area  18 sq m   poles [2, 6, 3, 8, 1, 7, 4]
 best area  14 sq m   poles [2, 7, 5, 5, 7, 2]
 best area   0 sq m   poles [5, 5]
@@ -320,14 +320,12 @@ Adjacent poles only: every width is `0`. Four different reasons, one return
 value, no guards — and being able to enumerate the four is a better answer
 than "it handles edge cases."
 
-## Download and run
+## Run it
 
-Download
-[exercise-05-market-awning-solution.py](./exercise-05-market-awning-solution.py)
-and run it:
+Copy the worked answer on this page into `exercise-05-market-awning.py` and run it:
 
 ```bash
-python exercise-05-market-awning-solution.py
+python exercise-05-market-awning.py
 ```
 
 It is the same program you are writing, under a name that will not collide

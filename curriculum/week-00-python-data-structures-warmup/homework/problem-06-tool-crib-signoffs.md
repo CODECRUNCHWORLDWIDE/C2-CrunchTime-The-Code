@@ -401,14 +401,12 @@ program usually wants one of them and prints the other.
 The `&` asymmetry is the one to remember. If you only carry one fact about sets
 past this week, carry that intersecting a small set with a huge one is cheap.
 
-## Download and run
+## Run it
 
-Download
-[problem-06-tool-crib-signoffs-solution.py](./problem-06-tool-crib-signoffs-solution.py)
-and run it:
+Copy the worked answer on this page into `problem-06-tool-crib-signoffs.py` and run it:
 
 ```bash
-python problem-06-tool-crib-signoffs-solution.py
+python problem-06-tool-crib-signoffs.py
 ```
 
 It is the same program you are writing, under a name that will not collide with

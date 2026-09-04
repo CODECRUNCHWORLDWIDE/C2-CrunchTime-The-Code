@@ -600,14 +600,12 @@ that pins down *how* the wrong version fails is more useful than a comment
 saying it would, because a comment cannot notice when somebody accidentally
 fixes it.
 
-## Download and run
+## Run it
 
-Download
-[challenge-02-tide-gate-solution.py](./challenge-02-tide-gate-solution.py)
-and run it:
+Copy the worked answer on this page into `challenge-02-tide-gate.py` and run it:
 
 ```bash
-python challenge-02-tide-gate-solution.py
+python challenge-02-tide-gate.py
 ```
 
 It is the same program you are writing, under a name that will not collide

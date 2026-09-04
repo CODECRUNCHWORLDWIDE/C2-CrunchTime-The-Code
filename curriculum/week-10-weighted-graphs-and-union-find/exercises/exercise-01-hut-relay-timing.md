@@ -17,8 +17,8 @@ hut hears it last.
 
 ## Starter
 
-`exercise-01-hut-relay-timing-solution.py` sits beside this page with the huts,
-the links and the self-checks.
+The worked answer on this page carries the huts, the links and the
+self-checks.
 
 ```text
 Ash Col   -> Bell Tarn      4s      Cairn Gap -> Dun Force     5s
@@ -65,7 +65,7 @@ Bell Tarn instead and Ash Col never hears it at all.
 Real stdout from the shipped solution, captured on CPython 3.13.2:
 
 ```text
-$ python exercise-01-hut-relay-timing-solution.py
+$ python exercise-01-hut-relay-timing.py
 Reading released at Ash Col
    0s  Ash Col
    4s  Bell Tarn
@@ -266,12 +266,12 @@ deliberate choice over returning infinity for them. Infinity reads as a number,
 survives comparisons, and eventually gets printed to somebody as if it meant
 something. Absence has to be handled.
 
-## Download and run
+## Run it
 
 Download the solution beside this page and run it:
 
 ```bash
-python exercise-01-hut-relay-timing-solution.py
+python exercise-01-hut-relay-timing.py
 ```
 
 No third-party packages, no arguments, no input. It prints both releases with

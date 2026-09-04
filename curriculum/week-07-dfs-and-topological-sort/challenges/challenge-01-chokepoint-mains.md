@@ -308,7 +308,7 @@ you are about to compute.
 Real stdout from the shipped file, captured on CPython 3.13.2:
 
 ```text
-$ python challenge-01-chokepoint-mains-solution.py
+$ python challenge-01-chokepoint-mains.py
 network         chokepoints               pieces
 empty city      []                        0
 single station  []                        1
@@ -704,14 +704,12 @@ with a seeded generator is how anyone sane tests a hand-written low-link
 routine. Seeding matters: `random.Random(20260826)` means a failure you see
 today is a failure you can still reproduce tomorrow.
 
-## Download and run
+## Run it
 
-Download
-[challenge-01-chokepoint-mains-solution.py](./challenge-01-chokepoint-mains-solution.py)
-and run it:
+Copy the worked answer on this page into `challenge-01-chokepoint-mains.py` and run it:
 
 ```bash
-python challenge-01-chokepoint-mains-solution.py
+python challenge-01-chokepoint-mains.py
 ```
 
 It is the same program you are writing, under a name that will not collide

@@ -21,8 +21,7 @@ produce the same set twice.
 
 ## Starter
 
-`exercise-04-repeat-bin-picks-solution.py` sits beside this page with the bin
-and the self-checks.
+The worked answer on this page carries the bin and the self-checks.
 
 ```text
 stoneware   porcelain   stoneware   raku   porcelain
@@ -64,7 +63,7 @@ enough to derive in a minute.
 Real stdout from the shipped solution, captured on CPython 3.13.2:
 
 ```text
-$ python exercise-04-repeat-bin-picks-solution.py
+$ python exercise-04-repeat-bin-picks.py
 BIN  ['stoneware', 'porcelain', 'stoneware', 'raku', 'porcelain']
 
 EVERY DISTINCT PICK
@@ -351,12 +350,12 @@ on its length, the over-skipped one on its *distinct* length and on a specific
 missing pick. Two different assertions, because the two failures are different
 and a single "is it 18" check catches neither.
 
-## Download and run
+## Run it
 
 Download the solution beside this page and run it:
 
 ```bash
-python exercise-04-repeat-bin-picks-solution.py
+python exercise-04-repeat-bin-picks.py
 ```
 
 No third-party packages, no arguments, no input. It prints every distinct pick,

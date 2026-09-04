@@ -53,7 +53,7 @@ sort afterwards.
 Real stdout from the shipped solution, captured on CPython 3.13.2:
 
 ```text
-$ python challenge-01-hut-roll-call-stitch-solution.py
+$ python challenge-01-hut-roll-call-stitch.py
 rows read before stopping: 10
 coverage reached at minute: 58
   min   4  Larchgate     LG-1
@@ -266,12 +266,12 @@ The heap entry carries the altitude as part of the key rather than sorting
 afterwards, because a lazy merge has no "afterwards" — the row is emitted the
 moment it is popped.
 
-## Download and run
+## Run it
 
 Download the solution beside this page and run it:
 
 ```bash
-python challenge-01-hut-roll-call-stitch-solution.py
+python challenge-01-hut-roll-call-stitch.py
 ```
 
 No third-party packages, no arguments, no input. It prints the stitched roll

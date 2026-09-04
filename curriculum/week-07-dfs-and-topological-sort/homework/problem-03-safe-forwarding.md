@@ -59,7 +59,7 @@ start; it is the distinction the whole problem turns on.
 Real stdout from the shipped solution, captured on CPython 3.13.2:
 
 ```text
-$ python problem-03-safe-forwarding-solution.py
+$ python problem-03-safe-forwarding.py
 switchboard: 10 extensions in all
   settled : ['201', '301', '302', '401', '701', '801', '901']
   ringing : ['501', '502', '601']
@@ -269,12 +269,12 @@ The colour walk is shipped knowing it cannot handle the largest legal input, and
 the file asserts that it raises rather than merely noting it. An exhibit nothing
 asserts stops being an exhibit the first time somebody tidies the file.
 
-## Download and run
+## Run it
 
 Download the solution beside this page and run it:
 
 ```bash
-python problem-03-safe-forwarding-solution.py
+python problem-03-safe-forwarding.py
 ```
 
 No third-party packages, no arguments, no input. It prints the switchboard's

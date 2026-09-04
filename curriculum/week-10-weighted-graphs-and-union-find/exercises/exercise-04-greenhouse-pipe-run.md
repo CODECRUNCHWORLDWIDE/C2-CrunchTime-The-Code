@@ -17,8 +17,7 @@ Report the total metres and the trenches to dig, in the order you accept them.
 
 ## Starter
 
-`exercise-04-greenhouse-pipe-run-solution.py` sits beside this page with the
-prices and the self-checks.
+The worked answer on this page carries the prices and the self-checks.
 
 ```text
 Cold Frame - Fig House      7m       Melon Pit  - Vine Range    12m
@@ -65,7 +64,7 @@ It is in the file to make the failure case real.
 Real stdout from the shipped solution, captured on CPython 3.13.2:
 
 ```text
-$ python exercise-04-greenhouse-pipe-run-solution.py
+$ python exercise-04-greenhouse-pipe-run.py
 trenches to dig, in order
     4m  Fig House - Melon Pit   (running 4m)
     5m  Vine Range - Wardian Case   (running 9m)
@@ -293,12 +292,12 @@ end. It costs nothing and it makes the output a trace of the decision rather tha
 a report of the conclusion — which is what you want when the answer surprises
 you.
 
-## Download and run
+## Run it
 
 Download the solution beside this page and run it:
 
 ```bash
-python exercise-04-greenhouse-pipe-run-solution.py
+python exercise-04-greenhouse-pipe-run.py
 ```
 
 No third-party packages, no arguments, no input. It prints the dig order with a

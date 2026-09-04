@@ -403,14 +403,12 @@ ends up holding first sightings and nothing else, and `.get(item)` answers with
 `break`, which is four lines and has an "and what if we never found it" branch
 that people forget.
 
-## Download and run
+## Run it
 
-Download
-[exercise-04-lost-property-shelf-solution.py](./exercise-04-lost-property-shelf-solution.py)
-and run it:
+Copy the worked answer on this page into `exercise-04-lost-property-shelf.py` and run it:
 
 ```bash
-python exercise-04-lost-property-shelf-solution.py
+python exercise-04-lost-property-shelf.py
 ```
 
 It is the same program you are writing, under a name that will not collide with

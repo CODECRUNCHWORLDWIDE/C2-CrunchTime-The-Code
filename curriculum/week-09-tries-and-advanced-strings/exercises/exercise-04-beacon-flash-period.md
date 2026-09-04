@@ -58,7 +58,7 @@ demonstration of why the one-pass table exists.
 Real stdout from the shipped solution, captured on CPython 3.13.2:
 
 ```text
-$ python exercise-04-beacon-flash-period-solution.py
+$ python exercise-04-beacon-flash-period.py
 LSSLSSLSSLSS    block LSS      x4
 LSSLSSLSSL      block LSSLSSLSSL x1
 LLLL            block L        x4
@@ -258,12 +258,12 @@ docstring gives it. The intuition: if the strip has a border of length `b`, then
 sliding the strip along by `n - b` lines it up with itself. When `n - b` divides
 `n` evenly, that slide tiles the strip exactly — which is what "repeats" means.
 
-## Download and run
+## Run it
 
 Download the solution beside this page and run it:
 
 ```bash
-python exercise-04-beacon-flash-period-solution.py
+python exercise-04-beacon-flash-period.py
 ```
 
 No third-party packages, no arguments, no input. It prints each strip with its

@@ -18,8 +18,7 @@ lookup, so path compression is visible.
 
 ## Starter
 
-`exercise-03-mooring-chain-groups-solution.py` sits beside this page with the
-shackles and the self-checks.
+The worked answer on this page carries the shackles and the self-checks.
 
 ```text
 12 berths, numbered 0 to 11
@@ -62,7 +61,7 @@ of your implementation.
 Real stdout from the shipped solution, captured on CPython 3.13.2:
 
 ```text
-$ python exercise-03-mooring-chain-groups-solution.py
+$ python exercise-03-mooring-chain-groups.py
 chains left after each shackle
   shackle  0-1  -> 11 chains
   shackle  1-2  -> 10 chains
@@ -316,12 +315,12 @@ production union-find would expose, and it is exactly the sort of thing worth
 writing while you are learning one — an invariant you can print is an invariant
 you can check.
 
-## Download and run
+## Run it
 
 Download the solution beside this page and run it:
 
 ```bash
-python exercise-03-mooring-chain-groups-solution.py
+python exercise-03-mooring-chain-groups.py
 ```
 
 No third-party packages, no arguments, no input. It prints the count after each

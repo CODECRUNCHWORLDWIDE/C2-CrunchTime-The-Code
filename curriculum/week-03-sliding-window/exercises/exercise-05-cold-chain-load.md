@@ -416,14 +416,12 @@ characters, at most three product lines. Writing
 `while len(counts) > 2` gets you one problem. Writing `while len(counts) > k`
 gets you the family.
 
-## Download and run
+## Run it
 
-Download
-[exercise-05-cold-chain-load-solution.py](./exercise-05-cold-chain-load-solution.py)
-and run it:
+Copy the worked answer on this page into `exercise-05-cold-chain-load.py` and run it:
 
 ```bash
-python exercise-05-cold-chain-load-solution.py
+python exercise-05-cold-chain-load.py
 ```
 
 It is the same program you are writing, under a name that will not collide with

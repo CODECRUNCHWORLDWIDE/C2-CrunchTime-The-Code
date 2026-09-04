@@ -33,7 +33,7 @@ page.
 Run any of them directly:
 
 ```bash
-python exercise-01-relay-fold-solution.py
+python exercise-01-relay-fold.py
 ```
 
 No packages, no arguments, no input.

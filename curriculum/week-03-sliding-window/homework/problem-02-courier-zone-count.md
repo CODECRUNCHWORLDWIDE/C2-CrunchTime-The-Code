@@ -485,14 +485,12 @@ also `O(n^2)`, which is exactly why it only ever runs on five-stop shifts.
 — every segment must be accounted for — so best, average and worst are the
 same.
 
-## Download and run
+## Run it
 
-Download
-[problem-02-courier-zone-count-solution.py](./problem-02-courier-zone-count-solution.py)
-and run it:
+Copy the worked answer on this page into `problem-02-courier-zone-count.py` and run it:
 
 ```bash
-python problem-02-courier-zone-count-solution.py
+python problem-02-courier-zone-count.py
 ```
 
 It is the same program you are writing, under a name that will not collide with

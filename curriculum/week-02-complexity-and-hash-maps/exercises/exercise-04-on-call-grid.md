@@ -185,7 +185,7 @@ this block exist yet" branch.
 Real stdout from the shipped file, captured on CPython 3.13.2:
 
 ```text
-$ python exercise-04-on-call-grid-solution.py
+$ python exercise-04-on-call-grid.py
 empty rota    ->  None
 ward          ->  (0, 9, 'ward')
 night         ->  (6, 5, 'night')
@@ -384,14 +384,12 @@ complexity — see the stretch — and it is a readability call, not a performan
 one. *Improvement*: none. A legal rota cannot be certified without inspecting
 every staffed cell.
 
-## Download and run
+## Run it
 
-Download
-[exercise-04-on-call-grid-solution.py](./exercise-04-on-call-grid-solution.py)
-and run it:
+Copy the worked answer on this page into `exercise-04-on-call-grid.py` and run it:
 
 ```bash
-python exercise-04-on-call-grid-solution.py
+python exercise-04-on-call-grid.py
 ```
 
 It is the same program you are writing, under a name that will not collide with

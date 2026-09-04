@@ -31,7 +31,7 @@ second half of that sentence is a union-find query.
 Run any of them directly:
 
 ```bash
-python exercise-01-hut-relay-timing-solution.py
+python exercise-01-hut-relay-timing.py
 ```
 
 No packages, no arguments, no input.

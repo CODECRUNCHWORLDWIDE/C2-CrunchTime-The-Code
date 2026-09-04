@@ -379,14 +379,12 @@ buys: you can hand a string to a function you have never read and know it will
 come back the same. Lists give you no such promise — the next two exercises
 are both about who is allowed to change whose list.
 
-## Download and run
+## Run it
 
-Download
-[exercise-01-seed-packet-codes-solution.py](./exercise-01-seed-packet-codes-solution.py)
-and run it:
+Copy the worked answer on this page into `exercise-01-seed-packet-codes.py` and run it:
 
 ```bash
-python exercise-01-seed-packet-codes-solution.py
+python exercise-01-seed-packet-codes.py
 ```
 
 It is the same program you are writing, under a name that will not collide

@@ -195,7 +195,7 @@ instead of top-down.
 Real stdout from the shipped file, captured on CPython 3.13:
 
 ```text
-$ python exercise-01-ferry-ramp-manifests-solution.py
+$ python exercise-01-ferry-ramp-manifests.py
 deck  plans
    0  1
    1  1
@@ -441,14 +441,12 @@ and no modulus in the contract to hide it. It is worth seeing once, because in
 most other languages this table would have silently wrapped around long before
 entry 300.
 
-## Download and run
+## Run it
 
-Download
-[exercise-01-ferry-ramp-manifests-solution.py](./exercise-01-ferry-ramp-manifests-solution.py)
-and run it:
+Copy the worked answer on this page into `exercise-01-ferry-ramp-manifests.py` and run it:
 
 ```bash
-python exercise-01-ferry-ramp-manifests-solution.py
+python exercise-01-ferry-ramp-manifests.py
 ```
 
 It is the same program you are writing, under a name that will not collide with

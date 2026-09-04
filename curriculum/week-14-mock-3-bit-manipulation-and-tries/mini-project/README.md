@@ -30,8 +30,7 @@ material is in your hands.
 
 ## Starter
 
-`README-solution.py` sits beside this page with both halves solved and the
-self-checks.
+The worked answer on this page has both halves solved and the self-checks.
 
 ```text
 fault log:  00A3  1F04  00A3  2B77  1F04  0051  2B77  8C10
@@ -202,7 +201,7 @@ The Mock #3 artifact and each write-up are graded. Total possible: 100; passing:
 Real stdout from the shipped solution, captured on CPython 3.13.2:
 
 ```text
-$ python README-solution.py
+$ python README.py
 HALF ONE - the odd tally
     log: ['0x00A3', '0x1F04', '0x00A3', '0x2B77', '0x1F04', '0x0051', '0x2B77', '0x8C10']
     odd codes: 0x0051 and 0x8C10
@@ -480,12 +479,12 @@ values to fold, once as paths to walk. That is the week's whole argument — a
 register is a number when you XOR it and a path when you index it, and choosing
 which view to take is the skill.
 
-## Download and run
+## Run it
 
 Download the solution beside this page and run it:
 
 ```bash
-python README-solution.py
+python README.py
 ```
 
 No third-party packages, no arguments, no input. It prints both halves and then

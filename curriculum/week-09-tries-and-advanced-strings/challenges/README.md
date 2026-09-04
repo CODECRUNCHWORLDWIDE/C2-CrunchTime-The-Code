@@ -21,7 +21,7 @@ of another. The register on that page has two such pairs on purpose.
 Both have a runnable worked solution beside the page:
 
 ```bash
-python challenge-01-cold-store-aisle-sweep-solution.py
+python challenge-01-cold-store-aisle-sweep.py
 ```
 
 Each challenge page contains the brief, the constraints including the alternative

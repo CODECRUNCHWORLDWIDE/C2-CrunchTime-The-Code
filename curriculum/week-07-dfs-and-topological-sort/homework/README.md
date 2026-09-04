@@ -21,7 +21,7 @@ Each coding problem's page carries the brief, the constraints, a real captured
 run, the full solution and the bugs it prevents. Run any worked answer directly:
 
 ```bash
-python problem-01-hose-clusters-solution.py
+python problem-01-hose-clusters.py
 ```
 
 Problems 3 and 4 are the two that matter most, and for the same reason: each

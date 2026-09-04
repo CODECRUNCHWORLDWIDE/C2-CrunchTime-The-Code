@@ -164,7 +164,7 @@ if __name__ == "__main__":
 Real stdout from the shipped file, captured on CPython 3.13.2:
 
 ```text
-$ python exercise-01-conveyor-loop-solution.py
+$ python exercise-01-conveyor-loop.py
 IN -> S1 -> S2 -> S3 -> S1   loop of 3
 IN -> IN                     loop of 1
 A -> B -> A                  loop of 2
@@ -360,14 +360,12 @@ is second in the check list rather than buried at the bottom.
 That is the O(1)-space claim, and it is the sentence the crew's 64 KB
 controller is paying for.
 
-## Download and run
+## Run it
 
-Download
-[exercise-01-conveyor-loop-solution.py](./exercise-01-conveyor-loop-solution.py)
-and run it:
+Copy the worked answer on this page into `exercise-01-conveyor-loop.py` and run it:
 
 ```bash
-python exercise-01-conveyor-loop-solution.py
+python exercise-01-conveyor-loop.py
 ```
 
 It is the same program you are writing, under a name that will not collide with

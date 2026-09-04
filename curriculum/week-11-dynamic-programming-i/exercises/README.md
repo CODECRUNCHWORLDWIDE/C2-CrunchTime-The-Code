@@ -23,7 +23,7 @@ has `+`.
 Run any of them directly:
 
 ```bash
-python exercise-01-ferry-ramp-manifests-solution.py
+python exercise-01-ferry-ramp-manifests.py
 ```
 
 No packages, no arguments, no input.

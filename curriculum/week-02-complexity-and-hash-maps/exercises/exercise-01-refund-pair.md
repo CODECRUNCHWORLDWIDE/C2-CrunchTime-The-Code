@@ -166,7 +166,7 @@ value together, so you never have to keep a counter by hand.
 Real stdout from the shipped file, captured on CPython 3.13.2:
 
 ```text
-$ python exercise-01-refund-pair-solution.py
+$ python exercise-01-refund-pair.py
 total   550  ->     0,1   from [400, 150, 250, 300]
 total   550  ->     0,1   from [100, 450, 450, 100]
 total  1400  ->     0,1   from [700, 700]
@@ -327,14 +327,12 @@ the contract requires you to return, so it would need index tagging on top and
 would still lose. *Improvement*: none. Any correct solution must read every
 charge, so `O(n)` is the floor.
 
-## Download and run
+## Run it
 
-Download
-[exercise-01-refund-pair-solution.py](./exercise-01-refund-pair-solution.py)
-and run it:
+Copy the worked answer on this page into `exercise-01-refund-pair.py` and run it:
 
 ```bash
-python exercise-01-refund-pair-solution.py
+python exercise-01-refund-pair.py
 ```
 
 It is the same program you are writing, under a name that will not collide with

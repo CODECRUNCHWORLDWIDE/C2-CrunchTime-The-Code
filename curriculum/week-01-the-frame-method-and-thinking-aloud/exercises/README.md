@@ -26,7 +26,7 @@ Five problems. For each, you will:
 - **Open the drill file** in this folder.
 - **Read the prompt.** Do not scroll past it.
 - **Start FRAME.** Out loud. The whole way — all five steps, in order.
-- **Save your solution** as `drill-NN-solution.py` in your portfolio repo, in a `c2-week-01/` subfolder.
+- **Save your solution** as `drill-NN.py` in your portfolio repo, in a `c2-week-01/` subfolder.
 - **Write up using the template.** Save as `drill-NN.md` in your portfolio repo.
 - **Run the tests.** `pytest c2-week-01/`.
 

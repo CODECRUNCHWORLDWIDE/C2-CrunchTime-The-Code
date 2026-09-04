@@ -357,14 +357,12 @@ true keeps the candidate; `lo = mid + 1` on false discards it. Writing
 `hi = mid - 1` steps over the boundary value and returns one metre too many —
 the classic off-by-one on this shape, and it never crashes.
 
-## Download and run
+## Run it
 
-Download
-[exercise-05-paving-reach-solution.py](./exercise-05-paving-reach-solution.py)
-and run it:
+Copy the worked answer on this page into `exercise-05-paving-reach.py` and run it:
 
 ```bash
-python exercise-05-paving-reach-solution.py
+python exercise-05-paving-reach.py
 ```
 
 It is the same program you are writing, under a name that will not collide

@@ -178,7 +178,7 @@ if __name__ == "__main__":
 Real stdout from the shipped file, captured on CPython 3.13.2:
 
 ```text
-$ python exercise-03-midroll-break-solution.py
+$ python exercise-03-midroll-break.py
 s1 -> s2 -> s3 -> s4 -> s5   break after s3, 2 before it
 s1 -> ... -> s6              break after s3, 2 before it
 s1 -> s2 -> s3 -> s4         break after s2, 1 before it
@@ -373,14 +373,12 @@ believing there is a segment. A bare `None` fails at the unpacking line, in the
 caller's own code, with a message naming what went wrong. Fail where the
 mistake is, not three functions later.
 
-## Download and run
+## Run it
 
-Download
-[exercise-03-midroll-break-solution.py](./exercise-03-midroll-break-solution.py)
-and run it:
+Copy the worked answer on this page into `exercise-03-midroll-break.py` and run it:
 
 ```bash
-python exercise-03-midroll-break-solution.py
+python exercise-03-midroll-break.py
 ```
 
 It is the same program you are writing, under a name that will not collide with

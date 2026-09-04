@@ -368,14 +368,12 @@ version of this experiment can therefore come out linear on a good day. The
 count cannot, because the count is about the algorithm, and the algorithm is
 what you are asked about in an interview.
 
-## Download and run
+## Run it
 
-Download
-[problem-01-banner-copy-count-solution.py](./problem-01-banner-copy-count-solution.py)
-and run it:
+Copy the worked answer on this page into `problem-01-banner-copy-count.py` and run it:
 
 ```bash
-python problem-01-banner-copy-count-solution.py
+python problem-01-banner-copy-count.py
 ```
 
 It is the same program you are writing, under a name that will not collide with

@@ -376,14 +376,12 @@ or to load. The lane stays a deque for its whole life. Converting between the
 two is `O(n)`, so a program that converts inside a loop has quietly paid for
 the list it was trying to avoid.
 
-## Download and run
+## Run it
 
-Download
-[exercise-02-cable-ferry-lane-solution.py](./exercise-02-cable-ferry-lane-solution.py)
-and run it:
+Copy the worked answer on this page into `exercise-02-cable-ferry-lane.py` and run it:
 
 ```bash
-python exercise-02-cable-ferry-lane-solution.py
+python exercise-02-cable-ferry-lane.py
 ```
 
 It is the same program you are writing, under a name that will not collide with

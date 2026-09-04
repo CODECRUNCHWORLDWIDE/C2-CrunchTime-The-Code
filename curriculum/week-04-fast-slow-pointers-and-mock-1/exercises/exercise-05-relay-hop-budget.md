@@ -219,7 +219,7 @@ if __name__ == "__main__":
 Real stdout from the shipped file, captured on CPython 3.13.2:
 
 ```text
-$ python exercise-05-relay-hop-budget-solution.py
+$ python exercise-05-relay-hop-budget.py
 R1 -> R2 -> R3 -> R4 -> R2   budget                   0  ->  R1
 R1 -> R2 -> R3 -> R4 -> R2   budget                   1  ->  R2
 R1 -> R2 -> R3 -> R4 -> R2   budget 1000000000000000000  ->  R2
@@ -483,14 +483,12 @@ differently depending on data the caller cannot see.
 three integers. The budget lives entirely inside one arithmetic expression and
 never becomes the length of anything.
 
-## Download and run
+## Run it
 
-Download
-[exercise-05-relay-hop-budget-solution.py](./exercise-05-relay-hop-budget-solution.py)
-and run it:
+Copy the worked answer on this page into `exercise-05-relay-hop-budget.py` and run it:
 
 ```bash
-python exercise-05-relay-hop-budget-solution.py
+python exercise-05-relay-hop-budget.py
 ```
 
 It is the same program you are writing, under a name that will not collide with

@@ -68,7 +68,7 @@ shortlist: the top 6, highest first
 Real stdout from the shipped solution, captured on CPython 3.13.2:
 
 ```text
-$ python exercise-02-crest-watch-shortlist-solution.py
+$ python exercise-02-crest-watch-shortlist.py
 readings seen : 40000
 peak heap size: 6
 season shortlist:
@@ -267,12 +267,12 @@ if __name__ == "__main__":
 `work_estimate` is in the file rather than in a comment because a claimed ratio
 is easy to get wrong and a printed one is not.
 
-## Download and run
+## Run it
 
 Download the solution beside this page and run it:
 
 ```bash
-python exercise-02-crest-watch-shortlist-solution.py
+python exercise-02-crest-watch-shortlist.py
 ```
 
 No third-party packages, no arguments, no input. It prints the shortlist, the

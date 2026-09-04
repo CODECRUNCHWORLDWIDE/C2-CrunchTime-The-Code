@@ -445,14 +445,12 @@ every post in turn — which is why the walk at `lo` can never fail and the
 the assertion is documentation of a proof, not a runtime check you are hoping
 about.
 
-## Download and run
+## Run it
 
-Download
-[challenge-02-signal-mast-spacing-solution.py](./challenge-02-signal-mast-spacing-solution.py)
-and run it:
+Copy the worked answer on this page into `challenge-02-signal-mast-spacing.py` and run it:
 
 ```bash
-python challenge-02-signal-mast-spacing-solution.py
+python challenge-02-signal-mast-spacing.py
 ```
 
 It is the same program you are writing, under a name that will not collide

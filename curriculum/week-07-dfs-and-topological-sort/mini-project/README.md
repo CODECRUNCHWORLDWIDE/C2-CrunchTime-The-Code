@@ -290,7 +290,7 @@ stage up until you have finished everything under it.
 Real stdout from the shipped file, captured on CPython 3.13.2:
 
 ```text
-$ python restart-planner-solution.py
+$ python restart-planner.py
 === restart plan: line 2, after the annual clean ===
 audit          : 15 stages, 20 dependencies, no loops
 
@@ -758,14 +758,12 @@ counts of `filler` and `air-compressor` would count everything they share twice.
 stages and let the set do the de-duplicating. It is the same reason the answer
 to "how many people are in these two rooms" is not the sum of the two rooms.
 
-## Download and run
+## Run it
 
-Download
-[restart-planner-solution.py](./restart-planner-solution.py)
-and run it:
+Copy the worked answer on this page into `restart-planner.py` and run it:
 
 ```bash
-python restart-planner-solution.py
+python restart-planner.py
 ```
 
 It is the same program you are writing, under a name that will not collide with

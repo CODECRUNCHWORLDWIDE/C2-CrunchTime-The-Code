@@ -344,14 +344,12 @@ they have to parse before they can compare two of them, and comparing two
 rounded strings is a bug generator. Formatting is the caller's job; the
 rounding rule is the contract's.
 
-## Download and run
+## Run it
 
-Download
-[problem-01-the-unlabelled-prompt-solution.py](./problem-01-the-unlabelled-prompt-solution.py)
-and run it:
+Copy the worked answer on this page into `problem-01-the-unlabelled-prompt.py` and run it:
 
 ```bash
-python problem-01-the-unlabelled-prompt-solution.py
+python problem-01-the-unlabelled-prompt.py
 ```
 
 It is the same program you are writing, under a name that will not collide with

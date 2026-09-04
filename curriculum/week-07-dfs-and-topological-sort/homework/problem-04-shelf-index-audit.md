@@ -66,7 +66,7 @@ node against its parent passes it, and the index is still wrong.
 Real stdout from the shipped solution, captured on CPython 3.13.2:
 
 ```text
-$ python problem-04-shelf-index-audit-solution.py
+$ python problem-04-shelf-index-audit.py
 sound index          : None
 strayed index        : 60
   parent-only check  : None
@@ -258,12 +258,12 @@ The bounds are passed down rather than values passed up, and both work. Passing
 down is shorter here and states the invariant directly — "this node must fall in
 this range" — which is exactly the sentence the write-up needs anyway.
 
-## Download and run
+## Run it
 
 Download the solution beside this page and run it:
 
 ```bash
-python problem-04-shelf-index-audit-solution.py
+python problem-04-shelf-index-audit.py
 ```
 
 No third-party packages, no arguments, no input. It prints the audit of all four

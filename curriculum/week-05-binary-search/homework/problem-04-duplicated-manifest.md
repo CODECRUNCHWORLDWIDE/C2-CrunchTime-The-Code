@@ -341,14 +341,12 @@ slots[mid]` is always true, the left-half test always applies, and the whole
 thing degenerates into an ordinary binary search. Every special case you do not
 write is a special case that cannot be wrong.
 
-## Download and run
+## Run it
 
-Download
-[problem-04-duplicated-manifest-solution.py](./problem-04-duplicated-manifest-solution.py)
-and run it:
+Copy the worked answer on this page into `problem-04-duplicated-manifest.py` and run it:
 
 ```bash
-python problem-04-duplicated-manifest-solution.py
+python problem-04-duplicated-manifest.py
 ```
 
 It is the same program you are writing, under a name that will not collide

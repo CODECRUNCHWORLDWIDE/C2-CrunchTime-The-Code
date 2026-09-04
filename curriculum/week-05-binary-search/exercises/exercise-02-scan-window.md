@@ -318,14 +318,12 @@ and never learns that the insertion point was thrown away. And if they write
 `minutes[start]` instead, `-1` hands them the last scan in the whole log as if
 it were a match.
 
-## Download and run
+## Run it
 
-Download
-[exercise-02-scan-window-solution.py](./exercise-02-scan-window-solution.py)
-and run it:
+Copy the worked answer on this page into `exercise-02-scan-window.py` and run it:
 
 ```bash
-python exercise-02-scan-window-solution.py
+python exercise-02-scan-window.py
 ```
 
 It is the same program you are writing, under a name that will not collide

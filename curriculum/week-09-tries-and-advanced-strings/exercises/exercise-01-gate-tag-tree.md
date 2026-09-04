@@ -67,7 +67,7 @@ roughly how many before you build it.
 Real stdout from the shipped solution, captured on CPython 3.13.2:
 
 ```text
-$ python exercise-01-gate-tag-tree-solution.py
+$ python exercise-01-gate-tag-tree.py
 tags registered    8
 letters stamped   53
 nodes in tree     30
@@ -259,12 +259,12 @@ written out twice rather than factored into one. That is deliberate at this
 stage: the difference between the two functions is one line at the end, and
 seeing that difference plainly is worth more here than the shared helper.
 
-## Download and run
+## Run it
 
 Download the solution beside this page and run it:
 
 ```bash
-python exercise-01-gate-tag-tree-solution.py
+python exercise-01-gate-tag-tree.py
 ```
 
 No third-party packages, no arguments, no input. It prints the node count against

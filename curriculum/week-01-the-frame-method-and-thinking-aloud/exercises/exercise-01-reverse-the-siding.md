@@ -143,7 +143,7 @@ if __name__ == "__main__":
 Real stdout from the shipped file, captured on CPython 3.13:
 
 ```text
-$ python exercise-01-reverse-the-siding-solution.py
+$ python exercise-01-reverse-the-siding.py
 flipped  start= 1 end= 3  swaps=1  ['HOP', 'TNK', 'BOX', 'GON', 'FLT'] -> ['HOP', 'GON', 'BOX', 'TNK', 'FLT']
 flipped  start= 0 end= 4  swaps=2  ['HOP', 'TNK', 'BOX', 'GON', 'FLT'] -> ['FLT', 'GON', 'BOX', 'TNK', 'HOP']
 flipped  start= 0 end= 3  swaps=2  ['HOP', 'TNK', 'BOX', 'GON'] -> ['GON', 'BOX', 'TNK', 'HOP']
@@ -296,14 +296,12 @@ the memory the function uses would not move. That is what `O(1)` auxiliary
 space means in practice, and the constraint on the input size is there
 specifically so that the claim matters.
 
-## Download and run
+## Run it
 
-Download
-[exercise-01-reverse-the-siding-solution.py](./exercise-01-reverse-the-siding-solution.py)
-and run it:
+Copy the worked answer on this page into `exercise-01-reverse-the-siding.py` and run it:
 
 ```bash
-python exercise-01-reverse-the-siding-solution.py
+python exercise-01-reverse-the-siding.py
 ```
 
 It is the same program you are writing, under a name that will not collide

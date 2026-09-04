@@ -22,7 +22,7 @@ day. Exercise 5 is the merge, which
 Run any one of them directly:
 
 ```bash
-python exercise-01-sluice-gate-order-solution.py
+python exercise-01-sluice-gate-order.py
 ```
 
 No packages, no arguments, no input.

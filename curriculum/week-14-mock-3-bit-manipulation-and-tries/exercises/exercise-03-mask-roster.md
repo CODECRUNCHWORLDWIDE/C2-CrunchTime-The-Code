@@ -23,8 +23,7 @@ every shift        range(1 << pool size)
 
 ## Starter
 
-`exercise-03-mask-roster-solution.py` sits beside this page with the pool and
-the self-checks.
+The worked answer on this page carries the pool and the self-checks.
 
 ```text
 bit 0 = Ash    bit 1 = Bo    bit 2 = Cass    bit 3 = Dov
@@ -63,7 +62,7 @@ than left to right is the thing to get straight now.
 Real stdout from the shipped solution, captured on CPython 3.13.2:
 
 ```text
-$ python exercise-03-mask-roster-solution.py
+$ python exercise-03-mask-roster.py
 POOL  ['Ash', 'Bo', 'Cass', 'Dov']
     bit 0=Ash   bit 1=Bo   bit 2=Cass   bit 3=Dov
 
@@ -340,12 +339,12 @@ to agree on every input. That is deliberate: bit tricks are exactly the kind of
 code that is obviously right and quietly wrong, and the set version is slow,
 readable and easy to be sure of.
 
-## Download and run
+## Run it
 
 Download the solution beside this page and run it:
 
 ```bash
-python exercise-03-mask-roster-solution.py
+python exercise-03-mask-roster.py
 ```
 
 No third-party packages, no arguments, no input. It prints all sixteen shifts,

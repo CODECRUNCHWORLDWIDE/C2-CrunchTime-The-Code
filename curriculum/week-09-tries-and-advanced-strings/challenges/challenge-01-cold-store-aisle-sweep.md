@@ -65,7 +65,7 @@ on the page rather than an assertion in a paragraph.
 Real stdout from the shipped solution, captured on CPython 3.13.2:
 
 ```text
-$ python challenge-01-cold-store-aisle-sweep-solution.py
+$ python challenge-01-cold-store-aisle-sweep.py
 S A L T
 T L A S
 A I M E
@@ -323,12 +323,12 @@ Storing the finished code at its end node rather than reconstructing it from the
 path is a small thing that matters at scale: the path is rebuilt at every hit,
 and hits are the common case in a store full of matching letters.
 
-## Download and run
+## Run it
 
 Download the solution beside this page and run it:
 
 ```bash
-python challenge-01-cold-store-aisle-sweep-solution.py
+python challenge-01-cold-store-aisle-sweep.py
 ```
 
 No third-party packages, no arguments, no input. It prints the store, the counts

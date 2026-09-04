@@ -202,7 +202,7 @@ actually disturbs.
 Real stdout from the shipped file, captured on CPython 3.13:
 
 ```text
-$ python challenge-02-levee-ponding-solution.py
+$ python challenge-02-levee-ponding.py
 shoulder 100 cm  holds 10  road [4, 1, 3, 0, 2, 5]
 shoulder   2 cm  holds  7  road [4, 1, 3, 0, 2, 5]
 shoulder   0 cm  holds  0  road [4, 1, 3, 0, 2, 5]
@@ -410,14 +410,12 @@ four integers regardless of road length: **`O(1)` auxiliary space**. And
 `O(n)` time is the floor, because a single section anywhere on the road can
 change the answer, so every section must be read.
 
-## Download and run
+## Run it
 
-Download
-[challenge-02-levee-ponding-solution.py](./challenge-02-levee-ponding-solution.py)
-and run it:
+Copy the worked answer on this page into `challenge-02-levee-ponding.py` and run it:
 
 ```bash
-python challenge-02-levee-ponding-solution.py
+python challenge-02-levee-ponding.py
 ```
 
 It is the same program you are writing, under a name that will not collide

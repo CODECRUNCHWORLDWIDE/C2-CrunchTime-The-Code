@@ -465,14 +465,12 @@ not somewhere it stores anything. The `if shed[row][column] != "."` guard in
 the scan says that, and it is the same guard that keeps stanchions out. One
 test, two exclusions, because both are "not a bay".
 
-## Download and run
+## Run it
 
-Download
-[problem-02-worst-served-bay-solution.py](./problem-02-worst-served-bay-solution.py)
-and run it:
+Copy the worked answer on this page into `problem-02-worst-served-bay.py` and run it:
 
 ```bash
-python problem-02-worst-served-bay-solution.py
+python problem-02-worst-served-bay.py
 ```
 
 It is the same program you are writing, under a name that will not collide

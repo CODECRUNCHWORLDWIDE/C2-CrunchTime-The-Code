@@ -356,14 +356,12 @@ because the blocks must be *runs of consecutive legs* and `[8, 3, 9]` is
 already twenty on its own. Minimising the maximum and equalising are different
 objectives, and only one of them is the contract.
 
-## Download and run
+## Run it
 
-Download
-[problem-02-relay-handoff-solution.py](./problem-02-relay-handoff-solution.py)
-and run it:
+Copy the worked answer on this page into `problem-02-relay-handoff.py` and run it:
 
 ```bash
-python problem-02-relay-handoff-solution.py
+python problem-02-relay-handoff.py
 ```
 
 It is the same program you are writing, under a name that will not collide

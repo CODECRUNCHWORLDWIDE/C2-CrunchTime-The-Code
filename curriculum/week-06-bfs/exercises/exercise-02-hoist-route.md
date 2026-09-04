@@ -507,14 +507,12 @@ set of bays that fail the `== "."` test and are never queued. That is the
 whole trick with grids — the shape of the answer comes out of the data, and
 the code stays four lines long.
 
-## Download and run
+## Run it
 
-Download
-[exercise-02-hoist-route-solution.py](./exercise-02-hoist-route-solution.py)
-and run it:
+Copy the worked answer on this page into `exercise-02-hoist-route.py` and run it:
 
 ```bash
-python exercise-02-hoist-route-solution.py
+python exercise-02-hoist-route.py
 ```
 
 It is the same program you are writing, under a name that will not collide

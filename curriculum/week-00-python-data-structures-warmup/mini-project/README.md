@@ -74,7 +74,7 @@ It covers five of the six required rows. The sixth — and the slice — are you
 Real stdout from the shipped solution, captured on CPython 3.13.2:
 
 ```text
-$ python README-solution.py
+$ python README.py
 MEASURED - the starter's rows
 
 | what was counted | the claim | n=1000 | n=2000 | growth | verdict |
@@ -345,12 +345,12 @@ exact numbers — `heapify_swaps(n) < n`, and the insertion build growing faster
 than the bottom-up build. Asserting the literal counts would make the file fail
 the day someone changes the input spread, which is not what is being defended.
 
-## Download and run
+## Run it
 
 Download the solution beside this page and run it:
 
 ```bash
-python README-solution.py
+python README.py
 ```
 
 It needs `growth_lab.py` in the same folder. No third-party packages, no

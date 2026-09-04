@@ -16,8 +16,7 @@ Find it, in one pass and in constant space.
 
 ## Starter
 
-`exercise-01-relay-fold-solution.py` sits beside this page with the log and the
-self-checks.
+The worked answer on this page carries the log and the self-checks.
 
 ```text
 0x2B  0x14  0x2B  0x77  0x14  0x09  0x77
@@ -56,7 +55,7 @@ demonstration of why this works.
 Real stdout from the shipped solution, captured on CPython 3.13.2:
 
 ```text
-$ python exercise-01-relay-fold-solution.py
+$ python exercise-01-relay-fold.py
 TRIP LOG AND THE RUNNING FOLD
     0x2B   running fold 0x2B
     0x14   running fold 0x3F
@@ -247,12 +246,12 @@ log per distinct code. On a real log you would count once into a dict — which 
 the linear space the fold was avoiding. That tension is real and worth a
 paragraph: the fold is constant-space, and *verifying its precondition* is not.
 
-## Download and run
+## Run it
 
 Download the solution beside this page and run it:
 
 ```bash
-python exercise-01-relay-fold-solution.py
+python exercise-01-relay-fold.py
 ```
 
 No third-party packages, no arguments, no input. It prints the log with the

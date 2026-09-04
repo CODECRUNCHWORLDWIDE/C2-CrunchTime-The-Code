@@ -140,7 +140,7 @@ Twenty points per write-up, forty for the pair.
 Real stdout from the shipped solution, captured on CPython 3.13.2:
 
 ```text
-$ python README-solution.py
+$ python README.py
 arrival ledger
   ticket  1  min   0  walk-in    toaster         normal       25 min
   ticket  2  min   5  web form   bicycle wheel   when you can 40 min
@@ -540,12 +540,12 @@ ticket collision can produce the `TypeError` that
 [Exercise 4](../exercises/exercise-04-rescue-intake-queue.md) demonstrates, and
 the queue is correct by construction rather than by testing.
 
-## Download and run
+## Run it
 
 Download the solution beside this page and run it:
 
 ```bash
-python README-solution.py
+python README.py
 ```
 
 No third-party packages, no arguments, no input. It prints the arrival ledger,

@@ -298,7 +298,7 @@ what makes two people auditing the same broken plan get the same answer.
 Real stdout from the shipped file, captured on CPython 3.13.2:
 
 ```text
-$ python exercise-03-batch-loop-audit-solution.py
+$ python exercise-03-batch-loop-audit.py
 empty plan     : None
 clean diamond  : None
 self feed      : ['retort']
@@ -556,14 +556,12 @@ black exactly once. So the whole audit is `O(V + E)` steps plus the sorting —
 one look at each stage, one look at each arrow. Five thousand stages is nothing;
 the reason the file is careful is depth, not size.
 
-## Download and run
+## Run it
 
-Download
-[exercise-03-batch-loop-audit-solution.py](./exercise-03-batch-loop-audit-solution.py)
-and run it:
+Copy the worked answer on this page into `exercise-03-batch-loop-audit.py` and run it:
 
 ```bash
-python exercise-03-batch-loop-audit-solution.py
+python exercise-03-batch-loop-audit.py
 ```
 
 It is the same program you are writing, under a name that will not collide with

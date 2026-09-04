@@ -249,7 +249,7 @@ the question.
 Real stdout from the shipped file, captured on CPython 3.13.2:
 
 ```text
-$ python exercise-02-conveyor-reachability-solution.py
+$ python exercise-02-conveyor-reachability.py
 empty depot         : []
 fan-out from 0      : [1, 2, 3, 4]
 fan-out from 2      : [3, 4]
@@ -477,14 +477,12 @@ below that point can then assume `start` is a real chute, and the error the
 caller sees names their mistake instead of exposing an `IndexError` from three
 lines into a walk they cannot see.
 
-## Download and run
+## Run it
 
-Download
-[exercise-02-conveyor-reachability-solution.py](./exercise-02-conveyor-reachability-solution.py)
-and run it:
+Copy the worked answer on this page into `exercise-02-conveyor-reachability.py` and run it:
 
 ```bash
-python exercise-02-conveyor-reachability-solution.py
+python exercise-02-conveyor-reachability.py
 ```
 
 It is the same program you are writing, under a name that will not collide with

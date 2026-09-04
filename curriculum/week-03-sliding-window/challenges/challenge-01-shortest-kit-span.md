@@ -569,14 +569,12 @@ log. Checking a clever implementation against a stupid one is the single most
 effective testing habit in this course, because the two are unlikely to be
 wrong in the same way.
 
-## Download and run
+## Run it
 
-Download
-[challenge-01-shortest-kit-span-solution.py](./challenge-01-shortest-kit-span-solution.py)
-and run it:
+Copy the worked answer on this page into `challenge-01-shortest-kit-span.py` and run it:
 
 ```bash
-python challenge-01-shortest-kit-span-solution.py
+python challenge-01-shortest-kit-span.py
 ```
 
 It is the same program you are writing, under a name that will not collide with

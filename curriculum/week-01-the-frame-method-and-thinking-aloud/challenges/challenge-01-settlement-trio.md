@@ -144,7 +144,7 @@ if __name__ == "__main__":
 Real stdout from the shipped file, captured on CPython 3.13:
 
 ```text
-$ python challenge-01-settlement-trio-solution.py
+$ python challenge-01-settlement-trio.py
 suspense    0  3 explanation(s)  [(-5, -1, 6), (-5, 1, 4), (-1, 0, 1)]
 suspense    0  2 explanation(s)  [(-2, -2, 4), (-2, 0, 2)]
 suspense   15  2 explanation(s)  [(1, 5, 9), (3, 5, 7)]
@@ -356,14 +356,12 @@ line item from the working space. Then the sentence that earns the points:
 problem is known, and a bound of 4,000 is calibrated to `O(n²)` — which tells
 you the interviewer is not expecting better.**
 
-## Download and run
+## Run it
 
-Download
-[challenge-01-settlement-trio-solution.py](./challenge-01-settlement-trio-solution.py)
-and run it:
+Copy the worked answer on this page into `challenge-01-settlement-trio.py` and run it:
 
 ```bash
-python challenge-01-settlement-trio-solution.py
+python challenge-01-settlement-trio.py
 ```
 
 It is the same program you are writing, under a name that will not collide

@@ -23,7 +23,7 @@ after — which is the same decision
 Both have a runnable worked solution beside the page:
 
 ```bash
-python challenge-01-kiln-firing-trail-solution.py
+python challenge-01-kiln-firing-trail.py
 ```
 
 **How these differ from the exercises.** You choose the state: what goes in the

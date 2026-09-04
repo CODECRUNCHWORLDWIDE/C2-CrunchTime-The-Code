@@ -262,7 +262,7 @@ sentence is too long. Cut it into two. Do that three or four times and the
 whole story gets easier to say, which makes you sound more comfortable, which
 is itself part of what is being scored.
 
-## Download and run
+## Run it
 
 There is no file to download and nothing to run, so the sibling `.py` that
 every other page in this week ships does not exist here. The page declares that

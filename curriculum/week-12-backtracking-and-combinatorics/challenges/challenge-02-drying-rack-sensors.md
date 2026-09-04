@@ -18,8 +18,8 @@ none needs a slat replaced before anyone tries.
 
 ## Starter
 
-`challenge-02-drying-rack-sensors-solution.py` sits beside this page with the
-rack, the warped slats and the self-checks.
+The worked answer on this page carries the rack, the warped slats and the
+self-checks.
 
 ```text
 rack 6x6, warped (0,0) (1,3) (3,1) (5,5)
@@ -61,7 +61,7 @@ three surprise most people, and being wrong on paper first is the point.
 Real stdout from the shipped solution, captured on CPython 3.13.2:
 
 ```text
-$ python challenge-02-drying-rack-sensors-solution.py
+$ python challenge-02-drying-rack-sensors.py
 rack 6x6, warped [(0, 0), (1, 3), (3, 1), (5, 5)]
     arrangements: 2
     first:        (2, 5, 1, 4, 0, 3)
@@ -307,12 +307,12 @@ four marks above it. That symmetry is deliberate: the failure mode here is
 undoing three of the four, and the only reliable defence is to write them where
 a reader can see one is missing.
 
-## Download and run
+## Run it
 
 Download the solution beside this page and run it:
 
 ```bash
-python challenge-02-drying-rack-sensors-solution.py
+python challenge-02-drying-rack-sensors.py
 ```
 
 No third-party packages, no arguments, no input. It prints the warped rack's

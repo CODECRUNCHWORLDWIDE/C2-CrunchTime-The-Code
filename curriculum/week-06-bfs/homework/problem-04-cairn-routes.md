@@ -70,7 +70,7 @@ zero or an empty list.
 Real stdout from the shipped solution, captured on CPython 3.13.2:
 
 ```text
-$ python problem-04-cairn-routes-solution.py
+$ python problem-04-cairn-routes.py
 ALDER to IVY: 6 quickest routes over 9 cairns
   spotters at: ALDER, BIRCH, CEDAR, DAMSON, ELDER, FIRTH, GORSE, HOLLY, IVY
 ALDER to FIRTH: 3 quickest routes over 6 cairns
@@ -264,12 +264,12 @@ The route count and the spotter list come out of the same two distance maps. Tha
 is worth stating explicitly in the write-up: the expensive part ran twice, total,
 and both answers are reads off the result rather than further searching.
 
-## Download and run
+## Run it
 
 Download the solution beside this page and run it:
 
 ```bash
-python problem-04-cairn-routes-solution.py
+python problem-04-cairn-routes.py
 ```
 
 No third-party packages, no arguments, no input. It prints the three cases and

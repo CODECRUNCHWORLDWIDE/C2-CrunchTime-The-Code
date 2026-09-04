@@ -33,7 +33,7 @@ implement against them in your portfolio repo, not in this one.
   skeleton and the cable planner. Fill in `network_of`, `join` and
   `cheapest_cable`.
 
-`README-solution.py` answers both. Read it after your attempt.
+The worked answer on this page solves both. Read it after your attempt.
 
 Before any code, fill in the memo below from the prompt alone.
 
@@ -216,7 +216,7 @@ A passing write-up scores at least 70 on each.
 Real stdout from the shipped solution, captured on CPython 3.13.2:
 
 ```text
-$ python README-solution.py
+$ python README.py
 HARBOUR UTILITIES PLAN - taxi from Ferry Slip
 
 1. Water-taxi minutes
@@ -626,12 +626,12 @@ One file, two questions, one report. `network_of` compresses on the way back up
 rather than in a second pass — the shortest correct path compression, and the
 most commonly mangled one.
 
-## Download and run
+## Run it
 
 Download the solution beside this page and run it:
 
 ```bash
-python README-solution.py
+python README.py
 ```
 
 No third-party packages, no arguments, no input. It prints the five-part harbour

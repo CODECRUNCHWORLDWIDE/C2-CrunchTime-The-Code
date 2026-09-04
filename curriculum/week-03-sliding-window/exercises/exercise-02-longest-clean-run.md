@@ -372,14 +372,12 @@ operation constant on average. That is the amortised argument, and it is the
 sentence to have ready when someone asks why a loop with a jump inside it is
 not quadratic.
 
-## Download and run
+## Run it
 
-Download
-[exercise-02-longest-clean-run-solution.py](./exercise-02-longest-clean-run-solution.py)
-and run it:
+Copy the worked answer on this page into `exercise-02-longest-clean-run.py` and run it:
 
 ```bash
-python exercise-02-longest-clean-run-solution.py
+python exercise-02-longest-clean-run.py
 ```
 
 It is the same program you are writing, under a name that will not collide with

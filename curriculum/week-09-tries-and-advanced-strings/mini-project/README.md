@@ -221,7 +221,7 @@ A passing write-up scores at least 70 on each.
 Real stdout from the shipped solution, captured on CPython 3.13.2:
 
 ```text
-$ python README-solution.py
+$ python README.py
 1 - the seed index (trie)
     search 'sage'     -> True
     search 'sag'      -> True
@@ -469,12 +469,12 @@ Both problems in one file. The trie's `search` and `starts_with` are deliberatel
 written to share a `_descend` helper, so the one line of difference between them
 is the only line of difference between them.
 
-## Download and run
+## Run it
 
 Download the solution beside this page and run it:
 
 ```bash
-python README-solution.py
+python README.py
 ```
 
 No third-party packages, no arguments, no input. It prints both problems' worked

@@ -508,14 +508,12 @@ a constant. The final tally is one more `O(n)` pass. Total `O(n)` time, `O(1)`
 space, with the catalogue bound doing the work in both claims. State the bound
 before you make the claim.
 
-## Download and run
+## Run it
 
-Download
-[challenge-02-repaving-stretch-solution.py](./challenge-02-repaving-stretch-solution.py)
-and run it:
+Copy the worked answer on this page into `challenge-02-repaving-stretch.py` and run it:
 
 ```bash
-python challenge-02-repaving-stretch-solution.py
+python challenge-02-repaving-stretch.py
 ```
 
 It is the same program you are writing, under a name that will not collide with

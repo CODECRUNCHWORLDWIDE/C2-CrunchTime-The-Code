@@ -25,7 +25,7 @@ challenge; the code afterwards is Exercise 2 again.
 Both have a runnable worked solution beside the page:
 
 ```bash
-python challenge-01-trunk-splice-solution.py
+python challenge-01-trunk-splice.py
 ```
 
 If you are stuck past sixty minutes on either, stop and re-read the constraints

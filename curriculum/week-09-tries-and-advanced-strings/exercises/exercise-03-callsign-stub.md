@@ -60,7 +60,7 @@ both need the same care.
 Real stdout from the shipped solution, captured on CPython 3.13.2:
 
 ```text
-$ python exercise-03-callsign-stub-solution.py
+$ python exercise-03-callsign-stub.py
 KELPIE      -> KELP        (4 of 6)
 KELVIN      -> KELV        (4 of 6)
 KESTREL     -> KESTREL     (whole callsign)
@@ -239,12 +239,12 @@ answer the shortest run rather than one letter longer. It is a one-character
 difference in the loop and it is the thing to check first when the stubs come out
 too long.
 
-## Download and run
+## Run it
 
 Download the solution beside this page and run it:
 
 ```bash
-python exercise-03-callsign-stub-solution.py
+python exercise-03-callsign-stub.py
 ```
 
 No third-party packages, no arguments, no input. It prints each callsign with its
